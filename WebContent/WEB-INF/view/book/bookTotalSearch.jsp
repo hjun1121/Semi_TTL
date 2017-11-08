@@ -26,7 +26,8 @@
  			url: "./bookRent.book",
  			type: "GET",
  			data: {
- 				num:${book.num}
+ 				num:${book.num},
+ 				rent_id:'${member.id}'
  			},
  			success: function(data) {
  				alert(data);
