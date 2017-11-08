@@ -4,6 +4,7 @@ import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.util.ArrayList;
+import java.util.List;
 
 import com.fnw.util.DBConnector;
 import com.fnw.util.MakeRow;
@@ -130,5 +131,42 @@ public class Book_OrderDAO {
 		int result = st.executeUpdate();
 		DBConnector.disConnect(st, con);
 		return result;
+	}
+	
+	public List<Book_OrderDTO> selectList(MakeRow makeRow, String kind, String search) throws Exception {
+		Connection con = DBConnector.getConnect();
+
+		List<Book_OrderDTO> ar = new ArrayList<>();
+
+		String sql = "select * from "
+				+ "(select rownum R, N.* from "
+				+ "(select * from book_order where " +kind +" like ? order by num desc) N)"
+				+ "where R between ? and ?";
+		PreparedStatement st = con.prepareStatement(sql);
+		st.setString(1, "%"+search+"%");
+		st.setInt(2, makeRow.getStartRow());
+		st.setInt(3, makeRow.getLastRow());
+		ResultSet rs = st.executeQuery();
+
+		while(rs.next()) {
+			Book_OrderDTO book_OrderDTO = new Book_OrderDTO();
+			book_OrderDTO = new Book_OrderDTO();
+			book_OrderDTO.setNum(rs.getInt("num"));
+			book_OrderDTO.setTitle(rs.getString("title"));
+			book_OrderDTO.setWriter(rs.getString("writer"));
+			book_OrderDTO.setCompany(rs.getString("company"));
+			book_OrderDTO.setPublish_date(rs.getString("publish_date"));
+			book_OrderDTO.setContents(rs.getString("contents"));
+			book_OrderDTO.setLibrary(rs.getInt("library"));
+			book_OrderDTO.setId(rs.getString("id"));
+			book_OrderDTO.setPrice(rs.getInt("price"));
+			book_OrderDTO.setState(rs.getInt("state"));
+			book_OrderDTO.setCancel(rs.getString("cancel"));
+			ar.add(book_OrderDTO);
+		}
+
+		DBConnector.disConnect(rs, st, con);
+
+		return ar;
 	}
 }

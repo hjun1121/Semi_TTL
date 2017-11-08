@@ -38,7 +38,7 @@
 	</div>
 	
 	
-		<a href="./${requestScope.market}approval.${requestScope.market}?num=${requestScope.view.num}">승인</a>
+		<a href="./${requestScope.market}Approval.${requestScope.market}?num=${requestScope.view.num}">승인</a>
 		<a href="./${requestScope.market}Refusal.${requestScope.market}?num=${requestScope.view.num}">승인 거부</a>
 		<a href="./${requestScope.market}ApplicationList.${requestScope.market}">LIST</a>
 </body>
