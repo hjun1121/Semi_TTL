@@ -1,6 +1,6 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
-<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
+<!DOCTYPE html>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <html>
 <head>
@@ -33,7 +33,7 @@ $(function(){
 </script>
 </head>
 <body>
-	<h2>MarketTotalList-MyPage</h2>
+	<h2>MyPage - Book Rent List</h2>
 	<div>
 	<form name="frm" class="form-inline" action="./bookRentList.book" method="post">
 	
