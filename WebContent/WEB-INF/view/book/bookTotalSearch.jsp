@@ -11,7 +11,7 @@
   <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
 <title>Insert title here</title>
 <script type="text/javascript">
- $(function(){
+$(function(){
 	 var kind = '${kind}';
 	 
 	 $(".kind").each(function(){
@@ -19,21 +19,22 @@
 			 $(this).attr("selected", true);
 		 }
 	 });
-	 
- 	 $("#btn").click(function() {
- 		
- 		$.ajax({
- 			url: "./bookRent.book",
- 			type: "GET",
- 			data: {
- 				num:${book.num}
- 			},
- 			success: function(data) {
- 				alert(data);
- 				location.href="./bookTotalSearch.book";
- 			}
- 		});
- 	 });
+	$("#rent_btn").click(function() {
+		 var num = $("#rent_btn").val();
+		
+		$.ajax({
+			url: "./bookRent.book",
+			type: "GET",
+			data: {
+				num:num,
+				rent_id:'${member.id}'
+			},
+			success: function(data) {
+				alert(data);
+				location.href="./bookTotalSearch.book";
+			}
+		});
+	});
  });
 
 </script>
@@ -95,7 +96,7 @@
 
 								<c:choose>
 									<c:when test="${ dto.state == 0 and not empty member }">
-										<td><button class = "btn btn-default" type = "submit" id = "btn">대여</button></td>
+										<td><button class = "btn btn-default" type = "submit" id = "rent_btn" value = "${dto.num }">대여</button></td>
 									</c:when>
 									<c:when test="${ dto.state == 0 and empty member }">
 										<td>대여가능</td>

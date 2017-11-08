@@ -13,7 +13,7 @@ public class DBConnector {
 		String user="library";
 		String password="library";
 
-		String url="jdbc:oracle:thin:@192.168.0.8:1521:xe";    //희성
+		String url="jdbc:oracle:thin:@127.0.0.1:1521:xe";    //희성
 		/*String url="jdbc:oracle:thin:@192.168.0.10:1521:xe"; //형준
 	    /*String url="jdbc:oracle:thin:@192.168.0.10:1521:xe"; //학원 */
 		
