@@ -37,13 +37,13 @@
 	<p><a href="./member/memberJoin.member">회원가입</a>
 	<p><a href="./member/memberLogout.member">로그아웃</a>
 	<p><a href="./library/libraryView.library">도서관지도</a></p>
-	
+
 	<p></p>
 	<!-- 도서관 페이지  -->
 	<h2>도서관 페이지</h2>
 	<p><a href="./library/libraryMain.library">Library_Main_Page</a></p>
 	<div style = "height: 10px"></div>
-	
+
 	<p><a href="./member/memberList.member">admin 전용 회원리스트 / 블랙리스트</a></p>
 
 	<p><a href="./member/memberIdFind.member">Id Find</a>

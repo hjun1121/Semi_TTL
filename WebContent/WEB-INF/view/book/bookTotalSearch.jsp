@@ -11,9 +11,9 @@
   <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
 <title>Insert title here</title>
 <script type="text/javascript">
-
  $(function(){
 	 var kind = '${kind}';
+	 
 	 $(".kind").each(function(){
 		 if($(this).val() == kind) {
 			 $(this).attr("selected", true);
@@ -22,20 +22,19 @@
 	 
  	 $("#btn").click(function() {
  		
- 		$ajax({
+ 		$.ajax({
  			url: "./bookRent.book",
  			type: "GET",
  			data: {
- 				num:${book.num},
- 				rent_id:'${member.id}'
+ 				num:${book.num}
  			},
  			success: function(data) {
  				alert(data);
+ 				location.href="./bookTotalSearch.book";
  			}
  		});
  	 });
  });
-
 
 </script>
 </head>
@@ -88,12 +87,12 @@
 								<td>${dto.company }</td>
 	
 								<c:choose>
-									<c:when test="${dto.library == 1 }"><td>kim_lib</td></c:when>
-									<c:when test="${dto.library == 2 }"><td>gee_lib</td></c:when>
-									<c:when test="${dto.library == 3 }"><td>hs_lib</td></c:when>
-									<c:when test="${dto.library == 4 }"><td>ssin_lib</td></c:when>
+									<c:when test="${dto.library == 1 }"><td><a href="../library/libraryMain.library?num=1">kim_lib</a></td></c:when>
+									<c:when test="${dto.library == 2 }"><td><a href="../library/libraryMain.library?num=2">gee_lib</a></td></c:when>
+									<c:when test="${dto.library == 3 }"><td><a href="../library/libraryMain.library?num=3">hs_lib</a></td></c:when>
+									<c:when test="${dto.library == 4 }"><td><a href="../library/libraryMain.library?num=4">ssin_lib</a></td></c:when>
 								</c:choose>
-								
+
 								<c:choose>
 									<c:when test="${ dto.state == 0 and not empty member }">
 										<td><button class = "btn btn-default" type = "submit" id = "btn">대여</button></td>

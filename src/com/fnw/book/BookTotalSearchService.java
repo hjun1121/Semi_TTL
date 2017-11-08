@@ -11,8 +11,6 @@ import com.fnw.util.PageMaker;
 
 public class BookTotalSearchService implements Action {
 
-	
-	
 	@Override
 	public ActionFoward doProcess(HttpServletRequest request, HttpServletResponse response) {
 
