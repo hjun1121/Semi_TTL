@@ -50,4 +50,25 @@ public class Qna_ReplyDAO {
 		DBConnector.disConnect(rs, st, con);
 		return ar;
 	}
+	public int delete(int num) throws Exception{
+		Connection con = DBConnector.getConnect();
+		String sql = "delete from qna_reply where num=?";
+		PreparedStatement st = con.prepareStatement(sql);
+		st.setInt(1, num);
+		
+		int result = st.executeUpdate();
+		
+		return result;
+	}
+	public int update(Qna_ReplyDTO qna_ReplyDTO) throws Exception{
+		Connection con = DBConnector.getConnect();
+		String sql="UPDATE qna_reply SET contents=? WHERE num=?";
+		PreparedStatement st = con.prepareStatement(sql);
+		
+		st.setString(1, qna_ReplyDTO.getContents());
+		st.setInt(2, qna_ReplyDTO.getNum());
+		int result = st.executeUpdate();
+		DBConnector.disConnect(st, con);
+		return result;
+	}
 }
