@@ -61,8 +61,6 @@ public class Qna_ReplyDAO {
 		return result;
 	}
 	public int update(Qna_ReplyDTO qna_ReplyDTO) throws Exception{
-		System.out.println(qna_ReplyDTO.getNum());
-		System.out.println(qna_ReplyDTO.getContents());
 		Connection con = DBConnector.getConnect();
 		String sql="UPDATE qna_reply SET contents=? WHERE num=?";
 		PreparedStatement st = con.prepareStatement(sql);

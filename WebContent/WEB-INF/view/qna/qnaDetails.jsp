@@ -65,7 +65,7 @@ $(function(){
 	<tr>
 		<td id="${DTO.num }"><div id="update${DTO.num }">${DTO.contents }</div></td>
 		<td class="btn${DTO.num }"><input type="button" class="replyUpdate" title="${DTO.num }" value="수정"></td>
-		<td class="btn${DTO.num }"><a href="../qnaReply/qnaReplyDelete.qnaReply?num=${DTO.num }"><input type="button" value="삭제"></a></td>
+		<td class="btn${DTO.num }"><a href="../qnaReply/qnaReplyDelete.qnaReply?num=${DTO.num }&ref=${DTO.ref }"><input type="button" value="삭제"></a></td>
 	</tr>
 </c:forEach>
 </table>
