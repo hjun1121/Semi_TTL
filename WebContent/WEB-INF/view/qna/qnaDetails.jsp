@@ -11,22 +11,34 @@
 $(function(){
 	$(".replyUpdate").click(function() {
 		var c = $(this).attr("title");
-		
-		var s = $("#update"+c).html();
-		var chtml = "<textarea>"+s+"</textarea>";
-		chtml+="<a href='../qnaReply/qnaReplyUpdate.qnaReply?num="+c+"'>";
-		chtml+="<input type='button' value='완료'>";
+		var s =$("#update"+c).html();
+		var chtml = '<textarea id="upContents'+c+'">'+s+'</textarea>';
+		chtml+="<input type='button' class='up' value='완료' title="+c+">";
 		chtml+="</a>";
 		$("#update"+c).html(chtml);
 		
 		$(".btn"+c).hide();
 	});
+	
+	$("table").on("click", ".up", function() {
+		var c = $(this).attr("title");
+		var con = $("#upContents"+c).val();
+		document.frm.rnum.value=c;
+		document.frm.rcontents.value=con;
+		document.frm.pnum.value=document.frm2.num.value;
+		document.frm.submit();
+	});
 });
 </script>
 </head>
 <body>
+<form action="../qnaReply/qnaReplyUpdate.qnaReply" name="frm">
+	<input type="hidden" name="rnum">
+	<input type="hidden" name="rcontents">
+	<input type="hidden" name="pnum">
+</form>
 <h2>QnA Details</h2>
-<form action="../index.jsp" method="post">
+<form action="../index.jsp" method="post" name="frm2">
 		<p>num<input type="text" name="num" value=${qnaDTO.num }></p>
 		<p>type<input type="text" name="type" value=${qnaDTO.type } ></p>
 		<p>title<input type="text" name="title" value=${qnaDTO.title } ></p>
@@ -51,9 +63,9 @@ $(function(){
 		<td>${DTO.reg_date }</td>
 	</tr>
 	<tr>
-		<td id="${DTO.num }"><div id="update${i.index}">${DTO.contents }</div></td>
-		<td class="btn${i.index}"><input type="button" class="replyUpdate" title="${i.index}" value="수정"></td>
-		<td class="btn${i.index}"><a href="../qnaReply/qnaReplyDelete.qnaReply?num=${DTO.num }"><input type="button" value="삭제"></a></td>
+		<td id="${DTO.num }"><div id="update${DTO.num }">${DTO.contents }</div></td>
+		<td class="btn${DTO.num }"><input type="button" class="replyUpdate" title="${DTO.num }" value="수정"></td>
+		<td class="btn${DTO.num }"><a href="../qnaReply/qnaReplyDelete.qnaReply?num=${DTO.num }"><input type="button" value="삭제"></a></td>
 	</tr>
 </c:forEach>
 </table>

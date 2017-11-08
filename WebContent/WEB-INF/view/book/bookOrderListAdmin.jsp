@@ -6,14 +6,14 @@
 <html>
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
-<title>마켓 관리자 승인창</title>
+<title>book order list 관리자용</title>
 </head>
 <body>
 	<div>
-	<h1>마켓 관리자 승인 창</h1>
+	<h1>book order list 관리자용</h1>
 
 	</div>
-	<h1>${fn:toUpperCase(requestScope.market)}</h1>
+	<h1>${fn:toUpperCase(requestScope.book)}</h1>
 	<table class="table table-hover" border="1">
 		<tr>
 			<td>num</td>
@@ -23,7 +23,8 @@
 			<td>publish_date</td>
 			<td>price</td>
 			<td>library</td>
-			<td>신청인 ID</td>
+			<td>state</td>
+			<td>cancel</td>
 		</tr>
 		<c:forEach items="${requestScope.list}" var="dto">
 		
@@ -35,14 +36,15 @@
 				--
 			</c:forEach>
 			</c:catch>
-			<a href="./${requestScope.market}ApplicationView.${requestScope.market}?num=${dto.num}">${dto.title}</a>
+			<a href="./${requestScope.book}ApplicationView.${requestScope.book}?num=${dto.num}">${dto.title}</a>
 			</td>
 			<td>${dto.writer}</td>
 			<td>${dto.company}</td>
 			<td>${dto.publish_date}</td>
 			<td>${dto.price}</td>
 			<td>${dto.library}</td>
-			<td>${dto.id}</td>
+			<td>${dto.state}</td>
+			<td>${dto.cancel}</td>
 		</tr>
 		</c:forEach>
 	</table>
@@ -55,12 +57,12 @@
 			
 			<c:forEach begin="${page.startNum}" end="${page.lastNum}" var="i">
 			<li><a
-				href="./${requestScope.market}List.${requestScope.market}?curPage=${i}">${i}</a></li>
+				href="./${requestScope.book}List.${requestScope.book}?curPage=${i}">${i}</a></li>
 			</c:forEach>
 			
 			<c:if test="${page.curBlock < page.totalBlock}">
 			<li><a
-				href="./${requestScope.market}List.${requestScope.market}?curPage=${requestScope.page.lastNum+1}">[다음]</a></li>
+				href="./${requestScope.book}List.${requestScope.book}?curPage=${requestScope.page.lastNum+1}">[다음]</a></li>
 			</c:if>
 			
 		</ul>
@@ -68,7 +70,6 @@
 
 
 	</div>
-
 
 </body>
 </html>
