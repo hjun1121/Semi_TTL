@@ -30,8 +30,8 @@
 	</table>
 	
 	
-		<a href="./${requestScope.market}Approval.${requestScope.market}?num=${requestScope.view.num}">승인</a>
-		<a href="./${requestScope.market}Refusal.${requestScope.market}?num=${requestScope.view.num}">승인 거부</a>
+		<a href="./marketOrderOK.market">승인</a>
+		<a href="./marketOrderNO.market">승인 거부</a>
 		<a href="./marketOrderList.market">LIST</a>
 </body>
 </html>
