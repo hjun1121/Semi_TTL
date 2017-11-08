@@ -68,11 +68,7 @@
 
 
 	</div>
-	<%-- 
-	<c:if test="${not empty member and member.kind eq 10}">
-		<a href="./${requestScope.market}Write.${requestScope.market}">WRITE</a>
-	</c:if>
-	 --%>
+
 
 </body>
 </html>
