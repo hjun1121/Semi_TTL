@@ -11,7 +11,6 @@ import com.fnw.util.DBConnector;
 public class Qna_ReplyDAO {
 	public int insert(Qna_ReplyDTO qna_ReplyDTO) throws Exception{
 		Connection con = DBConnector.getConnect();
-		QnaDTO qnaDTO = new QnaDTO();
 		String sql = "insert into qna_reply values(?,?,?,sysdate,?,?,?)";
 		PreparedStatement st = con.prepareStatement(sql);
 		st.setInt(1, qna_ReplyDTO.getNum());
