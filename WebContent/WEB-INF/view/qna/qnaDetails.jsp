@@ -13,11 +13,20 @@ $(function(){
 		var c = $(this).attr("title");
 		var s =$("#update"+c).html();
 		var chtml = '<textarea id="upContents'+c+'">'+s+'</textarea>';
-		chtml+="<input type='button' class='up' value='완료' title="+c+">";
-		chtml+="</a>";
+		chtml+='<input type="button" class="up" value="완료" title='+c+'>';
+		chtml+='</a>';
 		$("#update"+c).html(chtml);
 		
 		$(".btn"+c).hide();
+	});
+	
+	$(".reReply").click(function() {
+		var c = $(this).attr("title");
+		var rehtml='<td>';
+		rehtml+='<textarea id="reReplyCon"'+c+'></textarea>';
+		rehtml+='</td>'
+		rehtml+='<td><input type="button" value="완료"></td>';
+		$("#reReply"+c).html(rehtml);
 	});
 	
 	$("table").on("click", ".up", function() {
@@ -27,6 +36,7 @@ $(function(){
 		document.frm.rcontents.value=con;
 		document.frm.pnum.value=document.frm2.num.value;
 		document.frm.submit();
+		var rcon = $("reReplyCon"+c).val();
 	});
 });
 </script>
@@ -36,6 +46,13 @@ $(function(){
 	<input type="hidden" name="rnum">
 	<input type="hidden" name="rcontents">
 	<input type="hidden" name="pnum">
+</form>
+
+<form action="">
+	<input type="hidden" name="">
+	<input type="hidden" name="">
+	<input type="hidden" name="">
+	<input type="hidden" name="">
 </form>
 <h2>QnA Details</h2>
 <form action="../index.jsp" method="post" name="frm2">
@@ -62,10 +79,15 @@ $(function(){
 		<td>${DTO.writer }</td>
 		<td>${DTO.reg_date }</td>
 	</tr>
+	
 	<tr>
 		<td id="${DTO.num }"><div id="update${DTO.num }">${DTO.contents }</div></td>
 		<td class="btn${DTO.num }"><input type="button" class="replyUpdate" title="${DTO.num }" value="수정"></td>
+		<td><input type="button" class="reReply" title="${DTO.num }" value="답글"></td>
 		<td class="btn${DTO.num }"><a href="../qnaReply/qnaReplyDelete.qnaReply?num=${DTO.num }&ref=${DTO.ref }"><input type="button" value="삭제"></a></td>
+	</tr>
+	
+	<tr id="reReply${DTO.num }">
 	</tr>
 </c:forEach>
 </table>
