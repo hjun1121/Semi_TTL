@@ -47,11 +47,37 @@
 				<td>${bookOrder_list.company }</td>
 				<td>${bookOrder_list.publish_date }</td>
 				<td>${bookOrder_list.price }</td>
-				<td>${bookOrder_list.library }</td>
-				<td>${bookOrder_list.state }</td>
-				<c:if test="${bookOrder_list.state ne 2 }">
-					<td>${bookOrder_list.cancel }</td>
-				</c:if>
+				<c:choose>
+					<c:when test="${bookOrder_list.library eq 1}">
+						<td>기흥구</td>
+					</c:when>
+					<c:when test="${bookOrder_list.library eq 2}">
+						<td>장안구</td>
+					</c:when>
+					<c:when test="${bookOrder_list.library eq 3}">
+						<td>송파구</td>
+					</c:when>
+					<c:when test="${bookOrder_list.library eq 4}">
+						<td>분당구</td>
+					</c:when>
+					<c:otherwise>
+						<td>없음</td>
+					</c:otherwise>
+				</c:choose>
+				<c:choose>
+					<c:when test="${bookOrder_list.state eq 1}">
+						<td>취소</td>
+						<td>${bookOrder_list.cancel }</td>
+					</c:when>
+					<c:when test="${bookOrder_list.state eq 2}">
+						<td>대기</td>
+						<td>-</td>
+					</c:when>
+					<c:otherwise>
+						<td>승인</td>
+						<td>-</td>
+					</c:otherwise>
+				</c:choose>
 			</tr>
 		</c:forEach>
 	</table>

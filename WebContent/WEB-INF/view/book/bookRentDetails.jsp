@@ -9,7 +9,7 @@
 </head>
 <body>
 <h2>Book Rent Details</h2>
-<form action="../index.jsp" method="post">
+<form action="../book/bookRentList.book?id=${member.id }" method="post">
 		<p><input type="hidden" name="num" value=${bookRentDTO.num }></p>
 		<p>title<input type="text" name="title" value=${bookRentDTO.title } readonly="readonly"></p>
 		<p>section<input type="text" name="section" value=${bookRentDTO.section } readonly="readonly"></p>
@@ -19,19 +19,19 @@
 		<c:choose>
 			<c:when test="${bookRentDTO.library eq 1}">
 				<p>library<input type="text" value="기흥구" ></p>
-				<input type="hidden" name="library" value=${member.library } readonly="readonly">
+				<input type="hidden" name="library" value=${bookRentDTO.library } readonly="readonly">
 			</c:when>
 			<c:when test="${bookRentDTO.library eq 2}">
 				<p>library<input type="text" value="장안구" ></p>
-				<input type="hidden" name="library" value=${member.library } readonly="readonly">
+				<input type="hidden" name="library" value=${bookRentDTO.library } readonly="readonly">
 			</c:when>
 			<c:when test="${bookRentDTO.library eq 3}">
 				<p>library<input type="text" value="송파구" ></p>
-				<input type="hidden" name="library" value=${member.library } readonly="readonly">
+				<input type="hidden" name="library" value=${bookRentDTO.library } readonly="readonly">
 			</c:when>
 			<c:when test="${bookRentDTO.library eq 4}">
 				<p>library<input type="text" value="분당구" ></p>
-				<input type="hidden" name="library" value=${member.library } readonly="readonly">
+				<input type="hidden" name="library" value=${bookRentDTO.library } readonly="readonly">
 			</c:when>
 			<c:otherwise>
 				<p>library<input type="number" value="없음" ></p>
