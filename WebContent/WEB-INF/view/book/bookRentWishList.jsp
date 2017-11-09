@@ -51,7 +51,7 @@ $(document).ready(function() {
 			</tr>
 			<c:forEach items="${bookRentWishList }" var="bookRentWish_list">
 				<tr>
-					<td><input type="checkbox" name="Pcheck" value="${bookRentWishList.num }"></td>
+					<td><input type="checkbox" name="Pcheck" value="${bookRentWish_list.num }"></td>
 					<td>${bookRentWish_list.num }</td>
 					<td>${bookRentWish_list.title }</td>
 					<td>${bookRentWish_list.writer }</td>
