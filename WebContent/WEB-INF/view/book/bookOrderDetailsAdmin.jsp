@@ -4,8 +4,29 @@
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <html>
 <head>
-<meta http-equiv="Content-Type" content="text/html; charset=EUC-KR">
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8">
 <title>Insert title here</title>
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+  <script type="text/javascript">
+  $(function(){
+	  $("#btn").click(function(){
+		  
+	  $.ajax({
+			url:"./bookOrderAjax.book",
+			type:"POST",
+			data: {
+				num:${requestScope.view.num }
+				
+			},
+			success:function(data){
+				$("#OK").html(data);
+				
+			}
+		});
+	  });
+	  
+  });
+  </script>
 </head>
 <body>
 <h2>Book Order Details Admin</h2>
@@ -21,23 +42,16 @@
 		<p>id<input type="text" name="id" value=${requestScope.view.id }></p>
 		<p>price<input type="text" name="price" value=${requestScope.view.price }></p>
 		<p>library<input type="text" name="library" value=${requestScope.view.library } ></p>
-		<p>state<input type="text" name="state" value=${requestScope.view.state } ></p>
-		<p>cancel(취소사유)<input type="text" name="cancel" value=${requestScope.view.cancel } ></p>
-	</div>
-<<<<<<< HEAD
-
 		
-			<a href="./bookOrderOKAdmin.book?num=${view.num }">승인</a>
+	</div>
+		<input type="button" id="btn" value="OK">
+		<div id="OK"></div>
+		
+		
+			<%-- <a href="./bookOrderOKAdmin.book?num=${view.num }">승인</a> --%>
 			<a href="./${requestScope.book}Delete.${requestScope.book}?num=${requestScope.view.num}">거절</a>
 	
 		<a href="./bookOrderListAdmin.book">LIST</a>
 	
-=======
-		<%-- <c:if test="${member.id eq view.writer }"> --%>
-			<a href="./${requestScope.book}Update.${requestScope.book}?num=${requestScope.view.num}">승인</a>
-			<a href="./${requestScope.book}Delete.${requestScope.book}?num=${requestScope.view.num}">거절</a>
-		<%-- </c:if> --%>
-		<a href="./${requestScope.book}OrderListAdmin.${requestScope.book}">LIST</a>
->>>>>>> ccd3bc2748253afd24b282891d6562f803238bee
 </body>
 </html>

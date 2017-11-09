@@ -9,6 +9,26 @@ import com.fnw.util.DBConnector;
 import com.fnw.util.MakeRow;
 
 public class Book_Rent_WishDAO {
+	
+	
+	public int bookRentWish(Book_TotalDTO book_TotalDTO, String id) throws Exception {
+		Connection con = DBConnector.getConnect();
+		String sql = "insert into book_rent_wish values(?,?,?,?,?,?,?,?,?)";
+		PreparedStatement st = con.prepareStatement(sql);
+		st.setInt(1, book_TotalDTO.getNum());
+		st.setString(2, book_TotalDTO.getTitle());
+		st.setString(3, book_TotalDTO.getWriter());
+		st.setString(4, book_TotalDTO.getCompany());
+		st.setString(5, book_TotalDTO.getPublish_date());
+		st.setString(6, book_TotalDTO.getSection());
+		st.setInt(7, book_TotalDTO.getLibrary());
+		st.setString(8, id);
+		st.setInt(9, book_TotalDTO.getState());
+		int result = st.executeUpdate();
+		DBConnector.disConnect(st, con);
+		return result;
+	}
+
 	public ArrayList<Book_Rent_WishDTO> selectList(String id, MakeRow makeRow, String kind, String search) throws Exception {
 		Connection con = DBConnector.getConnect();
 		String sql = "select * from" + 
@@ -21,7 +41,7 @@ public class Book_Rent_WishDAO {
 		st.setString(2, id);
 		st.setInt(3, makeRow.getStartRow());
 		st.setInt(4, makeRow.getLastRow());
-		
+
 		ResultSet rs = st.executeQuery();
 		ArrayList<Book_Rent_WishDTO> list = new ArrayList<>();
 		Book_Rent_WishDTO book_Rent_WishDTO = null;
@@ -44,6 +64,8 @@ public class Book_Rent_WishDAO {
 		DBConnector.disConnect(rs, st, con);
 		return list;
 	}
+	
+	
 	public int getTotalCount(String kind, String search) throws Exception {
 		Connection con = DBConnector.getConnect();
 		String sql = "select nvl(count(num), 0) from book_rent_wish where "+ kind +" like ?" ;
@@ -57,6 +79,8 @@ public class Book_Rent_WishDAO {
 		DBConnector.disConnect(rs, st, con);
 		return result;
 	}
+	
+	
 	public int delete(int num) throws Exception{
 		Connection con = DBConnector.getConnect();
 		String sql = "delete from book_rent_wish where num=?";
