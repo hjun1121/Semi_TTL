@@ -40,7 +40,7 @@ public class BookTotalSearchService implements Action {
 		if(search==null) {
 			search="";
 		}
-
+		System.out.println(kind);
 		int totalCount=0;
 		try {
 			totalCount = book_TotalDAO.getTotalCount(kind, search);

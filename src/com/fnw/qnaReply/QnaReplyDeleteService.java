@@ -18,6 +18,8 @@ public class QnaReplyDeleteService implements Action {
 	public ActionFoward doProcess(HttpServletRequest request, HttpServletResponse response) {
 		ActionFoward actionFoward = new ActionFoward();
 		Qna_ReplyDAO qna_ReplyDAO = new Qna_ReplyDAO();
+		System.out.println(Integer.parseInt(request.getParameter("num")));
+		System.out.println(Integer.parseInt(request.getParameter("pNum")));
 		
 		int result = 0;
 		try {
@@ -29,13 +31,13 @@ public class QnaReplyDeleteService implements Action {
 		QnaDTO qnaDTO = new QnaDTO();
 		QnaDAO qnaDAO = new QnaDAO();
 		try {
-			qnaDTO = qnaDAO.selectOne(Integer.parseInt(request.getParameter("ref")));
+			qnaDTO = qnaDAO.selectOne(Integer.parseInt(request.getParameter("pNum")));
 		} catch (Exception e) {
 			e.printStackTrace();
 		}
 		ArrayList<Qna_ReplyDTO> rlist = new ArrayList<>();
 		try {
-			rlist = qna_ReplyDAO.selectList(Integer.parseInt(request.getParameter("ref")));
+			rlist = qna_ReplyDAO.selectList(Integer.parseInt(request.getParameter("pNum")));
 		} catch (Exception e) {
 			e.printStackTrace();
 		}

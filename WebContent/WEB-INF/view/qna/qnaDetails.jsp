@@ -23,10 +23,11 @@ $(function(){
 	$(".reReply").click(function() {
 		var c = $(this).attr("title");
 		var rehtml='<td>';
-		rehtml+='<textarea id="reReplyCon"'+c+'></textarea>';
+		rehtml+='<textarea id="reReplyCon'+c+'"></textarea>';
 		rehtml+='</td>'
-		rehtml+='<td><input type="button" value="완료"></td>';
+		rehtml+='<td><input type="button" class="upReply" value="완료" title='+c+'></td>';
 		$("#reReply"+c).html(rehtml);
+		$(".btn"+c).hide();
 	});
 	
 	$("table").on("click", ".up", function() {
@@ -36,7 +37,12 @@ $(function(){
 		document.frm.rcontents.value=con;
 		document.frm.pnum.value=document.frm2.num.value;
 		document.frm.submit();
-		var rcon = $("reReplyCon"+c).val();
+	});
+	$("table").on("click", ".upReply", function() {
+		var c = $(this).attr("title");
+		var rcon = $("#reReplyCon"+c).val();
+		document.frm.rcontents.value=rcon;
+		document.frm.submit();
 	});
 });
 </script>
@@ -47,12 +53,10 @@ $(function(){
 	<input type="hidden" name="rcontents">
 	<input type="hidden" name="pnum">
 </form>
-
-<form action="">
-	<input type="hidden" name="">
-	<input type="hidden" name="">
-	<input type="hidden" name="">
-	<input type="hidden" name="">
+<form action="../qnaReply/qnaReplyInsert.qnaReply" name="frm">
+	<input type="hidden" name="rnum">
+	<input type="hidden" name="rcontents">
+	<input type="hidden" name="pnum">
 </form>
 <h2>QnA Details</h2>
 <form action="../index.jsp" method="post" name="frm2">
@@ -69,7 +73,7 @@ $(function(){
 		<a href="./qnaUpdate.qna?num=${qnaDTO.num }"><input type="button" value="수정"></a>
 </form>	
 <hr>
-<form action="../qnaReply/qnaReplyInsert.qnaReply?num=${qnaDTO.num }" method="post">
+<form action="../qnaReply/qnaReplyInsert.qnaReply?pNum=${qnaDTO.num }" method="post">
 	<p><textarea name="reply"></textarea><button>등록</button> </p>
 </form>
 <c:if test="${rDTO ne null }">
@@ -83,8 +87,8 @@ $(function(){
 	<tr>
 		<td id="${DTO.num }"><div id="update${DTO.num }">${DTO.contents }</div></td>
 		<td class="btn${DTO.num }"><input type="button" class="replyUpdate" title="${DTO.num }" value="수정"></td>
-		<td><input type="button" class="reReply" title="${DTO.num }" value="답글"></td>
-		<td class="btn${DTO.num }"><a href="../qnaReply/qnaReplyDelete.qnaReply?num=${DTO.num }&ref=${DTO.ref }"><input type="button" value="삭제"></a></td>
+		<td><input type="button" class="reReply btn${DTO.num }" title="${DTO.num }" value="답글"></td>
+		<td class="btn${DTO.num }"><a href="../qnaReply/qnaReplyDelete.qnaReply?num=${DTO.num }&pNum=${qnaDTO.num }"><input type="button" value="삭제"></a></td>
 	</tr>
 	
 	<tr id="reReply${DTO.num }">

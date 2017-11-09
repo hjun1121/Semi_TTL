@@ -8,7 +8,7 @@
 </head>
 <body>
 <h2>QnA Details</h2>
-<form action="./qnaDetailsCheck.qna" method="post">
+	<form action="./qnaDetailsCheck.qna" method="post">
 		<p>num<input type="text" name="num" value=${num }></p>
 		<p>pw<input type="text" name="pw"></p>
 		<input type="submit" value="확인"> 

@@ -17,6 +17,7 @@ public class QnaReplyUpdateService implements Action {
 		ActionFoward actionFoward = new ActionFoward();
 		Qna_ReplyDAO qna_ReplyDAO = new Qna_ReplyDAO();
 		Qna_ReplyDTO qna_ReplyDTO = new Qna_ReplyDTO();
+		
 		qna_ReplyDTO.setContents(request.getParameter("rcontents"));
 		qna_ReplyDTO.setNum(Integer.parseInt(request.getParameter("rnum")));
 		int pNum = Integer.parseInt(request.getParameter("pnum"));
@@ -41,17 +42,13 @@ public class QnaReplyUpdateService implements Action {
 			e.printStackTrace();
 		}
 		if(result>0) {
-			request.setAttribute("message", "수정 완료");
 			request.setAttribute("qnaDTO", qnaDTO);
 			request.setAttribute("rDTO", rlist);
 			actionFoward.setCheck(true);
 			actionFoward.setPath("../WEB-INF/view/qna/qnaDetails.jsp");
 		}else {
-			request.setAttribute("message", "수정 실패");
 			actionFoward.setPath("../WEB-INF/view/qna/qnaDetails.jsp");
 		}
-		/*actionFoward.setCheck(true);
-		actionFoward.setPath("../WEB-INF/view/common/result.jsp");*/
 		return actionFoward;
 	}
 }

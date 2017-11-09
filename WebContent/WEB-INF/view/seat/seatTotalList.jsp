@@ -126,6 +126,7 @@ $(function(){
 			</tr>
 		</c:forEach>
 	</table>
+	
 	<div>
 		<ul class="pagination">
 			<c:if test="${page.curBlock>1}">

@@ -15,8 +15,5 @@
 		<p>email<input type="text" name="email"></p>
 		<p><button type="submit">Id Find</button></p>
 	</form>
-
-
-
 </body>
 </html>

@@ -48,10 +48,7 @@ location.href="../index.jsp";
 }
 </script>
 
-
-
 <form action="./memberJoin.member" name="form" method="get">
-
  <table>
    <tr>
    <td>
