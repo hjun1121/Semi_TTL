@@ -32,6 +32,18 @@ public class LibraryDAO {
 		return result;
 	}
 
+	//book_return
+	public int bookReturn(int num) throws Exception {
+		Connection con = DBConnector.getConnect();
+		String sql = "update book_total set state = 0, rent_id = '0' where num = ?";
+		PreparedStatement st = con.prepareStatement(sql);
+		st.setInt(1, num);
+
+		int result = st.executeUpdate();
+		DBConnector.disConnect(st, con);
+		return result;
+	}
+
 	//book_rent
 	public int bookRent(int num, String rent_id) throws Exception {
 		Connection con = DBConnector.getConnect();

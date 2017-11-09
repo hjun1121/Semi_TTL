@@ -16,7 +16,7 @@ $(function(){
 	
 	$("#btn").click(function() {
 		
-		$ajax({
+		$.ajax({
 			url: "./bookRent.book",
 			type: "GET",
 			data: {
@@ -25,6 +25,7 @@ $(function(){
 			},
 			success: function(data) {
 				alert(data);
+				location.href="./bookTotalSearch.book";
 			}
 		});
 	});

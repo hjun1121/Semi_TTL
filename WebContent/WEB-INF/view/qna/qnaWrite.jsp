@@ -14,6 +14,7 @@
 		<p>title<input type="text" name="title"></p>
 		<p>contents<input type="text" name="contents"></p>
 		<p>writer<input type="text" name="writer"></p>
+		<p>password<input type="text" name="pw"></p>
 		<p>date<input type="date" name="date"></p>
 		<p>hit<input type="text" name="hit"></p>
 		<p>kind<input type="text" name="kind"></p>

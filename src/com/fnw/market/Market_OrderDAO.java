@@ -58,6 +58,22 @@ public class Market_OrderDAO {
 		return result;
 	}
 	
+	public int updateAdmin(int num, int approval) throws Exception{
+		Connection con = DBConnector.getConnect();
+		String sql ="update market_order set approval=? where num=?";
+		
+		PreparedStatement st = con.prepareStatement(sql);
+		st.setInt(1, approval);
+		st.setInt(2, num);
+		
+		int result = st.executeUpdate();
+		DBConnector.disConnect(st, con);
+		
+		return result;
+	}
+	
+	
+	
 	public int getTotalCount(String kind, String search) throws Exception {
 		Connection con = DBConnector.getConnect();
 		String sql = "select nvl(count(num), 0) from market_order where "+kind+" like ?";
@@ -113,6 +129,39 @@ public class Market_OrderDAO {
 				+ "where R between ? and ?";
 		PreparedStatement st = con.prepareStatement(sql);
 		st.setString(1, "%"+search+"%");
+		st.setInt(2, makeRow.getStartRow());
+		st.setInt(3, makeRow.getLastRow());
+		ResultSet rs = st.executeQuery();
+
+		while(rs.next()) {
+			Market_OrderDTO market_OrderDTO = new Market_OrderDTO();
+			market_OrderDTO.setNum(rs.getInt("num"));
+			market_OrderDTO.setTitle(rs.getString("title"));
+			market_OrderDTO.setWriter(rs.getString("writer"));
+			market_OrderDTO.setCompany(rs.getString("company"));
+			market_OrderDTO.setPublish_date(rs.getString("publish_date"));
+			market_OrderDTO.setPrice(rs.getInt("price"));
+			market_OrderDTO.setId(rs.getString("id"));
+			market_OrderDTO.setLibrary(rs.getInt("library"));
+			ar.add(market_OrderDTO);
+		}
+
+		DBConnector.disConnect(rs, st, con);
+
+		return ar;
+	}
+	
+	public List<Market_OrderDTO> selectList(MakeRow makeRow, int approval) throws Exception {
+		Connection con = DBConnector.getConnect();
+
+		List<Market_OrderDTO> ar = new ArrayList<>();
+
+		String sql = "select * from "
+				+ "(select rownum R, N.* from "
+				+ "(select * from market_order where approval =? order by num desc) N)"
+				+ "where R between ? and ?";
+		PreparedStatement st = con.prepareStatement(sql);
+		st.setInt(1, approval);
 		st.setInt(2, makeRow.getStartRow());
 		st.setInt(3, makeRow.getLastRow());
 		ResultSet rs = st.executeQuery();

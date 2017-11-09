@@ -11,8 +11,6 @@ import com.fnw.util.PageMaker;
 
 public class BookTotalSearchService implements Action {
 
-	
-	
 	@Override
 	public ActionFoward doProcess(HttpServletRequest request, HttpServletResponse response) {
 
@@ -46,6 +44,7 @@ public class BookTotalSearchService implements Action {
 			request.setAttribute("page", pageMaker.getMakePage());
 			request.setAttribute("kind", kind);
 			request.setAttribute("search", search);
+			request.setAttribute("curPage", curPage);
 		} catch (Exception e) {
 			e.printStackTrace();
 		}

@@ -7,6 +7,7 @@ import javax.servlet.http.HttpServletResponse;
 
 import com.fnw.action.Action;
 import com.fnw.action.ActionFoward;
+import com.fnw.book.Book_TotalDAO;
 import com.fnw.book.Book_TotalDTO;
 import com.fnw.util.PageMaker;
 
@@ -14,33 +15,13 @@ public class LibraryBookSearchService implements Action {
 
 	@Override
 	public ActionFoward doProcess(HttpServletRequest request, HttpServletResponse response) {
+
 		ActionFoward actionFoward = new ActionFoward();
 		ArrayList<Book_TotalDTO> ar = new ArrayList<>();
-		
-		String method = request.getMethod();
 
-		if(method.equals("GET")){
-
-			actionFoward.setCheck(true);
-			actionFoward.setPath("../WEB-INF/view/library/libraryBookSearch.jsp");
-
-		}else {
-			this.doPost(request);
-			
-			actionFoward.setCheck(true);
-			actionFoward.setPath("../WEB-INF/view/library/libraryBookSearch.jsp");
-		}
-
-		return actionFoward;
-	}
-
-
-	private ArrayList<Book_TotalDTO> doPost(HttpServletRequest request) {
-		ArrayList<Book_TotalDTO> ar = new ArrayList<>();
 		int curPage=1;
 
-		LibraryDAO libraryDAO = new LibraryDAO();
-		
+		Book_TotalDAO book_TotalDAO = new Book_TotalDAO();
 		try {
 			curPage=Integer.parseInt(request.getParameter("curPage"));
 		}catch (Exception e) {
@@ -55,16 +36,12 @@ public class LibraryBookSearchService implements Action {
 		if(search==null) {
 			search="";
 		}
-		int library=1;
-		try {
-			library = Integer.parseInt(request.getParameter("library"));
-		} catch (Exception e) {
-		}
+
 		int totalCount=0;
 		try {
-			totalCount = libraryDAO.getTotalCount(kind, search);
+			totalCount = book_TotalDAO.getTotalCount(kind, search);
 			PageMaker pageMaker = new PageMaker(curPage, totalCount);
-			ar = libraryDAO.selectList(pageMaker.getMakeRow(), kind, search, library);
+			ar = book_TotalDAO.selectList(pageMaker.getMakeRow(), kind, search);
 			request.setAttribute("list", ar);
 			request.setAttribute("page", pageMaker.getMakePage());
 			request.setAttribute("kind", kind);
@@ -72,8 +49,9 @@ public class LibraryBookSearchService implements Action {
 		} catch (Exception e) {
 			e.printStackTrace();
 		}
+		actionFoward.setCheck(true);
+		actionFoward.setPath("../WEB-INF/view/library/libraryBookSearch.jsp");
 
-		return ar;
+		return actionFoward;
 	}
-
 }
