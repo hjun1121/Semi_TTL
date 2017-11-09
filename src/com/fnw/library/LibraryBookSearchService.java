@@ -21,8 +21,17 @@ public class LibraryBookSearchService implements Action {
 		LibraryDAO libraryDAO = new LibraryDAO();
 
 		int library = 1;
-		int curPage=1;
-		int totalCount=0;
+		try {
+			library = Integer.parseInt(request.getParameter("library"));
+		} catch (Exception e) {
+			// TODO: handle exception
+		}
+		int curPage = 1;
+		try {
+			curPage=Integer.parseInt(request.getParameter("curPage"));			
+		} catch (Exception e) {
+			// TODO: handle exception
+		}
 
 		String kind = request.getParameter("kind");
 		if(kind==null) {
@@ -33,23 +42,21 @@ public class LibraryBookSearchService implements Action {
 			search="";
 		}
 
+		int totalCount = 0;
 		try {
-			library = Integer.parseInt(request.getParameter("library"));
-			curPage=Integer.parseInt(request.getParameter("curPage"));
 			totalCount = libraryDAO.getTotalCount(kind, search, library);
 			PageMaker pageMaker = new PageMaker(curPage, totalCount);
 			ar = libraryDAO.selectList(pageMaker.getMakeRow(), kind, search, library);
-			///////////
-			System.out.println(ar.get(0).getTitle());
 			request.setAttribute("list", ar);
 			request.setAttribute("page", pageMaker.getMakePage());
 			request.setAttribute("kind", kind);
 			request.setAttribute("search", search);
-			actionFoward.setCheck(true);
-			actionFoward.setPath("../WEB-INF/view/library/libraryBookSearch.jsp");
 		} catch (Exception e) {
 			e.printStackTrace();
 		}
+
+		actionFoward.setCheck(true);
+		actionFoward.setPath("../WEB-INF/view/library/libraryBookSearch.jsp");
 		
 		return actionFoward;
 	}

@@ -77,18 +77,18 @@ public class Book_TotalDAO {
 		ResultSet rs = st.executeQuery();
 
 		while(rs.next()) {
-			Book_TotalDTO noticeDTO = new Book_TotalDTO();
-			noticeDTO.setNum(rs.getInt("num"));
-			noticeDTO.setTitle(rs.getString("title"));
-			noticeDTO.setWriter(rs.getString("writer"));
-			noticeDTO.setCompany(rs.getString("company"));
-			noticeDTO.setPublish_date(rs.getString("publish_date"));
-			noticeDTO.setSection(rs.getString("section"));
-			noticeDTO.setLibrary(rs.getInt("library"));
-			noticeDTO.setState(rs.getInt("state"));
-			noticeDTO.setRent_id(rs.getString("rent_id"));
-			noticeDTO.setRent_count(rs.getInt("rent_count"));
-			ar.add(noticeDTO);
+			Book_TotalDTO book_TotalDTO = new Book_TotalDTO();
+			book_TotalDTO.setNum(rs.getInt("num"));
+			book_TotalDTO.setTitle(rs.getString("title"));
+			book_TotalDTO.setWriter(rs.getString("writer"));
+			book_TotalDTO.setCompany(rs.getString("company"));
+			book_TotalDTO.setPublish_date(rs.getString("publish_date"));
+			book_TotalDTO.setSection(rs.getString("section"));
+			book_TotalDTO.setLibrary(rs.getInt("library"));
+			book_TotalDTO.setState(rs.getInt("state"));
+			book_TotalDTO.setRent_id(rs.getString("rent_id"));
+			book_TotalDTO.setRent_count(rs.getInt("rent_count"));
+			ar.add(book_TotalDTO);
 		}
 
 		DBConnector.disConnect(rs, st, con);

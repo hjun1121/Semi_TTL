@@ -67,14 +67,15 @@ $(function(){
 		<p>writer<input type="text" name="writer" value=${qnaDTO.writer }></p>
 		<p>date<input type="text" name="date" value=${qnaDTO.reg_date }></p>
 		<p>hit<input type="text" name="hit" value=${qnaDTO.hit } ></p>
-		<p>kind<input type="text" name="kind" value=${qnaDTO.kind } ></p>
+		<p>kind<input type="text" name="library" value=${qnaDTO.library } ></p>
 		<button type="submit">확인</button>
 		<a href="./qnaDelete.qna?num=${qnaDTO.num }"><input type="button" value="삭제"></a>
 		<a href="./qnaUpdate.qna?num=${qnaDTO.num }"><input type="button" value="수정"></a>
 </form>	
 <hr>
 <form action="../qnaReply/qnaReplyInsert.qnaReply?pNum=${qnaDTO.num }" method="post">
-	<p><textarea name="reply"></textarea><button>등록</button> </p>
+	<p><textarea name="reply"></textarea>
+	<button type="submit">등록</button> </p>
 </form>
 <c:if test="${rDTO ne null }">
 <table>
