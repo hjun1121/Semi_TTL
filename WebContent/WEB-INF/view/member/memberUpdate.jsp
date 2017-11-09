@@ -21,7 +21,10 @@
 		<p>library<input type="number" name="library" value=${member.library } ></p>
 		
 		<c:if test="${sessionScope.member.kind ne 10 }">
-		<p>kind<input type="hidden" name="kind" value=${member.kind }></p>
+			<c:if test="${member.kind eq 1}">
+				<p>kind<input type="text" value="일반사용자" readonly="readonly"></p>
+				<input type="hidden" name="kind" value="1" readonly="readonly">
+			</c:if>
 		</c:if>
 		
 		<c:if test="${sessionScope.member.kind eq 10 }">
