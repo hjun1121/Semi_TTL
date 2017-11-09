@@ -33,6 +33,7 @@ public class QnaWriteService implements Action {
 				qnaDTO.setWriter(request.getParameter("writer"));
 				qnaDTO.setContents(request.getParameter("contents"));
 				qnaDTO.setWriter(request.getParameter("writer"));
+				qnaDTO.setPw(request.getParameter("pw"));
 				qnaDTO.setReg_date(Date.valueOf(request.getParameter("date")));
 				qnaDTO.setHit(Integer.parseInt(request.getParameter("hit")));
 				qnaDTO.setKind(Integer.parseInt(request.getParameter("kind")));

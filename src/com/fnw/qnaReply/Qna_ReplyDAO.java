@@ -11,7 +11,6 @@ import com.fnw.util.DBConnector;
 public class Qna_ReplyDAO {
 	public int insert(Qna_ReplyDTO qna_ReplyDTO) throws Exception{
 		Connection con = DBConnector.getConnect();
-		QnaDTO qnaDTO = new QnaDTO();
 		String sql = "insert into qna_reply values(?,?,?,sysdate,?,?,?)";
 		PreparedStatement st = con.prepareStatement(sql);
 		st.setInt(1, qna_ReplyDTO.getNum());
@@ -61,8 +60,6 @@ public class Qna_ReplyDAO {
 		return result;
 	}
 	public int update(Qna_ReplyDTO qna_ReplyDTO) throws Exception{
-		System.out.println(qna_ReplyDTO.getNum());
-		System.out.println(qna_ReplyDTO.getContents());
 		Connection con = DBConnector.getConnect();
 		String sql="UPDATE qna_reply SET contents=? WHERE num=?";
 		PreparedStatement st = con.prepareStatement(sql);

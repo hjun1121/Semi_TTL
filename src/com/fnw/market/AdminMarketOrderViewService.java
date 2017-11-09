@@ -8,7 +8,7 @@ import com.fnw.action.ActionFoward;
 import com.fnw.market.Market_OrderDAO;
 import com.fnw.market.Market_OrderDTO;;
 
-public class MarketApplicationViewService implements Action {
+public class AdminMarketOrderViewService implements Action {
 
 	@Override
 	public ActionFoward doProcess(HttpServletRequest request, HttpServletResponse response) {
@@ -30,9 +30,8 @@ public class MarketApplicationViewService implements Action {
 		//boardDTO가 Null이면 다른 곳으로 처리
 		
 		request.setAttribute("view", market_OrderDTO);
-		request.setAttribute("market", "market");
 		actionFoward.setCheck(true);
-		actionFoward.setPath("../WEB-INF/view/market/marketApplicationView.jsp");
+		actionFoward.setPath("../WEB-INF/view/admin/admin_MarketOrder_View.jsp");
 		
 		return actionFoward;
 	

@@ -5,7 +5,7 @@
 <html>
 </head>
 <body>
-	<h2>MarketTotalList-MyPage</h2>
+	<h2>MyPage - Book Order List</h2>
 	<div>
 		<form name="frm" class="form-inline" action="./bookOrderList.book"
 			method="post">

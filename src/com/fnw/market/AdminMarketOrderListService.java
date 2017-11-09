@@ -11,7 +11,7 @@ import com.fnw.market.Market_OrderDTO;
 import com.fnw.market.Market_OrderDAO;
 import com.fnw.util.PageMaker;
 
-public class MarketApplicationListService implements Action {
+public class AdminMarketOrderListService implements Action {
 
 	@Override
 	public ActionFoward doProcess(HttpServletRequest request, HttpServletResponse response) {
@@ -38,16 +38,15 @@ public class MarketApplicationListService implements Action {
 		try {
 			totalCount = market_OrderDAO.getTotalCount(kind, search);
 			PageMaker pageMaker = new PageMaker(curPage, totalCount);
-			List<Market_OrderDTO> ar=market_OrderDAO.selectList(pageMaker.getMakeRow(), kind, search);
+			List<Market_OrderDTO> ar=market_OrderDAO.selectList(pageMaker.getMakeRow(), 1);
 			request.setAttribute("list", ar);
 			request.setAttribute("page", pageMaker.getMakePage());
-			request.setAttribute("market", "market");
 		} catch (Exception e) {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
 		}
 		actionFoward.setCheck(true);
-		actionFoward.setPath("../WEB-INF/view/market/marketApplicationList.jsp");
+		actionFoward.setPath("../WEB-INF/view/admin/admin_MarketOrder_List.jsp");
 		
 		return actionFoward;
 	

@@ -44,7 +44,6 @@
 	<p><a href="./library/libraryMain.library">Library_Main_Page</a></p>
 	<div style = "height: 10px"></div>
 
-	<p><a href="./member/memberList.member">admin 전용 회원리스트 / 블랙리스트</a></p>
 
 	<p><a href="./member/memberIdFind.member">Id Find</a>
 	<p><a href="./member/memberPwFind.member">Pw Find</a>
@@ -53,23 +52,19 @@
 	<c:if test="${not empty sessionScope.member }">
 	<p><a href="./market/marketDealForm.market?id=${member.id }">마켓판매신청form</a></p><!-- 로그인시만 이용 -->
 	<p><a href="./market/marketDealList_personal.market?id=${member.id }">마켓판매신청 개인확인용</a></p><!-- 로그인시만 이용 -->
+	<p>=================================================</p>
 	</c:if>
+	
+	<c:if test="${not empty member and member.kind eq 10}">
+	<h2>admin page</h2>
+	<p><a href="./member/memberList.member">회원리스트 / 블랙리스트(관리자)</a></p>
+	<p><a href="./market/marketOrderList.market?id=${member.id }">Market Order List(관리자)</a></p>
+	<p><a href="./book/bookOrderListAdmin.book?id=${member.id }">book Order List(관리자)</a></p>
 	
 	<p>=================================================</p>
-	마켓 관리자 승인용
-	<c:if test="${not empty member and member.kind eq 10}">
-	<p><a href="./market/marketApplicationList.market?id=${member.id }">마켓신청List 관리자용(승인용)</a></p><!--관리자로그인시만 이용 -->
 	</c:if>
-	book orderList 관리자용
-	<c:if test="${not empty member and member.kind eq 10}">
-	<p><a href="./book/bookOrderListAdmin.book?id=${member.id }">book Order List 관리자용</a></p><!--관리자로그인시만 이용 -->
-	</c:if>
-	
-	
 	
 	<p><a href="./notice/noticeList.notice">공지사항</a></p>
-
-	
 	<p><a href="./seat/seatList.seat">Seat List</a></p>
 	<p><a href="./market/marketTotalList.market">Market Total List</a></p>
 	<c:if test="${empty sessionScope.member }">

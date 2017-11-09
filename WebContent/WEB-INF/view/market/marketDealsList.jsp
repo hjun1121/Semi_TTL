@@ -33,7 +33,7 @@ $(function(){
 </script>
 </head>
 <body>
-	<h2>MarketTotalList-MyPage</h2>
+	<h2>MyPage - Market Deals List-</h2>
 	<div>
 	<form name="frm" class="form-inline" action="./marketDealsList.market" method="post">
 		<div>
