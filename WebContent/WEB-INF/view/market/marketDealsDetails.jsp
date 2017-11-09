@@ -9,7 +9,7 @@
 </head>
 <body>
 	<h2>마켓 판/구매 내역 상세히</h2>
-	<form action="../index.jsp" method="post">
+	<form action="../market/marketDealsList.market?id=${member.id }" method="post">
 		<p>num<input type="text" name="num" value=${bookDealsDetail.num } readonly="readonly"></p>
 		<p>title<input type="text" name="title" value=${bookDealsDetail.title } readonly="readonly"></p>
 		<p>writer<input type="text" name="writer" value=${bookDealsDetail.writer } readonly="readonly"></p>
