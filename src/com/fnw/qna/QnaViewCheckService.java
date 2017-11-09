@@ -41,6 +41,7 @@ public class QnaViewCheckService implements Action {
 			request.setAttribute("num", num);
 			request.setAttribute("library", library);
 			request.setAttribute("type", type);
+			
 			actionFoward.setCheck(true);
 			actionFoward.setPath("../WEB-INF/view/qna/qnaViewCheck.jsp");
 		}else {
@@ -61,7 +62,7 @@ public class QnaViewCheckService implements Action {
 					e.printStackTrace();
 				}
 				
-				request.setAttribute("rDTO", list);
+				request.setAttribute("replyList", list);
 				request.setAttribute("qnaDTO", qnaDTO);
 				request.setAttribute("num", qnaDTO.getNum());
 				request.setAttribute("library", library);

@@ -107,25 +107,25 @@ $(function(){
 	<p><textarea name="contents"></textarea>
 	<button type="submit">등록</button> </p>
 </form>
-<c:if test="${rDTO ne null }">
-<table>
-<c:forEach items="${rDTO }" var="DTO" varStatus="i">
-	<tr>
-		<td>${DTO.writer }</td>
-		<td>${DTO.reg_date }</td>
-	</tr>
-	
-	<tr>
-		<td id="${DTO.num }"><div id="update${DTO.num }">${DTO.contents }</div></td>
-		<td class="btn${DTO.num }"><input type="button" class="replyUpdate" title="${DTO.num }" value="수정"></td>
-		<td><input type="button" class="reReply btn${DTO.num }" title="${DTO.num }" value="답글"></td>
-		<td class="btn${DTO.num }"><a href="../qnaReply/qnaReplyDelete.qnaReply?num=${DTO.num }&pNum=${qnaDTO.num }"><input type="button" value="삭제"></a></td>
-	</tr>
-	
-	<tr id="reReply${DTO.num }">
-	</tr>
-</c:forEach>
-</table>
+<c:if test="${replyList ne null }">
+	<table border="1">
+		<c:forEach items="${replyList }" var="DTO" varStatus="i">
+			<tr>
+				<td colspan="4">${DTO.writer }</td>
+				<td colspan="2">${DTO.reg_date }</td>
+			</tr>
+			
+			<tr>
+				<td colspan="3" id="${DTO.num }"><div id="update${DTO.num }">${DTO.contents }</div></td>
+				<td class="btn${DTO.num }"><input type="button" class="replyUpdate" title="${DTO.num }" value="수정"></td>
+				<td><input type="button" class="reReply btn${DTO.num }" title="${DTO.num }" value="답글"></td>
+				<td class="btn${DTO.num }"><a href="../qnaReply/qnaReplyDelete.qnaReply?num=${DTO.num }&pNum=${qnaDTO.num }"><input type="button" value="삭제"></a></td>
+			</tr>
+			
+			<tr id="reReply${DTO.num }">
+			</tr>
+		</c:forEach>
+	</table>
 </c:if>
 </body>
 </html>
