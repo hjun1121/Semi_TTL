@@ -46,10 +46,10 @@ $(document).ready(function() {
 						<td>기흥구</td>
 					</c:when>
 					<c:when test="${bookOrderWish_list.library eq 2}">
-						<td>장안구</td>
+						<td>송파구</td>
 					</c:when>
 					<c:when test="${bookOrderWish_list.library eq 3}">
-						<td>송파구</td>
+						<td>장안구</td>
 					</c:when>
 					<c:when test="${bookOrderWish_list.library eq 4}">
 						<td>분당구</td>

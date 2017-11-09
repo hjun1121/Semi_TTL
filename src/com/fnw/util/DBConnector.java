@@ -16,7 +16,7 @@ public class DBConnector {
 //		String url="jdbc:oracle:thin:@127.0.0.1:1521:xe";
 		/*String url="jdbc:oracle:thin:@192.168.20.239:1521:xe";*/
 		
-		String url="jdbc:oracle:thin:@192.168.110.49:1521:xe";
+		String url="jdbc:oracle:thin:@172.20.10.2:1521:xe";
 		
 		//String url="jdbc:oracle:thin:@192.168.20.46:1521:xe";
 		//String url="jdbc:oracle:thin:@192.168.20.46:1521:xe";

@@ -24,11 +24,11 @@
 				<input type="hidden" name="library" value=${bookOrderDetails.library } readonly="readonly">
 			</c:when>
 			<c:when test="${bookOrderDetails.library eq 2}">
-				<p>library<input type="text" value="장안구" ></p>
+				<p>library<input type="text" value="송파구" ></p>
 				<input type="hidden" name="library" value=${bookOrderDetails.library } readonly="readonly">
 			</c:when>
 			<c:when test="${bookOrderDetails.library eq 3}">
-				<p>library<input type="text" value="송파구" ></p>
+				<p>library<input type="text" value="장안구" ></p>
 				<input type="hidden" name="library" value=${bookOrderDetails.library } readonly="readonly">
 			</c:when>
 			<c:when test="${bookOrderDetails.library eq 4}">
