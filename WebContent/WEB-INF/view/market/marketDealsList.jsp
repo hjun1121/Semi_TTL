@@ -33,7 +33,7 @@ $(function(){
 </script>
 </head>
 <body>
-	<h2>MarketTotalList-MyPage</h2>
+	<h2>MyPage - 중고마켓 판/구매 리스트</h2>
 	<div>
 	<form name="frm" class="form-inline" action="./marketDealsList.market" method="post">
 		<div>
@@ -126,10 +126,46 @@ $(function(){
 				<td>${bookDeals_list.company }</td>
 				<td>${bookDeals_list.publish_date }</td>
 				<td>${bookDeals_list.t_date }</td>
-				<td>${bookDeals_list.library }</td>
+				<c:choose>
+					<c:when test="${bookDeals_list.library eq 1}">
+						<td>기흥구</td>
+					</c:when>
+					<c:when test="${bookDeals_list.library eq 2}">
+						<td>장안구</td>
+					</c:when>
+					<c:when test="${bookDeals_list.library eq 3}">
+						<td>송파구</td>
+					</c:when>
+					<c:when test="${bookDeals_list.library eq 4}">
+						<td>분당구</td>
+					</c:when>
+					<c:otherwise>
+						<td>없음</td>
+					</c:otherwise>
+				</c:choose>
 				<td>${bookDeals_list.price }</td>
-				<td>${bookDeals_list.state }</td>
-				<td>${bookDeals_list.delivery }</td>
+				<c:choose>
+					<c:when test="${bookDeals_list.state eq 1}">
+						<td>판매</td>
+					</c:when>
+					<c:when test="${bookDeals_list.state eq 2}">
+						<td>구매</td>
+					</c:when>
+					<c:otherwise>
+						<td>없음</td>
+					</c:otherwise>
+				</c:choose>
+				<c:choose>
+					<c:when test="${bookDeals_list.delivery eq 1}">
+						<td>택배</td>
+					</c:when>
+					<c:when test="${bookDeals_list.delivery eq 2}">
+						<td>직접수령</td>
+					</c:when>
+					<c:otherwise>
+						<td>없음</td>
+					</c:otherwise>
+				</c:choose>
 			</tr>
 		</c:forEach>
 	</table>

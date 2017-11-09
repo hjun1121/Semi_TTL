@@ -15,5 +15,6 @@
 		<p>email<input type="text" name="email"></p>
 		<p><button type="submit">Pw Find</button></p>
 	</form>
+	
 </body>
 </html>

@@ -13,7 +13,6 @@
 			location.href="./marketBuy.market?num=${dto.num}";
 		});
 	});
-
 </script>
 </head>
 <body>

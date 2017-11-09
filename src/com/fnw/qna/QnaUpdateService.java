@@ -41,7 +41,7 @@ public class QnaUpdateService implements Action {
 				qnaDTO.setWriter(request.getParameter("writer"));
 				qnaDTO.setReg_date(Date.valueOf(request.getParameter("date")));
 				qnaDTO.setHit(Integer.parseInt(request.getParameter("hit")));
-				qnaDTO.setKind(Integer.parseInt(request.getParameter("kind")));
+				qnaDTO.setLibrary(Integer.parseInt(request.getParameter("library")));
 				try {
 					result = qnaDAO.update(qnaDTO);
 				} catch (Exception e) {

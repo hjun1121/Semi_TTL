@@ -14,7 +14,9 @@ public class BookRentService implements Action {
 			
 			ActionFoward actionFoward = new ActionFoward();
 			LibraryDAO libraryDAO = new LibraryDAO();
-	
+			String search = request.getParameter("search");
+			int curPage = Integer.parseInt(request.getParameter("curPage"));
+
 			int num = 0;
 			try {
 				num = Integer.parseInt(request.getParameter("num"));
@@ -24,6 +26,7 @@ public class BookRentService implements Action {
 			String rent_id = request.getParameter("rent_id");
 			if(rent_id == null) {
 				rent_id = "";
+			}
 			int result = 0;
 			try {
 				result = libraryDAO.bookRent(num, rent_id);
@@ -31,17 +34,18 @@ public class BookRentService implements Action {
 				// TODO Auto-generated catch block
 				e.printStackTrace();
 			}
-	
+
 			if(result > 0) {
 				request.setAttribute("message", "대여 완료");
 			}else {
 				request.setAttribute("message", "대여 실패");
 			}
-	
+
+			request.setAttribute("search", search);
+			request.setAttribute("curPage", curPage);
 			actionFoward.setCheck(true);
 			actionFoward.setPath("../WEB-INF/view/book/bookRent.jsp");
 	
-			}
 			return actionFoward;
 	}
 }

@@ -1,0 +1,57 @@
+<%@ page language="java" contentType="text/html; charset=UTF-8"
+    pageEncoding="UTF-8"%>
+<!DOCTYPE html>
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
+<html>
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+<title>Insert title here</title>
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+  <script type="text/javascript">
+  $(function(){
+	  $("#btn").click(function(){
+		  
+	  $.ajax({
+			url:"./bookOrderAjax.book",
+			type:"POST",
+			data: {
+				num:${requestScope.view.num }
+				
+			},
+			success:function(data){
+				$("#OK").html(data);
+				
+			}
+		});
+	  });
+	  
+  });
+  </script>
+</head>
+<body>
+<h2>Book Order Details Admin</h2>
+	
+	
+	<div>
+		<p>num<input type="number" name="num" value=${requestScope.view.num }></p>
+		<p>title<input type="text" name="title" value=${requestScope.view.title } ></p>
+		<p>writer<input type="text" name="writer" value=${requestScope.view.writer }></p>
+		<p>company<input type="text" name="company" value=${requestScope.view.company }></p>
+		<p>publish_date<input type="text" name="publish_date" value=${requestScope.view.publish_date }></p>
+		<p>contents<input type="text" name="contents" value=${requestScope.view.contents }></p>
+		<p>id<input type="text" name="id" value=${requestScope.view.id }></p>
+		<p>price<input type="text" name="price" value=${requestScope.view.price }></p>
+		<p>library<input type="text" name="library" value=${requestScope.view.library } ></p>
+		
+	</div>
+		<input type="button" id="btn" value="OK">
+		<div id="OK"></div>
+		
+		
+			<%-- <a href="./bookOrderOKAdmin.book?num=${view.num }">승인</a> --%>
+			<a href="./${requestScope.book}Delete.${requestScope.book}?num=${requestScope.view.num}">거절</a>
+	
+		<a href="./bookOrderListAdmin.book">LIST</a>
+	
+</body>
+</html>

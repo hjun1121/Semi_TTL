@@ -1,6 +1,6 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
-<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
+<!DOCTYPE html>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <html>
 <head>
@@ -44,9 +44,14 @@ $(document).ready(function() {
 				<td>${bookOrderWish_list.library }</td>
 				<td>${bookOrderWish_list.price }</td>
 				<td><a href="./bookOrderWishDelete.book?num=${bookOrderWish_list.num }"><input type="button" value="삭제"></a></td>
-				<c:if test="${bookOrderWish_list.state eq 2 }">
-				<td><a href=""><input type="button" value="대여"></a></td>
-				</c:if>
+				<c:choose>
+					<c:when test="${bookOrderWish_list.state eq 1 }">
+						<td>대여불가</td>
+					</c:when>
+					<c:when test="${bookOrderWish_list.state eq 2 }">
+						<td><a href=""><input type="button" value="대여"></a></td>
+					</c:when>
+				</c:choose>
 			</tr>
 		</c:forEach>
 		<tr>

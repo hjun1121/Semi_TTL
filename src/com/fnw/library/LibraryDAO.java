@@ -3,13 +3,11 @@ package com.fnw.library;
 import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
-import java.sql.SQLException;
 import java.util.ArrayList;
 
 import com.fnw.book.Book_TotalDTO;
 import com.fnw.util.DBConnector;
 import com.fnw.util.MakeRow;
-import com.fnw.util.PageMaker;
 
 public class LibraryDAO {
 
@@ -18,17 +16,30 @@ public class LibraryDAO {
 	public void update() {}
 	
 	//totalCount
-	public int getTotalCount(String kind, String search) throws Exception {
+	public int getTotalCount(String kind, String search, int library) throws Exception {
 		Connection con = DBConnector.getConnect();
-		String sql = "select nvl(count(num), 0) from book_total where "+ kind +" like ?" ;
+		String sql = "select nvl(count(num), 0) from book_total where "+ kind +" like ? and library = ?";
 		
 		PreparedStatement st = con.prepareStatement(sql);
 		st.setString(1, "%"+search+"%");
+		st.setInt(2, library);
 		ResultSet rs = st.executeQuery();
 		rs.next();
 		int result = rs.getInt(1);
 
 		DBConnector.disConnect(rs, st, con);
+		return result;
+	}
+
+	//book_return
+	public int bookReturn(int num) throws Exception {
+		Connection con = DBConnector.getConnect();
+		String sql = "update book_total set state = 0, rent_id = '0' where num = ?";
+		PreparedStatement st = con.prepareStatement(sql);
+		st.setInt(1, num);
+
+		int result = st.executeUpdate();
+		DBConnector.disConnect(st, con);
 		return result;
 	}
 
@@ -65,11 +76,12 @@ public class LibraryDAO {
 			book_TotalDTO.setPublish_date(rs.getString("publish_date"));
 			book_TotalDTO.setSection(rs.getString("section"));
 			book_TotalDTO.setLibrary(rs.getInt("library"));
+			book_TotalDTO.setType(rs.getString("type"));
 			book_TotalDTO.setState(rs.getInt("state"));
 			book_TotalDTO.setRent_id(rs.getString("rent_id"));
 			book_TotalDTO.setRent_count(rs.getInt("rent_count"));
 		}
-		
+
 		DBConnector.disConnect(rs, st, con);
 		return book_TotalDTO;
 	}
@@ -78,20 +90,20 @@ public class LibraryDAO {
 	public ArrayList<Book_TotalDTO> selectList(MakeRow makeRow, String kind, String search, int library) throws Exception {
 		Connection con = DBConnector.getConnect();
 		String sql = "select * from (select rownum R, N.* from "
-				+ "(select * from book_total where" + kind + "like ? "
+				+ "(select * from book_total where " + kind + " like ? and library=? "
 				+ "order by num asc) N) "
-				+ "where R between ? and ? and library = ?";
-
+				+ "where R between ? and ?";
+		
 		PreparedStatement st = con.prepareStatement(sql);
 		st.setString(1, "%"+search+"%");
-		st.setInt(2, makeRow.getStartRow());
-		st.setInt(3, makeRow.getLastRow());
-		st.setInt(4, library);
+		st.setInt(2, library);
+		st.setInt(3, makeRow.getStartRow());
+		st.setInt(4, makeRow.getLastRow());
+		ResultSet rs = st.executeQuery();
 
 		ArrayList<Book_TotalDTO> ar = new ArrayList<>();
 		Book_TotalDTO book_TotalDTO = null;
 
-		ResultSet rs = st.executeQuery();
 		while(rs.next()) {
 			book_TotalDTO = new Book_TotalDTO();
 			book_TotalDTO.setNum(rs.getInt("num"));
@@ -102,6 +114,7 @@ public class LibraryDAO {
 			book_TotalDTO.setSection(rs.getString("section"));
 			book_TotalDTO.setLibrary(rs.getInt("library"));
 			book_TotalDTO.setState(rs.getInt("state"));
+			book_TotalDTO.setType(rs.getString("type"));
 			book_TotalDTO.setRent_id(rs.getString("rent_id"));
 			book_TotalDTO.setRent_count(rs.getInt("rent_count"));
 			ar.add(book_TotalDTO);

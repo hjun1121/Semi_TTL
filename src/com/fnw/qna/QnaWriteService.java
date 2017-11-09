@@ -27,17 +27,14 @@ public class QnaWriteService implements Action {
 			String message="";
 			try {
 				qnaDTO = new QnaDTO();
-				qnaDTO.setNum(Integer.parseInt(request.getParameter("num")));
 				qnaDTO.setType(Integer.parseInt(request.getParameter("type")));
 				qnaDTO.setTitle(request.getParameter("title"));
 				qnaDTO.setWriter(request.getParameter("writer"));
 				qnaDTO.setContents(request.getParameter("contents"));
 				qnaDTO.setWriter(request.getParameter("writer"));
-				qnaDTO.setReg_date(Date.valueOf(request.getParameter("date")));
-				qnaDTO.setHit(Integer.parseInt(request.getParameter("hit")));
-				qnaDTO.setKind(Integer.parseInt(request.getParameter("kind")));
+				qnaDTO.setPw(request.getParameter("pw"));
+				qnaDTO.setLibrary(Integer.parseInt(request.getParameter("library")));
 				result = qnaDAO.insert(qnaDTO);
-				
 				if(result > 0) {
 					request.setAttribute("message", "등록 완료");
 					request.setAttribute("path", "./qnaList.qna");

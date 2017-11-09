@@ -1,4 +1,4 @@
-package com.fnw.market;
+package com.fnw.book;
 
 import java.util.List;
 
@@ -7,16 +7,16 @@ import javax.servlet.http.HttpServletResponse;
 
 import com.fnw.action.Action;
 import com.fnw.action.ActionFoward;
-import com.fnw.market.Market_OrderDTO;
-import com.fnw.market.Market_OrderDAO;
+import com.fnw.book.Book_OrderDAO;
+import com.fnw.book.Book_OrderDTO;
 import com.fnw.util.PageMaker;
 
-public class MarketApplicationListService implements Action {
+public class BookOrderListAdminService implements Action {
 
 	@Override
 	public ActionFoward doProcess(HttpServletRequest request, HttpServletResponse response) {
 		ActionFoward actionFoward = new ActionFoward();
-		Market_OrderDAO market_OrderDAO = new Market_OrderDAO();
+		Book_OrderDAO book_OrderDAO = new Book_OrderDAO();
 		
 		int curPage=1;
 		try {
@@ -36,18 +36,18 @@ public class MarketApplicationListService implements Action {
 		
 		int totalCount=0;
 		try {
-			totalCount = market_OrderDAO.getTotalCount(kind, search);
+			totalCount = book_OrderDAO.getTotalCount(kind, search);
 			PageMaker pageMaker = new PageMaker(curPage, totalCount);
-			List<Market_OrderDTO> ar=market_OrderDAO.selectList(pageMaker.getMakeRow(), kind, search);
+			List<Book_OrderDTO> ar=book_OrderDAO.selectList(pageMaker.getMakeRow(), kind, search);
 			request.setAttribute("list", ar);
 			request.setAttribute("page", pageMaker.getMakePage());
-			request.setAttribute("market", "market");
+			request.setAttribute("book", "book");
 		} catch (Exception e) {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
 		}
 		actionFoward.setCheck(true);
-		actionFoward.setPath("../WEB-INF/view/market/marketApplicationList.jsp");
+		actionFoward.setPath("../WEB-INF/view/book/bookOrderListAdmin.jsp");
 		
 		return actionFoward;
 	

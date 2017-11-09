@@ -2,7 +2,7 @@
 	pageEncoding="UTF-8"%>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>	
 <%@ taglib prefix="fn" uri="http://java.sun.com/jsp/jstl/functions" %>
-<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
+<!DOCTYPE html">
 <html>
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
@@ -31,11 +31,9 @@
 			<td>${dto.num}</td>
 			<td>
 			<c:catch>
-			<c:forEach begin="0" end="${dto.depth-1}">
-				--
-			</c:forEach>
+
 			</c:catch>
-			<a href="./${requestScope.market}View.${requestScope.market}?num=${dto.num}">${dto.title}</a>
+			<a href="./marketOrderView.market?num=${dto.num}">${dto.title}</a>
 			</td>
 			<td>${dto.writer}</td>
 			<td>${dto.company}</td>
@@ -55,25 +53,15 @@
 			
 			<c:forEach begin="${page.startNum}" end="${page.lastNum}" var="i">
 			<li><a
-				href="./${requestScope.market}List.${requestScope.market}?curPage=${i}">${i}</a></li>
+				href="./marketOrderList.market?curPage=${i}">${i}</a></li>
 			</c:forEach>
 			
 			<c:if test="${page.curBlock < page.totalBlock}">
 			<li><a
-				href="./${requestScope.market}List.${requestScope.market}?curPage=${requestScope.page.lastNum+1}">[다음]</a></li>
+				href="./marketOrderList.market?curPage=${requestScope.page.lastNum+1}">[다음]</a></li>
 			</c:if>
-			
 		</ul>
-
-
-
 	</div>
-	<%-- 
-	<c:if test="${not empty member and member.kind eq 10}">
-		<a href="./${requestScope.market}Write.${requestScope.market}">WRITE</a>
-	</c:if>
-	 --%>
-
 </body>
 </html>
 

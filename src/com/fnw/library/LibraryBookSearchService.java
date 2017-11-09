@@ -14,39 +14,24 @@ public class LibraryBookSearchService implements Action {
 
 	@Override
 	public ActionFoward doProcess(HttpServletRequest request, HttpServletResponse response) {
+
 		ActionFoward actionFoward = new ActionFoward();
 		ArrayList<Book_TotalDTO> ar = new ArrayList<>();
 		
-		String method = request.getMethod();
-
-		if(method.equals("GET")){
-
-			actionFoward.setCheck(true);
-			actionFoward.setPath("../WEB-INF/view/library/libraryBookSearch.jsp");
-
-		}else {
-			this.doPost(request);
-			
-			actionFoward.setCheck(true);
-			actionFoward.setPath("../WEB-INF/view/library/libraryBookSearch.jsp");
-		}
-
-		return actionFoward;
-	}
-
-
-	private ArrayList<Book_TotalDTO> doPost(HttpServletRequest request) {
-		ArrayList<Book_TotalDTO> ar = new ArrayList<>();
-		int curPage=1;
-
 		LibraryDAO libraryDAO = new LibraryDAO();
-		
-		try {
-			curPage=Integer.parseInt(request.getParameter("curPage"));
-		}catch (Exception e) {
-			e.printStackTrace();
-		}
 
+		int library = 1;
+		try {
+			library = Integer.parseInt(request.getParameter("library"));
+		} catch (Exception e) {
+			// TODO: handle exception
+		}
+		int curPage = 1;
+		try {
+			curPage=Integer.parseInt(request.getParameter("curPage"));			
+		} catch (Exception e) {
+			// TODO: handle exception
+		}
 		String kind = request.getParameter("kind");
 		if(kind==null) {
 			kind="title";
@@ -55,25 +40,29 @@ public class LibraryBookSearchService implements Action {
 		if(search==null) {
 			search="";
 		}
-		int library=1;
+		int totalCount = 0;
 		try {
-			library = Integer.parseInt(request.getParameter("library"));
+			totalCount = libraryDAO.getTotalCount(kind, search, library);
 		} catch (Exception e) {
+			e.printStackTrace();
 		}
-		int totalCount=0;
+
 		try {
-			totalCount = libraryDAO.getTotalCount(kind, search);
 			PageMaker pageMaker = new PageMaker(curPage, totalCount);
 			ar = libraryDAO.selectList(pageMaker.getMakeRow(), kind, search, library);
+			request.setAttribute("curPage", curPage);
 			request.setAttribute("list", ar);
 			request.setAttribute("page", pageMaker.getMakePage());
 			request.setAttribute("kind", kind);
 			request.setAttribute("search", search);
 		} catch (Exception e) {
+			// TODO Auto-generated catch block
 			e.printStackTrace();
 		}
 
-		return ar;
+		actionFoward.setCheck(true);
+		actionFoward.setPath("../WEB-INF/view/library/libraryBookSearch.jsp");
+		
+		return actionFoward;
 	}
-
 }

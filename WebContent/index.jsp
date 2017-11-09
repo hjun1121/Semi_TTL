@@ -15,18 +15,16 @@
 
 <body>
 
-<h1>QnA List Service</h1>
-<p><a href="./qna/qnaList.qna">QnaList</a></p>
 
 	<c:if test="${not empty sessionScope.member }">
 	<h1>${sessionScope.member.id }</h1>
 	<h1>MyPage_Hees</h1>
-	<p><a href="./member/memberUpdatePwCheck.member">업데이트</a></p>
-	<p><a href="./market/marketDealsList.market?id=${member.id }">Market Order List</a></p>
-	<p><a href="./seat/seatTotalList.seat?id=${member.id }">Seat Rent List</a></p>
-	<p><a href="./book/bookRentList.book?id=${member.id }">Book Rent List</a></p>
-	<p><a href="./book/bookOrderList.book?id=${member.id }">Book Order List</a></p>
-	<p><a href="./book/bookOrderWishList.book?id=${member.id }">Basket Book Order List</a></p>
+	<p><a href="./member/memberUpdatePwCheck.member">회원 정보 수정</a></p>
+	<p><a href="./market/marketDealsList.market?id=${member.id }">중고책거래 판/구매 리스트</a></p>
+	<p><a href="./seat/seatTotalList.seat?id=${member.id }">좌석 예약 내역</a></p>
+	<p><a href="./book/bookRentList.book?id=${member.id }">책 대여 내역</a></p>
+	<p><a href="./book/bookOrderList.book?id=${member.id }">책 신청 내역</a></p>
+	<p><a href="./book/bookOrderWishList.book?id=${member.id }">책 구매 찜</a></p>
 	<p><a href="./book/bookRentWishList.book?id=${member.id }">Basket Book Rent List</a></p>
 	</c:if>
 
@@ -37,32 +35,38 @@
 	<p><a href="./member/memberJoin.member">회원가입</a>
 	<p><a href="./member/memberLogout.member">로그아웃</a>
 	<p><a href="./library/libraryView.library">도서관지도</a></p>
-	
+
 	<p></p>
 	<!-- 도서관 페이지  -->
 	<h2>도서관 페이지</h2>
-	<p><a href="./library/libraryMain.library">Library_Main_Page</a></p>
+	<p><a href="./library/libraryMain.library?library=1">Kim_Lib</a></p>
+	<p><a href="./library/libraryMain.library?library=2">Gee_Lib</a></p>
+	<p><a href="./library/libraryMain.library?library=3">Hee_Lib</a></p>
+	<p><a href="./library/libraryMain.library?library=4">Ssin_Lib</a></p>
 	<div style = "height: 10px"></div>
-	
-	<p><a href="./member/memberList.member">admin 전용 회원리스트 / 블랙리스트</a></p>
 
 	<p><a href="./member/memberIdFind.member">Id Find</a>
 	<p><a href="./member/memberPwFind.member">Pw Find</a>
+	
 	<p><a href="./member/memberJoinAgree.member">Join Agree</a></p>
 	<p>=================================================</p>
 	<c:if test="${not empty sessionScope.member }">
-	<p><a href="./market/marketDealForm.market?id=${member.id }">마켓판매신청form</a></p><!-- 로그인시만 이용 -->
+	<p><a href="./qna/qnaList.qna">QnaList</a></p>
+	<p><a href="./market/marketOrder.market?id=${member.id }">마켓판매신청form</a></p><!-- 로그인시만 이용 -->
 	<p><a href="./market/marketDealList_personal.market?id=${member.id }">마켓판매신청 개인확인용</a></p><!-- 로그인시만 이용 -->
-	</c:if>
 	<p>=================================================</p>
-	마켓 관리자 승인용
+	</c:if>
+	
 	<c:if test="${not empty member and member.kind eq 10}">
-	<p><a href="./market/marketApplicationList.market?id=${member.id }">마켓신청List 관리자용(승인용)</a></p><!--관리자로그인시만 이용 -->
+	<h2>admin page</h2>
+	<p><a href="./member/memberList.member">회원리스트 / 블랙리스트(관리자)</a></p>
+	<p><a href="./market/marketOrderList.market?id=${member.id }">Market Order List(관리자)</a></p>
+	<p><a href="./book/bookOrderListAdmin.book?id=${member.id }">book Order List(관리자)</a></p>
+	
+	<p>=================================================</p>
 	</c:if>
 	
 	<p><a href="./notice/noticeList.notice">공지사항</a></p>
-
-	
 	<p><a href="./seat/seatList.seat">Seat List</a></p>
 	<p><a href="./market/marketTotalList.market">Market Total List</a></p>
 	<c:if test="${empty sessionScope.member }">
