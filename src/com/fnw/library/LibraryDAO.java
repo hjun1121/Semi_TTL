@@ -81,7 +81,7 @@ public class LibraryDAO {
 			book_TotalDTO.setRent_id(rs.getString("rent_id"));
 			book_TotalDTO.setRent_count(rs.getInt("rent_count"));
 		}
-		
+
 		DBConnector.disConnect(rs, st, con);
 		return book_TotalDTO;
 	}
@@ -99,11 +99,11 @@ public class LibraryDAO {
 		st.setInt(2, makeRow.getStartRow());
 		st.setInt(3, makeRow.getLastRow());
 		st.setInt(4, library);
+		ResultSet rs = st.executeQuery();
 
 		ArrayList<Book_TotalDTO> ar = new ArrayList<>();
 		Book_TotalDTO book_TotalDTO = null;
 
-		ResultSet rs = st.executeQuery();
 		while(rs.next()) {
 			book_TotalDTO = new Book_TotalDTO();
 			book_TotalDTO.setNum(rs.getInt("num"));
