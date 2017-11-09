@@ -15,8 +15,6 @@
 		 }
 	});
 
-
-
 </script>
 </head>
 <body>
@@ -45,13 +43,13 @@
 		<th>writer</th>
 		<th>hit</th>
 	</tr>
-	<c:forEach items="${list }" var="qnaList">
+	<c:forEach items="${list }" var="qnaDTO">
 		<tr>
-			<td>${qnaList.num }</td>
-			<td><a href="./qnaDetailsCheck.qna?num=${qnaList.num }">${qnaList.title }</a></td>
-			<td>${qnaList.reg_date }</td>
-			<td>${qnaList.writer }</td>
-			<td>${qnaList.hit }</td>
+			<td>${qnaDTO.num }</td>
+			<td><a href="./qnaViewCheck.qna?num=${qnaDTO.num }&type=${qnaDTO.type}&library=${qnaDTO.library}">${qnaDTO.title }</a></td>
+			<td>${qnaDTO.reg_date }</td>
+			<td>${qnaDTO.writer }</td>
+			<td>${qnaDTO.hit }</td>
 		</tr>
 	</c:forEach>
 	<tr>
