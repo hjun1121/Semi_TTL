@@ -18,12 +18,33 @@
 		<p>addr<input type="text" name="addr" value=${member.addr } ></p>
 		<p>phone<input type="text" name="phone" value=${member.phone } ></p>
 		<p>email<input type="text" name="email" value=${member.email } ></p>
-		<p>library<input type="number" name="library" value=${member.library } ></p>
+		
+		<c:choose>
+			<c:when test="${member.library eq 1}">
+				<p>library<input type="text" value="기흥구" ></p>
+				<input type="hidden" name="library" value=${member.library } readonly="readonly">
+			</c:when>
+			<c:when test="${member.library eq 2}">
+				<p>library<input type="text" value="장안구" ></p>
+				<input type="hidden" name="library" value=${member.library } readonly="readonly">
+			</c:when>
+			<c:when test="${member.library eq 3}">
+				<p>library<input type="text" value="송파구" ></p>
+				<input type="hidden" name="library" value=${member.library } readonly="readonly">
+			</c:when>
+			<c:when test="${member.library eq 4}">
+				<p>library<input type="text" value="분당구" ></p>
+				<input type="hidden" name="library" value=${member.library } readonly="readonly">
+			</c:when>
+			<c:otherwise>
+				<p>library<input type="number" value="없음" ></p>
+			</c:otherwise>
+		</c:choose>
 		
 		<c:if test="${sessionScope.member.kind ne 10 }">
 			<c:if test="${member.kind eq 1}">
 				<p>kind<input type="text" value="일반사용자" readonly="readonly"></p>
-				<input type="hidden" name="kind" value="1" readonly="readonly">
+				<input type="hidden" name="kind" value=${member.kind } readonly="readonly">
 			</c:if>
 		</c:if>
 		

@@ -119,10 +119,27 @@ $(function(){
 			<tr>
 			<td>${seatTotal_list.num }</td>
 				<td>${seatTotal_list.seat_num }</td>
-				<td>${seatTotal_list.library }</td>
+				<c:if test="${seatTotal_list.library eq 1}">
+					<td>기흥구</td>
+				</c:if>
+				<c:if test="${seatTotal_list.library eq 2}">
+					<td>장안구</td>
+				</c:if>
+				<c:if test="${seatTotal_list.library eq 3}">
+					<td>송파구</td>
+				</c:if>
+				<c:if test="${seatTotal_list.library eq 4}">
+					<td>분당구</td>
+				</c:if>
 				<td>${seatTotal_list.in_time }</td>
 				<td>${seatTotal_list.out_time }</td>
-				<td>${seatTotal_list.state }</td>
+				
+				<c:if test="${!empty seatTotal_list.out_time}">
+					<td>입실완료</td>
+				</c:if>
+				<c:if test="${seatTotal_list.state eq 1}">
+					<td>예약</td>
+				</c:if>
 			</tr>
 		</c:forEach>
 	</table>
