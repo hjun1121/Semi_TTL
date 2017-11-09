@@ -86,15 +86,12 @@ public class Qna_ReplyDAO {
 		return qnaDTO;
 	}
 	public int update(Qna_ReplyDTO qna_ReplyDTO) throws Exception{
-		
 		Connection con = DBConnector.getConnect();
-		String sql="UPDATE qna_reply SET contents=?,step=?,depth=? WHERE num=?";
+		String sql="UPDATE qna_reply SET contents=? WHERE num=?";
 		PreparedStatement st = con.prepareStatement(sql);
 		
 		st.setString(1, qna_ReplyDTO.getContents());
-		st.setInt(2, 2);
-		st.setInt(3, 2);
-		st.setInt(4, qna_ReplyDTO.getNum());
+		st.setInt(2, qna_ReplyDTO.getNum());
 		int result = st.executeUpdate();
 		DBConnector.disConnect(st, con);
 		return result;

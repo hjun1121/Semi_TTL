@@ -16,7 +16,6 @@
 	<div style = "height: 50px"></div>
 	
 	<section>
-	
 		<form action="">
 			<table class = "table">
 				<tr>
@@ -50,8 +49,6 @@
 		<form action="./bookOrderForm.book">
 			<button style = "float: right;" class = "btn btn-default" type = "submit">신청하기</button>		
 		</form>
-		
 	</section>
-
 </body>
 </html>

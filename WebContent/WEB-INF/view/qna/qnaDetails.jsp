@@ -41,8 +41,8 @@ $(function(){
 	$("table").on("click", ".upReply", function() {
 		var c = $(this).attr("title");
 		var rcon = $("#reReplyCon"+c).val();
-		document.frmRe.rcontents.value=rcon;
-		document.frmRe.submit();
+		document.frm.rcontents.value=rcon;
+		document.frm.submit();
 	});
 });
 </script>
@@ -53,9 +53,10 @@ $(function(){
 	<input type="hidden" name="rcontents">
 	<input type="hidden" name="pnum">
 </form>
-
-<form action="../qnaReply/qnaReplyUpdate.qnaReply" name="frmRe">
+<form action="../qnaReply/qnaReplyInsert.qnaReply" name="frm">
+	<input type="hidden" name="rnum">
 	<input type="hidden" name="rcontents">
+	<input type="hidden" name="pnum">
 </form>
 <h2>QnA Details</h2>
 <form action="../index.jsp" method="post" name="frm2">

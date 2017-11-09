@@ -13,9 +13,7 @@
 <script type="text/javascript">
 
 $(function(){
-	
 	$("#btn").click(function() {
-		
 		$.ajax({
 			url: "./bookRent.book",
 			type: "GET",
@@ -30,7 +28,6 @@ $(function(){
 		});
 	});
 });
-
 </script>
 
 </head>
@@ -68,8 +65,6 @@ $(function(){
 					</c:choose>
 				</tr>
 			</table>
-
 	</section>
-
 </body>
 </html>

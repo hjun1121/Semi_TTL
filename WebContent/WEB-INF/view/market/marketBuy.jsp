@@ -38,7 +38,6 @@
 		    alert(msg);
 		});
 	});
-
 </script>
 </head>
 <body>

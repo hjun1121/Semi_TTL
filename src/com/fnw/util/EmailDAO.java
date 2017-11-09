@@ -2,20 +2,12 @@ package com.fnw.util;
 
 import java.util.Properties;
 import java.util.Random;
-
-import javax.mail.Message;
-import javax.mail.MessagingException;
-import javax.mail.PasswordAuthentication;
-import javax.mail.Session;
-import javax.mail.Transport;
-import javax.mail.internet.InternetAddress;
-import javax.mail.internet.MimeMessage;
 import javax.servlet.http.HttpServletRequest;
 
 public class EmailDAO {
 	
 	public int send(HttpServletRequest request, String email) {
-		int result=0;
+		/*int result=0;
 		String host     = "smtp.naver.com";
 		  final String user   = "library_4";
 		  final String password  = "gudwns93";
@@ -63,7 +55,8 @@ public class EmailDAO {
 		   result=0;
 		  }
 		  return result;
-		  
+		  */
+		return 1;
 	}
 	
 /*	 public static void main(String[] args) {

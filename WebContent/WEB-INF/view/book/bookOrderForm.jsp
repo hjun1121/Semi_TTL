@@ -10,7 +10,6 @@
   <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
 <title>Insert title here</title>
 <script type="text/javascript">
-
 	$(function() {
 		var library = ${member.library}
 	});
@@ -54,6 +53,5 @@
 		</table>
 		<button style = "float: right;" class = "btn btn-default" type = "submit">CONFIRM</button>
 	</form>
-
 </body>
 </html>
