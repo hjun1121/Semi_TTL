@@ -117,7 +117,24 @@ public class Book_TotalDAO {
 		DBConnector.disConnect(st, con);
 		return result;
 	}
+	
+	public int insert(Book_OrderDTO book_OrderDTO) throws Exception {
+		Connection con =  DBConnector.getConnect();
+		String sql = "insert into book_total values((select nvl(max(num),0) from book_total)+1,?,?,?,?,0,0,?,0,0,0)";
+		PreparedStatement st = con.prepareStatement(sql);
 
+		st.setString(1, book_OrderDTO.getTitle());
+		st.setString(2, book_OrderDTO.getWriter());
+		st.setString(3, book_OrderDTO.getCompany());
+		st.setString(4, book_OrderDTO.getPublish_date());
+		st.setInt(5, book_OrderDTO.getLibrary());
+		
+		int result = st.executeUpdate();
+		
+		DBConnector.disConnect(st, con);
+		return result;
+	}
+	
 
 	
 	public int update(Book_TotalDTO book_TotalDTO) throws Exception{

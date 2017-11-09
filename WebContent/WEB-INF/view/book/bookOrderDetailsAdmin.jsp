@@ -27,11 +27,10 @@
 	</div>
 
 		
-		
-			<a href="./bookOrderOkAdmin.book?num=${view.num }">승인</a>
+			<a href="./bookOrderOKAdmin.book?num=${view.num }">승인</a>
 			<a href="./${requestScope.book}Delete.${requestScope.book}?num=${requestScope.view.num}">거절</a>
 	
-		<a href="./${requestScope.book}OrderListAdmin.${requestScope.book}">LIST</a>
+		<a href="./bookOrderListAdmin.book">LIST</a>
 	
 </body>
 </html>
