@@ -14,8 +14,6 @@
 </head>
 
 <body>
-
-
 	<c:if test="${not empty sessionScope.member }">
 	<h1>${sessionScope.member.id }</h1>
 	<h1>MyPage_Hees</h1>
@@ -25,7 +23,7 @@
 	<p><a href="./book/bookRentList.book?id=${member.id }">책 대여 내역</a></p>
 	<p><a href="./book/bookOrderList.book?id=${member.id }">책 신청 내역</a></p>
 	<p><a href="./book/bookBuyWishList.book?id=${member.id }">책 구매 찜</a></p>
-	<p><a href="./book/bookRentWishList.book?id=${member.id }">Basket Book Rent List</a></p>
+	<p><a href="./book/bookRentWishList.book?id=${member.id }">책 대여 찜</a></p>
 	</c:if>
 
 	<h2>김앤신(통합포털)</h2>
