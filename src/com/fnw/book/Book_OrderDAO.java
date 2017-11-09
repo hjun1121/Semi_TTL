@@ -27,9 +27,6 @@ public class Book_OrderDAO {
 	}
 	
 	
-	
-	
-	
 	//구매 도서 신청
 	public int insert(Book_OrderDTO book_OrderDTO) throws Exception {
 		Connection con = DBConnector.getConnect();

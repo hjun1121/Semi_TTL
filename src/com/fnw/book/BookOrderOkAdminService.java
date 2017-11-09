@@ -5,9 +5,7 @@ import javax.servlet.http.HttpServletResponse;
 
 import com.fnw.action.Action;
 import com.fnw.action.ActionFoward;
-import com.fnw.book.Book_OrderDAO;
-import com.fnw.book.Book_OrderDTO;
-import com.fnw.book.Book_TotalDAO;
+
 
 public class BookOrderOkAdminService implements Action {
 
@@ -28,7 +26,7 @@ public class BookOrderOkAdminService implements Action {
 		try {
 			book_OrderDTO = book_OrderDAO.selectOne(num);
 			
-			result = book_TotalDAO.insert(book_OrderDTO);
+			result = book_TotalDAO.insert(book_TotalDTO);
 			result = book_OrderDAO.updateAdmin(num, 2);
 		} catch (Exception e) {
 			// TODO Auto-generated catch block
