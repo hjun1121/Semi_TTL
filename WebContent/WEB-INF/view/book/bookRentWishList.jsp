@@ -48,7 +48,7 @@ $(document).ready(function() {
 					<td><a href="./bookRentWishDelete.book?num=${bookRentWish_list.num }"><input type="button" value="삭제"></a></td>
 					
 					<c:if test="${bookOrderWish_list.state eq 2 }">
-					<td><a href=""><input type="button" value="대여"></a></td>
+				ㅋ	<td><a href=""><input type="button" value="대여"></a></td>
 					</c:if>
 				</tr>
 			</c:forEach>
