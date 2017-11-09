@@ -11,17 +11,14 @@ import com.fnw.util.MakeRow;
 public class QnaDAO {
 	public int insert(QnaDTO qnaDTO) throws Exception {
 		Connection con = DBConnector.getConnect();
-		String sql = "insert into qna values(?,?,?,?,?,?,?,?,?)";
+		String sql = "insert into qna values(qna_seq.nextval,?,?,?,?,sysdate,0,?,?)";
 		PreparedStatement st = con.prepareStatement(sql);
-		st.setInt(1, qnaDTO.getNum());
-		st.setInt(2, qnaDTO.getType());
-		st.setString(3, qnaDTO.getTitle());
-		st.setString(4, qnaDTO.getWriter());
-		st.setString(5, qnaDTO.getContents());
-		st.setDate(6, qnaDTO.getReg_date());
-		st.setInt(7, qnaDTO.getHit());
-		st.setString(8, qnaDTO.getPw());
-		st.setInt(9, qnaDTO.getKind());
+		st.setInt(1, qnaDTO.getType());
+		st.setString(2, qnaDTO.getTitle());
+		st.setString(3, qnaDTO.getWriter());
+		st.setString(4, qnaDTO.getContents());
+		st.setString(5, qnaDTO.getPw());
+		st.setInt(6, qnaDTO.getLibrary());
 
 		int result = st.executeUpdate();
 		DBConnector.disConnect(st, con);
@@ -66,7 +63,7 @@ public class QnaDAO {
 			qnaDTO.setReg_date(rs.getDate("reg_date"));
 			qnaDTO.setHit(rs.getInt("hit"));
 			qnaDTO.setPw(rs.getString("pw"));
-			qnaDTO.setKind(rs.getInt("kind"));
+			qnaDTO.setLibrary(rs.getInt("library"));
 			ar.add(qnaDTO);
 		}
 		DBConnector.disConnect(rs, st, con);
@@ -91,7 +88,7 @@ public class QnaDAO {
 			qnaDTO.setReg_date(rs.getDate("reg_date"));
 			qnaDTO.setHit(rs.getInt("hit"));
 			qnaDTO.setPw(rs.getString("pw"));
-			qnaDTO.setKind(rs.getInt("kind"));
+			qnaDTO.setLibrary(rs.getInt("library"));
 		}
 		DBConnector.disConnect(rs, st, con);
 		return qnaDTO;
@@ -116,7 +113,7 @@ public class QnaDAO {
 			qnaDTO.setReg_date(rs.getDate("reg_date"));
 			qnaDTO.setHit(rs.getInt("hit"));
 			qnaDTO.setPw(rs.getString("pw"));
-			qnaDTO.setKind(rs.getInt("kind"));
+			qnaDTO.setLibrary(rs.getInt("library"));
 		}
 		DBConnector.disConnect(rs, st, con);
 		return qnaDTO;
@@ -140,7 +137,7 @@ public class QnaDAO {
 		st.setInt(1, qnaDTO.getType());
 		st.setString(2, qnaDTO.getTitle());
 		st.setString(3, qnaDTO.getContents());
-		st.setInt(4, qnaDTO.getKind());
+		st.setInt(4, qnaDTO.getLibrary());
 		st.setInt(5, qnaDTO.getNum());
 		
 		int result = st.executeUpdate();

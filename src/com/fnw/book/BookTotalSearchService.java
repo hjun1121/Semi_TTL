@@ -20,12 +20,13 @@ public class BookTotalSearchService implements Action {
 		int curPage=1;
 	
 		Book_TotalDAO book_TotalDAO = new Book_TotalDAO();
+		int num = 0;
 		try {
+			num = Integer.parseInt(request.getParameter("num"));
 			curPage=Integer.parseInt(request.getParameter("curPage"));
-		}catch (Exception e) {
-			e.printStackTrace();
+		} catch (Exception e) {
+			// TODO: handle exception
 		}
-
 		String kind = request.getParameter("kind");
 		if(kind==null) {
 			kind="title";
@@ -34,7 +35,6 @@ public class BookTotalSearchService implements Action {
 		if(search==null) {
 			search="";
 		}
-		System.out.println(kind);
 		int totalCount=0;
 		try {
 			totalCount = book_TotalDAO.getTotalCount(kind, search);

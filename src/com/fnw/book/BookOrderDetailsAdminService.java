@@ -30,7 +30,6 @@ public class BookOrderDetailsAdminService implements Action {
 		//boardDTO가 Null이면 다른 곳으로 처리
 		
 		request.setAttribute("view", book_OrderDTO);
-		request.setAttribute("book", "book");
 		actionFoward.setCheck(true);
 		actionFoward.setPath("../WEB-INF/view/book/bookOrderDetailsAdmin.jsp");
 		

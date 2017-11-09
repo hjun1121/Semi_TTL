@@ -6,18 +6,28 @@
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
 <title>Insert title here</title>
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+<script type="text/javascript">
+	var kind = '${kind}';
+	$(".kind").each(function(){
+		 if($(this).val() == kind1) {
+			 $(this).attr("selected", true);
+		 }
+	});
+
+
+
+</script>
 </head>
 <body>
 <h2>Qna List</h2>
 	<div>
-		<form name="frm" class="form-inline" action="./qnaList.qna"
-			method="post">
+		<form name="frm" class="form-inline" action="./qnaList.qna" method="post">
 			<div>
 				<span> <select name="kind">
-						<option value="title">제목</option>
-						<option value="writer">저자</option>
-				</select> <input type="text" class="form-control" id="search"
-					placeholder="Enter" name="search">
+						<option class="kind" value="title">제목</option>
+						<option class="kind" value="writer">저자</option>
+				</select> <input type="text" class="form-control" id="search" placeholder="Enter" name="search" value="${search }">
 				</span>
 				<div class="form-group">
 					<div class="col-sm-offset-2 col-sm-10">
