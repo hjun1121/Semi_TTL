@@ -50,6 +50,7 @@ public class LibraryBookSearchService implements Action {
 		try {
 			PageMaker pageMaker = new PageMaker(curPage, totalCount);
 			ar = libraryDAO.selectList(pageMaker.getMakeRow(), kind, search, library);
+			request.setAttribute("curPage", curPage);
 			request.setAttribute("list", ar);
 			request.setAttribute("page", pageMaker.getMakePage());
 			request.setAttribute("kind", kind);
