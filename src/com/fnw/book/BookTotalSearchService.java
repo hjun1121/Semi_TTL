@@ -20,6 +20,12 @@ public class BookTotalSearchService implements Action {
 		int curPage=1;
 	
 		Book_TotalDAO book_TotalDAO = new Book_TotalDAO();
+		int num = 0;
+		try {
+			num = Integer.parseInt(request.getParameter("num"));
+		} catch (Exception e) {
+			// TODO: handle exception
+		}
 		try {
 			curPage=Integer.parseInt(request.getParameter("curPage"));
 		}catch (Exception e) {
