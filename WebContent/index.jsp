@@ -14,13 +14,6 @@
 </head>
 
 <body>
-<<<<<<< HEAD
-=======
-	<c:if test="${empty sessionScope.member }">
-	<p><a href="./member/memberLogin.member">로그인</a>
-	<p><a href="./member/memberJoin.member">회원가입</a>
-	</c:if>
->>>>>>> 6364c825bc051617cd06fb685eab5dc97630985b
 	<c:if test="${not empty sessionScope.member }">
 	<h1>${sessionScope.member.id }</h1>
 	<h1>MyPage_Hees</h1>
@@ -30,17 +23,15 @@
 	<p><a href="./book/bookRentList.book?id=${member.id }">책 대여 내역</a></p>
 	<p><a href="./book/bookOrderList.book?id=${member.id }">책 신청 내역</a></p>
 	<p><a href="./book/bookBuyWishList.book?id=${member.id }">책 구매 찜</a></p>
-<<<<<<< HEAD
 	<p><a href="./book/bookRentWishList.book?id=${member.id }">책 대여 찜</a></p>
-=======
-	<p><a href="./book/bookRentWishList.book?id=${member.id }">Basket Book Rent List</a></p>
-	<p><a href="./member/memberLogout.member">로그아웃</a>
->>>>>>> 6364c825bc051617cd06fb685eab5dc97630985b
 	</c:if>
 
 	<h2>김앤신(통합포털)</h2>
 	<p><a href="./book/bookTotalSearch.book">Book_search</a>
 	<p><a href="./book/bookOrderTotalList.book">Book_Order(도서 신청)</a>
+	<p><a href="./member/memberLogin.member">로그인</a>
+	<p><a href="./member/memberJoin.member">회원가입</a>
+	<p><a href="./member/memberLogout.member">로그아웃</a>
 	<p><a href="./library/libraryView.library">도서관지도</a></p>
 
 	<p></p>
@@ -59,8 +50,6 @@
 	<p>=================================================</p>
 	<c:if test="${not empty sessionScope.member }">
 	<p><a href="./qna/qnaList.qna">QnaList</a></p>
-	
-	<p><a href="./book/bookOrderForm.book">도서신청from</a></p>
 	<p><a href="./market/marketOrder.market?id=${member.id }">마켓판매신청form</a></p><!-- 로그인시만 이용 -->
 	<p><a href="./market/marketDealList_personal.market?id=${member.id }">마켓판매신청 개인확인용</a></p><!-- 로그인시만 이용 -->
 	<p>=================================================</p>
