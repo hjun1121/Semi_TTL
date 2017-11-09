@@ -3,13 +3,11 @@ package com.fnw.library;
 import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
-import java.sql.SQLException;
 import java.util.ArrayList;
 
 import com.fnw.book.Book_TotalDTO;
 import com.fnw.util.DBConnector;
 import com.fnw.util.MakeRow;
-import com.fnw.util.PageMaker;
 
 public class LibraryDAO {
 
@@ -18,12 +16,13 @@ public class LibraryDAO {
 	public void update() {}
 	
 	//totalCount
-	public int getTotalCount(String kind, String search) throws Exception {
+	public int getTotalCount(String kind, String search, int library) throws Exception {
 		Connection con = DBConnector.getConnect();
-		String sql = "select nvl(count(num), 0) from book_total where "+ kind +" like ?" ;
+		String sql = "select nvl(count(num), 0) from book_total where "+ kind +" like ? and library = ?";
 		
 		PreparedStatement st = con.prepareStatement(sql);
 		st.setString(1, "%"+search+"%");
+		st.setInt(2, library);
 		ResultSet rs = st.executeQuery();
 		rs.next();
 		int result = rs.getInt(1);
@@ -77,6 +76,7 @@ public class LibraryDAO {
 			book_TotalDTO.setPublish_date(rs.getString("publish_date"));
 			book_TotalDTO.setSection(rs.getString("section"));
 			book_TotalDTO.setLibrary(rs.getInt("library"));
+			book_TotalDTO.setType(rs.getString("type"));
 			book_TotalDTO.setState(rs.getInt("state"));
 			book_TotalDTO.setRent_id(rs.getString("rent_id"));
 			book_TotalDTO.setRent_count(rs.getInt("rent_count"));
@@ -114,6 +114,7 @@ public class LibraryDAO {
 			book_TotalDTO.setSection(rs.getString("section"));
 			book_TotalDTO.setLibrary(rs.getInt("library"));
 			book_TotalDTO.setState(rs.getInt("state"));
+			book_TotalDTO.setType(rs.getString("type"));
 			book_TotalDTO.setRent_id(rs.getString("rent_id"));
 			book_TotalDTO.setRent_count(rs.getInt("rent_count"));
 			ar.add(book_TotalDTO);

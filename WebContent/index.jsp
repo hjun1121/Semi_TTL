@@ -47,6 +47,7 @@
 
 	<p><a href="./member/memberIdFind.member">Id Find</a>
 	<p><a href="./member/memberPwFind.member">Pw Find</a>
+	
 	<p><a href="./member/memberJoinAgree.member">Join Agree</a></p>
 	<p>=================================================</p>
 	<c:if test="${not empty sessionScope.member }">
