@@ -60,14 +60,8 @@
 			<li><a
 				href="./marketOrderList.market?curPage=${requestScope.page.lastNum+1}">[다음]</a></li>
 			</c:if>
-			
 		</ul>
-
-
-
 	</div>
-
-
 </body>
 </html>
 

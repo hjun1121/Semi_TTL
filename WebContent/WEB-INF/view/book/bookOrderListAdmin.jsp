@@ -10,9 +10,9 @@
 </head>
 <body>
 	<div>
-	<h1>book order list 관리자용</h1>
-
+		<h1>book order list 관리자용</h1>
 	</div>
+	
 	<h1>${fn:toUpperCase(requestScope.book)}</h1>
 	
 	
@@ -68,13 +68,8 @@
 			<li><a
 				href="./${requestScope.book}List.${requestScope.book}?curPage=${requestScope.page.lastNum+1}">[다음]</a></li>
 			</c:if>
-			
 		</ul>
-
-
-
 	</div>
-
 </body>
 </html>
 

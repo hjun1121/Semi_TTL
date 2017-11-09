@@ -19,7 +19,7 @@ $(function(){
 			 $(this).attr("selected", true);
 		 }
 	 });
-	 
+
 	$(".rent_btn").click(function() {
 		var num = $(this).val();
 		$.ajax({
@@ -39,7 +39,6 @@ $(function(){
 		});
 	});
  });
-
 </script>
 </head>
 <body>
@@ -91,10 +90,10 @@ $(function(){
 								<td>${dto.company }</td>
 	
 								<c:choose>
-									<c:when test="${dto.library == 1 }"><td><a href="../library/libraryMain.library?num=1">kim_lib</a></td></c:when>
-									<c:when test="${dto.library == 2 }"><td><a href="../library/libraryMain.library?num=2">gee_lib</a></td></c:when>
-									<c:when test="${dto.library == 3 }"><td><a href="../library/libraryMain.library?num=3">hs_lib</a></td></c:when>
-									<c:when test="${dto.library == 4 }"><td><a href="../library/libraryMain.library?num=4">ssin_lib</a></td></c:when>
+									<c:when test="${dto.library == 1 }"><td><a href="../library/libraryMain.library?library=1">kim_lib</a></td></c:when>
+									<c:when test="${dto.library == 2 }"><td><a href="../library/libraryMain.library?library=2">gee_lib</a></td></c:when>
+									<c:when test="${dto.library == 3 }"><td><a href="../library/libraryMain.library?library=3">hs_lib</a></td></c:when>
+									<c:when test="${dto.library == 4 }"><td><a href="../library/libraryMain.library?library=4">ssin_lib</a></td></c:when>
 								</c:choose>
 
 								<c:choose>

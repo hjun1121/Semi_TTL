@@ -11,25 +11,26 @@ import com.fnw.util.DBConnector;
 public class Qna_ReplyDAO {
 	public int insert(Qna_ReplyDTO qna_ReplyDTO) throws Exception{
 		Connection con = DBConnector.getConnect();
-		String sql = "insert into qna_reply values(?,?,?,sysdate,?,?,?)";
+		String sql = "insert into qna_reply values(?,?,?,?,sysdate,?,?,?)";
 		PreparedStatement st = con.prepareStatement(sql);
-		st.setInt(1, qna_ReplyDTO.getNum());
-		st.setString(2, qna_ReplyDTO.getWriter());
-		st.setString(3, qna_ReplyDTO.getContents());
-		st.setInt(4, qna_ReplyDTO.getRef());
-		st.setInt(5, qna_ReplyDTO.getStep());
-		st.setInt(6, qna_ReplyDTO.getDepth());
+		st.setInt(1, qna_ReplyDTO.getpNum());
+		st.setInt(2, qna_ReplyDTO.getNum());
+		st.setString(3, qna_ReplyDTO.getWriter());
+		st.setString(4, qna_ReplyDTO.getContents());
+		st.setInt(5, qna_ReplyDTO.getRef());
+		st.setInt(6, qna_ReplyDTO.getStep());
+		st.setInt(7, qna_ReplyDTO.getDepth());
 		
 		int result = st.executeUpdate();
 		DBConnector.disConnect(st, con);
 		return result;
 	}
 	
-	public ArrayList<Qna_ReplyDTO> selectList(int num) throws Exception {
+	public ArrayList<Qna_ReplyDTO> selectList(int pNum) throws Exception {
 		Connection con = DBConnector.getConnect();
-		String sql = "select * from qna_reply where ref=?";
+		String sql = "select * from qna_reply where pNum=?";
 		PreparedStatement st = con.prepareStatement(sql);
-		st.setInt(1, num);
+		st.setInt(1, pNum);
 		
 		ResultSet rs = st.executeQuery();
 
@@ -37,6 +38,7 @@ public class Qna_ReplyDAO {
 		Qna_ReplyDTO qna_ReplyDTO = null;
 		while(rs.next()) {
 			qna_ReplyDTO = new Qna_ReplyDTO();
+			qna_ReplyDTO.setpNum(pNum);
 			qna_ReplyDTO.setNum(rs.getInt("num"));
 			qna_ReplyDTO.setWriter(rs.getString("writer"));
 			qna_ReplyDTO.setContents(rs.getString("contents"));
@@ -58,6 +60,30 @@ public class Qna_ReplyDAO {
 		int result = st.executeUpdate();
 		
 		return result;
+	}
+	public QnaDTO selectOne(int num) throws Exception{
+		Connection con = DBConnector.getConnect();
+		String sql = "select * from qna where num=?";
+		PreparedStatement st = con.prepareStatement(sql);
+		st.setInt(1, num);
+
+		ResultSet rs = st.executeQuery();
+
+		QnaDTO qnaDTO = null;
+		while(rs.next()) {
+			qnaDTO = new QnaDTO();
+			qnaDTO.setNum(rs.getInt("num"));
+			qnaDTO.setType(rs.getInt("type"));
+			qnaDTO.setTitle(rs.getString("title"));
+			qnaDTO.setWriter(rs.getString("writer"));
+			qnaDTO.setContents(rs.getString("contents"));
+			qnaDTO.setReg_date(rs.getDate("reg_date"));
+			qnaDTO.setHit(rs.getInt("hit"));
+			qnaDTO.setPw(rs.getString("pw"));
+			qnaDTO.setKind(rs.getInt("kind"));
+		}
+		DBConnector.disConnect(rs, st, con);
+		return qnaDTO;
 	}
 	public int update(Qna_ReplyDTO qna_ReplyDTO) throws Exception{
 		Connection con = DBConnector.getConnect();

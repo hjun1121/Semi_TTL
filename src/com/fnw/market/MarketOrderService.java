@@ -8,7 +8,7 @@ import com.fnw.action.ActionFoward;
 import com.fnw.market.Market_OrderDAO;
 import com.fnw.market.Market_OrderDTO;
 
-public class MarketDealFormService implements Action {
+public class MarketOrderService implements Action {
 
 	@Override
 	public ActionFoward doProcess(HttpServletRequest request, HttpServletResponse response) {
@@ -17,7 +17,7 @@ public class MarketDealFormService implements Action {
 
 		if(method.equals("GET")) {
 			actionFoward.setCheck(true);
-			actionFoward.setPath("../WEB-INF/view/market/marketDealForm.jsp");
+			actionFoward.setPath("../WEB-INF/view/market/marketOrder.jsp");
 		} else {
 			Market_OrderDAO market_OrderDAO = new Market_OrderDAO();
 			Market_OrderDTO market_OrderDTO = new Market_OrderDTO();

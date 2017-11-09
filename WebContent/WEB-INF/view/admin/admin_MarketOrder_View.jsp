@@ -26,10 +26,7 @@
 		<tr>
 			<td colspan="6">신청도서관 : ${view.library }</td>
 		</tr>
-	
 	</table>
-	
-	
 		<a href="./marketOrderOK.market?num=${view.num }">승인</a>
 		<a href="./marketOrderNO.market?num=${view.num }">거절</a>
 		<a href="./marketOrderList.market">LIST</a>

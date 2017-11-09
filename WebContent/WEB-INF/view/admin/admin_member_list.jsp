@@ -18,7 +18,6 @@ $(function(){
 				 $(this).attr("selected", true);
 			 }
 		 });
-		
 			if(${kind} == 10){
 				$(".kind1").attr("style", "background-color: #fff");
 		 		$("#btn_admin").attr("style", "background-color: #dcdcdc");
@@ -70,7 +69,6 @@ $(function(){
 			}
 		});
  		$("#info").html("Member List");
- 		
 	});
 
 	$("#btn_black").click(function() {
@@ -91,7 +89,6 @@ $(function(){
 			}
 		});
 		$("#info").html("Black List");
-		
 	});
 });
 </script>

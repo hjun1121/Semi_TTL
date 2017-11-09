@@ -5,6 +5,7 @@
 <c:if test="${size eq 0 }">
 		<h2>검색 결과가 없습니다.</h2>
 </c:if>
+
 <c:if test="${size ne 0 }">
 <input type="hidden" name="kind" id="kind0" value="${kind }">
 <table id = "member" class="kind" border="1">

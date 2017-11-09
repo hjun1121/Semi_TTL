@@ -20,7 +20,7 @@
 <body>
 	<h3>마켓신청form</h3>
 	<div style = "height: 50px"></div>
-	<form action="./marketDealForm.market" method="post">
+	<form action="./marketOrder.market" method="post">
 		<input type = "hidden" class = "form-control" name = "id" value = ${member.id}>
 		<table class = "table">
 			<tr>
