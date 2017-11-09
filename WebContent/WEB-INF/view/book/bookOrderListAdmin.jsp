@@ -36,7 +36,7 @@
 				--
 			</c:forEach>
 			</c:catch>
-			<a href="./${requestScope.book}ApplicationView.${requestScope.book}?num=${dto.num}">${dto.title}</a>
+			<a href="./${requestScope.book}OrderDetailsAdmin.${requestScope.book}?num=${dto.num}">${dto.title}</a>
 			</td>
 			<td>${dto.writer}</td>
 			<td>${dto.company}</td>
