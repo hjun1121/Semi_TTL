@@ -11,7 +11,6 @@
   <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
 <title>Insert title here</title>
 <script type="text/javascript">
-
 $(function(){
 	 var kind = '${kind}';
 	 
@@ -21,32 +20,35 @@ $(function(){
 		 }
 	 });
 
- 	 $("#btn").click(function() {
-  		
-  		$.ajax({
-  			url: "../bookRent.book",
-  			type: "GET",
-  			data: {
-  				num:${book.num}
-  			},
-  			success: function(data) {
-  				alert(data);
-  				location.href="./libraryBookSearch.library";
-  			}
-  		});
-  	 });
-});
-
+	$(".rent_btn").click(function() {
+		var num = $(this).val();
+		$.ajax({
+			url: "./bookRent.book",
+			type: "GET",
+			data: {
+				num:num,
+				kind:'${kind}',
+				curPage: ${curPage},
+				search: '${search}',
+				rent_id:'${member.id}'
+			},
+			success: function(data) {
+				alert(data);
+				location.href="./bookTotalSearch.book?search=${search}&curPage=${curPage}&kind=${kind}";
+			}
+		});
+	});
+ });
 </script>
 </head>
 <body>
 
 	<h2>도서 검색 페이지</h2>
-	
+
 	<section>
 
 		<div class="row-right">
-			<form name="frm" class="form-inline" action="./libraryBookSearch.library" method="post">
+			<form name="frm" class="form-inline" action="./libraryBookSearch.library?library=${library}" method="post">
 					<!-- KIND -->
 					<div class="form-group">
 						<div class="col-sm-10">
@@ -92,7 +94,7 @@ $(function(){
 								
 								<c:choose>
 									<c:when test="${ dto.state == 0 and not empty member }">
-										<td><button class = "btn btn-default" type = "submit" id = "btn">대여</button></td>
+										<td><button class = "btn btn-default rent_btn"  type = "submit" id = "rent_btn" value = "${dto.num}">대여</button></td>
 									</c:when>
 									<c:when test="${ dto.state == 0 and empty member }">
 										<td>대여가능</td>
