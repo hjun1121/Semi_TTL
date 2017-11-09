@@ -15,7 +15,6 @@ public class MarketTotalListService implements Action {
 	@Override
 	public ActionFoward doProcess(HttpServletRequest request, HttpServletResponse response) {
 		ActionFoward actionFoward = new ActionFoward();
-		
 		int curPage = 1;
 		try {
 			curPage=Integer.parseInt(request.getParameter("curPage"));

@@ -9,7 +9,7 @@
 </head>
 <body>
 	<h1> book 관리자 승인창 </h1>
-	<form action="./bookOrderOKAdmin.book" method="post">
+	<form action="./bookOrderOK.book" method="post">
 				<input type="hidden" name="num" value="${num}">
 				
 			<div>	
@@ -26,10 +26,6 @@
 						<option value="i" >문학</option>
 						<option value="j" >역사</option>
 					</select>
-			</div>
-			
-			<div>
-				책 위치 : <input type="text" name="section">
 			</div>
 
 				<button type="submit">승인</button>

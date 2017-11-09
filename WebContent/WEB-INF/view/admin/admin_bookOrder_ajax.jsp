@@ -1,6 +1,6 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
-<form action="./bookOrderOKAdmin.book" method="post">
+<form action="./bookOrderOK.book" method="post">
 				<input type="hidden" name="num" value="${num}">
 				
 			<div>	

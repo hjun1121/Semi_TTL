@@ -8,7 +8,7 @@ import com.fnw.action.ActionFoward;
 import com.fnw.book.Book_OrderDAO;
 import com.fnw.book.Book_OrderDTO;
 
-public class BookOrderDetailsAdminService implements Action {
+public class AdminBookOrderViewSerivce implements Action {
 
 	@Override
 	public ActionFoward doProcess(HttpServletRequest request, HttpServletResponse response) {
@@ -31,7 +31,7 @@ public class BookOrderDetailsAdminService implements Action {
 		
 		request.setAttribute("view", book_OrderDTO);
 		actionFoward.setCheck(true);
-		actionFoward.setPath("../WEB-INF/view/book/bookOrderDetailsAdmin.jsp");
+		actionFoward.setPath("../WEB-INF/view/admin/admin_bookOrderView.jsp");
 		
 		return actionFoward;
 	}

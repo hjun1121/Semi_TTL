@@ -8,11 +8,10 @@ import com.fnw.action.ActionFoward;
 
 
 
-public class BookOrderOkAdminService implements Action {
+public class AdminBookOrderOKService implements Action {
 
 	@Override
 	public ActionFoward doProcess(HttpServletRequest request, HttpServletResponse response) {
-		
 		ActionFoward actionFoward = new ActionFoward();
 		int num = 0;
 		try {

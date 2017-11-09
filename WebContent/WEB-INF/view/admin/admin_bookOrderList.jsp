@@ -38,7 +38,7 @@
 				--
 			</c:forEach>
 			</c:catch>
-			<a href="./${requestScope.book}OrderDetailsAdmin.${requestScope.book}?num=${dto.num}">${dto.title}</a>
+			<a href="./bookOrderViewAdmin.book?num=${dto.num}">${dto.title}</a>
 			</td>
 			<td>${dto.writer}</td>
 			<td>${dto.company}</td>
@@ -61,12 +61,12 @@
 			
 			<c:forEach begin="${page.startNum}" end="${page.lastNum}" var="i">
 			<li><a
-				href="./${requestScope.book}List.${requestScope.book}?curPage=${i}">${i}</a></li>
+				href="./bookOrderListAdmin.book?curPage=${i}">${i}</a></li>
 			</c:forEach>
 			
 			<c:if test="${page.curBlock < page.totalBlock}">
 			<li><a
-				href="./${requestScope.book}List.${requestScope.book}?curPage=${requestScope.page.lastNum+1}">[다음]</a></li>
+				href="./bookOrderListAdmin.book?curPage=${requestScope.page.lastNum+1}">[다음]</a></li>
 			</c:if>
 		</ul>
 	</div>
