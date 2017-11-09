@@ -54,7 +54,23 @@ $(document).ready(function() {
              <td>${bookOrderWish_list.title }</td>
             <td>${bookOrderWish_list.writer }</td>
             <td>${bookOrderWish_list.publish_date }</td>
-            <td>${bookOrderWish_list.library }</td>
+            <c:choose>
+            	<c:when test="${bookOrderWish_list.library eq 1}">
+					<td>기흥구</td>
+				</c:when>
+				<c:when test="${bookOrderWish_list.library eq 2}">
+					<td>송파구</td>
+				</c:when>
+				<c:when test="${bookOrderWish_list.library eq 3}">
+					<td>장안구</td>
+				</c:when>
+				<c:when test="${bookOrderWish_list.library eq 4}">
+					<td>분당구</td>
+				</c:when>
+				<c:otherwise>
+					<td>없음</td>
+				</c:otherwise>
+			</c:choose>
             <td>${bookOrderWish_list.price }</td>
             <td><a href="./bookBuyWishDelete.book?num=${bookOrderWish_list.num }"><input type="button" value="삭제"></a></td>
             <c:choose>
