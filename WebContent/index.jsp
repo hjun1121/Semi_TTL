@@ -39,7 +39,10 @@
 	<p></p>
 	<!-- 도서관 페이지  -->
 	<h2>도서관 페이지</h2>
-	<p><a href="./library/libraryMain.library">Library_Main_Page</a></p>
+	<p><a href="./library/libraryMain.library?library=1">Kim_Lib</a></p>
+	<p><a href="./library/libraryMain.library?library=2">Gee_Lib</a></p>
+	<p><a href="./library/libraryMain.library?library=3">Hee_Lib</a></p>
+	<p><a href="./library/libraryMain.library?library=4">Ssin_Lib</a></p>
 	<div style = "height: 10px"></div>
 
 
