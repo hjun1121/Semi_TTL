@@ -11,7 +11,7 @@ public class QnaDTO {
 	private String pw;
 	private Date reg_date;
 	private int hit;
-	private int kind;
+	private int library;
 	
 	public int getNum() {
 		return num;
@@ -61,10 +61,11 @@ public class QnaDTO {
 	public void setHit(int hit) {
 		this.hit = hit;
 	}
-	public int getKind() {
-		return kind;
+	public int getLibrary() {
+		return library;
 	}
-	public void setKind(int kind) {
-		this.kind = kind;
+	public void setLibrary(int library) {
+		this.library = library;
 	}
+
 }

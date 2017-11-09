@@ -15,15 +15,13 @@
 
 <body>
 
-<h1>QnA List Service</h1>
-<p><a href="./qna/qnaList.qna">QnaList</a></p>
 
 	<c:if test="${not empty sessionScope.member }">
 	<h1>${sessionScope.member.id }</h1>
 	<h1>MyPage_Hees</h1>
-	<p><a href="./member/memberUpdatePwCheck.member">업데이트</a></p>
-	<p><a href="./market/marketDealsList.market?id=${member.id }">Market Order List</a></p>
-	<p><a href="./seat/seatTotalList.seat?id=${member.id }">Seat Rent List</a></p>
+	<p><a href="./member/memberUpdatePwCheck.member">회원 정보 수정</a></p>
+	<p><a href="./market/marketDealsList.market?id=${member.id }">중고책거래 판/구매 리스트</a></p>
+	<p><a href="./seat/seatTotalList.seat?id=${member.id }">좌석 예약 내역</a></p>
 	<p><a href="./book/bookRentList.book?id=${member.id }">Book Rent List</a></p>
 	<p><a href="./book/bookOrderList.book?id=${member.id }">Book Order List</a></p>
 	<p><a href="./book/bookOrderWishList.book?id=${member.id }">Basket Book Order List</a></p>
@@ -54,6 +52,7 @@
 	<p><a href="./member/memberJoinAgree.member">Join Agree</a></p>
 	<p>=================================================</p>
 	<c:if test="${not empty sessionScope.member }">
+	<p><a href="./qna/qnaList.qna">QnaList</a></p>
 	<p><a href="./market/marketOrder.market?id=${member.id }">마켓판매신청form</a></p><!-- 로그인시만 이용 -->
 	<p><a href="./market/marketDealList_personal.market?id=${member.id }">마켓판매신청 개인확인용</a></p><!-- 로그인시만 이용 -->
 	<p>=================================================</p>
