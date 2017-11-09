@@ -19,32 +19,39 @@
 		<p>price<input type="text" name="price" value=${bookDealsDetail.price } readonly="readonly"></p>
 		<p>library<input type="text" name="library" value=${bookDealsDetail.library } readonly="readonly"></p>
 		
-		<c:if test="${bookDealsDetail.kind eq 1}">
-			<p>kind<input type="text" value="판매" readonly="readonly"></p>
-			<input type="hidden" name="kind" value=${bookDealsDetail.kind }>
-		</c:if>
-		<c:if test="${bookDealsDetail.kind eq 2}">
-			<p>kind<input type="text" value="구매" readonly="readonly"></p>
-			<input type="hidden" name="kind" value=${bookDealsDetail.kind }>
-		</c:if>
+		<c:choose>
+			<c:when test="${bookDealsDetail.kind eq 1}">
+				<p>kind<input type="text" value="판매" readonly="readonly"></p>
+				<input type="hidden" name="kind" value=${bookDealsDetail.kind }>
+			</c:when>
+			<c:when test="${bookDealsDetail.kind eq 2}">
+				<p>kind<input type="text" value="구매" readonly="readonly"></p>
+				<input type="hidden" name="kind" value=${bookDealsDetail.kind }>
+			</c:when>
+		</c:choose>
 		
-		<c:if test="${bookDealsDetail.state eq 1}">
-			<p>state<input type="text" value="완료" readonly="readonly"></p>
-			<input type="hidden" name="state" value=${bookDealsDetail.state }>
-		</c:if>
-		<c:if test="${bookDealsDetail.state eq 2}">
-			<p>state<input type="text" value="대기" readonly="readonly"></p>
-			<input type="hidden" name="state" value=${bookDealsDetail.state }>
-		</c:if>
+		<c:choose>
+			<c:when test="${bookDealsDetail.state eq 1}">
+				<p>state<input type="text" value="완료" readonly="readonly"></p>
+				<input type="hidden" name="state" value=${bookDealsDetail.state }>
+			</c:when>
+			<c:when test="${bookDealsDetail.state eq 2}">
+				<p>state<input type="text" value="대기" readonly="readonly"></p>
+				<input type="hidden" name="state" value=${bookDealsDetail.state }>
+			</c:when>
+		</c:choose>
+	
+		<c:choose>
+			<c:when test="${bookDealsDetail.delivery eq 1}">
+				<p>delivery<input type="text" value="택배" readonly="readonly"></p>
+				<input type="hidden" name="delivery" value=${bookDealsDetail.delivery }>
+			</c:when>
+			<c:when test="${bookDealsDetail.delivery eq 2}">
+				<p>delivery<input type="text" value="직접수령" readonly="readonly"></p>
+				<input type="hidden" name="delivery" value=${bookDealsDetail.delivery }>
+			</c:when>
+		</c:choose>
 		
-		<c:if test="${bookDealsDetail.delivery eq 1}">
-			<p>delivery<input type="text" value="택배" readonly="readonly"></p>
-			<input type="hidden" name="delivery" value=${bookDealsDetail.delivery }>
-		</c:if>
-		<c:if test="${bookDealsDetail.delivery eq 2}">
-			<p>delivery<input type="text" value="직접수령" readonly="readonly"></p>
-			<input type="hidden" name="delivery" value=${bookDealsDetail.delivery }>
-		</c:if>
 		<button type="submit">확인</button>
 		<a href="./marketDealsDelete.market?num=${bookDealsDetail.num }"><input type="button" value="내역 삭제"></a>
 	</form>	
