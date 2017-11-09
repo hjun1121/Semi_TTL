@@ -10,7 +10,7 @@ import com.fnw.action.ActionFoward;
 import com.fnw.qnaReply.Qna_ReplyDAO;
 import com.fnw.qnaReply.Qna_ReplyDTO;
 
-public class QnaDetailsCheckService implements Action {
+public class QnaViewCheckService implements Action {
 
 	@Override
 	public ActionFoward doProcess(HttpServletRequest request, HttpServletResponse response) {
@@ -23,10 +23,26 @@ public class QnaDetailsCheckService implements Action {
 		} catch (Exception e) {
 			num = 0;
 		}
+		
+		int library =1;
+		try {
+			library = Integer.parseInt(request.getParameter("library"));
+		}catch (Exception e) {
+		}
+		
+		int type =1;
+		try {
+			type = Integer.parseInt(request.getParameter("type"));
+		}catch (Exception e) {
+		}
+		
+		
 		if(method.equals("GET")) {
 			request.setAttribute("num", num);
+			request.setAttribute("library", library);
+			request.setAttribute("type", type);
 			actionFoward.setCheck(true);
-			actionFoward.setPath("../WEB-INF/view/qna/qnaDetailsCheck.jsp");
+			actionFoward.setPath("../WEB-INF/view/qna/qnaViewCheck.jsp");
 		}else {
 			QnaDAO qnaDAO = new QnaDAO();
 			QnaDTO qnaDTO = null;
@@ -48,8 +64,10 @@ public class QnaDetailsCheckService implements Action {
 				request.setAttribute("rDTO", list);
 				request.setAttribute("qnaDTO", qnaDTO);
 				request.setAttribute("num", qnaDTO.getNum());
+				request.setAttribute("library", library);
+				request.setAttribute("type", type);
 				actionFoward.setCheck(true);
-				actionFoward.setPath("../WEB-INF/view/qna/qnaDetails.jsp");
+				actionFoward.setPath("../WEB-INF/view/qna/qnaView.jsp");
 			}else {
 				request.setAttribute("message", "비밀번호 다시 입력하세요.");
 				request.setAttribute("path", "../qna/qnaList.qna");

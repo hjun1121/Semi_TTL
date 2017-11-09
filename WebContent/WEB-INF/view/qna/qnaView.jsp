@@ -9,6 +9,22 @@
 <title>Insert title here</title>
 <script type="text/javascript">
 $(function(){
+	var library = ${library};
+	var type= ${type};
+	
+	$(".library").each(function(){
+		 if($(this).val() == library) {
+			 $(this).attr("selected", true);
+		 }
+	 });
+	
+	$(".type").each(function(){
+		 if($(this).val() == type) {
+			 $(this).attr("selected", true);
+		 }
+	 });
+	
+	
 	$(".replyUpdate").click(function() {
 		var c = $(this).attr("title");
 		var s =$("#update"+c).html();
@@ -59,22 +75,36 @@ $(function(){
 	<input type="hidden" name="pnum">
 </form>
 <h2>QnA Details</h2>
-<form action="../index.jsp" method="post" name="frm2">
-		<p>num<input type="text" name="num" value=${qnaDTO.num }></p>
-		<p>type<input type="text" name="type" value=${qnaDTO.type } ></p>
-		<p>title<input type="text" name="title" value=${qnaDTO.title } ></p>
-		<p>contents<input type="text" name="contents" value=${qnaDTO.contents }></p>
-		<p>writer<input type="text" name="writer" value=${qnaDTO.writer }></p>
-		<p>date<input type="text" name="date" value=${qnaDTO.reg_date }></p>
-		<p>hit<input type="text" name="hit" value=${qnaDTO.hit } ></p>
-		<p>kind<input type="text" name="library" value=${qnaDTO.library } ></p>
-		<button type="submit">확인</button>
+<form action="./qnaUpdate.qna" method="post" name="frm2">
+		<p>num<input type="text" name="num" value=${qnaDTO.num } readonly="readonly"></p>
+		<p>type
+		<select name = "type" draggable="false">
+				<option value="1" class="type">중고장터문의</option>
+				<option value="2" class="type">도서신청문의</option>
+				<option value="3" class="type">이용문의</option>
+		</select>
+		
+		<p>title<input type="text" name="title" value=${qnaDTO.title } readonly="readonly"></p>
+		<p>contents<input type="text" name="contents" value=${qnaDTO.contents } readonly="readonly"></p>
+		<p>writer<input type="text" name="writer" value=${qnaDTO.writer } readonly="readonly"></p>
+		<p>date<input type="text" name="date" value=${qnaDTO.reg_date } readonly="readonly"></p>
+		<p>hit<input type="text" name="hit" value=${qnaDTO.hit } readonly="readonly" ></p>
+		<p>
+		library <select name = "library">
+					<option value = "1" class="library">기흥구</option>
+					<option value = "2" class="library">송파구</option>
+					<option value = "3" class="library">장안구</option>
+					<option value = "4" class="library">분당구</option>
+		</select>
+		</p>
+		
+		<a href="./qnaUpdate.qna?num=${qnaDTO.num }&library=${qnaDTO.library }&type=${qnaDTO.type}"><input type="button" value="수정"></a>
 		<a href="./qnaDelete.qna?num=${qnaDTO.num }"><input type="button" value="삭제"></a>
-		<a href="./qnaUpdate.qna?num=${qnaDTO.num }"><input type="button" value="수정"></a>
+		<a href="./qnaList.qna"><input type="button" value="list"></a>
 </form>	
 <hr>
 <form action="../qnaReply/qnaReplyInsert.qnaReply?pNum=${qnaDTO.num }" method="post">
-	<p><textarea name="reply"></textarea>
+	<p><textarea name="contents"></textarea>
 	<button type="submit">등록</button> </p>
 </form>
 <c:if test="${rDTO ne null }">

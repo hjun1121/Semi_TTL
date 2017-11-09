@@ -14,8 +14,13 @@ public class QnaReplyInsertService implements Action {
 	@Override
 	public ActionFoward doProcess(HttpServletRequest request, HttpServletResponse response) {
 		ActionFoward actionFoward = new ActionFoward();
-		String message = request.getParameter("reply");
-		int pNum = Integer.parseInt(request.getParameter("pNum"));
+		String contents = request.getParameter("contents");
+		int pNum =0;
+		try {
+			pNum = Integer.parseInt(request.getParameter("pNum"));
+		}catch (Exception e) {
+		}
+		
 		Qna_ReplyDAO qna_ReplyDAO = new Qna_ReplyDAO();
 		Qna_ReplyDTO qna_ReplyDTO = null;
 		
@@ -34,7 +39,7 @@ public class QnaReplyInsertService implements Action {
 			qna_ReplyDTO.setpNum(pNum);
 			qna_ReplyDTO.setNum(qnaDTO.getNum());
 			qna_ReplyDTO.setWriter(qnaDTO.getWriter());
-			qna_ReplyDTO.setContents(message);
+			qna_ReplyDTO.setContents(contents);
 			qna_ReplyDTO.setRef(qnaDTO.getNum());
 			qna_ReplyDTO.setStep(0);
 			qna_ReplyDTO.setDepth(0);
