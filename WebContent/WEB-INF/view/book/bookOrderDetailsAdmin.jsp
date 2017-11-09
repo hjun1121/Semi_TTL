@@ -10,6 +10,7 @@
 <body>
 <h2>Book Order Details Admin</h2>
 	
+	
 	<div>
 		<p>num<input type="number" name="num" value=${requestScope.view.num }></p>
 		<p>title<input type="text" name="title" value=${requestScope.view.title } ></p>
@@ -24,11 +25,12 @@
 		<p>cancel(취소사유)<input type="text" name="cancel" value=${requestScope.view.cancel } ></p>
 		
 	</div>
+
 		
-		<%-- <c:if test="${member.id eq view.writer }"> --%>
-			<a href="./${requestScope.book}Update.${requestScope.book}?num=${requestScope.view.num}">승인</a>
+		
+			<a href="./bookOrderOkAdmin.book?num=${view.num }">승인</a>
 			<a href="./${requestScope.book}Delete.${requestScope.book}?num=${requestScope.view.num}">거절</a>
-		<%-- </c:if> --%>
+	
 		<a href="./${requestScope.book}OrderListAdmin.${requestScope.book}">LIST</a>
 	
 </body>

@@ -11,6 +11,25 @@ import com.fnw.util.MakeRow;
 
 public class Book_OrderDAO {
 
+	//관리자 승인업데이트
+	public int updateAdmin(int num, int approval) throws Exception{
+		Connection con = DBConnector.getConnect();
+		String sql ="update book_order set state=? where num=?";
+		
+		PreparedStatement st = con.prepareStatement(sql);
+		st.setInt(1, approval);
+		st.setInt(2, num);
+		
+		int result = st.executeUpdate();
+		DBConnector.disConnect(st, con);
+		
+		return result;
+	}
+	
+	
+	
+	
+	
 	//구매 도서 신청
 	public int insert(Book_OrderDTO book_OrderDTO) throws Exception {
 		Connection con = DBConnector.getConnect();
