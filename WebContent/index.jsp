@@ -50,6 +50,8 @@
 	<p>=================================================</p>
 	<c:if test="${not empty sessionScope.member }">
 	<p><a href="./qna/qnaList.qna">QnaList</a></p>
+	
+	<p><a href="./book/bookOrderForm.book">도서신청from</a></p>
 	<p><a href="./market/marketOrder.market?id=${member.id }">마켓판매신청form</a></p><!-- 로그인시만 이용 -->
 	<p><a href="./market/marketDealList_personal.market?id=${member.id }">마켓판매신청 개인확인용</a></p><!-- 로그인시만 이용 -->
 	<p>=================================================</p>

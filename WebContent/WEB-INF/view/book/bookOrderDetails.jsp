@@ -24,11 +24,11 @@
 				<input type="hidden" name="library" value=${bookOrderDetails.library } readonly="readonly">
 			</c:when>
 			<c:when test="${bookOrderDetails.library eq 2}">
-				<p>library<input type="text" value="장안구" ></p>
+				<p>library<input type="text" value="송파구" ></p>
 				<input type="hidden" name="library" value=${bookOrderDetails.library } readonly="readonly">
 			</c:when>
 			<c:when test="${bookOrderDetails.library eq 3}">
-				<p>library<input type="text" value="송파구" ></p>
+				<p>library<input type="text" value="장안구" ></p>
 				<input type="hidden" name="library" value=${bookOrderDetails.library } readonly="readonly">
 			</c:when>
 			<c:when test="${bookOrderDetails.library eq 4}">
@@ -41,12 +41,12 @@
 		</c:choose>
 		
 		<c:choose>
-			<c:when test="${bookOrderDetails.state eq 1}">
+			<c:when test="${bookOrderDetails.state eq 0}">
 				<p>state<input type="text" value="취소" readonly="readonly"></p>
 				<input type="hidden" name="state" value=${bookOrderDetails.state } readonly="readonly">
 				<p>cancel<input type="text" name="cancel" value=${bookOrderDetails.cancel } ></p>
 			</c:when>
-			<c:when test="${bookOrderDetails.state eq 2}">
+			<c:when test="${bookOrderDetails.state eq 1}">
 				<p>state<input type="text" value="대기" readonly="readonly"></p>
 				<input type="hidden" name="state" value=${bookOrderDetails.state } readonly="readonly">
 			</c:when>

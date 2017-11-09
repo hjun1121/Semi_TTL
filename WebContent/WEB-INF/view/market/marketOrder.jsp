@@ -45,8 +45,7 @@
 					<option value = "1" id = "1">기흥구</option>
 					<option value = "2" id = "2">송파구</option>
 					<option value = "3" id = "3">장안구</option>
-					<option value = "4" id = "4">강남구</option>
-					<option value = "5" id = "5">분당구</option>
+					<option value = "4" id = "4">분당구</option>
 				</select></td>
 			</tr>
 		</table>
