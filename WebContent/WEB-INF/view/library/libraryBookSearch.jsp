@@ -23,18 +23,19 @@ $(function(){
 	$(".rent_btn").click(function() {
 		var num = $(this).val();
 		$.ajax({
-			url: "./bookRent.book",
+			url: "../bookRent.book",
 			type: "GET",
 			data: {
 				num:num,
 				kind:'${kind}',
 				curPage: ${curPage},
 				search: '${search}',
+				library: ${library},
 				rent_id:'${member.id}'
 			},
 			success: function(data) {
 				alert(data);
-				location.href="./bookTotalSearch.book?search=${search}&curPage=${curPage}&kind=${kind}";
+				location.href="./libraryBookSearch.library?search=${search}&curPage=${curPage}&kind=${kind}";
 			}
 		});
 	});
@@ -91,7 +92,7 @@ $(function(){
 								<td>${dto.writer }</td>
 								<td>${dto.company }</td>
 								<td>${dto.type }</td>
-								
+
 								<c:choose>
 									<c:when test="${ dto.state == 0 and not empty member }">
 										<td><button class = "btn btn-default rent_btn"  type = "submit" id = "rent_btn" value = "${dto.num}">대여</button></td>

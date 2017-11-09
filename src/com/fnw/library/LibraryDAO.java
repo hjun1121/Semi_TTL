@@ -90,15 +90,15 @@ public class LibraryDAO {
 	public ArrayList<Book_TotalDTO> selectList(MakeRow makeRow, String kind, String search, int library) throws Exception {
 		Connection con = DBConnector.getConnect();
 		String sql = "select * from (select rownum R, N.* from "
-				+ "(select * from book_total where" + kind + "like ? "
+				+ "(select * from book_total where " + kind + " like ? and library=? "
 				+ "order by num asc) N) "
-				+ "where R between ? and ? and library = ?";
-
+				+ "where R between ? and ?";
+		
 		PreparedStatement st = con.prepareStatement(sql);
 		st.setString(1, "%"+search+"%");
-		st.setInt(2, makeRow.getStartRow());
-		st.setInt(3, makeRow.getLastRow());
-		st.setInt(4, library);
+		st.setInt(2, library);
+		st.setInt(3, makeRow.getStartRow());
+		st.setInt(4, makeRow.getLastRow());
 		ResultSet rs = st.executeQuery();
 
 		ArrayList<Book_TotalDTO> ar = new ArrayList<>();

@@ -32,7 +32,6 @@ public class LibraryBookSearchService implements Action {
 		} catch (Exception e) {
 			// TODO: handle exception
 		}
-
 		String kind = request.getParameter("kind");
 		if(kind==null) {
 			kind="title";
@@ -41,10 +40,14 @@ public class LibraryBookSearchService implements Action {
 		if(search==null) {
 			search="";
 		}
-
 		int totalCount = 0;
 		try {
 			totalCount = libraryDAO.getTotalCount(kind, search, library);
+		} catch (Exception e) {
+			e.printStackTrace();
+		}
+
+		try {
 			PageMaker pageMaker = new PageMaker(curPage, totalCount);
 			ar = libraryDAO.selectList(pageMaker.getMakeRow(), kind, search, library);
 			request.setAttribute("list", ar);
@@ -52,6 +55,7 @@ public class LibraryBookSearchService implements Action {
 			request.setAttribute("kind", kind);
 			request.setAttribute("search", search);
 		} catch (Exception e) {
+			// TODO Auto-generated catch block
 			e.printStackTrace();
 		}
 
