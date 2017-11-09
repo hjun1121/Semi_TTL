@@ -30,16 +30,38 @@ $(function(){
 				kind:'${kind}',
 				curPage: ${curPage},
 				search: '${search}',
-				library: ${library},
+				library: '${library}',
 				rent_id:'${member.id}'
 			},
 			success: function(data) {
 				alert(data);
-				location.href="./libraryBookSearch.library?search=${search}&curPage=${curPage}&kind=${kind}";
+				location.href="./libraryBookSearch.library?library=${library}&search=${search}&curPage=${curPage}&kind=${kind}";
 			}
 		});
 	});
- });
+	
+	$(".wish_btn").click(function() {
+		var num = $(this).val();
+		$.ajax({
+			url: "../bookRentWish.book",
+			type: "GET",
+			data: {
+				num:num,
+				kind:'${kind}',
+				curPage: ${curPage},
+				search: '${search}',
+				library: ${library},
+				id:'${member.id}'
+			},
+			success: function(data) {
+				alert(data);
+				location.href="./libraryBookSearch.library?library=${library}&search=${search}&curPage=${curPage}&kind=${kind}";
+			}
+		});
+	});
+
+});
+
 </script>
 </head>
 <body>
@@ -84,6 +106,7 @@ $(function(){
 						<td>출판사</td>
 						<td>분류</td>
 						<td>대여여부</td>
+						<td>찜하기</td>
 					</tr>
 					<c:forEach items="${ list }" var="dto">
 							<tr>
@@ -102,6 +125,14 @@ $(function(){
 									</c:when>
 									<c:when test="${ dto.state == 1 }">
 										<td>대여불가</td>
+									</c:when>
+								</c:choose>
+								<c:choose>
+									<c:when test="${ not empty member }">
+										<td><button class = "btn btn-default wish_btn"  type = "submit" id = "wish_btn" value = "${dto.num}">❤</button></td>
+									</c:when>
+									<c:when test="${ empty member }">
+										<td>❤</td>
 									</c:when>
 								</c:choose>
 							</tr>
@@ -129,7 +160,6 @@ $(function(){
 		</div>
 
 	</section>
-
 
 </body>
 </html>
