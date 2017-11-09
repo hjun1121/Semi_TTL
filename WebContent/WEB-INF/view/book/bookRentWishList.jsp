@@ -9,18 +9,18 @@
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
 <script type="text/javascript">
 $(document).ready(function() {
-	var boxAll = $('input:checkbox[name="checkP"]').length
-	var boxSelect = $("input:checkbox[name=checkP]:checked").length
+	var boxAll = $('input:checkbox[name="Pcheck"]').length
+	var boxSelect = $("input:checkbox[name=Pcheck]:checked").length
 	
 	$("#checkAll").click(function() {
 		if($("#checkAll").prop("checked")){
-			$("input[name=checkP]").prop("checked",true);
+			$("input[name=Pcheck]").prop("checked",true);
 		}else{
-			$("input[name=checkP]").prop("checked",false);
+			$("input[name=Pcheck]").prop("checked",false);
 		}
 	});
    
-	$("[name=checkP]").each(function(){
+	$("[name=Pcheck]").each(function(){
 		$(this).click(function(){
 			if(boxAll==boxSelect){
 				$("input[name=checkAll]").prop("checked",true);
@@ -51,7 +51,7 @@ $(document).ready(function() {
 			</tr>
 			<c:forEach items="${bookRentWishList }" var="bookRentWish_list">
 				<tr>
-					<td><input type="checkbox" name="checkP" value="${bookOrderWish_list.num }"></td>
+					<td><input type="checkbox" name="Pcheck" value="${bookRentWishList.num }"></td>
 					<td>${bookRentWish_list.num }</td>
 					<td>${bookRentWish_list.title }</td>
 					<td>${bookRentWish_list.writer }</td>

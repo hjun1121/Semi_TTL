@@ -41,7 +41,6 @@ public class BookBuyWishDeleteService implements Action {
 				try {
 					result2 = book_Buy_WishDAO.delete(Integer.parseInt(param[i]));
 				}catch (Exception e) {
-					// TODO Auto-generated catch block
 					e.printStackTrace();
 				}
 				String id = ((MemberDTO)request.getSession().getAttribute("member")).getId();
