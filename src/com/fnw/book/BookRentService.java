@@ -14,7 +14,9 @@ public class BookRentService implements Action {
 			
 			ActionFoward actionFoward = new ActionFoward();
 			LibraryDAO libraryDAO = new LibraryDAO();
-			
+			String search = request.getParameter("search");
+			int curPage = Integer.parseInt(request.getParameter("curPage"));
+
 			int num = 0;
 			try {
 				num = Integer.parseInt(request.getParameter("num"));
@@ -40,6 +42,8 @@ public class BookRentService implements Action {
 				request.setAttribute("message", "대여 실패");
 			}
 
+			request.setAttribute("search", search);
+			request.setAttribute("curPage", curPage);
 			actionFoward.setCheck(true);
 			actionFoward.setPath("../WEB-INF/view/book/bookRent.jsp");
 	
