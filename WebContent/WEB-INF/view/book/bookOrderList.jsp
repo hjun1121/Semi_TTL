@@ -65,11 +65,11 @@
 					</c:otherwise>
 				</c:choose>
 				<c:choose>
-					<c:when test="${bookOrder_list.state eq 1}">
+					<c:when test="${bookOrder_list.state eq 0}">
 						<td>취소</td>
 						<td>${bookOrder_list.cancel }</td>
 					</c:when>
-					<c:when test="${bookOrder_list.state eq 2}">
+					<c:when test="${bookOrder_list.state eq 1}">
 						<td>대기</td>
 						<td>-</td>
 					</c:when>
