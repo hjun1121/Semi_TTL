@@ -3,6 +3,7 @@ package com.fnw.qnaReply;
 import java.sql.Date;
 
 public class Qna_ReplyDTO {
+	private int pNum;
 	private int num;
 	private String writer;
 	private String contents;
@@ -10,7 +11,12 @@ public class Qna_ReplyDTO {
 	private int ref;
 	private int step;
 	private int depth;
-	
+	public int getpNum() {
+		return pNum;
+	}
+	public void setpNum(int pNum) {
+		this.pNum = pNum;
+	}
 	public int getNum() {
 		return num;
 	}
@@ -53,4 +59,5 @@ public class Qna_ReplyDTO {
 	public void setDepth(int depth) {
 		this.depth = depth;
 	}
+	
 }

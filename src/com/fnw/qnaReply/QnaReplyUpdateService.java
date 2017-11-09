@@ -41,17 +41,13 @@ public class QnaReplyUpdateService implements Action {
 			e.printStackTrace();
 		}
 		if(result>0) {
-			request.setAttribute("message", "수정 완료");
 			request.setAttribute("qnaDTO", qnaDTO);
 			request.setAttribute("rDTO", rlist);
 			actionFoward.setCheck(true);
 			actionFoward.setPath("../WEB-INF/view/qna/qnaDetails.jsp");
 		}else {
-			request.setAttribute("message", "수정 실패");
 			actionFoward.setPath("../WEB-INF/view/qna/qnaDetails.jsp");
 		}
-		/*actionFoward.setCheck(true);
-		actionFoward.setPath("../WEB-INF/view/common/result.jsp");*/
 		return actionFoward;
 	}
 }

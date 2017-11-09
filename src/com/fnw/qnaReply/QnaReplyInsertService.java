@@ -15,14 +15,14 @@ public class QnaReplyInsertService implements Action {
 	public ActionFoward doProcess(HttpServletRequest request, HttpServletResponse response) {
 		ActionFoward actionFoward = new ActionFoward();
 		String message = request.getParameter("reply");
-		int num = Integer.parseInt(request.getParameter("num"));
+		int pNum = Integer.parseInt(request.getParameter("pNum"));
 		Qna_ReplyDAO qna_ReplyDAO = new Qna_ReplyDAO();
 		Qna_ReplyDTO qna_ReplyDTO = null;
 		
 		QnaDAO qnaDAO = new QnaDAO();
 		QnaDTO qnaDTO = null;
 		try {
-			qnaDTO = qnaDAO.selectOne(num);
+			qnaDTO = qnaDAO.selectOne(pNum);
 		} catch (Exception e1) {
 			e1.printStackTrace();
 		}
@@ -31,6 +31,7 @@ public class QnaReplyInsertService implements Action {
 		ArrayList<Qna_ReplyDTO> rlist = new ArrayList<>();
 		try {
 			qna_ReplyDTO = new Qna_ReplyDTO();
+			qna_ReplyDTO.setpNum(pNum);
 			qna_ReplyDTO.setNum(qnaDTO.getNum());
 			qna_ReplyDTO.setWriter(qnaDTO.getWriter());
 			qna_ReplyDTO.setContents(message);
@@ -39,7 +40,7 @@ public class QnaReplyInsertService implements Action {
 			qna_ReplyDTO.setDepth(0);
 			result = qna_ReplyDAO.insert(qna_ReplyDTO);
 			try {
-				rlist = qna_ReplyDAO.selectList(num);
+				rlist = qna_ReplyDAO.selectList(pNum);
 			} catch (Exception e) {
 				e.printStackTrace();
 			}
