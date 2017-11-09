@@ -24,7 +24,7 @@ public class EmailDAO {
 		  Properties props = new Properties();
 		  props.put("mail.smtp.host", host);
 		  props.put("mail.smtp.auth", "true");
-
+		  
 		  Session session = Session.getDefaultInstance(props, new javax.mail.Authenticator() {
 		   protected PasswordAuthentication getPasswordAuthentication() {
 		    return new PasswordAuthentication(user, password);
