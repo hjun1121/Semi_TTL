@@ -120,7 +120,7 @@ public class Book_TotalDAO {
 	
 	public int insert(Book_OrderDTO book_OrderDTO) throws Exception {
 		Connection con =  DBConnector.getConnect();
-		String sql = "insert into book_total values((select nvl(max(num),0) from book_total)+1,?,?,?,?,0,0,?,0,0,0)";
+		String sql = "insert into book_total values((select nvl(max(num),0) from book_total)+1,?,?,?,?,0,?,0,0,0,0)";
 		PreparedStatement st = con.prepareStatement(sql);
 
 		st.setString(1, book_OrderDTO.getTitle());

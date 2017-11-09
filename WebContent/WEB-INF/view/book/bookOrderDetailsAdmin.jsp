@@ -23,21 +23,13 @@
 		<p>library<input type="text" name="library" value=${requestScope.view.library } ></p>
 		<p>state<input type="text" name="state" value=${requestScope.view.state } ></p>
 		<p>cancel(취소사유)<input type="text" name="cancel" value=${requestScope.view.cancel } ></p>
+		
 	</div>
-<<<<<<< HEAD
-
 		
 			<a href="./bookOrderOKAdmin.book?num=${view.num }">승인</a>
 			<a href="./${requestScope.book}Delete.${requestScope.book}?num=${requestScope.view.num}">거절</a>
 	
 		<a href="./bookOrderListAdmin.book">LIST</a>
 	
-=======
-		<%-- <c:if test="${member.id eq view.writer }"> --%>
-			<a href="./${requestScope.book}Update.${requestScope.book}?num=${requestScope.view.num}">승인</a>
-			<a href="./${requestScope.book}Delete.${requestScope.book}?num=${requestScope.view.num}">거절</a>
-		<%-- </c:if> --%>
-		<a href="./${requestScope.book}OrderListAdmin.${requestScope.book}">LIST</a>
->>>>>>> ccd3bc2748253afd24b282891d6562f803238bee
 </body>
 </html>
