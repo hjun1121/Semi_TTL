@@ -9,6 +9,38 @@ import com.fnw.qna.QnaDTO;
 import com.fnw.util.DBConnector;
 
 public class Qna_ReplyDAO {
+	
+	private int replyUpdate(Qna_ReplyDTO qna_ReplyDTO) throws Exception{  
+		
+		Connection con = DBConnector.getConnect();
+		String sql ="update qna set step=step+1 where ref=? and step>?";
+		PreparedStatement st = con.prepareStatement(sql);
+		
+		st.setInt(1, qna_ReplyDTO.getRef());
+		st.setInt(2, qna_ReplyDTO.getStep());
+		
+		int result = st.executeUpdate();
+		
+		DBConnector.disConnect(st, con);
+		
+		return result;
+		
+	}
+	
+	public int insertRelpy(Qna_ReplyDTO qna_ReplyDTO) throws Exception{
+		Connection con = DBConnector.getConnect();
+		String sql = "insert into qna_reply values(?,reply_seq.nextval,?,?,sysdate,reply_seq.currval,0,0)";
+		PreparedStatement st = con.prepareStatement(sql);
+		st.setInt(1, qna_ReplyDTO.getpNum());
+		st.setString(2, qna_ReplyDTO.getWriter());
+		st.setString(3, qna_ReplyDTO.getContents());
+		
+		int result = st.executeUpdate();
+		DBConnector.disConnect(st, con);
+		return result;
+	}
+	
+	
 	public int insert(Qna_ReplyDTO qna_ReplyDTO) throws Exception{
 		Connection con = DBConnector.getConnect();
 		String sql = "insert into qna_reply values(?,reply_seq.nextval,?,?,sysdate,reply_seq.currval,0,0)";

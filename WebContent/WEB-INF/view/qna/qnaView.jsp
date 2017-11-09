@@ -47,12 +47,17 @@ $(function(){
 	});
 	
 	$("table").on("click", ".up", function() {
+		var con = $("#upContents"+c).val();
 		var c = $(this).attr("title");
+		var pnum = document.frm2.num.value;
+		location.href="../qnaReply/qnaReplyUpdate.qnaReply?rcontents="+con+"&rnum="+c+"&pnum="+pnum;
+		
+		/* var c = $(this).attr("title");
 		var con = $("#upContents"+c).val();
 		document.frm.rnum.value=c;
 		document.frm.rcontents.value=con;
 		document.frm.pnum.value=document.frm2.num.value;
-		document.frm.submit();
+		document.frm.submit(); */
 	});
 	$("table").on("click", ".upReply", function() {
 		var c = $(this).attr("title");

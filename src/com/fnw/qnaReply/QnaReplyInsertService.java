@@ -37,16 +37,25 @@ public class QnaReplyInsertService implements Action {
 			qna_ReplyDTO.setContents(contents);
 			
 			result = qna_ReplyDAO.insert(qna_ReplyDTO);
+			
+			QnaDTO qnaDTO = new QnaDTO();
+			QnaDAO qnaDAO = new QnaDAO();
+			try {
+				qnaDTO = qnaDAO.selectOne(pNum);
+			} catch (Exception e) {
+			}
+			
+			
 			try {
 				ar = qna_ReplyDAO.selectList(pNum);
 			} catch (Exception e) {
 				e.printStackTrace();
 			}
 			if(result>0) {
-				request.setAttribute("message", "댓글 성공");
+				request.setAttribute("qnaDTO", qnaDTO);
 				request.setAttribute("replyList", ar);
-				actionFoward.setCheck(false);
-				actionFoward.setPath("../qna/qnaList.qna");
+				actionFoward.setCheck(true);
+				actionFoward.setPath("../WEB-INF/view/qna/qnaView.jsp");
 			}else {
 				request.setAttribute("message", "댓글 실패");
 				request.setAttribute("path", "../qna/qnaList.qna");
