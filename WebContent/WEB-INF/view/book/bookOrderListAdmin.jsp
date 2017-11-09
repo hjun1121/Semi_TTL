@@ -14,6 +14,8 @@
 	</div>
 	
 	<h1>${fn:toUpperCase(requestScope.book)}</h1>
+	
+	
 	<table class="table table-hover" border="1">
 		<tr>
 			<td>num</td>
@@ -27,7 +29,7 @@
 			<td>cancel</td>
 		</tr>
 		<c:forEach items="${requestScope.list}" var="dto">
-		
+		<c:if test="${dto.state eq 1 }">
 		<tr>
 			<td>${dto.num}</td>
 			<td>
@@ -46,8 +48,10 @@
 			<td>${dto.state}</td>
 			<td>${dto.cancel}</td>
 		</tr>
+		</c:if>
 		</c:forEach>
 	</table>
+	
 	
 	<div>
 		<ul class="pagination">
