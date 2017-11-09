@@ -5,19 +5,45 @@
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
 <title>Insert title here</title>
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+
+<script type="text/javascript">
+$(function(){
+	
+	$(".library").each(function(){
+		 if($(this).val() == ${member.library}) {
+			 $(this).attr("selected", true);
+		 }
+	});
+
+
+});
+
+</script>
 </head>
 <body>
 <h2>QnA Details</h2>
 <form action="./qnaWrite.qna" method="post">
-		<p>num<input type="text" name="num"></p>
-		<p>type<input type="text" name="type"></p>
+		<p>
+		<select name="type">
+			<option value="1">중고장터문의</option>
+			<option value="2">도서신청문의</option>
+			<option value="3">이용문의</option>
+		</select>
+		</p>
 		<p>title<input type="text" name="title"></p>
 		<p>contents<input type="text" name="contents"></p>
-		<p>writer<input type="text" name="writer"></p>
+		<p>writer<input type="text" name="writer" value="${member.id }" readonly="readonly"></p>
 		<p>password<input type="text" name="pw"></p>
-		<p>date<input type="date" name="date"></p>
-		<p>hit<input type="text" name="hit"></p>
-		<p>kind<input type="text" name="kind"></p>
+		
+		<p>
+		<select name="library" name="library">
+			<option class="library" value="1">기흥구</option>
+			<option class="library" value="2">송파구</option>
+			<option class="library" value="3">장안구</option>
+			<option class="library" value="4">분당구</option>
+		</select>
+		</p>
 		<button type="submit">확인</button>
 </form>	
 </body>
