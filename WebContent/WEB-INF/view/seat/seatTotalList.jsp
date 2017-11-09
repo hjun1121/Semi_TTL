@@ -118,11 +118,37 @@ $(function(){
 		<c:forEach items="${seatList }" var="seatTotal_list">
 			<tr>
 			<td>${seatTotal_list.num }</td>
-				<td>${seatTotal_list.seat_num }</td>
-				<td>${seatTotal_list.library }</td>
+			<td>${seatTotal_list.seat_num }</td>
+			<c:choose>
+				<c:when test="${seatTotal_list.library eq 1}">
+					<td>기흥구</td>
+				</c:when>
+				<c:when test="${seatTotal_list.library eq 2}">
+					<td>장안구</td>
+				</c:when>
+				<c:when test="${seatTotal_list.library eq 3}">
+					<td>송파구</td>
+				</c:when>
+				<c:when test="${seatTotal_list.library eq 4}">
+					<td>장안구</td>
+				</c:when>
+				<c:otherwise>
+					<td>없음</td>
+				</c:otherwise>
+			</c:choose>
 				<td>${seatTotal_list.in_time }</td>
 				<td>${seatTotal_list.out_time }</td>
-				<td>${seatTotal_list.state }</td>
+				<c:choose>
+				<c:when test="${seatTotal_list.state eq 0 && empty seatTotal_list.out_time}">
+					<td>예약중</td>
+				</c:when>
+				<c:when test="${seatTotal_list.state eq 1 && !empty seatTotal_list.out_time}">
+					<td>입실 완료</td>
+				</c:when>
+				<c:otherwise>
+					<td>없음</td>
+				</c:otherwise>
+			</c:choose>
 			</tr>
 		</c:forEach>
 	</table>

@@ -19,9 +19,9 @@
 	<c:if test="${not empty sessionScope.member }">
 	<h1>${sessionScope.member.id }</h1>
 	<h1>MyPage_Hees</h1>
-	<p><a href="./member/memberUpdatePwCheck.member">업데이트</a></p>
-	<p><a href="./market/marketDealsList.market?id=${member.id }">Market Order List</a></p>
-	<p><a href="./seat/seatTotalList.seat?id=${member.id }">Seat Rent List</a></p>
+	<p><a href="./member/memberUpdatePwCheck.member">회원 정보 수정</a></p>
+	<p><a href="./market/marketDealsList.market?id=${member.id }">중고책거래 판/구매 리스트</a></p>
+	<p><a href="./seat/seatTotalList.seat?id=${member.id }">좌석 예약 내역</a></p>
 	<p><a href="./book/bookRentList.book?id=${member.id }">Book Rent List</a></p>
 	<p><a href="./book/bookOrderList.book?id=${member.id }">Book Order List</a></p>
 	<p><a href="./book/bookOrderWishList.book?id=${member.id }">Basket Book Order List</a></p>
@@ -39,7 +39,10 @@
 	<p></p>
 	<!-- 도서관 페이지  -->
 	<h2>도서관 페이지</h2>
-	<p><a href="./library/libraryMain.library">Library_Main_Page</a></p>
+	<p><a href="./library/libraryMain.library?library=1">Kim_Lib</a></p>
+	<p><a href="./library/libraryMain.library?library=2">Gee_Lib</a></p>
+	<p><a href="./library/libraryMain.library?library=3">Hee_Lib</a></p>
+	<p><a href="./library/libraryMain.library?library=4">Ssin_Lib</a></p>
 	<div style = "height: 10px"></div>
 
 
