@@ -130,21 +130,27 @@ $(function(){
 										<td>대여불가</td>
 									</c:when>
 								</c:choose>
-								
+								<c:set var="heart1" value="0" ></c:set>
+								<c:set var="heart2" value="0" ></c:set>
 								<c:if test="${ not empty member }">
 									<c:forEach items="${rent_wish_list}" var="wish">
 										<c:if test="${wish.title eq dto.title}">
-											<td><button class = "btn btn-default wish_btn" type = "submit" value = "${dto.num}">❤</button></td>
-										</c:if>
-										<c:if test="${wish.title ne dto.title}">
-											<td><button class = "btn btn-default wish_btn" type = "submit" value = "${dto.num}">♡</button></td>
+											<c:choose>
+												<c:when test="${heart1==0}">
+													<td><button class = "btn btn-default wish_btn" type = "submit" value = "${dto.num}">❤</button></td>
+													<c:set var="heart1" value="1" ></c:set>
+													<c:set var="heart2" value="1" ></c:set>
+												</c:when>
+											</c:choose>
 										</c:if>
 									</c:forEach>
+										<c:if test="${heart2 == 0 }">
+											<td><button class = "btn btn-default wish_btn" type = "submit" value = "${dto.num}">♡</button></td>
+										</c:if>
 								</c:if>
 							</tr>
 					</c:forEach>
 				</table>
-
 		</div>
 
 		<div style = "text-align: center;">
