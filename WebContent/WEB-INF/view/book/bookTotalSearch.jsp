@@ -118,7 +118,7 @@ $(function(){
 				<c:if test="${page.curBlock>1}">
 				<li><a href = "./bookTotalSearch.book?curPage=${page.startNum-1}&search=${search}&kind=${kind}">[이전]</a></li>
 				</c:if>
-				
+
 				<c:forEach begin="${page.startNum}" end="${page.lastNum}" var="i">
 				<li><a
 					href="./bookTotalSearch.book?curPage=${i}&search=${search}&kind=${kind}">${i}</a></li>

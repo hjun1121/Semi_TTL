@@ -11,6 +11,7 @@ public class LibraryMainService implements Action {
 	@Override
 	public ActionFoward doProcess(HttpServletRequest request, HttpServletResponse response) {
 		ActionFoward actionFoward = new ActionFoward();
+		
 		int library = 1;
 		try {
 			library = Integer.parseInt(request.getParameter("library"));

@@ -16,14 +16,17 @@ public class BookTotalSearchService implements Action {
 
 		ActionFoward actionFoward = new ActionFoward();
 		ArrayList<Book_TotalDTO> ar = new ArrayList<>();
+		Book_TotalDAO book_TotalDAO = new Book_TotalDAO();
 
 		int curPage=1;
-	
-		Book_TotalDAO book_TotalDAO = new Book_TotalDAO();
+		try {
+			curPage=Integer.parseInt(request.getParameter("curPage"));
+		} catch (Exception e) {
+			// TODO: handle exception
+		}
 		int num = 0;
 		try {
 			num = Integer.parseInt(request.getParameter("num"));
-			curPage=Integer.parseInt(request.getParameter("curPage"));
 		} catch (Exception e) {
 			// TODO: handle exception
 		}
