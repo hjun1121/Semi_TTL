@@ -9,9 +9,6 @@
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
 <script type="text/javascript">
 $(document).ready(function() {
-	var boxAll = $('input:checkbox[name="Pcheck"]').length
-	var boxSelect = $("input:checkbox[name=Pcheck]:checked").length
-	
 	$("#checkAll").click(function() {
 		if($("#checkAll").prop("checked")){
 			$("input[name=Pcheck]").prop("checked",true);
@@ -19,9 +16,10 @@ $(document).ready(function() {
 			$("input[name=Pcheck]").prop("checked",false);
 		}
 	});
-   
-	$("[name=Pcheck]").each(function(){
-		$(this).click(function(){
+	$(".chk").click(function() {
+		var boxAll = $('input:checkbox[name=Pcheck]').length
+		var boxSelect = $("input:checkbox[name=Pcheck]:checked").length
+		$("[name=Pcheck]").each(function(){
 			if(boxAll==boxSelect){
 				$("input[name=checkAll]").prop("checked",true);
 			}else if(boxAll!=boxSelect){
@@ -38,7 +36,7 @@ $(document).ready(function() {
 	<form action="./bookRentWishDelete.book" method="POST">
 		<table class="table" border="1">
 			<tr>
-				<th>전체선택<input type="checkbox" id="checkAll" name="checkAll"></th>
+				<th>전체선택<input type="checkbox" class="chk" id="checkAll" name="checkAll"></th>
 				<th>num</th>
 				<th>title</th>
 				<th>writer</th>
@@ -51,7 +49,7 @@ $(document).ready(function() {
 			</tr>
 			<c:forEach items="${bookRentWishList }" var="bookRentWish_list">
 				<tr>
-					<td><input type="checkbox" name="Pcheck" value="${bookRentWish_list.num }"></td>
+					<td><input type="checkbox" class="chk" name="Pcheck" value="${bookRentWish_list.num }"></td>
 					<td>${bookRentWish_list.num }</td>
 					<td>${bookRentWish_list.title }</td>
 					<td>${bookRentWish_list.writer }</td>
