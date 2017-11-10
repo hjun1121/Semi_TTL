@@ -110,6 +110,7 @@ $(function(){
 							<td>찜하기</td>
 						</c:if>
 					</tr>
+
 					<c:forEach items="${ list }" var="dto">
 							<tr>
 								<td>${dto.num }</td>
@@ -129,20 +130,17 @@ $(function(){
 										<td>대여불가</td>
 									</c:when>
 								</c:choose>
-
+								
 								<c:if test="${ not empty member }">
 									<c:forEach items="${rent_wish_list}" var="wish">
-										<c:choose>
-											<c:when test="${wish.title eq dto.title}">
-												<td><button class = "btn btn-default wish_btn"  type = "submit" value = "${dto.num}">❤</button></td>
-											</c:when>
-											<c:when test="${ wish.title ne dto.title }">
-												<td><button class = "btn btn-default wish_btn"  type = "submit" value = "${dto.num}">♡</button></td>
-											</c:when>
-										</c:choose>
+										<c:if test="${wish.title eq dto.title}">
+											<td><button class = "btn btn-default wish_btn" type = "submit" value = "${dto.num}">❤</button></td>
+										</c:if>
+										<c:if test="${wish.title ne dto.title}">
+											<td><button class = "btn btn-default wish_btn" type = "submit" value = "${dto.num}">♡</button></td>
+										</c:if>
 									</c:forEach>
 								</c:if>
-
 							</tr>
 					</c:forEach>
 				</table>
