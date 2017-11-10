@@ -143,9 +143,6 @@ $(function(){
 											</c:choose>
 										</c:forEach>
 									</c:when>
-<%-- 									<c:when test="${ empty member }"> --%>
-<!-- 										<td>찜</td> -->
-<%-- 									</c:when> --%>
 								</c:choose>
 							</tr>
 					</c:forEach>
