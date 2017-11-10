@@ -103,9 +103,9 @@ $(function(){
 		</select>
 		</p>
 		
-		<a href="./qnaUpdate.qna?num=${qnaDTO.num }&library=${qnaDTO.library }&type=${qnaDTO.type}"><input type="button" value="수정"></a>
-		<a href="./qnaDelete.qna?num=${qnaDTO.num }"><input type="button" value="삭제"></a>
-		<a href="./qnaList.qna"><input type="button" value="list"></a>
+		<a href="../qna/qnaUpdate.qna?num=${qnaDTO.num }&library=${qnaDTO.library }&type=${qnaDTO.type}"><input type="button" value="수정"></a>
+		<a href="../qna/qnaDelete.qna?num=${qnaDTO.num }"><input type="button" value="삭제"></a>
+		<a href="../qna/qnaList.qna"><input type="button" value="list"></a>
 </form>	
 <hr>
 <form action="../qnaReply/qnaReplyInsert.qnaReply?pNum=${qnaDTO.num }" method="post">
