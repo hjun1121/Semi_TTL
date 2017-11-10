@@ -37,6 +37,16 @@ public class Market_OrderDAO {
 		
 		return result;
 	}
+	public  int delete(String id) throws Exception {
+		Connection con = DBConnector.getConnect();
+		String sql ="delete market_order where id=?";
+		PreparedStatement st = con.prepareStatement(sql);
+		st.setString(1, id);
+		int result = st.executeUpdate();
+		DBConnector.disConnect(st, con);
+		
+		return result;
+	}
 	public int update(Market_OrderDTO market_OrderDTO) throws Exception{
 		Connection con = DBConnector.getConnect();
 		String sql ="update market_order set title=?, writer=?, company=?, publish_date=?, price=?, library=? where num=?";

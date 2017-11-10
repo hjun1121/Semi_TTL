@@ -83,6 +83,16 @@ public class Book_Rent_DetailsDAO {
 		
 		return result;
 	}
+	public int delete(String id) throws Exception{
+		Connection con = DBConnector.getConnect();
+		String sql = "delete from book_rent_details where id=?";
+		PreparedStatement st = con.prepareStatement(sql);
+		st.setString(1, id);
+		
+		int result = st.executeUpdate();
+		
+		return result;
+	}
 	public int getTotalCount(String search) throws Exception {
 		Connection con = DBConnector.getConnect();
 		String sql = "select nvl(count(num), 0) from book_rent_details where in_time < ?" ;

@@ -8,7 +8,7 @@
 <title>Insert title here</title>
 </head>
 <body>
-	<h2>Member Update</h2>
+	<h2>회원 정보 수정</h2>
 	<form action="./memberUpdate.member" method="post">
 		<p>id<input type="text" name="id" value=${member.id } readonly="readonly"></p>
 		<p>pw<input type="password" name="pw" value=${member.pw } ></p>
@@ -59,6 +59,7 @@
 		</c:if>
 		<button type="submit">회원정보 수정</button>
 		<a href="./memberDelete.member?id=${member.id }"><input type="button" value="회원 탈퇴"></a>
+		<a href="../index.jsp"><input type="button" value="확인"></a>
 	</form>	
 </body>
 </html>

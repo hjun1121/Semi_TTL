@@ -82,6 +82,16 @@ public class Market_Deal_DetailsDAO {
 		
 		return result;
 	}
+	public int delete(String id) throws Exception{
+		Connection con = DBConnector.getConnect();
+		String sql = "delete from market_deal_details where id=?";
+		PreparedStatement st = con.prepareStatement(sql);
+		st.setString(1, id);
+		
+		int result = st.executeUpdate();
+		
+		return result;
+	}
 	public int getTotalCount(String search) throws Exception {
 		Connection con = DBConnector.getConnect();
 		String sql = "select nvl(count(num), 0) from market_deal_details where t_date < ?" ;

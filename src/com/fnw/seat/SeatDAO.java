@@ -77,4 +77,14 @@ public class SeatDAO {
 		 return ar;
 				 
 	}
+	public  int delete(String id) throws Exception {
+		Connection con = DBConnector.getConnect();
+		String sql ="delete from seat where id=?";
+		PreparedStatement st = con.prepareStatement(sql);
+		st.setString(1, id);
+		int result = st.executeUpdate();
+		DBConnector.disConnect(st, con);
+		
+		return result;
+	}
 }

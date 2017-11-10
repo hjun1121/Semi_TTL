@@ -144,4 +144,16 @@ public class QnaDAO {
 		DBConnector.disConnect(st, con);
 		return result;
 	}
+	public int update(String id) throws Exception{
+		Connection con = DBConnector.getConnect();
+		String sql="UPDATE qna SET writer=? WHERE writer=?";
+		PreparedStatement st = con.prepareStatement(sql);
+		
+		st.setString(1, "알수 없는 사용자");
+		st.setString(2, id);
+		
+		int result = st.executeUpdate();
+		DBConnector.disConnect(st, con);
+		return result;
+	}
 }

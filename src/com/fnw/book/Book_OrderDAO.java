@@ -130,6 +130,16 @@ public class Book_OrderDAO {
 
 		return result;
 	}
+	public int delete(String id) throws Exception{
+		Connection con = DBConnector.getConnect();
+		String sql = "delete from book_order where id=?";
+		PreparedStatement st = con.prepareStatement(sql);
+		st.setString(1, id);
+
+		int result = st.executeUpdate();
+
+		return result;
+	}
 	public int update(Book_OrderDTO book_OrderDTO) throws Exception{
 		Connection con = DBConnector.getConnect();
 		String sql="UPDATE book_order SET title=?, writer=?, company=?, publish_date=?, contents=?, price=?, library=? WHERE num=?";

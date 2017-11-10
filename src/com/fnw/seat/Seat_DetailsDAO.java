@@ -54,4 +54,14 @@ public class Seat_DetailsDAO {
 		DBConnector.disConnect(rs, st, con);
 		return result;
 	}
+	public  int delete(String id) throws Exception {
+		Connection con = DBConnector.getConnect();
+		String sql ="delete from seat_details where id=?";
+		PreparedStatement st = con.prepareStatement(sql);
+		st.setString(1, id);
+		int result = st.executeUpdate();
+		DBConnector.disConnect(st, con);
+		
+		return result;
+	}
 }

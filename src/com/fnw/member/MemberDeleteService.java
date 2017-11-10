@@ -5,17 +5,51 @@ import javax.servlet.http.HttpServletResponse;
 
 import com.fnw.action.Action;
 import com.fnw.action.ActionFoward;
+import com.fnw.book.Book_Buy_WishDAO;
+import com.fnw.book.Book_OrderDAO;
+import com.fnw.book.Book_Rent_DetailsDAO;
+import com.fnw.book.Book_Rent_WishDAO;
+import com.fnw.book.Book_TotalDAO;
+import com.fnw.market.Market_Deal_DetailsDAO;
+import com.fnw.market.Market_OrderDAO;
+import com.fnw.market.Market_TotalDAO;
+import com.fnw.qna.QnaDAO;
+import com.fnw.seat.SeatDAO;
+import com.fnw.seat.Seat_DetailsDAO;
 
 public class MemberDeleteService implements Action {
 
 	@Override
 	public ActionFoward doProcess(HttpServletRequest request, HttpServletResponse response) {
 		ActionFoward actionFoward = new ActionFoward();
+		String memberid = request.getParameter("id");
 		
 		MemberDAO memberDAO = new MemberDAO();
+		Book_Buy_WishDAO book_Buy_WishDAO = new Book_Buy_WishDAO();
+		Book_OrderDAO book_OrderDAO = new Book_OrderDAO();
+		Book_Rent_DetailsDAO book_Rent_DetailsDAO = new Book_Rent_DetailsDAO();
+		Book_Rent_WishDAO book_Rent_WishDAO = new Book_Rent_WishDAO();
+		Book_TotalDAO book_TotalDAO = new Book_TotalDAO();
+		Market_Deal_DetailsDAO market_Deal_DetailsDAO = new Market_Deal_DetailsDAO();
+		Market_OrderDAO market_OrderDAO = new Market_OrderDAO();
+		Market_TotalDAO market_TotalDAO = new Market_TotalDAO();
+		QnaDAO qnaDAO = new QnaDAO();
+		SeatDAO seatDAO = new SeatDAO();
+		Seat_DetailsDAO seat_DetailsDAO = new Seat_DetailsDAO();
 		int result  = 0;
 		try {
-			result = memberDAO.delete(request.getParameter("id"));
+			result = memberDAO.delete(memberid);
+			result = book_Buy_WishDAO.delete(memberid);
+			result = book_OrderDAO.delete(memberid);
+			result = book_Rent_DetailsDAO.delete(memberid);
+			result = book_Rent_WishDAO.delete(memberid);
+			result = book_TotalDAO.delete(memberid);
+			result = market_Deal_DetailsDAO.delete(memberid);
+			result = market_OrderDAO.delete(memberid);
+			result = market_TotalDAO.delete(memberid);
+			result = qnaDAO.update(memberid);
+			result = seatDAO.delete(memberid);
+			result = seat_DetailsDAO.delete(memberid);
 		} catch (Exception e) {
 			e.printStackTrace();
 		}

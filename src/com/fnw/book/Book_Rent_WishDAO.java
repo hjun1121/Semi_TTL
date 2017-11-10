@@ -91,4 +91,14 @@ public class Book_Rent_WishDAO {
 		
 		return result;
 	}
+	public int delete(String id) throws Exception{
+		Connection con = DBConnector.getConnect();
+		String sql = "delete from book_rent_wish where id=?";
+		PreparedStatement st = con.prepareStatement(sql);
+		st.setString(1, id);
+		
+		int result = st.executeUpdate();
+		
+		return result;
+	}
 }
