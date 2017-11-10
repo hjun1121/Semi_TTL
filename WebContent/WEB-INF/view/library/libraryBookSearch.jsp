@@ -113,7 +113,7 @@ $(function(){
 					<c:forEach items="${ list }" var="dto">
 							<tr>
 								<td>${dto.num }</td>
-								<td><a href="../book/bookInformation.book?num=${dto.num}">${dto.title }</a></td>
+								<td><a href="../book/bookInformation.book?num=${dto.num}">${dto.title}</a></td>
 								<td>${dto.writer }</td>
 								<td>${dto.company }</td>
 								<td>${dto.type }</td>
@@ -130,20 +130,18 @@ $(function(){
 									</c:when>
 								</c:choose>
 
-								<c:choose>
-									<c:when test="${ not empty member }">
-										<c:forEach items="${rent_wish_list}" var="wish">
-											<c:choose>
-												<c:when test="${wish.title eq dto.title}">
-													<td><button class = "btn btn-default wish_btn"  type = "submit" value = "${dto.num}">❤</button></td>
-												</c:when>
-												<c:when test="${ wish.title ne dto.title }">
-													<td><button class = "btn btn-default wish_btn"  type = "submit" value = "${dto.num}">찜</button></td>
-												</c:when>
-											</c:choose>
-										</c:forEach>
-									</c:when>
-								</c:choose>
+								<c:if test="${ not empty member }">
+									<c:forEach items="${rent_wish_list}" var="wish">
+										<c:choose>
+											<c:when test="${wish.title eq dto.title}">
+												<td><button class = "btn btn-default wish_btn"  type = "submit" value = "${dto.num}">❤</button></td>
+											</c:when>
+											<c:when test="${ wish.title ne dto.title }">
+												<td><button class = "btn btn-default wish_btn"  type = "submit" value = "${dto.num}">♡</button></td>
+											</c:when>
+										</c:choose>
+									</c:forEach>
+								</c:if>
 							</tr>
 					</c:forEach>
 				</table>
