@@ -156,14 +156,15 @@ public class Book_TotalDAO {
 		return result;
 	}
 	
-	public int delete(String id) throws Exception{
+	public int update(String id) throws Exception{
 		Connection con = DBConnector.getConnect();
-		String sql = "delete from book_total where rent_id=?";
+		String sql="UPDATE book_total SET rent_id WHERE id=?";
 		PreparedStatement st = con.prepareStatement(sql);
-		st.setString(1, id);
 		
+		st.setString(1, null);
+		st.setString(2, id);
 		int result = st.executeUpdate();
-		
+		DBConnector.disConnect(st, con);
 		return result;
 	}
 	

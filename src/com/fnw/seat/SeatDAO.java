@@ -77,11 +77,14 @@ public class SeatDAO {
 		 return ar;
 				 
 	}
-	public  int delete(String id) throws Exception {
+	public int update(String id) throws Exception {
 		Connection con = DBConnector.getConnect();
-		String sql ="delete from seat where id=?";
+		String sql="UPDATE seat SET id=?  where id=?";
 		PreparedStatement st = con.prepareStatement(sql);
-		st.setString(1, id);
+		
+		st.setString(1, 0);
+		st.setString(2, id);
+		
 		int result = st.executeUpdate();
 		DBConnector.disConnect(st, con);
 		

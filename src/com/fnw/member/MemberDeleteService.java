@@ -14,6 +14,7 @@ import com.fnw.market.Market_Deal_DetailsDAO;
 import com.fnw.market.Market_OrderDAO;
 import com.fnw.market.Market_TotalDAO;
 import com.fnw.qna.QnaDAO;
+import com.fnw.qnaReply.Qna_ReplyDAO;
 import com.fnw.seat.SeatDAO;
 import com.fnw.seat.Seat_DetailsDAO;
 
@@ -34,22 +35,24 @@ public class MemberDeleteService implements Action {
 		Market_OrderDAO market_OrderDAO = new Market_OrderDAO();
 		Market_TotalDAO market_TotalDAO = new Market_TotalDAO();
 		QnaDAO qnaDAO = new QnaDAO();
+		Qna_ReplyDAO qna_ReplyDAO = new Qna_ReplyDAO();
 		SeatDAO seatDAO = new SeatDAO();
 		Seat_DetailsDAO seat_DetailsDAO = new Seat_DetailsDAO();
 		int result  = 0;
 		try {
 			result = memberDAO.delete(memberid);
-			result = book_Buy_WishDAO.delete(memberid);
-			result = book_OrderDAO.delete(memberid);
-			result = book_Rent_DetailsDAO.delete(memberid);
-			result = book_Rent_WishDAO.delete(memberid);
-			result = book_TotalDAO.delete(memberid);
-			result = market_Deal_DetailsDAO.delete(memberid);
-			result = market_OrderDAO.delete(memberid);
-			result = market_TotalDAO.delete(memberid);
-			result = qnaDAO.update(memberid);
-			result = seatDAO.delete(memberid);
-			result = seat_DetailsDAO.delete(memberid);
+			book_Buy_WishDAO.delete(memberid);
+			book_OrderDAO.delete(memberid);
+			book_Rent_DetailsDAO.delete(memberid);
+			book_Rent_WishDAO.delete(memberid);
+			book_TotalDAO.update(memberid);
+			market_Deal_DetailsDAO.delete(memberid);
+			market_OrderDAO.delete(memberid);
+			market_TotalDAO.delete(memberid);
+			qnaDAO.update(memberid);
+			qna_ReplyDAO.update(memberid);
+			seatDAO.update(memberid);
+			seat_DetailsDAO.delete(memberid);
 		} catch (Exception e) {
 			e.printStackTrace();
 		}
