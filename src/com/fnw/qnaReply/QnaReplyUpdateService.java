@@ -43,11 +43,11 @@ public class QnaReplyUpdateService implements Action {
 		}
 		if(result>0) {
 			request.setAttribute("qnaDTO", qnaDTO);
-			request.setAttribute("rDTO", rlist);
+			request.setAttribute("replyList", rlist);
 			actionFoward.setCheck(true);
-			actionFoward.setPath("../WEB-INF/view/qna/qnaDetails.jsp");
+			actionFoward.setPath("../WEB-INF/view/qna/qnaView.jsp");
 		}else {
-			actionFoward.setPath("../WEB-INF/view/qna/qnaDetails.jsp");
+			actionFoward.setPath("../WEB-INF/view/qna/qnaView.jsp");
 		}
 		return actionFoward;
 	}

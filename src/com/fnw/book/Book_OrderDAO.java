@@ -26,6 +26,21 @@ public class Book_OrderDAO {
 		return result;
 	}
 	
+	//관리자 취소 사유
+	public int updateAdminCancel(int num, String cancel) throws Exception{
+		Connection con = DBConnector.getConnect();
+		String sql ="update book_order set cancel=? where num=?";
+		
+		PreparedStatement st = con.prepareStatement(sql);
+		st.setString(1, cancel);
+		st.setInt(2, num);
+		
+		int result = st.executeUpdate();
+		DBConnector.disConnect(st, con);
+		
+		return result;
+	}
+	
 	
 	//구매 도서 신청
 	public int insert(Book_OrderDTO book_OrderDTO) throws Exception {
@@ -125,6 +140,16 @@ public class Book_OrderDAO {
 		String sql = "delete from book_order where num=?";
 		PreparedStatement st = con.prepareStatement(sql);
 		st.setInt(1, num);
+
+		int result = st.executeUpdate();
+
+		return result;
+	}
+	public int delete(String id) throws Exception{
+		Connection con = DBConnector.getConnect();
+		String sql = "delete from book_order where id=?";
+		PreparedStatement st = con.prepareStatement(sql);
+		st.setString(1, id);
 
 		int result = st.executeUpdate();
 

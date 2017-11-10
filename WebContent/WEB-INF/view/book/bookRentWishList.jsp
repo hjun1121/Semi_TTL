@@ -16,6 +16,17 @@ $(document).ready(function() {
 			$("input[name=Pcheck]").prop("checked",false);
 		}
 	});
+	$(".chk").click(function() {
+		var boxAll = $('input:checkbox[name=Pcheck]').length
+		var boxSelect = $("input:checkbox[name=Pcheck]:checked").length
+		$("[name=Pcheck]").each(function(){
+			if(boxAll==boxSelect){
+				$("input[name=checkAll]").prop("checked",true);
+			}else if(boxAll!=boxSelect){
+				$("input[name=checkAll]").prop("checked",false);
+			}
+		});
+	});
 });
 </script>
 <title>Insert title here</title>
@@ -25,31 +36,56 @@ $(document).ready(function() {
 	<form action="./bookRentWishDelete.book" method="POST">
 		<table class="table" border="1">
 			<tr>
-				<th>전체선택<input type="checkbox" id="checkAll"></th>
+				<th>전체선택<input type="checkbox" class="chk" id="checkAll" name="checkAll"></th>
 				<th>num</th>
 				<th>title</th>
 				<th>writer</th>
 				<th>company</th>
 				<th>publish_date</th>
+				<th>section</th>
 				<th>library</th>
-				<th></th>
 				<th>state</th>
+				<th></th>
 			</tr>
 			<c:forEach items="${bookRentWishList }" var="bookRentWish_list">
 				<tr>
-					<td><input type="checkbox" name="Pcheck" value="${bookRentWish_list.num }"></td>
+					<td><input type="checkbox" class="chk" name="Pcheck" value="${bookRentWish_list.num }"></td>
 					<td>${bookRentWish_list.num }</td>
 					<td>${bookRentWish_list.title }</td>
 					<td>${bookRentWish_list.writer }</td>
 					<td>${bookRentWish_list.company }</td>
 					<td>${bookRentWish_list.publish_date }</td>
 					<td>${bookRentWish_list.section }</td>
-					<td>${bookRentWish_list.state }</td>
-					<td><a href="./bookRentWishDelete.book?num=${bookRentWish_list.num }"><input type="button" value="삭제"></a></td>
+					<c:choose>
+		            	<c:when test="${bookRentWish_list.library eq 1}">
+							<td>기흥구</td>
+						</c:when>
+						<c:when test="${bookRentWish_list.library eq 2}">
+							<td>송파구</td>
+						</c:when>
+						<c:when test="${bookRentWish_list.library eq 3}">
+							<td>장안구</td>
+						</c:when>
+						<c:when test="${bookRentWish_list.library eq 4}">
+							<td>분당구</td>
+						</c:when>
+						<c:otherwise>
+							<td>없음</td>
+						</c:otherwise>
+					</c:choose>
+					<c:choose>
+		            	<c:when test="${bookRentWish_list.state eq 0}">
+							<td>대여중</td>
+						</c:when>
+						<c:when test="${bookRentWish_list.state eq 1}">
+							<td><a href=""><input type="button" value="대여"></a></td>
+						</c:when>
+						<c:otherwise>
+							<td>없음</td>
+						</c:otherwise>
+					</c:choose>
 					
-					<c:if test="${bookOrderWish_list.state eq 2 }">
-				ㅋ	<td><a href=""><input type="button" value="대여"></a></td>
-					</c:if>
+					<td><a href="./bookRentWishDelete.book?num=${bookRentWish_list.num }"><input type="button" value="삭제"></a></td>
 				</tr>
 			</c:forEach>
 			<tr>

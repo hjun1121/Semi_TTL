@@ -7,7 +7,7 @@
 <title>Insert title here</title>
 </head>
 <body>
-	<h2>Member Fw Find</h2>
+	<h2>Member Pw Find</h2>
 	
 	<form action="./memberPwFind.member" method="post">
 		<p>id<input type="text" name="id"></p>

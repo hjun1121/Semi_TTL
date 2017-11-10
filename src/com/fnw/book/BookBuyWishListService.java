@@ -10,7 +10,7 @@ import com.fnw.action.ActionFoward;
 import com.fnw.book.Book_Buy_WishDAO;
 import com.fnw.util.PageMaker;
 
-public class BookOrderWishListService implements Action {
+public class BookBuyWishListService implements Action {
 
 	@Override
 	public ActionFoward doProcess(HttpServletRequest request, HttpServletResponse response) {
@@ -49,7 +49,7 @@ public class BookOrderWishListService implements Action {
 			e.printStackTrace();
 		}
 		actionFoward.setCheck(true);
-		actionFoward.setPath("../WEB-INF/view/book/bookOrderWishList.jsp");
+		actionFoward.setPath("../WEB-INF/view/book/bookBuyWishList.jsp");
 		return actionFoward;
 	}
 }

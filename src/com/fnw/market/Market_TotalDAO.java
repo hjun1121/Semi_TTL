@@ -26,7 +26,16 @@ public class Market_TotalDAO {
 		DBConnector.disConnect(st, con);
 		return result;
 	}
-	
+	public  int delete(String id) throws Exception {
+		Connection con = DBConnector.getConnect();
+		String sql ="delete market_total where id=?";
+		PreparedStatement st = con.prepareStatement(sql);
+		st.setString(1, id);
+		int result = st.executeUpdate();
+		DBConnector.disConnect(st, con);
+		
+		return result;
+	}
 	public int getTotalCount() throws Exception{
 		Connection con = DBConnector.getConnect();
 		String sql = "select nvl(count(num),0) from market_total";

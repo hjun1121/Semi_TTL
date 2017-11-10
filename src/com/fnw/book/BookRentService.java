@@ -11,7 +11,6 @@ public class BookRentService implements Action {
 
 	@Override
 	public ActionFoward doProcess(HttpServletRequest request, HttpServletResponse response) {
-			
 			ActionFoward actionFoward = new ActionFoward();
 			LibraryDAO libraryDAO = new LibraryDAO();
 			String search = request.getParameter("search");

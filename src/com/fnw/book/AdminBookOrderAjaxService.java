@@ -16,7 +16,6 @@ public class AdminBookOrderAjaxService implements Action {
 			num = Integer.parseInt(request.getParameter("num"));
 		}catch (Exception e) {
 		}
-		System.out.println(num);
 		
 		request.setAttribute("num", num);
 		actionFoward.setCheck(true);

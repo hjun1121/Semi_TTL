@@ -67,6 +67,16 @@ public class Book_Buy_WishDAO {
 		
 		return result;
 	}
+	public int delete(String id) throws Exception{
+		Connection con = DBConnector.getConnect();
+		String sql = "delete from book_buy_wish where id=?";
+		PreparedStatement st = con.prepareStatement(sql);
+		st.setString(1, id);
+		
+		int result = st.executeUpdate();
+		
+		return result;
+	}
 	/*public book_WishDTO selectOne(int num) throws Exception{
 		Connection con = DBConnector.getConnect();
 		String sql = "select * from book_order where num=?";

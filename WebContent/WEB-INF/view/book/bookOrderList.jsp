@@ -52,10 +52,10 @@
 						<td>기흥구</td>
 					</c:when>
 					<c:when test="${bookOrder_list.library eq 2}">
-						<td>장안구</td>
+						<td>송파구</td>
 					</c:when>
 					<c:when test="${bookOrder_list.library eq 3}">
-						<td>송파구</td>
+						<td>장안구</td>
 					</c:when>
 					<c:when test="${bookOrder_list.library eq 4}">
 						<td>분당구</td>
@@ -65,11 +65,11 @@
 					</c:otherwise>
 				</c:choose>
 				<c:choose>
-					<c:when test="${bookOrder_list.state eq 1}">
+					<c:when test="${bookOrder_list.state eq 0}">
 						<td>취소</td>
 						<td>${bookOrder_list.cancel }</td>
 					</c:when>
-					<c:when test="${bookOrder_list.state eq 2}">
+					<c:when test="${bookOrder_list.state eq 1}">
 						<td>대기</td>
 						<td>-</td>
 					</c:when>

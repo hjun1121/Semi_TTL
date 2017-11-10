@@ -23,10 +23,10 @@ public class QnaDeleteService implements Action {
 		}
 		if(result>0) {
 			request.setAttribute("message", "삭제 완료");
-			request.setAttribute("path", "./qnaList.qna?curPage=1");
+			request.setAttribute("path", "./qnaList.qna");
 		}else {
 			request.setAttribute("message", "삭제 실패");
-			request.setAttribute("path", "./qnaList.qna?curPage=1");
+			request.setAttribute("path", "./qnaList.qna");
 		}
 		actionFoward.setCheck(true);
 		actionFoward.setPath("../WEB-INF/view/common/result.jsp");

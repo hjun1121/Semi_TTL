@@ -7,7 +7,7 @@ import com.fnw.action.Action;
 import com.fnw.action.ActionFoward;
 import com.fnw.member.MemberDTO;
 
-public class BookOrderWishDeleteService implements Action {
+public class BookBuyWishDeleteService implements Action {
 
 	@Override
 	public ActionFoward doProcess(HttpServletRequest request, HttpServletResponse response) {
@@ -26,10 +26,10 @@ public class BookOrderWishDeleteService implements Action {
 			String id = ((MemberDTO)request.getSession().getAttribute("member")).getId();
 			if(result>0) {
 				request.setAttribute("message", "삭제 완료");
-				request.setAttribute("path", "./bookOrderWishList.book?curPage=1&id="+id);
+				request.setAttribute("path", "./bookBuyWishList.book?curPage=1&id="+id);
 			}else {
 				request.setAttribute("message", "삭제 실패");
-				request.setAttribute("path", "./bookOrderWishList.book?curPage=1&id="+id);
+				request.setAttribute("path", "./bookBuyWishList.book?curPage=1&id="+id);
 			}
 			actionFoward.setCheck(true);
 			actionFoward.setPath("../WEB-INF/view/common/result.jsp");
@@ -41,16 +41,15 @@ public class BookOrderWishDeleteService implements Action {
 				try {
 					result2 = book_Buy_WishDAO.delete(Integer.parseInt(param[i]));
 				}catch (Exception e) {
-					// TODO Auto-generated catch block
 					e.printStackTrace();
 				}
 				String id = ((MemberDTO)request.getSession().getAttribute("member")).getId();
 				if(result2>0) {
 					request.setAttribute("message", "삭제 완료");
-					request.setAttribute("path", "./bookOrderWishList.book?curPage=1&id="+id);
+					request.setAttribute("path", "./bookBuyWishList.book?curPage=1&id="+id);
 				}else {
 					request.setAttribute("message", "삭제 실패");
-					request.setAttribute("path", "./bookOrderWishList.book?curPage=1&id="+id);
+					request.setAttribute("path", "./bookBuyWishList.book?curPage=1&id="+id);
 				}
 				actionFoward.setCheck(true);
 				actionFoward.setPath("../WEB-INF/view/common/result.jsp");

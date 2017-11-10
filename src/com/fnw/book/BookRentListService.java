@@ -38,8 +38,6 @@ public class BookRentListService implements Action {
 		}
 		String p_date = year+"/"+month+"/"+day;
 		
-		System.out.println(p_date);
-		
 		int totalCount = 0;
 		String id = request.getParameter("id");
 		try {

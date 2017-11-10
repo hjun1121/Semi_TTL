@@ -4,10 +4,14 @@ import java.util.ArrayList;
 
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
+import javax.servlet.http.HttpSession;
 
 import com.fnw.action.Action;
 import com.fnw.action.ActionFoward;
+import com.fnw.book.Book_Rent_WishDAO;
+import com.fnw.book.Book_Rent_WishDTO;
 import com.fnw.book.Book_TotalDTO;
+import com.fnw.member.MemberDTO;
 import com.fnw.util.PageMaker;
 
 public class LibraryBookSearchService implements Action {
@@ -17,9 +21,32 @@ public class LibraryBookSearchService implements Action {
 
 		ActionFoward actionFoward = new ActionFoward();
 		ArrayList<Book_TotalDTO> ar = new ArrayList<>();
+<<<<<<< HEAD
 
+=======
+		ArrayList<Book_Rent_WishDTO> rent_wish_ar = new ArrayList<>();
+		
+>>>>>>> 7fa3095920d2d17298be8dcbc3895059d9ed3917
 		LibraryDAO libraryDAO = new LibraryDAO();
+		Book_Rent_WishDAO book_Rent_WishDAO = new Book_Rent_WishDAO();
 
+		////id 받아오기
+		HttpSession session = null;
+		String id = null;
+		try {
+			session = request.getSession();
+			id = ((MemberDTO)session.getAttribute("member")).getId();
+			if(id == null) {
+				id = "";
+			}
+		}catch (Exception e) {
+		}
+		try {
+			rent_wish_ar = book_Rent_WishDAO.selectList(id);
+		} catch (Exception e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
 		int library = 1;
 		try {
 			library = Integer.parseInt(request.getParameter("library"));
@@ -50,6 +77,10 @@ public class LibraryBookSearchService implements Action {
 		try {
 			PageMaker pageMaker = new PageMaker(curPage, totalCount);
 			ar = libraryDAO.selectList(pageMaker.getMakeRow(), kind, search, library);
+<<<<<<< HEAD
+=======
+			request.setAttribute("rent_wish_list", rent_wish_ar);
+>>>>>>> 7fa3095920d2d17298be8dcbc3895059d9ed3917
 			request.setAttribute("library", library);
 			request.setAttribute("curPage", curPage);
 			request.setAttribute("list", ar);

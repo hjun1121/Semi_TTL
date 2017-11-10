@@ -42,7 +42,7 @@ public class QnaDAO {
 		Connection con = DBConnector.getConnect();
 		String sql = "select * from" + 
 				"(select rownum R, N.* from" + 
-				"(select * from qna where "+kind+" like ? order by num asc) N)" + 
+				"(select * from qna where "+kind+" like ? order by num desc) N)" + 
 				"where R between ? and ?";
 		PreparedStatement st = con.prepareStatement(sql);
 		st.setString(1, "%"+search+"%");
@@ -131,7 +131,7 @@ public class QnaDAO {
 	}
 	public int update(QnaDTO qnaDTO) throws Exception{
 		Connection con = DBConnector.getConnect();
-		String sql="UPDATE qna SET type=?, title=?, contents=?, kind=? WHERE num=?";
+		String sql="UPDATE qna SET type=?, title=?, contents=?, library=? WHERE num=?";
 		PreparedStatement st = con.prepareStatement(sql);
 		
 		st.setInt(1, qnaDTO.getType());
@@ -139,6 +139,18 @@ public class QnaDAO {
 		st.setString(3, qnaDTO.getContents());
 		st.setInt(4, qnaDTO.getLibrary());
 		st.setInt(5, qnaDTO.getNum());
+		
+		int result = st.executeUpdate();
+		DBConnector.disConnect(st, con);
+		return result;
+	}
+	public int update(String id) throws Exception{
+		Connection con = DBConnector.getConnect();
+		String sql="UPDATE qna SET writer=? WHERE writer=?";
+		PreparedStatement st = con.prepareStatement(sql);
+		
+		st.setString(1, "알수 없는 사용자");
+		st.setString(2, id);
 		
 		int result = st.executeUpdate();
 		DBConnector.disConnect(st, con);
