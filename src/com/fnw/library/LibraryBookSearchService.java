@@ -27,17 +27,24 @@ public class LibraryBookSearchService implements Action {
 		Book_Rent_WishDAO book_Rent_WishDAO = new Book_Rent_WishDAO();
 
 		////id 받아오기
-		HttpSession session = request.getSession();
-		String id = ((MemberDTO)session.getAttribute("member")).getId();
-		if(id == null) {
-			id = "";
+		HttpSession session = null;
+		String id = null;
+		try {
+			session = request.getSession();
+			id = ((MemberDTO)session.getAttribute("member")).getId();
+			if(id == null) {
+				id = "";
+			}
+		}catch (Exception e) {
 		}
+		System.out.println(id);
 		try {
 			rent_wish_ar = book_Rent_WishDAO.selectList(id);
 		} catch (Exception e) {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
 		}
+		
 		int library = 1;
 		try {
 			library = Integer.parseInt(request.getParameter("library"));
