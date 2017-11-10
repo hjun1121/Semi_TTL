@@ -40,12 +40,13 @@ $(function(){
 	});
 	$("table").on("click", ".upReply", function() {
 		var c = $(this).attr("title");
-		var rcon = $("#reReplyCon"+c).val();
+		var rcon = $("#reReplyCon"+c).val(); 
 		document.frm.rcontents.value=rcon;
 		document.frm.submit();
 	});
 });
 </script>
+
 </head>
 <body>
 <form action="../qnaReply/qnaReplyUpdate.qnaReply" name="frm">
