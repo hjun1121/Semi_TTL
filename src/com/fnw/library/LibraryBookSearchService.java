@@ -37,14 +37,12 @@ public class LibraryBookSearchService implements Action {
 			}
 		}catch (Exception e) {
 		}
-		System.out.println(id);
 		try {
 			rent_wish_ar = book_Rent_WishDAO.selectList(id);
 		} catch (Exception e) {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
 		}
-		
 		int library = 1;
 		try {
 			library = Integer.parseInt(request.getParameter("library"));

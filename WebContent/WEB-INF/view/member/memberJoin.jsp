@@ -78,6 +78,10 @@
 			}
 		});
 		
+		$("#library").change(function(){
+			alert(this.val());
+		});
+		
 	});
 
 </script>
@@ -88,16 +92,26 @@
 <form action="./memberJoin.member" method="post" id="frm" name="frm">
 	<p>id<input type="text" id ="id" name="id"></p>
 	<div id="ch_id"></div>
-	<p>pw<input type="text" name="pw"></p>
+	<p>pw<input type="password" name="pw"></p>
 	<p>name<input type="text" name="name"></p>
 	<p>birth<input type="date" name="birth"></p>
-	<p>gender<input type="text" name="gender" ></p>
+	<p>
+		<input type="radio" value="m" name="gender">남
+		<input type="radio" value="f" name="gender">여
+	</p>
 	<p>addr<input type="text" name="addr"></p>
 	<p>phone<input type="text" name="phone"></p>
 	<p>email<input type="text" id="email" name="email">
 	<input type="button" id="mailCheck" value="이메일 인증"></p>
 	<div id="ch_email"></div>
-	<p>library<input type="number" name="location"></p>
+	<p>library
+		<select name="library">
+			<option value="1">기흥구</option>
+			<option value="2">송파구</option>
+			<option value="3">장안구</option>
+			<option value="4">분당구</option>
+		</select>
+	</p>
 	<input type="button" id="btn" value="join">
 </form>
 

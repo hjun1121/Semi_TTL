@@ -40,8 +40,6 @@ public class MemberDAO {
 		st.setString(7, memberDTO.getPhone());
 		st.setString(8, memberDTO.getEmail());
 		st.setInt(9, memberDTO.getLibrary());
-		/*st.setInt(10, memberDTO.getKind());*/
-		
 		int result = st.executeUpdate();
 		
 		DBConnector.disConnect(st, con);
