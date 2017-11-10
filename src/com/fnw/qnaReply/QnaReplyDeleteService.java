@@ -18,8 +18,6 @@ public class QnaReplyDeleteService implements Action {
 	public ActionFoward doProcess(HttpServletRequest request, HttpServletResponse response) {
 		ActionFoward actionFoward = new ActionFoward();
 		Qna_ReplyDAO qna_ReplyDAO = new Qna_ReplyDAO();
-		System.out.println(Integer.parseInt(request.getParameter("num")));
-		System.out.println(Integer.parseInt(request.getParameter("pNum")));
 		
 		int result = 0;
 		try {
@@ -42,20 +40,19 @@ public class QnaReplyDeleteService implements Action {
 			e.printStackTrace();
 		}
 		if(result>0) {
-			request.setAttribute("message", "수정 완료");
 			request.setAttribute("qnaDTO", qnaDTO);
-			request.setAttribute("rDTO", rlist);
+			request.setAttribute("replyList", rlist);
 			actionFoward.setCheck(true);
-			actionFoward.setPath("../WEB-INF/view/qna/qnaDetails.jsp");
+			actionFoward.setPath("../WEB-INF/view/qna/qnaView.jsp");
 		}else {
-			request.setAttribute("message", "수정 완료");
+			request.setAttribute("message", "수정 실패");
 			request.setAttribute("qnaDTO", qnaDTO);
-			request.setAttribute("rDTO", rlist);
+			request.setAttribute("replyList", rlist);
+			request.setAttribute("path", "../qna/qnaList.qna");
 			actionFoward.setCheck(true);
-			actionFoward.setPath("../WEB-INF/view/qna/qnaDetails.jsp");
+			actionFoward.setPath("../WEB-INF/view/common/result.jsp");
 		}
-		/*actionFoward.setCheck(true);
-		actionFoward.setPath("../WEB-INF/view/common/result.jsp");*/
+		
 
 		return actionFoward;
 	}

@@ -26,6 +26,25 @@
 	  });
 	  
   });
+  
+  $(function(){
+	  $("#btn_no").click(function(){
+		  
+	  $.ajax({
+			url:"./bookOrderNOAjax.book",
+			type:"POST",
+			data: {
+				num:${requestScope.view.num }
+				
+			},
+			success:function(data){
+				$("#NO").html(data);
+				
+			}
+		});
+	  });
+	  
+  });
   </script>
 </head>
 <body>
@@ -47,9 +66,10 @@
 		<input type="button" id="btn" value="OK">
 		<div id="OK"></div>
 		
+		<input type="button" id="btn_no" value="NO">
+		<div id="NO"></div>
 		
-			<%-- <a href="./bookOrderOKAdmin.book?num=${view.num }">승인</a> --%>
-			<a href="./${requestScope.book}Delete.${requestScope.book}?num=${requestScope.view.num}">거절</a>
+			<%-- <a href="./${requestScope.book}Delete.${requestScope.book}?num=${requestScope.view.num}">거절</a> --%>
 	
 		<a href="./bookOrderListAdmin.book">LIST</a>
 	
