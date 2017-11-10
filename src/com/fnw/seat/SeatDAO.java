@@ -82,7 +82,7 @@ public class SeatDAO {
 		String sql="UPDATE seat SET id=?  where id=?";
 		PreparedStatement st = con.prepareStatement(sql);
 		
-		st.setString(1, 0);
+		st.setString(1, null);
 		st.setString(2, id);
 		
 		int result = st.executeUpdate();

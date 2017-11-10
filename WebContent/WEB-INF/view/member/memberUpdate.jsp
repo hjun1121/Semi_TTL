@@ -25,11 +25,11 @@
 				<input type="hidden" name="library" value=${member.library } readonly="readonly">
 			</c:when>
 			<c:when test="${member.library eq 2}">
-				<p>library<input type="text" value="장안구" ></p>
+				<p>library<input type="text" value="송파구" ></p>
 				<input type="hidden" name="library" value=${member.library } readonly="readonly">
 			</c:when>
 			<c:when test="${member.library eq 3}">
-				<p>library<input type="text" value="송파구" ></p>
+				<p>library<input type="text" value="장안구" ></p>
 				<input type="hidden" name="library" value=${member.library } readonly="readonly">
 			</c:when>
 			<c:when test="${member.library eq 4}">

@@ -4,7 +4,10 @@ import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
+import java.text.SimpleDateFormat;
 import java.util.ArrayList;
+import java.util.Calendar;
+import java.util.Date;
 
 import com.fnw.member.MemberDTO;
 import com.fnw.util.DBConnector;
@@ -73,6 +76,16 @@ public class Book_Rent_DetailsDAO {
 		}
 		return book_Rent_DetailsDTO;
 	}
+	public int memDelOne(String id) throws Exception{
+		Connection con = DBConnector.getConnect();
+		String sql = "select * from book_rent_details where id=?";
+		PreparedStatement st = con.prepareStatement(sql);
+		st.setString(1, id);
+
+		int result = st.executeUpdate();
+		DBConnector.disConnect(st, con);
+		return result;
+	}
 	public int delete(int num) throws Exception{
 		Connection con = DBConnector.getConnect();
 		String sql = "delete from book_rent_details where num=?";
@@ -104,6 +117,17 @@ public class Book_Rent_DetailsDAO {
 		int result = rs.getInt(1);
 
 		DBConnector.disConnect(rs, st, con);
+		return result;
+	}
+	
+	public int bookReturn(int num) throws Exception {
+		Connection con = DBConnector.getConnect();
+		String sql = "update book_rent_details set out_time=NOW() where num = ?";
+		PreparedStatement st = con.prepareStatement(sql);
+		st.setInt(1, num);
+
+		int result = st.executeUpdate();
+		DBConnector.disConnect(st, con);
 		return result;
 	}
 }
