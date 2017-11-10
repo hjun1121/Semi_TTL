@@ -36,9 +36,9 @@ public class BookRentWishService implements Action {
 		}
 
 		if(result > 0) {
-			request.setAttribute("message", "찜 완료");
+			request.setAttribute("message", "❤ 완료");
 		}else {
-			request.setAttribute("message", "찜 실패");
+			request.setAttribute("message", "❤ 실패");
 		}
 
 		request.setAttribute("search", search);
