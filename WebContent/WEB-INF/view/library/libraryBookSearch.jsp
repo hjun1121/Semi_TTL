@@ -23,14 +23,14 @@ $(function(){
 	$(".rent_btn").click(function() {
 		var num = $(this).val();
 		$.ajax({
-			url: "../bookRent.book",
+			url: "../book/bookRent.book",
 			type: "GET",
 			data: {
 				num:num,
 				kind:'${kind}',
 				curPage: ${curPage},
 				search: '${search}',
-				library: '${library}',
+				library: ${library},
 				rent_id:'${member.id}'
 			},
 			success: function(data) {
@@ -39,11 +39,11 @@ $(function(){
 			}
 		});
 	});
-	
+
 	$(".wish_btn").click(function() {
 		var num = $(this).val();
 		$.ajax({
-			url: "../bookRentWish.book",
+			url: "../book/bookRentWish.book",
 			type: "GET",
 			data: {
 				num:num,
@@ -106,12 +106,14 @@ $(function(){
 						<td>출판사</td>
 						<td>분류</td>
 						<td>대여여부</td>
-						<td>찜하기</td>
+						<c:if test="${ not empty member }">
+							<td>찜하기</td>
+						</c:if>
 					</tr>
 					<c:forEach items="${ list }" var="dto">
 							<tr>
 								<td>${dto.num }</td>
-								<td><a href="./bookInformation.book?num=${dto.num}">${dto.title }</a></td>
+								<td><a href="../book/bookInformation.book?num=${dto.num}">${dto.title }</a></td>
 								<td>${dto.writer }</td>
 								<td>${dto.company }</td>
 								<td>${dto.type }</td>
@@ -127,13 +129,23 @@ $(function(){
 										<td>대여불가</td>
 									</c:when>
 								</c:choose>
+
 								<c:choose>
 									<c:when test="${ not empty member }">
-										<td><button class = "btn btn-default wish_btn"  type = "submit" id = "wish_btn" value = "${dto.num}">❤</button></td>
+										<c:forEach items="${rent_wish_list}" var="wish">
+											<c:choose>
+												<c:when test="${wish.title eq dto.title}">
+													<td><button class = "btn btn-default wish_btn"  type = "submit" value = "${dto.num}">❤</button></td>
+												</c:when>
+												<c:when test="${ wish.title ne dto.title }">
+													<td><button class = "btn btn-default wish_btn"  type = "submit" value = "${dto.num}">찜</button></td>
+												</c:when>
+											</c:choose>
+										</c:forEach>
 									</c:when>
-									<c:when test="${ empty member }">
-										<td>❤</td>
-									</c:when>
+<%-- 									<c:when test="${ empty member }"> --%>
+<!-- 										<td>찜</td> -->
+<%-- 									</c:when> --%>
 								</c:choose>
 							</tr>
 					</c:forEach>
