@@ -15,8 +15,8 @@ public class BookInformationService implements Action {
 
 		Book_TotalDAO book_TotalDAO = new Book_TotalDAO();
 		Book_TotalDTO book_TotalDTO = new Book_TotalDTO();
-		int num = Integer.parseInt(request.getParameter("num"));
 
+		int num = Integer.parseInt(request.getParameter("num"));
 		try {
 			book_TotalDTO = book_TotalDAO.selectOne(num);
 		} catch (Exception e) {
@@ -25,7 +25,7 @@ public class BookInformationService implements Action {
 		request.setAttribute("book", book_TotalDTO);
 		actionFoward.setCheck(true);
 		actionFoward.setPath("../WEB-INF/view/book/bookInformation.jsp");
-		
+
 		return actionFoward;
 	}
 }

@@ -15,8 +15,15 @@ public class BookRentService implements Action {
 			ActionFoward actionFoward = new ActionFoward();
 			LibraryDAO libraryDAO = new LibraryDAO();
 			String search = request.getParameter("search");
+			String kind = request.getParameter("kind");
 			int curPage = Integer.parseInt(request.getParameter("curPage"));
-
+			
+			int library = 1;
+			try {
+				library = Integer.parseInt(request.getParameter("library"));
+			} catch (Exception e) {
+				// TODO: handle exception
+			}
 			int num = 0;
 			try {
 				num = Integer.parseInt(request.getParameter("num"));
@@ -41,6 +48,8 @@ public class BookRentService implements Action {
 				request.setAttribute("message", "대여 실패");
 			}
 
+			request.setAttribute("kind", kind);
+			request.setAttribute("library", library);
 			request.setAttribute("search", search);
 			request.setAttribute("curPage", curPage);
 			actionFoward.setCheck(true);

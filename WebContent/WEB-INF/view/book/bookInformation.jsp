@@ -13,6 +13,7 @@
 <script type="text/javascript">
 
 $(function(){
+	
 	$("#btn").click(function() {
 		$.ajax({
 			url: "./bookRent.book",
@@ -43,6 +44,7 @@ $(function(){
 					<td>출판사</td>
 					<td>출판년도</td>
 					<td>도서위치</td>
+					<td>분류</td>
 					<td>대여여부</td>
 				</tr>
 				<tr>
@@ -52,6 +54,7 @@ $(function(){
 					<td>${ book.company }</td>
 					<td>${ book.publish_date }</td>
 					<td>${ book.section }</td>
+					<td>${ book.type }</td>
 					<c:choose>
 						<c:when test="${ book.state == 0 and not empty member }">
 							<td><button class = "btn btn-default" type = "submit" id = "btn">대여</button></td>

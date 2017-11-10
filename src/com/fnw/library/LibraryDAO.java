@@ -15,6 +15,22 @@ public class LibraryDAO {
 	public void delete() {}
 	public void update() {}
 	
+	public ArrayList<Book_TotalDTO> bookRecommend(int library) throws Exception {
+		Connection con = DBConnector.getConnect();
+		String sql = "select * from book_total where library = ? and rent_count >= 1 order by rent_count desc";
+		PreparedStatement st = con.prepareStatement(sql);
+		st.setInt(1, library);
+		ResultSet rs = st.executeQuery();
+		ArrayList<Book_TotalDTO> ar = new ArrayList<>();
+		Book_TotalDTO book_TotalDTO = null;
+		
+		while(rs.next()) {
+			book_TotalDTO = new Book_TotalDTO();
+			
+		}
+	}
+	
+	
 	//totalCount
 	public int getTotalCount(String kind, String search, int library) throws Exception {
 		Connection con = DBConnector.getConnect();

@@ -30,7 +30,7 @@ $(function(){
 				kind:'${kind}',
 				curPage: ${curPage},
 				search: '${search}',
-				library: '${library}',
+				library: ${library},
 				rent_id:'${member.id}'
 			},
 			success: function(data) {
@@ -39,7 +39,7 @@ $(function(){
 			}
 		});
 	});
-	
+
 	$(".wish_btn").click(function() {
 		var num = $(this).val();
 		$.ajax({
@@ -106,12 +106,12 @@ $(function(){
 						<td>출판사</td>
 						<td>분류</td>
 						<td>대여여부</td>
-						<td>찜하기</td>
+<!-- 						<td>찜하기</td> -->
 					</tr>
 					<c:forEach items="${ list }" var="dto">
 							<tr>
 								<td>${dto.num }</td>
-								<td><a href="./bookInformation.book?num=${dto.num}">${dto.title }</a></td>
+								<td><a href="../book/bookInformation.book?num=${dto.num}&rent_id=${member.id}">${dto.title}</a></td>
 								<td>${dto.writer }</td>
 								<td>${dto.company }</td>
 								<td>${dto.type }</td>
@@ -127,14 +127,14 @@ $(function(){
 										<td>대여불가</td>
 									</c:when>
 								</c:choose>
-								<c:choose>
-									<c:when test="${ not empty member }">
-										<td><button class = "btn btn-default wish_btn"  type = "submit" id = "wish_btn" value = "${dto.num}">❤</button></td>
-									</c:when>
-									<c:when test="${ empty member }">
-										<td>❤</td>
-									</c:when>
-								</c:choose>
+<%-- 								<c:choose> --%>
+<%-- 									<c:when test="${ not empty member }"> --%>
+<%-- 										<td><button class = "btn btn-default wish_btn"  type = "submit" id = "wish_btn" value = "${dto.num}">♡</button></td> --%>
+<%-- 									</c:when> --%>
+<%-- 									<c:when test="${ empty member }"> --%>
+<!-- 										<td>❤</td> -->
+<%-- 									</c:when> --%>
+<%-- 								</c:choose> --%>
 							</tr>
 					</c:forEach>
 				</table>

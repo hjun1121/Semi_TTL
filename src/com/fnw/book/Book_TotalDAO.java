@@ -48,6 +48,7 @@ public class Book_TotalDAO {
 			book_TotalDTO.setSection(rs.getString("section"));
 			book_TotalDTO.setLibrary(rs.getInt("library"));
 			book_TotalDTO.setState(rs.getInt("state"));
+			book_TotalDTO.setType(rs.getString("type"));
 			book_TotalDTO.setRent_id(rs.getString("rent_id"));
 			book_TotalDTO.setRent_count(rs.getInt("rent_count"));
 		}

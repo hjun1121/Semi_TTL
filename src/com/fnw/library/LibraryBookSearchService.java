@@ -17,7 +17,7 @@ public class LibraryBookSearchService implements Action {
 
 		ActionFoward actionFoward = new ActionFoward();
 		ArrayList<Book_TotalDTO> ar = new ArrayList<>();
-		
+
 		LibraryDAO libraryDAO = new LibraryDAO();
 
 		int library = 1;
@@ -50,6 +50,7 @@ public class LibraryBookSearchService implements Action {
 		try {
 			PageMaker pageMaker = new PageMaker(curPage, totalCount);
 			ar = libraryDAO.selectList(pageMaker.getMakeRow(), kind, search, library);
+			request.setAttribute("library", library);
 			request.setAttribute("curPage", curPage);
 			request.setAttribute("list", ar);
 			request.setAttribute("page", pageMaker.getMakePage());
