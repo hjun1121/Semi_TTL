@@ -7,7 +7,8 @@ import com.fnw.action.Action;
 import com.fnw.action.ActionFoward;
 
 
-public class BookOrderOkAdminService implements Action {
+
+public class AdminBookOrderOKService implements Action {
 
 	@Override
 	public ActionFoward doProcess(HttpServletRequest request, HttpServletResponse response) {
@@ -17,16 +18,40 @@ public class BookOrderOkAdminService implements Action {
 			num = Integer.parseInt(request.getParameter("num"));
 		}catch (Exception e) {
 		}
-		System.out.println(num);
+		
+		String type = request.getParameter("type");
+		if(type==null){
+			type="총류";
+		}
+		
 		Book_OrderDAO book_OrderDAO = new Book_OrderDAO();
 		Book_TotalDAO book_TotalDAO = new Book_TotalDAO();
 		Book_OrderDTO book_OrderDTO = new Book_OrderDTO();
-	
+		Book_TotalDTO book_TotalDTO = new Book_TotalDTO();
+		
 		int result =0;
 		try {
+			
 			book_OrderDTO = book_OrderDAO.selectOne(num);
 			
-			result = book_TotalDAO.insert(book_OrderDTO);
+			
+			
+			
+			book_TotalDTO.setTitle(book_OrderDTO.getTitle());
+			book_TotalDTO.setWriter(book_OrderDTO.getWriter());
+			book_TotalDTO.setCompany(book_OrderDTO.getCompany());
+			book_TotalDTO.setPublish_date(book_OrderDTO.getPublish_date());
+			book_TotalDTO.setSection("123");
+			book_TotalDTO.setLibrary(book_OrderDTO.getLibrary());
+			book_TotalDTO.setType(type);
+			book_TotalDTO.setState(book_OrderDTO.getState());
+	
+			
+			
+			
+			
+			result = book_TotalDAO.insert(book_TotalDTO);
+			
 			result = book_OrderDAO.updateAdmin(num, 2);
 		} catch (Exception e) {
 			// TODO Auto-generated catch block
@@ -49,5 +74,6 @@ public class BookOrderOkAdminService implements Action {
 		
 		return actionFoward;
 	}
-
 }
+
+

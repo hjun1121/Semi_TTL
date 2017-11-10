@@ -15,7 +15,23 @@ public class QnaUpdateService implements Action {
 	public ActionFoward doProcess(HttpServletRequest request, HttpServletResponse response) {
 		ActionFoward actionFoward = new ActionFoward();
 		String method = request.getMethod();
-		int num = Integer.parseInt(request.getParameter("num"));
+		int num =0;
+		try {
+			num = Integer.parseInt(request.getParameter("num"));
+		}catch (Exception e) {
+		}
+		
+		int library =1;
+		try {
+			library = Integer.parseInt(request.getParameter("library"));
+		}catch (Exception e) {
+		}
+		
+		int type =1;
+		try {
+			type = Integer.parseInt(request.getParameter("type"));
+		}catch (Exception e) {
+		}
 		if(method.equals("GET")) {
 			QnaDTO qnaDTO = null;
 			QnaDAO qnaDAO = new QnaDAO();
@@ -25,6 +41,8 @@ public class QnaUpdateService implements Action {
 				e.printStackTrace();
 			}
 			request.setAttribute("qnaDTO", qnaDTO);
+			request.setAttribute("library", library);
+			request.setAttribute("type", type);
 			actionFoward.setCheck(true);
 			actionFoward.setPath("../WEB-INF/view/qna/qnaUpdate.jsp");
 		}else {
@@ -40,7 +58,6 @@ public class QnaUpdateService implements Action {
 				qnaDTO.setContents(request.getParameter("contents"));
 				qnaDTO.setWriter(request.getParameter("writer"));
 				qnaDTO.setReg_date(Date.valueOf(request.getParameter("date")));
-				qnaDTO.setHit(Integer.parseInt(request.getParameter("hit")));
 				qnaDTO.setLibrary(Integer.parseInt(request.getParameter("library")));
 				try {
 					result = qnaDAO.update(qnaDTO);

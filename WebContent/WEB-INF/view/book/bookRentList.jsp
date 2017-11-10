@@ -114,7 +114,6 @@ $(function(){
 			<th>writer</th>
 			<th>company</th>
 			<th>publish_date</th>
-			<th>id</th>
 			<th>library</th>
 			<th>in_time</th>
 			<th>out_time</th>
@@ -128,11 +127,33 @@ $(function(){
 				<td>${bookRent_list.writer }</td>
 				<td>${bookRent_list.company }</td>
 				<td>${bookRent_list.publish_date }</td>
-				<td>${bookRent_list.id }</td>
-				<td>${bookRent_list.library }</td>
+				<c:choose>
+					<c:when test="${bookRent_list.library eq 1}">
+						<td>기흥구</td>
+					</c:when>
+					<c:when test="${bookRent_list.library eq 2}">
+						<td>송파구</td>
+					</c:when>
+					<c:when test="${bookRent_list.library eq 3}">
+						<td>장안구</td>
+					</c:when>
+					<c:when test="${bookRent_list.library eq 4}">
+						<td>분당구</td>
+					</c:when>
+					<c:otherwise>
+						<p>library<input type="number" value="없음" ></p>
+					</c:otherwise>
+				</c:choose>
 				<td>${bookRent_list.in_time }</td>
 				<td>${bookRent_list.out_time }</td>
-				<td>${bookRent_list.late_date }</td>
+				<c:choose>
+					<c:when test="${empty bookRent_list.out_time }">
+						<td>${bookRent_list.late_date }</td>
+					</c:when>
+					<c:otherwise>
+						<td>0</td>
+					</c:otherwise>
+				</c:choose>
 			</tr>
 		</c:forEach>
 	</table>

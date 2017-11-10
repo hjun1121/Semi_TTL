@@ -9,16 +9,45 @@ import com.fnw.qna.QnaDTO;
 import com.fnw.util.DBConnector;
 
 public class Qna_ReplyDAO {
-	public int insert(Qna_ReplyDTO qna_ReplyDTO) throws Exception{
+	
+	private int replyUpdate(Qna_ReplyDTO qna_ReplyDTO) throws Exception{  
+		
 		Connection con = DBConnector.getConnect();
-		String sql = "insert into qna_reply values(?,reply_seq.nextval,?,?,sysdate,?,?,?)";
+		String sql ="update qna set step=step+1 where ref=? and step>?";
+		PreparedStatement st = con.prepareStatement(sql);
+		
+		st.setInt(1, qna_ReplyDTO.getRef());
+		st.setInt(2, qna_ReplyDTO.getStep());
+		
+		int result = st.executeUpdate();
+		
+		DBConnector.disConnect(st, con);
+		
+		return result;
+		
+	}
+	
+	public int insertRelpy(Qna_ReplyDTO qna_ReplyDTO) throws Exception{
+		Connection con = DBConnector.getConnect();
+		String sql = "insert into qna_reply values(?,reply_seq.nextval,?,?,sysdate,reply_seq.currval,0,0)";
 		PreparedStatement st = con.prepareStatement(sql);
 		st.setInt(1, qna_ReplyDTO.getpNum());
 		st.setString(2, qna_ReplyDTO.getWriter());
 		st.setString(3, qna_ReplyDTO.getContents());
-		st.setInt(4, qna_ReplyDTO.getRef());
-		st.setInt(5, qna_ReplyDTO.getStep());
-		st.setInt(6, qna_ReplyDTO.getDepth());
+		
+		int result = st.executeUpdate();
+		DBConnector.disConnect(st, con);
+		return result;
+	}
+	
+	
+	public int insert(Qna_ReplyDTO qna_ReplyDTO) throws Exception{
+		Connection con = DBConnector.getConnect();
+		String sql = "insert into qna_reply values(?,reply_seq.nextval,?,?,sysdate,reply_seq.currval,0,0)";
+		PreparedStatement st = con.prepareStatement(sql);
+		st.setInt(1, qna_ReplyDTO.getpNum());
+		st.setString(2, qna_ReplyDTO.getWriter());
+		st.setString(3, qna_ReplyDTO.getContents());
 		
 		int result = st.executeUpdate();
 		DBConnector.disConnect(st, con);
@@ -27,7 +56,7 @@ public class Qna_ReplyDAO {
 	
 	public ArrayList<Qna_ReplyDTO> selectList(int pNum) throws Exception {
 		Connection con = DBConnector.getConnect();
-		String sql = "select * from qna_reply where pNum=?";
+		String sql = "select * from qna_reply where pNum=? order by ref asc";
 		PreparedStatement st = con.prepareStatement(sql);
 		st.setInt(1, pNum);
 		

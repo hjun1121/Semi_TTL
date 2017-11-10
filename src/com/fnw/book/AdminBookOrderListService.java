@@ -11,7 +11,7 @@ import com.fnw.book.Book_OrderDAO;
 import com.fnw.book.Book_OrderDTO;
 import com.fnw.util.PageMaker;
 
-public class BookOrderListAdminService implements Action {
+public class AdminBookOrderListService implements Action {
 
 	@Override
 	public ActionFoward doProcess(HttpServletRequest request, HttpServletResponse response) {
@@ -22,7 +22,6 @@ public class BookOrderListAdminService implements Action {
 		try {
 			curPage=Integer.parseInt(request.getParameter("curPage"));
 		}catch (Exception e) {
-			e.printStackTrace();
 		}
 		
 		String kind = request.getParameter("kind");
@@ -41,13 +40,13 @@ public class BookOrderListAdminService implements Action {
 			List<Book_OrderDTO> ar=book_OrderDAO.selectList(pageMaker.getMakeRow(), kind, search);
 			request.setAttribute("list", ar);
 			request.setAttribute("page", pageMaker.getMakePage());
-			request.setAttribute("book", "book");
+			
 		} catch (Exception e) {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
 		}
 		actionFoward.setCheck(true);
-		actionFoward.setPath("../WEB-INF/view/book/bookOrderListAdmin.jsp");
+		actionFoward.setPath("../WEB-INF/view/admin/admin_bookOrderList.jsp");
 		
 		return actionFoward;
 	

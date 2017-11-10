@@ -98,19 +98,16 @@ public class Book_TotalDAO {
 
 	public int insert(Book_TotalDTO book_TotalDTO) throws Exception {
 		Connection con =  DBConnector.getConnect();
-		String sql = "insert into book_total values(?,?,?,?,?,?,?,?,?,?,?)";
+		String sql = "insert into book_total values((select nvl(max(num),0) from book_total)+1,?,?,?,?,?,?,?,0,0,0)";
 		PreparedStatement st = con.prepareStatement(sql);
-		st.setInt(1, book_TotalDTO.getNum());
-		st.setString(2, book_TotalDTO.getTitle());
-		st.setString(3, book_TotalDTO.getWriter());
-		st.setString(4, book_TotalDTO.getCompany());
-		st.setString(5, book_TotalDTO.getPublish_date());
-		st.setString(6, book_TotalDTO.getSection());
-		st.setInt(7, book_TotalDTO.getLibrary());
-		st.setString(8, book_TotalDTO.getType());
-		st.setInt(9, book_TotalDTO.getState());
-		st.setString(10, book_TotalDTO.getRent_id());
-		st.setInt(11, book_TotalDTO.getRent_count());
+		st.setString(1, book_TotalDTO.getTitle());
+		st.setString(2, book_TotalDTO.getWriter());
+		st.setString(3, book_TotalDTO.getCompany());
+		st.setString(4, book_TotalDTO.getPublish_date());
+		st.setString(5, book_TotalDTO.getSection());
+		st.setInt(6, book_TotalDTO.getLibrary());
+		st.setString(7, book_TotalDTO.getType());
+
 		
 		int result = st.executeUpdate();
 		
@@ -118,9 +115,9 @@ public class Book_TotalDAO {
 		return result;
 	}
 	
-	public int insert(Book_OrderDTO book_OrderDTO) throws Exception {
+	/*public int insert(Book_OrderDTO book_OrderDTO) throws Exception {
 		Connection con =  DBConnector.getConnect();
-		String sql = "insert into book_total values((select nvl(max(num),0) from book_total)+1,?,?,?,?,0,0,?,0,0,0)";
+		String sql = "insert into book_total values((select nvl(max(num),0) from book_total)+1,?,?,?,?,0,?,0,0,0,0)";
 		PreparedStatement st = con.prepareStatement(sql);
 
 		st.setString(1, book_OrderDTO.getTitle());
@@ -133,7 +130,7 @@ public class Book_TotalDAO {
 		
 		DBConnector.disConnect(st, con);
 		return result;
-	}
+	}*/
 	
 
 	
