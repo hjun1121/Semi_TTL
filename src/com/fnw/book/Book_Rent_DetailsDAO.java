@@ -7,9 +7,8 @@ import java.sql.SQLException;
 import java.text.SimpleDateFormat;
 import java.util.ArrayList;
 import java.util.Calendar;
-import java.util.Date;
+import java.sql.Date;
 
-import com.fnw.member.MemberDTO;
 import com.fnw.util.DBConnector;
 import com.fnw.util.MakeRow;
 
@@ -122,7 +121,7 @@ public class Book_Rent_DetailsDAO {
 	
 	public int bookReturn(int num) throws Exception {
 		Connection con = DBConnector.getConnect();
-		String sql = "update book_rent_details set out_time=NOW() where num = ?";
+		String sql = "update book_rent_details set out_time=sysdate where num = ?";
 		PreparedStatement st = con.prepareStatement(sql);
 		st.setInt(1, num);
 
