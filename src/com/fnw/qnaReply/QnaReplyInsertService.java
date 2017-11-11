@@ -1,8 +1,5 @@
 package com.fnw.qnaReply;
 
-
-import java.util.ArrayList;
-
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
@@ -10,8 +7,6 @@ import javax.servlet.http.HttpSession;
 import com.fnw.action.Action;
 import com.fnw.action.ActionFoward;
 import com.fnw.member.MemberDTO;
-import com.fnw.qna.QnaDAO;
-import com.fnw.qna.QnaDTO;
 public class QnaReplyInsertService implements Action {
 	@Override
 	public ActionFoward doProcess(HttpServletRequest request, HttpServletResponse response) {
@@ -26,6 +21,9 @@ public class QnaReplyInsertService implements Action {
 		if(pw == null) {
 			pw="";
 		}
+		
+		
+		
 		HttpSession session = request.getSession();
 		String id = ((MemberDTO)session.getAttribute("member")).getId();
 		

@@ -44,13 +44,28 @@ $(function(){
 	$("table").on("click", ".up", function(){  //댓글 수정 눌렀을때 생기는 up 클래스 버튼들
 		var replyNum = $(this).attr("title");
 		var replyCon = $("#upContents"+replyNum).val();  //새로운 reply contents
-		document.frm2.num.value=replyNum;
-		document.frm2.contents.value=replyCon;
+		document.frm2.num.value=replyNum;  		//댓글 번호
+		document.frm2.contents.value=replyCon;  //댓글 내용
 		document.frm2.submit();
 		
 	});
 	
+	$(".replyBtn").click(function(){
+		$(".reReply").html("");
+		var replyNum = $(this).attr("title"); //댓글 번호
+		var replyHtml = '<td colspan="4"> <textarea id="inContents'+replyNum+'"></textarea> </td>'
+		replyHtml = replyHtml+ '<td colspan="1"><input type="button" class="inReply" value="완료" title='+replyNum+'></td>'
+		$("#reply"+replyNum).html(replyHtml);
+		
+	});
 	
+	$("table").on("click", ".inReply", function(){  //댓글 수정 눌렀을때 생기는 up 클래스 버튼들
+		var replyNum = $(this).attr("title");
+		var replyCon = $("#inContents"+replyNum).val();  //새로운 reply contents
+		document.frm3.num.value=replyNum;      //댓글 달 애 번호 
+		document.frm3.contents.value=replyCon; //댓글내용
+		document.frm3.submit();
+	});
 });
 </script>
 </head>
@@ -94,9 +109,13 @@ $(function(){
 			
 			<tr>
 				<td>내용</td>
-				<td colspan="3" id="${dto.num }" title="${dto.contents }" >${dto.contents }</td>
+				<td colspan="3" id="${dto.num }" title="${dto.contents }" >
+				<c:forEach begin="1" end="${dto.depth }">
+					->
+				</c:forEach>
+				${dto.contents }</td>
 				<td>
-				<input type="button" class="btn${dto.num }" value="답글">
+				<input type="button" class="btn${dto.num } replyBtn" title="${dto.num }" value="답글">
 				<c:if test="${member.id eq dto.writer}">
 					<input type="button" class="replyUpdate btn${dto.num }" title="${dto.num }" value="수정">
 				</c:if>
@@ -105,9 +124,10 @@ $(function(){
 				</c:if>
 				</td>
 			</tr>
-			
-			<tr id="reReply${DTO.num }">
+			<tr id="reply${dto.num }" class="reReply" title="${dto.num }">
 			</tr>
+			
+			
 		</c:forEach>
 	</table>
 </c:if>
@@ -115,10 +135,16 @@ $(function(){
 <form action="../qnaReply/qnaReplyUpdate.qnaReply" name="frm2">
 	<input type ="hidden" value="${qnaDTO.num }" name="pNum">
 	<input type ="hidden" value="${qnaDTO.pw }" name="pw">
-	<input type="hidden" name="num">
-	<input type="hidden" name="contents">
+	<input type ="hidden" name="num">
+	<input type ="hidden" name="contents">
 </form>
 
+<form action="../qnaReply/reQnaReplyInsert.qnaReply" name="frm3">
+	<input type ="hidden" value="${qnaDTO.num }" name="pNum">
+	<input type ="hidden" value="${qnaDTO.pw }" name="pw">
+	<input type ="hidden" name="num">
+	<input type ="hidden" name="contents">
+</form>
 
 </body>
 </html>
