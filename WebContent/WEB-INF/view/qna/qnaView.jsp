@@ -29,6 +29,27 @@ $(function(){
 		$("#library").val("분당구");
 	}
 	
+	$(".replyUpdate").click(function(){
+		var replyNum = $(this).attr("title");  //title 숫자  = 리플 num 숫자
+		var replyCon = $("#"+replyNum).attr("title"); //reply contents 내용
+		
+		var replyHtml = '<textarea id="upContents'+replyNum+'">'+replyCon+'</textarea>';
+		replyHtml = replyHtml + '<input type="button" class="up" value="완료" title='+replyNum+'>';
+		
+		$("#"+replyNum).html(replyHtml);
+		$(".btn"+replyNum).hide();
+	});
+	
+	
+	$("table").on("click", ".up", function(){  //댓글 수정 눌렀을때 생기는 up 클래스 버튼들
+		var replyNum = $(this).attr("title");
+		var replyCon = $("#upContents"+replyNum).val();  //새로운 reply contents
+		document.frm2.num.value=replyNum;
+		document.frm2.contents.value=replyCon;
+		document.frm2.submit();
+		
+	});
+	
 	
 });
 </script>
@@ -53,23 +74,36 @@ $(function(){
 		<a href="../qna/qnaList.qna"><input type="button" value="list"></a>
 </form>	
 <hr>
-<form action="../qnaReply/qnaReplyInsert.qnaReply?pNum=${qnaDTO.num }" method="post">
+<form action="../qnaReply/qnaReplyInsert.qnaReply" method="post">
+	<input type ="hidden" value="${qnaDTO.num }" name="pNum">
+	<input type ="hidden" value="${qnaDTO.pw }" name="pw">
 	<p><textarea name="contents"></textarea>
 	<button type="submit">등록</button> </p>
 </form>
+
 <c:if test="${replyList ne null }">
 	<table border="1">
-		<c:forEach items="${replyList }" var="DTO" varStatus="i">
+		<c:forEach items="${replyList }" var="dto" varStatus="i">
 			<tr>
-				<td colspan="4">${DTO.writer }</td>
-				<td colspan="2">${DTO.reg_date }</td>
+				<td>작성자</td>
+				<td>${dto.writer }</td>
+				<td>날짜</td>
+				<td>${dto.reg_date }</td>
+				<td colspan="3">버튼들</td>
 			</tr>
 			
 			<tr>
-				<td colspan="3" id="${DTO.num }"><div id="update${DTO.num }">${DTO.contents }</div></td>
-				<td class="btn${DTO.num }"><input type="button" class="replyUpdate" title="${DTO.num }" value="수정"></td>
-				<td><input type="button" class="reReply btn${DTO.num }" title="${DTO.num }" value="답글"></td>
-				<td class="btn${DTO.num }"><a href="../qnaReply/qnaReplyDelete.qnaReply?num=${DTO.num }&pNum=${qnaDTO.num }"><input type="button" value="삭제"></a></td>
+				<td>내용</td>
+				<td colspan="3" id="${dto.num }" title="${dto.contents }" >${dto.contents }</td>
+				<td>
+				<input type="button" class="btn${dto.num }" value="답글">
+				<c:if test="${member.id eq dto.writer}">
+					<input type="button" class="replyUpdate btn${dto.num }" title="${dto.num }" value="수정">
+				</c:if>
+				<c:if test="${member.id eq dto.writer or member.kind eq 10 or member.id eq qnaDTO.writer }">
+					<a href="../qnaReply/qnaReplyDelete.qnaReply?num=${dto.num }&pNum=${qnaDTO.num }"><input type="button" class="btn${dto.num }" value="삭제"></a>
+				</c:if>
+				</td>
 			</tr>
 			
 			<tr id="reReply${DTO.num }">
@@ -77,5 +111,14 @@ $(function(){
 		</c:forEach>
 	</table>
 </c:if>
+
+<form action="../qnaReply/qnaReplyUpdate.qnaReply" name="frm2">
+	<input type ="hidden" value="${qnaDTO.num }" name="pNum">
+	<input type ="hidden" value="${qnaDTO.pw }" name="pw">
+	<input type="hidden" name="num">
+	<input type="hidden" name="contents">
+</form>
+
+
 </body>
 </html>

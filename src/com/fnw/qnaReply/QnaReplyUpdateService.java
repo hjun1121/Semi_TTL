@@ -15,12 +15,32 @@ public class QnaReplyUpdateService implements Action {
 	@Override
 	public ActionFoward doProcess(HttpServletRequest request, HttpServletResponse response) {
 		ActionFoward actionFoward = new ActionFoward();
+		
+		int pNum = 1;
+		try {
+			pNum = Integer.parseInt(request.getParameter("pNum"));
+		}catch (Exception e) {
+		}
+		String pw = request.getParameter("pw");
+		if(pw==null) {
+			pw="";
+		}
+		
+		int num = 1;
+		try {
+			num = Integer.parseInt(request.getParameter("num"));
+		}catch (Exception e) {
+		}
+		String contents = request.getParameter("contents");
+		if(contents == null) {
+			contents = "";
+		}
+		
 		Qna_ReplyDAO qna_ReplyDAO = new Qna_ReplyDAO();
 		Qna_ReplyDTO qna_ReplyDTO = new Qna_ReplyDTO();
 		
-		qna_ReplyDTO.setContents(request.getParameter("rcontents"));
-		qna_ReplyDTO.setNum(Integer.parseInt(request.getParameter("rnum")));
-		int pNum = Integer.parseInt(request.getParameter("pnum"));
+		qna_ReplyDTO.setNum(num);
+		qna_ReplyDTO.setContents(contents);
 		
 		int result = 0;
 		try {
@@ -28,27 +48,16 @@ public class QnaReplyUpdateService implements Action {
 		} catch (Exception e) {
 			e.printStackTrace();
 		}
-		QnaDTO qnaDTO = new QnaDTO();
-		QnaDAO qnaDAO = new QnaDAO();
-		try {
-			qnaDTO = qnaDAO.selectOne(pNum);
-		} catch (Exception e) {
-			e.printStackTrace();
-		}
-		ArrayList<Qna_ReplyDTO> rlist = new ArrayList<>();
-		try {
-			rlist = qna_ReplyDAO.selectList(pNum);
-		} catch (Exception e) {
-			e.printStackTrace();
-		}
+		
 		if(result>0) {
-			request.setAttribute("qnaDTO", qnaDTO);
-			request.setAttribute("replyList", rlist);
-			actionFoward.setCheck(true);
-			actionFoward.setPath("../WEB-INF/view/qna/qnaView.jsp");
+			request.setAttribute("message", "reply 수정 완료");
 		}else {
-			actionFoward.setPath("../WEB-INF/view/qna/qnaView.jsp");
+			request.setAttribute("message", "reply 수정 실패");
 		}
+		request.setAttribute("num", pNum);
+		request.setAttribute("pw", pw);
+		actionFoward.setCheck(true);
+		actionFoward.setPath("../WEB-INF/view/common/resultQna.jsp");
 		return actionFoward;
 	}
 }

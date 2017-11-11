@@ -42,6 +42,9 @@
 		<th>date</th>
 		<th>writer</th>
 		<th>hit</th>
+		<c:if test="${member.kind eq 10 }">
+			<th>pw</th>
+		</c:if>
 	</tr>
 	<c:forEach items="${list }" var="qnaDTO">
 		<tr>
@@ -50,6 +53,9 @@
 			<td>${qnaDTO.reg_date }</td>
 			<td>${qnaDTO.writer }</td>
 			<td>${qnaDTO.hit }</td>
+			<c:if test="${member.kind eq 10 }">
+				<td>${qnaDTO.pw }</td>
+			</c:if>
 		</tr>
 	</c:forEach>
 	<tr>
