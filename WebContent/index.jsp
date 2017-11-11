@@ -6,10 +6,10 @@
 <html>
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1">
-  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
-  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
-  <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
 <title>Total Library Page</title>
 </head>
 <body>
@@ -24,7 +24,7 @@
 		<p><a href="./member/memberUpdatePwCheck.member">회원 정보 수정★</a></p>
 		<p><a href="./market/marketDealsList.market?id=${member.id }">중고책거래 판/구매 리스트★</a></p>
 		<p><a href="./seat/seatTotalList.seat?id=${member.id }">좌석 예약 내역★</a></p>
-		<p><a href="./book/bookRentList.book?id=${member.id }">책 대여 내역★★</a></p>
+		<p><a href="./book/bookRentList.book?id=${member.id }">책 대여 내역★</a></p>
 		<p><a href="./book/bookOrderList.book?id=${member.id }">책 신청 내역</a></p>
 		<p><a href="./book/bookBuyWishList.book?id=${member.id }">책 구매 찜</a></p>
 		<p><a href="./book/bookRentWishList.book?id=${member.id }">책 대여 찜</a></p>
