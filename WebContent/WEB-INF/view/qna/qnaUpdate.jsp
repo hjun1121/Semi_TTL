@@ -52,6 +52,7 @@ $(function() {
 					<option value = "4" class="library">분당구</option>
 		</select>
 		</p>
+		<p>pw<input type="text" name="pw" value=${qnaDTO.pw } ></p>
 		<button type="submit">확인</button>
 </form>	
 </body>

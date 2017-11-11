@@ -9,101 +9,46 @@
 <title>Insert title here</title>
 <script type="text/javascript">
 $(function(){
-	var library = ${library};
-	var type= ${type};
+	var type = ${qnaDTO.type};
+	if(type == 1){
+		$("#type").val("중고장터문의");
+	}else if(type ==2){
+		$("#type").val("도서신청문의");
+	}else if(type ==3){
+		$("#type").val("이용문의");
+	}
 	
-	$(".library").each(function(){
-		 if($(this).val() == library) {
-			 $(this).attr("selected", true);
-		 }
-	 });
+	var library = ${qnaDTO.library};
+	if(library == 1){
+		$("#library").val("기흥구");
+	}else if(library ==2){
+		$("#library").val("송파구");
+	}else if(library ==3){
+		$("#library").val("장안구");
+	}else if(library ==4){
+		$("#library").val("분당구");
+	}
 	
-	$(".type").each(function(){
-		 if($(this).val() == type) {
-			 $(this).attr("selected", true);
-		 }
-	 });
 	
-	
-	$(".replyUpdate").click(function() {
-		var c = $(this).attr("title");
-		var s =$("#update"+c).html();
-		var chtml = '<textarea id="upContents'+c+'">'+s+'</textarea>';
-		chtml+='<input type="button" class="up" value="완료" title='+c+'>';
-		chtml+='</a>';
-		$("#update"+c).html(chtml);
-		
-		$(".btn"+c).hide();
-	});
-	
-	$(".reReply").click(function() {
-		var c = $(this).attr("title");
-		var rehtml='<td>';
-		rehtml+='<textarea id="reReplyCon'+c+'"></textarea>';
-		rehtml+='</td>'
-		rehtml+='<td><input type="button" class="upReply" value="완료" title='+c+'></td>';
-		$("#reReply"+c).html(rehtml);
-		$(".btn"+c).hide();
-	});
-	
-	$("table").on("click", ".up", function() {
-		var con = $("#upContents"+c).val();
-		var c = $(this).attr("title");
-		var pnum = document.frm2.num.value;
-		location.href="../qnaReply/qnaReplyUpdate.qnaReply?rcontents="+con+"&rnum="+c+"&pnum="+pnum;
-		
-		/* var c = $(this).attr("title");
-		var con = $("#upContents"+c).val();
-		document.frm.rnum.value=c;
-		document.frm.rcontents.value=con;
-		document.frm.pnum.value=document.frm2.num.value;
-		document.frm.submit(); */
-	});
-	$("table").on("click", ".upReply", function() {
-		var c = $(this).attr("title");
-		var rcon = $("#reReplyCon"+c).val();
-		document.frm.rcontents.value=rcon;
-		document.frm.submit();
-	});
 });
 </script>
 </head>
 <body>
-<form action="../qnaReply/qnaReplyUpdate.qnaReply" name="frm">
-	<input type="hidden" name="rnum">
-	<input type="hidden" name="rcontents">
-	<input type="hidden" name="pnum">
-</form>
-<form action="../qnaReply/qnaReplyInsert.qnaReply" name="frm">
-	<input type="hidden" name="rnum">
-	<input type="hidden" name="rcontents">
-	<input type="hidden" name="pnum">
-</form>
+
 <h2>QnA Details</h2>
-<form action="./qnaUpdate.qna" method="post" name="frm2">
+<form action="../qna/qnaUpdate.qna" method="get" name="frm">
 		<p>num<input type="text" name="num" value=${qnaDTO.num } readonly="readonly"></p>
-		<p>type
-		<select name = "type" draggable="false">
-				<option value="1" class="type">중고장터문의</option>
-				<option value="2" class="type">도서신청문의</option>
-				<option value="3" class="type">이용문의</option>
-		</select>
-		
+		<input type="hidden" name="type" value=${qnaDTO.type } readonly="readonly">
+		<p>type<input type="text" id="type" readonly="readonly" ></p>
 		<p>title<input type="text" name="title" value=${qnaDTO.title } readonly="readonly"></p>
 		<p>contents<input type="text" name="contents" value=${qnaDTO.contents } readonly="readonly"></p>
 		<p>writer<input type="text" name="writer" value=${qnaDTO.writer } readonly="readonly"></p>
 		<p>date<input type="text" name="date" value=${qnaDTO.reg_date } readonly="readonly"></p>
 		<p>hit<input type="text" name="hit" value=${qnaDTO.hit } readonly="readonly" ></p>
-		<p>
-		library <select name = "library">
-					<option value = "1" class="library">기흥구</option>
-					<option value = "2" class="library">송파구</option>
-					<option value = "3" class="library">장안구</option>
-					<option value = "4" class="library">분당구</option>
-		</select>
-		</p>
+		<input type="hidden" name="library" value=${qnaDTO.library } readonly="readonly">
+		<p>library <input type="text" id="library" value=${qnaDTO.library } readonly="readonly"></p>
 		
-		<a href="../qna/qnaUpdate.qna?num=${qnaDTO.num }&library=${qnaDTO.library }&type=${qnaDTO.type}"><input type="button" value="수정"></a>
+		<input type="submit" value="수정">
 		<a href="../qna/qnaDelete.qna?num=${qnaDTO.num }"><input type="button" value="삭제"></a>
 		<a href="../qna/qnaList.qna"><input type="button" value="list"></a>
 </form>	

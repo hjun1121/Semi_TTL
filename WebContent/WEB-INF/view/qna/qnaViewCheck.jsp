@@ -10,9 +10,6 @@
 <h2>QnA Details</h2>
 	<form action="./qnaViewCheck.qna" method="post">
 	<h3>비밀번호 입력 하세요</h3>
-	
-		<input type="hidden" name="type" value=${type }>
-		<input type="hidden" name="library" value=${library }>
 		<input type="hidden" name="num" value=${num }>
 		<p>pw<input type="text" name="pw"></p>
 		<input type="submit" value="확인"> 

@@ -15,48 +15,39 @@ public class QnaViewCheckService implements Action {
 	@Override
 	public ActionFoward doProcess(HttpServletRequest request, HttpServletResponse response) {
 		ActionFoward actionFoward = new ActionFoward();
-		
 		String method = request.getMethod();
 		int num = 0;
 		try {
 			num = Integer.parseInt(request.getParameter("num"));
 		} catch (Exception e) {
-			num = 0;
 		}
-		
-		int library =1;
-		try {
-			library = Integer.parseInt(request.getParameter("library"));
-		}catch (Exception e) {
-		}
-		
-		int type =1;
-		try {
-			type = Integer.parseInt(request.getParameter("type"));
-		}catch (Exception e) {
+		String pw = request.getParameter("pw");
+		if(pw == null) {
+			pw="";
 		}
 		
 		
 		if(method.equals("GET")) {
 			request.setAttribute("num", num);
-			request.setAttribute("library", library);
-			request.setAttribute("type", type);
-			
 			actionFoward.setCheck(true);
 			actionFoward.setPath("../WEB-INF/view/qna/qnaViewCheck.jsp");
+			
 		}else {
 			QnaDAO qnaDAO = new QnaDAO();
-			QnaDTO qnaDTO = null;
-	
+			int result=0;
 			try {
-				qnaDTO = qnaDAO.pwCheck(Integer.parseInt(request.getParameter("num")),request.getParameter("pw"));
+				result = qnaDAO.pwCheck(num, pw);
 			} catch (Exception e) {
 				e.printStackTrace();
 			}
-			if(qnaDTO!=null) {
+			
+			if(result>0) {
+				
+				QnaDTO qnaDTO = new QnaDTO();
 				Qna_ReplyDAO qna_ReplyDAO = new Qna_ReplyDAO();
 				ArrayList<Qna_ReplyDTO> list = new ArrayList<>();
 				try {
+					qnaDTO = qnaDAO.selectOne(num);
 					list = qna_ReplyDAO.selectList(num);
 				} catch (Exception e) {
 					e.printStackTrace();
@@ -64,14 +55,11 @@ public class QnaViewCheckService implements Action {
 				
 				request.setAttribute("replyList", list);
 				request.setAttribute("qnaDTO", qnaDTO);
-				request.setAttribute("num", qnaDTO.getNum());
-				request.setAttribute("library", library);
-				request.setAttribute("type", type);
 				actionFoward.setCheck(true);
 				actionFoward.setPath("../WEB-INF/view/qna/qnaView.jsp");
 			}else {
 				request.setAttribute("message", "비밀번호 다시 입력하세요.");
-				request.setAttribute("path", "../qna/qnaList.qna");
+				request.setAttribute("path", "../qna/qnaViewCheck.qna?num="+num);
 				actionFoward.setCheck(true);
 				actionFoward.setPath("../WEB-INF/view/common/result.jsp");
 			}
@@ -79,4 +67,5 @@ public class QnaViewCheckService implements Action {
 		
 		return actionFoward;
 	}
+	
 }

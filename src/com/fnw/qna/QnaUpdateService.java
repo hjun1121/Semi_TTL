@@ -20,18 +20,21 @@ public class QnaUpdateService implements Action {
 			num = Integer.parseInt(request.getParameter("num"));
 		}catch (Exception e) {
 		}
-		
 		int library =1;
 		try {
 			library = Integer.parseInt(request.getParameter("library"));
 		}catch (Exception e) {
 		}
-		
 		int type =1;
 		try {
 			type = Integer.parseInt(request.getParameter("type"));
 		}catch (Exception e) {
 		}
+		String pw = request.getParameter("pw");
+		if(pw == null) {
+			pw="";
+		}
+		
 		if(method.equals("GET")) {
 			QnaDTO qnaDTO = null;
 			QnaDAO qnaDAO = new QnaDAO();
@@ -46,37 +49,35 @@ public class QnaUpdateService implements Action {
 			actionFoward.setCheck(true);
 			actionFoward.setPath("../WEB-INF/view/qna/qnaUpdate.jsp");
 		}else {
-			QnaDTO qnaDTO = null;
-			QnaDAO qnaDAO = new QnaDAO();
 			int result = 0;
+			QnaDAO qnaDAO = new QnaDAO();
+			QnaDTO qnaDTO = new QnaDTO();
+			qnaDTO.setNum(num);
+			qnaDTO.setType(type);
+			qnaDTO.setTitle(request.getParameter("title"));
+			qnaDTO.setContents(request.getParameter("contents"));
+			qnaDTO.setLibrary(library);
+			qnaDTO.setPw(pw);
+			
 			try {
-				qnaDTO = qnaDAO.selectOne(num);
-				qnaDTO.setNum(num);
-				qnaDTO.setType(Integer.parseInt(request.getParameter("type")));
-				qnaDTO.setTitle(request.getParameter("title"));
-				qnaDTO.setWriter(request.getParameter("writer"));
-				qnaDTO.setContents(request.getParameter("contents"));
-				qnaDTO.setWriter(request.getParameter("writer"));
-				qnaDTO.setReg_date(Date.valueOf(request.getParameter("date")));
-				qnaDTO.setLibrary(Integer.parseInt(request.getParameter("library")));
-				try {
-					result = qnaDAO.update(qnaDTO);
-				} catch (Exception e) {
-					e.printStackTrace();
-				}
-			} catch (Exception e1) {
-				e1.printStackTrace();
+				result = qnaDAO.update(qnaDTO);
+			} catch (Exception e) {
+				e.printStackTrace();
 			}
 			
+		
 			if(result>0) {
 				request.setAttribute("message", "수정 완료");
-				request.setAttribute("path", "./qnaList.qna");
+				request.setAttribute("num", num);
+				request.setAttribute("pw", pw);
+				actionFoward.setCheck(true);
+				actionFoward.setPath("../WEB-INF/view/common/resultQna.jsp");
 			}else {
 				request.setAttribute("message", "수정 실패");
-				request.setAttribute("path", "./qnaList.qna");
+				request.setAttribute("path", "../qna/qnaList.qna");
+				actionFoward.setCheck(true);
+				actionFoward.setPath("../WEB-INF/view/common/result.jsp");
 			}
-			actionFoward.setCheck(true);
-			actionFoward.setPath("../WEB-INF/view/common/result.jsp");
 		}
 
 		return actionFoward;
