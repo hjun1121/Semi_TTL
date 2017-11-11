@@ -26,8 +26,21 @@ public class LibraryDAO {
 		
 		while(rs.next()) {
 			book_TotalDTO = new Book_TotalDTO();
-			
+			book_TotalDTO.setNum(rs.getInt("num"));
+			book_TotalDTO.setTitle(rs.getString("title"));
+			book_TotalDTO.setWriter(rs.getString("writer"));
+			book_TotalDTO.setCompany(rs.getString("company"));
+			book_TotalDTO.setPublish_date(rs.getString("publish_date"));
+			book_TotalDTO.setSection(rs.getString("section"));
+			book_TotalDTO.setLibrary(rs.getInt("library"));
+			book_TotalDTO.setType(rs.getString("type"));
+			book_TotalDTO.setState(rs.getInt("state"));
+			book_TotalDTO.setRent_id(rs.getString("rent_id"));
+			book_TotalDTO.setRent_count(rs.getInt("rent_count"));
+			ar.add(book_TotalDTO);
 		}
+		DBConnector.disConnect(rs, st, con);
+		return ar;
 	}
 	
 	

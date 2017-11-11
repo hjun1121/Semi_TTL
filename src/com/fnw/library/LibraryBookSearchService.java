@@ -21,12 +21,7 @@ public class LibraryBookSearchService implements Action {
 
 		ActionFoward actionFoward = new ActionFoward();
 		ArrayList<Book_TotalDTO> ar = new ArrayList<>();
-<<<<<<< HEAD
-
-=======
 		ArrayList<Book_Rent_WishDTO> rent_wish_ar = new ArrayList<>();
-		
->>>>>>> 7fa3095920d2d17298be8dcbc3895059d9ed3917
 		LibraryDAO libraryDAO = new LibraryDAO();
 		Book_Rent_WishDAO book_Rent_WishDAO = new Book_Rent_WishDAO();
 
@@ -77,10 +72,7 @@ public class LibraryBookSearchService implements Action {
 		try {
 			PageMaker pageMaker = new PageMaker(curPage, totalCount);
 			ar = libraryDAO.selectList(pageMaker.getMakeRow(), kind, search, library);
-<<<<<<< HEAD
-=======
 			request.setAttribute("rent_wish_list", rent_wish_ar);
->>>>>>> 7fa3095920d2d17298be8dcbc3895059d9ed3917
 			request.setAttribute("library", library);
 			request.setAttribute("curPage", curPage);
 			request.setAttribute("list", ar);
