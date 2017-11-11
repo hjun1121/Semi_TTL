@@ -9,11 +9,30 @@ import com.fnw.util.DBConnector;
 import com.fnw.util.MakeRow;
 
 public class Market_Deal_DetailsDAO {
+	public int insert(Market_Deal_DetailsDTO market_Deal_DetailsDTO) throws Exception{
+		Connection con = DBConnector.getConnect();
+		String sql = "insert into market_deal_details values(3,?,?,?,?,?,sysdate,?,?,?,0,?)";
+		PreparedStatement st = con.prepareStatement(sql);
+		
+		st.setString(1, market_Deal_DetailsDTO.getTitle());
+		st.setString(2, market_Deal_DetailsDTO.getWriter());
+		st.setString(3, market_Deal_DetailsDTO.getCompany());
+		st.setString(4, market_Deal_DetailsDTO.getPublish_date());
+		st.setString(5, market_Deal_DetailsDTO.getId());
+		st.setInt(6, market_Deal_DetailsDTO.getPrice());
+		st.setInt(7, market_Deal_DetailsDTO.getLibrary());
+		st.setInt(8, market_Deal_DetailsDTO.getKind());
+		st.setInt(9, market_Deal_DetailsDTO.getDelivery());
+
+		int result = st.executeUpdate();
+		DBConnector.disConnect(st, con);
+		return result;
+	}
 	public ArrayList<Market_Deal_DetailsDTO> selectList(String id, MakeRow makeRow, String search) throws Exception {
 		Connection con = DBConnector.getConnect();
 		String sql = "select * from "
 				+ "(select rownum R, N.* from "
-				+ "(select * from market_deal_details where T_date <= ? and id=? order by num asc) N)"
+				+ "(select * from market_deal_details where T_date<=? and id=? order by num asc) N)"
 				+ "where R between ? and ?";
 		
 		PreparedStatement st = con.prepareStatement(sql);

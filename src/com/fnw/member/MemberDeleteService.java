@@ -5,12 +5,12 @@ import javax.servlet.http.HttpServletResponse;
 
 import com.fnw.action.Action;
 import com.fnw.action.ActionFoward;
-import com.fnw.book.Book_Buy_WishDAO;
 import com.fnw.book.Book_OrderDAO;
 import com.fnw.book.Book_Rent_DetailsDAO;
 import com.fnw.book.Book_Rent_DetailsDTO;
 import com.fnw.book.Book_Rent_WishDAO;
 import com.fnw.book.Book_TotalDAO;
+import com.fnw.market.Book_Buy_WishDAO;
 import com.fnw.market.Market_Deal_DetailsDAO;
 import com.fnw.market.Market_OrderDAO;
 import com.fnw.market.Market_TotalDAO;

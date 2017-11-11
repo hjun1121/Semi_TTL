@@ -13,6 +13,8 @@
 <title>Total Library Page</title>
 </head>
 <body>
+	<h1>판매신청폼 만들었어?</h1>
+	
 	<c:if test="${empty sessionScope.member }">
 		<p><a href="./member/memberLogin.member">로그인</a>
 		<p><a href="./member/memberJoin.member">회원가입</a>
@@ -25,8 +27,8 @@
 		<p><a href="./market/marketDealsList.market?id=${member.id }">중고책거래 판/구매 리스트★</a></p>
 		<p><a href="./seat/seatTotalList.seat?id=${member.id }">좌석 예약 내역★</a></p>
 		<p><a href="./book/bookRentList.book?id=${member.id }">책 대여 내역★</a></p>
-		<p><a href="./book/bookOrderList.book?id=${member.id }">책 신청 내역</a></p>
-		<p><a href="./book/bookBuyWishList.book?id=${member.id }">책 구매 찜</a></p>
+		<p><a href="./book/bookOrderList.book?id=${member.id }">책 신청 내역★</a></p>
+		<p><a href="./market/bookBuyWishList.market?id=${member.id }">책 구매 찜</a></p>
 		<p><a href="./book/bookRentWishList.book?id=${member.id }">책 대여 찜</a></p>
 		<p><a href="./member/memberLogout.member">로그아웃</a>
  	</c:if>

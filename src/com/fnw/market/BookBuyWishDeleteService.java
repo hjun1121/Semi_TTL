@@ -1,4 +1,4 @@
-package com.fnw.book;
+package com.fnw.market;
 
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
@@ -26,10 +26,10 @@ public class BookBuyWishDeleteService implements Action {
 			String id = ((MemberDTO)request.getSession().getAttribute("member")).getId();
 			if(result>0) {
 				request.setAttribute("message", "삭제 완료");
-				request.setAttribute("path", "./bookBuyWishList.book?curPage=1&id="+id);
+				request.setAttribute("path", "./bookBuyWishList.market?curPage=1&id="+id);
 			}else {
 				request.setAttribute("message", "삭제 실패");
-				request.setAttribute("path", "./bookBuyWishList.book?curPage=1&id="+id);
+				request.setAttribute("path", "./bookBuyWishList.market?curPage=1&id="+id);
 			}
 			actionFoward.setCheck(true);
 			actionFoward.setPath("../WEB-INF/view/common/result.jsp");
@@ -46,10 +46,10 @@ public class BookBuyWishDeleteService implements Action {
 				String id = ((MemberDTO)request.getSession().getAttribute("member")).getId();
 				if(result2>0) {
 					request.setAttribute("message", "삭제 완료");
-					request.setAttribute("path", "./bookBuyWishList.book?curPage=1&id="+id);
+					request.setAttribute("path", "./bookBuyWishList.market?curPage=1&id="+id);
 				}else {
 					request.setAttribute("message", "삭제 실패");
-					request.setAttribute("path", "./bookBuyWishList.book?curPage=1&id="+id);
+					request.setAttribute("path", "./bookBuyWishList.market?curPage=1&id="+id);
 				}
 				actionFoward.setCheck(true);
 				actionFoward.setPath("../WEB-INF/view/common/result.jsp");

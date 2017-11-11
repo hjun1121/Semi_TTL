@@ -32,7 +32,7 @@ $(document).ready(function() {
 </head>
 <body>
 <h2>Book Order List-Book_Order</h2>
-<form action="./bookBuyWishDelete.book" method="POST">
+<form action="./bookBuyWishDelete.market" method="POST">
    <table class="table" border="1">
       <tr>
          <th>전체선택<input type="checkbox" class="chk" id="checkAll" name="checkAll"></th>
@@ -70,13 +70,16 @@ $(document).ready(function() {
 				</c:otherwise>
 			</c:choose>
             <td>${bookOrderWish_list.price }</td>
-            <td><a href="./bookBuyWishDelete.book?num=${bookOrderWish_list.num }"><input type="button" value="삭제"></a></td>
+            <td><a href="./bookBuyWishDelete.market?num=${bookOrderWish_list.num }"><input type="button" value="삭제"></a></td>
             <c:choose>
+            	<c:when test="${bookOrderWish_list.state eq 10 }">
+                  <td>구매완료</td>
+               </c:when>
                <c:when test="${bookOrderWish_list.state eq 1 }">
-                  <td>대여불가</td>
+                  <td>구매불가</td>
                </c:when>
                <c:when test="${bookOrderWish_list.state eq 2 }">
-                  <td><a href=""><input type="button" value="대여"></a></td>
+                  <td><a href="./bookBuy.market?num=${bookOrderWish_list.num }"><input type="button" value="구매"></a></td>
                </c:when>
             </c:choose>
          </tr>
@@ -94,11 +97,11 @@ $(document).ready(function() {
          </c:if>
          <c:forEach begin="${page.startNum}" end="${page.lastNum}" var="i">
          <li><a
-            href="./bookBuyWishList.book?curPage=${i}&id=${id }">${i}</a></li>
+            href="./bookBuyWishList.market?curPage=${i}&id=${id }">${i}</a></li>
          </c:forEach>
          <c:if test="${page.curBlock < page.totalBlock}">
          <li><a
-            href="./bookBuyWishList.book?curPage=${requestScope.page.lastNum+1}">[다음]</a></li>
+            href="./bookBuyWishList.market?curPage=${requestScope.page.lastNum+1}">[다음]</a></li>
          </c:if>
       </ul>
    </div>

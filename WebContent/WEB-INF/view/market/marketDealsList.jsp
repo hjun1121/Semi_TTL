@@ -156,10 +156,10 @@ $(function(){
 					</c:otherwise>
 				</c:choose>
 				<c:choose>
-					<c:when test="${bookDeals_list.delivery eq 1}">
+					<c:when test="${bookDeals_list.delivery eq 2}">
 						<td>택배</td>
 					</c:when>
-					<c:when test="${bookDeals_list.delivery eq 2}">
+					<c:when test="${bookDeals_list.delivery eq 1}">
 						<td>직접수령</td>
 					</c:when>
 					<c:otherwise>

@@ -1,4 +1,4 @@
-package com.fnw.book;
+package com.fnw.market;
 
 public class Book_Buy_WishDTO {
 	private int num;
@@ -9,6 +9,7 @@ public class Book_Buy_WishDTO {
 	private String id;
 	private int price;
 	private int state;
+	private String company;
 	
 	public int getNum() {
 		return num;
@@ -28,7 +29,6 @@ public class Book_Buy_WishDTO {
 	public void setWriter(String writer) {
 		this.writer = writer;
 	}
-	
 	public String getPublish_date() {
 		return publish_date;
 	}
@@ -58,5 +58,11 @@ public class Book_Buy_WishDTO {
 	}
 	public void setState(int state) {
 		this.state = state;
+	}
+	public String getCompany() {
+		return company;
+	}
+	public void setCompany(String company) {
+		this.company = company;
 	}
 }
