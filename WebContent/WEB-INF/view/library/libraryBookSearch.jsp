@@ -42,22 +42,43 @@ $(function(){
 
 	$(".wish_btn").click(function() {
 		var num = $(this).val();
-		$.ajax({
-			url: "../book/bookRentWish.book",
-			type: "GET",
-			data: {
-				num:num,
-				kind:'${kind}',
-				curPage: ${curPage},
-				search: '${search}',
-				library: ${library},
-				id:'${member.id}'
-			},
-			success: function(data) {
-				alert(data);
-				location.href="./libraryBookSearch.library?library=${library}&search=${search}&curPage=${curPage}&kind=${kind}";
-			}
-		});
+		
+		if (${heart1 == 0}) {
+			$.ajax({
+				url: "../book/bookRentWishReturn.book",
+				type: "GET",
+				data: {
+					num:num,
+					kind: '${kind}',
+					curPage: ${curPage},
+					search: '${search}',
+					library: ${library},
+					id: '${member.id}'
+				},
+				success: function(data) {
+					alert(data);
+					location.href="./libraryBookSearch.library?library=${library}&search=${search}&curPage=${curPage}&kind=${kind}";
+				}
+			});
+			
+		} else if(${heart2 == 0}) {
+			$.ajax({
+				url: "../book/bookRentWish.book",
+				type: "GET",
+				data: {
+					num:num,
+					kind:'${kind}',
+					curPage: ${curPage},
+					search: '${search}',
+					library: ${library},
+					id:'${member.id}'
+				},
+				success: function(data) {
+					alert(data);
+					location.href="./libraryBookSearch.library?library=${library}&search=${search}&curPage=${curPage}&kind=${kind}";
+				}
+			});
+		}
 	});
 
 });
@@ -136,7 +157,7 @@ $(function(){
 									<c:forEach items="${rent_wish_list}" var="wish">
 										<c:if test="${wish.title eq dto.title}">
 											<c:choose>
-												<c:when test="${heart1==0}">
+												<c:when test="${heart1 == 0}">
 													<td><button class = "btn btn-default wish_btn" type = "submit" value = "${dto.num}">❤</button></td>
 													<c:set var="heart1" value="1" ></c:set>
 													<c:set var="heart2" value="1" ></c:set>

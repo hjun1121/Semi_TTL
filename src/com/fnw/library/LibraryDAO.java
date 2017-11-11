@@ -39,11 +39,7 @@ public class LibraryDAO {
 			book_TotalDTO.setRent_count(rs.getInt("rent_count"));
 			ar.add(book_TotalDTO);
 		}
-<<<<<<< HEAD
 		DBConnector.disConnect(rs, st, con);
-=======
-		
->>>>>>> 7d7939bf300821b3dab696f46ea89b11f3da4d60
 		return ar;
 	}
 	
