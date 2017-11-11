@@ -28,6 +28,8 @@ public class LibraryDAO {
 			book_TotalDTO = new Book_TotalDTO();
 			
 		}
+		
+		return ar;
 	}
 	
 	

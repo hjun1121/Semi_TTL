@@ -13,16 +13,12 @@ public class DBConnector {
 		String user="library";
 		String password="library";
 
-<<<<<<< HEAD
-		String url="jdbc:oracle:thin:@172.20.10.5:1521:xe";
-//		String url="jdbc:oracle:thin:@192.168.20.46:1521:xe";
-=======
 
 		/*String url="jdbc:oracle:thin:@192.168.20.46:1521:xe";*/
-		String url="jdbc:oracle:thin:@192.168.20.46:1521:xe"; //희성
+		//String url="jdbc:oracle:thin:@192.168.20.46:1521:xe"; //KH
 		//String url="jdbc:oracle:thin:@192.168.0.8:1521:xe"; //희성
-
->>>>>>> 7fa3095920d2d17298be8dcbc3895059d9ed3917
+		String url="jdbc:oracle:thin:@192.168.0.10:1521:xe"; //형준
+		
 		String driver="oracle.jdbc.driver.OracleDriver";
 		
 		//driver
