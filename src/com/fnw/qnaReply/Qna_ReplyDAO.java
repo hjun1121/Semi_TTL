@@ -113,6 +113,7 @@ public class Qna_ReplyDAO {
 		DBConnector.disConnect(rs, st, con);
 		return qnaDTO;
 	}
+	
 	public int update(Qna_ReplyDTO qna_ReplyDTO) throws Exception{
 		Connection con = DBConnector.getConnect();
 		String sql="UPDATE qna_reply SET contents=? WHERE num=?";

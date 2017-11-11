@@ -29,7 +29,7 @@ $(function() {
 
 </head>
 <body>
-<h2>QnA Details</h2>
+<h2>QnA Update</h2>
 <form action="./qnaUpdate.qna" method="post">
 		<p>num<input type="text" name="num" value=${qnaDTO.num } readonly="readonly"></p>
 		<p>type
@@ -52,6 +52,7 @@ $(function() {
 					<option value = "4" class="library">분당구</option>
 		</select>
 		</p>
+		<p>pw<input type="text" name="pw" value=${qnaDTO.pw } ></p>
 		<button type="submit">확인</button>
 </form>	
 </body>

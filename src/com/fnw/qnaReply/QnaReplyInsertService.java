@@ -22,47 +22,39 @@ public class QnaReplyInsertService implements Action {
 			pNum = Integer.parseInt(request.getParameter("pNum"));
 		}catch (Exception e) {
 		}
+		String pw = request.getParameter("pw");
+		if(pw == null) {
+			pw="";
+		}
+		HttpSession session = request.getSession();
+		String id = ((MemberDTO)session.getAttribute("member")).getId();
+		
 		
 		Qna_ReplyDAO qna_ReplyDAO = new Qna_ReplyDAO();
 		Qna_ReplyDTO qna_ReplyDTO = null;
-		HttpSession session = request.getSession();
-		String id = ((MemberDTO)session.getAttribute("member")).getId();
-				
+		qna_ReplyDTO = new Qna_ReplyDTO();
+		qna_ReplyDTO.setpNum(pNum);
+		qna_ReplyDTO.setWriter(id);
+		qna_ReplyDTO.setContents(contents);
+			
 		int result = 0;
-		ArrayList<Qna_ReplyDTO> ar = new ArrayList<>();
 		try {
-			qna_ReplyDTO = new Qna_ReplyDTO();
-			qna_ReplyDTO.setpNum(pNum);
-			qna_ReplyDTO.setWriter(id);
-			qna_ReplyDTO.setContents(contents);
-			
 			result = qna_ReplyDAO.insert(qna_ReplyDTO);
-			
-			QnaDTO qnaDTO = new QnaDTO();
-			QnaDAO qnaDAO = new QnaDAO();
-			try {
-				qnaDTO = qnaDAO.selectOne(pNum);
-			} catch (Exception e) {
-			}
-			
-			
-			try {
-				ar = qna_ReplyDAO.selectList(pNum);
-			} catch (Exception e) {
-				e.printStackTrace();
-			}
-			if(result>0) {
-				request.setAttribute("qnaDTO", qnaDTO);
-				request.setAttribute("replyList", ar);
-				actionFoward.setCheck(true);
-				actionFoward.setPath("../WEB-INF/view/qna/qnaView.jsp");
-			}else {
-				request.setAttribute("message", "댓글 실패");
-				request.setAttribute("path", "../qna/qnaList.qna");
-			}
 		} catch (Exception e) {
 			e.printStackTrace();
 		}
+			
+		if(result>0) {
+			request.setAttribute("message", "댓글 등록 완료");
+				
+		}else {
+			request.setAttribute("message", "댓글 실패");
+		}
+		request.setAttribute("num", pNum);
+		request.setAttribute("pw", pw);
+		actionFoward.setCheck(true);
+		actionFoward.setPath("../WEB-INF/view/common/resultQna.jsp");
+		
 		return actionFoward;
 	}
 }
