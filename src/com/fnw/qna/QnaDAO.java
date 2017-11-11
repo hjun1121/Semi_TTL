@@ -78,32 +78,7 @@ public class QnaDAO {
 		ResultSet rs = st.executeQuery();
 
 		QnaDTO qnaDTO = null;
-		while(rs.next()) {
-			qnaDTO = new QnaDTO();
-			qnaDTO.setNum(rs.getInt("num"));
-			qnaDTO.setType(rs.getInt("type"));
-			qnaDTO.setTitle(rs.getString("title"));
-			qnaDTO.setWriter(rs.getString("writer"));
-			qnaDTO.setContents(rs.getString("contents"));
-			qnaDTO.setReg_date(rs.getDate("reg_date"));
-			qnaDTO.setHit(rs.getInt("hit"));
-			qnaDTO.setPw(rs.getString("pw"));
-			qnaDTO.setLibrary(rs.getInt("library"));
-		}
-		DBConnector.disConnect(rs, st, con);
-		return qnaDTO;
-	}
-	public QnaDTO pwCheck(int num,String pw) throws Exception{
-		Connection con = DBConnector.getConnect();
-		String sql = "select * from qna where num=? and pw=?";
-		PreparedStatement st = con.prepareStatement(sql);
-		st.setInt(1, num);
-		st.setString(2, pw);
-
-		ResultSet rs = st.executeQuery();
-
-		QnaDTO qnaDTO = null;
-		while(rs.next()) {
+		if(rs.next()) {
 			qnaDTO = new QnaDTO();
 			qnaDTO.setNum(rs.getInt("num"));
 			qnaDTO.setType(rs.getInt("type"));
@@ -119,6 +94,21 @@ public class QnaDAO {
 		return qnaDTO;
 	}
 	
+	public int pwCheck(int num,String pw) throws Exception{
+		Connection con = DBConnector.getConnect();
+		String sql = "select * from qna where num=? and pw=?";
+		PreparedStatement st = con.prepareStatement(sql);
+		st.setInt(1, num);
+		st.setString(2, pw);
+
+		ResultSet rs = st.executeQuery();
+		int result = 0;
+		if(rs.next()) {
+			result=1;
+		}
+		return result;
+	}
+	
 	public int delete(int num) throws Exception{
 		Connection con = DBConnector.getConnect();
 		String sql = "delete from qna where num=?";
@@ -131,14 +121,15 @@ public class QnaDAO {
 	}
 	public int update(QnaDTO qnaDTO) throws Exception{
 		Connection con = DBConnector.getConnect();
-		String sql="UPDATE qna SET type=?, title=?, contents=?, library=? WHERE num=?";
+		String sql="UPDATE qna SET type=?, title=?, contents=?, library=?, pw=? WHERE num=?";
 		PreparedStatement st = con.prepareStatement(sql);
 		
 		st.setInt(1, qnaDTO.getType());
 		st.setString(2, qnaDTO.getTitle());
 		st.setString(3, qnaDTO.getContents());
 		st.setInt(4, qnaDTO.getLibrary());
-		st.setInt(5, qnaDTO.getNum());
+		st.setString(5, qnaDTO.getPw());
+		st.setInt(6, qnaDTO.getNum());
 		
 		int result = st.executeUpdate();
 		DBConnector.disConnect(st, con);

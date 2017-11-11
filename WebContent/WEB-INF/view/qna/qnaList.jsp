@@ -8,33 +8,33 @@
 <title>Insert title here</title>
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
 <script type="text/javascript">
-	var kind = '${kind}';
-	$(".kind").each(function(){
-		 if($(this).val() == kind1) {
-			 $(this).attr("selected", true);
-		 }
+	$(function(){
+		var kind = '${kind}';
+		$(".kind").each(function(){
+			 if($(this).val() == kind) {
+				 $(this).attr("selected", true);
+			 }
+		});
+		
+		$("#btn").click(function(){
+			location.href="./qnaWrite.qna";
+		});
+		
 	});
 
 </script>
 </head>
 <body>
 <h2>Qna List</h2>
-	<div>
-		<form name="frm" class="form-inline" action="./qnaList.qna" method="post">
-			<div>
-				<span> <select name="kind">
-						<option class="kind" value="title">제목</option>
-						<option class="kind" value="writer">저자</option>
-				</select> <input type="text" class="form-control" id="search" placeholder="Enter" name="search" value="${search }">
-				</span>
-				<div class="form-group">
-					<div class="col-sm-offset-2 col-sm-10">
-						<input type="submit" class="btn btn-default" value="Search">
-					</div>
-				</div>
-			</div>
-		</form>
-	</div>
+	<form name="frm" class="form-inline" action="./qnaList.qna" method="post">
+		<select name="kind">
+				<option class="kind" value="title">제목</option>
+				<option class="kind" value="writer">저자</option>
+		</select>
+		<input type="text" class="form-control" id="search" placeholder="검색어 입력" name="search" value="${search }">
+		<input type="submit" class="btn btn-default" value="Search">
+	</form>
+	
 	<table id = "qnaList" border="1">
 	<tr>
 		<th>num</th>
@@ -42,18 +42,24 @@
 		<th>date</th>
 		<th>writer</th>
 		<th>hit</th>
+		<c:if test="${member.kind eq 10 }">
+			<th>pw</th>
+		</c:if>
 	</tr>
 	<c:forEach items="${list }" var="qnaDTO">
 		<tr>
 			<td>${qnaDTO.num }</td>
-			<td><a href="./qnaViewCheck.qna?num=${qnaDTO.num }&type=${qnaDTO.type}&library=${qnaDTO.library}">${qnaDTO.title }</a></td>
+			<td><a href="./qnaViewCheck.qna?num=${qnaDTO.num }">${qnaDTO.title }</a></td>
 			<td>${qnaDTO.reg_date }</td>
 			<td>${qnaDTO.writer }</td>
 			<td>${qnaDTO.hit }</td>
+			<c:if test="${member.kind eq 10 }">
+				<td>${qnaDTO.pw }</td>
+			</c:if>
 		</tr>
 	</c:forEach>
 	<tr>
-	<a href="./qnaWrite.qna"><input type="button" value="글쓰기"></a>
+		<input type="button" id="btn" value="글쓰기">
 	</tr>
 	</table>
 	<div style = "text-align: center;">
