@@ -10,6 +10,18 @@ import com.fnw.util.MakeRow;
 
 public class Book_Rent_WishDAO {
 	
+	public int bookRentWishReturn(int num, String id) throws Exception {
+		Connection con = DBConnector.getConnect();
+		String sql = "delete * from book_rent_wish where num = ? and id = ?";
+		PreparedStatement st = con.prepareStatement(sql);
+		st.setInt(1, num);
+		st.setString(2, id);
+		int result = st.executeUpdate();
+		DBConnector.disConnect(st, con);
+		return result;
+	}
+	
+	
 	public int bookRentWish(Book_TotalDTO book_TotalDTO, String id) throws Exception {
 		Connection con = DBConnector.getConnect();
 		String sql = "insert into book_rent_wish values(?,?,?,?,?,?,?,?,?)";

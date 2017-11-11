@@ -42,22 +42,43 @@ $(function(){
 
 	$(".wish_btn").click(function() {
 		var num = $(this).val();
-		$.ajax({
-			url: "../book/bookRentWish.book",
-			type: "GET",
-			data: {
-				num:num,
-				kind:'${kind}',
-				curPage: ${curPage},
-				search: '${search}',
-				library: ${library},
-				id:'${member.id}'
-			},
-			success: function(data) {
-				alert(data);
-				location.href="./libraryBookSearch.library?library=${library}&search=${search}&curPage=${curPage}&kind=${kind}";
-			}
-		});
+		
+		if (${heart1 == 0}) {
+			$.ajax({
+				url: "../book/bookRentWishReturn.book",
+				type: "GET",
+				data: {
+					num:num,
+					kind: '${kind}',
+					curPage: ${curPage},
+					search: '${search}',
+					library: ${library},
+					id: '${member.id}'
+				},
+				success: function(data) {
+					alert(data);
+					location.href="./libraryBookSearch.library?library=${library}&search=${search}&curPage=${curPage}&kind=${kind}";
+				}
+			});
+			
+		} else if(${heart2 == 0}) {
+			$.ajax({
+				url: "../book/bookRentWish.book",
+				type: "GET",
+				data: {
+					num:num,
+					kind:'${kind}',
+					curPage: ${curPage},
+					search: '${search}',
+					library: ${library},
+					id:'${member.id}'
+				},
+				success: function(data) {
+					alert(data);
+					location.href="./libraryBookSearch.library?library=${library}&search=${search}&curPage=${curPage}&kind=${kind}";
+				}
+			});
+		}
 	});
 
 });
@@ -106,23 +127,15 @@ $(function(){
 						<td>출판사</td>
 						<td>분류</td>
 						<td>대여여부</td>
-<<<<<<< HEAD
-<!-- 						<td>찜하기</td> -->
-=======
 						<c:if test="${ not empty member }">
 							<td>찜하기</td>
 						</c:if>
->>>>>>> 7fa3095920d2d17298be8dcbc3895059d9ed3917
 					</tr>
 
 					<c:forEach items="${ list }" var="dto">
 							<tr>
 								<td>${dto.num }</td>
-<<<<<<< HEAD
-								<td><a href="../book/bookInformation.book?num=${dto.num}&rent_id=${member.id}">${dto.title}</a></td>
-=======
 								<td><a href="../book/bookInformation.book?num=${dto.num}">${dto.title}</a></td>
->>>>>>> 7fa3095920d2d17298be8dcbc3895059d9ed3917
 								<td>${dto.writer }</td>
 								<td>${dto.company }</td>
 								<td>${dto.type }</td>
@@ -138,23 +151,13 @@ $(function(){
 										<td>대여불가</td>
 									</c:when>
 								</c:choose>
-<<<<<<< HEAD
-<%-- 								<c:choose> --%>
-<%-- 									<c:when test="${ not empty member }"> --%>
-<%-- 										<td><button class = "btn btn-default wish_btn"  type = "submit" id = "wish_btn" value = "${dto.num}">♡</button></td> --%>
-<%-- 									</c:when> --%>
-<%-- 									<c:when test="${ empty member }"> --%>
-<!-- 										<td>❤</td> -->
-<%-- 									</c:when> --%>
-<%-- 								</c:choose> --%>
-=======
 								<c:set var="heart1" value="0" ></c:set>
 								<c:set var="heart2" value="0" ></c:set>
 								<c:if test="${ not empty member }">
 									<c:forEach items="${rent_wish_list}" var="wish">
 										<c:if test="${wish.title eq dto.title}">
 											<c:choose>
-												<c:when test="${heart1==0}">
+												<c:when test="${heart1 == 0}">
 													<td><button class = "btn btn-default wish_btn" type = "submit" value = "${dto.num}">❤</button></td>
 													<c:set var="heart1" value="1" ></c:set>
 													<c:set var="heart2" value="1" ></c:set>
@@ -166,7 +169,6 @@ $(function(){
 											<td><button class = "btn btn-default wish_btn" type = "submit" value = "${dto.num}">♡</button></td>
 										</c:if>
 								</c:if>
->>>>>>> 7fa3095920d2d17298be8dcbc3895059d9ed3917
 							</tr>
 					</c:forEach>
 				</table>

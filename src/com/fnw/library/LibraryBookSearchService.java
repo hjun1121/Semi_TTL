@@ -21,9 +21,7 @@ public class LibraryBookSearchService implements Action {
 
 		ActionFoward actionFoward = new ActionFoward();
 		ArrayList<Book_TotalDTO> ar = new ArrayList<>();
-
 		ArrayList<Book_Rent_WishDTO> rent_wish_ar = new ArrayList<>();
-		
 		LibraryDAO libraryDAO = new LibraryDAO();
 		Book_Rent_WishDAO book_Rent_WishDAO = new Book_Rent_WishDAO();
 

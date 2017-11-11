@@ -114,6 +114,7 @@ $(function(){
 			<th>in_time</th>
 			<th>out_time</th>
 			<th>state</th>
+			<th></th>
 		</tr>
 		<c:forEach items="${seatList }" var="seatTotal_list">
 			<tr>
@@ -139,11 +140,19 @@ $(function(){
 				<td>${seatTotal_list.in_time }</td>
 				<td>${seatTotal_list.out_time }</td>
 				<c:choose>
-				<c:when test="${seatTotal_list.state eq 0 && empty seatTotal_list.out_time}">
+				<c:when test="${seatTotal_list.state eq 0 && empty seatTotal_list.in_time && empty seatTotal_list.out_time}">
 					<td>예약중</td>
+					<td><a href="./seatCancel.seat?seat_num=${seatTotal_list.seat_num }"><input type="button" value="취소"></a></td>
 				</c:when>
-				<c:when test="${seatTotal_list.state eq 1 && !empty seatTotal_list.out_time}">
+				<c:when test="${seatTotal_list.state eq 1 && !empty seatTotal_list.in_time && empty seatTotal_list.out_time}">
 					<td>입실 완료</td>
+					<td><a href="./seatOut.seat?seat_num=${seatTotal_list.seat_num }"><input type="button" value="퇴실"></a></td>
+				</c:when>
+				<c:when test="${seatTotal_list.state eq 2 && !empty seatTotal_list.out_time && !empty seatTotal_list.in_time}">
+					<td>퇴실 완료</td>
+				</c:when>
+				<c:when test="${seatTotal_list.state eq 3 && empty seatTotal_list.out_time && empty seatTotal_list.in_time}">
+					<td>취소</td>
 				</c:when>
 				<c:otherwise>
 					<td>없음</td>

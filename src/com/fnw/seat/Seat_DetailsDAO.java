@@ -13,7 +13,7 @@ public class Seat_DetailsDAO {
 		Connection con = DBConnector.getConnect();
 		String sql = "select * from "
 				+ "(select rownum R, N.* from "
-				+ "(select * from seat_details where IN_TIME < ? and id=? order by num asc) N)"
+				+ "(select * from seat_details where reg_time <= ? and id=? order by num asc) N)"
 				+ "where R between ? and ?";
 		PreparedStatement st = con.prepareStatement(sql);
 		
@@ -59,6 +59,28 @@ public class Seat_DetailsDAO {
 		String sql ="delete from seat_details where id=?";
 		PreparedStatement st = con.prepareStatement(sql);
 		st.setString(1, id);
+		int result = st.executeUpdate();
+		DBConnector.disConnect(st, con);
+		
+		return result;
+	}
+	public int seatUpdate(int seat_num) throws Exception {
+		Connection con = DBConnector.getConnect();
+		String sql="UPDATE seat_details SET out_time=sysdate, state=2  where seat_num=?";
+		PreparedStatement st = con.prepareStatement(sql);
+		st.setInt(1, seat_num);
+		
+		int result = st.executeUpdate();
+		DBConnector.disConnect(st, con);
+		
+		return result;
+	}
+	public int seatCancel(int seat_num) throws Exception {
+		Connection con = DBConnector.getConnect();
+		String sql="UPDATE seat_details SET state=3  where seat_num=?";
+		PreparedStatement st = con.prepareStatement(sql);
+		st.setInt(1, seat_num);
+		
 		int result = st.executeUpdate();
 		DBConnector.disConnect(st, con);
 		

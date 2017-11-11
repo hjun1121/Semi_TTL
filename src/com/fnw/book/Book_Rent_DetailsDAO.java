@@ -17,7 +17,7 @@ public class Book_Rent_DetailsDAO {
 		Connection con = DBConnector.getConnect();
 		String sql = "select * from "
 				+ "(select rownum R, N.* from "
-				+ "(select * from book_rent_details where in_time< ? and id=? order by num asc) N)"
+				+ "(select * from book_rent_details where in_time<= ? and id=? order by num asc) N)"
 				+ "where R between ? and ?";
 		PreparedStatement st = con.prepareStatement(sql);
 		
