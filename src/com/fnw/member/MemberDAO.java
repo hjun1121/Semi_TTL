@@ -149,6 +149,19 @@ public class MemberDAO {
 		DBConnector.disConnect(rs, st, con);
 		return memberDTO;
 	}
+	public int updatePw(MemberDTO memberDTO, String pw) throws Exception{
+		Connection con = DBConnector.getConnect();
+		String sql="UPDATE member SET pw=? WHERE id=?";
+		PreparedStatement st = con.prepareStatement(sql);
+		
+		st.setString(1, pw);
+		st.setString(2, memberDTO.getId());
+		
+		int result = st.executeUpdate();
+		DBConnector.disConnect(st, con);
+		return result;
+	}
+	
 	public int update(MemberDTO memberDTO) throws Exception{
 		Connection con = DBConnector.getConnect();
 		String sql="UPDATE member SET pw=?, birth=?, addr=?, phone=?, email=?, library=?, kind=? WHERE id=?";

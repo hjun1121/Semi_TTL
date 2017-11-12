@@ -18,6 +18,8 @@
 	<c:if test="${empty sessionScope.member }">
 		<p><a href="./member/memberLogin.member">로그인</a>
 		<p><a href="./member/memberJoin.member">회원가입</a>
+		<p><a href="./member/memberIdFind.member">Id Find</a>
+		<p><a href="./member/memberPwFind.member">Pw Find</a>
 	</c:if>
 	
 	<c:if test="${not empty sessionScope.member }">
@@ -52,8 +54,6 @@
 	<p><a href="./library/libraryMain.library?library=4">Ssin_Lib</a></p>
 	<div style = "height: 10px"></div>
 
-	<p><a href="./member/memberIdFind.member">Id Find</a>
-	<p><a href="./member/memberPwFind.member">Pw Find</a>
 	
 	<p><a href="./member/memberJoinAgree.member">Join Agree</a></p>
 	<p>=================================================</p>
