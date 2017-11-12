@@ -38,7 +38,7 @@
 	</div>
 	
 	
-	<c:if test="${member.id eq view.writer }">
+	<c:if test="${member.kind eq 10 }">
 		<a href="./${requestScope.notice}Update.${requestScope.notice}?num=${requestScope.view.num}">UPDATE</a>
 		<a href="./${requestScope.notice}Delete.${requestScope.notice}?num=${requestScope.view.num}">DELETE</a>
 	</c:if>

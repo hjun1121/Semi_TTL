@@ -73,7 +73,7 @@
 	<p>=================================================</p>
 	</c:if>
 	
-	<p><a href="./notice/noticeList.notice">공지사항</a></p>
+	<p><a href="./notice/noticeList.notice">공지사항★</a></p>
 	<p><a href="./seat/seatList.seat">Seat List</a></p>
 	<p><a href="./market/marketTotalList.market">Market Total List</a></p>
 	<c:if test="${empty sessionScope.member }">
