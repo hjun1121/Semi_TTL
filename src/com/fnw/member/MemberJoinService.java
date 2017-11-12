@@ -27,16 +27,15 @@ public class MemberJoinService implements Action {
 			String message=null;
 			
 			if(result>0) {
-				message="join 성공";
-				actionFoward.setCheck(false);
-				actionFoward.setPath("../index.jsp");
-				
+				message="회원가입 성공";
+				request.setAttribute("path", "../index.jsp");
 			}else {
-				message="join 실패";
-				actionFoward.setCheck(true);
-				actionFoward.setPath("../WEB-INF/view/member/memberJoin.jsp");
+				message="회원가입 실패";
+				request.setAttribute("path", "../member/memberJoin/member");
 			}
-			
+			request.setAttribute("message", message);
+			actionFoward.setCheck(true);
+			actionFoward.setPath("../WEB-INF/view/common/result.jsp");
 		}
 		
 		return actionFoward;
