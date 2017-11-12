@@ -1,4 +1,4 @@
-package com.fnw.book;
+package com.fnw.market;
 
 import java.util.ArrayList;
 
@@ -7,7 +7,6 @@ import javax.servlet.http.HttpServletResponse;
 
 import com.fnw.action.Action;
 import com.fnw.action.ActionFoward;
-import com.fnw.book.Book_Buy_WishDAO;
 import com.fnw.util.PageMaker;
 
 public class BookBuyWishListService implements Action {

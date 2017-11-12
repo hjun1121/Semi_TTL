@@ -107,7 +107,7 @@ public class Book_Rent_DetailsDAO {
 	}
 	public int getTotalCount(String search) throws Exception {
 		Connection con = DBConnector.getConnect();
-		String sql = "select nvl(count(num), 0) from book_rent_details where in_time < ?" ;
+		String sql = "select nvl(count(num), 0) from book_rent_details where in_time <= ?" ;
 		
 		PreparedStatement st = con.prepareStatement(sql);
 		st.setString(1, search);
@@ -119,14 +119,31 @@ public class Book_Rent_DetailsDAO {
 		return result;
 	}
 	
-	public int bookReturn(int num) throws Exception {
+	public int bookReturn(int num,long lateDate) throws Exception {
 		Connection con = DBConnector.getConnect();
-		String sql = "update book_rent_details set out_time=sysdate where num = ?";
+		String sql = "update book_rent_details set out_time=sysdate, late_date=? where num = ?";
 		PreparedStatement st = con.prepareStatement(sql);
-		st.setInt(1, num);
+		st.setLong(1, lateDate);
+		st.setInt(2, num);
 
 		int result = st.executeUpdate();
 		DBConnector.disConnect(st, con);
 		return result;
+	}
+	
+	public Book_Rent_DetailsDTO selectTime(int num) throws Exception{
+		Connection con = DBConnector.getConnect();
+		String sql = "select in_time from book_rent_details where num=?";
+		PreparedStatement st = con.prepareStatement(sql);
+		st.setInt(1, num);
+		
+		ResultSet rs = st.executeQuery();
+		Book_Rent_DetailsDTO book_Rent_DetailsDTO = null;
+		while(rs.next()) {
+			book_Rent_DetailsDTO = new Book_Rent_DetailsDTO();
+			book_Rent_DetailsDTO.setIn_time(rs.getDate("in_time"));
+		}
+		
+		return book_Rent_DetailsDTO;
 	}
 }

@@ -1,6 +1,8 @@
 package com.fnw.book;
 
+import java.text.SimpleDateFormat;
 import java.util.ArrayList;
+import java.util.Calendar;
 
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
@@ -24,18 +26,30 @@ public class BookRentListService implements Action {
 			curPage=1;
 		}
 		
+		SimpleDateFormat sdf = new SimpleDateFormat("yy");
+        Calendar c1 = Calendar.getInstance();
+        String strToday = sdf.format(c1.getTime());
+
 		String year = request.getParameter("year");
-		if(year==null) {
-			year="17";
+		if(year == null) {
+			year=strToday;
 		}
+		
+		sdf = new SimpleDateFormat("MM");
+        c1 = Calendar.getInstance();
+        strToday = sdf.format(c1.getTime());
 		String month = request.getParameter("month");
-		if(month==null) {
-			month="11";
-		}
-		String day =request.getParameter("day");
-		if(day==null) {
-			day="03";
-		}
+		if(month == null) {
+			month=strToday;
+		}		
+		
+		sdf = new SimpleDateFormat("dd");
+        c1 = Calendar.getInstance();
+        strToday = sdf.format(c1.getTime());
+		String day = request.getParameter("day");
+		if(day == null) {
+			day=strToday;
+		}	
 		String p_date = year+"/"+month+"/"+day;
 		
 		int totalCount = 0;

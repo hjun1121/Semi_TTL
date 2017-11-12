@@ -142,4 +142,16 @@ public class Book_Rent_WishDAO {
 		
 		return result;
 	}
+	
+	public int stateUpdate(int num) throws Exception{
+		Connection con = DBConnector.getConnect();
+		String sql="UPDATE book_rent_wish SET state=1 WHERE num=?";
+		PreparedStatement st = con.prepareStatement(sql);
+		
+		st.setInt(1, num);
+		
+		int result = st.executeUpdate();
+		DBConnector.disConnect(st, con);
+		return result;
+	}
 }

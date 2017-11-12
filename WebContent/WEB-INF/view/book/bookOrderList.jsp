@@ -2,6 +2,18 @@
 	pageEncoding="UTF-8"%>
 <!DOCTYPE html>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+<script type="text/javascript">
+$(function(){
+	 var kind = '${kind}';
+	 
+	 $(".kind").each(function(){
+		 if($(this).val() == kind) {
+			 $(this).attr("selected", true);
+		 }
+	 });
+});
+</script>
 <html>
 </head>
 <body>
@@ -10,16 +22,16 @@
 		<form name="frm" class="form-inline" action="./bookOrderList.book"
 			method="post">
 			<div>
-				<span> <select name="kind">
-						<option value="title">제목</option>
-						<option value="writer">저자</option>
-						<option value="company">출판사</option>
+				<span> <select name="kind" id="kind">
+						<option value="title" class="kind">제목</option>
+						<option value="writer" class="kind">저자</option>
+						<option value="company" class="kind">출판사</option>
 				</select> <input type="text" class="form-control" id="search"
-					placeholder="Enter" name="search">
+					placeholder="Enter" name="search" value="${search }">
 				</span>
 				<div class="form-group">
 					<div class="col-sm-offset-2 col-sm-10">
-						<input type="submit" class="btn btn-default" value="Search">
+						<input type="submit" class="btn btn-default" value="search">
 					</div>
 				</div>
 			</div>

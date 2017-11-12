@@ -34,7 +34,7 @@ $(function(){
 </script>
 </head>
 <body>
-	<h2>MyPage - Book Rent List</h2>
+	<h2>MyPage - 책 대여 목록</h2>
 	<div>
 	<form name="frm" class="form-inline" action="./bookRentList.book" method="post">
 	
@@ -150,8 +150,11 @@ $(function(){
 				<td>${bookRent_list.out_time }</td>
 				<c:choose>
 					<c:when test="${empty bookRent_list.out_time }">
-						<td>${bookRent_list.late_date }</td>
+						<td>-</td>
 						<td><a href="./bookReturn.book?num=${bookRent_list.num }"><input type="button" value="반납"></a></td>
+					</c:when>
+					<c:when test="${! empty bookRent_list.out_time }">
+						<td>${bookRent_list.late_date }</td>
 					</c:when>
 					<c:otherwise>
 						<td>0</td>
