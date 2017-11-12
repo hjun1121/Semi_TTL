@@ -33,7 +33,9 @@ public class BookRentService implements Action {
 			}
 			int result = 0;
 			try {
-				result = libraryDAO.bookRent(num, rent_id);
+				Book_TotalDAO book_TotalDAO = new Book_TotalDAO();
+				Book_TotalDTO book_TotalDTO = book_TotalDAO.selectOne(num);
+				result = libraryDAO.bookRent(book_TotalDTO, rent_id);
 			} catch (Exception e) {
 				e.printStackTrace();
 			}

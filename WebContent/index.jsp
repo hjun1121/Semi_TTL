@@ -14,7 +14,7 @@
 </head>
 <body>
 	<h1>판매신청폼 만들었어?</h1>
-	
+
 	<c:if test="${empty sessionScope.member }">
 		<p><a href="./member/memberLogin.member">로그인</a>
 		<p><a href="./member/memberJoin.member">회원가입</a>

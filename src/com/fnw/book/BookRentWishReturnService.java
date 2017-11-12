@@ -62,7 +62,6 @@ public class BookRentWishReturnService implements Action {
 		actionFoward.setCheck(true);
 		actionFoward.setPath("../WEB-INF/view/book/bookRentWishReturn.jsp");
 
-		
 		return actionFoward;
 	}
 	

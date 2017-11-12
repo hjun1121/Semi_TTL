@@ -42,7 +42,9 @@ $(function(){
 
 	$(".wish_btn").click(function() {
 		var num = $(this).val();
-		
+		alert(${heart1});
+		alert(${heart2});
+
 		if (${heart1 == 0}) {
 			$.ajax({
 				url: "../book/bookRentWishReturn.book",
@@ -165,7 +167,7 @@ $(function(){
 											</c:choose>
 										</c:if>
 									</c:forEach>
-										<c:if test="${heart2 == 0 }">
+										<c:if test="${heart2 == 0}">
 											<td><button class = "btn btn-default wish_btn" type = "submit" value = "${dto.num}">♡</button></td>
 										</c:if>
 								</c:if>
