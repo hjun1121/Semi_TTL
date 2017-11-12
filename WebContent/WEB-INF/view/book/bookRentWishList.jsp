@@ -74,11 +74,11 @@ $(document).ready(function() {
 						</c:otherwise>
 					</c:choose>
 					<c:choose>
-		            	<c:when test="${bookRentWish_list.state eq 0}">
+		            	<c:when test="${bookRentWish_list.state eq 1}">
 							<td>대여중</td>
 						</c:when>
-						<c:when test="${bookRentWish_list.state eq 1}">
-							<td><a href=""><input type="button" value="대여"></a></td>
+						<c:when test="${bookRentWish_list.state eq 0}">
+							<td><a href="./bookRentWishRent.book?num=${bookRentWish_list.num }&rent_id=${id}&library=${bookRentWish_list.library}"><input type="button" value="대여"></a></td>
 						</c:when>
 						<c:otherwise>
 							<td>없음</td>

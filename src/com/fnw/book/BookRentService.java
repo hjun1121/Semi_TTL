@@ -21,13 +21,11 @@ public class BookRentService implements Action {
 			try {
 				library = Integer.parseInt(request.getParameter("library"));
 			} catch (Exception e) {
-				// TODO: handle exception
 			}
 			int num = 0;
 			try {
 				num = Integer.parseInt(request.getParameter("num"));
 			} catch (Exception e) {
-				// TODO: handle exception
 			}
 			String rent_id = request.getParameter("rent_id");
 			if(rent_id == null) {
@@ -37,7 +35,6 @@ public class BookRentService implements Action {
 			try {
 				result = libraryDAO.bookRent(num, rent_id);
 			} catch (Exception e) {
-				// TODO Auto-generated catch block
 				e.printStackTrace();
 			}
 

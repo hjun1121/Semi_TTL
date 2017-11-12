@@ -11,7 +11,7 @@ import com.fnw.util.MakeRow;
 public class Market_Deal_DetailsDAO {
 	public int insert(Market_Deal_DetailsDTO market_Deal_DetailsDTO) throws Exception{
 		Connection con = DBConnector.getConnect();
-		String sql = "insert into market_deal_details values(3,?,?,?,?,?,sysdate,?,?,?,0,?)";
+		String sql = "insert into market_deal_details values(14,?,?,?,?,?,sysdate,?,?,?,0,?)";
 		PreparedStatement st = con.prepareStatement(sql);
 		
 		st.setString(1, market_Deal_DetailsDTO.getTitle());
