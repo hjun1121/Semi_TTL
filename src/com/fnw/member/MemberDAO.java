@@ -96,7 +96,7 @@ public class MemberDAO {
 		return memberDTO;
 	}
 	
-	public MemberDTO IdFind(String name,String email) throws Exception {
+	public ArrayList<MemberDTO> IdFind(String name,String email) throws Exception {
 		Connection con = DBConnector.getConnect();
 		String sql = "SELECT * FROM member WHERE name=? and email=?";
 		PreparedStatement st = con.prepareStatement(sql);
@@ -104,8 +104,9 @@ public class MemberDAO {
 		st.setString(2, email);
 		
 		ResultSet rs = st.executeQuery();
+		ArrayList<MemberDTO> ar = new ArrayList<>();
 		MemberDTO memberDTO = null;
-		if(rs.next()) {
+		while(rs.next()) {
 			memberDTO = new MemberDTO();
 			memberDTO.setId(rs.getString("id"));
 			memberDTO.setPw(rs.getString("pw"));
@@ -117,9 +118,10 @@ public class MemberDAO {
 			memberDTO.setEmail(rs.getString("email"));
 			memberDTO.setLibrary(rs.getInt("library"));
 			memberDTO.setKind(rs.getInt("kind"));
+			ar.add(memberDTO);
 		}
 		DBConnector.disConnect(rs, st, con);
-		return memberDTO;
+		return ar;
 	}
 	public MemberDTO PwFind(String id ,String name,String email) throws Exception {
 		Connection con = DBConnector.getConnect();
@@ -147,6 +149,19 @@ public class MemberDAO {
 		DBConnector.disConnect(rs, st, con);
 		return memberDTO;
 	}
+	public int updatePw(MemberDTO memberDTO, String pw) throws Exception{
+		Connection con = DBConnector.getConnect();
+		String sql="UPDATE member SET pw=? WHERE id=?";
+		PreparedStatement st = con.prepareStatement(sql);
+		
+		st.setString(1, pw);
+		st.setString(2, memberDTO.getId());
+		
+		int result = st.executeUpdate();
+		DBConnector.disConnect(st, con);
+		return result;
+	}
+	
 	public int update(MemberDTO memberDTO) throws Exception{
 		Connection con = DBConnector.getConnect();
 		String sql="UPDATE member SET pw=?, birth=?, addr=?, phone=?, email=?, library=?, kind=? WHERE id=?";

@@ -13,7 +13,7 @@
 		<p>id<input type="text" name="id"></p>
 		<p>name<input type="text" name="name"></p>
 		<p>email<input type="text" name="email"></p>
-		<p><button type="submit">Pw Find</button></p>
+		<p><button type="submit">Pw 찾기</button></p>
 	</form>
 	
 </body>

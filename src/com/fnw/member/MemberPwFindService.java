@@ -5,6 +5,7 @@ import javax.servlet.http.HttpServletResponse;
 
 import com.fnw.action.Action;
 import com.fnw.action.ActionFoward;
+import com.fnw.util.EmailDAO;
 
 public class MemberPwFindService implements Action {
 
@@ -22,19 +23,19 @@ public class MemberPwFindService implements Action {
 			try {
 				memberDTO = memberDAO.PwFind(request.getParameter("id"),request.getParameter("name"), request.getParameter("email"));
 			} catch (Exception e) {
-				// TODO Auto-generated catch block
 				e.printStackTrace();
 			}
 			String message=null;
 			if(memberDTO !=null) {
-				message="Pw 찾기 성공"+memberDTO.getPw()+"입니다.";
-				request.getSession().setAttribute("member", memberDTO);
+				EmailDAO emailDAO = new EmailDAO();
+				emailDAO.sendPw(request, memberDTO);
+				message="가입한 email 로 임시 비밀번호 발송";
 				request.setAttribute("message", message);
-				request.setAttribute("path", "../index.jsp");
+				request.setAttribute("path", "../member/memberLogin.member");
 			}else {
 				message="Pw 찾기 실패";
 				request.setAttribute("message", message);
-				request.setAttribute("path", "./memberJoin.member");
+				request.setAttribute("path", "../index.jsp");
 			}
 			
 			actionFoward.setCheck(true);
