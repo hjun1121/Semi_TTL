@@ -38,6 +38,47 @@ $(function(){
 			}
 		});
 	});
+	
+	$(".wish_btn").click(function() {
+		var num = $(this).val();
+		var title = $(this).attr("title");
+		
+		if (title == 1) {
+			$.ajax({
+				url: "../book/bookRentWishReturn.book",
+				type: "GET",
+				data: {
+					num:num,
+					kind:'${kind}',
+					curPage: ${curPage},
+					search: '${search}',
+					rent_id:'${member.id}'
+				},
+				success: function(data) {
+					alert(data);
+					location.href="./bookTotalSearch.book?&search=${search}&curPage=${curPage}&kind=${kind}";
+				}
+			});
+
+		} else if (title == 0) {
+			$.ajax({
+				url: "../book/bookRentWish.book",
+				type: "GET",
+				data: {
+					num:num,
+					kind:'${kind}',
+					curPage: ${curPage},
+					search: '${search}',
+					rent_id:'${member.id}'
+				},
+				success: function(data) {
+					alert(data);
+					location.href="./bookTotalSearch.book?&search=${search}&curPage=${curPage}&kind=${kind}";
+				}
+			});
+		}
+	});
+
  });
 </script>
 </head>
@@ -81,6 +122,9 @@ $(function(){
 						<td>출판사</td>
 						<td>비치 도서관</td>
 						<td>대여여부</td>
+						<c:if test="${ not empty member }">
+							<td>찜</td>
+						</c:if>
 					</tr>
 					<c:forEach items="${ list }" var="dto">
 							<tr>
@@ -95,7 +139,6 @@ $(function(){
 									<c:when test="${dto.library == 3 }"><td><a href="../library/libraryMain.library?library=3">hs_lib</a></td></c:when>
 									<c:when test="${dto.library == 4 }"><td><a href="../library/libraryMain.library?library=4">ssin_lib</a></td></c:when>
 								</c:choose>
-
 								<c:choose>
 									<c:when test="${ dto.state == 0 and not empty member }">
 										<td><button class = "btn btn-default rent_btn"  type = "submit" id = "rent_btn" value = "${dto.num}">대여</button></td>
@@ -107,6 +150,24 @@ $(function(){
 										<td>대여불가</td>
 									</c:when>
 								</c:choose>
+								<c:set var="heart1" value="0" ></c:set>
+								<c:set var="heart2" value="0" ></c:set>
+								<c:if test="${ not empty member }">
+									<c:forEach items="${rent_wish_list}" var="wish">
+										<c:if test="${wish.title eq dto.title}">
+											<c:choose>
+												<c:when test="${heart1 == 0}">
+													<td><button class = "btn btn-default wish_btn" type = "submit" value = "${dto.num}" title="1">❤</button></td>
+													<c:set var="heart1" value="1" ></c:set>
+													<c:set var="heart2" value="1" ></c:set>
+												</c:when>
+											</c:choose>
+										</c:if>
+									</c:forEach>
+										<c:if test="${heart2 == 0}">
+											<td><button class = "btn btn-default wish_btn" type = "submit" value = "${dto.num}" title="0">♡</button></td>
+										</c:if>
+								</c:if>
 							</tr>
 					</c:forEach>
 				</table>
