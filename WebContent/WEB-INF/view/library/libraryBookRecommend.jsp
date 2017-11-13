@@ -115,7 +115,9 @@ $(function(){
 						<td>출판사</td>
 						<td>분류</td>
 						<td>대여여부</td>
-						<td>찜하기</td>
+						<c:if test="${ not empty member }">
+							<td>찜하기</td>
+						</c:if>
 					</tr>
 					<c:forEach items="${ list }" var="dto">
 							<tr>

@@ -15,7 +15,12 @@ public class BookRentWishService implements Action {
 		Book_TotalDTO book_TotalDTO = new Book_TotalDTO();
 		Book_TotalDAO book_TotalDAO = new Book_TotalDAO();
 		String search = request.getParameter("search");
-		int curPage = Integer.parseInt(request.getParameter("curPage"));
+		int curPage = 1;
+		try {
+			 curPage = Integer.parseInt(request.getParameter("curPage"));
+		} catch (Exception e) {
+			// TODO: handle exception
+		}
 		int num = 0;
 		try {
 			num = Integer.parseInt(request.getParameter("num"));
@@ -23,7 +28,7 @@ public class BookRentWishService implements Action {
 		} catch (Exception e) {
 			// TODO: handle exception
 		}
-		String id = request.getParameter("id");
+		String id = request.getParameter("rent_id");
 		if(id == null) {
 			id = "";
 		}
