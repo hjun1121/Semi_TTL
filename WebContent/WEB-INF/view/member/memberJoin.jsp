@@ -165,6 +165,12 @@
 		
 		
 		$("#btn").click(function(){
+			var f = $("#f").val();
+			var m = $("#m").val();
+			var l = $("#l").val();
+			var all = f+'-'+m+'-'+l;
+			$("#phone").val(all);
+			
 			if(idCheck == false){
 				alert("id확인해주세요");
 				$("#id").focus();
@@ -183,9 +189,12 @@
 			}else if($("#addr2").val()==""){
 				alert("addr2 입력");	
 				$("#addr2").focus();	
-			}else if($("#phone").val()==""){
-				alert("phone 확인");
-				$("#phone").focus();
+			}else if($("#m").val()==""){
+				alert("중간번호 확인");
+				$("#m").focus();
+			}else if($("#l").val()==""){
+				alert("끝번호 확인");
+				$("#l").focus();
 			}else if(mailCheck == false){
 				alert("email확인해주세요");
 				$("#email").focus();
@@ -219,9 +228,17 @@
 	<input type="text" id="addr" name="addr" placeholder="주소" readonly="readonly">
 	<input type="text" id="addr2" name="addr2" placeholder="나머지주소">	
 
-	<p>phone<input type="text" id="phone" name="phone"></p>
-	<p>
-	<input id="email1" type="text">@<input type="text" id="email2" >
+	<p>phone
+	<select id="f">
+		<option value="010">010</option>
+		<option value="011">011</option>
+		<option value="031">031</option>
+		<option value="02">02</option>
+	</select>
+	-<input type="text" id="m" >-<input type="text" id="l" ></p>
+	<input type="hidden" id="phone" name="phone">
+	
+	<p><input id="email1" type="text">@<input type="text" id="email2" >
 	<select id = "mailList">
 		<option  value="0">직접입력</option>
 		<option  value="naver.com">naver.com</option>
@@ -230,6 +247,7 @@
 		<option  value="hotmail.com">hotmail.com</option>
 	</select>
 	<input type="hidden" id="email" name="email" >
+	
 	<input type="button" id="mailCheck" value="이메일 인증"></p>
 	<div id="ch_email"></div>
 	<p>library
