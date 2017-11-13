@@ -12,6 +12,7 @@
 <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
 <title>Total Library Page</title>
 </head>
+
 <body>
 	<h1>판매신청폼 만들었어?</h1>
 
@@ -26,7 +27,7 @@
  	<h1>${sessionScope.member.id }</h1>
  	<h1>MyPage_Hees</h1>
 		<p><a href="./member/memberUpdatePwCheck.member">회원 정보 수정★</a></p>
-		<p><a href="./market/marketDealsList.market?id=${member.id }">중고책거래 판/구매 리스트★</a></p>
+		<p><a href="./market/marketDealsList.market?id=${member.id }&type=3">중고책거래 판/구매 리스트★</a></p>
 		<p><a href="./seat/seatTotalList.seat?id=${member.id }">좌석 예약 내역★</a></p>
 		<p><a href="./book/bookRentList.book?id=${member.id }">책 대여 내역★</a></p>
 		<p><a href="./book/bookOrderList.book?id=${member.id }">책 신청 내역★</a></p>
