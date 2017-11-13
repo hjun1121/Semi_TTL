@@ -76,13 +76,7 @@
 	<p><a href="./notice/noticeList.notice">공지사항</a></p>
 	<p><a href="./seat/seatList.seat">Seat List</a></p>
 	<p><a href="./market/marketTotalList.market">Market Total List</a></p>
-	<c:if test="${empty sessionScope.member }">
-		login plz
-	</c:if>
-
-	<c:if test="${sessionScope.member.kind eq 10 }">
-		admin page
-	</c:if>
+	
 
 </body>
 </html>
