@@ -35,25 +35,93 @@ public class BookOrderListService implements Action {
 			search="";
 		}
 		
-		int totalCount = 0;
-		if(totalCount==0) {
-			totalCount=1;
-		}
-		Book_OrderDAO book_OrderDAO = new Book_OrderDAO();
+		
+		int state = 3;
 		try {
-			totalCount = book_OrderDAO.getTotalCount(kind, search);
-			PageMaker pageMaker = new PageMaker(curPage, totalCount);
-			list = book_OrderDAO.selectList(id,pageMaker.getMakeRow(),kind,search);
-			request.setAttribute("bookOrderList", list);
-			request.setAttribute("id", id);
-			request.setAttribute("search", search);
-			request.setAttribute("kind", kind);
-			request.setAttribute("page", pageMaker.getMakePage());
-		} catch (Exception e) {
-			e.printStackTrace();
+			state = Integer.parseInt(request.getParameter("state"));
+		}catch (Exception e) {
+			
 		}
-		actionFoward.setCheck(true);
-		actionFoward.setPath("../WEB-INF/view/book/bookOrderList.jsp");
+		
+		int totalCount = 1;
+		if(state==0) {
+			Book_OrderDAO book_OrderDAO = new Book_OrderDAO();
+			try {
+				totalCount = book_OrderDAO.getTotalCount(kind, search,state);
+				if(totalCount==0) {
+					totalCount=1;
+				}
+				PageMaker pageMaker = new PageMaker(curPage, totalCount);
+				list = book_OrderDAO.selectList(id,pageMaker.getMakeRow(),kind,search,state);
+				request.setAttribute("bookOrderList", list);
+				request.setAttribute("id", id);
+				request.setAttribute("search", search);
+				request.setAttribute("kind", kind);
+				request.setAttribute("page", pageMaker.getMakePage());
+			} catch (Exception e) {
+				e.printStackTrace();
+			}
+			actionFoward.setCheck(true);
+			actionFoward.setPath("../WEB-INF/view/book/bookOrderList.jsp");
+		}else if(state==1) {
+			Book_OrderDAO book_OrderDAO = new Book_OrderDAO();
+			try {
+				totalCount = book_OrderDAO.getTotalCount(kind, search,state);
+				if(totalCount==0) {
+					totalCount=1;
+				}
+				PageMaker pageMaker = new PageMaker(curPage, totalCount);
+				list = book_OrderDAO.selectList(id,pageMaker.getMakeRow(),kind,search,state);
+				request.setAttribute("bookOrderList", list);
+				request.setAttribute("id", id);
+				request.setAttribute("search", search);
+				request.setAttribute("kind", kind);
+				request.setAttribute("page", pageMaker.getMakePage());
+			} catch (Exception e) {
+				e.printStackTrace();
+			}
+			actionFoward.setCheck(true);
+			actionFoward.setPath("../WEB-INF/view/book/bookOrderList.jsp");
+		}else if(state==2) {
+			Book_OrderDAO book_OrderDAO = new Book_OrderDAO();
+			try {
+				totalCount = book_OrderDAO.getTotalCount(kind, search,state);
+				if(totalCount==0) {
+					totalCount=1;
+				}
+				PageMaker pageMaker = new PageMaker(curPage, totalCount);
+				list = book_OrderDAO.selectList(id,pageMaker.getMakeRow(),kind,search,state);
+				request.setAttribute("bookOrderList", list);
+				request.setAttribute("id", id);
+				request.setAttribute("search", search);
+				request.setAttribute("kind", kind);
+				request.setAttribute("page", pageMaker.getMakePage());
+			} catch (Exception e) {
+				e.printStackTrace();
+			}
+			actionFoward.setCheck(true);
+			actionFoward.setPath("../WEB-INF/view/book/bookOrderList.jsp");
+		}else {
+			Book_OrderDAO book_OrderDAO = new Book_OrderDAO();
+			try {
+				totalCount = book_OrderDAO.getTotalCount(kind, search);
+				if(totalCount==0) {
+					totalCount=1;
+				}
+				PageMaker pageMaker = new PageMaker(curPage, totalCount);
+				list = book_OrderDAO.selectList(id,pageMaker.getMakeRow(),kind,search);
+				request.setAttribute("bookOrderList", list);
+				request.setAttribute("id", id);
+				request.setAttribute("search", search);
+				request.setAttribute("kind", kind);
+				request.setAttribute("page", pageMaker.getMakePage());
+			} catch (Exception e) {
+				e.printStackTrace();
+			}
+			actionFoward.setCheck(true);
+			actionFoward.setPath("../WEB-INF/view/book/bookOrderList.jsp");
+		}
+		
 		return actionFoward;
 	}
 }
