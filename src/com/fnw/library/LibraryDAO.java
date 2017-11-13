@@ -85,7 +85,7 @@ public class LibraryDAO {
 		int result = st.executeUpdate();
 
 		if(result > 0) {
-			sql = "insert into book_rent_details values(?,?,?,?,?,?,?,?,sysdate,sysdate+7,0)";
+			sql = "insert into book_rent_details values(?,?,?,?,?,?,?,?,to_char(sysdate, 'YYYY-mm-DD'),null,0)";
 			st = con.prepareStatement(sql);
 			st.setInt(1, book_TotalDTO.getNum());
 			st.setString(2, book_TotalDTO.getTitle());

@@ -10,7 +10,6 @@ public class BookRentDetailsService implements Action {
 
 	@Override
 	public ActionFoward doProcess(HttpServletRequest request, HttpServletResponse response) {
-
 		ActionFoward actionFoward = new ActionFoward();
 		Book_Rent_DetailsDAO book_Rent_DetailsDAO = new Book_Rent_DetailsDAO();
 		Book_Rent_DetailsDTO book_Rent_DetailsDTO = null;

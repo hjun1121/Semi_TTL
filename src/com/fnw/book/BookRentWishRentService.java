@@ -8,6 +8,7 @@ import javax.servlet.http.HttpServletResponse;
 import com.fnw.action.Action;
 import com.fnw.action.ActionFoward;
 import com.fnw.library.LibraryDAO;
+import com.fnw.member.MemberDTO;
 import com.fnw.util.PageMaker;
 
 public class BookRentWishRentService implements Action {

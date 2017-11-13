@@ -20,7 +20,6 @@ public class Book_Rent_DetailsDAO {
 				+ "(select * from book_rent_details where in_time<= ? and id=? order by num asc) N)"
 				+ "where R between ? and ?";
 		PreparedStatement st = con.prepareStatement(sql);
-		
 		st.setString(1, search);
 		st.setString(2, id);
 		st.setInt(3, makeRow.getStartRow());
