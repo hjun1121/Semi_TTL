@@ -22,7 +22,6 @@ public class LibraryBookRecommendService implements Action{
 		ArrayList<Book_TotalDTO> ar = new ArrayList<>();
 		ArrayList<Book_Rent_WishDTO> rent_wish_list = new ArrayList<>();
 		
-		
 		////id 받아오기
 		HttpSession session = null;
 		String id = null;
@@ -33,7 +32,7 @@ public class LibraryBookRecommendService implements Action{
 				id = "";
 			}
 		}catch (Exception e) {
-		}
+		}		
 		int curPage = 1;
 		try {
 			curPage = Integer.parseInt(request.getParameter("curPage"));

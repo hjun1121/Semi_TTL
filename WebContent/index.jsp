@@ -62,7 +62,6 @@
 	<c:if test="${not empty sessionScope.member }">
 	<p><a href="./qna/qnaList.qna">QnaList</a></p>
 	<p><a href="./market/marketOrder.market?id=${member.id }">마켓판매신청form</a></p><!-- 로그인시만 이용 -->
-	<p><a href="./market/marketDealList_personal.market?id=${member.id }">마켓판매신청 개인확인용</a></p><!-- 로그인시만 이용 -->
 	<p>=================================================</p>
 	</c:if>
 
@@ -78,13 +77,7 @@
 	<p><a href="./notice/noticeList.notice">공지사항</a></p>
 	<p><a href="./seat/seatList.seat">Seat List</a></p>
 	<p><a href="./market/marketTotalList.market">Market Total List</a></p>
-	<c:if test="${empty sessionScope.member }">
-		login plz
-	</c:if>
-
-	<c:if test="${sessionScope.member.kind eq 10 }">
-		admin page
-	</c:if>
+	
 
 </body>
 </html>
