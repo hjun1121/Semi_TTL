@@ -39,7 +39,7 @@ $(function(){
 				type: "GET",
 				data: {
 					num:num,
-					id: '${member.id}'
+					rent_id: '${member.id}'
 				},
 				success: function(data) {
 					alert(data);
@@ -53,7 +53,7 @@ $(function(){
 				type: "GET",
 				data: {
 					num:num,
-					id:'${member.id}'
+					rent_id:'${member.id}'
 				},
 				success: function(data) {
 					alert(data);

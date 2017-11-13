@@ -45,7 +45,7 @@ $(function(){
 					num:num,
 					curPage: ${curPage},
 					library: ${library},
-					id: '${member.id}'
+					rent_id: '${member.id}'
 				},
 				success: function(data) {
 					alert(data);
@@ -61,7 +61,7 @@ $(function(){
 					num:num,
 					curPage: ${curPage},
 					library: ${library},
-					id:'${member.id}'
+					rent_id:'${member.id}'
 				},
 				success: function(data) {
 					alert(data);
