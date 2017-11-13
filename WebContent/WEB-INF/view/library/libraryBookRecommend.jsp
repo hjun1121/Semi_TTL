@@ -159,7 +159,6 @@ $(function(){
 							</tr>
 					</c:forEach>
 				</table>
-
 		</div>
 
 		<div style = "text-align: center;">
