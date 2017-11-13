@@ -160,6 +160,20 @@ $(function(){
 					</c:otherwise>
 				</c:choose>
 				<c:choose>
+					<c:when test="${bookDeals_list.state eq 1}">
+						<td>상</td>
+					</c:when>
+					<c:when test="${bookDeals_list.state eq 2}">
+						<td>중</td>
+					</c:when>
+					<c:when test="${bookDeals_list.state eq 3}">
+						<td>하</td>
+					</c:when>
+					<c:otherwise>
+						<td>없음</td>
+					</c:otherwise>
+				</c:choose>
+				<c:choose>
 					<c:when test="${bookDeals_list.delivery eq 2}">
 						<td>택배</td>
 					</c:when>
