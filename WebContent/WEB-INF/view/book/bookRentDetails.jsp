@@ -11,9 +11,9 @@
 <h2>Book Rent Details</h2>
 <form action="../book/bookRentList.book?id=${member.id }" method="post">
 		<p><input type="hidden" name="num" value=${bookRentDTO.num }></p>
-		<p>title<input type="text" name="title" value=${bookRentDTO.title } size="100" readonly="readonly"></p>
+		<p>title<input type="text" name="title" value='${bookRentDTO.title }'readonly="readonly"></p>
 		<p>section<input type="text" name="section" value=${bookRentDTO.section } readonly="readonly"></p>
-		<p>writer<input type="text" name="writer" value=${bookRentDTO.writer } readonly="readonly"></p>
+		<p>writer<input type="text" name="writer" value='${bookRentDTO.writer }' readonly="readonly"></p>
 		<p>publish_date<input type="text" name="publish_date" value=${bookRentDTO.publish_date } readonly="readonly"></p>
 		<p><input type="hidden" name="id" value=${bookRentDTO.id } readonly="readonly"></p>
 		<c:choose>
