@@ -104,7 +104,37 @@
 		});
 		
 		
-		//email 체크
+		//email 체크 합치기
+		$("#mailList").change(function(){
+			var ml = $("#mailList").val();
+			
+			if(ml==0){
+				$("#email2").prop('readonly', false);
+				$("#email2").val("");
+				$("#email2").focus();
+			}else{
+				$("#email2").val(ml);
+				$("#email2").prop('readonly', true);
+			}
+		});
+		
+		$("#mailCheck").click(function(){
+			var email1 = $("#email1").val();
+			var email2 = $("#email2").val();
+			var all = email1+'@'+email2;
+			$("#email").val(all);
+		});
+
+		$("#email1").change(function(){
+			mailCheck=false;
+			$("#ch_email").html("<p style=\"color: red\">이메일 인증 필요</p>");
+		});
+		$("#mailList").change(function(){
+			mailCheck=false;
+			$("#ch_email").html("<p style=\"color: red\">이메일 인증 필요</p>");
+		});
+		
+		//이메일 체크
 		$("#mailCheck").click(function(){
 			var email = $("#email").val();
 			$.ajax({
@@ -120,11 +150,7 @@
 			
 		});
 
-		$("#email").change(function(){
-			mailCheck=false;
-			$("#ch_email").html("<p style=\"color: red\">이메일 인증 필요</p>");
-			
-		});
+	
 		
 		$("#ch_email").on("click", "#check_mail" , function(){
 			if($("#num").val() == $("#check").val()){
@@ -168,19 +194,6 @@
 			}
 		});
 		
-		/* $("#btn").click(function(){
-			if(idCheck == false){
-				alert("id확인해주세요");
-			}else if(pwCheck == false){
-				alert("pw확인해주세요");
-			}else if(mailCheck == false){
-				alert("mail확인해주세요");
-			}else{
-				document.frm.submit();
-			}
-		}); */
-		
-		
 	});
 
 </script>
@@ -207,7 +220,16 @@
 	<input type="text" id="addr2" name="addr2" placeholder="나머지주소">	
 
 	<p>phone<input type="text" id="phone" name="phone"></p>
-	<p>email<input type="text" id="email" name="email">
+	<p>
+	<input id="email1" type="text">@<input type="text" id="email2" >
+	<select id = "mailList">
+		<option  value="0">직접입력</option>
+		<option  value="naver.com">naver.com</option>
+		<option  value="daum.net">daum.net</option>
+		<option  value="gmail.com">gmail.com</option>
+		<option  value="hotmail.com">hotmail.com</option>
+	</select>
+	<input type="hidden" id="email" name="email" >
 	<input type="button" id="mailCheck" value="이메일 인증"></p>
 	<div id="ch_email"></div>
 	<p>library

@@ -19,8 +19,7 @@
 	<c:if test="${empty sessionScope.member }">
 		<p><a href="./member/memberLogin.member">로그인</a>
 		<p><a href="./member/memberJoin.member">회원가입</a>
-		<p><a hr
-		ef="./member/memberIdFind.member">Id Find</a>
+		<p><a href="./member/memberIdFind.member">Id Find</a>
 		<p><a href="./member/memberPwFind.member">Pw Find</a>
 	</c:if>
 	
