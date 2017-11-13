@@ -47,6 +47,7 @@ public class BookBuyService implements Action {
 				market_Deal_DetailsDTO.setLibrary(Integer.parseInt(request.getParameter("library")));
 				market_Deal_DetailsDTO.setKind(Integer.parseInt(request.getParameter("kind")));
 				market_Deal_DetailsDTO.setDelivery(Integer.parseInt(request.getParameter("approval")));
+				market_Deal_DetailsDTO.setAddr(request.getParameter("addr"));
 			}
 			int result = 0;
 			String message = null;

@@ -11,7 +11,7 @@ import com.fnw.util.MakeRow;
 public class Market_Deal_DetailsDAO {
 	public int insert(Market_Deal_DetailsDTO market_Deal_DetailsDTO) throws Exception{
 		Connection con = DBConnector.getConnect();
-		String sql = "insert into market_deal_details values(14,?,?,?,?,?,sysdate,?,?,?,0,?)";
+		String sql = "insert into market_deal_details values(MARKETDEALS_SEQ.nextval(),?,?,?,?,?,sysdate,?,?,?,0,?,?)";
 		PreparedStatement st = con.prepareStatement(sql);
 		
 		st.setString(1, market_Deal_DetailsDTO.getTitle());
@@ -23,6 +23,7 @@ public class Market_Deal_DetailsDAO {
 		st.setInt(7, market_Deal_DetailsDTO.getLibrary());
 		st.setInt(8, market_Deal_DetailsDTO.getKind());
 		st.setInt(9, market_Deal_DetailsDTO.getDelivery());
+		st.setString(10, market_Deal_DetailsDTO.getAddr());
 
 		int result = st.executeUpdate();
 		DBConnector.disConnect(st, con);
@@ -59,6 +60,7 @@ public class Market_Deal_DetailsDAO {
 			book_Deal_DetailsDTO.setKind(rs.getInt("kind"));
 			book_Deal_DetailsDTO.setState(rs.getInt("state"));
 			book_Deal_DetailsDTO.setDelivery(rs.getInt("delivery"));
+			book_Deal_DetailsDTO.setAddr(rs.getString("addr"));
 			ar.add(book_Deal_DetailsDTO);
 		}
 		DBConnector.disConnect(rs, st, con);
@@ -87,6 +89,7 @@ public class Market_Deal_DetailsDAO {
 			book_Deal_DetailsDTO.setKind(rs.getInt("kind"));
 			book_Deal_DetailsDTO.setState(rs.getInt("state"));
 			book_Deal_DetailsDTO.setDelivery(rs.getInt("delivery"));
+			book_Deal_DetailsDTO.setAddr(rs.getString("addr"));
 		}
 		DBConnector.disConnect(rs, st, con);
 		return book_Deal_DetailsDTO;
@@ -170,6 +173,7 @@ public class Market_Deal_DetailsDAO {
 			book_Deal_DetailsDTO.setKind(rs.getInt("kind"));
 			book_Deal_DetailsDTO.setState(rs.getInt("state"));
 			book_Deal_DetailsDTO.setDelivery(rs.getInt("delivery"));
+			book_Deal_DetailsDTO.setAddr(rs.getString("addr"));
 			ar.add(book_Deal_DetailsDTO);
 		}
 		DBConnector.disConnect(rs, st, con);

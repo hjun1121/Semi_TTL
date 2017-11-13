@@ -18,11 +18,21 @@ $(function(){
 			 $(this).attr("selected", true);
 		 }
 	 });
+	 
+	 $("#approval").change(function(){
+		 var approval = $("#approval").val(); 
+		 if(approval==2 ){
+			 $("#addr").attr("style","display:inline;");
+		 }else {
+			 $("#addr").attr("style","display:none;");
+		 }
+	 });
+	 
 });
 </script>
 </head>
 <body>
-	<h3>마켓신청form</h3>
+	<h3>Market- 구매신청form</h3>
 	<div style = "height: 50px"></div>
 	<form action="../market/bookBuy.market" method="POST">
 	<input type = "hidden" class = "form-control" name = "num" value = ${buyWishList.num }>
@@ -71,10 +81,16 @@ $(function(){
 			</tr>
 			<tr>
 				<td>구입방법</td>
-				<td><select name = "approval">
-					<option value = "1">직접수령</option>
-					<option value = "2">택배</option>
-				</select></td>
+				<td><select name = "approval" id="approval">
+					<option class = "approval" value = "1">직접수령</option>
+					<option class = "approval" value = "2">택배</option>
+				</select>
+				<td id="price"></td>
+			</tr>
+			<tr id="addr" style="display: none;">
+				<td>주소</td>
+				<td><input type="text" name="addr" value=${member.addr }></td>
+				<td>택배결제시 2500원 추가되어 결제됩니다.</td>
 			</tr>
 		</table>
 		<button style = "float: right;" class = "btn btn-default" type = "submit">CONFIRM</button>
