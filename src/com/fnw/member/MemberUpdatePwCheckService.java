@@ -27,7 +27,7 @@ public class MemberUpdatePwCheckService implements Action {
 			actionFoward.setPath("../WEB-INF/view/member/memberUpdatePwCheck.jsp");
 		}
 		
-		
+		 
 		else {
 			MemberDTO memberDTO = new MemberDTO();	
 			
@@ -37,7 +37,6 @@ public class MemberUpdatePwCheckService implements Action {
 				e.printStackTrace();
 			}
 			if(memberDTO!=null) {
-				request.setAttribute("member", memberDTO);
 				actionFoward.setCheck(false);
 				actionFoward.setPath("./memberUpdate.member");
 			}
