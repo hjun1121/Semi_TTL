@@ -55,7 +55,7 @@ public class BookRentWishRentService implements Action {
 
 		try {
 			totalCount = book_Rent_WishDAO.getTotalCount(kind, search);
-			result = libraryDAO.bookRent(num, rent_id);
+			//result = libraryDAO.bookRent(num, rent_id);
 			book_Rent_WishDAO.stateUpdate(num);
 			if(totalCount==0) {
 				totalCount=1;

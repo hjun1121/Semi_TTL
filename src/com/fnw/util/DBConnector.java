@@ -14,8 +14,8 @@ public class DBConnector {
 		String password="library";
 
 
-		/*String url="jdbc:oracle:thin:@192.168.20.46:1521:xe";*/
-		String url="jdbc:oracle:thin:@192.168.20.46:1521:xe"; //희성
+		String url="jdbc:oracle:thin:@192.168.20.46:1521:xe";
+		//String url="jdbc:oracle:thin:@192.168.20.46:1521:xe"; //희성
 		//String url="jdbc:oracle:thin:@192.168.0.8:1521:xe"; //희성
 
 		String driver="oracle.jdbc.driver.OracleDriver";
