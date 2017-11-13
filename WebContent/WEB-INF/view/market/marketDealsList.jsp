@@ -104,6 +104,9 @@ $(function(){
 		</div>
 		</form>
 	</div>
+	<a href="./marketDealsList.market?id=${id }&type=3"><input type="button" value="전체"></a>
+	<a href="./marketDealsList.market?id=${id }&type=1"><input type="button" value="판매"></a>
+	<a href="./marketDealsList.market?id=${id }&type=2"><input type="button" value="구매"></a>
 	<table class="table" border="1">
 		<tr>
 			<th>num</th>
@@ -114,6 +117,7 @@ $(function(){
 			<th>T_date</th>
 			<th>library</th>
 			<th>price</th>
+			<th>kind</th>
 			<th>state</th>
 			<th>delivery</th>
 		</tr>
@@ -145,10 +149,10 @@ $(function(){
 				</c:choose>
 				<td>${bookDeals_list.price }</td>
 				<c:choose>
-					<c:when test="${bookDeals_list.state eq 1}">
+					<c:when test="${bookDeals_list.kind eq 1}">
 						<td>판매</td>
 					</c:when>
-					<c:when test="${bookDeals_list.state eq 2}">
+					<c:when test="${bookDeals_list.kind eq 2}">
 						<td>구매</td>
 					</c:when>
 					<c:otherwise>
