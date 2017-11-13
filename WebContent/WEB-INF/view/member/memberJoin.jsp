@@ -118,13 +118,6 @@
 			}
 		});
 		
-		$("#mailCheck").click(function(){
-			var email1 = $("#email1").val();
-			var email2 = $("#email2").val();
-			var all = email1+'@'+email2;
-			$("#email").val(all);
-		});
-
 		$("#email1").change(function(){
 			mailCheck=false;
 			$("#ch_email").html("<p style=\"color: red\">이메일 인증 필요</p>");
@@ -136,6 +129,11 @@
 		
 		//이메일 체크
 		$("#mailCheck").click(function(){
+			var email1 = $("#email1").val();
+			var email2 = $("#email2").val();
+			var all = email1+'@'+email2;
+			$("#email").val(all);
+			
 			var email = $("#email").val();
 			$.ajax({
 				url: "./memberEmailCheck.member",

@@ -38,7 +38,7 @@ public class MemberUpdatePwCheckService implements Action {
 			}
 			if(memberDTO!=null) {
 				actionFoward.setCheck(false);
-				actionFoward.setPath("./memberUpdate.member");
+				actionFoward.setPath("./memberUpdate.member?id="+request.getParameter("id"));
 			}
 			else {
 				request.setAttribute("message", "비밀번호 다시 입력하세요.");

@@ -10,14 +10,25 @@
 <title>Insert title here</title>
 <script type="text/javascript">
 	$(function(){
-		
 		 var library = '${member.library}';
 		 $(".library").each(function(){
 			 if($(this).val() == library) {
 				 $(this).attr("selected", true);
 			 }
 		 });
-		
+		var num = '${f}';
+		 $(".num").each(function(){
+			 if($(this).val() == num) {
+				 $(this).attr("selected", true);
+			 }
+		 });
+		 var mail = '${email2}';
+		 $(".email").each(function(){
+			 if($(this).val() == mail) {
+				 $(this).attr("selected", true);
+			 }
+		 });
+		 
 		 var meilCheck=false;
 		 var pwCheck = true;
 		 
@@ -86,8 +97,41 @@
 			    
 			});	
 			
+			
+		//email 합치기
+		
+		//email 체크 합치기
+		$("#mailList").change(function(){
+			var ml = $("#mailList").val();
+			
+			if(ml==0){
+				$("#email2").prop('readonly', false);
+				$("#email2").val("");
+				$("#email2").focus();
+			}else{
+				$("#email2").val(ml);
+				$("#email2").prop('readonly', true);
+			}
+		});
+		
+		$("#email1").change(function(){
+			mailCheck=false;
+			$("#ch_email").html("<p style=\"color: red\">이메일 인증 필요</p>");
+			$("#mailCheck").attr("style","display:inline;");
+		});
+		$("#mailList").change(function(){
+			mailCheck=false;
+			$("#ch_email").html("<p style=\"color: red\">이메일 인증 필요</p>");
+			$("#mailCheck").attr("style","display:inline;");
+		});
+		
 		//email 체크
 		$("#mailCheck").click(function(){
+			var email1 = $("#email1").val();
+			var email2 = $("#email2").val();
+			var all = email1+'@'+email2;
+			$("#email").val(all);
+			
 			var email = $("#email").val();
 			$.ajax({
 				url: "./memberEmailCheck.member",
@@ -121,6 +165,13 @@
 		 
 		
 		$("#btn").click(function(){
+			var f = $("#f").val();
+			var m = $("#m").val();
+			var l = $("#l").val();
+			var all = f+'-'+m+'-'+l;
+			$("#phone").val(all);
+			
+			
 			if(pwCheck == false){
 				alert("pw확인해주세요");
 				$("#pw1").focus();
@@ -133,12 +184,15 @@
 			}else if($("#addr2").val()==""){
 				alert("addr2 입력");	
 				$("#addr2").focus();	
-			}else if($("#phone").val()==""){
-				alert("phone 확인");
-				$("#phone").focus();
+			}else if($("#m").val()==""){
+				alert("중간번호 확인");
+				$("#m").focus();
+			}else if($("#l").val()==""){
+				alert("끝번호 확인");
+				$("#l").focus();
 			}else if(mailCheck == false){
 				alert("email확인해주세요");
-				$("#email").focus();
+				$("#email1").focus();
 			}else{
 				document.frm.submit();
 			}
@@ -159,14 +213,34 @@
 		<p>name<input type="text" name="name" value=${member.name } readonly="readonly"></p>
 		<p>birth<input type="date" name="birth" value=${member.birth } ></p>
 		<p>gender<input type="text" name="gender" value=${member.gender } readonly="readonly"></p>
+		
 		<input type="text" id="postCode" name="postCode" placeholder="우편번호" readonly="readonly" value=${member.postCode }>
 		<input type="button" id="addrCheck" value="우편번호 찾기" ><br>
 		<input type="text" id="addr" name="addr" placeholder="주소" readonly="readonly" value="${member.addr }">
 		<input type="text" id="addr2" name="addr2" placeholder="나머지주소 " value=${member.addr2 }>	
-		<p>phone<input type="text" name="phone" value=${member.phone } ></p>
-		<p>email<input type="text" id="email" name="email" value=${member.email } >
+		
+		<p>phone
+			<select id="f">
+				<option value="010" class="num">010</option>
+				<option value="011" class="num">011</option>
+				<option value="031" class="num">031</option>
+				<option value="02" class="num">02</option>
+			</select>
+			-<input type="text" id="m" value=${m } >-<input type="text" id="l" value=${l } ></p>
+		<input type="hidden" id="phone" name="phone" value=${member.phone }>
+		
+		<p><input id="email1" type="text" value=${email1 }>@<input type="text" id="email2" value=${email2 }>
+			<select id = "mailList">
+				<option class="email" value="0">직접입력</option>
+				<option class="email" value="naver.com">naver.com</option>
+				<option class="email" value="daum.net">daum.net</option>
+				<option class="email" value="gmail.com">gmail.com</option>
+				<option class="email" value="hotmail.com">hotmail.com</option>
+			</select>
+			<input type="hidden" id="email" name="email" value=${member.email } >
 		<input type="button" style="display:none;" id="mailCheck" value="이메일 인증"></p>
 		<div id="ch_email"></div>
+		
 		<p>library
 			<select name="library" >
 				<option class="library" value="1">기흥구</option>

@@ -19,6 +19,29 @@ public class MemberUpdateService implements Action {
 		MemberDTO memberDTO = null;
 		int result = 0;
 		if(method.equals("GET")) {
+			try {
+				memberDTO = memberDAO.selectOne(request.getParameter("id"));
+				String e = memberDTO.getEmail();
+				String[] ar = e.split("@");
+				String email1 = ar[0];
+				String email2 = ar[1];
+				
+				String p = memberDTO.getPhone();
+				String[] ar2 = p.split("-");
+				String f = ar2[0];
+				String m = ar2[1];
+				String l = ar2[2];
+				
+				request.setAttribute("email1", email1);
+				request.setAttribute("email2", email2);
+				request.setAttribute("f", f);
+				request.setAttribute("m", m);
+				request.setAttribute("l", l);
+			} catch (Exception e) {
+				// TODO Auto-generated catch block
+				e.printStackTrace();
+			}
+			
 			actionFoward.setCheck(true);
 			actionFoward.setPath("../WEB-INF/view/member/memberUpdate.jsp");
 		}else {
