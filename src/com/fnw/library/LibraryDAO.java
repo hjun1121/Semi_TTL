@@ -136,7 +136,7 @@ public class LibraryDAO {
 				+ "(select * from book_total where " + kind + " like ? and library=? "
 				+ "order by num asc) N) "
 				+ "where R between ? and ?";
-		
+
 		PreparedStatement st = con.prepareStatement(sql);
 		st.setString(1, "%"+search+"%");
 		st.setInt(2, library);
