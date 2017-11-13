@@ -41,7 +41,7 @@ public class EmailDAO {
 		   message.addRecipient(Message.RecipientType.TO, new InternetAddress(to));
 
 		   // Subject
-		   message.setSubject("FnW 회원가입 인증 메일");
+		   message.setSubject("FnW 회원 인증 메일");
 		   
 		   // Textc 
 		   Random r = new Random();

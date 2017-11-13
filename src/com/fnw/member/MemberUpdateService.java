@@ -4,6 +4,7 @@ import java.sql.Date;
 
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
+import javax.servlet.http.HttpSession;
 
 import com.fnw.action.Action;
 import com.fnw.action.ActionFoward;
@@ -18,12 +19,6 @@ public class MemberUpdateService implements Action {
 		MemberDTO memberDTO = null;
 		int result = 0;
 		if(method.equals("GET")) {
-			try {
-				memberDTO = memberDAO.selectOne(request.getParameter("id"));
-			} catch (Exception e) {
-				e.printStackTrace();
-			}
-			request.setAttribute("member", memberDTO);
 			actionFoward.setCheck(true);
 			actionFoward.setPath("../WEB-INF/view/member/memberUpdate.jsp");
 		}else {
@@ -39,6 +34,9 @@ public class MemberUpdateService implements Action {
 				memberDTO.setKind(Integer.parseInt(request.getParameter("kind")));
 				try {
 					result = memberDAO.update(memberDTO);
+					HttpSession session = request.getSession();
+					session.setAttribute("member", memberDTO);
+					
 				} catch (Exception e) {
 					e.printStackTrace();
 				}
@@ -54,7 +52,7 @@ public class MemberUpdateService implements Action {
 				}else {
 					request.setAttribute("message", "수정 완료");
 					request.getSession().setAttribute("member", memberDTO);
-					request.setAttribute("path", "./memberUpdatePwCheck.member");
+					request.setAttribute("path", "../index.jsp");
 				}
 			}else {
 				request.setAttribute("message", "수정 실패");
