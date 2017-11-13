@@ -38,9 +38,24 @@
 			</c:otherwise>
 		</c:choose>
 		<p>in_time<input type="text" name="in_time" value=${bookRentDTO.in_time } readonly="readonly"></p>
-		<p>out_time<input type="text" name="out_time" value=${bookRentDTO.out_time } readonly="readonly"></p>
+		<c:choose>
+			<c:when test="${empty bookRentDTO.out_time }">
+				<td>out_time<input type="text" value="*"></td>
+			</c:when>
+			<c:when test="${! empty bookRentDTO.out_time }">
+				<td>out_time<input type="text" name="out_time" value=${bookRentDTO.out_time } readonly="readonly"></td>
+			</c:when>
+			<c:otherwise>
+				<td>0</td>
+			</c:otherwise>
+		</c:choose>
 		<p>late_date<input type="text" name="late_date" value=${bookRentDTO.late_date } readonly="readonly"></p>
 		<button type="submit">확인</button>
+		<c:choose>
+			<c:when test="${empty bookRentDTO.out_time }">
+				<a href="./bookReturn.book?num=${bookRentDTO.num }"><input type="button" value="반납"></a>
+			</c:when>
+		</c:choose>
 		<a href="./bookRentDelete.book?num=${bookRentDTO.num }"><input type="button" value="내역 삭제"></a>
 	</form>	
 </body>

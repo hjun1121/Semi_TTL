@@ -31,7 +31,7 @@ $(document).ready(function() {
 <title>Insert title here</title>
 </head>
 <body>
-<h2>Book Order List-Book_Order</h2>
+<h2>book buy wish list</h2>
 <form action="./bookBuyWishDelete.market" method="POST">
    <table class="table" border="1">
       <tr>

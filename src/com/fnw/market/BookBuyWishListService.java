@@ -48,7 +48,7 @@ public class BookBuyWishListService implements Action {
 			e.printStackTrace();
 		}
 		actionFoward.setCheck(true);
-		actionFoward.setPath("../WEB-INF/view/book/bookBuyWishList.jsp");
+		actionFoward.setPath("../WEB-INF/view/market/bookBuyWishList.jsp");
 		return actionFoward;
 	}
 }
