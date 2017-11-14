@@ -36,14 +36,16 @@ $(function(){
 	<h2>MyPage - 중고마켓 판/구매 리스트</h2>
 	<div>
 	<form name="frm" class="form-inline" action="./marketDealsList.market" method="post">
+	<input type="hidden" name="type" id="type" value="3">
+	<input type="hidden" name="id" id="id" value="${id }">
 		<div>
 			<span>
 				<select id="year" name="year">
-		            <option class="years" value="17" >2017</option>
-		            <option class="years" value="16">2016</option>
-		            <option class="years" value="15">2015</option>
-		            <option class="years" value="14">2014</option>
-		            <option class="years" value="13">2013</option>
+		            <option class="years" value="2017" >2017</option>
+		            <option class="years" value="2016">2016</option>
+		            <option class="years" value="2015">2015</option>
+		            <option class="years" value="2014">2014</option>
+		            <option class="years" value="2013">2013</option>
   			      </select>
        			 년
        			 <select id="month" name="month">
@@ -104,6 +106,9 @@ $(function(){
 		</div>
 		</form>
 	</div>
+	<a href="./marketDealsList.market?id=${id }&type=3&year=${year}&month=${month}&day=${day}"><input type="button" value="전체"></a>
+	<a href="./marketDealsList.market?id=${id }&type=1&year=${year}&month=${month}&day=${day}"><input type="button" value="판매"></a>
+	<a href="./marketDealsList.market?id=${id }&type=2&year=${year}&month=${month}&day=${day}"><input type="button" value="구매"></a>
 	<table class="table" border="1">
 		<tr>
 			<th>num</th>
@@ -114,6 +119,7 @@ $(function(){
 			<th>T_date</th>
 			<th>library</th>
 			<th>price</th>
+			<th>kind</th>
 			<th>state</th>
 			<th>delivery</th>
 		</tr>
@@ -145,11 +151,25 @@ $(function(){
 				</c:choose>
 				<td>${bookDeals_list.price }</td>
 				<c:choose>
-					<c:when test="${bookDeals_list.state eq 1}">
+					<c:when test="${bookDeals_list.kind eq 1}">
 						<td>판매</td>
 					</c:when>
-					<c:when test="${bookDeals_list.state eq 2}">
+					<c:when test="${bookDeals_list.kind eq 2}">
 						<td>구매</td>
+					</c:when>
+					<c:otherwise>
+						<td>없음</td>
+					</c:otherwise>
+				</c:choose>
+				<c:choose>
+					<c:when test="${bookDeals_list.state eq 1}">
+						<td>상</td>
+					</c:when>
+					<c:when test="${bookDeals_list.state eq 2}">
+						<td>중</td>
+					</c:when>
+					<c:when test="${bookDeals_list.state eq 3}">
+						<td>하</td>
 					</c:when>
 					<c:otherwise>
 						<td>없음</td>

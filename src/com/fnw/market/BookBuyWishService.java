@@ -1,4 +1,6 @@
-package com.fnw.book;
+package com.fnw.market;
+
+import java.util.ArrayList;
 
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
@@ -6,51 +8,54 @@ import javax.servlet.http.HttpServletResponse;
 import com.fnw.action.Action;
 import com.fnw.action.ActionFoward;
 
-public class BookRentWishService implements Action {
+public class BookBuyWishService implements Action {
 
 	@Override
 	public ActionFoward doProcess(HttpServletRequest request, HttpServletResponse response) {
 		ActionFoward actionFoward = new ActionFoward();
-		Book_Rent_WishDAO book_Rent_WishDAO = new Book_Rent_WishDAO();
-		Book_TotalDTO book_TotalDTO = new Book_TotalDTO();
-		Book_TotalDAO book_TotalDAO = new Book_TotalDAO();
-		String search = request.getParameter("search");
-		int curPage = 1;
-		try {
-			 curPage = Integer.parseInt(request.getParameter("curPage"));
-		} catch (Exception e) {
-			// TODO: handle exception
-		}
+		Book_Buy_WishDAO book_Buy_WishDAO = new Book_Buy_WishDAO();
 		int num = 0;
 		try {
 			num = Integer.parseInt(request.getParameter("num"));
-			book_TotalDTO = book_TotalDAO.selectOne(num);
 		} catch (Exception e) {
 			// TODO: handle exception
 		}
-		String id = request.getParameter("rent_id");
+		Market_TotalDTO market_TotalDTO = null;
+		try {
+			market_TotalDTO = new Market_TotalDAO().selectOne(num);
+		} catch (Exception e1) {
+			// TODO Auto-generated catch block
+			e1.printStackTrace();
+		}
+		
+		int curPage = 1;
+		try {
+			curPage = Integer.parseInt(request.getParameter("curPage"));
+		} catch (Exception e) {
+			// TODO: handle exception
+		}
+		String id = request.getParameter("id");
 		if(id == null) {
 			id = "";
 		}
 		int result = 0;
 		try {
-			result = book_Rent_WishDAO.bookRentWish(book_TotalDTO, id);
+			result = book_Buy_WishDAO.bookBuyWish(market_TotalDTO, id);
 		} catch (Exception e) {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
 		}
-
 		if(result > 0) {
 			request.setAttribute("message", "❤ 완료");
-		}else {
+		} else {
 			request.setAttribute("message", "❤ 실패");
 		}
 
-		request.setAttribute("search", search);
 		request.setAttribute("curPage", curPage);
 		actionFoward.setCheck(true);
-		actionFoward.setPath("../WEB-INF/view/book/bookRentWish.jsp");
-
+		actionFoward.setPath("../WEB-INF/view/market/bookBuyWish.jsp");
+		
 		return actionFoward;
 	}
+
 }

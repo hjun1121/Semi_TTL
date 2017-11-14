@@ -9,7 +9,7 @@
 </head>
 <body>
 	<h2>마켓 판/구매 내역 상세히</h2>
-	<form action="../market/marketDealsList.market?id=${member.id }" method="post">
+	<form action="../market/marketDealsList.market?id=${member.id }&type=3" method="post">
 		<p>num<input type="text" name="num" value=${bookDealsDetail.num } readonly="readonly"></p>
 		<p>title<input type="text" name="title" value=${bookDealsDetail.title } readonly="readonly"></p>
 		<p>writer<input type="text" name="writer" value=${bookDealsDetail.writer } readonly="readonly"></p>
@@ -42,11 +42,14 @@
 		</c:choose>
 	
 		<c:choose>
-			<c:when test="${bookDealsDetail.delivery eq 1}">
+			<c:when test="${bookDealsDetail.delivery eq 2}">
 				<p>delivery<input type="text" value="택배" readonly="readonly"></p>
 				<input type="hidden" name="delivery" value=${bookDealsDetail.delivery }>
+				<input type="text" name="postcode" value=${bookDealsDetail.postCode }>
+				<input type="text" name="addr" value=${bookDealsDetail.addr }>
+				<input type="text" name="addr2" value=${bookDealsDetail.addr2 }>
 			</c:when>
-			<c:when test="${bookDealsDetail.delivery eq 2}">
+			<c:when test="${bookDealsDetail.delivery eq 1}">
 				<p>delivery<input type="text" value="직접수령" readonly="readonly"></p>
 				<input type="hidden" name="delivery" value=${bookDealsDetail.delivery }>
 			</c:when>

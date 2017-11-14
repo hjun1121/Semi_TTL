@@ -73,16 +73,30 @@ public class LibraryDAO {
 	}
 
 	//book_rent
-	public int bookRent(int num, String rent_id) throws Exception {
+	public int bookRent(Book_TotalDTO book_TotalDTO, String rent_id) throws Exception {
 		Connection con = DBConnector.getConnect();
 		String sql = "update book_total set state = 1, rent_id = ?, rent_count = "
 				+ "(select rent_count from book_total where num = ?)+1 where num = ?";
 		PreparedStatement st = con.prepareStatement(sql);
 		st.setString(1, rent_id);
-		st.setInt(2, num);
-		st.setInt(3, num);
+		st.setInt(2, book_TotalDTO.getNum());
+		st.setInt(3, book_TotalDTO.getNum());
 
 		int result = st.executeUpdate();
+
+		if(result > 0) {
+			sql = "insert into book_rent_details values(?,?,?,?,?,?,?,?,to_char(sysdate, 'YYYY-mm-DD'),null,0)";
+			st = con.prepareStatement(sql);
+			st.setInt(1, book_TotalDTO.getNum());
+			st.setString(2, book_TotalDTO.getTitle());
+			st.setString(3, book_TotalDTO.getSection());
+			st.setString(4, book_TotalDTO.getWriter());
+			st.setString(5, book_TotalDTO.getCompany());
+			st.setString(6, book_TotalDTO.getPublish_date());
+			st.setString(7, rent_id);
+			st.setInt(8, book_TotalDTO.getLibrary());
+			result = st.executeUpdate();
+		}
 		DBConnector.disConnect(st, con);
 		return result;
 	}
@@ -122,7 +136,7 @@ public class LibraryDAO {
 				+ "(select * from book_total where " + kind + " like ? and library=? "
 				+ "order by num asc) N) "
 				+ "where R between ? and ?";
-		
+
 		PreparedStatement st = con.prepareStatement(sql);
 		st.setString(1, "%"+search+"%");
 		st.setInt(2, library);

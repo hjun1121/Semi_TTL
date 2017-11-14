@@ -50,10 +50,38 @@ public class Market_TotalDAO {
 		return result;
 	}
 	
+	public ArrayList<Market_TotalDTO> selectList() throws Exception {
+		Connection con = DBConnector.getConnect();
+		String sql ="select * from market_total";
+		PreparedStatement st = con.prepareStatement(sql);
+		
+		ResultSet rs = st.executeQuery();
+
+		ArrayList<Market_TotalDTO> ar = new ArrayList<>();
+		Market_TotalDTO market_TotalDTO = null;
+		while(rs.next()) {
+			market_TotalDTO = new Market_TotalDTO();
+			market_TotalDTO.setNum(rs.getInt("num"));
+			market_TotalDTO.setTitle(rs.getString("title"));
+			market_TotalDTO.setWriter(rs.getString("writer"));
+			market_TotalDTO.setCompany(rs.getString("company"));
+			market_TotalDTO.setPublish_date(rs.getString("publish_date"));
+			market_TotalDTO.setLibrary(rs.getInt("library"));
+			market_TotalDTO.setPrice(rs.getInt("price"));
+			market_TotalDTO.setId(rs.getString("id"));
+			market_TotalDTO.setWish(rs.getInt("wish"));
+			market_TotalDTO.setApproval(rs.getInt("approval"));
+			market_TotalDTO.setBook_state(rs.getInt("book_state"));
+			ar.add(market_TotalDTO);
+		}
+		DBConnector.disConnect(rs, st, con);
+		return ar;
+	}
+
 	public ArrayList<Market_TotalDTO> selectList(MakeRow makeRow) throws Exception {
 		Connection con = DBConnector.getConnect();
 		String sql ="select * from "
-				+ "(select rownum R, M.* from market_total M order by num asc) "
+				+ "(select rownum R, M.* from market_total M where approval=1 order by num asc) "
 				+ "where R between ? and ?";
 		PreparedStatement st = con.prepareStatement(sql);
 		st.setInt(1, makeRow.getStartRow());
@@ -108,5 +136,16 @@ public class Market_TotalDAO {
 		}
 		DBConnector.disConnect(rs, st, con);
 		return market_TotalDTO;
+	}
+	
+	public int update(int num,Connection con) throws Exception{
+		String sql="UPDATE market_total set approval=2 WHERE num=?";
+		PreparedStatement st = con.prepareStatement(sql);
+		
+		st.setInt(1, num);
+		
+		int result = st.executeUpdate();
+		st.close();
+		return result;
 	}
 }

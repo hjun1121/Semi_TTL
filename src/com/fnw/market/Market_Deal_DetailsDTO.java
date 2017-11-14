@@ -16,6 +16,9 @@ public class Market_Deal_DetailsDTO {
 	private int kind;
 	private int state;
 	private int delivery;
+	private String postCode;
+	private String addr;
+	private String addr2;
 	
 	public int getNum() {
 		return num;
@@ -41,7 +44,6 @@ public class Market_Deal_DetailsDTO {
 	public void setCompany(String company) {
 		this.company = company;
 	}
-	
 	public String getPublish_date() {
 		return publish_date;
 	}
@@ -90,5 +92,22 @@ public class Market_Deal_DetailsDTO {
 	public void setDelivery(int delivery) {
 		this.delivery = delivery;
 	}
-	
+	public String getPostCode() {
+		return postCode;
+	}
+	public void setPostCode(String postCode) {
+		this.postCode = postCode;
+	}
+	public String getAddr() {
+		return addr;
+	}
+	public void setAddr(String addr) {
+		this.addr = addr;
+	}
+	public String getAddr2() {
+		return addr2;
+	}
+	public void setAddr2(String addr2) {
+		this.addr2 = addr2;
+	}
 }

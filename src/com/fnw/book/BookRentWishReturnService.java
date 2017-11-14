@@ -38,7 +38,7 @@ public class BookRentWishReturnService implements Action {
 		} catch (Exception e) {
 			// TODO: handle exception
 		}
-		String id = request.getParameter("id");
+		String id = request.getParameter("rent_id");
 		if(id == null) {
 			id = "";
 		}
@@ -62,7 +62,6 @@ public class BookRentWishReturnService implements Action {
 		actionFoward.setCheck(true);
 		actionFoward.setPath("../WEB-INF/view/book/bookRentWishReturn.jsp");
 
-		
 		return actionFoward;
 	}
 	

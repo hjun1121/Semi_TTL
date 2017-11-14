@@ -19,7 +19,13 @@ public class MarketDealDetailsListService implements Action {
 		ActionFoward actionFoward = new ActionFoward();
 		ArrayList<Market_Deal_DetailsDTO> list = new ArrayList<>();
 		String id = ((MemberDTO)request.getSession().getAttribute("member")).getId();
-
+		
+		int type = 3;
+		try {
+			type = Integer.parseInt(request.getParameter("type"));
+		} catch (Exception e) {
+		}
+		
 		int curPage=1;
 		try {
 			curPage=Integer.parseInt(request.getParameter("curPage"));
@@ -27,7 +33,7 @@ public class MarketDealDetailsListService implements Action {
 			curPage=1;
 		}
 		
-		SimpleDateFormat sdf = new SimpleDateFormat("yy");
+		SimpleDateFormat sdf = new SimpleDateFormat("yyyy");
         Calendar c1 = Calendar.getInstance();
         String strToday = sdf.format(c1.getTime());
 
@@ -51,29 +57,71 @@ public class MarketDealDetailsListService implements Action {
 		if(day == null) {
 			day=strToday;
 		}		
-		String p_date = year+"/"+month+"/"+day;
+		String p_date = year+"-"+month+"-"+day;
+		
+		System.out.println(p_date);
 
 		int totalCount=0;
 		Market_Deal_DetailsDAO market_Deal_DetailsDAO = new Market_Deal_DetailsDAO();
-		try {
-			totalCount = market_Deal_DetailsDAO.getTotalCount(p_date);
-			if(totalCount==0) {
-				totalCount=1;
+	
+		if(type==1) {
+			try {
+				totalCount = market_Deal_DetailsDAO.getTotalCount(p_date,type);
+				if(totalCount==0) {
+					totalCount=1;
+				}
+				PageMaker pageMaker = new PageMaker(curPage, totalCount);
+				list = market_Deal_DetailsDAO.selectList(id,pageMaker.getMakeRow(), p_date,type);
+				request.setAttribute("bookDeals", list);
+				request.setAttribute("id", id);
+				request.setAttribute("year", year);
+				request.setAttribute("month", month);
+				request.setAttribute("day", day);
+				request.setAttribute("page", pageMaker.getMakePage());
+			} catch (Exception e) {
+				e.printStackTrace();
 			}
-			PageMaker pageMaker = new PageMaker(curPage, totalCount);
-			list = market_Deal_DetailsDAO.selectList(id,pageMaker.getMakeRow(), p_date);
-			request.setAttribute("bookDeals", list);
-			request.setAttribute("id", id);
-			request.setAttribute("year", year);
-			request.setAttribute("month", month);
-			request.setAttribute("day", day);
-			request.setAttribute("page", pageMaker.getMakePage());
-		} catch (Exception e) {
-			e.printStackTrace();
+			actionFoward.setCheck(true);
+			actionFoward.setPath("../WEB-INF/view/market/marketDealsList.jsp");
+		}else if(type==2) {
+			try {
+				totalCount = market_Deal_DetailsDAO.getTotalCount(p_date,type);
+				if(totalCount==0) {
+					totalCount=1;
+				}
+				PageMaker pageMaker = new PageMaker(curPage, totalCount);
+				list = market_Deal_DetailsDAO.selectList(id,pageMaker.getMakeRow(), p_date,type);
+				request.setAttribute("bookDeals", list);
+				request.setAttribute("id", id);
+				request.setAttribute("year", year);
+				request.setAttribute("month", month);
+				request.setAttribute("day", day);
+				request.setAttribute("page", pageMaker.getMakePage());
+			} catch (Exception e) {
+				e.printStackTrace();
+			}
+			actionFoward.setCheck(true);
+			actionFoward.setPath("../WEB-INF/view/market/marketDealsList.jsp");
+		}else if(type==3){
+			try {
+				totalCount = market_Deal_DetailsDAO.getTotalCount(p_date);
+				if(totalCount==0) {
+					totalCount=1;
+				}
+				PageMaker pageMaker = new PageMaker(curPage, totalCount);
+				list = market_Deal_DetailsDAO.selectList(id,pageMaker.getMakeRow(), p_date);
+				request.setAttribute("bookDeals", list);
+				request.setAttribute("id", id);
+				request.setAttribute("year", year);
+				request.setAttribute("month", month);
+				request.setAttribute("day", day);
+				request.setAttribute("page", pageMaker.getMakePage());
+			} catch (Exception e) {
+				e.printStackTrace();
+			}
+			actionFoward.setCheck(true);
+			actionFoward.setPath("../WEB-INF/view/market/marketDealsList.jsp");
 		}
-		actionFoward.setCheck(true);
-		actionFoward.setPath("../WEB-INF/view/market/marketDealsList.jsp");
-
 		return actionFoward;
 	}
 

@@ -8,6 +8,7 @@ import javax.servlet.http.HttpServletResponse;
 import com.fnw.action.Action;
 import com.fnw.action.ActionFoward;
 import com.fnw.library.LibraryDAO;
+import com.fnw.member.MemberDTO;
 import com.fnw.util.PageMaker;
 
 public class BookRentWishRentService implements Action {
@@ -55,7 +56,10 @@ public class BookRentWishRentService implements Action {
 
 		try {
 			totalCount = book_Rent_WishDAO.getTotalCount(kind, search);
-			result = libraryDAO.bookRent(num, rent_id);
+			Book_TotalDTO book_TotalDTO = new Book_TotalDTO();
+			Book_TotalDAO book_TotalDAO = new Book_TotalDAO();
+			book_TotalDTO = book_TotalDAO.selectOne(num);
+			result = libraryDAO.bookRent(book_TotalDTO, rent_id);
 			book_Rent_WishDAO.stateUpdate(num);
 			if(totalCount==0) {
 				totalCount=1;

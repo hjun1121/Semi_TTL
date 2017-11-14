@@ -16,18 +16,11 @@ public class MemberUpdatePwCheckService implements Action {
 		MemberDAO memberDAO = new MemberDAO();
 		
 		if(method.equals("GET")) {
-			MemberDTO memberDTO = null;
-			try {
-				memberDTO = memberDAO.selectOne(request.getParameter("id"));
-			} catch (Exception e) {
-				e.printStackTrace();
-			}
-			request.setAttribute("member", memberDTO);
 			actionFoward.setCheck(true);
 			actionFoward.setPath("../WEB-INF/view/member/memberUpdatePwCheck.jsp");
 		}
 		
-		
+		 
 		else {
 			MemberDTO memberDTO = new MemberDTO();	
 			
@@ -37,9 +30,8 @@ public class MemberUpdatePwCheckService implements Action {
 				e.printStackTrace();
 			}
 			if(memberDTO!=null) {
-				request.setAttribute("member", memberDTO);
 				actionFoward.setCheck(false);
-				actionFoward.setPath("./memberUpdate.member");
+				actionFoward.setPath("./memberUpdate.member?id="+request.getParameter("id"));
 			}
 			else {
 				request.setAttribute("message", "비밀번호 다시 입력하세요.");
