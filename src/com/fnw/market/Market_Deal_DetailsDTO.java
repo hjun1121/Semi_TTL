@@ -16,8 +16,9 @@ public class Market_Deal_DetailsDTO {
 	private int kind;
 	private int state;
 	private int delivery;
+	private String postcode;
 	private String addr;
-	
+	private String addr2;
 	public int getNum() {
 		return num;
 	}
@@ -90,10 +91,24 @@ public class Market_Deal_DetailsDTO {
 	public void setDelivery(int delivery) {
 		this.delivery = delivery;
 	}
+	public String getPostcode() {
+		return postcode;
+	}
+	public void setPostcode(String postcode) {
+		this.postcode = postcode;
+	}
 	public String getAddr() {
 		return addr;
 	}
 	public void setAddr(String addr) {
 		this.addr = addr;
 	}
+	public String getAddr2() {
+		return addr2;
+	}
+	public void setAddr2(String addr2) {
+		this.addr2 = addr2;
+	}
+	
+	
 }
