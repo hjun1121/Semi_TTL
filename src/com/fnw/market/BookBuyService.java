@@ -1,10 +1,14 @@
 package com.fnw.market;
 
+import java.sql.Connection;
+import java.sql.SQLException;
+
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
 import com.fnw.action.Action;
 import com.fnw.action.ActionFoward;
+import com.fnw.util.DBConnector;
 
 public class BookBuyService implements Action {
 
@@ -29,9 +33,16 @@ public class BookBuyService implements Action {
 		} else {
 			Book_Buy_WishDAO book_Buy_WishDAO = new Book_Buy_WishDAO();
 			int number = Integer.parseInt(request.getParameter("num"));
+			Connection con=null;
+			try {
+				con = DBConnector.getConnect();
+			} catch (Exception e2) {
+				e2.printStackTrace();
+			}
+			
 			int upResult = 0;
 			try {
-				upResult = book_Buy_WishDAO.update(number);
+				upResult = book_Buy_WishDAO.update(number,con);//////////////////////////
 			} catch (Exception e1) {
 				e1.printStackTrace();
 			}
@@ -47,14 +58,22 @@ public class BookBuyService implements Action {
 				market_Deal_DetailsDTO.setLibrary(Integer.parseInt(request.getParameter("library")));
 				market_Deal_DetailsDTO.setKind(Integer.parseInt(request.getParameter("kind")));
 				market_Deal_DetailsDTO.setDelivery(Integer.parseInt(request.getParameter("approval")));
+				market_Deal_DetailsDTO.setPostcode(request.getParameter("postCode"));
 				market_Deal_DetailsDTO.setAddr(request.getParameter("addr"));
+				market_Deal_DetailsDTO.setAddr2(request.getParameter("addr2"));
 			}
 			int result = 0;
 			String message = null;
 
 			try {
-				result = market_Deal_DetailsDAO.insert(market_Deal_DetailsDTO);
+				result = market_Deal_DetailsDAO.insert(market_Deal_DetailsDTO ,con);
 			} catch (Exception e) {
+				e.printStackTrace();
+			}
+			
+			try {
+				con.close();
+			} catch (SQLException e) {
 				e.printStackTrace();
 			}
 			

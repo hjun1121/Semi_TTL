@@ -159,4 +159,13 @@ public class Book_Buy_WishDAO {
 		DBConnector.disConnect(st, con);
 		return result;
 	}
+	public int update(int num,Connection con) throws Exception{
+		String sql="UPDATE book_buy_wish SET state=10 WHERE num=?";
+		PreparedStatement st = con.prepareStatement(sql);
+		
+		st.setInt(1, num);
+		
+		int result = st.executeUpdate();
+		return result;
+	}
 }

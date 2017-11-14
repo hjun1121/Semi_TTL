@@ -35,7 +35,7 @@ $(function(){
 <body>
 	<h2>MyPage - 중고마켓 판/구매 리스트</h2>
 	<div>
-	<form name="frm" class="form-inline" action="./marketDealsList.market" method="post">
+	<form name="frm" class="form-inline" action="./marketDealsList.market?type=3" method="post">
 		<div>
 			<span>
 				<select id="year" name="year">
@@ -104,9 +104,9 @@ $(function(){
 		</div>
 		</form>
 	</div>
-	<a href="./marketDealsList.market?id=${id }&type=3"><input type="button" value="전체"></a>
-	<a href="./marketDealsList.market?id=${id }&type=1"><input type="button" value="판매"></a>
-	<a href="./marketDealsList.market?id=${id }&type=2"><input type="button" value="구매"></a>
+	<a href="./marketDealsList.market?id=${id }&type=3&year=${year}&month=${month}&day=${day}"><input type="button" value="전체"></a>
+	<a href="./marketDealsList.market?id=${id }&type=1&year=${year}&month=${month}&day=${day}"><input type="button" value="판매"></a>
+	<a href="./marketDealsList.market?id=${id }&type=2&year=${year}&month=${month}&day=${day}"><input type="button" value="구매"></a>
 	<table class="table" border="1">
 		<tr>
 			<th>num</th>

@@ -11,7 +11,7 @@ import com.fnw.util.MakeRow;
 public class Market_Deal_DetailsDAO {
 	public int insert(Market_Deal_DetailsDTO market_Deal_DetailsDTO) throws Exception{
 		Connection con = DBConnector.getConnect();
-		String sql = "insert into market_deal_details values(MARKETDEALS_SEQ.nextval(),?,?,?,?,?,sysdate,?,?,?,0,?,?)";
+		String sql = "insert into market_deal_details values(MARKETDEALS_SEQ.nextval,?,?,?,?,?,to_char(sysdate,'YYYY-mm-DD'),?,?,?,0,?,?,?,?)";
 		PreparedStatement st = con.prepareStatement(sql);
 		
 		st.setString(1, market_Deal_DetailsDTO.getTitle());
@@ -23,10 +23,33 @@ public class Market_Deal_DetailsDAO {
 		st.setInt(7, market_Deal_DetailsDTO.getLibrary());
 		st.setInt(8, market_Deal_DetailsDTO.getKind());
 		st.setInt(9, market_Deal_DetailsDTO.getDelivery());
-		st.setString(10, market_Deal_DetailsDTO.getAddr());
+		st.setString(10, market_Deal_DetailsDTO.getPostcode());
+		st.setString(11, market_Deal_DetailsDTO.getAddr());
+		st.setString(12, market_Deal_DetailsDTO.getAddr2());
 
 		int result = st.executeUpdate();
 		DBConnector.disConnect(st, con);
+		return result;
+	}
+	public int insert(Market_Deal_DetailsDTO market_Deal_DetailsDTO,Connection con) throws Exception{
+		con = DBConnector.getConnect();
+		String sql = "insert into market_deal_details values(MARKETDEALS_SEQ.nextval,?,?,?,?,?,sysdate,?,?,?,0,?,?,?,?)";
+		PreparedStatement st = con.prepareStatement(sql);
+		
+		st.setString(1, market_Deal_DetailsDTO.getTitle());
+		st.setString(2, market_Deal_DetailsDTO.getWriter());
+		st.setString(3, market_Deal_DetailsDTO.getCompany());
+		st.setString(4, market_Deal_DetailsDTO.getPublish_date());
+		st.setString(5, market_Deal_DetailsDTO.getId());
+		st.setInt(6, market_Deal_DetailsDTO.getPrice());
+		st.setInt(7, market_Deal_DetailsDTO.getLibrary());
+		st.setInt(8, market_Deal_DetailsDTO.getKind());
+		st.setInt(9, market_Deal_DetailsDTO.getDelivery());
+		st.setString(10, market_Deal_DetailsDTO.getPostcode());
+		st.setString(11, market_Deal_DetailsDTO.getAddr());
+		st.setString(12, market_Deal_DetailsDTO.getAddr2());
+
+		int result = st.executeUpdate();
 		return result;
 	}
 	public ArrayList<Market_Deal_DetailsDTO> selectList(String id, MakeRow makeRow, String search) throws Exception {
@@ -44,24 +67,26 @@ public class Market_Deal_DetailsDAO {
 		ResultSet rs = st.executeQuery();
 
 		ArrayList<Market_Deal_DetailsDTO> ar = new ArrayList<>();
-		Market_Deal_DetailsDTO book_Deal_DetailsDTO = null;
+		Market_Deal_DetailsDTO market_Deal_DetailsDTO = null;
 		while(rs.next()) {
-			book_Deal_DetailsDTO = new Market_Deal_DetailsDTO();
-			book_Deal_DetailsDTO.setId(rs.getString("id"));
-			book_Deal_DetailsDTO.setNum(rs.getInt("num"));
-			book_Deal_DetailsDTO.setTitle(rs.getString("title"));
-			book_Deal_DetailsDTO.setWriter(rs.getString("writer"));
-			book_Deal_DetailsDTO.setCompany(rs.getString("company"));
-			book_Deal_DetailsDTO.setPublish_date(rs.getString("publish_date"));
-			book_Deal_DetailsDTO.setId(rs.getString("id"));
-			book_Deal_DetailsDTO.setT_date(rs.getDate("t_date"));
-			book_Deal_DetailsDTO.setPrice(rs.getInt("price"));
-			book_Deal_DetailsDTO.setLibrary(rs.getInt("library"));
-			book_Deal_DetailsDTO.setKind(rs.getInt("kind"));
-			book_Deal_DetailsDTO.setState(rs.getInt("state"));
-			book_Deal_DetailsDTO.setDelivery(rs.getInt("delivery"));
-			book_Deal_DetailsDTO.setAddr(rs.getString("addr"));
-			ar.add(book_Deal_DetailsDTO);
+			market_Deal_DetailsDTO = new Market_Deal_DetailsDTO();
+			market_Deal_DetailsDTO.setId(rs.getString("id"));
+			market_Deal_DetailsDTO.setNum(rs.getInt("num"));
+			market_Deal_DetailsDTO.setTitle(rs.getString("title"));
+			market_Deal_DetailsDTO.setWriter(rs.getString("writer"));
+			market_Deal_DetailsDTO.setCompany(rs.getString("company"));
+			market_Deal_DetailsDTO.setPublish_date(rs.getString("publish_date"));
+			market_Deal_DetailsDTO.setId(rs.getString("id"));
+			market_Deal_DetailsDTO.setT_date(rs.getDate("t_date"));
+			market_Deal_DetailsDTO.setPrice(rs.getInt("price"));
+			market_Deal_DetailsDTO.setLibrary(rs.getInt("library"));
+			market_Deal_DetailsDTO.setKind(rs.getInt("kind"));
+			market_Deal_DetailsDTO.setState(rs.getInt("state"));
+			market_Deal_DetailsDTO.setDelivery(rs.getInt("delivery"));
+			market_Deal_DetailsDTO.setPostcode(rs.getString("postcode"));
+			market_Deal_DetailsDTO.setAddr(rs.getString("addr"));
+			market_Deal_DetailsDTO.setAddr2(rs.getString("addr2"));
+			ar.add(market_Deal_DetailsDTO);
 		}
 		DBConnector.disConnect(rs, st, con);
 		return ar;
@@ -74,25 +99,27 @@ public class Market_Deal_DetailsDAO {
 
 		ResultSet rs = st.executeQuery();
 
-		Market_Deal_DetailsDTO book_Deal_DetailsDTO = null;
+		Market_Deal_DetailsDTO market_Deal_DetailsDTO = null;
 		while(rs.next()) {
-			book_Deal_DetailsDTO = new Market_Deal_DetailsDTO();
-			book_Deal_DetailsDTO.setNum(rs.getInt("num"));
-			book_Deal_DetailsDTO.setTitle(rs.getString("title"));
-			book_Deal_DetailsDTO.setWriter(rs.getString("writer"));
-			book_Deal_DetailsDTO.setCompany(rs.getString("company"));
-			book_Deal_DetailsDTO.setPublish_date(rs.getString("publish_date"));
-			book_Deal_DetailsDTO.setId(rs.getString("id"));
-			book_Deal_DetailsDTO.setT_date(rs.getDate("t_date"));
-			book_Deal_DetailsDTO.setPrice(rs.getInt("price"));
-			book_Deal_DetailsDTO.setLibrary(rs.getInt("library"));
-			book_Deal_DetailsDTO.setKind(rs.getInt("kind"));
-			book_Deal_DetailsDTO.setState(rs.getInt("state"));
-			book_Deal_DetailsDTO.setDelivery(rs.getInt("delivery"));
-			book_Deal_DetailsDTO.setAddr(rs.getString("addr"));
+			market_Deal_DetailsDTO = new Market_Deal_DetailsDTO();
+			market_Deal_DetailsDTO.setNum(rs.getInt("num"));
+			market_Deal_DetailsDTO.setTitle(rs.getString("title"));
+			market_Deal_DetailsDTO.setWriter(rs.getString("writer"));
+			market_Deal_DetailsDTO.setCompany(rs.getString("company"));
+			market_Deal_DetailsDTO.setPublish_date(rs.getString("publish_date"));
+			market_Deal_DetailsDTO.setId(rs.getString("id"));
+			market_Deal_DetailsDTO.setT_date(rs.getDate("t_date"));
+			market_Deal_DetailsDTO.setPrice(rs.getInt("price"));
+			market_Deal_DetailsDTO.setLibrary(rs.getInt("library"));
+			market_Deal_DetailsDTO.setKind(rs.getInt("kind"));
+			market_Deal_DetailsDTO.setState(rs.getInt("state"));
+			market_Deal_DetailsDTO.setDelivery(rs.getInt("delivery"));
+			market_Deal_DetailsDTO.setPostcode(rs.getString("postcode"));
+			market_Deal_DetailsDTO.setAddr(rs.getString("addr"));
+			market_Deal_DetailsDTO.setAddr2(rs.getString("addr2"));
 		}
 		DBConnector.disConnect(rs, st, con);
-		return book_Deal_DetailsDTO;
+		return market_Deal_DetailsDTO;
 	}
 	public int delete(int num) throws Exception{
 		Connection con = DBConnector.getConnect();
@@ -157,24 +184,26 @@ public class Market_Deal_DetailsDAO {
 		ResultSet rs = st.executeQuery();
 
 		ArrayList<Market_Deal_DetailsDTO> ar = new ArrayList<>();
-		Market_Deal_DetailsDTO book_Deal_DetailsDTO = null;
+		Market_Deal_DetailsDTO market_Deal_DetailsDTO = null;
 		while(rs.next()) {
-			book_Deal_DetailsDTO = new Market_Deal_DetailsDTO();
-			book_Deal_DetailsDTO.setId(rs.getString("id"));
-			book_Deal_DetailsDTO.setNum(rs.getInt("num"));
-			book_Deal_DetailsDTO.setTitle(rs.getString("title"));
-			book_Deal_DetailsDTO.setWriter(rs.getString("writer"));
-			book_Deal_DetailsDTO.setCompany(rs.getString("company"));
-			book_Deal_DetailsDTO.setPublish_date(rs.getString("publish_date"));
-			book_Deal_DetailsDTO.setId(rs.getString("id"));
-			book_Deal_DetailsDTO.setT_date(rs.getDate("t_date"));
-			book_Deal_DetailsDTO.setPrice(rs.getInt("price"));
-			book_Deal_DetailsDTO.setLibrary(rs.getInt("library"));
-			book_Deal_DetailsDTO.setKind(rs.getInt("kind"));
-			book_Deal_DetailsDTO.setState(rs.getInt("state"));
-			book_Deal_DetailsDTO.setDelivery(rs.getInt("delivery"));
-			book_Deal_DetailsDTO.setAddr(rs.getString("addr"));
-			ar.add(book_Deal_DetailsDTO);
+			market_Deal_DetailsDTO = new Market_Deal_DetailsDTO();
+			market_Deal_DetailsDTO.setId(rs.getString("id"));
+			market_Deal_DetailsDTO.setNum(rs.getInt("num"));
+			market_Deal_DetailsDTO.setTitle(rs.getString("title"));
+			market_Deal_DetailsDTO.setWriter(rs.getString("writer"));
+			market_Deal_DetailsDTO.setCompany(rs.getString("company"));
+			market_Deal_DetailsDTO.setPublish_date(rs.getString("publish_date"));
+			market_Deal_DetailsDTO.setId(rs.getString("id"));
+			market_Deal_DetailsDTO.setT_date(rs.getDate("t_date"));
+			market_Deal_DetailsDTO.setPrice(rs.getInt("price"));
+			market_Deal_DetailsDTO.setLibrary(rs.getInt("library"));
+			market_Deal_DetailsDTO.setKind(rs.getInt("kind"));
+			market_Deal_DetailsDTO.setState(rs.getInt("state"));
+			market_Deal_DetailsDTO.setDelivery(rs.getInt("delivery"));
+			market_Deal_DetailsDTO.setPostcode(rs.getString("postcode"));
+			market_Deal_DetailsDTO.setAddr(rs.getString("addr"));
+			market_Deal_DetailsDTO.setAddr2(rs.getString("addr2"));
+			ar.add(market_Deal_DetailsDTO);
 		}
 		DBConnector.disConnect(rs, st, con);
 		return ar;
