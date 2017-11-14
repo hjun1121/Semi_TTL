@@ -81,14 +81,14 @@ public class MemberUpdateService implements Action {
 				if(((MemberDTO)request.getSession().getAttribute("member")).getKind() == 10) {
 					if(memberDTO.getId().equals(m.getId())) {
 						request.setAttribute("message", "수정 완료");
-						request.setAttribute("path", "../index.jsp");
+						request.setAttribute("path", "../member/memberUpdate.member?id="+memberDTO.getId());
 					}else {
 						request.setAttribute("message", "수정 완료");
 						request.setAttribute("path", "./memberList.member");
 					}
 				}else {
 					request.setAttribute("message", "수정 완료");
-					request.setAttribute("path", "../index.jsp");
+					request.setAttribute("path", "../member/memberUpdate.member?id="+memberDTO.getId());
 				}
 			}else {
 				request.setAttribute("message", "수정 실패");
