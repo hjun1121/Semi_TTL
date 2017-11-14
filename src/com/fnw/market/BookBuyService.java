@@ -19,15 +19,15 @@ public class BookBuyService implements Action {
 
 		if(method.equals("GET")) {
 			int number = Integer.parseInt(request.getParameter("num"));
-			Book_Buy_WishDAO book_Buy_WishDAO = new Book_Buy_WishDAO();
-			Book_Buy_WishDTO book_Buy_WishDTO = null;
+			Market_TotalDAO market_TotalDAO = new Market_TotalDAO();
+			Market_TotalDTO market_TotalDTO = null;
 			try {
-				book_Buy_WishDTO = book_Buy_WishDAO.selectOne(number);
+				market_TotalDTO = market_TotalDAO.selectOne(number);
 			} catch (Exception e1) {
 				e1.printStackTrace();
 			}
 
-			request.setAttribute("buyWishList", book_Buy_WishDTO);
+			request.setAttribute("buyWishList", market_TotalDTO);
 			actionFoward.setCheck(true);
 			actionFoward.setPath("../WEB-INF/view/market/bookBuy.jsp");
 		} else {
@@ -65,6 +65,7 @@ public class BookBuyService implements Action {
 				result = book_Buy_WishDAO.update(number,con);
 				Market_Deal_DetailsDAO market_Deal_DetailsDAO = new Market_Deal_DetailsDAO();
 				Market_Deal_DetailsDTO market_Deal_DetailsDTO = new Market_Deal_DetailsDTO();
+				market_Deal_DetailsDTO.setNum(number);
 				market_Deal_DetailsDTO.setTitle(request.getParameter("title"));
 				market_Deal_DetailsDTO.setWriter(request.getParameter("writer"));
 				market_Deal_DetailsDTO.setCompany(request.getParameter("company"));
@@ -79,6 +80,9 @@ public class BookBuyService implements Action {
 				market_Deal_DetailsDTO.setAddr(addr);
 				market_Deal_DetailsDTO.setAddr2(addr2);
 				result = market_Deal_DetailsDAO.insert(market_Deal_DetailsDTO ,con);
+				
+				Market_TotalDAO market_TotalDAO = new  Market_TotalDAO();
+				market_TotalDAO.update(number,con);
 				
 			} catch (Exception e2) {
 				e2.printStackTrace();
