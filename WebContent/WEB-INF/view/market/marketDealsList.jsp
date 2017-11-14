@@ -36,16 +36,16 @@ $(function(){
 	<h2>MyPage - 중고마켓 판/구매 리스트</h2>
 	<div>
 	<form name="frm" class="form-inline" action="./marketDealsList.market" method="post">
-	<input type="hidden" name="type" id="type" value="3">
+	<input type="hidden" name="type" id="type" value="${type }">
 	<input type="hidden" name="id" id="id" value="${id }">
 		<div>
 			<span>
 				<select id="year" name="year">
-		            <option class="years" value="2017" >2017</option>
-		            <option class="years" value="2016">2016</option>
-		            <option class="years" value="2015">2015</option>
-		            <option class="years" value="2014">2014</option>
-		            <option class="years" value="2013">2013</option>
+		            <option class="years" value="17" >2017</option>
+		            <option class="years" value="16">2016</option>
+		            <option class="years" value="15">2015</option>
+		            <option class="years" value="14">2014</option>
+		            <option class="years" value="13">2013</option>
   			      </select>
        			 년
        			 <select id="month" name="month">
@@ -109,6 +109,7 @@ $(function(){
 	<a href="./marketDealsList.market?id=${id }&type=3&year=${year}&month=${month}&day=${day}"><input type="button" value="전체"></a>
 	<a href="./marketDealsList.market?id=${id }&type=1&year=${year}&month=${month}&day=${day}"><input type="button" value="판매"></a>
 	<a href="./marketDealsList.market?id=${id }&type=2&year=${year}&month=${month}&day=${day}"><input type="button" value="구매"></a>
+	<a href="../index.jsp"><input type="button" value="list"></a>
 	<table class="table" border="1">
 		<tr>
 			<th>num</th>
@@ -196,7 +197,7 @@ $(function(){
 			</c:if>
 			<c:forEach begin="${page.startNum}" end="${page.lastNum}" var="i">
 			<li><a
-				href="./marketDealsList.market?curPage=${i}&id=${id }&year=${year}&month=${month}&day=${day}">${i}</a></li>
+				href="./marketDealsList.market?curPage=${i}&id=${id }&year=${year}&month=${month}&day=${day}&type=${type}">${i}</a></li>
 			</c:forEach>
 			<c:if test="${page.curBlock < page.totalBlock}">
 			<li><a

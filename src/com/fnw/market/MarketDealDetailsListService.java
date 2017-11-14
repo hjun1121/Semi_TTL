@@ -33,7 +33,7 @@ public class MarketDealDetailsListService implements Action {
 			curPage=1;
 		}
 		
-		SimpleDateFormat sdf = new SimpleDateFormat("yyyy");
+		SimpleDateFormat sdf = new SimpleDateFormat("yy");
         Calendar c1 = Calendar.getInstance();
         String strToday = sdf.format(c1.getTime());
 
@@ -41,7 +41,6 @@ public class MarketDealDetailsListService implements Action {
 		if(year == null) {
 			year=strToday;
 		}
-		
 		sdf = new SimpleDateFormat("MM");
         c1 = Calendar.getInstance();
         strToday = sdf.format(c1.getTime());
@@ -49,17 +48,16 @@ public class MarketDealDetailsListService implements Action {
 		if(month == null) {
 			month=strToday;
 		}		
-		
 		sdf = new SimpleDateFormat("dd");
         c1 = Calendar.getInstance();
         strToday = sdf.format(c1.getTime());
 		String day = request.getParameter("day");
 		if(day == null) {
 			day=strToday;
-		}		
-		String p_date = year+"-"+month+"-"+day;
+		}	
 		
-		System.out.println(p_date);
+		String p_date = year+"/"+month+"/"+day;
+		
 
 		int totalCount=0;
 		Market_Deal_DetailsDAO market_Deal_DetailsDAO = new Market_Deal_DetailsDAO();
@@ -72,6 +70,7 @@ public class MarketDealDetailsListService implements Action {
 				}
 				PageMaker pageMaker = new PageMaker(curPage, totalCount);
 				list = market_Deal_DetailsDAO.selectList(id,pageMaker.getMakeRow(), p_date,type);
+				request.setAttribute("type", type);
 				request.setAttribute("bookDeals", list);
 				request.setAttribute("id", id);
 				request.setAttribute("year", year);
@@ -91,6 +90,7 @@ public class MarketDealDetailsListService implements Action {
 				}
 				PageMaker pageMaker = new PageMaker(curPage, totalCount);
 				list = market_Deal_DetailsDAO.selectList(id,pageMaker.getMakeRow(), p_date,type);
+				request.setAttribute("type", type);
 				request.setAttribute("bookDeals", list);
 				request.setAttribute("id", id);
 				request.setAttribute("year", year);
@@ -110,6 +110,7 @@ public class MarketDealDetailsListService implements Action {
 				}
 				PageMaker pageMaker = new PageMaker(curPage, totalCount);
 				list = market_Deal_DetailsDAO.selectList(id,pageMaker.getMakeRow(), p_date);
+				request.setAttribute("type", type);
 				request.setAttribute("bookDeals", list);
 				request.setAttribute("id", id);
 				request.setAttribute("year", year);
