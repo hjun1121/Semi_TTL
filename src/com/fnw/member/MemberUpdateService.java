@@ -32,6 +32,7 @@ public class MemberUpdateService implements Action {
 				String m = ar2[1];
 				String l = ar2[2];
 				
+				request.setAttribute("DTO", memberDTO);
 				request.setAttribute("email1", email1);
 				request.setAttribute("email2", email2);
 				request.setAttribute("f", f);
@@ -45,21 +46,29 @@ public class MemberUpdateService implements Action {
 			actionFoward.setCheck(true);
 			actionFoward.setPath("../WEB-INF/view/member/memberUpdate.jsp");
 		}else {
+			
+			MemberDTO m = null;
 			try {
 				memberDTO = memberDAO.selectOne(request.getParameter("id"));
 				memberDTO.setId(request.getParameter("id"));
 				memberDTO.setPw(request.getParameter("pw"));
-				memberDTO.setAddr(request.getParameter("addr"));
 				memberDTO.setBirth(Date.valueOf(request.getParameter("birth")));
+				memberDTO.setPostCode(request.getParameter("postCode"));
+				memberDTO.setAddr(request.getParameter("addr"));
+				memberDTO.setAddr2(request.getParameter("addr2"));
+				memberDTO.setPhone(request.getParameter("phone"));
 				memberDTO.setEmail(request.getParameter("email"));
 				memberDTO.setLibrary(Integer.parseInt(request.getParameter("library")));
-				memberDTO.setPhone(request.getParameter("phone"));
 				memberDTO.setKind(Integer.parseInt(request.getParameter("kind")));
 				try {
 					result = memberDAO.update(memberDTO);
-					HttpSession session = request.getSession();
-					session.setAttribute("member", memberDTO);
 					
+					HttpSession session = request.getSession();
+					m = (MemberDTO)session.getAttribute("member");
+					if(memberDTO.getId().equals(m.getId())) {
+						session.setAttribute("member", memberDTO);
+					}					
+				
 				} catch (Exception e) {
 					e.printStackTrace();
 				}
@@ -70,11 +79,15 @@ public class MemberUpdateService implements Action {
 			
 			if(result>0) {
 				if(((MemberDTO)request.getSession().getAttribute("member")).getKind() == 10) {
-					request.setAttribute("message", "수정 완료");
-					request.setAttribute("path", "./memberList.member");
+					if(memberDTO.getId().equals(m.getId())) {
+						request.setAttribute("message", "수정 완료");
+						request.setAttribute("path", "../index.jsp");
+					}else {
+						request.setAttribute("message", "수정 완료");
+						request.setAttribute("path", "./memberList.member");
+					}
 				}else {
 					request.setAttribute("message", "수정 완료");
-					request.getSession().setAttribute("member", memberDTO);
 					request.setAttribute("path", "../index.jsp");
 				}
 			}else {

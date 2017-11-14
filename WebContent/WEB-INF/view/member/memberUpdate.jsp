@@ -10,6 +10,13 @@
 <title>Insert title here</title>
 <script type="text/javascript">
 	$(function(){
+		var kind = '${DTO.kind}';
+		 $(".kind").each(function(){
+			 if($(this).val() == kind) {
+				 $(this).attr("selected", true);
+			 }
+		 });
+		
 		 var library = '${member.library}';
 		 $(".library").each(function(){
 			 if($(this).val() == library) {
@@ -206,18 +213,18 @@
 <body>
 	<h2>회원 정보 수정</h2>
 	<form action="./memberUpdate.member" method="post" name="frm">
-		<p>id<input type="text" name="id" value=${member.id } readonly="readonly"></p>
-		<p>pw<input type="password" name="pw" id="pw1" value=${member.pw } ></p>
+		<p>id<input type="text" name="id" value=${DTO.id } readonly="readonly"></p>
+		<p>pw<input type="password" name="pw" id="pw1" value=${DTO.pw } ></p>
 		<p id="pwc" style="display: none;">pw확인<input type="password" id="pw2"></p>
 		<div id="ch_pw"></div>
-		<p>name<input type="text" name="name" value=${member.name } readonly="readonly"></p>
-		<p>birth<input type="date" name="birth" value=${member.birth } ></p>
-		<p>gender<input type="text" name="gender" value=${member.gender } readonly="readonly"></p>
+		<p>name<input type="text" name="name" value=${DTO.name } readonly="readonly"></p>
+		<p>birth<input type="date" name="birth" value=${DTO.birth } ></p>
+		<p>gender<input type="text" name="gender" value=${DTO.gender } readonly="readonly"></p>
 		
-		<input type="text" id="postCode" name="postCode" placeholder="우편번호" readonly="readonly" value=${member.postCode }>
+		<input type="text" id="postCode" name="postCode" placeholder="우편번호" readonly="readonly" value=${DTO.postCode }>
 		<input type="button" id="addrCheck" value="우편번호 찾기" ><br>
-		<input type="text" id="addr" name="addr" placeholder="주소" readonly="readonly" value="${member.addr }">
-		<input type="text" id="addr2" name="addr2" placeholder="나머지주소 " value=${member.addr2 }>	
+		<input type="text" id="addr" name="addr" placeholder="주소" readonly="readonly" value="${DTO.addr }">
+		<input type="text" id="addr2" name="addr2" placeholder="나머지주소 " value="${DTO.addr2 }">	
 		
 		<p>phone
 			<select id="f">
@@ -227,7 +234,7 @@
 				<option value="02" class="num">02</option>
 			</select>
 			-<input type="text" id="m" value=${m } >-<input type="text" id="l" value=${l } ></p>
-		<input type="hidden" id="phone" name="phone" value=${member.phone }>
+		<input type="hidden" id="phone" name="phone" value=${DTO.phone }>
 		
 		<p><input id="email1" type="text" value=${email1 }>@<input type="text" id="email2" value=${email2 }>
 			<select id = "mailList">
@@ -237,7 +244,7 @@
 				<option class="email" value="gmail.com">gmail.com</option>
 				<option class="email" value="hotmail.com">hotmail.com</option>
 			</select>
-			<input type="hidden" id="email" name="email" value=${member.email } >
+			<input type="hidden" id="email" name="email" value=${DTO.email } >
 		<input type="button" style="display:none;" id="mailCheck" value="이메일 인증"></p>
 		<div id="ch_email"></div>
 		
@@ -253,20 +260,20 @@
 		<c:if test="${sessionScope.member.kind ne 10 }">
 			<c:if test="${member.kind eq 1}">
 				<p>kind<input type="text" value="일반사용자" readonly="readonly"></p>
-				<input type="hidden" name="kind" value=${member.kind } readonly="readonly">
+				<input type="hidden" name="kind" value=${DTO.kind } readonly="readonly">
 			</c:if>
 		</c:if>
 		
 		<c:if test="${sessionScope.member.kind eq 10 }">
 			<select name="kind">
-				<option value=10>운영자</option>
-				<option value=1 selected="selected">일반</option>
-				<option value=0>블랙</option>
+				<option class="kind" value=10>운영자</option>
+				<option class="kind" value=1>일반</option>
+				<option class="kind" value=0>블랙</option>
 			</select>
 		</c:if>
 		
 		<input type ="button" id="btn" value="정보 수정">
-		<a href="./memberDelete.member?id=${member.id }"><input type="button" value="회원 탈퇴"></a>
+		<a href="./memberDelete.member?id=${DTO.id }"><input type="button" value="회원 탈퇴"></a>
 		<a href="../index.jsp"><input type="button" value="메인으로"></a>
 	</form>	
 </body>
