@@ -17,7 +17,7 @@
 
 			if (title == 1) {
 				$.ajax({
-					url: "./bookBuyWish.market",
+					url: "./bookBuyWishReturn.market",
 					type: "GET",
 					data: {
 						num:num,
