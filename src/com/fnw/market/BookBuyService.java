@@ -26,30 +26,24 @@ public class BookBuyService implements Action {
 			} catch (Exception e1) {
 				e1.printStackTrace();
 			}
-			
+
 			request.setAttribute("buyWishList", book_Buy_WishDTO);
 			actionFoward.setCheck(true);
-			actionFoward.setPath("../WEB-INF/view/market/bookOrder.jsp");
+			actionFoward.setPath("../WEB-INF/view/market/bookBuy.jsp");
 		} else {
 			Book_Buy_WishDAO book_Buy_WishDAO = new Book_Buy_WishDAO();
 			int number = Integer.parseInt(request.getParameter("num"));
+			
+			String message = null;
+			int result = 0;
 			Connection con=null;
 			try {
 				con = DBConnector.getConnect();
-			} catch (Exception e2) {
-				e2.printStackTrace();
-			}
-			
-			int upResult = 0;
-			try {
-				upResult = book_Buy_WishDAO.update(number,con);//////////////////////////
-			} catch (Exception e1) {
-				e1.printStackTrace();
-			}
-			Market_Deal_DetailsDTO market_Deal_DetailsDTO = new Market_Deal_DetailsDTO();
-			Market_Deal_DetailsDAO market_Deal_DetailsDAO = new Market_Deal_DetailsDAO();
-			if(upResult>0) {
-				market_Deal_DetailsDTO.setTitle(request.getParameter("title"));
+				con.setAutoCommit(false);
+				result = book_Buy_WishDAO.update(number,con);
+				Market_Deal_DetailsDAO market_Deal_DetailsDAO = new Market_Deal_DetailsDAO();
+				Market_Deal_DetailsDTO market_Deal_DetailsDTO = new Market_Deal_DetailsDTO();
+			/*	market_Deal_DetailsDTO.setTitle(request.getParameter("title"));
 				market_Deal_DetailsDTO.setWriter(request.getParameter("writer"));
 				market_Deal_DetailsDTO.setCompany(request.getParameter("company"));
 				market_Deal_DetailsDTO.setPublish_date(request.getParameter("publish_date"));
@@ -60,23 +54,24 @@ public class BookBuyService implements Action {
 				market_Deal_DetailsDTO.setDelivery(Integer.parseInt(request.getParameter("approval")));
 				market_Deal_DetailsDTO.setPostcode(request.getParameter("postCode"));
 				market_Deal_DetailsDTO.setAddr(request.getParameter("addr"));
-				market_Deal_DetailsDTO.setAddr2(request.getParameter("addr2"));
-			}
-			int result = 0;
-			String message = null;
-
-			try {
+				market_Deal_DetailsDTO.setAddr2(request.getParameter("addr2"));*/
 				result = market_Deal_DetailsDAO.insert(market_Deal_DetailsDTO ,con);
-			} catch (Exception e) {
-				e.printStackTrace();
+				
+			} catch (Exception e2) {
+				e2.printStackTrace();
+				try {
+					con.rollback();
+				} catch (SQLException e) {
+					e.printStackTrace();
+				}
+			}finally {
+				try {
+					con.setAutoCommit(true);
+					con.close();
+				} catch (SQLException e) {
+					e.printStackTrace();
+				}
 			}
-			
-			try {
-				con.close();
-			} catch (SQLException e) {
-				e.printStackTrace();
-			}
-			
 			if(result > 0) {
 				message = "등록 완료";
 			}else {
@@ -84,7 +79,7 @@ public class BookBuyService implements Action {
 			}
 			request.setAttribute("message", message);
 			request.setAttribute("path", "../index.jsp");
-			
+
 			actionFoward.setCheck(true);
 			actionFoward.setPath("../WEB-INF/view/common/result.jsp");
 		}

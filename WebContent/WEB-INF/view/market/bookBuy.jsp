@@ -80,7 +80,7 @@ $(function(){
 <body>
 	<h3>Market- 구매신청form</h3>
 	<div style = "height: 50px"></div>
-	<form action="../market/bookBuy.market" method="POST">
+	<form action="../market/marketBuy.market" method="POST">
 	<input type = "hidden" class = "form-control" name = "num" value = ${buyWishList.num }>
 		<input type = "hidden" class = "form-control" name = "id" value = ${member.id }>
 		<input type = "hidden" class = "form-control" name = "kind" value = '1'>
