@@ -23,7 +23,7 @@ public class Market_Deal_DetailsDAO {
 		st.setInt(7, market_Deal_DetailsDTO.getLibrary());
 		st.setInt(8, market_Deal_DetailsDTO.getKind());
 		st.setInt(9, market_Deal_DetailsDTO.getDelivery());
-		st.setString(10, market_Deal_DetailsDTO.getPostcode());
+		st.setString(10, market_Deal_DetailsDTO.getPostCode());
 		st.setString(11, market_Deal_DetailsDTO.getAddr());
 		st.setString(12, market_Deal_DetailsDTO.getAddr2());
 
@@ -45,11 +45,13 @@ public class Market_Deal_DetailsDAO {
 		st.setInt(7, market_Deal_DetailsDTO.getLibrary());
 		st.setInt(8, market_Deal_DetailsDTO.getKind());
 		st.setInt(9, market_Deal_DetailsDTO.getDelivery());
-		st.setString(10, market_Deal_DetailsDTO.getPostcode());
+		st.setString(10, market_Deal_DetailsDTO.getPostCode());
 		st.setString(11, market_Deal_DetailsDTO.getAddr());
 		st.setString(12, market_Deal_DetailsDTO.getAddr2());
 
 		int result = st.executeUpdate();
+		
+		st.close();
 		return result;
 	}
 	public ArrayList<Market_Deal_DetailsDTO> selectList(String id, MakeRow makeRow, String search) throws Exception {
@@ -83,7 +85,7 @@ public class Market_Deal_DetailsDAO {
 			market_Deal_DetailsDTO.setKind(rs.getInt("kind"));
 			market_Deal_DetailsDTO.setState(rs.getInt("state"));
 			market_Deal_DetailsDTO.setDelivery(rs.getInt("delivery"));
-			market_Deal_DetailsDTO.setPostcode(rs.getString("postcode"));
+			market_Deal_DetailsDTO.setPostCode(rs.getString("postCode"));
 			market_Deal_DetailsDTO.setAddr(rs.getString("addr"));
 			market_Deal_DetailsDTO.setAddr2(rs.getString("addr2"));
 			ar.add(market_Deal_DetailsDTO);
@@ -114,7 +116,7 @@ public class Market_Deal_DetailsDAO {
 			market_Deal_DetailsDTO.setKind(rs.getInt("kind"));
 			market_Deal_DetailsDTO.setState(rs.getInt("state"));
 			market_Deal_DetailsDTO.setDelivery(rs.getInt("delivery"));
-			market_Deal_DetailsDTO.setPostcode(rs.getString("postcode"));
+			market_Deal_DetailsDTO.setPostCode(rs.getString("postCode"));
 			market_Deal_DetailsDTO.setAddr(rs.getString("addr"));
 			market_Deal_DetailsDTO.setAddr2(rs.getString("addr2"));
 		}
@@ -200,7 +202,7 @@ public class Market_Deal_DetailsDAO {
 			market_Deal_DetailsDTO.setKind(rs.getInt("kind"));
 			market_Deal_DetailsDTO.setState(rs.getInt("state"));
 			market_Deal_DetailsDTO.setDelivery(rs.getInt("delivery"));
-			market_Deal_DetailsDTO.setPostcode(rs.getString("postcode"));
+			market_Deal_DetailsDTO.setPostCode(rs.getString("postCode"));
 			market_Deal_DetailsDTO.setAddr(rs.getString("addr"));
 			market_Deal_DetailsDTO.setAddr2(rs.getString("addr2"));
 			ar.add(market_Deal_DetailsDTO);
