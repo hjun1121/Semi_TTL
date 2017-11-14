@@ -35,15 +35,17 @@ $(function(){
 <body>
 	<h2>MyPage - 중고마켓 판/구매 리스트</h2>
 	<div>
-	<form name="frm" class="form-inline" action="./marketDealsList.market?type=3" method="post">
+	<form name="frm" class="form-inline" action="./marketDealsList.market" method="post">
+	<input type="hidden" name="type" id="type" value="3">
+	<input type="hidden" name="id" id="id" value="${id }">
 		<div>
 			<span>
 				<select id="year" name="year">
-		            <option class="years" value="17" >2017</option>
-		            <option class="years" value="16">2016</option>
-		            <option class="years" value="15">2015</option>
-		            <option class="years" value="14">2014</option>
-		            <option class="years" value="13">2013</option>
+		            <option class="years" value="2017" >2017</option>
+		            <option class="years" value="2016">2016</option>
+		            <option class="years" value="2015">2015</option>
+		            <option class="years" value="2014">2014</option>
+		            <option class="years" value="2013">2013</option>
   			      </select>
        			 년
        			 <select id="month" name="month">

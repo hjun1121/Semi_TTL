@@ -81,7 +81,7 @@ public class Market_TotalDAO {
 	public ArrayList<Market_TotalDTO> selectList(MakeRow makeRow) throws Exception {
 		Connection con = DBConnector.getConnect();
 		String sql ="select * from "
-				+ "(select rownum R, M.* from market_total M order by num asc) "
+				+ "(select rownum R, M.* from market_total M where approval=1 order by num asc) "
 				+ "where R between ? and ?";
 		PreparedStatement st = con.prepareStatement(sql);
 		st.setInt(1, makeRow.getStartRow());
@@ -136,5 +136,16 @@ public class Market_TotalDAO {
 		}
 		DBConnector.disConnect(rs, st, con);
 		return market_TotalDTO;
+	}
+	
+	public int update(int num,Connection con) throws Exception{
+		String sql="UPDATE market_total set approval=2 WHERE num=?";
+		PreparedStatement st = con.prepareStatement(sql);
+		
+		st.setInt(1, num);
+		
+		int result = st.executeUpdate();
+		st.close();
+		return result;
 	}
 }

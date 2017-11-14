@@ -11,21 +11,22 @@ import com.fnw.util.MakeRow;
 public class Market_Deal_DetailsDAO {
 	public int insert(Market_Deal_DetailsDTO market_Deal_DetailsDTO) throws Exception{
 		Connection con = DBConnector.getConnect();
-		String sql = "insert into market_deal_details values(MARKETDEALS_SEQ.nextval,?,?,?,?,?,to_char(sysdate,'YYYY-mm-DD'),?,?,?,0,?,?,?,?)";
+		String sql = "insert into market_deal_details values(?,?,?,?,?,?,to_char(sysdate,'YYYY-mm-DD'),?,?,?,0,?,?,?,?)";
 		PreparedStatement st = con.prepareStatement(sql);
 		
-		st.setString(1, market_Deal_DetailsDTO.getTitle());
-		st.setString(2, market_Deal_DetailsDTO.getWriter());
-		st.setString(3, market_Deal_DetailsDTO.getCompany());
-		st.setString(4, market_Deal_DetailsDTO.getPublish_date());
-		st.setString(5, market_Deal_DetailsDTO.getId());
-		st.setInt(6, market_Deal_DetailsDTO.getPrice());
-		st.setInt(7, market_Deal_DetailsDTO.getLibrary());
-		st.setInt(8, market_Deal_DetailsDTO.getKind());
-		st.setInt(9, market_Deal_DetailsDTO.getDelivery());
-		st.setString(10, market_Deal_DetailsDTO.getPostcode());
-		st.setString(11, market_Deal_DetailsDTO.getAddr());
-		st.setString(12, market_Deal_DetailsDTO.getAddr2());
+		st.setInt(1, market_Deal_DetailsDTO.getNum());
+		st.setString(2, market_Deal_DetailsDTO.getTitle());
+		st.setString(3, market_Deal_DetailsDTO.getWriter());
+		st.setString(4, market_Deal_DetailsDTO.getCompany());
+		st.setString(5, market_Deal_DetailsDTO.getPublish_date());
+		st.setString(6, market_Deal_DetailsDTO.getId());
+		st.setInt(7, market_Deal_DetailsDTO.getPrice());
+		st.setInt(8, market_Deal_DetailsDTO.getLibrary());
+		st.setInt(9, market_Deal_DetailsDTO.getKind());
+		st.setInt(10, market_Deal_DetailsDTO.getDelivery());
+		st.setString(11, market_Deal_DetailsDTO.getPostCode());
+		st.setString(12, market_Deal_DetailsDTO.getAddr());
+		st.setString(13, market_Deal_DetailsDTO.getAddr2());
 
 		int result = st.executeUpdate();
 		DBConnector.disConnect(st, con);
@@ -33,32 +34,35 @@ public class Market_Deal_DetailsDAO {
 	}
 	public int insert(Market_Deal_DetailsDTO market_Deal_DetailsDTO,Connection con) throws Exception{
 		con = DBConnector.getConnect();
-		String sql = "insert into market_deal_details values(MARKETDEALS_SEQ.nextval,?,?,?,?,?,sysdate,?,?,?,0,?,?,?,?)";
+		String sql = "insert into market_deal_details values(?,?,?,?,?,?,to_char(sysdate,'YYYY-mm-DD'),?,?,?,0,?,?,?,?)";
 		PreparedStatement st = con.prepareStatement(sql);
 		
-		st.setString(1, market_Deal_DetailsDTO.getTitle());
-		st.setString(2, market_Deal_DetailsDTO.getWriter());
-		st.setString(3, market_Deal_DetailsDTO.getCompany());
-		st.setString(4, market_Deal_DetailsDTO.getPublish_date());
-		st.setString(5, market_Deal_DetailsDTO.getId());
-		st.setInt(6, market_Deal_DetailsDTO.getPrice());
-		st.setInt(7, market_Deal_DetailsDTO.getLibrary());
-		st.setInt(8, market_Deal_DetailsDTO.getKind());
-		st.setInt(9, market_Deal_DetailsDTO.getDelivery());
-		st.setString(10, market_Deal_DetailsDTO.getPostcode());
-		st.setString(11, market_Deal_DetailsDTO.getAddr());
-		st.setString(12, market_Deal_DetailsDTO.getAddr2());
+		st.setInt(1, market_Deal_DetailsDTO.getNum());
+		st.setString(2, market_Deal_DetailsDTO.getTitle());
+		st.setString(3, market_Deal_DetailsDTO.getWriter());
+		st.setString(4, market_Deal_DetailsDTO.getCompany());
+		st.setString(5, market_Deal_DetailsDTO.getPublish_date());
+		st.setString(6, market_Deal_DetailsDTO.getId());
+		st.setInt(7, market_Deal_DetailsDTO.getPrice());
+		st.setInt(8, market_Deal_DetailsDTO.getLibrary());
+		st.setInt(9, market_Deal_DetailsDTO.getKind());
+		st.setInt(10, market_Deal_DetailsDTO.getDelivery());
+		st.setString(11, market_Deal_DetailsDTO.getPostCode());
+		st.setString(12, market_Deal_DetailsDTO.getAddr());
+		st.setString(13, market_Deal_DetailsDTO.getAddr2());
 
 		int result = st.executeUpdate();
+		
+		st.close();
 		return result;
 	}
 	public ArrayList<Market_Deal_DetailsDTO> selectList(String id, MakeRow makeRow, String search) throws Exception {
 		Connection con = DBConnector.getConnect();
 		String sql = "select * from "
 				+ "(select rownum R, N.* from "
-				+ "(select * from market_deal_details where T_date<=? and id=? order by num asc) N)"
+				+ "(select * from market_deal_details where to_char(T_date, 'YYYY-mm-DD') in (?) and id=? order by num asc) N)"
 				+ "where R between ? and ?";
-		
+		System.out.println(search);
 		PreparedStatement st = con.prepareStatement(sql);
 		st.setString(1, search);
 		st.setString(2, id);
@@ -83,7 +87,7 @@ public class Market_Deal_DetailsDAO {
 			market_Deal_DetailsDTO.setKind(rs.getInt("kind"));
 			market_Deal_DetailsDTO.setState(rs.getInt("state"));
 			market_Deal_DetailsDTO.setDelivery(rs.getInt("delivery"));
-			market_Deal_DetailsDTO.setPostcode(rs.getString("postcode"));
+			market_Deal_DetailsDTO.setPostCode(rs.getString("postCode"));
 			market_Deal_DetailsDTO.setAddr(rs.getString("addr"));
 			market_Deal_DetailsDTO.setAddr2(rs.getString("addr2"));
 			ar.add(market_Deal_DetailsDTO);
@@ -114,7 +118,7 @@ public class Market_Deal_DetailsDAO {
 			market_Deal_DetailsDTO.setKind(rs.getInt("kind"));
 			market_Deal_DetailsDTO.setState(rs.getInt("state"));
 			market_Deal_DetailsDTO.setDelivery(rs.getInt("delivery"));
-			market_Deal_DetailsDTO.setPostcode(rs.getString("postcode"));
+			market_Deal_DetailsDTO.setPostCode(rs.getString("postCode"));
 			market_Deal_DetailsDTO.setAddr(rs.getString("addr"));
 			market_Deal_DetailsDTO.setAddr2(rs.getString("addr2"));
 		}
@@ -200,7 +204,7 @@ public class Market_Deal_DetailsDAO {
 			market_Deal_DetailsDTO.setKind(rs.getInt("kind"));
 			market_Deal_DetailsDTO.setState(rs.getInt("state"));
 			market_Deal_DetailsDTO.setDelivery(rs.getInt("delivery"));
-			market_Deal_DetailsDTO.setPostcode(rs.getString("postcode"));
+			market_Deal_DetailsDTO.setPostCode(rs.getString("postCode"));
 			market_Deal_DetailsDTO.setAddr(rs.getString("addr"));
 			market_Deal_DetailsDTO.setAddr2(rs.getString("addr2"));
 			ar.add(market_Deal_DetailsDTO);

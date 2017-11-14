@@ -19,9 +19,11 @@ public class MarketDealDetailsListService implements Action {
 		ActionFoward actionFoward = new ActionFoward();
 		ArrayList<Market_Deal_DetailsDTO> list = new ArrayList<>();
 		String id = ((MemberDTO)request.getSession().getAttribute("member")).getId();
-		int type = Integer.parseInt(request.getParameter("type"));
-		if(type==0) {
-			type=3;
+		
+		int type = 3;
+		try {
+			type = Integer.parseInt(request.getParameter("type"));
+		} catch (Exception e) {
 		}
 		
 		int curPage=1;
@@ -31,7 +33,7 @@ public class MarketDealDetailsListService implements Action {
 			curPage=1;
 		}
 		
-		SimpleDateFormat sdf = new SimpleDateFormat("yy");
+		SimpleDateFormat sdf = new SimpleDateFormat("yyyy");
         Calendar c1 = Calendar.getInstance();
         String strToday = sdf.format(c1.getTime());
 
@@ -55,7 +57,9 @@ public class MarketDealDetailsListService implements Action {
 		if(day == null) {
 			day=strToday;
 		}		
-		String p_date = year+"/"+month+"/"+day;
+		String p_date = year+"-"+month+"-"+day;
+		
+		System.out.println(p_date);
 
 		int totalCount=0;
 		Market_Deal_DetailsDAO market_Deal_DetailsDAO = new Market_Deal_DetailsDAO();
