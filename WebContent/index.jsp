@@ -67,6 +67,6 @@
 	<p><a href="./seat/seatList.seat">Seat List</a></p>
 	<p><a href="./market/marketTotalList.market">Market Total List</a></p>
 	
-
+<c:import url="./temp/footer.jsp"></c:import>
 </body>
 </html>
