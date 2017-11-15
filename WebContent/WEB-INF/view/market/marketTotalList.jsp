@@ -69,6 +69,7 @@
 				<c:if test="${ not empty member }">
 					<td>찜</td>
 				</c:if>
+				<th>*****</th>
 			</tr>
 			<c:forEach items="${list }" var="dto">
 				<tr>
@@ -102,9 +103,9 @@
 					</c:if>
 			</c:if>
 			</tr>
+					<td><a href="./bookBuy.market?num=${dto.num }"><input type="button" value="구매"></a></td>
 			</c:forEach>
 		</table>
-		
 		<div style = "text-align: center;">
 			<ul class="pagination pagination-sm">
 				<c:if test="${page.curBlock>1}">

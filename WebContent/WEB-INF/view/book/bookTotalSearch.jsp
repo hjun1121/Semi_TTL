@@ -13,7 +13,7 @@
 <script type="text/javascript">
 $(function(){
 	 var kind = '${kind}';
-	 
+
 	 $(".kind").each(function(){
 		 if($(this).val() == kind) {
 			 $(this).attr("selected", true);

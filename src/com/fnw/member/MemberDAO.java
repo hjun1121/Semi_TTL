@@ -174,17 +174,18 @@ public class MemberDAO {
 	
 	public int update(MemberDTO memberDTO) throws Exception{
 		Connection con = DBConnector.getConnect();
-		String sql="UPDATE member SET pw=?, birth=?, addr=?, phone=?, email=?, library=?, kind=? WHERE id=?";
+		String sql="UPDATE member SET pw=?, birth=?, addr=?, addr2=?, phone=?, email=?, library=?, kind=? WHERE id=?";
 		PreparedStatement st = con.prepareStatement(sql);
 		
 		st.setString(1, memberDTO.getPw());
 		st.setDate(2, memberDTO.getBirth());
 		st.setString(3, memberDTO.getAddr());
-		st.setString(4, memberDTO.getPhone());
-		st.setString(5, memberDTO.getEmail());
-		st.setInt(6, memberDTO.getLibrary());
-		st.setInt(7, memberDTO.getKind());
-		st.setString(8, memberDTO.getId());
+		st.setString(4, memberDTO.getAddr2());
+		st.setString(5, memberDTO.getPhone());
+		st.setString(6, memberDTO.getEmail());
+		st.setInt(7, memberDTO.getLibrary());
+		st.setInt(8, memberDTO.getKind());
+		st.setString(9, memberDTO.getId());
 		
 		int result = st.executeUpdate();
 		DBConnector.disConnect(st, con);

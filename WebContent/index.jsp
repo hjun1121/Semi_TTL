@@ -14,8 +14,6 @@
 </head>
 
 <body>
-	<h1>판매신청폼 만들었어?</h1>
-
 	<c:if test="${empty sessionScope.member }">
 		<p><a href="./member/memberLogin.member">로그인</a>
 		<p><a href="./member/memberJoin.member">회원가입</a>
@@ -32,7 +30,7 @@
 		<p><a href="./seat/seatTotalList.seat?id=${member.id }">좌석 예약 내역★</a></p>
 		<p><a href="./book/bookRentList.book?id=${member.id }">책 대여 내역</a></p>
 		<p><a href="./book/bookOrderList.book?id=${member.id }&state=3">책 신청 내역</a></p>
-		<p><a href="./market/bookBuyWishList.market?id=${member.id }">책 구매 찜★</a></p>
+		<p><a href="./market/bookBuyWishList.market?id=${member.id }">책 구매 찜</a></p>
 		<p><a href="./book/bookRentWishList.book?id=${member.id }">책 대여 찜</a></p>
 		<p><a href="./member/memberLogout.member">로그아웃</a>
  	</c:if>
@@ -47,6 +45,7 @@
 	<p><a href="./library/libraryView.library">도서관지도</a></p>
 
 	<p></p>
+	
 	<!-- 도서관 페이지  -->
 	
 	<h2>도서관 페이지</h2>
@@ -74,7 +73,7 @@
 	<p>=================================================</p>
 	</c:if>
 	
-	<p><a href="./notice/noticeList.notice">공지사항</a></p>
+	<p><a href="./notice/noticeList.notice">공지사항★</a></p>
 	<p><a href="./seat/seatList.seat">Seat List</a></p>
 	<p><a href="./market/marketTotalList.market">Market Total List</a></p>
 	

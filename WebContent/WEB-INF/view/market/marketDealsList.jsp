@@ -36,6 +36,8 @@ $(function(){
 	<h2>MyPage - 중고마켓 판/구매 리스트</h2>
 	<div>
 	<form name="frm" class="form-inline" action="./marketDealsList.market" method="post">
+	<input type="hidden" name="type" id="type" value="${type }">
+	<input type="hidden" name="id" id="id" value="${id }">
 		<div>
 			<span>
 				<select id="year" name="year">
@@ -104,9 +106,10 @@ $(function(){
 		</div>
 		</form>
 	</div>
-	<a href="./marketDealsList.market?id=${id }&type=3"><input type="button" value="전체"></a>
-	<a href="./marketDealsList.market?id=${id }&type=1"><input type="button" value="판매"></a>
-	<a href="./marketDealsList.market?id=${id }&type=2"><input type="button" value="구매"></a>
+	<a href="./marketDealsList.market?id=${id }&type=3&year=${year}&month=${month}&day=${day}"><input type="button" value="전체"></a>
+	<a href="./marketDealsList.market?id=${id }&type=1&year=${year}&month=${month}&day=${day}"><input type="button" value="판매"></a>
+	<a href="./marketDealsList.market?id=${id }&type=2&year=${year}&month=${month}&day=${day}"><input type="button" value="구매"></a>
+	<a href="../index.jsp"><input type="button" value="list"></a>
 	<table class="table" border="1">
 		<tr>
 			<th>num</th>
@@ -194,7 +197,7 @@ $(function(){
 			</c:if>
 			<c:forEach begin="${page.startNum}" end="${page.lastNum}" var="i">
 			<li><a
-				href="./marketDealsList.market?curPage=${i}&id=${id }&year=${year}&month=${month}&day=${day}">${i}</a></li>
+				href="./marketDealsList.market?curPage=${i}&id=${id }&year=${year}&month=${month}&day=${day}&type=${type}">${i}</a></li>
 			</c:forEach>
 			<c:if test="${page.curBlock < page.totalBlock}">
 			<li><a

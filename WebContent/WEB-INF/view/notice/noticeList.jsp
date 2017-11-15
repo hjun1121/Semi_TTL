@@ -6,6 +6,17 @@
 <html>
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+<script type="text/javascript">
+$(function(){
+		var kind = '${kind}';
+		$(".kind").each(function() {
+			if($(this).val() == kind){
+				$(this).attr("selected", true);
+			}
+		});
+});
+</script>
 <title>Notice</title>
 </head>
 <body>
@@ -13,12 +24,12 @@
 		<form name="frm" class="form-inline" action="./noticeList.notice"
 			method="post">
 			<div>
-				<span> <select name="kind">
-						<option value="title">제목</option>
-						<option value="writer">글쓴이</option>
-						<option value="contents">내용</option>
+				<span> <select name="kind" id="kind">
+						<option class="kind" value="title">제목</option>
+						<option class="kind" value="writer">글쓴이</option>
+						<option class="kind" value="contents">내용</option>
 				</select> <input type="text" class="form-control" id="search"
-					placeholder="Enter" name="search">
+					placeholder="Enter" name="search" value=${search }>
 				</span>
 				<div class="form-group">
 					<div class="col-sm-offset-2 col-sm-10">
@@ -55,6 +66,9 @@
 		</tr>
 		</c:forEach>
 	</table>
+	<c:if test="${not empty member and member.kind eq 10}">
+		<a href="./${requestScope.notice}Write.${requestScope.notice}">WRITE</a>
+	</c:if>
 	
 	<div>
 		<ul class="pagination">
@@ -73,16 +87,7 @@
 			</c:if>
 			
 		</ul>
-
-
-
 	</div>
-	
-	<c:if test="${not empty member and member.kind eq 10}">
-		<a href="./${requestScope.notice}Write.${requestScope.notice}">WRITE</a>
-	</c:if>
-	
-
 </body>
 </html>
 
