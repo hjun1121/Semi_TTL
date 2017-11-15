@@ -22,7 +22,6 @@ public class Market_OrderDAO {
 		st.setInt(5, market_OrderDTO.getPrice());
 		st.setString(6, market_OrderDTO.getId());
 		st.setInt(7, market_OrderDTO.getLibrary());
-		st.setInt(8, market_OrderDTO.getApproval());
 
 		int result = st.executeUpdate();
 		DBConnector.disConnect(st, con);
@@ -154,6 +153,40 @@ public class Market_OrderDAO {
 			market_OrderDTO.setPrice(rs.getInt("price"));
 			market_OrderDTO.setId(rs.getString("id"));
 			market_OrderDTO.setLibrary(rs.getInt("library"));
+			ar.add(market_OrderDTO);
+		}
+
+		DBConnector.disConnect(rs, st, con);
+
+		return ar;
+	}
+	public ArrayList<Market_OrderDTO> selectList(String id, MakeRow makeRow, String kind, String search) throws Exception {
+		Connection con = DBConnector.getConnect();
+
+		ArrayList<Market_OrderDTO> ar = new ArrayList<>();
+
+		String sql = "select * from "
+				+ "(select rownum R, N.* from "
+				+ "(select * from market_order where "+kind+" like ? and id=? order by num desc) N)"
+				+ "where R between ? and ?";
+		PreparedStatement st = con.prepareStatement(sql);
+		st.setString(1, "%"+search+"%");
+		st.setString(2,id);
+		st.setInt(3, makeRow.getStartRow());
+		st.setInt(4, makeRow.getLastRow());
+		ResultSet rs = st.executeQuery();
+
+		while(rs.next()) {
+			Market_OrderDTO market_OrderDTO = new Market_OrderDTO();
+			market_OrderDTO.setNum(rs.getInt("num"));
+			market_OrderDTO.setTitle(rs.getString("title"));
+			market_OrderDTO.setWriter(rs.getString("writer"));
+			market_OrderDTO.setCompany(rs.getString("company"));
+			market_OrderDTO.setPublish_date(rs.getString("publish_date"));
+			market_OrderDTO.setPrice(rs.getInt("price"));
+			market_OrderDTO.setId(rs.getString("id"));
+			market_OrderDTO.setLibrary(rs.getInt("library"));
+			market_OrderDTO.setApproval(rs.getInt("approval"));
 			ar.add(market_OrderDTO);
 		}
 

@@ -1,6 +1,5 @@
 package com.fnw.filter;
 
-
 import java.io.IOException;
 import javax.servlet.Filter;
 import javax.servlet.FilterChain;
@@ -40,6 +39,7 @@ public class EncodingFilter implements Filter {
 		request.setCharacterEncoding(encode);
 		response.setCharacterEncoding(encode);
 		chain.doFilter(request, response);
+		
 	}
 
 	/**
@@ -48,4 +48,5 @@ public class EncodingFilter implements Filter {
 	public void init(FilterConfig fConfig) throws ServletException {
 		encode = fConfig.getInitParameter("encode");
 	}
+
 }
