@@ -20,22 +20,10 @@
 		<p><a href="./member/memberIdFind.member">Id Find</a>
 		<p><a href="./member/memberPwFind.member">Pw Find</a>
 	</c:if>
-
-
-	<c:if test="${not empty sessionScope.member }">
- 	<h1>${sessionScope.member.id }</h1>
- 	<h1>MyPage_Hees</h1>
-		<p><a href="./member/memberUpdatePwCheck.member">회원 정보 수정</a></p>
-		<p><a href="./market/marketDealsList.market?id=${member.id }&type=3">중고책거래 판/구매 리스트</a></p>
-		<p><a href="./seat/seatTotalList.seat?id=${member.id }">좌석 예약 내역★</a></p>
-		<p><a href="./book/bookRentList.book?id=${member.id }">책 대여 내역</a></p>
-		<p><a href="./book/bookOrderList.book?id=${member.id }&state=3">책 신청 내역</a></p>
-		<p><a href="./market/marketOrderList.market?id=${member.id }">중고 책거래 내역</a></p>
-		<p><a href="./market/bookBuyWishList.market?id=${member.id }">책 구매 찜</a></p>
-		<p><a href="./book/bookRentWishList.book?id=${member.id }">책 대여 찜</a></p>
-		<p><a href="./member/memberLogout.member">로그아웃</a>
- 	</c:if>
-
+	
+	<h1>${sessionScope.member.id }</h1>
+	<p><a href="./member/myPage.member">MyPage</a>
+	
 	<h2>김앤신(통합포털)</h2>
 	<p><a href="./book/bookTotalSearch.book">Book_search</a>
 	<p><a href="./book/bookOrderForm.book">Book_Order(도서 신청서)</a>
