@@ -5,6 +5,7 @@ import javax.servlet.http.HttpServletResponse;
 
 import com.fnw.action.Action;
 import com.fnw.action.ActionFoward;
+import com.fnw.member.MemberDTO;
 
 public class NoticeWriteService implements Action {
 
@@ -12,6 +13,7 @@ public class NoticeWriteService implements Action {
 	public ActionFoward doProcess(HttpServletRequest request, HttpServletResponse response) {
 		String method = request.getMethod();
 		ActionFoward actionFoward = new ActionFoward();
+		String id = ((MemberDTO)request.getSession().getAttribute("member")).getId();
 		if(method.equals("POST")) {
 			NoticeDAO noticeDAO = new NoticeDAO();
 			NoticeDTO noticeDTO = new NoticeDTO();
@@ -22,17 +24,17 @@ public class NoticeWriteService implements Action {
 			try {
 				result = noticeDAO.insert(noticeDTO);
 			} catch (Exception e) {
-				// TODO Auto-generated catch block
 				e.printStackTrace();
 			}
 			if(result>0) {
-				actionFoward.setCheck(false);
-				actionFoward.setPath("./noticeList.notice");
+				request.setAttribute("message", "입력 완료");
+				request.setAttribute("path", "./noticeList.notice?id="+id);
 			}else {
-				actionFoward.setCheck(false);
-				actionFoward.setPath("../index.jsp");
+				request.setAttribute("message", "입력 실패");
+				request.setAttribute("path", "./noticeList.notice?id="+id);
 			}
-			
+			actionFoward.setCheck(true);
+			actionFoward.setPath("../WEB-INF/view/common/result.jsp");
 		}else {
 			request.setAttribute("notice", "notice");
 			actionFoward.setCheck(true);

@@ -62,8 +62,6 @@ public class NoticeController extends HttpServlet {
 		//6. value를 이용해서 객체 생성하기		
 				Class obj= Class.forName(value);
 				Object instance = obj.newInstance();
-				System.out.println("Key : "+key);
-				System.out.println("instance : "+instance);
 		//7. key와 instance를 맵에 저장		
 				map.put(key, instance);
 			}

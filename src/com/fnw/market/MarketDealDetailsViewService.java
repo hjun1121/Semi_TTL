@@ -23,8 +23,6 @@ public class MarketDealDetailsViewService implements Action {
 		request.setAttribute("bookDealsDetail", market_Deal_DetailsDTO);
 		actionFoward.setCheck(true);
 		actionFoward.setPath("../WEB-INF/view/market/marketDealsDetails.jsp");
-
-
 		return actionFoward;
 	}
 

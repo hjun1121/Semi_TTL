@@ -14,20 +14,56 @@
 
 $(function(){
 	
-	$("#btn").click(function() {
+	$(".rent_btn").click(function() {
+		var num = $(this).val();
 		$.ajax({
 			url: "./bookRent.book",
 			type: "GET",
 			data: {
-				num:${book.num},
+				num: num,
 				rent_id:'${member.id}'
 			},
 			success: function(data) {
 				alert(data);
-				location.href="./bookTotalSearch.book";
+				location.href="./bookInformation.book?num=${num}";
 			}
 		});
 	});
+
+	$(".wish_btn").click(function() {
+		var num = $(this).val();
+		var title = $(this).attr("title");
+
+		if (title == 1) {
+			$.ajax({
+				url: "./bookRentWishReturn.book",
+				type: "GET",
+				data: {
+					num:num,
+					rent_id: '${member.id}'
+				},
+				success: function(data) {
+					alert(data);
+					location.href="./bookInformation.book?num=${num}";
+				}
+			});
+
+		} else if (title == 0) {
+			$.ajax({
+				url: "./bookRentWish.book",
+				type: "GET",
+				data: {
+					num:num,
+					rent_id:'${member.id}'
+				},
+				success: function(data) {
+					alert(data);
+					location.href="./bookInformation.book?num=${num}";
+				}
+			});
+		}
+	});
+
 });
 </script>
 
@@ -46,6 +82,9 @@ $(function(){
 					<td>도서위치</td>
 					<td>분류</td>
 					<td>대여여부</td>
+					<c:if test="${not empty member}">
+						<td>찜</td>
+					</c:if>
 				</tr>
 				<tr>
 					<td>${ book.num }</td>
@@ -57,7 +96,7 @@ $(function(){
 					<td>${ book.type }</td>
 					<c:choose>
 						<c:when test="${ book.state == 0 and not empty member }">
-							<td><button class = "btn btn-default" type = "submit" id = "btn">대여</button></td>
+							<td><button class = "btn btn-default rent_btn" type = "submit" id = "rent_btn" value = "${book.num}">대여</button></td>
 						</c:when>
 						<c:when test="${ book.state == 0 and empty member }">
 							<td>대여가능</td>
@@ -66,8 +105,29 @@ $(function(){
 							<td>대여불가</td>
 						</c:when>
 					</c:choose>
+					<c:set var="heart1" value="0" ></c:set>
+					<c:set var="heart2" value="0" ></c:set>
+					<c:if test="${ not empty member }">
+						<c:forEach items="${rent_wish_list}" var="wish">
+							<c:if test="${wish.title eq book.title}">
+								<c:choose>
+									<c:when test="${heart1 == 0}">
+										<td><button class = "btn btn-default wish_btn" type = "submit" value = "${book.num}" title="1">❤</button></td>
+										<c:set var="heart1" value="1" ></c:set>
+										<c:set var="heart2" value="1" ></c:set>
+									</c:when>
+								</c:choose>
+							</c:if>
+						</c:forEach>
+							<c:if test="${heart2 == 0}">
+								<td><button class = "btn btn-default wish_btn" type = "submit" value = "${book.num}" title="0">♡</button></td>
+							</c:if>
+					</c:if>
 				</tr>
 			</table>
+			<form action="./bookTotalSearch.book?curPage=${curPage}">
+				<button class = "btn btn-default" type = "submit" >LIST</button>
+			</form>
 	</section>
 </body>
 </html>

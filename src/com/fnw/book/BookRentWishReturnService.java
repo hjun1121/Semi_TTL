@@ -38,7 +38,7 @@ public class BookRentWishReturnService implements Action {
 		} catch (Exception e) {
 			// TODO: handle exception
 		}
-		String id = request.getParameter("id");
+		String id = request.getParameter("rent_id");
 		if(id == null) {
 			id = "";
 		}

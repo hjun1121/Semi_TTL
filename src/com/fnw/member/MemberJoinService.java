@@ -49,11 +49,13 @@ public class MemberJoinService implements Action {
 		memberDTO.setName(request.getParameter("name"));
 		memberDTO.setBirth(Date.valueOf(request.getParameter("birth")));
 		memberDTO.setGender(request.getParameter("gender"));
+		memberDTO.setPostCode(request.getParameter("postCode"));
 		memberDTO.setAddr(request.getParameter("addr"));
+		memberDTO.setAddr2(request.getParameter("addr2"));
 		memberDTO.setPhone(request.getParameter("phone"));
 		memberDTO.setEmail(request.getParameter("email"));
 		memberDTO.setLibrary(Integer.parseInt(request.getParameter("library")));
-		int result =0;
+		int result =0;  
 		try {
 			result = memberDAO.insert(memberDTO);
 		} catch (Exception e) {

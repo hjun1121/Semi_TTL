@@ -17,7 +17,6 @@ $(function(){
 <html>
 </head>
 <body>
-	<h2>MyPage - Book Order List</h2>
 	<div>
 		<form name="frm" class="form-inline" action="./bookOrderList.book"
 			method="post">
@@ -31,13 +30,16 @@ $(function(){
 				</span>
 				<div class="form-group">
 					<div class="col-sm-offset-2 col-sm-10">
-						<input type="submit" class="btn btn-default" value="search">
+						<input type="submit" class="btn btn-default">
 					</div>
 				</div>
 			</div>
 		</form>
 	</div>
-	<h2>Book Order List-Book_Order</h2>
+	<a href="./bookOrderList.book?id=${member.id }&state=1&kind=${kind}&search=${search}"><input type="button" value="대기"></a>
+	<a href="./bookOrderList.book?id=${member.id }&state=0&kind=${kind}&search=${search}"><input type="button" value="취소"></a>
+	<a href="./bookOrderList.book?id=${member.id }&state=2&kind=${kind}&search=${search}"><input type="button" value="승인"></a>
+	<a href="./bookOrderList.book?id=${member.id }&state=3&kind=${kind}&search=${search}"><input type="button" value="전체"></a>
 	<table class="table" border="1">
 		<tr>
 			<th>num</th>

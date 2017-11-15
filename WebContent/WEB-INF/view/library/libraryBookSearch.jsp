@@ -42,10 +42,9 @@ $(function(){
 
 	$(".wish_btn").click(function() {
 		var num = $(this).val();
-		alert(${heart1});
-		alert(${heart2});
-
-		if (${heart1 == 0}) {
+		var title = $(this).attr("title");
+		
+		if (title == 1) {
 			$.ajax({
 				url: "../book/bookRentWishReturn.book",
 				type: "GET",
@@ -55,15 +54,15 @@ $(function(){
 					curPage: ${curPage},
 					search: '${search}',
 					library: ${library},
-					id: '${member.id}'
+					rent_id: '${member.id}'
 				},
 				success: function(data) {
 					alert(data);
 					location.href="./libraryBookSearch.library?library=${library}&search=${search}&curPage=${curPage}&kind=${kind}";
 				}
 			});
-			
-		} else if(${heart2 == 0}) {
+
+		} else if (title == 0) {
 			$.ajax({
 				url: "../book/bookRentWish.book",
 				type: "GET",
@@ -73,7 +72,7 @@ $(function(){
 					curPage: ${curPage},
 					search: '${search}',
 					library: ${library},
-					id:'${member.id}'
+					rent_id:'${member.id}'
 				},
 				success: function(data) {
 					alert(data);
@@ -160,7 +159,7 @@ $(function(){
 										<c:if test="${wish.title eq dto.title}">
 											<c:choose>
 												<c:when test="${heart1 == 0}">
-													<td><button class = "btn btn-default wish_btn" type = "submit" value = "${dto.num}">❤</button></td>
+													<td><button class = "btn btn-default wish_btn" type = "submit" value = "${dto.num}" title="1">❤</button></td>
 													<c:set var="heart1" value="1" ></c:set>
 													<c:set var="heart2" value="1" ></c:set>
 												</c:when>
@@ -168,7 +167,7 @@ $(function(){
 										</c:if>
 									</c:forEach>
 										<c:if test="${heart2 == 0}">
-											<td><button class = "btn btn-default wish_btn" type = "submit" value = "${dto.num}">♡</button></td>
+											<td><button class = "btn btn-default wish_btn" type = "submit" value = "${dto.num}" title="0">♡</button></td>
 										</c:if>
 								</c:if>
 							</tr>

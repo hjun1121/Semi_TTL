@@ -13,13 +13,13 @@
 				<table class="table">
 					<tr>
 						<tr>
-						<td colspan="2"><%-- 글 제목 --%><input class="form-control" type="text" name="title" value="${view.title}" placeholder="제목없음"></td>
-						<td colspan="2"><!-- blank --></td>
-						<td id="reg_date"><!-- 날짜 --></td>
-						<td id="writer"><!-- 작성자 --><input class="form-control" type="text" name="writer" readonly="readonly" value="${requestScope.view.writer}" placeholder="작성자"></td>
+						<td colspan="2"><input class="form-control" type="text" name="title" value="${view.title}" placeholder="제목없음"></td>
+						<td colspan="2"></td>
+						<td id="reg_date"></td>
+						<td id="writer"><input class="form-control" type="text" name="writer" readonly="readonly" value="${requestScope.view.writer}" placeholder="작성자"></td>
 					</tr>
 					<tr>
-					 	<td colspan="6" id="contents"><!-- contents 내용 --><textarea class="form-control" name="contents" placeholder="내용을 입력하세요.">${view.contents} </textarea></td>
+					 	<td colspan="6" id="contents"><textarea class="form-control" name="contents" placeholder="내용을 입력하세요.">${view.contents} </textarea></td>
 					</tr>
 				</table>
 				

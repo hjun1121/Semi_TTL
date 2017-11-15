@@ -31,7 +31,7 @@ $(document).ready(function() {
 <title>Insert title here</title>
 </head>
 <body>
-<h2>Book Order List-Book_Order</h2>
+<h2>book buy wish list</h2>
 <form action="./bookBuyWishDelete.market" method="POST">
    <table class="table" border="1">
       <tr>
@@ -75,10 +75,10 @@ $(document).ready(function() {
             	<c:when test="${bookOrderWish_list.state eq 10 }">
                   <td>구매완료</td>
                </c:when>
-               <c:when test="${bookOrderWish_list.state eq 1 }">
+               <c:when test="${bookOrderWish_list.state eq 2 }">
                   <td>구매불가</td>
                </c:when>
-               <c:when test="${bookOrderWish_list.state eq 2 }">
+               <c:when test="${bookOrderWish_list.state eq 1 }">
                   <td><a href="./bookBuy.market?num=${bookOrderWish_list.num }"><input type="button" value="구매"></a></td>
                </c:when>
             </c:choose>

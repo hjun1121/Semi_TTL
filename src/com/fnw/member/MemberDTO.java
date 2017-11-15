@@ -8,12 +8,28 @@ public class MemberDTO {
 	private String name;
 	private Date birth;
 	private String gender;
+	private String postCode;
 	private String addr;
+	private String addr2;
 	private String phone;
 	private String email;
 	private int library;
 	private int kind;
 	
+	
+	
+	public String getPostCode() {
+		return postCode;
+	}
+	public void setPostCode(String postCode) {
+		this.postCode = postCode;
+	}
+	public String getAddr2() {
+		return addr2;
+	}
+	public void setAddr2(String addr2) {
+		this.addr2 = addr2;
+	}
 	public String getId() {
 		return id;
 	}

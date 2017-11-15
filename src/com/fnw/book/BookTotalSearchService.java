@@ -4,9 +4,11 @@ import java.util.ArrayList;
 
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
+import javax.servlet.http.HttpSession;
 
 import com.fnw.action.Action;
 import com.fnw.action.ActionFoward;
+import com.fnw.member.MemberDTO;
 import com.fnw.util.PageMaker;
 
 public class BookTotalSearchService implements Action {
@@ -17,7 +19,26 @@ public class BookTotalSearchService implements Action {
 		ActionFoward actionFoward = new ActionFoward();
 		ArrayList<Book_TotalDTO> ar = new ArrayList<>();
 		Book_TotalDAO book_TotalDAO = new Book_TotalDAO();
-
+		ArrayList<Book_Rent_WishDTO> rent_wish_list = new ArrayList<>();
+		Book_Rent_WishDAO book_Rent_WishDAO = new Book_Rent_WishDAO();
+		
+		////id 받아오기
+		HttpSession session = null;
+		String id = null;
+		try {
+			session = request.getSession();
+			id = ((MemberDTO)session.getAttribute("member")).getId();
+			if(id == null) {
+				id = "";
+			}
+		}catch (Exception e) {
+		}		
+		try {
+			rent_wish_list = book_Rent_WishDAO.selectList(id);
+		} catch (Exception e1) {
+			// TODO Auto-generated catch block
+			e1.printStackTrace();
+		}
 		int curPage=1;
 		try {
 			curPage=Integer.parseInt(request.getParameter("curPage"));
@@ -43,6 +64,7 @@ public class BookTotalSearchService implements Action {
 			totalCount = book_TotalDAO.getTotalCount(kind, search);
 			PageMaker pageMaker = new PageMaker(curPage, totalCount);
 			ar = book_TotalDAO.selectList(pageMaker.getMakeRow(), kind, search);
+			request.setAttribute("rent_wish_list", rent_wish_list);
 			request.setAttribute("list", ar);
 			request.setAttribute("page", pageMaker.getMakePage());
 			request.setAttribute("kind", kind);

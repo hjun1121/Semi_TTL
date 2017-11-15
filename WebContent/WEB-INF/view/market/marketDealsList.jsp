@@ -36,6 +36,8 @@ $(function(){
 	<h2>MyPage - 중고마켓 판/구매 리스트</h2>
 	<div>
 	<form name="frm" class="form-inline" action="./marketDealsList.market" method="post">
+	<input type="hidden" name="type" id="type" value="${type }">
+	<input type="hidden" name="id" id="id" value="${id }">
 		<div>
 			<span>
 				<select id="year" name="year">
@@ -104,6 +106,10 @@ $(function(){
 		</div>
 		</form>
 	</div>
+	<a href="./marketDealsList.market?id=${id }&type=3&year=${year}&month=${month}&day=${day}"><input type="button" value="전체"></a>
+	<a href="./marketDealsList.market?id=${id }&type=1&year=${year}&month=${month}&day=${day}"><input type="button" value="판매"></a>
+	<a href="./marketDealsList.market?id=${id }&type=2&year=${year}&month=${month}&day=${day}"><input type="button" value="구매"></a>
+	<a href="../index.jsp"><input type="button" value="list"></a>
 	<table class="table" border="1">
 		<tr>
 			<th>num</th>
@@ -114,6 +120,7 @@ $(function(){
 			<th>T_date</th>
 			<th>library</th>
 			<th>price</th>
+			<th>kind</th>
 			<th>state</th>
 			<th>delivery</th>
 		</tr>
@@ -145,11 +152,25 @@ $(function(){
 				</c:choose>
 				<td>${bookDeals_list.price }</td>
 				<c:choose>
-					<c:when test="${bookDeals_list.state eq 1}">
+					<c:when test="${bookDeals_list.kind eq 1}">
 						<td>판매</td>
 					</c:when>
-					<c:when test="${bookDeals_list.state eq 2}">
+					<c:when test="${bookDeals_list.kind eq 2}">
 						<td>구매</td>
+					</c:when>
+					<c:otherwise>
+						<td>없음</td>
+					</c:otherwise>
+				</c:choose>
+				<c:choose>
+					<c:when test="${bookDeals_list.state eq 1}">
+						<td>상</td>
+					</c:when>
+					<c:when test="${bookDeals_list.state eq 2}">
+						<td>중</td>
+					</c:when>
+					<c:when test="${bookDeals_list.state eq 3}">
+						<td>하</td>
 					</c:when>
 					<c:otherwise>
 						<td>없음</td>
@@ -176,7 +197,7 @@ $(function(){
 			</c:if>
 			<c:forEach begin="${page.startNum}" end="${page.lastNum}" var="i">
 			<li><a
-				href="./marketDealsList.market?curPage=${i}&id=${id }&year=${year}&month=${month}&day=${day}">${i}</a></li>
+				href="./marketDealsList.market?curPage=${i}&id=${id }&year=${year}&month=${month}&day=${day}&type=${type}">${i}</a></li>
 			</c:forEach>
 			<c:if test="${page.curBlock < page.totalBlock}">
 			<li><a

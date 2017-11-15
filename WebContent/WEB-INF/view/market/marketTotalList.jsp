@@ -5,7 +5,51 @@
 <html>
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
 <title>Insert title here</title>
+<script type="text/javascript">
+
+	$(function(){
+		
+		$(".wish_btn").click(function() {
+			var num = $(this).val();
+			var title = $(this).attr("title");
+
+			if (title == 1) {
+				$.ajax({
+					url: "./bookBuyWishReturn.market",
+					type: "GET",
+					data: {
+						num:num,
+						curPage: ${curPage},
+						id: '${member.id}'
+					},
+					success: function(data) {
+						alert(data);
+						location.href="./marketTotalList.market?curPage=${curPage}";
+					}
+				});
+
+			} else if (title == 0) {
+				$.ajax({
+					url: "./bookBuyWish.market",
+					type: "GET",
+					data: {
+						num:num,
+						curPage: ${curPage},
+						id: '${member.id}'
+					},
+					success: function(data) {
+						alert(data);
+						location.href="./marketTotalList.market?curPage=${curPage}";
+					}
+				});
+			}
+		});
+		
+	});
+
+</script>
 </head>
 <body>
 	<h2>MarketTotal List</h2>
@@ -22,6 +66,10 @@
 				<th>wish</th>
 				<th>approval</th>
 				<th>book_state</th>
+				<c:if test="${ not empty member }">
+					<td>찜</td>
+				</c:if>
+				<th>*****</th>
 			</tr>
 			<c:forEach items="${list }" var="dto">
 				<tr>
@@ -36,10 +84,28 @@
 					<td>${dto.wish }</td>
 					<td>${dto.approval }</td>
 					<td>${dto.book_state }</td>
-				</tr>
+			<c:set var="heart1" value="0" ></c:set>
+			<c:set var="heart2" value="0" ></c:set>
+			<c:if test="${ not empty member }">
+				<c:forEach items="${buy_wish_list}" var="wish">
+					<c:if test="${wish.num eq dto.num}">
+						<c:choose>
+							<c:when test="${heart1 == 0}">
+								<td><button class = "wish_btn" type = "submit" value = "${dto.num}" title="1">❤</button></td>
+								<c:set var="heart1" value="1" ></c:set>
+								<c:set var="heart2" value="1" ></c:set>
+							</c:when>
+						</c:choose>
+					</c:if>
+				</c:forEach>
+					<c:if test="${heart2 == 0}">
+						<td><button class = "wish_btn" type = "submit" value = "${dto.num}" title="0">♡</button></td>
+					</c:if>
+			</c:if>
+			</tr>
+					<td><a href="./bookBuy.market?num=${dto.num }"><input type="button" value="구매"></a></td>
 			</c:forEach>
 		</table>
-		
 		<div style = "text-align: center;">
 			<ul class="pagination pagination-sm">
 				<c:if test="${page.curBlock>1}">
@@ -57,3 +123,14 @@
 		</div>
 </body>
 </html>
+
+
+
+
+
+
+
+
+
+
+

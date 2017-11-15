@@ -6,9 +6,11 @@ import java.util.Calendar;
 
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
+import javax.servlet.http.HttpSession;
 
 import com.fnw.action.Action;
 import com.fnw.action.ActionFoward;
+import com.fnw.member.MemberDTO;
 import com.fnw.util.PageMaker;
 
 public class BookRentListService implements Action {
@@ -18,6 +20,8 @@ public class BookRentListService implements Action {
 		ActionFoward actionFoward = new ActionFoward();
 		Book_Rent_DetailsDAO book_Rent_DetailsDAO = new Book_Rent_DetailsDAO();
 		ArrayList<Book_Rent_DetailsDTO> list = new ArrayList<>();
+		HttpSession session = request.getSession();
+		String id = ((MemberDTO)session.getAttribute("member")).getId();
 		int curPage = 1;
 		
 		try {
@@ -26,7 +30,7 @@ public class BookRentListService implements Action {
 			curPage=1;
 		}
 		
-		SimpleDateFormat sdf = new SimpleDateFormat("yy");
+		SimpleDateFormat sdf = new SimpleDateFormat("yyyy");
         Calendar c1 = Calendar.getInstance();
         String strToday = sdf.format(c1.getTime());
 
@@ -53,7 +57,6 @@ public class BookRentListService implements Action {
 		String p_date = year+"/"+month+"/"+day;
 		
 		int totalCount = 0;
-		String id = request.getParameter("id");
 		try {
 			totalCount = book_Rent_DetailsDAO.getTotalCount(p_date);
 			if(totalCount==0) {

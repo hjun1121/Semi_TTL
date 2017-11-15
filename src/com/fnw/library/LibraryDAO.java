@@ -85,7 +85,7 @@ public class LibraryDAO {
 		int result = st.executeUpdate();
 
 		if(result > 0) {
-			sql = "insert into book_rent_details values(?,?,?,?,?,?,?,?,sysdate,sysdate+7,0)";
+			sql = "insert into book_rent_details values(?,?,?,?,?,?,?,?,to_char(sysdate, 'YYYY-mm-DD'),null,0)";
 			st = con.prepareStatement(sql);
 			st.setInt(1, book_TotalDTO.getNum());
 			st.setString(2, book_TotalDTO.getTitle());
@@ -136,7 +136,7 @@ public class LibraryDAO {
 				+ "(select * from book_total where " + kind + " like ? and library=? "
 				+ "order by num asc) N) "
 				+ "where R between ? and ?";
-		
+
 		PreparedStatement st = con.prepareStatement(sql);
 		st.setString(1, "%"+search+"%");
 		st.setInt(2, library);
