@@ -17,9 +17,30 @@
 	margin-top:35px;
 }
 
+#headerMenu .login{
+	float:left;
+}
+#headerMenu .login a{
+	color:#06603c;font-size:13px
+};
+
 #headerMenu > ul{
 	float:left;
 }
+
+#headerMenu > ul.language{margin-left:10px}
+#headerMenu > ul > li{float:left;margin-left:15px}
+#headerMenu > ul > li:first-child{margin-left:0}
+#headerMenu > ul > li.ewha a{background-color:#06603c;color:#fff !important}
+#headerMenu > ul.language > li > a{padding:0 3px;border:1px solid #176b49;color:#06603c;font-size:13px}
+#headerMenu > ul.language > li.useInquiry{position:relative}
+#headerMenu > ul.language > li.useInquiry > a{color:#4d4d4d;padding-right:17px;background:url(../../../../image/ko/local/arrow1.png) no-repeat 100% 50%;border:none}
+#headerMenu > ul.language > li.useInquiry > ul{display:none;position:absolute;top:22px;left:-13px;width:110%;padding:10px 12px;border:1px solid #d1d1d1;background-color:#fff}
+#headerMenu > ul.language > li.useInquiry.on > ul{display:block}
+#headerMenu > ul.language > li.useInquiry > ul li{margin-top:10px}
+#headerMenu > ul.language > li.useInquiry > ul li:first-child{margin-top:0}
+#headerMenu > ul.language > li.useInquiry > ul li a{color:#898989}
+
 
 
 

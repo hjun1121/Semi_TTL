@@ -19,8 +19,6 @@ public class MemberUpdatePwCheckService implements Action {
 			actionFoward.setCheck(true);
 			actionFoward.setPath("../WEB-INF/view/member/memberUpdatePwCheck.jsp");
 		}
-		
-		 
 		else {
 			MemberDTO memberDTO = new MemberDTO();	
 			
