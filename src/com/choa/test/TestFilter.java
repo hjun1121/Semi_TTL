@@ -1,5 +1,4 @@
-package com.fnw.filter;
-
+package com.choa.test;
 
 import java.io.IOException;
 import javax.servlet.Filter;
@@ -11,17 +10,17 @@ import javax.servlet.ServletResponse;
 import javax.servlet.annotation.WebFilter;
 
 /**
- * Servlet Filter implementation class EncodingFilter
+ * Servlet Filter implementation class TestFilter
  */
-@WebFilter("/EncodingFilter")
-public class EncodingFilter implements Filter {
+@WebFilter("/TestFilter")
+public class TestFilter implements Filter {
 	private String encode;
     /**
      * Default constructor. 
      */
-    public EncodingFilter() {
-        // TODO Auto-generated constructor stub
-    }
+  public TestFilter() {
+	// TODO Auto-generated constructor stub
+}
 
 	/**
 	 * @see Filter#destroy()
@@ -48,4 +47,5 @@ public class EncodingFilter implements Filter {
 	public void init(FilterConfig fConfig) throws ServletException {
 		encode = fConfig.getInitParameter("encode");
 	}
+
 }

@@ -18,11 +18,13 @@ public class BookReturnService implements Action {
 		ActionFoward actionFoward = new ActionFoward();
 		Book_Rent_DetailsDAO book_Rent_DetailsDAO = new Book_Rent_DetailsDAO();
 		Book_Rent_DetailsDTO book_Rent_DetailsDTO = null;
+		Book_Rent_WishDAO book_Rent_WishDAO = new Book_Rent_WishDAO();
 		int result = 0;
 		HttpSession session = request.getSession();
 		String id = ((MemberDTO)session.getAttribute("member")).getId();
 		try {
 			book_Rent_DetailsDTO = book_Rent_DetailsDAO.selectTime(Integer.parseInt(request.getParameter("num")));
+			book_Rent_WishDAO.updateReturn(Integer.parseInt(request.getParameter("num")));
 		}catch (Exception e1) {
 			e1.printStackTrace();
 		}
