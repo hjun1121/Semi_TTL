@@ -2,9 +2,12 @@
 	pageEncoding="UTF-8"%>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>	
 <%@ taglib prefix="fn" uri="http://java.sun.com/jsp/jstl/functions" %>
+
 <!DOCTYPE html>
 <html>
 <head>
+<link rel="stylesheet" href="../css/temp/header.css">
+<link rel="stylesheet" href="../css/temp/footer.css">
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
 <script type="text/javascript">
@@ -20,6 +23,7 @@ $(function(){
 <title>Notice</title>
 </head>
 <body>
+<c:import url="../../../temp/header.jsp"></c:import>
 	<div>
 		<form name="frm" class="form-inline" action="./noticeList.notice"
 			method="post">
@@ -88,5 +92,6 @@ $(function(){
 			
 		</ul>
 	</div>
+<c:import url="../../../temp/footer.jsp"></c:import>
 </body>
 </html>
