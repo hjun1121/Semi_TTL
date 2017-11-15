@@ -129,7 +129,7 @@ $(function(){
 					<c:forEach items="${ list }" var="dto">
 							<tr>
 								<td>${dto.num }</td>
-								<td><a href="./bookInformation.book?num=${dto.num}">${dto.title }</a></td>
+								<td><a href="./bookInformation.book?num=${dto.num}&curPage=${curPage}">${dto.title }</a></td>
 								<td>${dto.writer }</td>
 								<td>${dto.company }</td>
 	
