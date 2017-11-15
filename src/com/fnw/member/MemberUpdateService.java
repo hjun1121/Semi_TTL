@@ -31,7 +31,6 @@ public class MemberUpdateService implements Action {
 				String f = ar2[0];
 				String m = ar2[1];
 				String l = ar2[2];
-				
 				request.setAttribute("DTO", memberDTO);
 				request.setAttribute("email1", email1);
 				request.setAttribute("email2", email2);

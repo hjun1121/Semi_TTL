@@ -1,0 +1,10 @@
+@charset "UTF-8";
+
+#form{
+	float: left;
+	display: inline;
+	margin-left:10px;
+	width: 80%;
+	height:700px;
+	background-color: red;
+}

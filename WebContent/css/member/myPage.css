@@ -29,7 +29,7 @@ li a:hover:not(.active) {
     color: white;
 }
 
-#contents{
+#form{
 	float: left;
 	display: inline;
 	margin-left:10px;
