@@ -22,7 +22,6 @@ public class Market_OrderDAO {
 		st.setInt(5, market_OrderDTO.getPrice());
 		st.setString(6, market_OrderDTO.getId());
 		st.setInt(7, market_OrderDTO.getLibrary());
-		st.setInt(8, market_OrderDTO.getApproval());
 
 		int result = st.executeUpdate();
 		DBConnector.disConnect(st, con);
