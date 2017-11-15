@@ -177,6 +177,7 @@ public class Book_Buy_WishDAO {
 		st.setInt(1, num);
 		
 		int result = st.executeUpdate();
+		st.close();
 		return result;
 	}
 }

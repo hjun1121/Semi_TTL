@@ -5,6 +5,7 @@ import javax.servlet.http.HttpServletResponse;
 
 import com.fnw.action.Action;
 import com.fnw.action.ActionFoward;
+import com.fnw.member.MemberDTO;
 import com.fnw.notice.NoticeDTO;
 
 public class NoticeUpdateService implements Action {
@@ -66,13 +67,15 @@ public class NoticeUpdateService implements Action {
 		NoticeDTO noticeDTO = new NoticeDTO();
 		int result=0;
 		NoticeDAO noticeDAO = new NoticeDAO();
+		String id = ((MemberDTO)request.getSession().getAttribute("member")).getId();
+		System.out.println(id);
 		noticeDTO.setNum(Integer.parseInt(request.getParameter("num")));
 		noticeDTO.setTitle(request.getParameter("title"));
 		noticeDTO.setContents(request.getParameter("contents"));
+		noticeDTO.setWriter("iu");
 		try {
 			result = noticeDAO.update(noticeDTO);
 		} catch (Exception e) {
-			// TODO Auto-generated catch block
 			e.printStackTrace();
 		}
 		

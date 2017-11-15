@@ -45,7 +45,7 @@
 			<c:when test="${bookDealsDetail.delivery eq 2}">
 				<p>delivery<input type="text" value="택배" readonly="readonly"></p>
 				<input type="hidden" name="delivery" value=${bookDealsDetail.delivery }>
-				<input type="text" name="postcode" value=${bookDealsDetail.postcode }>
+				<input type="text" name="postcode" value=${bookDealsDetail.postCode }>
 				<input type="text" name="addr" value=${bookDealsDetail.addr }>
 				<input type="text" name="addr2" value=${bookDealsDetail.addr2 }>
 			</c:when>

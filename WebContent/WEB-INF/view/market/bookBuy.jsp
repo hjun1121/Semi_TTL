@@ -20,9 +20,9 @@ $(function(){
 		 }
 	 });
 	 
-	 $("#approval").change(function(){
-		 var approval = $("#approval").val(); 
-		 if(approval==2 ){
+	 $("#delivery").change(function(){
+		 var delivery = $("#delivery").val(); 
+		 if(delivery==2 ){
 			 $("#addrDis").attr("style","display:inline;");
 		 }else {
 			 $("#addrDis").attr("style","display:none;");
@@ -127,24 +127,24 @@ $(function(){
 			</tr>
 			<tr>
 				<td>구입방법</td>
-				<td><select name = "approval" id="approval">
-					<option class = "approval" value = "1">직접수령</option>
-					<option class = "approval" value = "2">택배</option>
+				<td><select name = "delivery" id="delivery">
+					<option class = "delivery" value = "1">직접수령</option>
+					<option class = "delivery" value = "2">택배</option>
 				</select>
 				<td id="price"></td>
 			</tr>
 			<tr id="addrDis" style="display: none;">
 				<td>주소</td>
 				<td>
-					<input type="text" id="postCode" name="postCode" placeholder="우편번호" readonly="readonly" value=${member.postCode }>
+					<input type="text" id="postCode" name="postCode" placeholder="우편번호" readonly="readonly" value="${member.postCode }">
 					<input type="button" id="addrCheck" value="우편번호 찾기" ><br>
 					<input type="text" id="addr" name="addr" placeholder="주소" readonly="readonly" value="${member.addr }">
-					<input type="text" id="addr2" name="addr2" placeholder="나머지주소 " value=${member.addr2 }>	
+					<input type="text" id="addr2" name="addr2" placeholder="나머지주소 " value="${member.addr2 }">	
 				</td>
 				<td>택배결제시 2500원 추가되어 결제됩니다.</td>
 			</tr>
 		</table>
-		<button style = "float: right;" class = "btn btn-default" type = "submit">CONFIRM</button>
+		<button class = "btn btn-default" type = "submit">CONFIRM</button>
 	</form>
 </body>
 </html>

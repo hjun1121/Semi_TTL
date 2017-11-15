@@ -6,8 +6,6 @@ import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 
 public class DBConnector {
-	
-	
 	public static Connection getConnect() throws Exception {
 		//1로그인정보
 		String user="library";

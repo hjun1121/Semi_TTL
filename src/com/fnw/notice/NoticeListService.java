@@ -40,10 +40,11 @@ public class NoticeListService implements Action {
 			PageMaker pageMaker = new PageMaker(curPage, totalCount);
 			List<NoticeDTO> ar=noticeDAO.selectList(pageMaker.getMakeRow(), kind, search);
 			request.setAttribute("list", ar);
+			request.setAttribute("kind", kind);
+			request.setAttribute("search", search);
 			request.setAttribute("page", pageMaker.getMakePage());
 			request.setAttribute("notice", "notice");
 		} catch (Exception e) {
-			// TODO Auto-generated catch block
 			e.printStackTrace();
 		}
 		actionFoward.setCheck(true);
