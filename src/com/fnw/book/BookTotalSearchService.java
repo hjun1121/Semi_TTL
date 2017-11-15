@@ -21,6 +21,7 @@ public class BookTotalSearchService implements Action {
 		Book_TotalDAO book_TotalDAO = new Book_TotalDAO();
 		ArrayList<Book_Rent_WishDTO> rent_wish_list = new ArrayList<>();
 		Book_Rent_WishDAO book_Rent_WishDAO = new Book_Rent_WishDAO();
+		
 		////id 받아오기
 		HttpSession session = null;
 		String id = null;

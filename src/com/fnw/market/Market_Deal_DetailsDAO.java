@@ -56,45 +56,6 @@ public class Market_Deal_DetailsDAO {
 		st.close();
 		return result;
 	}
-	public ArrayList<Market_Deal_DetailsDTO> selectList(String id, MakeRow makeRow, String search) throws Exception {
-		Connection con = DBConnector.getConnect();
-		String sql = "select * from "
-				+ "(select rownum R, N.* from "
-				+ "(select * from market_deal_details where to_char(T_date, 'YYYY-mm-DD') in (?) and id=? order by num asc) N)"
-				+ "where R between ? and ?";
-		System.out.println(search);
-		PreparedStatement st = con.prepareStatement(sql);
-		st.setString(1, search);
-		st.setString(2, id);
-		st.setInt(3, makeRow.getStartRow());
-		st.setInt(4, makeRow.getLastRow());
-		ResultSet rs = st.executeQuery();
-
-		ArrayList<Market_Deal_DetailsDTO> ar = new ArrayList<>();
-		Market_Deal_DetailsDTO market_Deal_DetailsDTO = null;
-		while(rs.next()) {
-			market_Deal_DetailsDTO = new Market_Deal_DetailsDTO();
-			market_Deal_DetailsDTO.setId(rs.getString("id"));
-			market_Deal_DetailsDTO.setNum(rs.getInt("num"));
-			market_Deal_DetailsDTO.setTitle(rs.getString("title"));
-			market_Deal_DetailsDTO.setWriter(rs.getString("writer"));
-			market_Deal_DetailsDTO.setCompany(rs.getString("company"));
-			market_Deal_DetailsDTO.setPublish_date(rs.getString("publish_date"));
-			market_Deal_DetailsDTO.setId(rs.getString("id"));
-			market_Deal_DetailsDTO.setT_date(rs.getDate("t_date"));
-			market_Deal_DetailsDTO.setPrice(rs.getInt("price"));
-			market_Deal_DetailsDTO.setLibrary(rs.getInt("library"));
-			market_Deal_DetailsDTO.setKind(rs.getInt("kind"));
-			market_Deal_DetailsDTO.setState(rs.getInt("state"));
-			market_Deal_DetailsDTO.setDelivery(rs.getInt("delivery"));
-			market_Deal_DetailsDTO.setPostCode(rs.getString("postCode"));
-			market_Deal_DetailsDTO.setAddr(rs.getString("addr"));
-			market_Deal_DetailsDTO.setAddr2(rs.getString("addr2"));
-			ar.add(market_Deal_DetailsDTO);
-		}
-		DBConnector.disConnect(rs, st, con);
-		return ar;
-	}
 	public Market_Deal_DetailsDTO selectOne(int num) throws Exception{
 		Connection con = DBConnector.getConnect();
 		String sql = "select * from market_deal_details where num=?";
@@ -172,15 +133,59 @@ public class Market_Deal_DetailsDAO {
 		DBConnector.disConnect(rs, st, con);
 		return result;
 	}
-	public ArrayList<Market_Deal_DetailsDTO> selectList(String id, MakeRow makeRow, String search,int kind) throws Exception {
+	
+	public ArrayList<Market_Deal_DetailsDTO> selectList(String id, MakeRow makeRow, String p_date) throws Exception {
+		Connection con = DBConnector.getConnect();
+		/*String sql = "select * from "
+				+ "(select rownum R, N.* from "
+				+ "(select * from market_deal_details where to_char(T_date, 'YYYY-mm-DD') in (?) and id=? order by num asc) N)"
+				+ "where R between ? and ?";*/
+		String sql = "select * from "
+				+ "(select rownum R, N.* from "
+				+ "(select * from market_deal_details where to_char(T_date, 'YY/MM/DD') <= ? and id=? order by num asc) N)"
+				+ "where R between ? and ?";
+		PreparedStatement st = con.prepareStatement(sql);
+		st.setString(1, p_date);
+		st.setString(2, id);
+		st.setInt(3, makeRow.getStartRow());
+		st.setInt(4, makeRow.getLastRow());
+		ResultSet rs = st.executeQuery();
+		
+		ArrayList<Market_Deal_DetailsDTO> ar = new ArrayList<>();
+		Market_Deal_DetailsDTO market_Deal_DetailsDTO = null;
+		while(rs.next()) {
+			market_Deal_DetailsDTO = new Market_Deal_DetailsDTO();
+			market_Deal_DetailsDTO.setId(rs.getString("id"));
+			market_Deal_DetailsDTO.setNum(rs.getInt("num"));
+			market_Deal_DetailsDTO.setTitle(rs.getString("title"));
+			market_Deal_DetailsDTO.setWriter(rs.getString("writer"));
+			market_Deal_DetailsDTO.setCompany(rs.getString("company"));
+			market_Deal_DetailsDTO.setPublish_date(rs.getString("publish_date"));
+			market_Deal_DetailsDTO.setId(rs.getString("id"));
+			market_Deal_DetailsDTO.setT_date(rs.getDate("t_date"));
+			market_Deal_DetailsDTO.setPrice(rs.getInt("price"));
+			market_Deal_DetailsDTO.setLibrary(rs.getInt("library"));
+			market_Deal_DetailsDTO.setKind(rs.getInt("kind"));
+			market_Deal_DetailsDTO.setState(rs.getInt("state"));
+			market_Deal_DetailsDTO.setDelivery(rs.getInt("delivery"));
+			market_Deal_DetailsDTO.setPostCode(rs.getString("postCode"));
+			market_Deal_DetailsDTO.setAddr(rs.getString("addr"));
+			market_Deal_DetailsDTO.setAddr2(rs.getString("addr2"));
+			ar.add(market_Deal_DetailsDTO);
+		}
+		DBConnector.disConnect(rs, st, con);
+		return ar;
+	}
+	
+	public ArrayList<Market_Deal_DetailsDTO> selectList(String id, MakeRow makeRow, String p_date ,int kind) throws Exception {
 		Connection con = DBConnector.getConnect();
 		String sql = "select * from "
 				+ "(select rownum R, N.* from "
-				+ "(select * from market_deal_details where T_date<=? and id=? and kind=? order by num asc) N)"
+				+ "(select * from market_deal_details where to_char(T_date, 'YY/MM/DD') <= ? and id=? and kind=? order by num asc) N)"
 				+ "where R between ? and ?";
 		
 		PreparedStatement st = con.prepareStatement(sql);
-		st.setString(1, search);
+		st.setString(1, p_date);
 		st.setString(2, id);
 		st.setInt(3, kind);
 		st.setInt(4, makeRow.getStartRow());

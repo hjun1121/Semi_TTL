@@ -54,7 +54,7 @@ $(function(){
 					curPage: ${curPage},
 					search: '${search}',
 					library: ${library},
-					id: '${member.id}'
+					rent_id: '${member.id}'
 				},
 				success: function(data) {
 					alert(data);
@@ -72,7 +72,7 @@ $(function(){
 					curPage: ${curPage},
 					search: '${search}',
 					library: ${library},
-					id:'${member.id}'
+					rent_id:'${member.id}'
 				},
 				success: function(data) {
 					alert(data);

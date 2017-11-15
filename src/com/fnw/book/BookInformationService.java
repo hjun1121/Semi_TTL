@@ -8,7 +8,6 @@ import javax.servlet.http.HttpSession;
 
 import com.fnw.action.Action;
 import com.fnw.action.ActionFoward;
-import com.fnw.library.LibraryDAO;
 import com.fnw.member.MemberDTO;
 
 public class BookInformationService implements Action {
@@ -16,7 +15,6 @@ public class BookInformationService implements Action {
 	@Override
 	public ActionFoward doProcess(HttpServletRequest request, HttpServletResponse response) {
 		ActionFoward actionFoward = new ActionFoward();
-		String method = request.getMethod();
 		ArrayList<Book_Rent_WishDTO> ar = new ArrayList<>();
 		Book_Rent_WishDAO book_Rent_WishDAO = new Book_Rent_WishDAO();
 
@@ -31,6 +29,12 @@ public class BookInformationService implements Action {
 			}
 		}catch (Exception e) {
 		}		
+		int curPage = 1;
+		try {
+			curPage = Integer.parseInt(request.getParameter("curPage"));
+		} catch (Exception e) {
+			// TODO: handle exception
+		}
 		int num = 1;
 		try {
 			num = Integer.parseInt(request.getParameter("num"));
@@ -53,6 +57,7 @@ public class BookInformationService implements Action {
 		}
 		request.setAttribute("book", book_TotalDTO);
 		request.setAttribute("rent_wish_list", ar);
+		request.setAttribute("curPage", curPage);
 		request.setAttribute("num", num);
 		actionFoward.setCheck(true);
 		actionFoward.setPath("../WEB-INF/view/book/bookInformation.jsp");
