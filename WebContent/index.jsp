@@ -22,7 +22,8 @@
 		<p><a href="./member/memberIdFind.member">Id Find</a>
 		<p><a href="./member/memberPwFind.member">Pw Find</a>
 	</c:if>
-	
+
+
 	<c:if test="${not empty sessionScope.member }">
  	<h1>${sessionScope.member.id }</h1>
  	<h1>MyPage_Hees</h1>
