@@ -9,33 +9,53 @@
 <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
 <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+<link rel="stylesheet" href="../css/member/memberUpdatePwCheck.css">
 <title>Insert title here</title>
 </head>
 <body>
 <div>
 	<c:import url="./myPage.jsp"></c:import>
 </div>
-
-<div id="form">
-	<form action="./memberUpdatePwCheck.member" class="form-horizontal" method="post">
-		<div class="form-group">
-	      <label class="control-label col-sm-2" for="id">ID:</label>
-	      <div class="col-sm-10">
-	        <input type="text" class="form-control" name="id" value=${member.id } readonly="readonly">
-	      </div>
-	    </div>
-	    <div class="form-group">
-	      <label class="control-label col-sm-2" for="pw">PASSWORD:</label>
-	      <div class="col-sm-10">
-	        <input type="password" class="form-control" name="pw">
-	      </div>
-	    </div>
-	    <div class="form-group">        
-	      <div class="col-sm-offset-2 col-sm-10">
-	        <button type="submit" class="btn btn-default">Submit</button>
-	      </div>
-	    </div>
-	</form>
+<div id="divContentsW">
+	<div id="divContents">
+		<h2 id="divTitle">LOGIN</h2>
+		<div id="divLocation">
+			<ul>
+				<li class="home"><a href="#"><img src="./image/ko/local/home.png" alt="HOME"></a></li>
+				<li>&gt;</li>
+				<li>LOGIN</li>
+			</ul>
+		</div>
+		
+		<div class="loginW">
+		<form id="login" name="login" action="./memberUpdatePwCheck.member" method="post">
+			<fieldset>
+			<div class="loginType">
+				<ul>
+					<li>
+						<input id="sso" type="radio" checked="checked" name="loginType" value="SSO" title="로그인"><label for="sso">로그인</label>
+					</li>
+					<li>
+						<input id="lib" type="radio" name="loginType" value="LIB" title="관리자로그인"><label for="lib">관리자 로그인</label>
+					</li>
+				</ul>
+			</div>
+			<div class="loginContent">
+				<div class="intro"><img src="./image/ko/local/home/loginIco.png" alt="MEMBER LOGIN"><p class="welcome">이화여자대학교 <span>도서관</span>에 오신것을 환영합니다.</p><p>로그인 하시면 더 많은 도서관 서비스를 이용할 수 있습니다.</p></div>
+					<dl>
+						<dt><label for="id">아이디</label></dt>
+						<dd><input id="id" name="id" class="inputTextType1" title="아이디입력" type="text" value=${member.id } size="20" maxlength="15" alt="아이디입력"></dd>
+					</dl>
+					<dl>
+						<dt><label for="password">비밀번호</label></dt>
+						<dd><input id="password" name="password" class="inputTextType1" title="비밀번호 입력" type="password" value="" size="20" maxlength="20" alt="비밀번호 입력"></dd>
+					</dl>
+					<p class="loginBtn"><input type="submit" value="로그인"></p>
+			</div>
+			</fieldset>
+		</form>
+		</div>
+	</div>
 </div>
 </body>
 </html>
