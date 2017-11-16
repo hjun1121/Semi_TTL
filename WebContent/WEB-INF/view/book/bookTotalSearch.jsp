@@ -105,12 +105,10 @@ $(function(){
 				</ul>
 			</div>
 		</div>
-	
+
 		<!-- 검색 시작 -->
 			<fieldset>
-				<legend>검색</legend>
 				<span class="bunch">
-				<label class="skip">검색어</label>
 					<select id="kind" name = "kind" class="selectBox1">
 						<option class = "kind" value="title">서명</option>
 						<option class = "kind" value="writer">저자</option>
