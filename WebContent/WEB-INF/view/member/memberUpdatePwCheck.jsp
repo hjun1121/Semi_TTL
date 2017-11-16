@@ -21,7 +21,7 @@
 		<h2 id="divTitle">LOGIN</h2>
 		<div id="divLocation">
 			<ul>
-				<li class="home"><a href="#"><img src="./image/ko/local/home.png" alt="HOME"></a></li>
+				<li class="home"><a href="#"><img src="${pageContext.request.contextPath }/image/notice/home.png" alt="HOME"></a></li>
 				<li>&gt;</li>
 				<li>LOGIN</li>
 			</ul>
