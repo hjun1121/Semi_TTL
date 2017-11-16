@@ -5,19 +5,38 @@
 }
 
 
-em,address{
+#footerAll address {
+    display: block;
 	font-style:normal;
 }
 
-
-address {
-    display: block;
-}
-
 .footer1 div, span, ul, li {
+	list-style:none;
 	text-decoration: none;
     margin: 0;
     padding: 0;
+}
+
+/* footer1 */
+.footer1 {
+    position: relative;
+    height: 55px;
+    background-color: #033823;
+}
+.footer1 > div{
+	position:relative;
+	width:1040px;
+	margin:0 auto
+}
+
+.footer1 .top{
+	position:absolute;
+	top:0;
+	right:0;
+	width:55px;
+	height:55px;
+	background:url(../../image/footer/top.png) no-repeat 50% 50% #4a994a;
+	text-indent:-9999px;overflow:hidden;
 }
 
 .footer1 div {
@@ -36,8 +55,6 @@ address {
     list-style-type: disc;
  
 }
-
-
 
 /* sns */
 .sns{
@@ -68,7 +85,6 @@ address {
 	margin:22px 78px 0 0
 }
 .privacy li{
-
 	float:left;
 	margin-left:13px;
 	padding:1px 0 1px 15px;
@@ -98,51 +114,31 @@ address {
 	background:url(../../image/footer/telBg.png) no-repeat 0 0;
 }
 
-/* footer */
-.footer1 {
-    position: relative;
-    height: 55px;
-    background-color: #033823;
-}
-.footer1 > div{
-	position:relative;
-	width:1040px;
-	margin:0 auto
-}
 
+
+/* footer2 */
 .footer2{
 	width:1040px;
 	height:38px;
 	margin:0 auto;
-	padding:30px 0
+	padding:30px 0;
 }
 
-.footerLogo img{
-vertical-align:top
+.footer2 .footerLogo img{
+	vertical-align:top;
 }
 
-.footerLogo{
-	float:left
+.footer2 .footerLogo{
+	float:left;
 }
 
-.footerLogo img{
-	vertical-align:top
-}
-
-.footer1 .top{
-	position:absolute;
-	top:0;
-	right:0;
-	width:55px;
-	height:55px;
-	/* background:url(../../image/footer/top.png) no-repeat 50% 50% #4a994a; */
-	background:no-repeat 50% 50% #4a994a;
-	text-indent:-9999px;overflow:hidden
+.footer2 .footerLogo img{
+	vertical-align:top;
 }
 
 
-/* 주소 */
-.address{
+
+.footer2 .address{
 	float:left;
 	margin:4px 0 0 25px;
 	color:#8b8b8b;
@@ -150,27 +146,16 @@ vertical-align:top
 	font-size:12px
 }
 
-.address a{
+.footer2 .address a{
 	display:inline-block;
 	margin-left:5px;
-	color:#bcc922
+	color:#bcc922;
 }
 .address a:hover{
+	text-decoration: none;
 }
 .address p{
 	margin-top:5px
 }
-a{
-	text-decoration: none;
-}
-ul{
-	list-style:none;
-	text-decoration: none;
-}
-li{
-	list-style:none;
-	text-decoration: none;
-}
-a:hover{
-	text-decoration: none;
-}
+
+

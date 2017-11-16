@@ -7,9 +7,9 @@
 <html>
 <head>
 
-<link rel="stylesheet" href="../css/notice/noticeList.css">
 <link rel="stylesheet" href="../css/temp/header.css">
 <link rel="stylesheet" href="../css/temp/footer.css">
+<link rel="stylesheet" href="../css/notice/noticeList.css">
 <link rel="stylesheet" href="./css/notice/detail.css">
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
