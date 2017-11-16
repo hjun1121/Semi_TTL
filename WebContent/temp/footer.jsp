@@ -4,9 +4,9 @@
 <div class="footer1">
 	<div>
 		<ul class="sns">
-			<li><a href="#" target="_blank" title="새창"><img src="./image/footer/sns1.jpg" alt="facebook"></a></li>
-			<li><a href="#" target="_blank" title="새창"><img src="./image/footer/sns2.jpg" alt="twitter"></a></li>
-			<li><a href="#" target="_blank" title="새창"><img src="./image/footer/sns3.jpg" alt="blog"></a></li>
+			<li><a href="#" target="_blank" title="새창"><img src="<%= request.getContextPath()%>/image/footer/sns1.jpg" alt="facebook"></a></li>
+			<li><a href="#" target="_blank" title="새창"><img src="<%= request.getContextPath()%>/image/footer/sns2.jpg" alt="twitter"></a></li>
+			<li><a href="#" target="_blank" title="새창"><img src="<%= request.getContextPath()%>/image/footer/sns3.jpg" alt="blog"></a></li>
 		</ul>
 		<ul class="privacy">
 			<li class="tel"><a href="#" title="주요 전화번호">주요 전화번호</a></li>
@@ -17,7 +17,7 @@
 	</div>
 </div>
 	<div class="footer2">
-		<p class="footerLogo"><img src="./image/footer/footerLogo.png" alt="TTL도서관"></p>
+		<p class="footerLogo"><img src="<%= request.getContextPath()%>/image/footer/footerLogo.png" alt="TTL도서관"></p>
 		<div class="address">
 			<address>경기도 용인시 기흥구 신갈동 세릉골 풍림아파트 105동 1302호 형준 도서관 <a href='#' title='찾아오시는 길'>찾아오시는 길</a>
 			<p>COPYRIGHT 2017 BY TTL. ALL RIGHTS RESERVED.</p>
