@@ -97,14 +97,13 @@ $(function(){
 			<h2 id="divTitle">소장도서</h2>
 			<div id="divLocation">
 				<ul>
-					<li class="home"><a href="../../index.jsp"><img src="../../../image/bookTotalSearch/home.png" alt="HOME"></a></li>
+					<li class="home"><a href="../../index.jsp"><img src="${pageContext.request.contextPath}/image/bookTotalSearch/home.png" alt="HOME"></a></li>
 					<li>&gt;</li>
 					<li>통합검색</li>
 					<li>&gt;</li>
 					<li>소장도서</li>
 				</ul>
 			</div>
-		</div>
 
 		<!-- 검색 시작 -->
 			<fieldset>
@@ -120,7 +119,73 @@ $(function(){
 				<input type="submit" class="btnType5" value="검색">
 			</fieldset>
 		<!-- 검색 끝 -->
-	
+		<br>
+		
+		<div class="listTable">
+			<table class="mobileTable tablet">
+				<thead>
+					<tr>
+						<th scope="row" class="footable-first-column">No.</th>
+						<th scope="row" data-class="expand">서명</th>
+						<th scope="row" style="display: table-cell;">저자</th>
+						<th scope="row" style="display: table-cell;">출판사</th>
+						<th scope="row" style="display: table-cell;">비치도서관</th>
+						<th scope="row" style="display: table-cell;">대여여부</th>
+						<c:if test="${ not empty member }">
+							<th scope="row" style="display: table-cell;">찜</th>
+						</c:if>
+					</tr>
+				</thead>
+										
+				<c:forEach items="${ list }" var="dto">
+					<tr>
+						<td scope="row" class="footable-first-column">${dto.num }</td>
+						<td scope="row" data-class="expand"><a href="./bookInformation.book?num=${dto.num}&curPage=${curPage}">${dto.title }</a></td>
+						<td scope="row" style="display: table-cell;">${dto.writer }</td>
+						<td scope="row" style="display: table-cell;">${dto.company }</td>
+
+						<c:choose>
+							<c:when test="${dto.library == 1 }"><td scope="row" style="display: table-cell;"><a href="../library/libraryMain.library?library=1">kim_lib</a></td></c:when>
+							<c:when test="${dto.library == 2 }"><td scope="row" style="display: table-cell;"><a href="../library/libraryMain.library?library=2">gee_lib</a></td></c:when>
+							<c:when test="${dto.library == 3 }"><td scope="row" style="display: table-cell;"><a href="../library/libraryMain.library?library=3">hs_lib</a></td></c:when>
+							<c:when test="${dto.library == 4 }"><td scope="row" style="display: table-cell;"><a href="../library/libraryMain.library?library=4">ssin_lib</a></td></c:when>
+						</c:choose>
+						<c:choose>
+							<c:when test="${ dto.state == 0 and not empty member }">
+								<td scope="row" style="display: table-cell;"><button class = "btn btn-default rent_btn"  type = "submit" id = "rent_btn" value = "${dto.num}">대여</button></td>
+							</c:when>
+							<c:when test="${ dto.state == 0 and empty member }"><td scope="row" style="display: table-cell;">대여가능</td></c:when>
+							<c:when test="${ dto.state == 1 }"><td scope="row" style="display: table-cell;">대여불가</td></c:when>
+						</c:choose>
+						<c:set var="heart1" value="0" ></c:set>
+						<c:set var="heart2" value="0" ></c:set>
+						<c:if test="${ not empty member }"><c:forEach items="${rent_wish_list}" var="wish">
+								<c:if test="${wish.title eq dto.title}">										<c:choose>
+										<c:when test="${heart1 == 0}">
+											<td scope="row" style="display: table-cell;"><button class = "btn btn-default wish_btn" type = "submit" value = "${dto.num}" title="1">❤</button></td>
+											<c:set var="heart1" value="1" ></c:set>
+											<c:set var="heart2" value="1" ></c:set>
+										</c:when>
+									</c:choose>
+								</c:if>
+							</c:forEach>
+								<c:if test="${heart2 == 0}">
+									<td scope="row" style="display: table-cell;"><button class = "btn btn-default wish_btn" type = "submit" value = "${dto.num}" title="0">♡</button></td>
+								</c:if>
+						</c:if>
+					</tr>
+				</c:forEach>
+
+			</table>
+		</div>
+		
+		<div class="paging">
+			<span><span>1</span><a href="#">2</a></span>
+			<a href="#" class="page" title="다음"><img src="${pageContext.request.contextPath}/image/bookTotalSearch/nextPage.gif" alt="다음" title="다음"></a>
+			<a href="#" class="page" title="맨뒤"><img src="${pageContext.request.contextPath}/image/bookTotalSearch/lastPage.gif" alt="맨뒤" title="맨뒤"></a>
+		</div>	
+		
+	    </div>
 	</section>
 
 
