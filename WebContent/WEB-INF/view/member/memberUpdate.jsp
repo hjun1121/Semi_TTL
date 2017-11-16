@@ -218,167 +218,176 @@
 		});
 		
 	});
-	
-
 </script>
 </head>
 <body>
-	<div>
-		<c:import url="./myPage.jsp"></c:import>
-	</div>
-	
-	<div class="id">
-	<form action="./memberUpdate.member" class="form-horizontal" method="post" name="frm">
-		<div class="form-group">
-			<label class="control-label col-sm-2" for="id">ID:</label>
-			<div class="col-sm-8">
-				<input type="text" class="form-control" name="id" value=${DTO.id } readonly="readonly">
+<div id="divContentsW">
+	<div id="divContents">
+		<h2 id="divTitle">회원가입</h2>
+		<div id="divLocation">
+			<ul>
+				<li class="home"><a href="#"><img src="./image/ko/local/home.png" alt="HOME"></a></li>
+				<li>&gt;</li>
+				<li>회원가입</li>
+			</ul>
+		</div>
+		<div class="joinWrap">	
+			<div class="joinCont mt50">
+				
+				<div class="joinForm borTc3 mt10">
+					<dl class="plusInfo pull_down_group mt50 open">
+							
+						<dd class="plusInfoCon pull_down_con" style="display: block;">
+						<ul>
+						<li>회원가입 양식</li>
+						<li>
+							<div class="questBox writeTit">
+								<span class="writePoint"></span>아이디
+							</div>
+							<div class="ansBox">
+								<input type="text" name="id" value=${DTO.id } readonly="readonly">
+							</div>
+						</li>
+						<li>
+							<div class="questBox writeTit">
+								<span class="writePoint"></span>비밀번호
+							</div>
+							<div class="ansBox">
+								<input type="text" name="pw" value=${DTO.pw }>
+							</div>
+						</li>
+						<li>
+							<div class="questBox writeTit">
+								<span class="writePoint"></span>비밀번호 확인
+							</div>
+							<div class="ansBox">
+								<p id="pwc" style="display: none;">
+								<input type="password" id="pw2"></p>
+								<div id="ch_pw"></div>
+							</div>
+						</li>
+						<li>
+							<div class="questBox writeTit">
+								<span class="writePoint"></span>이름
+							</div>
+							<div class="ansBox">
+								<input type="text" value=${DTO.name } readonly="readonly">
+							</div>
+						</li>
+						<li>
+							<div class="questBox writeTit">
+								<span class="writePoint"></span>생년월일
+							</div>
+							<div class="ansBox">
+								<input type="date" name="birth" value=${DTO.birth }>
+							</div>
+						</li>
+						<li>
+							<div class="questBox writeTit">
+								<span class="writePoint"></span>성별
+							</div>
+							<div class="ansBox">
+								<input type="text" id="gender" name="gender" value=${DTO.gender } readonly="readonly">
+							</div>
+						</li>
+						<li>
+							<div class="questBox writeTit">
+								<span class="writePoint"></span>주소
+							</div>
+							<div class="ansBox">
+								<input type="text" id="postCode" name="postCode" value=${DTO.postCode } readonly="readonly">
+								<input type="text" id="addr" name="addr" value=${DTO.addr } readonly="readonly">
+								<input type="text" id="adrr2" name="addr2" value=${DTO.addr2 } readonly="readonly">
+							</div>
+						</li>
+						<li>
+							<div class="questBox writeTit">
+								<span class="writePoint"></span>전화
+							</div>
+							<div class="ansBox">
+								<select id="f" class="sel_size">
+									<option value="010" class="num">010</option>
+    								<option value="011" class="num">011</option>
+    								<option value="031" class="num">031</option>
+    								<option value="02" class="num">02</option>
+								</select>
+								<input type="text" id="m" name="m" value=${m }>-<input type="text" id="l" name="l" value=${l }>
+								<input type="hidden" id="phone" name="phone" value=${DTO.phone }>
+							</div>
+						</li>
+						<li>
+							<div class="questBox writeTit">
+								<span class="writePoint"></span>이메일
+							</div>
+							<div class="ansBox">
+							<input type="text" id="email1" name="email1" value=${email1 }>@<input type="text" id="email2" name="email2" value=${email2 }>
+								<select id="mailList" class="sel_size">
+									<option value="0" class="email">직접입력</option>
+    								<option value="naver.com" class="email">naver.com</option>
+    								<option value="daum.net" class="email">daum.net</option>
+    								<option value="gmail.com" class="email">gmail.com</option>
+    								<option value="hotmail.com" class="email">hotmail.com</option>
+								</select>
+								<input type="button" style="display: none;" id="mailCheck" name="mailCheck" value="이메일">
+								<input type="hidden" id="email" name="email" value=${DTO.email }>
+							</div>
+						</li>
+						<li>
+							<div class="questBox writeTit">
+								<span class="writePoint"></span>도서관
+							</div>
+							<div class="ansBox">
+								<select name="library" class="sel_size">
+									<option value="1" class="library">기흥구</option>
+    								<option value="2" class="library">송파구</option>
+    								<option value="3" class="library">장안구</option>
+    								<option value="4" class="library">분당구</option>
+								</select>
+							</div>
+						</li>
+						<c:if test="${sessionScope.member.kind ne 10 }">
+							<c:if test="${member.kind eq 1}">
+								<div class="questBox writeTit">
+								<span class="writePoint"></span>등급
+							</div>
+							<div class="ansBox">
+								<input type="text" value="일반사용자" readonly="readonly">
+							</div>
+							</c:if>
+						</c:if>
+						<c:if test="${sessionScope.member.kind eq 10 }">
+							<div class="questBox writeTit">
+								<span class="writePoint"></span>등급
+							</div>
+							<div class="ansBox">
+								<select name="kind" class="sel_size">
+									<option class="kind" value=10>운영자</option>
+									<option class="kind" value=1>일반</option>
+									<option class="kind" value=0>블랙</option>
+								</select>
+							</div>
+						</c:if>
+						</ul>
+					</dd>
+				</dl>
+			</div>
+			<div class="btnCenter mt30">
+			<input type="button" class="type4 large" id="btn" name="btn" value="정보 수정">
+				<span class="button1">
+					<a href="./memberDelete.member?id=${DTO.id }" class="type4 large">
+						<input type="button" class="type4 large" value="회원탈퇴">
+					</a>
+				</span>
+				<span class="button1">
+					<a href="../index.jsp" class="type4 large">
+						<input type="button" class="type4 large" value="메인">
+					</a>
+				</span>
 			</div>
 		</div>
-		<div class="form-group">
-			<label class="control-label col-sm-2" for="pw">PASSWORD:</label>
-			<div class="col-sm-8">
-				<input type="password" class="form-control" name="pw" value=${DTO.pw }>
-			</div>
-		</div>
-			<div class="form-group">
-				<label class="control-label col-sm-2" for="name">NAME:</label>
-				<div class="col-sm-10">
-					<input type="text" class="form-control" name="name"
-						value=${DTO.name } readonly="readonly">
-				</div>
-			</div>
-			<div class="form-group">
-				<label class="control-label col-sm-2" for="birth">BIRTH:</label>
-				<div class="col-sm-10">
-					<input type="date" class="form-control" name="birth"
-						value=${DTO.birth }>
-				</div>
-			</div>
-			<div class="form-group">
-				<label class="control-label col-sm-2" for="gender">GENDER:</label>
-				<div class="col-sm-10">
-					<input type="text" class="form-control" name="gender"
-						value=${DTO.gender } readonly="readonly">
-				</div>
-			</div>
-			<div class="form-group">
-				<div class="col-sm-10">
-					<input type="text" class="form-control" id="postCode"
-						name="postCode" placeholder="우편번호" value=${DTO.postCode }
-						readonly="readonly">
-				</div>
-			</div>
-			<div class="form-group">
-				<div class="col-sm-10">
-					<input type="text" class="form-control" id="addrCheck" name="addr"
-						value=${DTO.addr } readonly="readonly">
-				</div>
-			</div>
-			<div class="form-group">
-				<div class="col-sm-10">
-					<input type="text" class="form-control" id="addrCheck" name="addr2"
-						value=${DTO.addr2 } readonly="readonly">
-				</div>
-			</div>
-			<div class="form-group">
-				<label class="control-label col-sm-2" for="name">PHONE:</label>
-				<div class="col-sm-10">
-					<select id="f">
-						<option value="010" class="num">010</option>
-						<option value="011" class="num">011</option>
-						<option value="031" class="num">031</option>
-						<option value="02" class="num">02</option>
-					</select> <input type="text" class="form-control" id="m" name="m"
-						value=${m }>-<input type="text" class="form-control"
-						id="l" name="l" value=${l }> <input type="hidden"
-						id="phone" name="phone" value=${DTO.phone }>
-				</div>
-			</div>
-			<div class="form-group">
-				<label class="control-label col-sm-2" for="name">PHONE:</label>
-				<div class="col-sm-10">
-					<input type="text" class="form-control" id="email1" name="email1"
-						value=${email1 }>@<input type="text" class="form-control"
-						id="email2" name="email2" value=${email2 }> <select
-						id="mailList">
-						<option class="email" value="0">직접입력</option>
-						<option class="email" value="naver.com">naver.com</option>
-						<option class="email" value="daum.net">daum.net</option>
-						<option class="email" value="gmail.com">gmail.com</option>
-						<option class="email" value="hotmail.com">hotmail.com</option>
-					</select> <input type="button" class="form-control" style="display: none;"
-						id="mailCheck" value="이메일"> <input type="hidden"
-						id="email" name="email" value=${DTO.email }>
-					<div id="ch_email"></div>
-				</div>
-			</div>
-			<div class="form-group">
-				<label class="control-label col-sm-2" for="name">LIBRARY:</label>
-				<div class="col-sm-10">
-					<input type="text" class="form-control" id="addrCheck" name="addr"
-						value=${DTO.addr } readonly="readonly">
-				</div>
-			</div>
-
-			<div class="form-group">
-				<label class="control-label col-sm-2" for="name">LIBRARY:</label>
-				<div class="col-sm-10">
-					<select name="library">
-						<option class="library" value="1">기흥구</option>
-						<option class="library" value="2">송파구</option>
-						<option class="library" value="3">장안구</option>
-						<option class="library" value="4">분당구</option>
-					</select>
-				</div>
-			</div>
-
-			<c:if test="${sessionScope.member.kind ne 10 }">
-				<c:if test="${member.kind eq 1}">
-					<div class="form-group">
-						<label class="control-label col-sm-2" for="name">KIND:</label>
-						<div class="col-sm-10">
-							<input type="text" class="form-control" value="일반사용자"
-								readonly="readonly">
-						</div>
-					</div>
-				</c:if>
-			</c:if>
-
-			<c:if test="${sessionScope.member.kind eq 10 }">
-				<div class="form-group">
-					<div class="col-sm-10">
-						<select name="kind">
-							<option class="kind" value=10>운영자</option>
-							<option class="kind" value=1>일반</option>
-							<option class="kind" value=0>블랙</option>
-						</select>
-					</div>
-				</div>
-			</c:if>
-
-			<div class="form-group">
-				<div class="col-sm-offset-2 col-sm-10">
-					<input type="button" class="form-control" id="btn" name="btn"
-						value="정보 수정">
-				</div>
-			</div>
-
-			<div class="form-group">
-				<div class="col-sm-offset-2 col-sm-10">
-					<a href="./memberDelete.member?id=${DTO.id }"><input
-						type="button" class="form-control" value="회원탈퇴 수정"></a>
-				</div>
-			</div>
-
-			<div class="form-group">
-				<div class="col-sm-offset-2 col-sm-10">
-					<a href="../index.jsp"><input type="button"
-						class="form-control" value="메인으로"></a>
-				</div>
-			</div>
-	</form>
 	</div>
+</div>
+</div>
 <c:import url="../../../temp/footer.jsp"></c:import>
 </body>
 </html>
