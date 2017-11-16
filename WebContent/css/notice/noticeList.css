@@ -1,1 +1,42 @@
 @charset "UTF-8";
+
+*{
+	 margin: 0;
+    padding: 0;
+}
+
+div{
+    margin: 0;
+    padding: 0;
+}
+span{
+    margin: 0;
+    padding: 0;
+}
+ul{
+    margin: 0;
+    padding: 0;
+}
+li{
+    margin: 0;
+    padding: 0;
+}
+
+/*알림*/
+#divContentsW{background-color:#fff}
+#divContentsW{background-color:#fff}
+#divContents{position:relative;width:1040px;margin:0 auto;padding-bottom:40px !important;background-color:#fff;z-index:5}
+/* Title */
+#divTitle{color:#464646;font-size:32px;margin-bottom:20px;padding:40px 450px 0 0}
+/* Location */
+#divLocation{min-height:20px;margin:0 56px 20px 0;overflow:hidden}
+#divLocation ul li{float:left;padding-left:20px;margin-left:13px;font-family:NG, sans-serif;line-height:1.5em}
+#divLocation ul li a{color:#454545}
+#divLocation ul li:first-child{margin:0;padding:0;background:none}
+/*알림 끝*/
+
+/* 검색*/
+
+/*검색 끝*/
+
+
