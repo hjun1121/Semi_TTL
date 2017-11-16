@@ -1,0 +1,32 @@
+@charset "UTF-8";
+
+#bts_top_section {
+	margin: 0 auto;
+	padding-bottom: 40px;
+}
+
+#divTitle {
+    color: #464646;
+    font-size: 32px;
+    margin-bottom: 20px;
+    padding: 40px 450px 0 0;
+}
+
+#divLocation {
+    margin: 0 56px 20px 0;
+}
+
+#divLocation ul li {
+    float: left;
+    padding-left: 20px;
+    margin-left: 13px;
+	list-style: none;
+    font-family: NG, sans-serif;
+    line-height: 1.5em;
+}
+
+fieldset {
+    margin: 0;
+    padding: 0;
+    border: 0;
+}
