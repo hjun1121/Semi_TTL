@@ -1,10 +1,77 @@
-@charset "UTF-8";
+@charset "utf-8";
 
-#form{
-	float: left;
-	display: inline;
-	margin-left:10px;
-	width: 80%;
-	height:700px;
-	background-color: red;
+body{
+	font-family: NanumBarunGothic,sans-serif;
+    font-size: 13px;
+    color: #4d4d4d;
+    word-wrap: break-word
 }
+#divContentsW{
+	border: 1px solid red;
+	margin-left: 300px;
+	margin-right: 300px;
+}
+#divContents{
+	margin: 0 auto;
+	border: 1px solid #b3b3b3;
+	width: 700px;
+}
+#loginW {
+	float:left;
+	overflow:hidden;
+	position:relative;
+	width:698px;
+	margin:0 auto;
+	border:1px solid #b3b3b3
+}
+#divTitle{
+	color: #464646;
+    font-size: 32px;
+    margin-bottom: 20px;
+    padding: 40px 450px 0 0;
+    font-family: NanumBarunGothic,sans-serif;
+}
+#divLocation{
+	min-height: 20px;
+    margin: 0 56px 20px 0;
+    overflow: hidden;
+}
+#divLocation li{
+	position:relative;
+	float:left;
+	padding-left:22px;
+	line-height:50px;
+	font-size:16px;
+	color:#1a1a1a;
+}
+.loginType{
+	height:auto;
+	padding:0 20px;
+	border-bottom: 1px solid black;
+}
+.loginType li{
+	position: relative;
+    float: left;
+    padding-left: 22px;
+    line-height: 50px;
+    font-size: 16px;
+    color: #1a1a1a;
+}
+.loginContent{
+	position:relative;padding:40px 96px;margin:0 auto
+}
+.intro {
+	overflow:hidden;
+	height:54px;
+	margin-bottom:30px;
+	line-height:1.2em;
+	letter-spacing:-1px
+}
+.intro p {
+	font-size:13px;
+	color:#737373
+}
+.intro dl {overflow:hidden;position:relative;height:36px;padding-left:60px;margin-bottom:10px}
+.intro dt {position:absolute;left:0;top:0;width:60px;line-height:35px}
+.loginW .loginBtn {position:absolute;left:497px;top:123px}
+.loginW .loginBtn input {display:block;width:105px;height:80px;border:1px solid #4a994a;background:#4a994a;color:#fff;font-size:16px;cursor:pointer}
