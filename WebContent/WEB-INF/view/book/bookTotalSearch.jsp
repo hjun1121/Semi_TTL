@@ -179,11 +179,38 @@ $(function(){
 			</table>
 		</div>
 		
-		<div class="paging">
-			<span><span>1</span><a href="#">2</a></span>
-			<a href="#" class="page" title="다음"><img src="${pageContext.request.contextPath}/image/bookTotalSearch/nextPage.gif" alt="다음" title="다음"></a>
-			<a href="#" class="page" title="맨뒤"><img src="${pageContext.request.contextPath}/image/bookTotalSearch/lastPage.gif" alt="맨뒤" title="맨뒤"></a>
-		</div>	
+		<div class = "paging" style = "text-align: center;">
+			<ul class="pagination pagination-sm">
+				<c:if test="${page.curBlock>1}">
+				<li><a href = "./bookTotalSearch.book?curPage=${page.startNum-1}&search=${search}&kind=${kind}"><img src="${pageContext.request.contextPath}/image/bookTotalSearch/prevPage.gif" alt="이전" title="이전"></a></li>
+				</c:if>
+
+				<c:forEach begin="${page.startNum}" end="${page.lastNum}" var="i">
+				<li><a
+					href="./bookTotalSearch.book?curPage=${i}&search=${search}&kind=${kind}">${i}</a></li>
+				</c:forEach>
+				
+				<c:if test="${page.curBlock < page.totalBlock}">
+				<li><a
+					href="./bookTotalSearch.book?curPage=${requestScope.page.lastNum+1}&search=${search}&kind=${kind}"><img src="${pageContext.request.contextPath}/image/bookTotalSearch/nextPage.gif" alt="다음" title="다음"></a></li>
+				</c:if>
+			</ul>
+		</div>
+		
+<!-- 		<div class="paging"> -->
+<!-- 			<ul class="pagination pagination-sm"> -->
+<%-- 				<a href="#" class="page" title="처음"><img src="${pageContext.request.contextPath}/image/bookTotalSearch/nextPage.gif" alt="다음" title="다음"></a> --%>
+<%-- 				<a href="./bookTotalSearch.book?curPage=${page.startNum-1}&search=${search}&kind=${kind}" class="page" title="이전"><img src="${pageContext.request.contextPath}/image/bookTotalSearch/lastPage.gif" alt="맨뒤" title="맨뒤"></a> --%>
+			
+<%-- 					<c:forEach begin="${page.startNum}" end="${page.lastNum}" var="i"> --%>
+<!-- 					<li><a -->
+<%-- 						href="./bookTotalSearch.book?curPage=${i}&search=${search}&kind=${kind}">${i}</a></li> --%>
+<%-- 					</c:forEach> --%>
+			
+<%-- 				<a href="#" class="page" title="다음"><img src="${pageContext.request.contextPath}/image/bookTotalSearch/nextPage.gif" alt="다음" title="다음"></a> --%>
+<%-- 				<a href="#" class="page" title="맨뒤"><img src="${pageContext.request.contextPath}/image/bookTotalSearch/lastPage.gif" alt="맨뒤" title="맨뒤"></a> --%>
+<!-- 			</ul> -->
+<!-- 		</div>	 -->
 		
 	    </div>
 	</section>
