@@ -4,10 +4,17 @@
 <!DOCTYPE html>
 <html>
 <head>
-<meta http-equiv="Content-Type" content="text/html; charset=EUC-KR">
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
 <title>Insert title here</title>
+<link rel="stylesheet" href="${pageContext.request.contextPath }/css/temp/header.css">
+<link rel="stylesheet" href="${pageContext.request.contextPath }/css/temp/footer.css">
+<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
 </head>
 <body>
+<c:import url="${myContextPath}/temp/header.jsp"></c:import>
+
 	<h2>마켓 판/구매 내역 상세히</h2>
 	<form action="../market/marketDealsList.market?id=${member.id }&type=3" method="post">
 		<p>num<input type="text" name="num" value=${bookDealsDetail.num } readonly="readonly"></p>
@@ -58,5 +65,7 @@
 		<button type="submit">확인</button>
 		<a href="./marketDealsDelete.market?num=${bookDealsDetail.num }"><input type="button" value="내역 삭제"></a>
 	</form>	
+	
+<c:import url="${myContextPath}/temp/footer.jsp"></c:import>
 </body>
 </html>

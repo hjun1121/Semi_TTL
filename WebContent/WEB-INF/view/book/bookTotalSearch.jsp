@@ -5,13 +5,13 @@
 <html>
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
-	<link rel="stylesheet" href="../css/temp/header.css">
-	<link rel="stylesheet" href="../css/temp/footer.css">
-	<link rel="stylesheet" href="../css/book/bookTotalSearch.css">
-  <meta name="viewport" content="width=device-width, initial-scale=1">
-  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
-  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
-  <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<link rel="stylesheet" href="${pageContext.request.contextPath }/css/temp/header.css">
+<link rel="stylesheet" href="${pageContext.request.contextPath }/css/temp/footer.css">
+<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+<link rel="stylesheet" href="${pageContext.request.contextPath }/css/book/bookTotalSearch.css">
 <title>Insert title here</title>
 <script type="text/javascript">
 $(function(){
@@ -86,10 +86,10 @@ $(function(){
 </script>
 </head>
 <body>
+<!-- header -->
+<c:import url="${myContextPath}/temp/header.jsp"></c:import>
+<!-- header -->
 
-	<!-- header -->
-		<c:import url="../../../temp/header.jsp"></c:import>
-	<!-- header -->
 	<div style = "height: 50px"></div>
 
 	<section>
@@ -216,9 +216,9 @@ $(function(){
 	</section>
 
 
-	<!-- footer -->
-		<c:import url="../../../temp/footer.jsp"></c:import>
-	<!-- footer -->
+<!-- footer -->
+<c:import url="${myContextPath}/temp/footer.jsp"></c:import>
+<!-- footer -->
 
 </body>
 </html>

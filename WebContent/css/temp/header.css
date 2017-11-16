@@ -1,6 +1,6 @@
 @charset "UTF-8";
 *{
-	border: 0;
+	padding: 0;
 	margin: 0;
 }
 /* header */	
@@ -37,6 +37,7 @@
 #headerMenu .login{
 	float:left;
 }
+
 #headerMenu .login a{
 	color:#06603c;
 	font-size:13px;
@@ -48,28 +49,25 @@
 	
 }
 /* 이용안내 dropDown */
-#headerMenu>div{
+#headerMenu .dropdown{
 	margin-left: 50px;
 	float:right;
 }
-#headerMenu>div>span{
+#headerMenu>.dropdown>span{
 	cursor: pointer;
 	color:#06603c;
 	font-size:13px;
 }
-#headerMenu>div span:hover{
+#headerMenu>.dropdown span:hover{
 	font-weight: bold;
 }
-#headerMenu>div>ul{
+
+#headerMenu>.dropdown>ul{
 	background-color: #fff;
 	min-width: 130px;
 	width: 130px;
 	border-radius: 1px;
 	
-}
-
-#headerMenu>div li{
-	width: 120px;
 }
 
 

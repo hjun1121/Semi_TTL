@@ -6,9 +6,16 @@
 <html>
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+<link rel="stylesheet" href="${pageContext.request.contextPath }/css/temp/header.css">
+<link rel="stylesheet" href="${pageContext.request.contextPath }/css/temp/footer.css">
+<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
 <title>book order list 관리자용</title>
 </head>
 <body>
+<c:import url="${myContextPath}/temp/header.jsp"></c:import>
+
 	<div>
 		<h1>book order list 관리자용</h1>
 	</div>
@@ -70,6 +77,8 @@
 			</c:if>
 		</ul>
 	</div>
+	
+<c:import url="${myContextPath}/temp/footer.jsp"></c:import>
 </body>
 </html>
 

@@ -5,6 +5,12 @@
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
 <title>Insert title here</title>
+<link rel="stylesheet" href="${pageContext.request.contextPath }/css/temp/header.css">
+<link rel="stylesheet" href="${pageContext.request.contextPath }/css/temp/footer.css">
+<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+
 <script type="text/javascript" src="https://code.jquery.com/jquery-1.12.4.min.js" ></script>
 <script type="text/javascript" src="https://service.iamport.kr/js/iamport.payment-1.1.5.js"></script>
 <script type="text/javascript">
@@ -16,6 +22,8 @@
 </script>
 </head>
 <body>
+<c:import url="${myContextPath}/temp/header.jsp"></c:import>
+
 	<h2>Market View</h2>
 	
 	<table id = "marketList" class="kind" border="1">
@@ -48,5 +56,7 @@
 					<td><input type="button" id="btn" value="구매하기"></td>
 				</tr>
 		</table>
+		
+<c:import url="${myContextPath}/temp/footer.jsp"></c:import>
 </body>
 </html>

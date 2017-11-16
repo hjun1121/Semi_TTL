@@ -1,5 +1,3 @@
-<%@page import="com.fnw.notice.NoticeDTO"%>
-<%@page import="com.fnw.notice.NoticeDTO"%>
 <%@ page language="java" contentType="text/html; charset=UTF-8"
 	pageEncoding="UTF-8"%>
 <%@taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>	
@@ -7,10 +5,13 @@
 <html>
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+<link rel="stylesheet" href="${pageContext.request.contextPath }/css/notice/View.css">
+<link rel="stylesheet" href="${pageContext.request.contextPath }/css/member/memberJoin.css">
 <link rel="stylesheet" href="${pageContext.request.contextPath }/css/temp/header.css">
 <link rel="stylesheet" href="${pageContext.request.contextPath }/css/temp/footer.css">
-<link rel="stylesheet" href="${pageContext.request.contextPath }/css/notice/noticeList.css">
-<link rel="stylesheet" href="${pageContext.request.contextPath }/css/notice/detail.css">
+<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
 <title>Insert title here</title>
 </head>
 <body>
@@ -52,16 +53,17 @@
 		</div>
 	
 	<c:if test="${member.kind eq 10 }">
-		<a href="./${requestScope.notice}Update.${requestScope.notice}?num=${requestScope.view.num}">UPDATE</a>
-		<a href="./${requestScope.notice}Delete.${requestScope.notice}?num=${requestScope.view.num}">DELETE</a>
+		<a href="./noticeUpdate.notice?num=${view.num}">UPDATE</a>
+		<a href="./noticeDelete.notice?num=${view.num}">DELETE</a>
 	</c:if>
 	<div class="buttons">
-	<a href="./${requestScope.notice}List.${requestScope.notice}" title="목록">목록</a>
+	<a href="noticeList.notice" title="목록">목록</a>
 	</div>
 	</div>
 	
 	</div>
 </div>
+
 <c:import url="${myContextPath }/temp/footer.jsp"></c:import>
 </body>
 </html>

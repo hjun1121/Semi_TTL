@@ -2,17 +2,18 @@
 	pageEncoding="UTF-8"%>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>	
 <%@ taglib prefix="fn" uri="http://java.sun.com/jsp/jstl/functions" %>
-
 <!DOCTYPE html>
 <html>
 <head>
-
-<link rel="stylesheet" href="../css/temp/header.css">
-<link rel="stylesheet" href="../css/temp/footer.css">
-<link rel="stylesheet" href="../css/notice/noticeList.css">
-<link rel="stylesheet" href="./css/notice/detail.css">
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+<link rel="stylesheet" href="${pageContext.request.contextPath }/css/notice/detail.css">
+<link rel="stylesheet" href="${pageContext.request.contextPath }/css/notice/noticeList.css">
+<link rel="stylesheet" href="${pageContext.request.contextPath }/css/member/memberJoin.css">
+<link rel="stylesheet" href="${pageContext.request.contextPath }/css/temp/header.css">
+<link rel="stylesheet" href="${pageContext.request.contextPath }/css/temp/footer.css">
+<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
 <script type="text/javascript">
 $(function(){
 		var kind = '${kind}';
@@ -26,7 +27,7 @@ $(function(){
 <title>Notice</title>
 </head>
 <body>
-<c:import url="../../../temp/header.jsp"></c:import>
+<c:import url="${myContextPath }/temp/header.jsp"></c:import>
 
 	<div id="divContentsW">
 		<div id="divContents">
@@ -106,7 +107,7 @@ $(function(){
 								--
 							</c:forEach>
 							</c:catch>
-							<a href="./${requestScope.notice}View.${requestScope.notice}?num=${dto.num}">${dto.title}</a>&nbsp;
+							<a href="./noticeView.notice?num=${dto.num}">${dto.title}</a>&nbsp;
 						</td>
 						<td class="writer" style="display: table-cell;">
 							${dto.writer}
@@ -124,13 +125,8 @@ $(function(){
 	
 	
 	<c:if test="${not empty member and member.kind eq 10}">
-		<a href="./${requestScope.notice}Write.${requestScope.notice}">WRITE</a>
+		<a class="btn btn-default" href="./noticeWrite.notice">WRITE</a>
 	</c:if>
-	
-	
-	
-	
-	
 	
 	<!-- 페이징 -->
 	
@@ -148,7 +144,7 @@ $(function(){
 			
 			<c:forEach begin="${page.startNum}" end="${page.lastNum}" var="i">
 			<li>
-				<a href="./${requestScope.notice}List.${requestScope.notice}?curPage=${i}">
+				<a href="./noticeList.notice?curPage=${i}&kind=${kind}&search=${search}">
 					<span>${i}</span>
 				</a>
 			</li>
@@ -169,6 +165,6 @@ $(function(){
 	
 	</div>
 </div>
-<c:import url="../../../temp/footer.jsp"></c:import>
+<c:import url="${myContextPath }/temp/footer.jsp"></c:import>
 </body>
 </html>

@@ -26,7 +26,7 @@
 .footer1 > div{
 	position:relative;
 	width:1040px;
-	margin:0 auto
+	margin:0 auto;
 }
 
 .footer1 .top{
@@ -59,43 +59,43 @@
 /* sns */
 .sns{
 	float:left;
-	margin-top:12px
+	margin-top:12px;
 }
 
 .sns li{
 
 	float:left;
-	margin-left:8px
+	margin-left:8px;
 
 }
 
 .sns li:first-child{
 
-	margin-left:0
+	margin-left:0;
 }
 
 .sns li img{
 
-	vertical-align:top
+	vertical-align:top;
 }
 
 /* privacy */
 .privacy{
 	float:right;
-	margin:22px 78px 0 0
+	margin:22px 78px 0 0;
 }
 .privacy li{
 	float:left;
 	margin-left:13px;
 	padding:1px 0 1px 15px;
-	background:url(../../image/footer/bar3.gif) no-repeat 0 1px
+	background:url(../../image/footer/bar3.gif) no-repeat 0 1px;
 }
 
 
 .privacy li a{
 
 	color:#a0a5a9;
-	font-weight:bold
+	font-weight:bold;
 }
 
 .privacy li a:hover{
@@ -105,7 +105,7 @@
 
 .privacy li.person a{
 
-	color:#bcc922
+	color:#bcc922;
 }
 
 .privacy li.tel{
