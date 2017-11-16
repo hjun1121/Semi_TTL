@@ -9,10 +9,14 @@
 <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
 <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+
 <link rel="stylesheet" href="../css/member/memberUpdatePwCheck.css">
+<link rel="stylesheet" href="../css/temp/header.css">
+<link rel="stylesheet" href="../css/temp/footer.css">
 <title>회원 정보 수정</title>
 </head>
 <body>
+<c:import url="../../../temp/header.jsp"></c:import>
 <div>
 	<c:import url="./myPage.jsp"></c:import>
 </div>
@@ -47,5 +51,6 @@
 		</div>
 	</div>
 </div>
+<c:import url="../../../temp/footer.jsp"></c:import>
 </body>
 </html>
