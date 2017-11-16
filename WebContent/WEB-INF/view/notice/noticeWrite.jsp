@@ -4,6 +4,9 @@
 <!DOCTYPE html>
 <html>
 <head>
+<link rel="stylesheet" href="../css/notice/noticeList.css">
+<link rel="stylesheet" href="../css/temp/header.css">
+<link rel="stylesheet" href="../css/temp/footer.css">
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
 <title>Insert title here</title>
 </head>
