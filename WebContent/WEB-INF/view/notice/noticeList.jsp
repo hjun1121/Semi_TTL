@@ -10,6 +10,7 @@
 <link rel="stylesheet" href="../css/notice/noticeList.css">
 <link rel="stylesheet" href="../css/temp/header.css">
 <link rel="stylesheet" href="../css/temp/footer.css">
+<link rel="stylesheet" href="./css/notice/detail.css">
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
 <script type="text/javascript">
@@ -56,8 +57,8 @@ $(function(){
 					</select> 
 					<input type="text" class="inputTextType3 sw" id="search" maxlength="100" title="검색어" placeholder="검색어를 입력하세요" name="search" value=${search }>
 				</span>
-					<input type="submit" class="btnType5" value="검색">
-			</fieldset>
+					 <input type="submit" class="btnType5" value="검색">
+			 </fieldset>
 		</form>
 		
 		<br>

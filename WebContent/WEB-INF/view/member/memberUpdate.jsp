@@ -221,7 +221,7 @@
 	</div>
 	
 	<div class="id">
-	<%-- <form action="./memberUpdate.member" class="form-horizontal" method="post" name="frm">
+	<form action="./memberUpdate.member" class="form-horizontal" method="post" name="frm">
 		<div class="form-group">
 			<label class="control-label col-sm-2" for="id">ID:</label>
 			<div class="col-sm-8">
@@ -370,7 +370,7 @@
 						class="form-control" value="메인으로"></a>
 				</div>
 			</div>
-	</form> --%>
+	</form>
 	</div>
 </body>
 </html>
