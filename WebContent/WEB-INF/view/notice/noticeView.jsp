@@ -12,11 +12,12 @@
 <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
 <link rel="stylesheet" href="${pageContext.request.contextPath }/css/notice/noticeView.css">
 
+
 <title>Insert title here</title>
 </head>
 <body>
 <c:import url="${myContextPath }/temp/header.jsp"></c:import>
-	
+
 <div id="divContentsW">
 	<div id="divContents">
 	
@@ -34,9 +35,9 @@
 		<!-- 내용시작 -->	
 		<div class="boardDetail">
 			<div class="boardInfo">
-				<p class="boardInfoTitle"><%-- 글 제목 --%>${view.title}</p>
+				<p class="boardInfoTitle" style="margin-bottom: 0px;"><%-- 글 제목 --%>${view.title}</p>
 				<p class="writeInfo" id="reg_date"><!-- 날짜 -->${view.reg_date}<span>조회&nbsp;${requestScope.view.hit}</span></p>
-				<dl class="writerInfo">
+				<dl class="writerInfo" style="margin-bottom: 0px;">
 					<dt class="skip">작성자</dt>
 					<dd class="writer" id="writer"><span>${view.writer}</span></dd>
 					<dt class="skip">이메일</dt>

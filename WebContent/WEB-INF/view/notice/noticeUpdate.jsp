@@ -10,31 +10,64 @@
 <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
 <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+<link rel="stylesheet" href="${pageContext.request.contextPath }/css/notice/noticeUpdate.css">
 <title>Insert title here</title>
+<script type="text/javascript">
+	$(function(){
+		$("#btn").click(function(){
+			document.frm.submit();
+		});
+	});
+</script>
 </head>
 <body>
 <c:import url="${myContextPath}/temp/header.jsp"></c:import>
 
-	<div class="col-md-8 col-centered">
-			<form action="./${notice}Update.${notice}" method="post">
-				<input type="hidden" name="num" value="${view.num}">
-				<table class="table">
-					<tr>
-						<tr>
-						<td colspan="2"><input class="form-control" type="text" name="title" value="${view.title}" placeholder="제목없음"></td>
-						<td colspan="2"></td>
-						<td id="reg_date"></td>
-						<td id="writer"><input class="form-control" type="text" name="writer" readonly="readonly" value="${requestScope.view.writer}" placeholder="작성자"></td>
-					</tr>
-					<tr>
-					 	<td colspan="6" id="contents"><textarea class="form-control" name="contents" placeholder="내용을 입력하세요.">${view.contents} </textarea></td>
-					</tr>
-				</table>
-				
-				<button>UPdate</button>
-			</form>
+	
+	<div id="divContentsW">
+		<div id="divContents">
+			
+			<h2 id="divTitle">수정</h2>
+			<div id="divLocation">
+				<ul>
+					<li class="home"><a href="#"><img src="${pageContext.request.contextPath }/image/notice/home.png" alt="HOME"></a></li>
+					<li>&gt;</li>
+					<li>공지사항</li>
+					<li>&gt;</li>
+					<li>수정</li>
+				</ul>
 			</div>
 			
+		<div class="cstmWrap">
+			<form action="./noticeUpdate.notice" name="frm" method="post">
+				<input type="hidden" name="num" value="${view.num}">
+				<ul class="otoForm mt30 borTc3">
+					<li id="writer">
+						<p class="writeTit" >작성자</p>
+						<input type="text" name="writer" value="${view.writer}" readonly="readonly">
+					</li>
+					<li id="title" >
+						<p class="writeTit" >제목</p>
+						<input type="text" name="title" value="${view.title}" placeholder="제목없음">
+					</li>
+					<li id="contents">
+						<p class="writeTit">내용</p>
+						<div class="textForm js-label mt10">
+							
+							<textarea id="label001" name="contents" cols="30" rows="10">${view.contents}</textarea>
+						</div> 
+					</li>
+				</ul>
+					<div class="btnBox">
+						<span class="button1"><a href="./noticeList.notice" class="type4 large">취소</a></span> 
+						<span class="button1"><a href="#" id ="btn" class="type1 large">확인</a></span>
+
+					</div>
+				</form>
+				
+			</div>
+		</div>
+	</div>
 			
 <c:import url="${myContextPath}/temp/footer.jsp"></c:import>
 </body>
