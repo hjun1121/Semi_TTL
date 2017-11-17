@@ -10,6 +10,9 @@ public class DBConnector {
 		//1로그인정보
 		String user="library";
 		String password="library";
+<<<<<<< HEAD
+		String url="jdbc:oracle:thin:@192.168.20.46:1521:xe";//
+=======
 
 		String url="jdbc:oracle:thin:@192.168.20.46:1521:xe";//
 		//String url="jdbc:oracle:thin:@192.168.0.8:1521:xe"; //희성
@@ -18,6 +21,7 @@ public class DBConnector {
 		
 		
 		
+>>>>>>> 856b4d26072af816f6ff6efccd420112880b3da6
 		String driver="oracle.jdbc.driver.OracleDriver";
 		
 		//driver
