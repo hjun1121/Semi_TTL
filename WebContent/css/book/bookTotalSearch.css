@@ -1,11 +1,25 @@
 @charset "UTF-8";
-
-section {
+*{
+	padding: 0;
+	margin: 0;
+}
+#section {
     width: 1040px;
     margin: 0 auto;
     padding-bottom: 40px !important;
     background-color: #fff;
     z-index: 5;
+}
+
+
+#section h2 {
+    display: block;
+    font-size: 1.5em;
+    -webkit-margin-before: 0.83em;
+    -webkit-margin-after: 0.83em;
+    -webkit-margin-start: 0px;
+    -webkit-margin-end: 0px;
+    font-weight: bold;
 }
 
 #bts_top_section {
@@ -25,6 +39,12 @@ section {
     margin: 0 56px 20px 0;
 }
 
+#divLocation ul li:first-child {
+    margin: 0;
+    padding: 0;
+    background: none;
+}
+
 #divLocation ul li {
     float: left;
     padding-left: 20px;
@@ -34,20 +54,20 @@ section {
     line-height: 1.5em;
 }
 
-fieldset {
+#section fieldset {
     margin: 0;
     padding: 0;
     border: 0;
 }
 
-.selectBox1 {
+#section .selectBox1 {
     height: 35px;
     border: 1px solid #d1d0cf;
     background-color: #fff;
     line-height: 29px;
 }
 
-option {
+#section option {
     font-weight: normal;
     display: block;
     white-space: pre;
@@ -55,7 +75,7 @@ option {
     padding: 0px 2px 1px;
 }
 
-.inputTextType3 {
+#section .inputTextType3 {
 	width: 290px;
     height: 35px;
     border: 1px solid #d1d0cf;
@@ -67,7 +87,7 @@ option {
     font-family: NanumBarunGothic,sans-serif;
 }
 
-input.btnType5 {
+#section input.btnType5 {
     height: 35px;
     vertical-align: top;
     border: 1px solid #585858;
@@ -76,65 +96,71 @@ input.btnType5 {
     padding: 0 20px 0 45px;
 }
 
-.listTable {
+#section .listTable {
     clear: both;
     border-top: 1px solid #b3b3b3;
     border-bottom: 1px solid #e6e6e6;
     text-align: center;
 }
 
-table {
+#section table {
     width: 100%;
     border: none;
     border-collapse: collapse;
 }
 
-.listTable tr th {
+#section .listTable tr th {
     height: 40px;
     padding: 10px 8px;
 }
 
-.listTable td {
+#section .listTable td {
     padding: 14px 10px;
     border-top: 1px solid #e6e6e6;
     height: 40px;
     text-align: left;
 }
 
-table th {
+#section .listTable tr:hover{
+	background-color: #fcf9ce;
+}
+#section table th {
     border: none;
     background-color: #f3f3f3;
     color: #727272;
 }
 
-.paging {
+#section .paging {
     clear: both;
     margin: 40px 0 0;
     text-align: center;
 }
 
-.paging > span {
+#section .paging > span {
     margin: 0 10px;
 }
 
-.paging > span span {
+#section .paging > span span {
     padding: 0 10px;
     color: #000;
     text-decoration: underline;
 }
 
-.paging > a {
+#section .paging > a {
+    width: 28px;
+    height: 28px;
     display: inline-block;
     padding: 0;
     border: 1px solid #e6e6e6;
     vertical-align: middle;
 }
 
-.paging > a img {
+#section .paging > a img {
     width: 28px;
     height: 28px;
     vertical-align: middle;
 }
+
 
 
 

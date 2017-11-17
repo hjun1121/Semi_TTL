@@ -14,10 +14,12 @@ public class MemberJoinAgreeService implements Action {
 		String method = request.getMethod();
 		
 		if(method.equals("GET")){
-			
 			actionFoward.setCheck(true);
 			actionFoward.setPath("../WEB-INF/view/member/memberJoinAgree.jsp");
 			
+		}else {
+			actionFoward.setCheck(true);
+			actionFoward.setPath("../WEB-INF/view/member/memberJoin.jsp");
 		}
 		
 		return actionFoward;

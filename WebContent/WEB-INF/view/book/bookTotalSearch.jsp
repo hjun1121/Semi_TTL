@@ -92,7 +92,7 @@ $(function(){
 
 	<div style = "height: 50px"></div>
 
-	<section>
+	<section id="section">
 		<div id = "bts_top_section">
 			<h2 id="divTitle">소장도서</h2>
 			<div id="divLocation">
@@ -106,6 +106,7 @@ $(function(){
 			</div>
 
 		<!-- 검색 시작 -->
+		<form name="frm" class="form-inline" action="./bookTotalSearch.book" method="post">
 			<fieldset>
 				<span class="bunch">
 					<select id="kind" name = "kind" class="selectBox1">
@@ -114,10 +115,11 @@ $(function(){
 						<option class = "kind" value="company">출판사</option>
 						<option class = "kind" value="type">분류</option>
 					</select>
-				<input type="text" class="inputTextType3 sw" maxlength="100" title="검색어" placeholder="검색어를 입력하세요">
+				<input type="text" id = "search" name = "search" value = "${search}" class="inputTextType3 sw" maxlength="100" title="검색어" placeholder="검색어를 입력하세요">
 				</span>
-				<input type="submit" class="btnType5" value="검색">
+				<input type="submit" class="btnType5" value="검색" id = "search">
 			</fieldset>
+		</form>
 		<!-- 검색 끝 -->
 		<br>
 		
@@ -182,7 +184,7 @@ $(function(){
 		<div class = "paging" style = "text-align: center;">
 			<ul class="pagination pagination-sm">
 				<c:if test="${page.curBlock>1}">
-				<li><a href = "./bookTotalSearch.book?curPage=${page.startNum-1}&search=${search}&kind=${kind}"><img src="${pageContext.request.contextPath}/image/bookTotalSearch/prevPage.gif" alt="이전" title="이전"></a></li>
+				<li><a href = "./bookTotalSearch.book?curPage=${page.startNum-1}&search=${search}&kind=${kind}"><img width="13" height="17"  src="${pageContext.request.contextPath}/image/bookTotalSearch/prevPage.gif" alt="이전" title="이전"></a></li>
 				</c:if>
 
 				<c:forEach begin="${page.startNum}" end="${page.lastNum}" var="i">
@@ -191,8 +193,7 @@ $(function(){
 				</c:forEach>
 				
 				<c:if test="${page.curBlock < page.totalBlock}">
-				<li><a
-					href="./bookTotalSearch.book?curPage=${requestScope.page.lastNum+1}&search=${search}&kind=${kind}"><img src="${pageContext.request.contextPath}/image/bookTotalSearch/nextPage.gif" alt="다음" title="다음"></a></li>
+				<li><a href="./bookTotalSearch.book?curPage=${requestScope.page.lastNum+1}&search=${search}&kind=${kind}"><img width="13" height="17" src="${pageContext.request.contextPath}/image/bookTotalSearch/nextPage.gif" alt="다음" title="다음"></a></li>
 				</c:if>
 			</ul>
 		</div>

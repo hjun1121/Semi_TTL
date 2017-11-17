@@ -1,0 +1,90 @@
+@charset "UTF-8";
+*{
+	margin: 0;
+	padding: 0;
+}
+
+<!--상단 바 시작 -->
+#divContentsW{
+	background-color:#fff;
+}
+
+#divContents{
+	padding-bottom:30px;
+	background-color:#fff;
+}
+
+#divContents{
+	position:relative;
+	width:1040px;
+	margin:0 auto;
+	padding-bottom:40px !important;
+	background-color:#fff;
+	z-index:5;
+}
+
+#divTitle{
+	color:#464646;
+	font-size:32px;
+	margin-bottom:20px;
+	padding:40px 450px 0 0;
+}
+
+#divLocation{
+	min-height:20px;
+	margin:0 56px 20px 0;
+	overflow:hidden;
+}
+
+#divLocation ul li{
+	float:left;
+	padding-left:20px;
+	margin-left:13px;
+	background:url(../../../../image/ko/local/locationBg.png) no-repeat 0 3px;
+	font-family:NG, sans-serif;
+	line-height:1.5em;
+}
+
+#divLocation ul li a{
+	color:#454545;
+}
+
+#divLocation ul li:first-child{
+	margin:0;
+	padding:0;
+	background:none;
+}
+<!--상단 바 끝 -->
+
+/* memberJoinAgree 전체 폼  */
+#agree_form{
+	width: 1200px;
+	min-width: 1500px;
+	height: 720px;
+	margin: 0 auto;
+	overflow: hidden;
+	border: 1px solid #555555;
+}
+
+/* agree 폼 */
+#agree_all{
+	width: 1200px;
+	height: 675px;
+	margin: 0 auto;
+	margin-top: 50px;
+}
+
+#agree_all .float{
+	float: right;
+}
+
+
+/* agree_check_all */
+#agree_check_all{
+	height: 100px;
+	border-bottom: 1px solid #bbbbbb;
+}	
+
+#agree_all textarea{
+	resize: none;
+}
