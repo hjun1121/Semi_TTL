@@ -11,6 +11,7 @@
 <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
 <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+<link rel="stylesheet" href="${pageContext.request.contextPath }/css/market/marketDealsList.css">
 <script type="text/javascript">
 $(function(){
 		var y = '${year}';
@@ -38,15 +39,29 @@ $(function(){
 </head>
 <body>
 <c:import url="${myContextPath}/temp/header.jsp"></c:import>
-
-	<h2>MyPage - 중고마켓 판/구매 리스트</h2>
+<div>
+	<c:import url="../member/myPage.jsp"></c:import>
+</div>
+<div id="divContentsW">
+		<div id="divContents">
+			<h2 id="divTitle">MARKET 내역 검색</h2>
+			<div id="divLocation">
+				<ul>
+					<li class="home"><a href="#"><img src="${pageContext.request.contextPath }/image/common/home.png" alt="HOME"></a></li>
+					<li>&gt;</li>
+					<li>MY PAGE</li>
+					<li>&gt;</li>
+					<li>MARKET 내역 검색</li>
+				</ul>
+			</div>
 	<div>
 	<form name="frm" class="form-inline" action="./marketDealsList.market" method="post">
+	<!-- 검색 시작 -->
 	<input type="hidden" name="type" id="type" value="${type }">
 	<input type="hidden" name="id" id="id" value="${id }">
 		<div>
 			<span>
-				<select id="year" name="year">
+				<select id="year" name="year" class="selectBox1">
 		            <option class="years" value="17" >2017</option>
 		            <option class="years" value="16">2016</option>
 		            <option class="years" value="15">2015</option>
@@ -54,7 +69,7 @@ $(function(){
 		            <option class="years" value="13">2013</option>
   			      </select>
        			 년
-       			 <select id="month" name="month">
+       			 <select id="month" name="month" class="selectBox1">
 		            <option class="month" value="01">01</option>
 		            <option class="month" value="02">02</option>
 		            <option class="month" value="03">03</option>
@@ -69,7 +84,7 @@ $(function(){
 		            <option class="month" value="12">12</option>
 		        </select>
     		    월
-		        <select id="day" name="day">
+		        <select id="day" name="day" class="selectBox1">
 		            <option class="day" value="01">01</option>
 		            <option class="day" value="02">02</option>
 		            <option class="day" value="03">03</option>
@@ -102,33 +117,31 @@ $(function(){
 		            <option class="day" value="30">30</option>
 		            <option class="day" value="31">31</option>
 		        </select>
-		        일 이전 까지
+		        일 이전 까지<input class="btnType5" type="submit" value="Search">
       		  </span>
-      		  <div class="form-group">
-	      		  <div class="col-sm-offset-2 col-sm-10">
-	      		 	 <input type="submit" class="btn btn-default" value="Search">
-	      		  </div>
-      		  </div>
 		</div>
 		</form>
 	</div>
-	<a href="./marketDealsList.market?id=${id }&type=3&year=${year}&month=${month}&day=${day}"><input type="button" value="전체"></a>
-	<a href="./marketDealsList.market?id=${id }&type=1&year=${year}&month=${month}&day=${day}"><input type="button" value="판매"></a>
-	<a href="./marketDealsList.market?id=${id }&type=2&year=${year}&month=${month}&day=${day}"><input type="button" value="구매"></a>
-	<a href="../index.jsp"><input type="button" value="list"></a>
+	<!-- 검색 끝 -->
+	
+	<a href="./marketDealsList.market?id=${id }&type=3&year=${year}&month=${month}&day=${day}"><input class="btnType3" type="button" value="전체"></a>
+	<a href="./marketDealsList.market?id=${id }&type=1&year=${year}&month=${month}&day=${day}"><input class="btnType3" type="button" value="판매"></a>
+	<a href="./marketDealsList.market?id=${id }&type=2&year=${year}&month=${month}&day=${day}"><input class="btnType3" type="button" value="구매"></a>
+	<a href="../index.jsp"><input class="btnType3" type="button" value="list"></a>
+	
 	<table class="table" border="1">
 		<tr>
-			<th>num</th>
-			<th>title</th>
-			<th>writer</th>
-			<th>company</th>
-			<th>publish_date</th>
-			<th>T_date</th>
-			<th>library</th>
-			<th>price</th>
-			<th>kind</th>
-			<th>state</th>
-			<th>delivery</th>
+			<th>No.</th>
+			<th>서명</th>
+			<th>저자</th>
+			<th>출판사</th>
+			<th>출판년도</th>
+			<th>일자</th>
+			<th>비치도서관</th>
+			<th>가격</th>
+			<th>분류</th>
+			<th>상태</th>
+			<th>수령방법</th>
 		</tr>
 		<c:forEach items="${bookDeals }" var="bookDeals_list">
 			<tr>
@@ -197,7 +210,7 @@ $(function(){
 		</c:forEach>
 	</table>
 	<div>
-		<ul class="pagination">
+		<ul>
 			<c:if test="${page.curBlock>1}">
 			<li><button class="go" id="${page.startNum-1}">[이전]</button></li>
 			</c:if>
@@ -211,6 +224,8 @@ $(function(){
 			</c:if>
 		</ul>
 	</div>
+</div>
+</div>
 	
 <c:import url="${myContextPath}/temp/footer.jsp"></c:import>
 </body>

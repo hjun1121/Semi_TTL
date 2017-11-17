@@ -4,7 +4,7 @@
 	float: left;
 	display: inline;
 }
-ul {
+#leftBar ul {
     list-style-type: none;
     margin: 0;
     padding: 0;
@@ -12,19 +12,19 @@ ul {
     background-color: #f1f1f1;
 }
 
-li a {
+#leftBar li a {
     display: block;
     color: #000;
     padding: 8px 16px;
     text-decoration: none;
 }
 
-li a.active {
+#leftBar li a.active {
     background-color: #4CAF50;
     color: white;
 }
 
-li a:hover:not(.active) {
+#leftBar li a:hover:not(.active) {
     background-color: #555;
     color: white;
 }

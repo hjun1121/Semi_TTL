@@ -10,7 +10,7 @@
 	font-style:normal;
 }
 
-.footer1 div, span, ul, li {
+.footer1 div, .footer1 span, .footer1 ul, .footer1 li {
 	list-style:none;
 	text-decoration: none;
     margin: 0;

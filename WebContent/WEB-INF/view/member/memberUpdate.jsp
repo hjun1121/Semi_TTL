@@ -10,18 +10,19 @@
 <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
 <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
-<link rel="stylesheet" href="${pageContext.request.contextPath }/css/member/memberUpdate.css">
 
+<link rel="stylesheet" href="${pageContext.request.contextPath }/css/member/memberUpdate.css">
+<script src="http://dmaps.daum.net/map_js_init/postcode.v2.js"></script>
 <title>회원 정보 수정</title>
 </head>
-<body>
-<c:import url="${myContextPath}/temp/header.jsp"></c:import>
-
-<div>
-	<c:import url="./myPage.jsp"></c:import>
-</div>
 <script type="text/javascript">
 	$(function(){
+		if('${DTO.gender}' == 'f'){
+			$("#gender").val("여자");
+		}else{
+			$("#gender").val("남자");
+		}
+		
 		var kind = '${DTO.kind}';
 		 $(".kind").each(function(){
 			 if($(this).val() == kind) {
@@ -54,8 +55,9 @@
 		//pw 확인 체크
 			$("#pw1").change(function(){
 				$("#ch_pw").html('<p style="color: red">pw 확인해주세요</p>');
-				$("#pw2").val("");
-				$("#pwc").attr("style","display: block;");
+				$("#pw2").val(""); 
+				$("#pwc").removeAttr("style");
+
 				pwCheck = false;
 			});
 			
@@ -221,173 +223,138 @@
 </script>
 </head>
 <body>
+
+<c:import url="${myContextPath}/temp/header.jsp"></c:import>
+<div>
+	<c:import url="./myPage.jsp"></c:import>
+</div>
+
+<form action="./memberUpdate.member" method="post" id="frm" name="frm">
 <div id="divContentsW">
-	<div id="divContents">
-		<h2 id="divTitle">회원가입</h2>
-		<div id="divLocation">
-			<ul>
-				<li class="home"><a href="#"><img src="./image/ko/local/home.png" alt="HOME"></a></li>
-				<li>&gt;</li>
-				<li>회원가입</li>
-			</ul>
-		</div>
-		<div class="joinWrap">	
-			<div class="joinCont mt50">
-				
-				<div class="joinForm borTc3 mt10">
-					<dl class="plusInfo pull_down_group mt50 open">
-							
-						<dd class="plusInfoCon pull_down_con" style="display: block;">
-						<ul>
-						<li>회원가입 양식</li>
-						<li>
-							<div class="questBox writeTit">
-								<span class="writePoint"></span>아이디
-							</div>
-							<div class="ansBox">
-								<input type="text" name="id" value=${DTO.id } readonly="readonly">
-							</div>
-						</li>
-						<li>
-							<div class="questBox writeTit">
-								<span class="writePoint"></span>비밀번호
-							</div>
-							<div class="ansBox">
-								<input type="text" name="pw" value=${DTO.pw }>
-							</div>
-						</li>
-						<li>
-							<div class="questBox writeTit">
-								<span class="writePoint"></span>비밀번호 확인
-							</div>
-							<div class="ansBox">
-								<p id="pwc" style="display: none;">
-								<input type="password" id="pw2"></p>
-								<div id="ch_pw"></div>
-							</div>
-						</li>
-						<li>
-							<div class="questBox writeTit">
-								<span class="writePoint"></span>이름
-							</div>
-							<div class="ansBox">
-								<input type="text" value=${DTO.name } readonly="readonly">
-							</div>
-						</li>
-						<li>
-							<div class="questBox writeTit">
-								<span class="writePoint"></span>생년월일
-							</div>
-							<div class="ansBox">
-								<input type="date" name="birth" value=${DTO.birth }>
-							</div>
-						</li>
-						<li>
-							<div class="questBox writeTit">
-								<span class="writePoint"></span>성별
-							</div>
-							<div class="ansBox">
-								<input type="text" id="gender" name="gender" value=${DTO.gender } readonly="readonly">
-							</div>
-						</li>
-						<li>
-							<div class="questBox writeTit">
-								<span class="writePoint"></span>주소
-							</div>
-							<div class="ansBox">
-								<input type="text" id="postCode" name="postCode" value=${DTO.postCode } readonly="readonly">
-								<input type="text" id="addr" name="addr" value=${DTO.addr } readonly="readonly">
-								<input type="text" id="adrr2" name="addr2" value=${DTO.addr2 } readonly="readonly">
-							</div>
-						</li>
-						<li>
-							<div class="questBox writeTit">
-								<span class="writePoint"></span>전화
-							</div>
-							<div class="ansBox">
-								<select id="f" class="sel_size">
-									<option value="010" class="num">010</option>
-    								<option value="011" class="num">011</option>
-    								<option value="031" class="num">031</option>
-    								<option value="02" class="num">02</option>
-								</select>
-								<input type="text" id="m" name="m" value=${m }>-<input type="text" id="l" name="l" value=${l }>
-								<input type="hidden" id="phone" name="phone" value=${DTO.phone }>
-							</div>
-						</li>
-						<li>
-							<div class="questBox writeTit">
-								<span class="writePoint"></span>이메일
-							</div>
-							<div class="ansBox">
-							<input type="text" id="email1" name="email1" value=${email1 }>@<input type="text" id="email2" name="email2" value=${email2 }>
-								<select id="mailList" class="sel_size">
-									<option value="0" class="email">직접입력</option>
-    								<option value="naver.com" class="email">naver.com</option>
-    								<option value="daum.net" class="email">daum.net</option>
-    								<option value="gmail.com" class="email">gmail.com</option>
-    								<option value="hotmail.com" class="email">hotmail.com</option>
-								</select>
-								<input type="button" style="display: none;" id="mailCheck" name="mailCheck" value="이메일">
-								<input type="hidden" id="email" name="email" value=${DTO.email }>
-							</div>
-						</li>
-						<li>
-							<div class="questBox writeTit">
-								<span class="writePoint"></span>도서관
-							</div>
-							<div class="ansBox">
-								<select name="library" class="sel_size">
-									<option value="1" class="library">기흥구</option>
-    								<option value="2" class="library">송파구</option>
-    								<option value="3" class="library">장안구</option>
-    								<option value="4" class="library">분당구</option>
-								</select>
-							</div>
-						</li>
-						<c:if test="${sessionScope.member.kind ne 10 }">
-							<c:if test="${member.kind eq 1}">
-								<div class="questBox writeTit">
-								<span class="writePoint"></span>등급
-							</div>
-							<div class="ansBox">
-								<input type="text" value="일반사용자" readonly="readonly">
-							</div>
-							</c:if>
-						</c:if>
-						<c:if test="${sessionScope.member.kind eq 10 }">
-							<div class="questBox writeTit">
-								<span class="writePoint"></span>등급
-							</div>
-							<div class="ansBox">
-								<select name="kind" class="sel_size">
-									<option class="kind" value=10>운영자</option>
-									<option class="kind" value=1>일반</option>
-									<option class="kind" value=0>블랙</option>
-								</select>
-							</div>
-						</c:if>
-						</ul>
-					</dd>
-				</dl>
+		<div id="divContents">
+			<h2 id="divTitle">개인정보 관리</h2>
+			<div id="divLocation">
+				<ul>
+					<li class="home"><a href="#"><img src="${pageContext.request.contextPath }/image/common/home.png" alt="HOME"></a></li>
+					<li>&gt;</li>
+					<li>MY PAGE</li>
+					<li>&gt;</li>
+					<li>개인정보 관리</li>
+				</ul>
 			</div>
-			<div class="btnCenter mt30">
-			<input type="button" class="type4 large" id="btn" name="btn" value="정보 수정">
-				<span class="button1">
-					<a href="./memberDelete.member?id=${DTO.id }" class="type4 large">
-						<input type="button" class="type4 large" value="회원탈퇴">
+		
+		<div>
+			<table class="revisionTable">
+				<tr>
+					<th>아이디</th>
+					<td><input type="text" class="noneBorder" name="id" value=${DTO.id } readonly="readonly"></td>
+				</tr>
+				<tr>
+					<th>비밀번호</th>
+					<td><input type="password" class="useBorder" name="pw1" id="pw1"value=${DTO.pw }></td>
+				</tr>
+				<tr id="pwc" style="display: none;">
+					<th>비밀번호 확인</th>
+					<td><input type="password" class="useBorder" id="pw2"><div id="ch_pw"></div></td>
+				</tr>
+				<tr>
+					<th>이름</th>
+					<td><input type="text" class="noneBorder" value=${DTO.name } readonly="readonly"></td>
+				</tr>
+				<tr>
+					<th>생년월일</th>
+					<td><input type="date" class="useBorder" name="birth" value=${DTO.birth }></td>
+				</tr>
+				<tr>
+					<th>성별</th>
+					<td>
+							<input type="text" class="noneBorder" id="gender" name="gender" value="" readonly="readonly">
+					</td>
+				</tr>
+				<tr>
+					<th>주소</th>
+					<td>
+						<input type="text" class="useBorder" id="postCode" name="postCode" size="10" placeholder="우편번호" readonly="readonly" value=${DTO.postCode }>
+						<input type="button" id="addrCheck" value="우편번호 찾기" class="btnType4" readonly="readonly"><br><br>
+						<input type="text" class="useBorder" id="addr" name="addr" placeholder="주소" readonly="readonly" size="60" value="${DTO.addr }">
+						<input type="text" class="useBorder" id="addr2" name="addr2" placeholder="나머지주소" size="40" value="${DTO.addr2 }">
+					</td>
+				</tr>
+				<tr>
+					<th>전화</th>
+					<td>
+						<select id="f" class="sel_size">
+							<option value="010" class="num">010</option>
+		   					<option value="011" class="num">011</option>
+		   					<option value="031" class="num">031</option>
+		   					<option value="02" class="num">02</option>
+						</select>
+					<input type="text" id="m" name="m" value=${m } size="10" class="useBorder"> <b> - </b> <input class="useBorder" size="10" type="text" id="l" name="l" value=${l }>
+					<input type="hidden" id="phone" name="phone" value=${DTO.phone }>
+					</td>
+				</tr>
+				<tr>
+					<th>이메일</th>
+					<td>
+					<input type="text" id="email1" name="email1" class="useBorder" value=${email1 } size="15"><b> @ </b><input type="text" size="15" class="useBorder"  id="email2" name="email2" value=${email2 }>
+						<select id="mailList" class="sel_size">
+							<option value="0" class="email">직접입력</option>
+		   					<option value="naver.com" class="email">naver.com</option>
+		   					<option value="daum.net" class="email">daum.net</option>
+		   					<option value="gmail.com" class="email">gmail.com</option>
+		   					<option value="hotmail.com" class="email">hotmail.com</option>
+						</select>
+					<input type="button" style="display: none;" id="mailCheck" name="mailCheck" class="btnType3" value="이메일인증">
+					<input type="hidden" id="email" name="email" value=${DTO.email }>
+					</td>
+				</tr>
+				<tr>
+					<th>도서관</th>
+					<td>
+					<select name="library" class="sel_size">
+						<option value="1" class="library">기흥구</option>
+	   					<option value="2" class="library">송파구</option>
+	   					<option value="3" class="library">장안구</option>
+	   					<option value="4" class="library">분당구</option>
+					</select>
+					</td>
+				</tr>
+				<tr>
+				<c:if test="${sessionScope.member.kind ne 10 }">
+					<c:if test="${member.kind eq 1}">
+						<th>등급</th>
+						<td><input type="text" class="useBorder" class="noneBorder" value="일반사용자" readonly="readonly"></td>
+					</c:if>
+				</c:if>
+				<c:if test="${sessionScope.member.kind eq 10 }">
+					<th>등급</th>
+					<td>
+						<select name="kind" class="sel_size">
+						<option class="kind" value=10>운영자</option>
+						<option class="kind" value=1>일반</option>
+						<option class="kind" value=0>블랙</option>
+						</select>
+					</td>
+				</c:if>
+			</table>
+			
+			<div class="btn">
+			<input type="submit" class="btnType5" id="btn" name="btn" value="정보 수정">
+				<span>
+					<a href="./memberDelete.member?id=${DTO.id }">
+						<input type="button" class="btnType5" value="회원탈퇴">
 					</a>
 				</span>
-				<span class="button1">
-					<a href="../index.jsp" class="type4 large">
-						<input type="button" class="type4 large" value="메인">
+				<span>
+					<a href="../index.jsp">
+						<input type="button" class="btnType5" value="메인으로">
 					</a>
 				</span>
 			</div>
 		</div>
 	</div>
 </div>
-</div>
+</form>
 
 <c:import url="${myContextPath}/temp/footer.jsp"></c:import>
 </body>
