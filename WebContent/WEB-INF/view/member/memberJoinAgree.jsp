@@ -61,6 +61,19 @@ $(function(){
 <body>
 <c:import url="${myContextPath}/temp/header.jsp"></c:import>
 
+<div id="divContentsW">
+		<div id="divContents">
+
+<h2 id="divTitle">동의?어보감</h2>
+			<div id="divLocation">
+				<ul>
+					<li class="home"><a href="../index.jsp"><img src="${pageContext.request.contextPath }/image/notice/home.png" alt="HOME"></a></li>
+					<li>&gt;</li>
+					<li>동의?어보감</li>
+				</ul>
+			</div>
+
+
 <form action="${pageContext.request.contextPath }/member/memberJoinAgree.member" id = "frm" name="frm" method="post">
 	<input type="hidden" name="agCheck" id="agCheck">
 	<div id="agree_form">
@@ -116,6 +129,8 @@ $(function(){
 	</div>
 	</form>
 
+	</div>
+</div>
 
 
 <c:import url="${myContextPath}/temp/footer.jsp"></c:import>
