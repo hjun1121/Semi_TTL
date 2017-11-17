@@ -17,6 +17,12 @@
 </head>
 <script type="text/javascript">
 	$(function(){
+		if('${DTO.gender}' == 'f'){
+			$("#gender").val("여자");
+		}else{
+			$("#gender").val("남자");
+		}
+		
 		var kind = '${DTO.kind}';
 		 $(".kind").each(function(){
 			 if($(this).val() == kind) {
@@ -262,12 +268,7 @@
 				<tr>
 					<th>성별</th>
 					<td>
-						<c:if test="${DTO.gender eq f }">
-							<input type="text" class="noneBorder" id="gender" name="gender" value="남자" readonly="readonly">
-						</c:if>
-						<c:if test="${DTO.gender eq m }">
-							<input type="text" class="noneBorder" id="gender" name="gender" value="여자" readonly="readonly">
-						</c:if>
+							<input type="text" class="noneBorder" id="gender" name="gender" value="" readonly="readonly">
 					</td>
 				</tr>
 				<tr>
