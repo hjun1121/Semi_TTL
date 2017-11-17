@@ -92,7 +92,7 @@ $(function(){
 
 	<div style = "height: 50px"></div>
 
-	<section>
+	<section id="section">
 		<div id = "bts_top_section">
 			<h2 id="divTitle">소장도서</h2>
 			<div id="divLocation">
