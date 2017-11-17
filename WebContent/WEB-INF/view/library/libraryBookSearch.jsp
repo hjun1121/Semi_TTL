@@ -8,6 +8,7 @@
   <meta name="viewport" content="width=device-width, initial-scale=1">
 <link rel="stylesheet" href="${pageContext.request.contextPath }/css/temp/header.css">
 <link rel="stylesheet" href="${pageContext.request.contextPath }/css/temp/footer.css">
+<link rel="stylesheet" href="${pageContext.request.contextPath }/css/library/libraryBookSearch.css">
 <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
 <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
@@ -89,115 +90,126 @@ $(function(){
 </script>
 </head>
 <body>
+<!-- header -->
 <c:import url="${myContextPath}/temp/header.jsp"></c:import>
+<!-- header -->
 
-	<h2>도서 검색 페이지</h2>
+	<div style = "height: 50px"></div>
 
-	<section>
+	<section id="section">
+		<div id = "bts_top_section">
+			<h2 id="divTitle">소장도서</h2>
+			<div id="divLocation">
+				<ul>
+					<li class="home"><a href="../../index.jsp"><img src="${pageContext.request.contextPath}/image/bookTotalSearch/home.png" alt="HOME"></a></li>
+					<li>&gt;</li>
+					<li>통합검색</li>
+					<li>&gt;</li>
+					<li>소장도서</li>
+				</ul>
+			</div>
 
-		<div class="row-right">
-			<form name="frm" class="form-inline" action="./libraryBookSearch.library?library=${library}" method="post">
-					<!-- KIND -->
-					<div class="form-group">
-						<div class="col-sm-10">
-							<select name="kind" id = "kind">
-								<option class = "kind" value="title">제목</option>
-								<option class = "kind" value="writer">저자</option>
-								<option class = "kind" value="company">출판사</option>
-								<option class = "kind" value="type">분류</option>
-							</select>
-						</div>
-					</div>
-
-					<!-- SEARCH -->
-					<div class="form-group">
-						<div class="col-sm-10">
-							<input type="text" class="form-control" id="search" placeholder="Enter" name="search" value = "${search}">
-						</div>
-					</div>
-
-					<div class="form-group">
-						<div class="col-sm-offset-2 col-sm-10">
-							<input type="submit" id = "search" class="btn btn-default" value="Search">
-						</div>
-					</div>
-			</form>
-
-				<table class = "table">
+		<!-- 검색 시작 -->
+		<form name="frm" class="form-inline" action="./bookTotalSearch.book" method="post">
+			<fieldset>
+				<span class="bunch">
+					<select id="kind" name = "kind" class="selectBox1">
+						<option class = "kind" value="title">서명</option>
+						<option class = "kind" value="writer">저자</option>
+						<option class = "kind" value="company">출판사</option>
+						<option class = "kind" value="type">분류</option>
+					</select>
+				<input type="text" id = "search" name = "search" value = "${search}" class="inputTextType3 sw" maxlength="100" title="검색어" placeholder="검색어를 입력하세요">
+				</span>
+				<input type="submit" class="btnType5" value="검색" id = "search">
+			</fieldset>
+		</form>
+		<!-- 검색 끝 -->
+		<br>
+		
+		<div class="listTable">
+			<table class="mobileTable tablet">
+				<thead>
 					<tr>
-						<td>번호</td>
-						<td>제목</td>
-						<td>저자</td>
-						<td>출판사</td>
-						<td>분류</td>
-						<td>대여여부</td>
+						<th scope="row" class="footable-first-column">No.</th>
+						<th scope="row" data-class="expand">서명</th>
+						<th scope="row" style="display: table-cell;">저자</th>
+						<th scope="row" style="display: table-cell;">출판사</th>
+						<th scope="row" style="display: table-cell;">비치도서관</th>
+						<th scope="row" style="display: table-cell;">대여여부</th>
 						<c:if test="${ not empty member }">
-							<td>찜하기</td>
+							<th scope="row" style="display: table-cell;">찜</th>
 						</c:if>
 					</tr>
+				</thead>
+										
+				<c:forEach items="${ list }" var="dto">
+					<tr>
+						<td scope="row" class="footable-first-column">${dto.num }</td>
+						<td scope="row" data-class="expand"><a href="./bookInformation.book?num=${dto.num}&curPage=${curPage}">${dto.title }</a></td>
+						<td scope="row" style="display: table-cell;">${dto.writer }</td>
+						<td scope="row" style="display: table-cell;">${dto.company }</td>
 
-					<c:forEach items="${ list }" var="dto">
-							<tr>
-								<td>${dto.num }</td>
-								<td><a href="../book/bookInformation.book?num=${dto.num}">${dto.title}</a></td>
-								<td>${dto.writer }</td>
-								<td>${dto.company }</td>
-								<td>${dto.type }</td>
-
-								<c:choose>
-									<c:when test="${ dto.state == 0 and not empty member }">
-										<td><button class = "btn btn-default rent_btn"  type = "submit" id = "rent_btn" value = "${dto.num}">대여</button></td>
-									</c:when>
-									<c:when test="${ dto.state == 0 and empty member }">
-										<td>대여가능</td>
-									</c:when>
-									<c:when test="${ dto.state == 1 }">
-										<td>대여불가</td>
-									</c:when>
-								</c:choose>
-								<c:set var="heart1" value="0" ></c:set>
-								<c:set var="heart2" value="0" ></c:set>
-								<c:if test="${ not empty member }">
-									<c:forEach items="${rent_wish_list}" var="wish">
-										<c:if test="${wish.title eq dto.title}">
-											<c:choose>
-												<c:when test="${heart1 == 0}">
-													<td><button class = "btn btn-default wish_btn" type = "submit" value = "${dto.num}" title="1">❤</button></td>
-													<c:set var="heart1" value="1" ></c:set>
-													<c:set var="heart2" value="1" ></c:set>
-												</c:when>
-											</c:choose>
-										</c:if>
-									</c:forEach>
-										<c:if test="${heart2 == 0}">
-											<td><button class = "btn btn-default wish_btn" type = "submit" value = "${dto.num}" title="0">♡</button></td>
-										</c:if>
+						<c:choose>
+							<c:when test="${dto.library == 1 }"><td scope="row" style="display: table-cell;"><a href="../library/libraryMain.library?library=1">kim_lib</a></td></c:when>
+							<c:when test="${dto.library == 2 }"><td scope="row" style="display: table-cell;"><a href="../library/libraryMain.library?library=2">gee_lib</a></td></c:when>
+							<c:when test="${dto.library == 3 }"><td scope="row" style="display: table-cell;"><a href="../library/libraryMain.library?library=3">hs_lib</a></td></c:when>
+							<c:when test="${dto.library == 4 }"><td scope="row" style="display: table-cell;"><a href="../library/libraryMain.library?library=4">ssin_lib</a></td></c:when>
+						</c:choose>
+						<c:choose>
+							<c:when test="${ dto.state == 0 and not empty member }">
+								<td scope="row" style="display: table-cell;"><button class = "btn btn-default rent_btn"  type = "submit" id = "rent_btn" value = "${dto.num}">대여</button></td>
+							</c:when>
+							<c:when test="${ dto.state == 0 and empty member }"><td scope="row" style="display: table-cell;">대여가능</td></c:when>
+							<c:when test="${ dto.state == 1 }"><td scope="row" style="display: table-cell;">대여불가</td></c:when>
+						</c:choose>
+						<c:set var="heart1" value="0" ></c:set>
+						<c:set var="heart2" value="0" ></c:set>
+						<c:if test="${ not empty member }"><c:forEach items="${rent_wish_list}" var="wish">
+								<c:if test="${wish.title eq dto.title}">										<c:choose>
+										<c:when test="${heart1 == 0}">
+											<td scope="row" style="display: table-cell;"><button class = "btn btn-default wish_btn" type = "submit" value = "${dto.num}" title="1">❤</button></td>
+											<c:set var="heart1" value="1" ></c:set>
+											<c:set var="heart2" value="1" ></c:set>
+										</c:when>
+									</c:choose>
 								</c:if>
-							</tr>
-					</c:forEach>
-				</table>
-		</div>
+							</c:forEach>
+								<c:if test="${heart2 == 0}">
+									<td scope="row" style="display: table-cell;"><button class = "btn btn-default wish_btn" type = "submit" value = "${dto.num}" title="0">♡</button></td>
+								</c:if>
+						</c:if>
+					</tr>
+				</c:forEach>
 
-		<div style = "text-align: center;">
+			</table>
+		</div>
+		
+		<div class = "paging" style = "text-align: center;">
 			<ul class="pagination pagination-sm">
 				<c:if test="${page.curBlock>1}">
-				<li><a href = "./libraryBookSearch.library?curPage=${page.startNum-1}&search=${search}&kind=${kind}">[이전]</a></li>
+				<li><a href = "./libraryBookSearch.library?curPage=${page.startNum-1}&search=${search}&kind=${kind}"><img width="13" height="17"  src="${pageContext.request.contextPath}/image/bookTotalSearch/prevPage.gif" alt="이전" title="이전"></a></li>
 				</c:if>
-				
+
 				<c:forEach begin="${page.startNum}" end="${page.lastNum}" var="i">
 				<li><a
 					href="./libraryBookSearch.library?curPage=${i}&search=${search}&kind=${kind}">${i}</a></li>
 				</c:forEach>
 				
 				<c:if test="${page.curBlock < page.totalBlock}">
-				<li><a
-					href="./libraryBookSearch.library?curPage=${requestScope.page.lastNum+1}&search=${search}&kind=${kind}">[다음]</a></li>
+				<li><a href="./libraryBookSearch.library?curPage=${requestScope.page.lastNum+1}&search=${search}&kind=${kind}"><img width="13" height="17" src="${pageContext.request.contextPath}/image/bookTotalSearch/nextPage.gif" alt="다음" title="다음"></a></li>
 				</c:if>
 			</ul>
 		</div>
 
+		
+	    </div>
 	</section>
-	
+
+
+<!-- footer -->
 <c:import url="${myContextPath}/temp/footer.jsp"></c:import>
+<!-- footer -->
+
 </body>
 </html>
