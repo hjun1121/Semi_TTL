@@ -38,10 +38,24 @@ $(function(){
 </head>
 <body>
 <c:import url="${myContextPath}/temp/header.jsp"></c:import>
-
-	<h2>MyPage - 중고마켓 판/구매 리스트</h2>
+<div>
+	<c:import url="../member/myPage.jsp"></c:import>
+</div>
+<div id="divContentsW">
+		<div id="divContents">
+			<h2 id="divTitle">개인정보 관리</h2>
+			<div id="divLocation">
+				<ul>
+					<li class="home"><a href="#"><img src="${pageContext.request.contextPath }/image/common/home.png" alt="HOME"></a></li>
+					<li>&gt;</li>
+					<li>MY PAGE</li>
+					<li>&gt;</li>
+					<li>개인정보 관리</li>
+				</ul>
+			</div>
 	<div>
 	<form name="frm" class="form-inline" action="./marketDealsList.market" method="post">
+	
 	<input type="hidden" name="type" id="type" value="${type }">
 	<input type="hidden" name="id" id="id" value="${id }">
 		<div>
@@ -211,6 +225,8 @@ $(function(){
 			</c:if>
 		</ul>
 	</div>
+</div>
+</div>
 	
 <c:import url="${myContextPath}/temp/footer.jsp"></c:import>
 </body>

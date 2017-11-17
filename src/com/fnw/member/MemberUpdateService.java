@@ -50,7 +50,7 @@ public class MemberUpdateService implements Action {
 			try {
 				memberDTO = memberDAO.selectOne(request.getParameter("id"));
 				memberDTO.setId(request.getParameter("id"));
-				memberDTO.setPw(request.getParameter("pw"));
+				memberDTO.setPw(request.getParameter("pw1"));
 				memberDTO.setBirth(Date.valueOf(request.getParameter("birth")));
 				memberDTO.setPostCode(request.getParameter("postCode"));
 				memberDTO.setAddr(request.getParameter("addr"));
