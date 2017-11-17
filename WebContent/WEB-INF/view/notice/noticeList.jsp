@@ -6,14 +6,12 @@
 <html>
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
-<link rel="stylesheet" href="${pageContext.request.contextPath }/css/notice/detail.css">
-<link rel="stylesheet" href="${pageContext.request.contextPath }/css/notice/noticeList.css">
-<link rel="stylesheet" href="${pageContext.request.contextPath }/css/member/memberJoin.css">
 <link rel="stylesheet" href="${pageContext.request.contextPath }/css/temp/header.css">
 <link rel="stylesheet" href="${pageContext.request.contextPath }/css/temp/footer.css">
 <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
 <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+<link rel="stylesheet" href="${pageContext.request.contextPath }/css/notice/noticeList.css">
 <script type="text/javascript">
 $(function(){
 		var kind = '${kind}';
@@ -70,7 +68,7 @@ $(function(){
 			<table class="mobileTable tablet">
 				<caption>게시판 목록</caption>
 				<thead>
-					<tr>
+					<tr id ="th1">
 						<th class="footable-first-column">No.</th>
 						<th data-class="expand">제목</th>
 						<th style="display: table-cell;">작성자</th>

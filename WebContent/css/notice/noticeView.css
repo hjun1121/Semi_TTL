@@ -1,13 +1,66 @@
 @charset "UTF-8";
 
+*{
+	margin: 0;
+	padding: 0;
+}
 
-/* detail */
-.detailTable table{width:100%;border:none;border-collapse:collapse;border-top:1px solid #b3b3b3;border-bottom:1px solid #b3b3b3}
-.detailTable th{width:20%;padding:10px 20px;border:none;background-color:#f3f3f3;border-top:1px solid #e6e6e6;color:#727272;text-align:right;font-size:14px;}
-.detailTable tr:first-child th{border-top:none}
-.detailTable td{padding:10px 20px;border:none;border-top:1px solid #e6e6e6;font-size:14px;}
-.detailTable tr:first-child td{border-top:none}
+<!--상단 바 시작 -->
+#divContentsW{
+	background-color:#fff;
+}
 
+#divContents{
+	padding-bottom:30px;
+	background-color:#fff;
+}
+
+#divContents{
+	position:relative;
+	width:1040px;
+	margin:0 auto;
+	padding-bottom:40px !important;
+	background-color:#fff;
+	z-index:5;
+}
+
+#divTitle{
+	color:#464646;
+	font-size:32px;
+	margin-bottom:20px;
+	padding:40px 450px 0 0;
+}
+
+#divLocation{
+	min-height:20px;
+	margin:0 56px 20px 0;
+	overflow:hidden;
+}
+
+#divLocation ul li{
+	float:left;
+	padding-left:20px;
+	margin-left:13px;
+	background:url(../../../../image/ko/local/locationBg.png) no-repeat 0 3px;
+	font-family:NG, sans-serif;
+	line-height:1.5em;
+}
+
+#divLocation ul li a{
+	color:#454545;
+}
+
+#divLocation ul li:first-child{
+	margin:0;
+	padding:0;
+	background:none;
+}
+<!--상단 바 끝 -->
+
+
+<!-- 내용 시작 -->
+
+.userInfo .writerInfo dd.writerIp, .boardInfo .writerInfo dd.writerTime{color:#248bd8}
 /* 게시판 상세 */
 .boardInfo{position:relative;padding:20px;background-color:#f3f3f3;border:1px solid #e6e6e6;border-top:1px solid #b3b3b3}
 .boardInfo .boardInfoTitle{padding-right:100px;color:#1a1a1a;font-size:1.429em;font-weight:600}
@@ -25,17 +78,26 @@
 .boardInfo .writerInfo dd.writerEmail img{width:18px;height:13px;vertical-align:middle;margin-right:5px}
 .boardInfo .writerInfo dd.writerIp{margin-right:5px;}
 .boardInfo .writerInfo dd.writerIp, .boardInfo .writerInfo dd.writerTime{color:#248bd8}
-.additionalItems{padding:20px;border:1px solid #e6e6e6;border-top:none;border-bottom:1px solid #b3b3b3;vertical-align:middle}
-.additionalItems div{display:inline-block;width:49%;vertical-align: top}
-.additionalItems ul{min-height:72px;padding-left:80px}
-.additionalItems ul.addFiles{background:url(../../../image/ko/solution/common/ico/clipL.png) no-repeat 0 0}
-.additionalItems ul.addUrl{background:url(../../../image/ko/solution/common/ico/url.png) no-repeat 0 0}
-.additionalItems ul.addUrl li{	font-weight:600;}
-.additionalItems ul.addUrl a{margin-left:5px;font-weight:normal;text-decoration:underline}
-.additionalItems ul li{padding:10px 0;font-size:0.929em}
 
-/* 게시판 에디터 작성 영역 */
-.detailTable .boardContent{font-size:13px}
+.userInfo .writerInfo dd.writerIp, .boardInfo .writerInfo dd.writerTime{color:#248bd8}
+
+
+.userInfo .writeInfo{position:absolute;top:20px;right:20px}
+.userInfo .writeInfo p{text-align:right;margin-top:10px}
+.userInfo .writeInfo p:first-child{margin-top:0}
+.userInfo .writeInfo span{position:absolute;top:31px;right:0}
+.userInfo .writeInfo p.status span{position:relative;top:0;right:0;}
+.userInfo .writerInfo{overflow:hidden}
+.userInfo .writerInfo dl{clear:both}
+.userInfo .writerInfo dt{float:left;margin-right:5px;margin-top:10px;font-weight:600}
+.userInfo .writerInfo dt.skip{display:none}
+.userInfo .writerInfo dd{float:left;margin-right:20px;margin-top:10px;}
+.userInfo .writerInfo dd.writer span{color:#1a1a1a}
+.userInfo .writerInfo dd.writerEmail img{width:18px;height:13px;vertical-align:middle;margin-right:5px}
+.userInfo .writerInfo dd.writerIp{margin-right:5px;}
+.userInfo .writerInfo dd.writerIp, .boardInfo .writerInfo dd.writerTime{color:#248bd8}
+
+
 .boardContent{font-family: Arial, Verdana, "Trebuchet MS", sans-serif;font-size: 12px;	color: #333;background-color: #fff;border:1px solid #e6e6e6;border-top:none;padding: 20px;font-size: 13px;line-height: 1.6;}
 .boardContent table{font-size:1.0em}
 .boardContent blockquote{font-style: italic;font-family: Georgia, Times, "Times New Roman", serif;padding: 2px 0;border-style: solid;border-color: #ccc;border-width: 0;}
@@ -49,11 +111,11 @@
 	/* preserved spaces for list items with text direction other than the list. (#6249,#8049)*/
 	padding: 0 40px;
 }
+
 .boardContent h1,.boardContent h2,.boardContent h3,.boardContent h4,.boardContent h5,.boardContent h6{font-weight: normal;line-height: 1.2;}
 .boardContent hr{display:block;border: 0px;border-top: 1px solid #ccc;}
 
-img.right{border: 1px solid #ccc;float: right;margin-left: 15px;padding: 5px;}
-img.left{border: 1px solid #ccc;float: left;margin-right: 15px;padding: 5px;}
+
 .boardContent pre{
 	white-space: pre-wrap; /* CSS 2.1 */
 	word-wrap: break-word; /* IE7 */
@@ -62,7 +124,7 @@ img.left{border: 1px solid #ccc;float: left;margin-right: 15px;padding: 5px;}
 	-webkit-tab-size: 4;
 	tab-size: 4;
 }
-.marker{background-color: Yellow;}
+
 .boardContent span[lang]{font-style: italic;}
 .boardContent figure{
 	text-align: center;
@@ -96,130 +158,17 @@ img.left{border: 1px solid #ccc;float: left;margin-right: 15px;padding: 5px;}
 .boardContent caption{display:table-caption}
 .replyModify{margin-top:10px;padding:10px 0;text-align:right}
 
-/* 테이블 내 에디터 출력 영역 */
-.detailTable .boardContent2{font-size:13px}
-.boardContent2{font-family: Arial, Verdana, "Trebuchet MS", sans-serif;font-size: 12px;	color: #333;background-color: #fff;border:1px solid #e6e6e6;border-top:none;padding: 20px;font-size: 13px;line-height: 1.6;}
-.boardContent2 table{font-size:1.0em}
-.boardContent2 blockquote{font-style: italic;font-family: Georgia, Times, "Times New Roman", serif;padding: 2px 0;border-style: solid;border-color: #ccc;border-width: 0;}
-.boardContent2 p,.boardContent blockquote,.boardContent ul{margin:1em 0}
-.boardContent2 blockquote{padding-left: 20px;padding-right: 8px;border-left-width: 5px;}
 
-.boardContent2 a{color: #0782C1;text-decoration:underline}
-.boardContent2 ol,.boardContent2 ul,.boardContent2 dl{
-	/* IE7: reset rtl list margin. (#7334) */
-	*margin-right: 0px;
-	/* preserved spaces for list items with text direction other than the list. (#6249,#8049)*/
-	padding: 0 40px;
-}
-.boardContent2 h1,.boardContent2 h2,.boardContent2 h3,.boardContent2 h4,.boardContent2 h5,.boardContent2 h6{font-weight: normal;line-height: 1.2;}
-.boardContent2 hr{display:block;border: 0px;border-top: 1px solid #ccc;}
 
-img.right{border: 1px solid #ccc;float: right;margin-left: 15px;padding: 5px;}
-img.left{border: 1px solid #ccc;float: left;margin-right: 15px;padding: 5px;}
-.boardContent2 pre{
-	white-space: pre-wrap; /* CSS 2.1 */
-	word-wrap: break-word; /* IE7 */
-	-moz-tab-size: 4;
-	-o-tab-size: 4;
-	-webkit-tab-size: 4;
-	tab-size: 4;
-}
-.marker{background-color: Yellow;}
-.boardContent2 span[lang]{font-style: italic;}
-.boardContent2 figure{
-	text-align: center;
-	border: solid 1px #ccc;
-	border-radius: 2px;
-	background: rgba(0,0,0,0.05);
-	padding: 10px;
-	margin: 10px 20px;
-	display: inline-block;
-}
-.boardContent2 figure > figcaption{
-	text-align: center;
-	display: block; /* For IE8 */
-}
-.boardContent a > img {
-	padding: 1px;
-	margin: 1px;
-	border: none;
-	outline: 1px solid #0782C1;
-}
-.boardContent2 ul{list-style:disc}
-.boardContent2 ul li{list-style:disc}
-.boardContent2 ol{list-style-type:decimal}
-.boardContent2 ol li{list-style-type:decimal}
-.boardContent2 ul ul,.boardContent2 ol ul{list-style-type:circle}
-.boardContent2 ul ul li, .boardContent2 ol ul li{list-style-type:circle}
-.boardContent2 ol ol ul,.boardContent2 ol ul ul,.bbsInfo ul ul ul{list-style-type:square}
-.boardContent2 ol ol ul li, .boardContent2 ol ul ul li, .boardContent2 ul ul ul li{list-style-type:square}
-.boardContent2 em,.boardContent2 address{font-style:italic;}
-.boardContent2 legend, .boardContent2 hr{display:block;}
-.boardContent2 caption{display:table-caption}
+.contents{position:relative;width:1016px;margin:0 auto;padding:11px 12px;background-color:#f3f3f3;overflow:hidden}
 
-/* 답글 */
-.replyDeatil{padding:10px 20px;background-color:#b3b3b3;color:#fff}
-.replyDeatil span{font-weight:600}
-.replyModify a{color:#4d4d4d;}
 
-/* 댓글 */
-.comments{margin-top:20px}
-.commentDetail{position:relative;padding:10px 20px;background:url(../../../image/ko/solution/common/ico/textBallon.gif) no-repeat 0 0 #b3b3b3;color:#fff}
-.commentDetail span.commentNum{font-weight:600}
-.commentDetail span.limitByte{position:absolute;top:10px;right:20px}
-.comment{position:relative;padding:20px 20px 10px;border:1px solid #e6e6e6;border-top:none}
-.comment .commentModifyBtn{position:absolute;bottom:20px;right:20px;}
-.comment .commentModifyBtn a{display:inline-block;height:33px;padding:0 10px;border:1px solid #808080;color:#4d4d4d;font-size:0.857em;line-height:2.8em}
-.commentWriter{padding-right:100px;color:#1a1a1a}
-.commentWriter img{width:18px;height:13px} 
-.commentDate{position:absolute;top:20px;right:20px}
-.comment form{padding-right:98px;}
-.comment form p{padding:0 10px;border:1px solid #e6e6e6;}
-.comment form input{width:100%;height:33px;border:none;color:#333}
-.comment{position:relative;padding:20px 20px;border:1px solid #e6e6e6;border-top:none}
-.comment .commentContent{padding-right:98px;}
-.comment .commentContent div.commentBtn{position:absolute;top:40px;right:20px;}
-.comment .commentContent div a{display:inline-block;height:23px;padding:0 10px;border:1px solid #808080;color:#4d4d4d;font-size:0.857em;line-height:2.0em}
-.commentInput{position:relative;padding:10px 119px 10px 20px;background-color:#f3f3f3;border:1px solid #e6e6e6;border-top:none}
-.commentInput textarea{width:100%;height:58px;border:1px solid #e6e6e6;font-size:1.0em;resize:none}
-.commentInput button{position:absolute;top:11px;right:20px;width:91px;height:60px;border:1px solid #808080;background-color:#fff;color:#4c4c4c;cursor:pointer}
-.boardList{margin-top:20px}
-.boardList ul li{position:relative;padding:10px 103px 10px 103px;border:1px solid #e6e6e6;border-top:none}
-.boardList ul li span{position:absolute;top:10px;color:#6c6c6c}
-.boardList ul li:first-child{border-top:1px solid #e6e6e6}
-.boardList .prevWriting, .boardList .nextWriting{left:20px;padding:0 0 0 20px;}
-.boardList .prevWriting{background:url(../../../image/ko/solution/common/ico/prev.gif) no-repeat 0 50%}
-.boardList .nextWriting{background:url(../../../image/ko/solution/common/ico/next.gif) no-repeat 0 50%}
-.boardList .writeListDate{right:20px}
+.contents{width:1016px;margin:0 auto;padding:11px 12px;background-color:#f3f3f3;overflow:hidden}
+/* buttons(하단버튼) */
+.buttons{margin:40px 0 0;text-align:center}
+.buttons input{height:40px;margin:0 5px;padding:0 19px;border:1px solid #585858;background: none;color:#1a1a1a;cursor:pointer;vertical-align:top;line-height:1.0em;font-size:14px;font-weight:600;overflow:visible}
+.buttons input.searchBtn{padding:0 20px 0 45px;background:url(../../../image/ko/solution/common/ico/searchBtnBg.png) no-repeat 20px 50% #06603c;border:1px solid #06603c;color:#fff}
+.buttons a{height:38px;display:inline-block;margin:0 5px;padding:0 19px;border:1px solid #585858;color:#1a1a1a;font-size:14px;font-weight:600;line-height:38px;vertical-align:top}
 
-@media (min-width:0px) and (max-width:767px){
-	.boardInfo .boardInfoTitle{padding-right:0}
-	.boardInfo .writeInfo{position:relative;top:0;right:0}
-	.boardInfo .writeInfo p{text-align:left}
-	.boardInfo .writeInfo span{position:relative;top:0;left:0;margin-left:5px;}
-	.boardInfo .writeInfo p.status span{margin-left:0}
-	.additionalItems{padding:0}
-	.additionalItems div{width:100%;padding:20px 0}
-	.additionalItems div:first-child{border-bottom:1px solid #e6e6e6}
-	.additionalItems div ul{min-height:50px;padding-left:78px;padding-right:20px}
-	.additionalItems ul.addFiles{background-size:50px 50px;background-position:20px 50%}
-	.additionalItems ul.addUrl{background-size:50px 50px;background-position:20px 50%}
-	.additionalItems div ul li{padding:5px}
-}
 
-/* 사용자정보 */
-.userInfo{position:relative;margin:0 0 20px;padding:20px;background-color:#f3f3f3;border:1px solid #e6e6e6;border-top:1px solid #b3b3b3;overflow:hidden}
-.userInfo .writeInfo{position:absolute;top:20px;right:20px}
-.userInfo .writeInfo p{text-align:right;margin-top:10px}
-.userInfo .writeInfo p:first-child{margin-top:0}
-.userInfo .writeInfo span{position:absolute;top:31px;right:0}
-.userInfo .writeInfo p.status span{position:relative;top:0;right:0;}
-.userInfo .writerInfo{overflow:hidden}
-.userInfo .writerInfo dl{clear:both}
-.userInfo .writerInfo dt{float:left;margin-right:5px;margin-top:10px;font-weight:600}
-.userInfo .writerInfo dt.skip{display:none}
-.userInfo .writerInfo dd{float:left;margin-right:20px;margin-top:10px;}
-.userInfo .writerInfo dd.writer span{color:#1a1a1a}
-.userInfo .writerInfo dd.writerEmail img{width:18px;height:13px;vertical-align:middle;margin-right:5px}
-.userInfo .writerInfo dd.writerIp{margin-right:5px;}
-.userInfo .writerInfo dd.writerIp, .boardInfo .writerInfo dd.writerTime{color:#248bd8}
+<!-- 내용 끝 -->
