@@ -8,6 +8,20 @@ section {
     z-index: 5;
 }
 
+a:hover {
+	
+}
+
+h2 {
+    display: block;
+    font-size: 1.5em;
+    -webkit-margin-before: 0.83em;
+    -webkit-margin-after: 0.83em;
+    -webkit-margin-start: 0px;
+    -webkit-margin-end: 0px;
+    font-weight: bold;
+}
+
 #bts_top_section {
 	margin: 0 auto;
 	padding-bottom: 40px;
@@ -23,6 +37,12 @@ section {
 #divLocation {
     min-height: 20px;
     margin: 0 56px 20px 0;
+}
+
+#divLocation ul li:first-child {
+    margin: 0;
+    padding: 0;
+    background: none;
 }
 
 #divLocation ul li {
@@ -124,6 +144,8 @@ table th {
 }
 
 .paging > a {
+    width: 28px;
+    height: 28px;
     display: inline-block;
     padding: 0;
     border: 1px solid #e6e6e6;
@@ -135,6 +157,7 @@ table th {
     height: 28px;
     vertical-align: middle;
 }
+
 
 
 
