@@ -1,0 +1,52 @@
+@charset "UTF-8";
+
+#leftBar #leftBar8 a{
+	background-color: #555;
+    color: white;
+}
+
+<!--상단 바 시작 -->
+
+#divContentsW{
+	background-color:#fff;
+}
+
+#divContents{
+	margin-left:350px;
+	background-color:#fff;
+	padding-bottom:30px;
+	background-color:#fff;
+}
+
+
+#divTitle{
+	color:#464646;
+	font-size:32px;
+}
+
+#divLocation{
+	min-height:20px;
+	margin:0 56px 20px 0;
+	overflow:hidden;
+}
+
+#divLocation ul li{
+	list-style: none;
+	float:left;
+	padding-left:20px;
+	margin-left:13px;
+	background:url(./../../image/common/home.png) no-repeat 0 3px;
+	font-family:NG, sans-serif;
+	line-height:1.5em;
+}
+
+#divLocation ul li a{
+	color:#454545;
+}
+
+#divLocation ul li:first-child{
+	margin:0;
+	padding:0;
+	background:none;
+}
+<!--상단 바 끝 -->

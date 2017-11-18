@@ -2,7 +2,8 @@
 
 #leftBar{
 	float: left;
-	display: inline;
+	position: absolute;
+	
 }
 #leftBar ul {
     list-style-type: none;

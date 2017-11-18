@@ -10,6 +10,8 @@
 <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
 <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+<link rel="stylesheet" href="${pageContext.request.contextPath }/css/member/myPage.css">
+<link rel="stylesheet" href="${pageContext.request.contextPath }/css/book/bookRentWishList.css">
 <title></title>
 <script type="text/javascript">
 $(document).ready(function() {
@@ -38,7 +40,22 @@ $(document).ready(function() {
 <body>
 <c:import url="${myContextPath}/temp/header.jsp"></c:import>
 
-	<h2>Book Rent List-Book_Order</h2>
+<div>
+	<c:import url="${myContextPath}/WEB-INF/view/member/myPage.jsp"></c:import>
+</div>
+
+
+<div id="divContentsW">
+	<div id="divContents">
+		<h2 id="divTitle">책 대여 찜</h2>
+		<div id="divLocation">
+			<ul>
+				<li class="home"><a href="../index.jsp"><img src="${pageContext.request.contextPath }/image/notice/home.png" alt="HOME"></a></li>
+				<li>&gt;</li>
+				<li>책 대여 찜</li>
+			</ul>
+		</div>
+
 	<form action="./bookRentWishDelete.book" method="POST">
 		<table class="table" border="1">
 			<tr>
@@ -115,6 +132,8 @@ $(document).ready(function() {
 		</ul>
 	</div>
 	
+	</div>
+</div>	
 <c:import url="${myContextPath}/temp/footer.jsp"></c:import>
 </body>
 </html>

@@ -1,11 +1,24 @@
 @charset "utf-8";
 
-.divContents{margin-left: 300px; background-color: red;}
+#leftBar #leftBar1 a{
+	background-color: #555;
+    color: white;
+}
+
+
+#divContents{
+	margin-left:350px; 
+	margin-bottom: 50px;
+}
 .loginW {overflow:hidden;position:relative;width:698px;border:1px solid #b3b3b3}
 .loginW form {float:left;width:100%}
 
-#divTitle{color:#464646;font-size:32px;margin-bottom: 20px;padding: 40px 450px 0 0; margin-left: 300px }
-#divLocation{min-height:20px;margin: 0 56px 20px 0; overflow: hidden;margin-left: 300px}
+#divTitle{color:#464646;font-size:32px;margin-bottom: 20px;}
+#divLocation{min-height:20px;margin: 0 56px 20px 0; overflow: hidden;}
+
+#divLocation ul{
+	list-style: none;
+}
 #divLocation ul li{float: left; padding-left: 20px; margin-left: 13px; font-family:NG, sans-serif;line-height: 1.5em}
 #divLocation ul li a{color:#454545}
 #divLocation ul li:first-child{margin: 0; padding: 0; background: none;}

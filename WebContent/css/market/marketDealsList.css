@@ -1,29 +1,26 @@
 @charset "UTF-8";
 
+#leftBar #leftBar2 a{
+	background-color: #555;
+    color: white;
+}
+
+
 <!--상단 바 시작 -->
 #divContentsW{
 	background-color:#fff;
 }
 
 #divContents{
+	margin-left:350px; 
+	margin-bottom: 50px;
+	background-color:#fff;
 	padding-bottom:30px;
 	background-color:#fff;
 }
-
-#divContents{
-	position:relative;
-	width:1040px;
-	margin:0 auto;
-	padding-bottom:40px !important;
-	background-color:#fff;
-	z-index:5;
-}
-
 #divTitle{
 	color:#464646;
 	font-size:32px;
-	margin-bottom:20px;
-	padding:40px 450px 0 0;
 }
 
 #divLocation{
@@ -31,7 +28,10 @@
 	margin:0 56px 20px 0;
 	overflow:hidden;
 }
-
+#divLocation ul{
+	list-style:none; 
+	
+}
 #divLocation ul li{
 	float:left;
 	padding-left:20px;
