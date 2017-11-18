@@ -11,6 +11,8 @@
 <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
 <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+<link rel="stylesheet" href="${pageContext.request.contextPath }/css/member/myPage.css">
+<link rel="stylesheet" href="${pageContext.request.contextPath }/css/market/marketOrderList.css">
 <script type="text/javascript">
 $(function(){
 	 var kind = '${kind}';
@@ -26,7 +28,21 @@ $(function(){
 <body>
 <c:import url="${myContextPath}/temp/header.jsp"></c:import>
 
-	<h2>MyPage - 중고마켓 판/구매 리스트</h2>
+<div>
+	<c:import url="${myContextPath}/WEB-INF/view/member/myPage.jsp"></c:import>
+</div>
+
+<div id="divContentsW">
+	<div id="divContents">
+		<h2 id="divTitle">중고 책거래 내역</h2>
+		<div id="divLocation">
+			<ul>
+				<li class="home"><a href="../index.jsp"><img src="${pageContext.request.contextPath }/image/notice/home.png" alt="HOME"></a></li>
+				<li>&gt;</li>
+				<li>중고 책거래 내역</li>
+			</ul>
+		</div>
+
 	<div>
 		<form name="frm" class="form-inline" action="./marketOrderList.market"
 			method="post">
@@ -114,6 +130,9 @@ $(function(){
 			</c:if>
 		</ul>
 	</div>
+	
+	</div>
+</div>		
 	
 <c:import url="${myContextPath}/temp/footer.jsp"></c:import>
 </body>

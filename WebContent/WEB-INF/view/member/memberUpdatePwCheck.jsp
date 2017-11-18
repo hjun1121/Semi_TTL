@@ -10,6 +10,7 @@
 <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
 <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+<link rel="stylesheet" href="${pageContext.request.contextPath }/css/member/myPage.css">
 <link rel="stylesheet" href="${pageContext.request.contextPath }/css/member/memberUpdatePwCheck.css">
 <title>회원 정보 수정</title>
 </head>
@@ -17,7 +18,7 @@
 <c:import url="${myContextPath}/temp/header.jsp"></c:import>
 
 <div>
-	<c:import url="./myPage.jsp"></c:import>
+	<c:import url="${myContextPath}/WEB-INF/view/member/myPage.jsp"></c:import>
 </div>
 <div id="divContentsW">
 	<div id="divContents">
