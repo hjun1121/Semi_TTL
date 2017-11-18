@@ -12,11 +12,84 @@
 <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
 <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+<link rel="stylesheet" href="${pageContext.request.contextPath }/css/index/index.css">
 <title>Total Library Page</title>
 </head>
-<c:import url="${myContextPath}/temp/header.jsp"></c:import>
-<body>
 
+<body>
+<c:import url="${myContextPath}/temp/header.jsp"></c:import>
+	
+			<!-- Search -->
+		<input type="hidden" id="_isSSOLogin" name="_isSSOLogin" value="false">
+		<div id="divSearch">
+			<div>
+				<h2 class="skip">통합검색</h2>
+				<div class="searchForm">
+					<ul>
+						<li class="on"><a href="#"><span>제목 검색</span></a>
+							<form name="totalForm" action="/search/tot/result" method="get">	
+								<input type="hidden" id="service_type" name="service_type" value="brief">
+								<fieldset>
+									<legend>제목으로 검색</legend>
+									<span class="searchBox">
+										<input type="text" class="searchInput" id="type1q" name="q" title="제목으로 검색" placeholder="제목으로 도서관 소장자료를 검색할 수 있습니다.">
+										<span class="widesrchBtn"><img  src="./image/index/widesrchDown.gif" style="cursor:pointer"></span>
+									</span>
+									<input type="image" src="./image/index/searchBtn.png" value="검색" class="searchBtn" title="검색">
+								</fieldset>
+							</form>
+						</li>
+						<li><a href="#"><span>저자 검색</span></a>
+							<form name="discoveryForm" action="/eds/brief/discoveryResult" method="get">
+								<input type="hidden" name="st" value="KWRD">
+								<input type="hidden" name="si" value="TOTAL">
+								<fieldset>
+									<legend>저자로 검색</legend>
+									<span class="searchBox">
+										<input type="text" class="searchInput" name="q" title="저자로 검색" placeholder="저자로 도서관 소장자료를 검색할 수 있습니다.">
+									</span>
+									<input type="image" src="./image/index/searchBtn.png" value="검색" class="searchBtn" title="검색">
+								</fieldset>
+							</form>
+						</li>
+						<li><a href="#"><span>출판사 검색</span></a>
+							<form name="discoveryForm" action="/eds/brief/discoveryResult" method="get">
+								<input type="hidden" name="st" value="KWRD">
+								<input type="hidden" name="si" value="TOTAL">
+								<fieldset>
+									<legend>출판사로 검색</legend>
+									<span class="searchBox">
+										<input type="text" class="searchInput" name="q" title="출판사로 검색" placeholder="출판사로 도서관 소장자료를 검색할 수 있습니다.">
+									</span>
+									<input type="image" src="./image/index/searchBtn.png" value="검색" class="searchBtn" title="검색">
+								</fieldset>
+							</form>
+						</li>
+					</ul>
+					
+					
+				</div>
+				<div class="etcOpiton">
+					<ul>
+						<li><a href="#">상세검색</a></li>
+						<li style="display: none"><a href="#">상세검색</a></li>
+					</ul>
+				</div>
+				<div class="shortcut">
+					<ul>
+						<li><a href="#"></a></li>
+						<li><a href="#"></a></li>
+						<li><a href="#"></a></li>
+						<li><a href="#"></a></li>
+						<li><a href="#"></a></li>
+						<li><a href="#"></a></li>
+					</ul>
+				</div>
+				
+			</div>
+		</div>
+		<!-- //Search -->
+	
 	
 	<h2>김앤신(통합포털)</h2>
 	<p><a href="./book/bookTotalSearch.book">Book_search</a>
