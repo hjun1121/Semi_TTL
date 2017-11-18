@@ -13,8 +13,6 @@
 .footer1 div, .footer1 span, .footer1 ul, .footer1 li {
 	list-style:none;
 	text-decoration: none;
-    margin: 0;
-    padding: 0;
 }
 
 /* footer1 */
@@ -49,7 +47,7 @@
     word-wrap: break-word;
 }
 
-.footer1 ul, menu, dir {
+.footer1 ul,.footer1 menu,.footer1 dir {
 
     display: block;
     list-style-type: disc;
@@ -74,8 +72,7 @@
 	margin-left:0;
 }
 
-.sns li img{
-
+.sns li .footer1 img{
 	vertical-align:top;
 }
 

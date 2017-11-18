@@ -37,6 +37,7 @@
 }
 
 #divLocation ul li{
+	list-style:none;
 	float:left;
 	padding-left:20px;
 	margin-left:13px;
