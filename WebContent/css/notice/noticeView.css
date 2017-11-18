@@ -1,0 +1,171 @@
+@charset "UTF-8";
+
+*{
+	margin: 0;
+	padding: 0;
+}
+
+<!--상단 바 시작 -->
+#divContentsW{
+	background-color:#fff;
+}
+
+#divContents{
+	padding-bottom:30px;
+	background-color:#fff;
+}
+
+#divContents{
+	position:relative;
+	width:1040px;
+	margin:0 auto;
+	padding-bottom:40px !important;
+	background-color:#fff;
+	z-index:5;
+}
+
+#divTitle{
+	color:#464646;
+	font-size:32px;
+	margin-bottom:20px;
+	padding:40px 450px 0 0;
+}
+
+#divLocation{
+	min-height:20px;
+	margin:0 56px 20px 0;
+	overflow:hidden;
+}
+
+#divLocation ul li{
+	list-style:none;
+	float:left;
+	padding-left:20px;
+	margin-left:13px;
+	background:url(../../../../image/ko/local/locationBg.png) no-repeat 0 3px;
+	font-family:NG, sans-serif;
+	line-height:1.5em;
+}
+
+#divLocation ul li a{
+	color:#454545;
+}
+
+#divLocation ul li:first-child{
+	margin:0;
+	padding:0;
+	background:none;
+}
+<!--상단 바 끝 -->
+
+
+<!-- 내용 시작 -->
+
+.userInfo .writerInfo dd.writerIp, .boardInfo .writerInfo dd.writerTime{color:#248bd8}
+/* 게시판 상세 */
+.boardInfo{position:relative;padding:20px;background-color:#f3f3f3;border:1px solid #e6e6e6;border-top:1px solid #b3b3b3}
+.boardInfo .boardInfoTitle{padding-right:100px;color:#1a1a1a;font-size:1.429em;font-weight:600}
+.boardInfo .writeInfo{position:absolute;top:20px;right:20px}
+.boardInfo .writeInfo p{text-align:right;margin-top:10px}
+.boardInfo .writeInfo p:first-child{margin-top:0}
+.boardInfo .writeInfo span{position:absolute;top:31px;right:0}
+.boardInfo .writeInfo p.status span{position:relative;top:0;right:0;}
+.boardInfo .writerInfo{overflow:hidden}
+.boardInfo .writerInfo dl{clear:both}
+.boardInfo .writerInfo dt{float:left;margin-right:5px;margin-top:10px;font-weight:600}
+.boardInfo .writerInfo dt.skip{display:none}
+.boardInfo .writerInfo dd{float:left;margin-right:20px;margin-top:10px;}
+.boardInfo .writerInfo dd.writer span{color:#1a1a1a}
+.boardInfo .writerInfo dd.writerEmail img{width:18px;height:13px;vertical-align:middle;margin-right:5px}
+.boardInfo .writerInfo dd.writerIp{margin-right:5px;}
+.boardInfo .writerInfo dd.writerIp, .boardInfo .writerInfo dd.writerTime{color:#248bd8}
+
+.userInfo .writerInfo dd.writerIp, .boardInfo .writerInfo dd.writerTime{color:#248bd8}
+
+
+.userInfo .writeInfo{position:absolute;top:20px;right:20px}
+.userInfo .writeInfo p{text-align:right;margin-top:10px}
+.userInfo .writeInfo p:first-child{margin-top:0}
+.userInfo .writeInfo span{position:absolute;top:31px;right:0}
+.userInfo .writeInfo p.status span{position:relative;top:0;right:0;}
+.userInfo .writerInfo{overflow:hidden}
+.userInfo .writerInfo dl{clear:both}
+.userInfo .writerInfo dt{float:left;margin-right:5px;margin-top:10px;font-weight:600}
+.userInfo .writerInfo dt.skip{display:none}
+.userInfo .writerInfo dd{float:left;margin-right:20px;margin-top:10px;}
+.userInfo .writerInfo dd.writer span{color:#1a1a1a}
+.userInfo .writerInfo dd.writerEmail img{width:18px;height:13px;vertical-align:middle;margin-right:5px}
+.userInfo .writerInfo dd.writerIp{margin-right:5px;}
+.userInfo .writerInfo dd.writerIp, .boardInfo .writerInfo dd.writerTime{color:#248bd8}
+
+
+.boardContent{font-family: Arial, Verdana, "Trebuchet MS", sans-serif;font-size: 12px;	color: #333;background-color: #fff;border:1px solid #e6e6e6;border-top:none;padding: 20px;font-size: 13px;line-height: 1.6;}
+.boardContent table{font-size:1.0em}
+.boardContent blockquote{font-style: italic;font-family: Georgia, Times, "Times New Roman", serif;padding: 2px 0;border-style: solid;border-color: #ccc;border-width: 0;}
+.boardContent p,.boardContent blockquote,.boardContent ul{margin:1em 0}
+.boardContent blockquote{padding-left: 20px;padding-right: 8px;border-left-width: 5px;}
+
+.boardContent a{color: #0782C1;text-decoration:underline}
+.boardContent ol,.boardContent ul,.boardContent dl{
+	/* IE7: reset rtl list margin. (#7334) */
+	*margin-right: 0px;
+	/* preserved spaces for list items with text direction other than the list. (#6249,#8049)*/
+	padding: 0 40px;
+}
+
+.boardContent h1,.boardContent h2,.boardContent h3,.boardContent h4,.boardContent h5,.boardContent h6{font-weight: normal;line-height: 1.2;}
+.boardContent hr{display:block;border: 0px;border-top: 1px solid #ccc;}
+
+
+.boardContent pre{
+	white-space: pre-wrap; /* CSS 2.1 */
+	word-wrap: break-word; /* IE7 */
+	-moz-tab-size: 4;
+	-o-tab-size: 4;
+	-webkit-tab-size: 4;
+	tab-size: 4;
+}
+
+.boardContent span[lang]{font-style: italic;}
+.boardContent figure{
+	text-align: center;
+	border: solid 1px #ccc;
+	border-radius: 2px;
+	background: rgba(0,0,0,0.05);
+	padding: 10px;
+	margin: 10px 20px;
+	display: inline-block;
+}
+.boardContent figure > figcaption{
+	text-align: center;
+	display: block; /* For IE8 */
+}
+.boardContent a > img {
+	padding: 1px;
+	margin: 1px;
+	border: none;
+	outline: 1px solid #0782C1;
+}
+.boardContent ul{list-style:disc}
+.boardContent ul li{list-style:disc}
+.boardContent ol{list-style-type:decimal}
+.boardContent ol li{list-style-type:decimal}
+.boardContent ul ul,.boardContent ol ul{list-style-type:circle}
+.boardContent ul ul li, .boardContent ol ul li{list-style-type:circle}
+.boardContent ol ol ul,.boardContent ol ul ul,.bbsInfo ul ul ul{list-style-type:square}
+.boardContent ol ol ul li, .boardContent ol ul ul li, .boardContent ul ul ul li{list-style-type:square}
+.boardContent em,.boardContent address{font-style:italic;}
+.boardContent legend, .boardContent hr{display:block;}
+.boardContent caption{display:table-caption}
+.replyModify{margin-top:10px;padding:10px 0;text-align:right}
+.contents{position:relative;width:1016px;margin:0 auto;padding:11px 12px;background-color:#f3f3f3;overflow:hidden}
+.contents{width:1016px;margin:0 auto;padding:11px 12px;background-color:#f3f3f3;overflow:hidden}
+
+/* buttons(하단버튼) */
+.buttons{margin:40px 0 0;text-align:center}
+.buttons input{height:40px;margin:0 5px;padding:0 19px;border:1px solid #585858;background: none;color:#1a1a1a;cursor:pointer;vertical-align:top;line-height:1.0em;font-size:14px;font-weight:600;overflow:visible}
+.buttons input.searchBtn{padding:0 20px 0 45px;background:url(../../../image/ko/solution/common/ico/searchBtnBg.png) no-repeat 20px 50% #06603c;border:1px solid #06603c;color:#fff}
+.buttons a{height:38px;display:inline-block;margin:0 5px;padding:0 19px;border:1px solid #585858;color:#1a1a1a;font-size:14px;font-weight:600;line-height:38px;vertical-align:top}
+
+
+<!-- 내용 끝 -->

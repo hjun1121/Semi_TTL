@@ -1,15 +1,28 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
-<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>    
+ <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>    
 <!DOCTYPE html>
 <html>
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+<link rel="stylesheet" href="${pageContext.request.contextPath }/css/temp/header.css">
+<link rel="stylesheet" href="${pageContext.request.contextPath }/css/temp/footer.css">
+<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+
+<link rel="stylesheet" href="${pageContext.request.contextPath }/css/member/memberUpdate.css">
 <script src="http://dmaps.daum.net/map_js_init/postcode.v2.js"></script>
-<title>Insert title here</title>
+<title>회원 정보 수정</title>
+</head>
 <script type="text/javascript">
 	$(function(){
+		if('${DTO.gender}' == 'f'){
+			$("#gender").val("여자");
+		}else{
+			$("#gender").val("남자");
+		}
+		
 		var kind = '${DTO.kind}';
 		 $(".kind").each(function(){
 			 if($(this).val() == kind) {
@@ -42,8 +55,9 @@
 		//pw 확인 체크
 			$("#pw1").change(function(){
 				$("#ch_pw").html('<p style="color: red">pw 확인해주세요</p>');
-				$("#pw2").val("");
-				$("#pwc").attr("style","display: block;");
+				$("#pw2").val(""); 
+				$("#pwc").removeAttr("style");
+
 				pwCheck = false;
 			});
 			
@@ -206,75 +220,142 @@
 		});
 		
 	});
-	
-
 </script>
 </head>
 <body>
-	<h2>회원 정보 수정</h2>
-	<form action="./memberUpdate.member" method="post" name="frm">
-		<p>id<input type="text" name="id" value=${DTO.id } readonly="readonly"></p>
-		<p>pw<input type="password" name="pw" id="pw1" value=${DTO.pw } ></p>
-		<p id="pwc" style="display: none;">pw확인<input type="password" id="pw2"></p>
-		<div id="ch_pw"></div>
-		<p>name<input type="text" name="name" value=${DTO.name } readonly="readonly"></p>
-		<p>birth<input type="date" name="birth" value=${DTO.birth } ></p>
-		<p>gender<input type="text" name="gender" value=${DTO.gender } readonly="readonly"></p>
+
+<c:import url="${myContextPath}/temp/header.jsp"></c:import>
+<div>
+	<c:import url="./myPage.jsp"></c:import>
+</div>
+
+<form action="./memberUpdate.member" method="post" id="frm" name="frm">
+<div id="divContentsW">
+		<div id="divContents">
+			<h2 id="divTitle">개인정보 관리</h2>
+			<div id="divLocation">
+				<ul>
+					<li class="home"><a href="#"><img src="${pageContext.request.contextPath }/image/common/home.png" alt="HOME"></a></li>
+					<li>&gt;</li>
+					<li>MY PAGE</li>
+					<li>&gt;</li>
+					<li>개인정보 관리</li>
+				</ul>
+			</div>
 		
-		<input type="text" id="postCode" name="postCode" placeholder="우편번호" readonly="readonly" value=${DTO.postCode }>
-		<input type="button" id="addrCheck" value="우편번호 찾기" ><br>
-		<input type="text" id="addr" name="addr" placeholder="주소" readonly="readonly" value="${DTO.addr }">
-		<input type="text" id="addr2" name="addr2" placeholder="나머지주소 " value="${DTO.addr2 }">	
-		
-		<p>phone
-			<select id="f">
-				<option value="010" class="num">010</option>
-				<option value="011" class="num">011</option>
-				<option value="031" class="num">031</option>
-				<option value="02" class="num">02</option>
-			</select>
-			-<input type="text" id="m" value=${m } >-<input type="text" id="l" value=${l } ></p>
-		<input type="hidden" id="phone" name="phone" value=${DTO.phone }>
-		
-		<p><input id="email1" type="text" value=${email1 }>@<input type="text" id="email2" value=${email2 }>
-			<select id = "mailList">
-				<option class="email" value="0">직접입력</option>
-				<option class="email" value="naver.com">naver.com</option>
-				<option class="email" value="daum.net">daum.net</option>
-				<option class="email" value="gmail.com">gmail.com</option>
-				<option class="email" value="hotmail.com">hotmail.com</option>
-			</select>
-			<input type="hidden" id="email" name="email" value=${DTO.email } >
-		<input type="button" style="display:none;" id="mailCheck" value="이메일 인증"></p>
-		<div id="ch_email"></div>
-		
-		<p>library
-			<select name="library" >
-				<option class="library" value="1">기흥구</option>
-				<option class="library" value="2">송파구</option>
-				<option class="library" value="3">장안구</option>
-				<option class="library" value="4">분당구</option>
-			</select>
-		</p>
-		
-		<c:if test="${sessionScope.member.kind ne 10 }">
-			<c:if test="${member.kind eq 1}">
-				<p>kind<input type="text" value="일반사용자" readonly="readonly"></p>
-				<input type="hidden" name="kind" value=${DTO.kind } readonly="readonly">
-			</c:if>
-		</c:if>
-		
-		<c:if test="${sessionScope.member.kind eq 10 }">
-			<select name="kind">
-				<option class="kind" value=10>운영자</option>
-				<option class="kind" value=1>일반</option>
-				<option class="kind" value=0>블랙</option>
-			</select>
-		</c:if>
-		
-		<input type ="button" id="btn" value="정보 수정">
-		<a href="./memberDelete.member?id=${DTO.id }"><input type="button" value="회원 탈퇴"></a>
-		<a href="../index.jsp"><input type="button" value="메인으로"></a>
-	</form>	
+		<div>
+			<table class="revisionTable">
+				<tr>
+					<th>아이디</th>
+					<td><input type="text" class="noneBorder" name="id" value=${DTO.id } readonly="readonly"></td>
+				</tr>
+				<tr>
+					<th>비밀번호</th>
+					<td><input type="password" class="useBorder" name="pw1" id="pw1"value=${DTO.pw }></td>
+				</tr>
+				<tr id="pwc" style="display: none;">
+					<th>비밀번호 확인</th>
+					<td><input type="password" class="useBorder" id="pw2"><div id="ch_pw"></div></td>
+				</tr>
+				<tr>
+					<th>이름</th>
+					<td><input type="text" class="noneBorder" value=${DTO.name } readonly="readonly"></td>
+				</tr>
+				<tr>
+					<th>생년월일</th>
+					<td><input type="date" class="useBorder" name="birth" value=${DTO.birth }></td>
+				</tr>
+				<tr>
+					<th>성별</th>
+					<td>
+							<input type="text" class="noneBorder" id="gender" name="gender" value="" readonly="readonly">
+					</td>
+				</tr>
+				<tr>
+					<th>주소</th>
+					<td>
+						<input type="text" class="useBorder" id="postCode" name="postCode" size="10" placeholder="우편번호" readonly="readonly" value=${DTO.postCode }>
+						<input type="button" id="addrCheck" value="우편번호 찾기" class="btnType4" readonly="readonly"><br><br>
+						<input type="text" class="useBorder" id="addr" name="addr" placeholder="주소" readonly="readonly" size="60" value="${DTO.addr }">
+						<input type="text" class="useBorder" id="addr2" name="addr2" placeholder="나머지주소" size="40" value="${DTO.addr2 }">
+					</td>
+				</tr>
+				<tr>
+					<th>전화</th>
+					<td>
+						<select id="f" class="sel_size">
+							<option value="010" class="num">010</option>
+		   					<option value="011" class="num">011</option>
+		   					<option value="031" class="num">031</option>
+		   					<option value="02" class="num">02</option>
+						</select>
+					<input type="text" id="m" name="m" value=${m } size="10" class="useBorder"> <b> - </b> <input class="useBorder" size="10" type="text" id="l" name="l" value=${l }>
+					<input type="hidden" id="phone" name="phone" value=${DTO.phone }>
+					</td>
+				</tr>
+				<tr>
+					<th>이메일</th>
+					<td>
+					<input type="text" id="email1" name="email1" class="useBorder" value=${email1 } size="15"><b> @ </b><input type="text" size="15" class="useBorder"  id="email2" name="email2" value=${email2 }>
+						<select id="mailList" class="sel_size">
+							<option value="0" class="email">직접입력</option>
+		   					<option value="naver.com" class="email">naver.com</option>
+		   					<option value="daum.net" class="email">daum.net</option>
+		   					<option value="gmail.com" class="email">gmail.com</option>
+		   					<option value="hotmail.com" class="email">hotmail.com</option>
+						</select>
+					<input type="button" style="display: none;" id="mailCheck" name="mailCheck" class="btnType3" value="이메일인증">
+					<input type="hidden" id="email" name="email" value=${DTO.email }>
+					</td>
+				</tr>
+				<tr>
+					<th>도서관</th>
+					<td>
+					<select name="library" class="sel_size">
+						<option value="1" class="library">기흥구</option>
+	   					<option value="2" class="library">송파구</option>
+	   					<option value="3" class="library">장안구</option>
+	   					<option value="4" class="library">분당구</option>
+					</select>
+					</td>
+				</tr>
+				<tr>
+				<c:if test="${sessionScope.member.kind ne 10 }">
+					<c:if test="${member.kind eq 1}">
+						<th>등급</th>
+						<td><input type="text" class="useBorder" class="noneBorder" value="일반사용자" readonly="readonly"></td>
+					</c:if>
+				</c:if>
+				<c:if test="${sessionScope.member.kind eq 10 }">
+					<th>등급</th>
+					<td>
+						<select name="kind" class="sel_size">
+						<option class="kind" value=10>운영자</option>
+						<option class="kind" value=1>일반</option>
+						<option class="kind" value=0>블랙</option>
+						</select>
+					</td>
+				</c:if>
+			</table>
+			
+			<div class="btn">
+			<input type="submit" class="btnType5" id="btn" name="btn" value="정보 수정">
+				<span>
+					<a href="./memberDelete.member?id=${DTO.id }">
+						<input type="button" class="btnType5" value="회원탈퇴">
+					</a>
+				</span>
+				<span>
+					<a href="../index.jsp">
+						<input type="button" class="btnType5" value="메인으로">
+					</a>
+				</span>
+			</div>
+		</div>
+	</div>
+</div>
+</form>
+
+<c:import url="${myContextPath}/temp/footer.jsp"></c:import>
 </body>
 </html>

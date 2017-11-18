@@ -1,1 +1,217 @@
 @charset "UTF-8";
+
+a:hover {
+	text-decoration: none;
+}
+
+section {
+    width: 1040px;
+    margin: 0 auto;
+    padding-bottom: 40px !important;
+    background-color: #fff;
+}
+
+h2 {
+    display: block;
+    font-size: 1.5em;
+    -webkit-margin-before: 0.83em;
+    -webkit-margin-after: 0.83em;
+    -webkit-margin-start: 0px;
+    -webkit-margin-end: 0px;
+    font-weight: bold;
+}
+
+h3 {
+    display: block;
+    font-size: 1.17em;
+    -webkit-margin-before: 1em;
+    -webkit-margin-after: 1em;
+    -webkit-margin-start: 0px;
+    -webkit-margin-end: 0px;
+    font-weight: bold;
+}
+
+body {
+    font-family: NanumBarunGothic,sans-serif;
+    font-size: 13px;
+    color: #4d4d4d;
+    word-wrap: break-word;
+}
+
+#divTitle {
+    color: #464646;
+    font-size: 32px;
+    font-weight: bold;
+    margin-bottom: 20px;
+    padding: 40px 450px 0 0;	
+}
+
+#divLocation {
+    min-height: 20px;
+    margin: 0 56px 20px 0;
+}
+
+#divLocation ul li:first-child {
+    margin: 0;
+    padding: 0;
+    background: none;
+}
+
+#divLocation ul li {
+    float: left;
+    padding-left: 20px;
+    margin-left: 13px;
+    font-family: NG, sans-serif;
+    line-height: 1.5em;
+}
+
+.profile {
+    padding: 30px;
+    margin-bottom: 40px;
+    border: 1px solid #dbdbdb;
+}
+
+.profile .profileHeader h3 {
+	margin-top: 0;
+    margin-bottom: 5px;
+    font-size: 25px;
+    color: #004640;
+    line-height: 1.2;
+    font-weight: bold;
+}
+
+.profile .profileHeader {
+    margin-bottom: 20px;
+}
+
+.profile .profileHeader p {
+    font-size: 15px;
+    color: #737373;
+}
+
+.profile .profileContent {
+	padding-top: 30px;
+    position: relative;
+    overflow: hidden;
+    padding-right: 198px;
+    min-height: 350px;
+}
+
+.profile .table {
+    width: 100%;
+    word-break: break-all;
+}
+
+table {
+    width: 100%;
+    border: none;
+    border-collapse: collapse;
+}
+/* //////////book_img////////////// */
+.profile .briefInfo {
+    position: absolute;
+    right: 0;
+    top: 0;
+    width: 143px;
+    padding: 0 0 0 0;
+}
+
+dl, dt, dd, ul {
+    list-style: none;
+    margin: 0;
+    padding: 0;
+}
+
+.profile .briefInfo dd.bookImg img {
+    width: 143px;
+    height: 204px;
+}
+
+.profile .briefInfo dd.bookImg {
+    margin-bottom: 10px;
+    width: 141px;
+    height: 202px;
+}
+/*///////////////////////////////////*/
+.profile #moreInfo th, .profile #dlInfo th {
+    width: 18%;
+    padding-bottom: 10px;
+}
+
+.profile th {
+    background: none;
+    text-align: right;
+}
+
+.profile th, .profile td {
+    height: 28px;
+    vertical-align: top;
+    line-height: 2;
+    color: #4d4d4d;
+}
+
+.profile #moreInfo td, .profile #dlInfo td {
+    padding: 0 0 0 20px;
+}
+
+.profile th, .profile td {
+    height: 28px;
+    vertical-align: top;
+    line-height: 2;
+    color: #4d4d4d;
+}
+
+.searchInfo {
+    position: relative;
+    padding-bottom: 40px;
+}
+
+.searchInfo .searchHeader {
+    height: 40px;
+    padding: 0 17px 0 20px;
+    background: #06603c;
+}
+
+.searchInfo .searchHeader h3 {
+    color: #fff;
+    font-size: 16px;
+    line-height: 42px;
+    font-weight: bold;
+}
+
+.listTable {
+    clear: both;
+    border-top: 1px solid #b3b3b3;
+    border-bottom: 1px solid #b3b3b3;
+    text-align: center;
+}
+
+.searchTable tr th {
+    padding: 10px 10px;
+}
+
+.listTable tr th {
+    height: 30px;
+    text-align: center;
+}
+
+table th {
+    border: none;
+    background-color: #f3f3f3;
+    color: #727272;
+}
+
+.searchTable tr td {
+    padding: 13px 10px;
+    line-height: 1.2;
+}
+
+.listTable td {
+	text-align: center;
+    border-top: 1px solid #e6e6e6;
+}
+
+form {
+	text-align: center;
+}
+

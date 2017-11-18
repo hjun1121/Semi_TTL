@@ -1,0 +1,158 @@
+@charset "UTF-8";
+*{
+	margin: 0;
+	padding: 0;
+}
+
+
+#footerAll address {
+    display: block;
+	font-style:normal;
+}
+
+.footer1 div, .footer1 span, .footer1 ul, .footer1 li {
+	list-style:none;
+	text-decoration: none;
+}
+
+/* footer1 */
+.footer1 {
+    position: relative;
+    height: 55px;
+    background-color: #033823;
+}
+.footer1 > div{
+	position:relative;
+	width:1040px;
+	margin:0 auto;
+}
+
+.footer1 .top{
+	position:absolute;
+	top:0;
+	right:0;
+	width:55px;
+	height:55px;
+	background:url(../../image/footer/top.png) no-repeat 50% 50% #4a994a;
+	text-indent:-9999px;overflow:hidden;
+}
+
+.footer1 div {
+    display: block;
+}
+.footer1 body {
+    font-family: NanumBarunGothic,sans-serif;
+    font-size: 13px;
+    color: #4d4d4d;
+    word-wrap: break-word;
+}
+
+.footer1 ul,.footer1 menu,.footer1 dir {
+
+    display: block;
+    list-style-type: disc;
+ 
+}
+
+/* sns */
+.sns{
+	float:left;
+	margin-top:12px;
+}
+
+.sns li{
+
+	float:left;
+	margin-left:8px;
+
+}
+
+.sns li:first-child{
+
+	margin-left:0;
+}
+
+.sns li .footer1 img{
+	vertical-align:top;
+}
+
+/* privacy */
+.privacy{
+	float:right;
+	margin:22px 78px 0 0;
+}
+.privacy li{
+	float:left;
+	margin-left:13px;
+	padding:1px 0 1px 15px;
+	background:url(../../image/footer/bar3.gif) no-repeat 0 1px;
+}
+
+
+.privacy li a{
+
+	color:#a0a5a9;
+	font-weight:bold;
+}
+
+.privacy li a:hover{
+	
+	text-decoration: none;
+}
+
+.privacy li.person a{
+
+	color:#bcc922;
+}
+
+.privacy li.tel{
+
+	padding-left:21px;
+	background:url(../../image/footer/telBg.png) no-repeat 0 0;
+}
+
+
+
+/* footer2 */
+.footer2{
+	width:1040px;
+	height:38px;
+	margin:0 auto;
+	padding:30px 0;
+}
+
+.footer2 .footerLogo img{
+	vertical-align:top;
+}
+
+.footer2 .footerLogo{
+	float:left;
+}
+
+.footer2 .footerLogo img{
+	vertical-align:top;
+}
+
+
+
+.footer2 .address{
+	float:left;
+	margin:4px 0 0 25px;
+	color:#8b8b8b;
+	font-family:"나눔고딕","NanumGothic",NG, sans-serif;
+	font-size:12px
+}
+
+.footer2 .address a{
+	display:inline-block;
+	margin-left:5px;
+	color:#bcc922;
+}
+.address a:hover{
+	text-decoration: none;
+}
+.address p{
+	margin-top:5px
+}
+
+

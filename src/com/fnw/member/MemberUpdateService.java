@@ -31,7 +31,6 @@ public class MemberUpdateService implements Action {
 				String f = ar2[0];
 				String m = ar2[1];
 				String l = ar2[2];
-				
 				request.setAttribute("DTO", memberDTO);
 				request.setAttribute("email1", email1);
 				request.setAttribute("email2", email2);
@@ -51,7 +50,7 @@ public class MemberUpdateService implements Action {
 			try {
 				memberDTO = memberDAO.selectOne(request.getParameter("id"));
 				memberDTO.setId(request.getParameter("id"));
-				memberDTO.setPw(request.getParameter("pw"));
+				memberDTO.setPw(request.getParameter("pw1"));
 				memberDTO.setBirth(Date.valueOf(request.getParameter("birth")));
 				memberDTO.setPostCode(request.getParameter("postCode"));
 				memberDTO.setAddr(request.getParameter("addr"));

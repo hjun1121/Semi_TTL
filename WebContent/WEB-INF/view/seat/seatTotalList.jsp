@@ -1,11 +1,15 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
 	pageEncoding="UTF-8"%>
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>  
 <!DOCTYPE html>
-<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <html>
 <head>
-<meta http-equiv="Content-Type" content="text/html; charset=EUC-KR">
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+<link rel="stylesheet" href="${pageContext.request.contextPath }/css/temp/header.css">
+<link rel="stylesheet" href="${pageContext.request.contextPath }/css/temp/footer.css">
+<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
 <script type="text/javascript">
 $(function(){
 		var y = '${year}';
@@ -32,6 +36,9 @@ $(function(){
 </script>
 </head>
 <body>
+<c:import url="${myContextPath}/temp/header.jsp"></c:import>
+
+
 	<h2>MyPage - seatTotal List</h2>
 	<div>
 	<form name="frm" class="form-inline" action="./seatTotalList.seat" method="post">
@@ -177,5 +184,7 @@ $(function(){
 			</c:if>
 		</ul>
 	</div>
+	
+<c:import url="${myContextPath}/temp/footer.jsp"></c:import>
 </body>
 </html>

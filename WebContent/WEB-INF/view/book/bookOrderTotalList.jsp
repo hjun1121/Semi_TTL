@@ -6,12 +6,15 @@
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
-  <link rel="stylesheet" href="https://maxcdn.bootstdapcdn.com/bootstdap/3.3.7/css/bootstdap.min.css">
-  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
-  <script src="https://maxcdn.bootstdapcdn.com/bootstdap/3.3.7/js/bootstdap.min.js"></script>
+<link rel="stylesheet" href="${pageContext.request.contextPath }/css/temp/header.css">
+<link rel="stylesheet" href="${pageContext.request.contextPath }/css/temp/footer.css">
+<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
 <title>Insert title here</title>
 </head>
 <body>
+<c:import url="${myContextPath}/temp/header.jsp"></c:import>
 
 	<h3>Book_Order_Total_List</h3>
 	<div style = "height: 50px"></div>
@@ -51,5 +54,7 @@
 			<button style = "float: right;" class = "btn btn-default" type = "submit">신청하기</button>		
 		</form>
 	</section>
+	
+<c:import url="${myContextPath}/temp/footer.jsp"></c:import>
 </body>
 </html>

@@ -6,7 +6,14 @@
 <html>
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+<link rel="stylesheet" href="${pageContext.request.contextPath }/css/notice/detail.css">
+<link rel="stylesheet" href="${pageContext.request.contextPath }/css/notice/noticeList.css">
+<link rel="stylesheet" href="${pageContext.request.contextPath }/css/member/memberJoin.css">
+<link rel="stylesheet" href="${pageContext.request.contextPath }/css/temp/header.css">
+<link rel="stylesheet" href="${pageContext.request.contextPath }/css/temp/footer.css">
+<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
 <script type="text/javascript">
 $(function(){
 		var kind = '${kind}';
@@ -20,73 +27,144 @@ $(function(){
 <title>Notice</title>
 </head>
 <body>
-	<div>
-		<form name="frm" class="form-inline" action="./noticeList.notice"
-			method="post">
-			<div>
-				<span> <select name="kind" id="kind">
+<c:import url="${myContextPath }/temp/header.jsp"></c:import>
+
+	<div id="divContentsW">
+		<div id="divContents">
+			
+			<h2 id="divTitle">공지사항</h2>
+			<div id="divLocation">
+				<ul>
+					<li class="home"><a href="#"><img src="${pageContext.request.contextPath }/image/notice/home.png" alt="HOME"></a></li>
+					<li>&gt;</li>
+					<li>공지사항</li>
+				</ul>
+			</div>
+			
+
+	
+	<!-- 검색 시작  -->
+	
+		<form name="frm" class="form-inline" action="./noticeList.notice" method="post">
+			<fieldset>
+				<legend>검색</legend>
+				
+				<span class="bunch">
+					<label class="skip">검색어</label>
+					<select name="kind" id="kind" class="selectBox1">
 						<option class="kind" value="title">제목</option>
 						<option class="kind" value="writer">글쓴이</option>
 						<option class="kind" value="contents">내용</option>
-				</select> <input type="text" class="form-control" id="search"
-					placeholder="Enter" name="search" value=${search }>
+					</select> 
+					<input type="text" class="inputTextType3 sw" id="search" maxlength="100" title="검색어" placeholder="검색어를 입력하세요" name="search" value=${search }>
 				</span>
-				<div class="form-group">
-					<div class="col-sm-offset-2 col-sm-10">
-						<input type="submit" class="btn btn-default" value="Search">
-					</div>
-				</div>
-			</div>
+					 <input type="submit" class="btnType5" value="검색">
+			 </fieldset>
 		</form>
-	</div>
-	<h1>${fn:toUpperCase(requestScope.notice)}</h1>
-	<table class="table table-hover">
-		<tr>
-			<td>num</td>
-			<td>title</td>
-			<td>writer</td>
-			<td>date</td>
-			<td>hit</td>
-		</tr>
-		<c:forEach items="${requestScope.list}" var="dto">
 		
-		<tr>
-			<td>${dto.num}</td>
-			<td>
-			<c:catch>
-			<c:forEach begin="0" end="${dto.depth-1}">
-				--
-			</c:forEach>
-			</c:catch>
-			<a href="./${requestScope.notice}View.${requestScope.notice}?num=${dto.num}">${dto.title}</a>
-			</td>
-			<td>${dto.writer}</td>
-			<td>${dto.reg_date}</td>
-			<td>${dto.hit}</td>
-		</tr>
-		</c:forEach>
-	</table>
+		<br>
+	<!-- 검색 끝 -->
+
+	<!-- list 시작 -->
+	<div class="listTable">
+			<table class="mobileTable tablet">
+				<caption>게시판 목록</caption>
+				<thead>
+					<tr>
+						<th class="footable-first-column">No.</th>
+						<th data-class="expand">제목</th>
+						<th style="display: table-cell;">작성자</th>
+						<th style="display: table-cell;">작성일</th>
+						<th style="display: table-cell;">조회수</th>
+						<th class="footable-last-column" style="display: table-cell;">첨부파일</th>
+					</tr>
+				</thead>
+				<c:forEach items="${requestScope.list}" var="dto">
+				<tbody>
+					<!-- <tr class="always">
+						<td class="alwaysNum footable-first-column">
+						<span>공지</span>
+						</td>
+						<td class="title expand">
+							<a href="#">
+								<strong>도서관 소식지 제69호(2017 가을) 발행</strong>
+							</a>&nbsp;
+						</td>
+						<td class="writer" style="display: table-cell;">
+							이인영
+						</td>
+						<td class="reportDate" style="display: table-cell;">2017-09-11</td>
+						<td class="view_cnt" style="display: table-cell;">156</td>
+						<td class="footable-last-column" style="display: table-cell;">
+							&nbsp;	
+						</td>
+					</tr> -->
+					<tr>
+						<td class="num footable-first-column">${dto.num}</td>
+						<td class="title expand">
+							<c:catch>
+							<c:forEach  begin="0" end="${dto.depth-1}">
+								--
+							</c:forEach>
+							</c:catch>
+							<a href="./noticeView.notice?num=${dto.num}">${dto.title}</a>&nbsp;
+						</td>
+						<td class="writer" style="display: table-cell;">
+							${dto.writer}
+						</td>
+						<td class="reportDate" style="display: table-cell;">${dto.reg_date}</td>
+						<td class="view_cnt" style="display: table-cell;">${dto.hit}</td>
+						<td class="footable-last-column" style="display: table-cell;">
+							<img class="addedFile" src="${pageContext.request.contextPath }/image/notice/clip.png" title="첨부파일" alt="첨부파일">
+						</td>
+					</tr>	
+				</tbody>
+				</c:forEach>
+			</table>
+		</div>
+	
+	
 	<c:if test="${not empty member and member.kind eq 10}">
-		<a href="./${requestScope.notice}Write.${requestScope.notice}">WRITE</a>
+		<a class="btn btn-default" href="./noticeWrite.notice">WRITE</a>
 	</c:if>
 	
-	<div>
+	<!-- 페이징 -->
+	
+	<div class="paging">
+		
 		<ul class="pagination">
+			
 			<c:if test="${page.curBlock>1}">
-			<li><button class="go" id="${page.startNum-1}">[이전]</button></li>
+				<li>
+					<a href="./noticeList.notice?curPage=${page.startNum-1}">
+					<img src="${pageContext.request.contextPath }/image/notice/prevPage.gif" alt="이전" title="이전">
+					</a>
+				</li>
 			</c:if>
 			
 			<c:forEach begin="${page.startNum}" end="${page.lastNum}" var="i">
-			<li><a
-				href="./${requestScope.notice}List.${requestScope.notice}?curPage=${i}">${i}</a></li>
+			<li>
+				<a href="./noticeList.notice?curPage=${i}&kind=${kind}&search=${search}">
+					<span>${i}</span>
+				</a>
+			</li>
 			</c:forEach>
+		
 			
 			<c:if test="${page.curBlock < page.totalBlock}">
-			<li><a
-				href="./${requestScope.notice}List.${requestScope.notice}?curPage=${requestScope.page.lastNum+1}">[다음]</a></li>
+				<li>
+					<a href="./${requestScope.notice}List.${requestScope.notice}?curPage=${requestScope.page.lastNum+1}">
+						<img src="${pageContext.request.contextPath }/image/notice/nextPage.gif" alt="다음" title="다음">
+					</a>
+				</li>
 			</c:if>
 			
 		</ul>
 	</div>
+	<!-- 페이징 끝 -->
+	
+	</div>
+</div>
+<c:import url="${myContextPath }/temp/footer.jsp"></c:import>
 </body>
 </html>

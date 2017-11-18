@@ -6,7 +6,12 @@
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
 <title>Insert title here</title>
+
+<link rel="stylesheet" href="${pageContext.request.contextPath }/css/temp/header.css">
+<link rel="stylesheet" href="${pageContext.request.contextPath }/css/temp/footer.css">
+<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
 <script type="text/javascript">
 	$(function(){
 		var kind = '${kind}';
@@ -25,6 +30,8 @@
 </script>
 </head>
 <body>
+<c:import url="${myContextPath}/temp/header.jsp"></c:import>
+
 <h2>Qna List</h2>
 	<form name="frm" class="form-inline" action="./qnaList.qna" method="post">
 		<select name="kind">
@@ -63,19 +70,21 @@
 	</tr>
 	</table>
 	<div style = "text-align: center;">
-			<ul class="pagination pagination-sm">
-				<c:if test="${page.curBlock>1}">
-				<li><a href = "./qnaList.qna?curPage=${page.startNum-1}">[이전]</a></li>
-				</c:if>
-				
-				<c:forEach begin="${page.startNum}" end="${page.lastNum}" var="i">
-				<li><a id="pa" href="./qnaList.qna?curPage=${i}&kind=${kind}&search=${search}">${i}</a></li>
-				</c:forEach>
+		<ul class="pagination pagination-sm">
+			<c:if test="${page.curBlock>1}">
+			<li><a href = "./qnaList.qna?curPage=${page.startNum-1}">[이전]</a></li>
+			</c:if>
+			
+			<c:forEach begin="${page.startNum}" end="${page.lastNum}" var="i">
+			<li><a id="pa" href="./qnaList.qna?curPage=${i}&kind=${kind}&search=${search}">${i}</a></li>
+			</c:forEach>
 
-				<c:if test="${page.curBlock < page.totalBlock}">
-				<li><a href="./qnaList.qna?curPage=${page.lastNum+1}">[다음]</a></li>
-				</c:if>
-			</ul>
-		</div>
+			<c:if test="${page.curBlock < page.totalBlock}">
+			<li><a href="./qnaList.qna?curPage=${page.lastNum+1}">[다음]</a></li>
+			</c:if>
+		</ul>
+	</div>
+		
+<c:import url="${myContextPath}/temp/footer.jsp"></c:import>
 </body>
 </html>

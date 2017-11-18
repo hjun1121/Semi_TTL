@@ -68,11 +68,10 @@ public class NoticeUpdateService implements Action {
 		int result=0;
 		NoticeDAO noticeDAO = new NoticeDAO();
 		String id = ((MemberDTO)request.getSession().getAttribute("member")).getId();
-		System.out.println(id);
 		noticeDTO.setNum(Integer.parseInt(request.getParameter("num")));
 		noticeDTO.setTitle(request.getParameter("title"));
 		noticeDTO.setContents(request.getParameter("contents"));
-		noticeDTO.setWriter("iu");
+		noticeDTO.setWriter(request.getParameter("writer"));
 		try {
 			result = noticeDAO.update(noticeDTO);
 		} catch (Exception e) {

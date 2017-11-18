@@ -1,0 +1,17 @@
+@charset "UTF-8";
+
+
+*{
+	margin: 0;
+	padding: 0;
+}
+
+.noticeWrite{
+	margin-top:50px;
+	width: 100%;
+	height: 500px;
+}
+
+.noticeWrite>div{
+	margin: 0 auto;
+}

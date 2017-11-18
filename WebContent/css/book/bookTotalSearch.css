@@ -1,0 +1,175 @@
+@charset "UTF-8";
+*{
+	padding: 0;
+	margin: 0;
+}
+
+#section a:hover {
+	text-decoration: none;
+}
+
+#section {
+    width: 1040px;
+    margin: 0 auto;
+    padding-bottom: 40px !important;
+    background-color: #fff;
+    z-index: 5;
+}
+
+
+#section h2 {
+    display: block;
+    font-size: 1.5em;
+    -webkit-margin-before: 0.83em;
+    -webkit-margin-after: 0.83em;
+    -webkit-margin-start: 0px;
+    -webkit-margin-end: 0px;
+    font-weight: bold;
+}
+
+#bts_top_section {
+	margin: 0 auto;
+	padding-bottom: 40px;
+}
+
+#divTitle {
+    color: #464646;
+    font-size: 32px;
+    margin-bottom: 20px;
+    padding: 40px 450px 0 0;
+}
+
+#divLocation {
+    min-height: 20px;
+    margin: 0 56px 20px 0;
+}
+
+#divLocation ul li:first-child {
+    margin: 0;
+    padding: 0;
+    background: none;
+}
+
+#divLocation ul li {
+    float: left;
+    padding-left: 20px;
+    margin-left: 13px;
+	list-style: none;
+    font-family: NG, sans-serif;
+    line-height: 1.5em;
+}
+
+#section fieldset {
+    margin: 0;
+    padding: 0;
+    border: 0;
+}
+
+#section .selectBox1 {
+    height: 35px;
+    border: 1px solid #d1d0cf;
+    background-color: #fff;
+    line-height: 29px;
+}
+
+#section option {
+    font-weight: normal;
+    display: block;
+    white-space: pre;
+    min-height: 1.2em;
+    padding: 0px 2px 1px;
+}
+
+#section .inputTextType3 {
+	width: 290px;
+    height: 35px;
+    border: 1px solid #d1d0cf;
+    line-height: 2.1em;
+    font-size: 13px;
+    vertical-align: top;
+    color: #4c4c4c;
+    padding: 0 5px;
+    font-family: NanumBarunGothic,sans-serif;
+}
+
+#section input.btnType5 {
+    height: 35px;
+    vertical-align: top;
+    border: 1px solid #585858;
+    background: url(../../image/bookTotalSearch/limitSearch.gif) no-repeat 15px 50%;
+    background-color: #fff;
+    padding: 0 20px 0 45px;
+}
+
+#section .listTable {
+    clear: both;
+    border-top: 1px solid #b3b3b3;
+    border-bottom: 1px solid #e6e6e6;
+    text-align: center;
+}
+
+#section table {
+    width: 100%;
+    border: none;
+    border-collapse: collapse;
+}
+
+#section .listTable tr th {
+    height: 40px;
+    padding: 10px 8px;
+}
+
+#section .listTable td {
+    padding: 14px 10px;
+    border-top: 1px solid #e6e6e6;
+    height: 40px;
+    text-align: left;
+}
+
+#section .listTable tr:hover{
+	background-color: #fcf9ce;
+}
+#section table th {
+    border: none;
+    background-color: #f3f3f3;
+    color: #727272;
+}
+
+#section .paging {
+    clear: both;
+    margin: 40px 0 0;
+    text-align: center;
+}
+
+#section .paging > span {
+    margin: 0 10px;
+}
+
+#section .paging > span span {
+    padding: 0 10px;
+    color: #000;
+    text-decoration: underline;
+}
+
+#section .paging > a {
+    width: 28px;
+    height: 28px;
+    display: inline-block;
+    padding: 0;
+    border: 1px solid #e6e6e6;
+    vertical-align: middle;
+}
+
+#section .paging > a img {
+    width: 28px;
+    height: 28px;
+    vertical-align: middle;
+}
+
+
+
+
+
+
+
+

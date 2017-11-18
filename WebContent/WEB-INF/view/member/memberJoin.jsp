@@ -6,9 +6,13 @@
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
 <title>Insert title here</title>
-<link rel="stylesheet" href="../css/member/memberJoin.css">
-<link rel="stylesheet" href="../css/temp/header.css">
+<link rel="stylesheet" href="${pageContext.request.contextPath }/css/temp/header.css">
+<link rel="stylesheet" href="${pageContext.request.contextPath }/css/temp/footer.css">
+<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+<link rel="stylesheet" href="${pageContext.request.contextPath }/css/member/memberJoin.css">
+
 <script src="http://dmaps.daum.net/map_js_init/postcode.v2.js"></script>
 <script type="text/javascript">
 	$(function(){
@@ -209,39 +213,40 @@
 </script>
 </head>
 <body>
-<c:import url="../../../temp/header.jsp"></c:import>
-<h1>회원가입</h1>
+<c:import url="${myContextPath}/temp/header.jsp"></c:import>
+
 
 <form action="./memberJoin.member" method="post" id="frm" name="frm">
-	<p>id<input type="text" id ="id" name="id"></p>
+<h1>회원가입</h1>
+	<p>id<input type="text" id ="id" name="id" class="form-control"></p>
 	<div id="ch_id"></div>
-	<p>pw<input type="password" name="pw" id="pw1"></p>
-	<p>pw확인<input type="password" id="pw2"></p>
+	<p>pw<input type="password" name="pw" id="pw1" class="form-control"></p>
+	<p>pw확인<input type="password" id="pw2" class="form-control"></p>
 	<div id="ch_pw"></div>
-	<p>name<input type="text" id="name" name="name"></p>
-	<p>birth<input type="date" id="birth" name="birth"></p>
+	<p>name<input type="text" id="name" name="name" class="form-control"></p>
+	<p>birth<input type="date" id="birth" name="birth" class="form-control"></p>
 	<p>
 		<input type="radio" value="m" checked="checked" name="gender">남
 		<input type="radio" value="f" name="gender">여
 	</p>
 	
-	<input type="text" id="postCode" name="postCode" placeholder="우편번호" readonly="readonly">
-	<input type="button" id="addrCheck" value="우편번호 찾기" readonly="readonly"><br>
-	<input type="text" id="addr" name="addr" placeholder="주소" readonly="readonly">
-	<input type="text" id="addr2" name="addr2" placeholder="나머지주소">	
+	<input type="text" id="postCode" name="postCode" placeholder="우편번호" readonly="readonly" class="form-control">
+	<input type="button" id="addrCheck" value="우편번호 찾기" readonly="readonly" class="btn btn-default"><br>
+	<input type="text" id="addr" name="addr" placeholder="주소" readonly="readonly" class="form-control">
+	<input type="text" id="addr2" name="addr2" placeholder="나머지주소" class="form-control">	
 
 	<p>phone
-	<select id="f">
+	<select id="f" class="form-control">
 		<option value="010">010</option>
 		<option value="011">011</option>
 		<option value="031">031</option>
 		<option value="02">02</option>
 	</select>
-	-<input type="text" id="m" >-<input type="text" id="l" ></p>
+	-<input type="text" id="m" class="form-control">-<input type="text" id="l" class="form-control"></p>
 	<input type="hidden" id="phone" name="phone">
 	
-	<p><input id="email1" type="text">@<input type="text" id="email2" >
-	<select id = "mailList">
+	<p><input id="email1" type="text" class="form-control">@<input type="text" id="email2" class="form-control" >
+	<select id = "mailList" class="form-control">
 		<option  value="0">직접입력</option>
 		<option  value="naver.com">naver.com</option>
 		<option  value="daum.net">daum.net</option>
@@ -250,18 +255,19 @@
 	</select>
 	<input type="hidden" id="email" name="email" >
 	
-	<input type="button" id="mailCheck" value="이메일 인증"></p>
+	<input type="button" id="mailCheck" value="이메일 인증" class="btn btn-default"></p>
 	<div id="ch_email"></div>
 	<p>library
-		<select name="library">
+		<select name="library" class="form-control">
 			<option value="1">기흥구</option>
 			<option value="2">송파구</option>
 			<option value="3">장안구</option>
 			<option value="4">분당구</option>
 		</select>
 	</p>
-	<input type="button" id="btn" value="join">
+	<input type="button" id="btn" value="join" class="btn btn-default">
 </form>
 
+<c:import url="${myContextPath}/temp/footer.jsp"></c:import>
 </body>
 </html>

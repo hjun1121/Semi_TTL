@@ -1,14 +1,19 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
 	pageEncoding="UTF-8"%>
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>  
+
 <!DOCTYPE html>
 <html>
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
 <title>Insert title here</title>
-<script type="text/javascript"
-	src="https://code.jquery.com/jquery-1.12.4.min.js"></script>
-<script type="text/javascript"
-	src="https://service.iamport.kr/js/iamport.payment-1.1.5.js"></script>
+<link rel="stylesheet" href="${pageContext.request.contextPath }/css/temp/header.css">
+<link rel="stylesheet" href="${pageContext.request.contextPath }/css/temp/footer.css">
+<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+
+<script type="text/javascript" src="https://service.iamport.kr/js/iamport.payment-1.1.5.js"></script>
 <script type="text/javascript">
 	$(function(){
 		var IMP = window.IMP; // 생략가능
@@ -47,6 +52,8 @@
 </script>
 </head>
 <body>
+<c:import url="${myContextPath}/temp/header.jsp"></c:import>
+
 	<h2>결제페이지</h2>
 	<form action="../market/bookBuy.market" method="POST" name="frm">
 		<input type="hidden" class="form-control" name="num" value=${mddDTO.num }> 
@@ -64,5 +71,6 @@
 		<input type="hidden" id="addr2" name="addr2" value="${mddDTO.addr2 }">
 	</form>
 
+<c:import url="${myContextPath}/temp/footer.jsp"></c:import>
 </body>
 </html>

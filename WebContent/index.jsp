@@ -7,13 +7,14 @@
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
-<link rel="stylesheet" href="./css/temp/header.css">
+<link rel="stylesheet" href="${pageContext.request.contextPath }/css/temp/header.css">
+<link rel="stylesheet" href="${pageContext.request.contextPath }/css/temp/footer.css">
 <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
 <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
 <title>Total Library Page</title>
 </head>
-<c:import url="./temp/header.jsp"></c:import>
+<c:import url="${myContextPath}/temp/header.jsp"></c:import>
 <body>
 	<c:if test="${empty sessionScope.member }">
 		<p><a href="./member/memberLogin.member">로그인</a>
@@ -67,6 +68,6 @@
 	<p><a href="./seat/seatList.seat">Seat List</a></p>
 	<p><a href="./market/marketTotalList.market">Market Total List</a></p>
 	
-
+<c:import url="${myContextPath}/temp/footer.jsp"></c:import>
 </body>
 </html>
