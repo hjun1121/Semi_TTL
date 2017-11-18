@@ -54,7 +54,7 @@
 				</select></td>
 			</tr>
 		</table>
-		<button style = "float: right;" class = "btn btn-default" type = "submit">CONFIRM</button>
+		<button class = "btn btn-default" type = "submit">CONFIRM</button>
 	</form>
 
 <c:import url="${myContextPath}/temp/footer.jsp"></c:import>
