@@ -12,6 +12,7 @@
 <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
 <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+<link rel="stylesheet" href="${pageContext.request.contextPath }/css/qna/qnaList.css">
 <script type="text/javascript">
 	$(function(){
 		var kind = '${kind}';
@@ -32,15 +33,42 @@
 <body>
 <c:import url="${myContextPath}/temp/header.jsp"></c:import>
 
-<h2>Qna List</h2>
+<div id="divContentsW">
+		<div id="divContents">
+			
+			<h2 id="divTitle">QnA</h2>
+			<div id="divLocation">
+				<ul>
+					<li class="home"><a href="#"><img src="${pageContext.request.contextPath }/image/notice/home.png" alt="HOME"></a></li>
+					<li>&gt;</li>
+					<li>QnA</li>
+				</ul>
+			</div>
+			
+			
+	<!-- 검색 시작 -->	
+	
 	<form name="frm" class="form-inline" action="./qnaList.qna" method="post">
-		<select name="kind">
-				<option class="kind" value="title">제목</option>
-				<option class="kind" value="writer">저자</option>
-		</select>
-		<input type="text" class="form-control" id="search" placeholder="검색어 입력" name="search" value="${search }">
-		<input type="submit" class="btn btn-default" value="Search">
-	</form>
+			<fieldset>
+				<legend>검색</legend>
+				
+				<span class="bunch">
+					<label class="skip">검색어</label>
+					<select name="kind" id="kind" class="selectBox1">
+						<option class="kind" value="title">제목</option>
+						<option class="kind" value="writer">글쓴이</option>
+						<option class="kind" value="contents">내용</option>
+					</select> 
+					<input type="text" class="inputTextType3 sw" id="search" maxlength="100" title="검색어" placeholder="검색어를 입력하세요" name="search" value=${search }>
+				</span>
+					 <input type="submit" class="btnType5" value="검색">
+			 </fieldset>
+		</form>
+		
+		<br>
+	<!-- 검색 끝 -->
+	
+	
 	
 	<table id = "qnaList" border="1">
 	<tr>
@@ -84,7 +112,10 @@
 			</c:if>
 		</ul>
 	</div>
-		
+	
+	
+	</div>
+</div>
 <c:import url="${myContextPath}/temp/footer.jsp"></c:import>
 </body>
 </html>
