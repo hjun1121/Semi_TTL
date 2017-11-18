@@ -11,6 +11,8 @@
 <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
 <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+<link rel="stylesheet" href="${pageContext.request.contextPath }/css/member/memberIdFind.css">
+
 <script type="text/javascript">
 	$(function(){
 		
@@ -35,10 +37,22 @@
 
 </script>
 </head>
-<c:import url="${myContextPath}/temp/header.jsp"></c:import>
+
 
 <body>
-	<h2>Member Id Find</h2>
+<c:import url="${myContextPath}/temp/header.jsp"></c:import>
+	
+	<div id="divContentsW">
+		<div id="divContents">
+			
+			<h2 id="divTitle">아이디 찾기</h2>
+			<div id="divLocation">
+				<ul>
+					<li class="home"><a href="#"><img src="${pageContext.request.contextPath }/image/notice/home.png" alt="HOME"></a></li>
+					<li>&gt;</li>
+					<li>아이디 찾기</li>
+				</ul>
+			</div>
 	
 	<form action="./memberIdFind.member" method="post">
 		<p>name<input type="text" id="name" name="name"></p>
@@ -47,6 +61,10 @@
 	</form>
 	<div id="list">
 	</div>
+	
+	
+	</div>
+</div>
 	
 <c:import url="${myContextPath}/temp/footer.jsp"></c:import>
 </body>
