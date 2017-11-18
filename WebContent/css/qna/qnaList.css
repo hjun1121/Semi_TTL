@@ -1,1 +1,139 @@
 @charset "UTF-8";
+
+<!--상단 바 시작 -->
+#divContentsW{
+	background-color:#fff;
+}
+
+#divContents{
+	padding-bottom:30px;
+	background-color:#fff;
+}
+
+#divContents{
+	position:relative;
+	width:1040px;
+	margin:0 auto;
+	padding-bottom:40px !important;
+	background-color:#fff;
+	z-index:5;
+}
+
+#divTitle{
+	color:#464646;
+	font-size:32px;
+	margin-bottom:20px;
+	padding:40px 450px 0 0;
+}
+
+#divLocation{
+	min-height:20px;
+	margin:0 56px 20px 0;
+	overflow:hidden;
+}
+
+#divLocation ul li{
+	list-style:none;
+	float:left;
+	padding-left:20px;
+	margin-left:13px;
+	background:url(../../../../image/ko/local/locationBg.png) no-repeat 0 3px;
+	font-family:NG, sans-serif;
+	line-height:1.5em;
+}
+
+#divLocation ul li a{
+	color:#454545;
+}
+
+#divLocation ul li:first-child{
+	margin:0;
+	padding:0;
+	background:none;
+}
+<!--상단 바 끝 -->
+
+
+
+<!-- 검색 시작 -->
+
+#divSearch > div .searchForm ul li form fieldset{position:relative;padding:0 75px 0 24px;height:55px;background-color:#fff;border:1px solid #d6d6d6;border-top:none}
+#divSearch > div .searchForm ul li form fieldset input.searchInput{width:100%;height:55px;border:none;color:#9a9a9a;font-size:14px}
+#divSearch > div .searchForm ul li form fieldset input.searchBtn{position:absolute;top:15px;right:15px}
+#divSearch > div .searchForm ul li form fieldset input[type="text"]::-webkit-input-placeholder{color:#9a9a9a;font-size:14px}
+#divSearch > div .searchForm ul li form fieldset input[type="text"]:-moz-placeholder{color:#9a9a9a;font-size:14px}
+#divSearch > div .searchForm ul li form fieldset input[type="text"]::-moz-placeholder{color:#9a9a9a;font-size:14px}
+#divSearch > div .searchForm ul li form fieldset input[type="text"]:-ms-input-placeholder{color:#9a9a9a;font-size:14px}
+#divSearch > div .searchForm ul li form fieldset input.placeholder{color:#9a9a9a;font-size:14px}
+form, fieldset, blockquote{margin:0;padding:0;border:0}
+.searchArea fieldset{width:100%;}
+legend, caption, hr{display:none}
+span.bunch{display:inline-block;vertical-align:middle}
+.skip{display:none;width:0;height:0;font-size:0;line-height:0;overflow:hidden;border:0;visibility:hidden}
+.userInfo .writerInfo dt.skip{display:none}
+select{border-radius:0}
+/* selectBox1 */
+.selectBox1{height:35px;border:1px solid #d1d0cf;background-color:#fff;line-height:29px;}
+.searchArea .selectBox1{margin-bottom:10px;}
+body,h1,h2,h3,h4,h5,h6,pre,input,p{margin:0;padding:0}
+input{font-family:NanumBarunGothic,sans-serif;}
+
+input[type="submit"]{-webkit-appearance:none;border-radius:0}
+input[type="text"]{-webkit-appearance:none;border-radius:0}
+input[type="password"]{-webkit-appearance:none;border-radius:0}
+input[type="checkbox"]{border-radius:0}
+input[type="reset"]{border-radius:0}
+input.btnType5{height:35px;vertical-align:top;border:1px solid #585858;background:url(../../image/notice/limitSearch.gif) no-repeat 15px 50%;background-color:#fff;padding:0 20px 0 45px;color:#4d4d4d;overflow:visible;}
+
+p.inputTextType3 input{border:none;width:100%;color:#4c4c4c;height:33px;line-height:2.1em}
+input.inputTextType3{width:290px;height:33px;border:1px solid #d1d0cf;line-height:2.1em;font-size:13px;vertical-align:top;color:#4c4c4c;padding:0 5px}
+input.inputTextType3:focus{border:1px solid #2ed8de}
+a.btnType5{display:inline-block;height:33px;border:1px solid #585858;background:url(../../image/notice/limitSearch.gif) no-repeat 15px 50%;line-height:2.3em;color:#4d4d4d;padding:0 20px 0 45px;vertical-align:top;}
+
+<!-- 검색 끝 -->
+
+
+
+<!-- list 시작 -->
+
+
+/* list */
+.listTable{clear:both;border-top:1px solid #b3b3b3;border-bottom:1px solid #e6e6e6;text-align:center;}
+.listTable tr:hover{background-color:#fcf9ce}
+.listTable tr:hover td{background-color:#fcf9ce}
+.listTable #th1{
+	height: 60px;
+	border-top:1px solid #b3b3b3;
+	
+}
+.listTable th{
+	padding:20px 0;border-bottom:1px solid #e6e6e6;
+	text-align:center;
+}
+.listTable td{
+	padding:14px 10px;border-top:1px solid #e6e6e6;
+	text-align:center;
+}
+.listTable .footable-row-detail-inner{padding:0 20px;text-align:left}
+.listTable tr th{height:40px;padding:10px 8px}
+.listTable .title{text-align:left}
+
+/* table */
+table{width:100%;border:none;border-collapse:collapse;}
+table th{border:none;background-color:#f3f3f3;color:#727272}
+table td{border:none}
+/* table td 내 리스트 */
+table td ul.bulletList li{padding:0 0 0 11px;background:url(../../../image/ko/local/guide/bullet2.gif) no-repeat 0 7px}
+legend, caption, hr{display:none}
+
+
+td.num{width:30px}
+td.date{width:100px}
+td.period{width:190px}
+td.bookTitle{width:30%;}
+td.author{width:10%;}
+td.title{width:40%;}
+td.title2{width:20%;}
+.addedFile{width:12px;height:15px}
+
+<!-- list 끝 -->

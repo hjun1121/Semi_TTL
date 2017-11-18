@@ -129,7 +129,7 @@ $(function(){
 	</c:if>
 	
 	<!-- 페이징 -->
-	
+	<div style = "text-align: center;">
 	<div class="paging">
 		
 		<ul class="pagination">
@@ -160,6 +160,7 @@ $(function(){
 			</c:if>
 			
 		</ul>
+	</div>
 	</div>
 	<!-- 페이징 끝 -->
 	

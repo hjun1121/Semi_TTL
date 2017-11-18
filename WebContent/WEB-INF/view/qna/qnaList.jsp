@@ -12,6 +12,7 @@
 <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
 <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+<link rel="stylesheet" href="${pageContext.request.contextPath }/css/qna/qnaList.css">
 <script type="text/javascript">
 	$(function(){
 		var kind = '${kind}';
@@ -32,16 +33,85 @@
 <body>
 <c:import url="${myContextPath}/temp/header.jsp"></c:import>
 
-<h2>Qna List</h2>
-	<form name="frm" class="form-inline" action="./qnaList.qna" method="post">
-		<select name="kind">
-				<option class="kind" value="title">제목</option>
-				<option class="kind" value="writer">저자</option>
-		</select>
-		<input type="text" class="form-control" id="search" placeholder="검색어 입력" name="search" value="${search }">
-		<input type="submit" class="btn btn-default" value="Search">
-	</form>
+<div id="divContentsW">
+		<div id="divContents">
+			
+			<h2 id="divTitle">QnA</h2>
+			<div id="divLocation">
+				<ul>
+					<li class="home"><a href="#"><img src="${pageContext.request.contextPath }/image/notice/home.png" alt="HOME"></a></li>
+					<li>&gt;</li>
+					<li>QnA</li>
+				</ul>
+			</div>
+			
+			
+	<!-- 검색 시작 -->	
 	
+	<form name="frm" class="form-inline" action="./qnaList.qna" method="post">
+			<fieldset>
+				<legend>검색</legend>
+				
+				<span class="bunch">
+					<label class="skip">검색어</label>
+					<select name="kind" id="kind" class="selectBox1">
+						<option class="kind" value="title">제목</option>
+						<option class="kind" value="writer">글쓴이</option>
+						<option class="kind" value="contents">내용</option>
+					</select> 
+					<input type="text" class="inputTextType3 sw" id="search" maxlength="100" title="검색어" placeholder="검색어를 입력하세요" name="search" value=${search }>
+				</span>
+					 <input type="submit" class="btnType5" value="검색">
+			 </fieldset>
+		</form>
+		
+		<br>
+	<!-- 검색 끝 -->
+	
+	
+	<!-- qna list 시작 -->
+	
+	<div class="listTable">
+			<table class="mobileTable tablet">
+				<caption>게시판 목록</caption>
+				<thead>
+					<tr>
+						<th class="footable-first-column">No.</th>
+						<th data-class="expand">제목</th>
+						<th style="display: table-cell;">작성자</th>
+						<th style="display: table-cell;">작성일</th>
+						<th style="display: table-cell;">조회수</th>
+						<th class="footable-last-column" style="display: table-cell;">첨부파일</th>
+					</tr>
+				</thead>
+				<c:forEach items="${requestScope.list}" var="dto">
+				<tbody>
+					<tr>
+						<td class="num footable-first-column">${dto.num}</td>
+						<td class="title expand">
+							<c:catch>
+							<c:forEach  begin="0" end="${dto.depth-1}">
+								--
+							</c:forEach>
+							</c:catch>
+							<a href="./noticeView.notice?num=${dto.num}">${dto.title}</a>&nbsp;
+						</td>
+						<td class="writer" style="display: table-cell;">
+							${dto.writer}
+						</td>
+						<td class="reportDate" style="display: table-cell;">${dto.reg_date}</td>
+						<td class="view_cnt" style="display: table-cell;">${dto.hit}</td>
+						<td class="footable-last-column" style="display: table-cell;">
+							<img class="addedFile" src="${pageContext.request.contextPath }/image/notice/clip.png" title="첨부파일" alt="첨부파일">
+						</td>
+					</tr>	
+				</tbody>
+				</c:forEach>
+			</table>
+		</div>
+	
+	
+	<!-- /////////////////////// -->
 	<table id = "qnaList" border="1">
 	<tr>
 		<th>num</th>
@@ -69,6 +139,9 @@
 		<input type="button" id="btn" value="글쓰기">
 	</tr>
 	</table>
+	
+	<!-- qna list 끝 -->
+	
 	<div style = "text-align: center;">
 		<ul class="pagination pagination-sm">
 			<c:if test="${page.curBlock>1}">
@@ -84,7 +157,10 @@
 			</c:if>
 		</ul>
 	</div>
-		
+	
+	
+	</div>
+</div>
 <c:import url="${myContextPath}/temp/footer.jsp"></c:import>
 </body>
 </html>

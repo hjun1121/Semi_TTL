@@ -40,7 +40,17 @@
 <body>
 <c:import url="${myContextPath}/temp/header.jsp"></c:import>
 
-
+<div id="divContentsW">
+		<div id="divContents">
+			
+			<h2 id="divTitle">로그인</h2>
+			<div id="divLocation">
+				<ul>
+					<li class="home"><a href="#"><img src="${pageContext.request.contextPath }/image/notice/home.png" alt="HOME"></a></li>
+					<li>&gt;</li>
+					<li>로그인</li>
+				</ul>
+			</div>
 
 	<form action="./memberLogin.member" name="frm" method="post">
 	<div id="login_form">
@@ -75,7 +85,8 @@
 		</div>
 	</div>
 	</form>
-
+</div>
+</div>
 	
 <c:import url="${myContextPath}/temp/footer.jsp"></c:import>	
 </body>
