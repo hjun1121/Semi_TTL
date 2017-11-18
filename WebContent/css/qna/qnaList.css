@@ -91,3 +91,49 @@ input.inputTextType3:focus{border:1px solid #2ed8de}
 a.btnType5{display:inline-block;height:33px;border:1px solid #585858;background:url(../../image/notice/limitSearch.gif) no-repeat 15px 50%;line-height:2.3em;color:#4d4d4d;padding:0 20px 0 45px;vertical-align:top;}
 
 <!-- 검색 끝 -->
+
+
+
+<!-- list 시작 -->
+
+
+/* list */
+.listTable{clear:both;border-top:1px solid #b3b3b3;border-bottom:1px solid #e6e6e6;text-align:center;}
+.listTable tr:hover{background-color:#fcf9ce}
+.listTable tr:hover td{background-color:#fcf9ce}
+.listTable #th1{
+	height: 60px;
+	border-top:1px solid #b3b3b3;
+	
+}
+.listTable th{
+	padding:20px 0;border-bottom:1px solid #e6e6e6;
+	text-align:center;
+}
+.listTable td{
+	padding:14px 10px;border-top:1px solid #e6e6e6;
+	text-align:center;
+}
+.listTable .footable-row-detail-inner{padding:0 20px;text-align:left}
+.listTable tr th{height:40px;padding:10px 8px}
+.listTable .title{text-align:left}
+
+/* table */
+table{width:100%;border:none;border-collapse:collapse;}
+table th{border:none;background-color:#f3f3f3;color:#727272}
+table td{border:none}
+/* table td 내 리스트 */
+table td ul.bulletList li{padding:0 0 0 11px;background:url(../../../image/ko/local/guide/bullet2.gif) no-repeat 0 7px}
+legend, caption, hr{display:none}
+
+
+td.num{width:30px}
+td.date{width:100px}
+td.period{width:190px}
+td.bookTitle{width:30%;}
+td.author{width:10%;}
+td.title{width:40%;}
+td.title2{width:20%;}
+.addedFile{width:12px;height:15px}
+
+<!-- list 끝 -->
