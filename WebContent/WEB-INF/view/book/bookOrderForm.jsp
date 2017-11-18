@@ -81,7 +81,7 @@
 		<div class="btnBox">
 			
 			<span class="button1"><a href="${pageContext.request.contextPath }/index.jsp" class="type4 large">취소</a></span>
-			<span class="button1"><button class = "type1 large" type = "submit">신청</button></span> 
+			<span class="button1"><button id="btn_OK" class = "type1 large" type = "submit">신청</button></span> 
 		</div>
 		
 	</form>
