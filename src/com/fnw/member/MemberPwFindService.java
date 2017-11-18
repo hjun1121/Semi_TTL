@@ -29,11 +29,11 @@ public class MemberPwFindService implements Action {
 			if(memberDTO !=null) {
 				EmailDAO emailDAO = new EmailDAO();
 				emailDAO.sendPw(request, memberDTO);
-				message="가입한 email 로 임시 비밀번호 발송";
+				message="가입한 email로 임시 비밀번호를 발송했습니다.";
 				request.setAttribute("message", message);
 				request.setAttribute("path", "../member/memberLogin.member");
 			}else {
-				message="Pw 찾기 실패";
+				message="일치하는 회원정보가 없습니다.";
 				request.setAttribute("message", message);
 				request.setAttribute("path", "../index.jsp");
 			}
