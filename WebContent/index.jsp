@@ -21,7 +21,7 @@
 		<p><a href="./member/memberIdFind.member">Id Find</a>
 		<p><a href="./member/memberPwFind.member">Pw Find</a>
 	</c:if>
-	
+
 	<h1>${sessionScope.member.id }</h1>
 	<p><a href="./member/myPage.member">MyPage</a>
 	
