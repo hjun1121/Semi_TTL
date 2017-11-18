@@ -302,7 +302,7 @@
 								<div class="ansBox">
 									<div class="addressBox">
 										<input type="text" placeholder="주소를 입력해주세요." id="postCode" name="postCode" placeholder="우편번호" readonly="readonly">
-										<span class="button1"><input type="button" id="addrCheck" value="우편번호 찾기" readonly="readonly"></span>
+										<span class="button1"><input type="button" id="addrCheck" value="우편번호 찾기" readonly="readonly" style="margin-top: 5px;"></span>
 										<input type="text" class="mt5"  id="addr" name="addr" placeholder="주소" readonly="readonly">
 										<input type="text" class="mt5" id="addr2" name="addr2" placeholder="나머지주소">
 									</div>
@@ -314,7 +314,7 @@
 									<span class="writePoint"></span>전화번호
 								</div>
 								<div class="ansBox">
-									<select id="f" name="email" class="sel_size">
+									<select id="f" name="email" class="sel_size" style="margin-bottom: 5px;">
    										<option value="">선택하세요</option>
     									<option value="010">010</option>
 										<option value="011">011</option>
@@ -346,7 +346,7 @@
 												<option  value="hotmail.com">hotmail.com</option>
 											</select>
 											<input type="hidden" id="email" name="email" >
-											<input type="button" id="mailCheck" value="이메일 인증">
+											<input type="button" id="mailCheck" value="이메일 인증" style="margin-top: 5px;">
 											<div id="ch_email"></div>
 										</div>
 									</div>
@@ -368,9 +368,10 @@
 					</dd>
 				</dl>
 			</div>
-			<div class="btnBox1">
-				<span class="button1"><a href="${pageContext.request.contextPath }/index.jsp" class="type4 large">취소</a></span> 
-				<span class="button1"><input type="button" id="btn" value="join" class="type1 large"></span> 
+			
+			<div class="btnCenter mt30" id="center">
+				<span class="button1"><a href="${pageContext.request.contextPath }/index.jsp" class="type4 large">취소</a></span>
+				<span class="button1"><input type="button" id="btn" value="가입" class="type1 large"></span>  
 			</div>
 			</form>
 			</div>
