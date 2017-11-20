@@ -62,6 +62,7 @@ $(function(){
 		</form>
 		<!-- 검색 끝 -->
 	</div>
+	
 	<br>
 	<a href="./bookOrderList.book?id=${member.id }&state=1&kind=${kind}&search=${search}"><input class="btnType3" type="button" value="대기"></a>
 	<a href="./bookOrderList.book?id=${member.id }&state=0&kind=${kind}&search=${search}"><input class="btnType3" type="button" value="취소"></a>
@@ -126,7 +127,7 @@ $(function(){
 			</tr>
 		</c:forEach>
 	</table>
-	
+		
 	<div class = "paging" style = "text-align: center;">
 		<ul class="pagination pagination-sm">
 			<c:if test="${page.curBlock>1}">
@@ -142,9 +143,9 @@ $(function(){
 			</c:if>
 		</ul>
 	</div>
-	
 	</div>
-</div>	
+</div>
+</div>
 <c:import url="${myContextPath}/temp/footer.jsp"></c:import>
 </body>
 </html>

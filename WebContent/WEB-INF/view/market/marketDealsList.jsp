@@ -45,14 +45,14 @@ $(function(){
 </div>
 <div id="divContentsW">
 	<div id="divContents">
-		<h2 id="divTitle">MARKET 내역 검색</h2>
+		<h2 id="divTitle">MARKET 거래 내역</h2>
 		<div id="divLocation">
 			<ul>
-				<li class="home"><a href="#"><img src="${pageContext.request.contextPath }/image/common/home.png" alt="HOME"></a></li>
+				<li class="home"><a href="${pageContext.request.contextPath}/index.jsp"><img src="${pageContext.request.contextPath }/image/common/home.png" alt="HOME"></a></li>
 				<li>&gt;</li>
 				<li>MY PAGE</li>
 				<li>&gt;</li>
-				<li>MARKET 내역 검색</li>
+				<li>MARKET 거래 내역</li>
 			</ul>
 		</div>
 	<form name="frm" class="form-inline" action="./marketDealsList.market" method="post">
@@ -117,7 +117,7 @@ $(function(){
 		            <option class="day" value="30">30</option>
 		            <option class="day" value="31">31</option>
 		        </select>
-		        일 이전 까지<input class="btnType5" type="submit" value="Search">
+		        일 이전 까지 <input class="btnType5" type="submit" value="Search">
       		  </span>
 		</form>
 	</div>

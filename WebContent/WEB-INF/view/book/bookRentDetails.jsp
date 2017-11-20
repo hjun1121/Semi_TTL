@@ -31,7 +31,7 @@
 					<li>&gt;</li>
 					<li>대여 내역</li>
 					<li>&gt;</li>
-					<li>대여 상세정보</li>
+					<li>상세정보</li>
 				</ul>
 			</div>
 			

@@ -31,7 +31,7 @@
 				<li>&gt;</li>
 				<li>신청 내역</li>
 				<li>&gt;</li>
-				<li>신청 상세 내역</li>
+				<li>상세 내역</li>
 			</ul>
 		</div>
 		<form action="../book/bookOrderList.book?id=${member.id }&state=3" method="post">
