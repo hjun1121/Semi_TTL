@@ -243,6 +243,7 @@
 								</div>
 								<div class="ansBox">
 									<input type="text" placeholder="아이디" id ="id" name="id">
+									<span class="pwinfo">(아이디는 6자리 이상 가능)</span>
 									<div id="ch_id"></div>
 								</div>
 							</li>
