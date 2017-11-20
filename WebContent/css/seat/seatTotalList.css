@@ -22,8 +22,14 @@
 
 
 #divTitle{
-	color:#464646;
-	font-size:32px;
+	color: #464646;
+    display: block;
+    font-size: 1.5em;
+    -webkit-margin-before: 0.83em;
+    -webkit-margin-after: 0.83em;
+    -webkit-margin-start: 0px;
+    -webkit-margin-end: 0px;
+    font-weight: bold;
 }
 
 #divLocation{
@@ -61,6 +67,9 @@
 }
 <!--상단 바 끝 -->
 
+input#btbtn{
+	margin-top: 5px;
+}
 select#kind {
     font-family: inherit;
 }
