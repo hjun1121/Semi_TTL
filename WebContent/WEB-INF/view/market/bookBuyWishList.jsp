@@ -46,75 +46,90 @@ $(document).ready(function() {
 
 <div id="divContentsW">
 	<div id="divContents">
-		<h2 id="divTitle">책 구매 찜</h2>
+		<h2 id="divTitle">MARKET 찜콩</h2>
 		<div id="divLocation">
 			<ul>
 				<li class="home"><a href="../index.jsp"><img src="${pageContext.request.contextPath }/image/notice/home.png" alt="HOME"></a></li>
 				<li>&gt;</li>
-				<li>책 구매 찜</li>
+				<li>MY PAGE</li>
+				<li>&gt;</li>
+				<li>MARKET 찜콩</li>
 			</ul>
 		</div>
 
 <form action="./bookBuyWishDelete.market" method="POST">
-   <table class="table" border="1">
-      <tr>
-         <th>전체선택<input type="checkbox" class="chk" id="checkAll" name="checkAll"></th>
-         <th>num</th>
-         <th>title</th>
-         <th>writer</th>
-         <th>publish_date</th>
-         <th>library</th>
-         <th>price</th>
-         <th></th>
-         <th>state</th>
-      </tr>
-      <c:forEach items="${bookOrderWishList }" var="bookOrderWish_list">
-         <tr>
-            <td><input type="checkbox" name="Pcheck" class="chk" value="${bookOrderWish_list.num }"></td>
-            <td>${bookOrderWish_list.num }</td>
-             <td>${bookOrderWish_list.title }</td>
-            <td>${bookOrderWish_list.writer }</td>
-            <td>${bookOrderWish_list.publish_date }</td>
-            <c:choose>
-            	<c:when test="${bookOrderWish_list.library eq 1}">
-					<td>기흥구</td>
-				</c:when>
-				<c:when test="${bookOrderWish_list.library eq 2}">
-					<td>송파구</td>
-				</c:when>
-				<c:when test="${bookOrderWish_list.library eq 3}">
-					<td>장안구</td>
-				</c:when>
-				<c:when test="${bookOrderWish_list.library eq 4}">
-					<td>분당구</td>
-				</c:when>
-				<c:otherwise>
-					<td>없음</td>
-				</c:otherwise>
-			</c:choose>
-            <td>${bookOrderWish_list.price }</td>
-            <td><a href="./bookBuyWishDelete.market?num=${bookOrderWish_list.num }"><input type="button" value="삭제"></a></td>
-            <c:choose>
-            	<c:when test="${bookOrderWish_list.state eq 10 }">
-                  <td>구매완료</td>
-               </c:when>
-               <c:when test="${bookOrderWish_list.state eq 2 }">
-                  <td>구매불가</td>
-               </c:when>
-               <c:when test="${bookOrderWish_list.state eq 1 }">
-                  <td><a href="./bookBuy.market?num=${bookOrderWish_list.num }"><input type="button" value="구매"></a></td>
-               </c:when>
-            </c:choose>
-         </tr>
-      </c:forEach>
-      <tr>
-         <td><button type="submit" id="Pdelete">삭제 </button></td>
-      </tr>
-   </table>
-</form>
-   
-   <div>
-      <ul class="pagination">
+		<div class="listTable">
+		<table class="mobileTable tablet" >
+		<tr>
+			<th>전체선택 <input type="checkbox" class="chk" id="checkAll" name="checkAll"></th>
+			<th>No.</th>
+			<th>서명</th>
+			<th>저자</th>
+			<th>출판사</th>
+			<th>출판년도</th>
+			<th>비치도서관</th>
+			<th>가격</th>
+			<th></th>
+			<th>상태</th>
+		</tr>
+		<c:forEach items="${bookBuyWishList }" var="bookBuyWishList">
+			<tr>
+				<td scope="row" style="display: table-cell;">
+				<input type="checkbox" name="Pcheck" class="chk" value="${bookBuyWishList.num }">
+				</td>
+				<td scope="row" class="footable-first-column">${bookBuyWishList.num }</td>
+ 				<td scope="row" style="display: table-cell;">${bookBuyWishList.title }</td>
+				<td scope="row" style="display: table-cell;">${bookBuyWishList.writer }</td>
+				<td scope="row" style="display: table-cell;">${bookBuyWishList.company }</td>
+				<td scope="row" data-class="expand">${bookBuyWishList.publish_date }</td>
+				<c:choose>
+					<c:when test="${bookBuyWishList.library eq 1}">
+						<td scope="row" style="display: table-cell;">기흥구</td>
+					</c:when>
+					<c:when test="${bookBuyWishList.library eq 2}">
+						<td scope="row" style="display: table-cell;">송파구</td>
+					</c:when>
+					<c:when test="${bookBuyWishList.library eq 3}">
+						<td scope="row" style="display: table-cell;">장안구</td>
+					</c:when>
+					<c:when test="${bookBuyWishList.library eq 4}">
+						<td scope="row" style="display: table-cell;">분당구</td>
+					</c:when>
+					<c:otherwise>
+						<td scope="row" style="display: table-cell;">*</td>
+					</c:otherwise>
+				</c:choose>
+				<td scope="row" data-class="expand">${bookBuyWishList.price }</td>
+				<td><a href="./bookBuyWishDelete.market?num=${bookBuyWishList.num }">
+				<button class = "btn btn-default wish_btn" type = "button" >삭제</button>
+				</a></td>
+				<c:choose>
+	            	<c:when test="${bookBuyWishList.state eq 10 }">
+	                  <td scope="row" style="display: table-cell;">구매완료</td>
+	               </c:when>
+	               <c:when test="${bookBuyWishList.state eq 2 }">
+	                  <td scope="row" style="display: table-cell;">구매불가</td>
+	               </c:when>
+	               <c:when test="${bookBuyWishList.state eq 1 }">
+	                  <td>
+	                  <a href="./bookBuy.market?num=${bookBuyWishList.num }">
+	                  <button class = "btn btn-default wish_btn" type = "button" >구매</button>
+						</a>
+	                  </td>
+	               </c:when>
+	            </c:choose>
+			</tr>
+		</c:forEach>
+	</table>
+	</div>
+	<br>
+		<button type="submit" id="Pdelete" class="btn btn-default list_btn">삭제 </button>
+	</form>
+	</div>
+	</div>
+	
+	<div class = "paging" style = "text-align: center;">
+			<ul class="pagination pagination-sm">
          <c:if test="${page.curBlock>1}">
          <li><button class="go" id="${page.startNum-1}">[이전]</button></li>
          </c:if>

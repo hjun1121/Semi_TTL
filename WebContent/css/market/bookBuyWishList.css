@@ -16,6 +16,7 @@
 	background-color:#fff;
 	padding-bottom:30px;
 	background-color:#fff;
+	margin-right: 100px;
 }
 
 
@@ -30,12 +31,20 @@
 	overflow:hidden;
 }
 
-#divLocation ul li{
+#divLocation .home{
 	list-style: none;
 	float:left;
 	padding-left:20px;
 	margin-left:13px;
 	background:url(./../../image/common/home.png) no-repeat 0 3px;
+	font-family:NG, sans-serif;
+	line-height:1.5em;
+}
+#divLocation ul li{
+	list-style: none;
+	float:left;
+	padding-left:20px;
+	margin-left:13px;
 	font-family:NG, sans-serif;
 	line-height:1.5em;
 }
@@ -50,3 +59,79 @@
 	background:none;
 }
 <!--상단 바 끝 -->
+
+#btbtn{
+}
+
+.btnType5{
+  	height: 35px;
+    vertical-align: top;
+    border: 1px solid #585858;
+    background: url(../../image/bookTotalSearch/limitSearch.gif) no-repeat 15px 50%;
+    background-color: #fff;
+    padding: 0 20px 0 45px;
+}
+.listTable {
+    clear: both;
+    border-top: 1px solid #b3b3b3;
+    border-bottom: 1px solid #e6e6e6;
+    text-align: center;
+}
+
+table {
+    width: 100%;
+    border: none;
+    border-collapse: collapse;
+}
+
+.listTable tr th {
+    height: 40px;
+    padding: 10px 8px;
+}
+
+.listTable td {
+    padding: 14px 10px;
+    border-top: 1px solid #e6e6e6;
+    height: 40px;
+    text-align: left;
+}
+
+.listTable tr:hover{
+	background-color: #fcf9ce;
+}
+table th {
+    border: none;
+    background-color: #f3f3f3;
+    color: #727272;
+}
+
+.paging {
+    clear: both;
+    margin: 40px 0 0;
+    text-align: center;
+}
+
+.paging > span {
+    margin: 0 10px;
+}
+
+.paging > span span {
+    padding: 0 10px;
+    color: #000;
+    text-decoration: underline;
+}
+
+.paging > a {
+    width: 28px;
+    height: 28px;
+    display: inline-block;
+    padding: 0;
+    border: 1px solid #e6e6e6;
+    vertical-align: middle;
+}
+
+.paging > a img {
+    width: 28px;
+    height: 28px;
+    vertical-align: middle;
+}
