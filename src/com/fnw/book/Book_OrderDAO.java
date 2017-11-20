@@ -60,6 +60,43 @@ public class Book_OrderDAO {
 		DBConnector.disConnect(st, con);
 		return result;
 	}
+	
+	public ArrayList<Book_OrderDTO> selectList(MakeRow makeRow) throws Exception
+	{
+		Connection con = DBConnector.getConnect();
+		String sql = "select * from" + 
+				"(select rownum R, N.* from" + 
+				"(select * from book_order order by num asc) N)" + 
+				"where R between ? and ?";
+		PreparedStatement st = con.prepareStatement(sql);
+		st.setInt(1, makeRow.getStartRow());
+		st.setInt(2, makeRow.getLastRow());
+
+		ResultSet rs = st.executeQuery();
+		ArrayList<Book_OrderDTO> list = new ArrayList<>();
+		Book_OrderDTO book_OrderDTO = null;
+
+		while(rs.next()) {
+			book_OrderDTO = new Book_OrderDTO();
+			book_OrderDTO.setNum(rs.getInt("num"));
+			book_OrderDTO.setTitle(rs.getString("title"));
+			book_OrderDTO.setWriter(rs.getString("writer"));
+			book_OrderDTO.setCompany(rs.getString("company"));
+			book_OrderDTO.setPublish_date(rs.getString("publish_date"));
+			book_OrderDTO.setContents(rs.getString("contents"));
+			book_OrderDTO.setId(rs.getString("id"));
+			book_OrderDTO.setPrice(rs.getInt("price"));
+			book_OrderDTO.setLibrary(rs.getInt("library"));
+			book_OrderDTO.setPrice(rs.getInt("price"));
+			book_OrderDTO.setState(rs.getInt("state"));
+			book_OrderDTO.setCancel(rs.getString("cancel"));
+
+			list.add(book_OrderDTO);
+		}
+
+		DBConnector.disConnect(rs, st, con);
+		return list;
+	}
 
 	public ArrayList<Book_OrderDTO> selectList(String id, MakeRow makeRow, String kind, String search) throws Exception {
 		Connection con = DBConnector.getConnect();

@@ -24,7 +24,7 @@ public class BookOrderTotalListService implements Action {
 		} catch (Exception e) {
 			curPage = 1;
 		}
-		
+
 		String kind = request.getParameter("kind");
 		if(kind==null) {
 			kind="title";
@@ -40,7 +40,7 @@ public class BookOrderTotalListService implements Action {
 		try {
 			totalCount = book_OrderDAO.getTotalCount(kind, search);
 			PageMaker pageMaker = new PageMaker(curPage, totalCount);
-			list = book_OrderDAO.selectList(id,pageMaker.getMakeRow(),kind,search);
+			list = book_OrderDAO.selectList(pageMaker.getMakeRow());
 			request.setAttribute("bookOrderTotalList", list);
 			request.setAttribute("id", id);
 			request.setAttribute("page", pageMaker.getMakePage());

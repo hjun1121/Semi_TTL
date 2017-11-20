@@ -14,6 +14,19 @@
 }
 
 <!--상단 바 시작 -->
+#section a:hover {
+	text-decoration: none;
+}
+
+#section {
+    width: 1040px;
+    margin: 0 auto;
+    padding-bottom: 40px !important;
+    background-color: #fff;
+    z-index: 5;
+}
+
+
 #section h2 {
     display: block;
     font-size: 1.5em;

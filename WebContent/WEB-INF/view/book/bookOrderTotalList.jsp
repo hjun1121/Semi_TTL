@@ -8,6 +8,7 @@
   <meta name="viewport" content="width=device-width, initial-scale=1">
 <link rel="stylesheet" href="${pageContext.request.contextPath }/css/temp/header.css">
 <link rel="stylesheet" href="${pageContext.request.contextPath }/css/temp/footer.css">
+<link rel="stylesheet" href="${pageContext.request.contextPath }/css/book/bookOrderTotalList.css">
 <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
 <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
@@ -15,47 +16,76 @@
 </head>
 <body>
 <c:import url="${myContextPath}/temp/header.jsp"></c:import>
-
-	<h3>Book_Order_Total_List</h3>
-	<div style = "height: 50px"></div>
 	
-	<section>
-		<form action="">
-			<table class = "table">
+	<section id = "section">
+		<div id = "bts_top_section">
+			<h2 id="divTitle">도서신청</h2>
+			<div id="divLocation">
+				<ul>
+					<li class="home"><a href="../../index.jsp"><img src="${pageContext.request.contextPath}/image/bookTotalSearch/home.png" alt="HOME"></a></li>
+					<li>&gt;</li>
+					<li>통합검색</li>
+					<li>&gt;</li>
+					<li>소장도서</li>
+				</ul>
+			</div>
+	
+		<div class = "listTable">
+			<table class = "mobileTable tablet">
+				<thead>
+					<tr>
+						<th scope="row" class="footable-first-column">번호</th>
+						<th scope="row" data-class="expand">서명</th>
+						<th scope="row" style="display: table-cell;">저자</th>
+						<th scope="row" style="display: table-cell;">출판사</th>
+						<th scope="row" style="display: table-cell;">신청인</th>
+						<th scope="row" style="display: table-cell;">처리상태</th>
+					</tr>
+				</thead>
+				
+			<c:forEach items="${bookOrderTotalList}" var="bookOrder_list">
 				<tr>
-					<td>번호</td>
-					<td>서명</td>
-					<td>저자</td>
-					<td>출판사</td>
-					<td>신청인</td>
-					<td>처리상태</td>
+				<td scope="row" class="footable-first-column">${bookOrder_list.num }</td>
+	 				<td scope="row" data-class="expand" style="overflow: hidden; max-width: 420px;">${bookOrder_list.title }</td>
+					<td scope="row" style="display: table-cell;">${bookOrder_list.writer}</td>
+					<td scope="row" style="display: table-cell;">${bookOrder_list.company}</td>
+					<td scope="row" style="display: table-cell;">${bookOrder_list.id}</td>
+					<c:choose>
+					<c:when test="${bookOrder_list.state ne 1}">
+						<td scope="row" style="display: table-cell;">대기</td>
+					</c:when>
+					<c:when test="${bookOrder_list.state ne 0 }">
+						<td scope="row" style="display: table-cell;">완료</td>
+					</c:when>
+					</c:choose>
 				</tr>
-		<c:forEach items="${bookOrderList}" var="bookOrder_list">
-			<tr>
-			<td>${bookOrder_list.num }</td>
- 				<td><a href="./bookOrderTotalList.book?num=${bookOrder_list.num }">${bookOrder_list.title }</a></td>
-				<td>${bookOrder_list.num}</td>
-				<td>${bookOrder_list.title}</td>
-				<td>${bookOrder_list.writer}</td>
-				<td>${bookOrder_list.company}</td>
-				<td>${bookOrder_list.id}</td>
-				<c:if test="${bookOrder_list.state ne 1}">
-					<td>대기</td>
-				</c:if>
-				<c:if test="${bookOrder_list.state ne 0 }">
-					<td>완료</td>
-				</c:if>
-			</tr>
-		</c:forEach>
+			</c:forEach>	
 			</table>
-		</form>
-
-		<form action="./bookOrderForm.book">
+		</div>
+				
+		<form id = "order_btn" action="./bookOrderForm.book">
 			<button style = "float: right;" class = "btn btn-default" type = "submit">신청하기</button>		
 		</form>
-	</section>
+		
+				<div class = "paging" style = "text-align: center;">
+			<ul class="pagination pagination-sm">
+				<c:if test="${page.curBlock>1}">
+				<li><a href = "./bookTotalSearch.book?curPage=${page.startNum-1}&search=${search}&kind=${kind}"><img width="13" height="16"  src="${pageContext.request.contextPath}/image/bookTotalSearch/prevPage.gif" alt="이전" title="이전"></a></li>
+				</c:if>
 
-<div style = "height: 50px"></div>
+				<c:forEach begin="${page.startNum}" end="${page.lastNum}" var="i">
+				<li><a
+					href="./bookTotalSearch.book?curPage=${i}&search=${search}&kind=${kind}">${i}</a></li>
+				</c:forEach>
+				
+				<c:if test="${page.curBlock < page.totalBlock}">
+				<li><a href="./bookTotalSearch.book?curPage=${requestScope.page.lastNum+1}&search=${search}&kind=${kind}"><img width="13" height="16" src="${pageContext.request.contextPath}/image/bookTotalSearch/nextPage.gif" alt="다음" title="다음"></a></li>
+				</c:if>
+			</ul>
+		</div>
+		
+		</div>
+	</section>
 
 <c:import url="${myContextPath}/temp/footer.jsp"></c:import>
 </body>
