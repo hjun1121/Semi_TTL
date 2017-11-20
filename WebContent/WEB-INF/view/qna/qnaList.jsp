@@ -72,73 +72,52 @@
 	<!-- qna list 시작 -->
 	
 	<div class="listTable">
-			<table class="mobileTable tablet">
-				<caption>게시판 목록</caption>
-				<thead>
-					<tr>
-						<th class="footable-first-column">No.</th>
-						<th data-class="expand">제목</th>
-						<th style="display: table-cell;">작성자</th>
-						<th style="display: table-cell;">작성일</th>
-						<th style="display: table-cell;">조회수</th>
-						<th class="footable-last-column" style="display: table-cell;">첨부파일</th>
-					</tr>
-				</thead>
-				<c:forEach items="${requestScope.list}" var="dto">
-				<tbody>
-					<tr>
-						<td class="num footable-first-column">${dto.num}</td>
-						<td class="title expand">
-							<c:catch>
-							<c:forEach  begin="0" end="${dto.depth-1}">
-								--
-							</c:forEach>
-							</c:catch>
-							<a href="./noticeView.notice?num=${dto.num}">${dto.title}</a>&nbsp;
-						</td>
-						<td class="writer" style="display: table-cell;">
-							${dto.writer}
-						</td>
-						<td class="reportDate" style="display: table-cell;">${dto.reg_date}</td>
-						<td class="view_cnt" style="display: table-cell;">${dto.hit}</td>
-						<td class="footable-last-column" style="display: table-cell;">
-							<img class="addedFile" src="${pageContext.request.contextPath }/image/notice/clip.png" title="첨부파일" alt="첨부파일">
-						</td>
-					</tr>	
-				</tbody>
-				</c:forEach>
-			</table>
-		</div>
+		<table class="mobileTable tablet">
+			<caption>게시판 목록</caption>
+			<thead>
+				<tr>
+					<th class="footable-first-column">No.</th>
+					<th data-class="expand">제목</th>
+					<th style="display: table-cell;">작성자</th>
+					<th style="display: table-cell;">작성일</th>
+					<th style="display: table-cell;">조회수</th>
+					<c:if test="${member.kind eq 10 }">
+						<th>pw</th>
+					</c:if>
+					
+				</tr>
+			</thead>
+			<c:forEach items="${requestScope.list}" var="dto">
+			<tbody>
+				<tr>
+					<td class="num footable-first-column">${dto.num}</td>
+					<td class="title expand">
+						<c:catch>
+						<c:forEach  begin="0" end="${dto.depth-1}">
+							--
+						</c:forEach>
+						</c:catch>
+						<a href="./qnaViewCheck.qna?num=${dto.num }">${dto.title}</a>&nbsp;
+					</td>
+					<td class="writer" style="display: table-cell;">
+						${dto.writer}
+					</td>
+					<td class="reportDate" style="display: table-cell;">${dto.reg_date}</td>
+					<td class="view_cnt" style="display: table-cell;">${dto.hit}</td>
+					<c:if test="${member.kind eq 10 }">
+						<td>${dto.pw }</td>
+					</c:if>
+				</tr>	
+			</tbody>
+			</c:forEach>
+		</table>
+	</div>
 	
 	
 	<!-- /////////////////////// -->
-	<table id = "qnaList" border="1">
-	<tr>
-		<th>num</th>
-		<th>title</th>
-		<th>date</th>
-		<th>writer</th>
-		<th>hit</th>
-		<c:if test="${member.kind eq 10 }">
-			<th>pw</th>
-		</c:if>
-	</tr>
-	<c:forEach items="${list }" var="qnaDTO">
-		<tr>
-			<td>${qnaDTO.num }</td>
-			<td><a href="./qnaViewCheck.qna?num=${qnaDTO.num }">${qnaDTO.title }</a></td>
-			<td>${qnaDTO.reg_date }</td>
-			<td>${qnaDTO.writer }</td>
-			<td>${qnaDTO.hit }</td>
-			<c:if test="${member.kind eq 10 }">
-				<td>${qnaDTO.pw }</td>
-			</c:if>
-		</tr>
-	</c:forEach>
-	<tr>
+
+
 		<input type="button" id="btn" value="글쓰기">
-	</tr>
-	</table>
 	
 	<!-- qna list 끝 -->
 	
