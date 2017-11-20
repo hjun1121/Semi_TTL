@@ -1,14 +1,332 @@
 @charset "UTF-8";
 
-#frm h1{
+
+
+*{
+	margin: 0;
+	padding: 0;
+}
+
+<!--상단 바 시작 -->
+#divContentsW{
+	background-color:#fff;
+}
+
+#divContents{
+	padding-bottom:30px;
+	background-color:#fff;
+}
+
+#divContents{
+	position:relative;
+	width:1040px;
+	margin:0 auto;
+	padding-bottom:40px !important;
+	background-color:#fff;
+	z-index:5;
+}
+
+#divTitle{
 	color:#464646;
 	font-size:32px;
 	margin-bottom:20px;
 	padding:40px 450px 0 0;
 }
 
-
-.form-control{
-	display: inline;
-	width: 300px;
+#divLocation{
+	min-height:20px;
+	margin:0 56px 20px 0;
+	overflow:hidden;
 }
+
+#divLocation ul li{
+	list-style:none;
+	float:left;
+	padding-left:20px;
+	margin-left:13px;
+	font-family:NG, sans-serif;
+	line-height:1.5em;
+}
+
+#divLocation ul li a{
+	color:#454545;
+}
+
+#divLocation ul li:first-child{
+	margin:0;
+	padding:0;
+	background:none;
+}
+<!--상단 바 끝 -->
+
+
+/* 회원가입 */
+
+.joinWrap .joinCont {margin-bottom: 80px;}
+.joinWrap .joinCont > ul > li {position: relative; padding-left: 30%; border-bottom: 1px solid #ddd;}
+.joinWrap .joinCont > ul li:after {display: block; clear: both; content: "";}
+.joinWrap .joinCont > ul li .questBox {position: absolute; top: 23px; left: 30px; font-size: 14px; color: #333; font-weight: 500;}
+.joinWrap .joinCont > ul li .questBox span {display: block;}
+.joinWrap .joinCont > ul li .questBox em {font-size: 12px; font-family: 'Noto'; font-weight: 500;}
+.joinWrap .joinCont > ul li .ansBox {padding: 12px 0; font-size: 13px; color: #999;}
+.joinWrap .joinCont > ul li .ansBox ul li {line-height: 22px;}
+.joinWrap .joinCont > ul li:nth-child(2) .ansBox {padding: 21px 0;}
+.joinWrap .joinCont > ul li:first-child .ansBox input[type="text"] {width: 400px;}
+.joinWrap .joinCont > ul li:nth-child(2) .ansBox input[type="text"] {width: 400px;}
+.joinWrap .joinCont > ul li:nth-child(3) .ansBox .button1 a {width: 102px;}
+.joinWrap .joinCont > ul li:nth-child(3) .ansBox ul {width: 600px;}
+.joinWrap .joinCont > ul li:nth-child(3) .ansBox ul.selList {width: 100%;}
+.joinWrap .joinCont > ul li .nameBox:after, .joinWrap .joinCont > ul li .phoneNumBox:after {display: block; clear: both; content: "";}
+.joinWrap .joinCont .btnBox {text-align: center; margin-top: 30px;}
+.joinWrap .joinCont .btnBox span {margin: 0 2px;}
+.joinWrap .joinCont .btnBox a {width: 152px;}
+
+
+/*회원가입_약관동의*/
+.jsTxt {font-size: 16px !important; font-weight: 500; color: #333 !important;}
+.jsTxtM {font-size: 14px !important; font-weight: 500; color: #333 !important;}
+.joinWrap .joinCont .btnCenter span {margin: 0px 1px;}
+
+
+/*회원가입_정보입력*/
+.joinWrap .joinCont .joinForm ul {}
+.joinWrap .joinCont .joinForm > ul > li {padding: 12px 30px; border-bottom: 1px solid #e5e5e5;}
+.joinWrap .joinCont .joinForm ul li:after {display: block; clear: both; content: "";}
+.joinWrap .joinCont .joinForm ul.userInfo {}
+.joinWrap .joinCont .joinForm ul.userInfo li {position: relative; padding-left: 23.5%;}
+.joinWrap .joinCont .joinForm ul.userInfo li .writeTit {position: absolute; top: 50%; left: 30px; margin-top: -10px;}
+.joinWrap .joinCont .joinForm ul.userInfo .questBox {line-height: 20px;}
+.joinWrap .joinCont .joinForm ul.userInfo .ansBox {line-height: 20px;}
+.joinWrap .joinCont .joinForm ul.userInfo .radioForm {margin-left: 15px;}
+.joinWrap .joinCont .joinForm ul li .questBox {float: left; width:20%; line-height: 40px; margin-bottom: 0px;}
+.joinWrap .joinCont .joinForm ul li .ansBox {position: relative; float: right; width:78%;}
+.joinWrap .joinCont .joinForm ul li .ansBox p.nameT {font-size: 14px; color: #333; font-weight: 400; line-height: 40px;}
+.joinWrap .joinCont .joinForm ul li .ansBox span.antxt {display: inline-block; font-size: 14px; color: #666; line-height: 40px; margin-right: 40px;}
+.joinWrap .joinCont .joinForm ul li .ansBox span.antxt em {font-family: 'Arial';}
+.joinWrap .joinCont .joinForm ul li .ansBox .button1 {margin-left: 2px;}
+.joinWrap .joinCont .joinForm ul li .ansBox .button1 a {width: 113px; font-size: 14px;}
+.joinWrap .joinCont .joinForm ul li .ansBox input[type="text"], .joinWrap .joinCont .joinForm ul li .ansBox input[type="password"] {width: 227px;}
+.joinWrap .joinCont .joinForm ul li .ansBox .telBox input {width: 72px;}
+.joinWrap .joinCont .joinForm ul li .ansBox .pwinfo {position: absolute; top: 0; left: 235px; height: 40px; line-height: 40px; color: #999;}
+.joinWrap .joinCont .joinForm ul li .ansBox .telBox .select-ul {margin-right: 3px;}
+.joinWrap .joinCont .joinForm .ansBox .radioForm {margin: 10px 45px 10px 0px;}
+.joinWrap .joinCont .joinForm ul li dl {}
+.joinWrap .joinCont .joinForm ul li dl > dt {display: inline-block; width: 20%; line-height: 40px; font-weight: 400;}
+.joinWrap .joinCont .joinForm ul li dl > dd {display: inline-block; width: 79%;}
+.joinWrap .joinCont .joinForm .plusInfo {border: 1px solid #ddd;}
+.joinWrap .joinCont .joinForm .plusInfo > dt {height: 60px; line-height: 60px; background: #f5f5f5; padding: 0 20px; cursor: pointer;}
+.joinWrap .joinCont .joinForm .plusInfo > dt p {height: 60px; line-height: 60px; background: url(/kr/ko/web_resource/front/images/common/arr_bottom1.png) no-repeat right center;}
+.joinWrap .joinCont .joinForm .plusInfo > dt.on p {background: url(/kr/ko/web_resource/front/images/common/arr_top1.png) no-repeat right center;}
+.joinWrap .joinCont .joinForm .plusInfo > dd {border-top: 1px solid #ddd; padding: 0 30px;}
+.joinWrap .joinCont .joinForm .plusInfo > dd > ul > li {padding: 12px 0; border-top: 1px solid #e5e5e5;}
+.joinWrap .joinCont .joinForm .plusInfo > dd > ul > li:first-child {padding: 30px 0; text-align: center; border-top: 0 none;}
+.joinWrap .joinCont .joinForm .plusInfo > dd > ul > li:last-child {border-bottom: 0px none;}
+.joinWrap .joinCont .joinForm .plusInfo > dd li .mailBox {position: relative; width: 546px; padding-bottom: 20px;}
+.joinWrap .joinCont .joinForm .plusInfo > dd li .mailBox .error_position {position: absolute; bottom: 0; left: 0;}
+.joinWrap .joinCont .joinForm .plusInfo > dd li .mailBox input[type="text"] {width: 140px;}
+.joinWrap .joinCont .joinForm .plusInfo > dd li .mailBox input[type="text"]:first-child {width: 224px;}
+.joinWrap .joinCont .joinForm .plusInfo > dd li .mailBox .select-ul {width: 140px; display: inline-block; margin-left: 2px;}
+.joinWrap .joinCont .joinForm .plusInfo > dd li .phoneNumBox, .joinWrap .joinCont .joinForm .plusInfo dd li .addressBox {position: relative; width: 400px;}
+.joinWrap .joinCont .joinForm .plusInfo > dd li .phoneNumBox input[type="text"] {width: 268px;}
+.joinWrap .joinCont .joinForm .plusInfo > dd li .phoneNumBox input[type="text"]:first-child {width: 110px;}
+.joinWrap .joinCont .joinForm .plusInfo > dd li .addressBox input[type="text"] {width: 400px;}
+.joinWrap .joinCont .joinForm .plusInfo > dd li .addressBox input[type="text"]:first-child {width: 280.5px;}
+.joinWrap .joinCont .joinForm .plusInfo > dd li .addressBox .button1 a {width: 114px;}
+
+
+.mt5 {margin-top: 5px !important;}
+.mt50 {margin-top: 50px !important;}
+.mt10 {margin-top: 10px !important;}
+
+
+/* 페이지 타이틀 및 열림 */
+.pull_down_group .pull_down_button {
+	overflow: hidden; 
+	white-space: nowrap; 
+	text-overflow: ellipsis; 
+	padding-right: 20px; 
+}
+.pull_down_group .pull_down_con {
+	display: none;
+}
+
+
+/* base */
+body{
+	font-family:NanumBarunGothic,sans-serif;
+	font-size:13px;
+	color:#4d4d4d;
+	word-wrap: break-word;
+}
+em,address{
+	font-style:normal;
+}
+dl, dt, dd, ul{
+	list-style:none;
+	margin:0;
+	padding:0;
+}
+
+fieldset, blockquote{
+	margin:0;
+	padding:0;
+	border:0;
+}
+legend, caption, hr{
+	display:none;
+}
+textarea{
+	overflow:auto;
+	-webkit-appearance:none;
+	border-radius:0;
+	font-family:NanumBarunGothic,sans-serif;
+}
+input{
+	font-family:NanumBarunGothic,sans-serif;
+}
+input[type="image"]{
+	-webkit-appearance:none;
+	border-radius:0;
+}
+input[type="submit"]{
+	-webkit-appearance:none;
+	border-radius:0;
+}
+input[type="text"]{
+	-webkit-appearance:none;
+	border-radius:0;
+}
+input[type="password"]{
+	-webkit-appearance:none;
+	border-radius:0;
+}
+input[type="checkbox"]{
+	border-radius:0;
+}
+input[type="reset"]{
+	border-radius:0;
+}
+select{
+	border-radius:0;
+}
+input {
+    width: 229px;
+    height: 40px;
+    border-width: 1px;
+    border-style: solid;
+    border-color: rgb(204, 204, 204);
+}
+
+
+.writeTit {
+	margin-bottom: 7px; 
+	font-weight: 500; 
+	color: #333;
+}
+
+.writePoint {
+	display: inline-block; 
+	width: 5px; 
+	height: 5px; 
+	padding: 5px 5px 0 0;
+}
+
+.radioForm {
+	display:inline-block; 
+	position: relative;
+	vertical-align: middle;
+}
+.radioForm input[type='radio'] {
+	position: absolute; 
+	top: 0; 
+	left: 0; 
+	width: 20px; 
+	height: 20px; 
+	border: 0;
+}
+.radioForm label {
+	display:inline-block; 
+	position: relative; 
+	height: 20px; 
+	line-height: 20px; 
+	padding-left: 30px; 
+	vertical-align: top; 
+	font-size: 14px; 
+	color: #666; 
+	z-index: 1;
+}
+
+
+.sel_size{
+	 width: 113px;
+    height: 40px;
+}
+
+
+.betweenTxt {
+	margin: 0 5px;
+	color: #999;
+}
+
+<!-- 버튼 시작-->
+
+.btnCenter {
+    margin: 10px 0;
+    text-align: center;
+}
+
+
+.mt30 {
+    margin-top: 30px !important;
+}
+
+.joinWrap .joinCont .btnCenter span {
+    margin: 0px 1px;
+}
+
+.button1 {
+    display: inline-block;
+    vertical-align: middle;
+}
+.button1 a.large {
+    width: 150px;
+    height: 50px;
+    line-height: 48px;
+    font-size: 16px;
+}
+.button1 .type4 {
+    color: #666;
+    background: #fff;
+    border: 1px solid #aaa;
+}
+.button1 a {
+    font-weight: 500;
+    text-align: center;
+    -webkit-box-sizing: border-box;
+    -moz-box-sizing: border-box;
+    -ms-box-sizing: border-box;
+    -o-box-sizing: border-box;
+    box-sizing: border-box;
+}
+
+a:visited {
+    color: #4c4c4c;
+}
+a:link {
+    color: #4c4c4c;
+    text-decoration: none;
+}
+span a {
+    display: block;
+}
+.button1 .type1 {
+	width: 150px;
+    height: 50px;
+    color: #fff;
+    background: #033823;
+}
+#center
+{
+	text-align: center;
+}
+<!--버튼 끝 -->

@@ -32,7 +32,7 @@
     				<li><a href="${pageContext.request.contextPath }/notice/noticeList.notice" title="공지사항">공지사항</a></li>
 					<li><a href="${pageContext.request.contextPath }/qna/qnaList.qna" title="Qna">QnA</a></li>
 					<li><a href="${pageContext.request.contextPath }/library/libraryView.library" title="찾아오시는길">찾아오시는길</a></li>
-  					</ul>
+  				</ul>
 			</div>
 				
 		</div>
@@ -40,7 +40,14 @@
 	</div>
 </div>
 
-
 <div class="header2">
+	<div id = "divTopMenu">
+		<ul>
+			<li><a href = "${pageContext.request.contextPath}/book/bookTotalSearch.book">도서검색</a></li>
+			<li><a href = "${pageContext.request.contextPath}/seat/seatList.seat">좌석예약</a></li>
+			<li><a href = "${pageContext.request.contextPath}/book/bookOrderTotalList.book">도서신청</a></li>
+			<li><a href = "${pageContext.request.contextPath}/market/marketTotalList.market">중고장터</a></li>
+			<li><a href = "${pageContext.request.contextPath}/notice/noticeList.notice">공지사항</a></li>
+		</ul>
+	</div>
 </div>
-		

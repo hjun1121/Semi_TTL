@@ -42,7 +42,6 @@
 	float:left;
 	padding-left:20px;
 	margin-left:13px;
-	background:url(../../../../image/ko/local/locationBg.png) no-repeat 0 3px;
 	font-family:NG, sans-serif;
 	line-height:1.5em;
 }
@@ -243,7 +242,6 @@
     background: #033823;
 }
 .button1 a, .button1 a:hover, .button1 a:focus {
-    /* -webkit-transition-duration: .5s; */
     -moz-transition-duration: .5s;
     -ms-transition-duration: .5s;
     -o-transition-duration: .5s;

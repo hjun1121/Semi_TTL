@@ -1,0 +1,150 @@
+@charset "UTF-8";
+
+#leftBar #leftBar4 a{
+	background-color: #555;
+    color: white;
+}
+
+<!--상단 바 시작 -->
+
+#divContentsW{
+	background-color:#fff;
+}
+
+#divContents{
+	margin-left:350px;
+	background-color:#fff;
+	padding-bottom:30px;
+	background-color:#fff;
+	margin-right: 100px;
+	margin-bottom: 70px; 
+	
+	
+}
+
+
+#divTitle{
+	color:#464646;
+	font-size:32px;
+}
+
+#divLocation{
+	min-height:20px;
+	margin:0 56px 20px 0;
+	overflow:hidden;
+}
+
+#divLocation .home{
+	list-style: none;
+	float:left;
+	padding-left:20px;
+	margin-left:13px;
+	background:url(./../../image/common/home.png) no-repeat 0 3px;
+	font-family:NG, sans-serif;
+	line-height:1.5em;
+}
+#divLocation ul li{
+	list-style: none;
+	float:left;
+	padding-left:20px;
+	margin-left:13px;
+	font-family:NG, sans-serif;
+	line-height:1.5em;
+}
+
+#divLocation ul li a{
+	color:#454545;
+}
+
+#divLocation ul li:first-child{
+	margin:0;
+	padding:0;
+	background:none;
+}
+<!--상단 바 끝 -->
+
+select#kind {
+    font-family: inherit;
+}
+
+select.selectBox1 {
+    height: 35px;
+    border: 1px solid #d1d0cf;
+    background-color: #fff;
+    line-height: 29px;
+}
+
+.btnType5{
+  	height: 23px;
+    vertical-align: top;
+    border: none;
+    background: url(../../image/bookTotalSearch/limitSearch.gif) no-repeat 15px 50%;
+    background-color: #fff;
+    padding: 0 5px 0 25px;
+}
+.listTable {
+    clear: both;
+    border-top: 1px solid #b3b3b3;
+    border-bottom: 1px solid #e6e6e6;
+    text-align: center;
+}
+
+table {
+    width: 100%;
+    border: none;
+    border-collapse: collapse;
+}
+
+.listTable tr th {
+    height: 40px;
+    padding: 10px 8px;
+}
+
+.listTable td {
+    padding: 14px 10px;
+    border-top: 1px solid #e6e6e6;
+    height: 40px;
+    text-align: left;
+}
+
+.listTable tr:hover{
+	background-color: #fcf9ce;
+}
+table th {
+    border: none;
+    background-color: #f3f3f3;
+    color: #727272;
+}
+
+<!--페이징 시작-->
+.paging {
+    clear: both;
+    margin: 40px 0 0;
+    text-align: center;
+}
+
+.paging > span {
+    margin: 0 10px;
+}
+
+.paging > span span {
+    padding: 0 10px;
+    color: #000;
+    text-decoration: underline;
+}
+
+.paging > a {
+    width: 28px;
+    height: 28px;
+    display: inline-block;
+    padding: 0;
+    border: 1px solid #e6e6e6;
+    vertical-align: middle;
+}
+
+.paging > a img {
+    width: 28px;
+    height: 28px;
+    vertical-align: middle;
+}
+<!--페이징 끝-->

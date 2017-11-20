@@ -1,0 +1,282 @@
+@charset "UTF-8";
+
+*{
+	margin: 0;
+	padding: 0;
+}
+
+<!--상단 바 시작 -->
+#divContentsW{
+	background-color:#fff;
+}
+
+#divContents{
+	padding-bottom:30px;
+	background-color:#fff;
+}
+
+#divContents{
+	position:relative;
+	width:1040px;
+	margin:0 auto;
+	padding-bottom:40px !important;
+	background-color:#fff;
+	z-index:5;
+}
+
+#divTitle{
+	color:#464646;
+	font-size:32px;
+	margin-bottom:20px;
+	padding:40px 450px 0 0;
+}
+
+#divLocation{
+	min-height:20px;
+	margin:0 56px 20px 0;
+	overflow:hidden;
+}
+
+#divLocation ul li{
+	list-style:none;
+	float:left;
+	padding-left:20px;
+	margin-left:13px;
+	font-family:NG, sans-serif;
+	line-height:1.5em;
+}
+
+#divLocation ul li a{
+	color:#454545;
+}
+
+#divLocation ul li:first-child{
+	margin:0;
+	padding:0;
+	background:none;
+}
+<!--상단 바 끝 -->
+
+
+<!-- 글쓰기 시작 -->
+
+.cstmWrap {
+	position: relative;
+	margin-bottom: 80px;
+}
+.cstmWrap .otoForm {
+	margin-bottom: 30px;
+}
+.cstmWrap .otoForm > li {
+	position: relative;
+	padding: 12px 0 11px 185px; 
+	border-bottom: 1px solid #e5e5e5;
+}
+.cstmWrap .otoForm > li p.writeTit {
+	position: absolute;
+	top: 0; 
+	left: 0; 
+	padding-left: 30px; 
+	margin: 0; 
+	height: 64px; 
+	line-height: 64px;
+}
+.cstmWrap .btnBox {
+	text-align: center;
+	margin-bottom: 60px;
+}
+.cstmWrap .btnBox .button1 {
+	margin: 0 1px;
+}
+
+.cstmWrap {
+	width: 1000px; 
+	margin: 0 auto 80px;
+}
+
+.cstmWrap input, button, textarea {
+	padding: 0;
+	margin: 0; 
+	vertical-align: middle; 
+	font-family: 'Noto', 'dotum', '돋움', 'verdana', 'sans-serif';  
+	font-size:  14px; 
+	color: #333; 
+	background: none; 
+	border: 0; 
+	border-radius: 0; 
+	box-shadow: none;
+	-webkit-box-sizing: border-box;
+	-moz-box-sizing: border-box; 
+	-ms-box-sizing: border-box; 
+	-o-box-sizing: border-box; 
+	box-sizing: border-box;
+}
+.cstmWrap input {
+	width: 100%;
+	height: 40px;
+	font-size: 14px; 
+	border: 1px solid #ccc;
+}
+.cstmWrap input[type='text'], input[type='password'], input[type='tel'], input[type='date'] {
+	padding: 0 5px 0 10px; 
+	color: #333;
+}
+.cstmWrap input[type='text']:focus, input[type="password"]:focus, input[type='tel']:focus {
+	border: 1px solid #333; 
+	outline: none;
+}
+.cstmWrap input[type="password"] {
+	line-height: 100%;
+}
+.cstmWrap input:hover {
+	border: 1px solid #333;
+}
+.cstmWrap input:disabled {
+	color: #ccc; 
+	background: #f5f5f5; 
+	border: 1px solid #e5e5e5;
+}
+.cstmWrap input::-webkit-input-placeholder{
+	line-height: 40px; 
+	color:#999;
+} 
+.cstmWrap input::-moz-placeholder{
+	line-height: 40px; 
+	color:#999;
+}
+.cstmWrap input:-moz-placeholder{
+	line-height: 40px;
+	color:#999;
+}
+.cstmWrap input:-ms-input-placeholder{
+	line-height: 40px; 
+	color:#999;
+	}
+.cstmWrap textarea {
+	width: 100%; 
+	height: 150px; 
+	line-height: 18px; 
+	padding: 10px 15px; 
+	font-size: 14px; 
+	color: #333; 
+	resize: none; 
+	border: 1px solid #ccc;
+}
+.cstmWrap button {
+	display: inline-block; 
+	cursor: pointer;
+	}
+
+.cstmWrap ol, ul, li {
+	list-style: none;
+}
+
+.mt30 {
+	margin-top: 30px !important;
+}
+
+.borTc3 {
+	border-top: 1px solid #333;
+}
+.writeTit {
+	margin-bottom: 7px; 
+	font-weight: 500; 
+	color: #333;
+}
+
+
+.textForm {
+	position: relative;
+}
+.textForm label {
+	position: absolute; 
+	left: 0; 
+	top: 0; 
+	width: 100%; 
+	height: 100%; 
+	padding: 10px 15px; 
+	font-size: 14px; 
+	color: #999; 
+	cursor: text; 
+	box-sizing: border-box; 
+	-webkit-box-sizing: border-box; 
+	-moz-box-sizing: border-box; 
+	-ms-box-sizing: border-box; 
+	-o-box-sizing: border-box;
+}
+.textForm.hide textarea {
+	border: 1px solid #333;
+}
+.textForm.hide label {
+	display:none;
+}
+.textForm textarea:hover {
+	border: 1px solid #333;
+}
+.textForm.disabled textarea {
+	background: #f2f2f2; border: 1px solid #e5e5e5;
+}
+.textForm.disabled label {
+	color: #ccc;
+}
+.mt10 {
+	margin-top: 10px !important;
+}
+
+
+
+.button1 {
+	display:inline-block; 
+	vertical-align:middle;
+}
+
+.button1 a.large {
+    width: 150px;
+    height: 50px;
+    line-height: 48px;
+    font-size: 16px;
+}
+.button1 .type1 {
+    color: #fff;
+    background: #033823;
+}
+.button1 a, .button1 a:hover, .button1 a:focus {
+    /* -webkit-transition-duration: .5s; */
+    -moz-transition-duration: .5s;
+    -ms-transition-duration: .5s;
+    -o-transition-duration: .5s;
+    transition-duration: .5s;
+}
+.button1 a {
+    font-weight: 500;
+    text-align: center;
+    -webkit-box-sizing: border-box;
+    -moz-box-sizing: border-box;
+    -ms-box-sizing: border-box;
+    -o-box-sizing: border-box;
+    box-sizing: border-box;
+}
+.cstmWrap a {
+    display: block;
+    font-family: 'Noto', 'dotum', '돋움', 'verdana', 'sans-serif';
+    font-size: 14px;
+    text-decoration: none;
+    color: #333;
+}
+.button1 .type4 {
+    color: #666;
+    background: #fff;
+    border: 1px solid #aaa;
+}
+a:hover {
+	text-decoration: none;
+}
+
+#btn_OK{
+	width: 150px;
+    height: 50px;
+    line-height: 48px;
+    font-size: 16px;
+}
+
+<!-- 글쓰기 끝 -->

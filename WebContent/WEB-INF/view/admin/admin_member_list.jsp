@@ -11,6 +11,9 @@
 <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
 <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+
+<link rel="stylesheet" href="${pageContext.request.contextPath }/css/member/myPage.css">
+<link rel="stylesheet" href="${pageContext.request.contextPath }/css/admin/admin_member_list.css">
 <title>Insert title here</title>
 <script type="text/javascript">
 $(function(){
@@ -98,7 +101,23 @@ $(function(){
 <body>
 <c:import url="${myContextPath}/temp/header.jsp"></c:import>
 
-	<div style = "height: 100px"></div>
+<div>
+	<c:import url="${myContextPath}/WEB-INF/view/member/myPage.jsp"></c:import>
+</div>
+
+<div id="divContentsW">
+	<div id="divContents">
+		<h2 id="divTitle">회원 리스트</h2>
+		<div id="divLocation">
+			<ul>
+				<li class="home"><a href="${pageContext.request.contextPath}/index.jsp"><img src="${pageContext.request.contextPath }/image/notice/home.png" alt="HOME"></a></li>
+				<li>&gt;</li>
+				<li>MY PAGE</li>
+				<li>&gt;</li>
+				<li>회원 리스트</li>
+			</ul>
+		</div>
+
 	<form name="frm" class="form-inline" action="./memberList.member" method="post">
 	<input type="hidden" name="sel" value="sel">
 	<input type="hidden" name="kind" id="kind0" value="${kind }">
@@ -191,6 +210,8 @@ $(function(){
 
 	<a href="../index.jsp">home</a>
 	
+	</div>
+</div>	
 <c:import url="${myContextPath}/temp/footer.jsp"></c:import>
 </body>
 </html>

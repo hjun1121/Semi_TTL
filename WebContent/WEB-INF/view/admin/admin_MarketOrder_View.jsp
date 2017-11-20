@@ -11,9 +11,29 @@
 <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
 <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+
+<link rel="stylesheet" href="${pageContext.request.contextPath }/css/member/myPage.css">
+<link rel="stylesheet" href="${pageContext.request.contextPath }/css/admin/admin_MarketOrder_View.css">
 </head>
 <body>
 <c:import url="${myContextPath}/temp/header.jsp"></c:import>
+
+<div>
+	<c:import url="${myContextPath}/WEB-INF/view/member/myPage.jsp"></c:import>
+</div>
+
+<div id="divContentsW">
+	<div id="divContents">
+		<h2 id="divTitle">중고장터 신청 상세정보</h2>
+		<div id="divLocation">
+			<ul>
+				<li class="home"><a href="${pageContext.request.contextPath}/index.jsp"><img src="${pageContext.request.contextPath }/image/notice/home.png" alt="HOME"></a></li>
+				<li>&gt;</li>
+				<li>MY PAGE</li>
+				<li>&gt;</li>
+				<li>중고장터 신청 상세정보</li>
+			</ul>
+		</div>
 
 	<table border="1">
 		<tr>
@@ -36,8 +56,10 @@
 	</table>
 		<a href="./marketOrderOK.market?num=${view.num }">승인</a>
 		<a href="./marketOrderNO.market?num=${view.num }">거절</a>
-		<a href="./marketOrderList.market">LIST</a>
+		<a href="./marketOrderAdmin.market">LIST</a>
 		
+	</div>	
+</div>		
 <c:import url="${myContextPath}/temp/footer.jsp"></c:import>
 </body>
 </html>

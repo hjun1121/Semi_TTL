@@ -1,0 +1,101 @@
+@charset "UTF-8";
+
+#leftBar #leftBar2 a{
+	background-color: #555;
+    color: white;
+}
+
+<!--상단 바 시작 -->
+#divContentsW{
+	background-color:#fff;
+}
+
+#divContents{
+	margin-left:350px; 
+	margin-right: 100px;
+	margin-bottom: 50px;
+	background-color:#fff;
+	padding-bottom:30px;
+	background-color:#fff;
+}
+#divTitle{
+	color:#464646;
+	font-size:32px;
+}
+
+#divLocation{
+	min-height:20px;
+	margin:0 56px 20px 0;
+	overflow:hidden;
+}
+#divLocation ul{
+	list-style:none; 
+	
+}
+#divLocation ul li{
+	float:left;
+	padding-left:20px;
+	margin-left:13px;
+	background:url(../../../../image/ko/local/locationBg.png) no-repeat 0 3px;
+	font-family:NG, sans-serif;
+	line-height:1.5em;
+}
+
+#divLocation ul li a{
+	color:#454545;
+}
+
+#divLocation ul li:first-child{
+	margin:0;
+	padding:0;
+	background:none;
+}
+
+<!--상단 바 끝 -->
+.Dtable {
+    clear: both;
+    border-top: 1px solid #b3b3b3;
+    border-bottom: 1px solid #e6e6e6;
+    text-align: center;
+}
+
+table {
+    width: 100%;
+    border: none;
+    border-collapse: collapse;
+}
+
+.Dtable tr th {
+    height: 40px;
+    padding: 10px 8px;
+}
+
+.Dtable td {
+    padding: 14px 10px;
+    border-top: 1px solid #e6e6e6;
+    height: 40px;
+    text-align: left;
+}
+.noneBorder{
+	border:none;border-right:0px; border-top:0px; boder-left:0px; boder-bottom:0px;
+}
+
+table th {
+	width:100px;
+    border: none;
+    background-color: #f3f3f3;
+    color: #727272;
+}
+
+input.btnType5 {
+    height: 35px;
+    vertical-align: top;
+    border: 1px solid #585858;
+    background-color: #fff;
+    padding: 0 20px 0 20px;
+}
+.btn{
+	width: 1040px;
+	height: 80px;
+	margin:0 auto;
+}

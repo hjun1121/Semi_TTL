@@ -29,7 +29,7 @@ public class AdminMarketOrderNOService implements Action {
 		String path = "../index.jsp";
 		if(result>0) {
 			message = num+"번 신청 거절";
-			path = "./marketOrderList.market";
+			path = "./marketOrderAdmin.market";
 		}else {
 			
 		}

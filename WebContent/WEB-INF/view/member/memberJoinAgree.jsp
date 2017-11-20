@@ -5,134 +5,92 @@
 <html>
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
-<link rel="stylesheet" href="${pageContext.request.contextPath }/css/member/memberJoinAgree.css">
+
 <link rel="stylesheet" href="${pageContext.request.contextPath }/css/temp/header.css">
 <link rel="stylesheet" href="${pageContext.request.contextPath }/css/temp/footer.css">
 <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
 <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
-<link rel="stylesheet" href="${pageContext.request.contextPath }/css/member/memberJoin.css">
+<link rel="stylesheet" href="../css/member/memberJoinAgree.css">
 <title>Insert title here</title>
 <script type="text/javascript">
-$(function(){
-	var check= false;
-	
-	$("#chAll").click(function(){
-		check=$("#chAll").prop("checked");
-		for(var i =0; i<$(".box").length;i++){
-			$(".box").prop("checked", check)
-			$(".box2").prop("checked", check)
-		}
-	});//전체동의 끝
-	
-	
-	$(".box").click(function(){
-		if(this.checked){
-			
-			var flag=true;
-			$(".box").each(function(){
-				if(this.checked==false){
-					flag=false;
-				}
-				$("#chAll").prop("checked", flag);
-			});
-			
-		}else{
-			$("#chAll").prop("checked", false);
-		}
+	$(function(){
 		
-	});//필수동의 끝
+		$("#btn_NO").click(function(){
+			alert("no");
+		});
 	
-	
-	$("#btn").click(function(){
-		if($("#chAll").prop("checked")==true ){
-			frm.submit();
-		}else{
-			alert("동의하세요");
-		}
-	});//동의필수
-	
-	
-	
-});
-
+		$("#btn_OK").click(function(){
+			alert("ok");
+		});
+	});
 </script>
 </head>
 <body>
 <c:import url="${myContextPath}/temp/header.jsp"></c:import>
 
 <div id="divContentsW">
-		<div id="divContents">
-
-<h2 id="divTitle">동의?어보감</h2>
-			<div id="divLocation">
-				<ul>
-					<li class="home"><a href="../index.jsp"><img src="${pageContext.request.contextPath }/image/notice/home.png" alt="HOME"></a></li>
-					<li>&gt;</li>
-					<li>동의?어보감</li>
-				</ul>
-			</div>
-
-
-<form action="${pageContext.request.contextPath }/member/memberJoinAgree.member" id = "frm" name="frm" method="post">
-	<input type="hidden" name="agCheck" id="agCheck">
-	<div id="agree_form">
-		<div id="agree_all">
+	<div id="divContents">
 			
-		<!-- all -->
-			<div id="agree_check_all">
-				<h4>이용약관, 개인정보 수집 및 이용,<br>
-				위치정보 이용약관(선택), 프로모션 안내<br>
-				메일 수신(선택)에 모두 동의합니다.
-				<input type="checkbox" class="btn float"  id="chAll"></h4>
-			</div>
-		<!-- 1 -->
-			<div id="agree_1" class="agree_0">
-				<h4>TTL 이용약관 동의 <span>(필수)</span> <input type="checkbox" id="ch1" class="box float"></h4>
-				<textarea rows="5" cols="169" readonly="readonly">
-					동의 ? 어 보감
-					동의 ? 어 보감
-					동의 ? 어 보감
-					동의 ? 어 보감
-					동의 ? 어 보감
-					동의 ? 어 보감
-					동의 ? 어 보감
-
-				</textarea>
-			</div>
-		<!-- 2 -->	
-			<div id="agree_2"  class="agree_0">
-				<h4>개인정보 수집 및 이용에 대한 안내 <span>(필수)</span> <input type="checkbox" id="ch2" class="box float"> </h4>
-				<textarea rows="5" cols="169" readonly="readonly">
-					양파? 어 니언
-				</textarea>
-			</div>
-		<!-- 3 -->	
-			<div id="agree_3"  class="agree_0">
-				<h4>위치정보 이용약관 동의 <span>(선택)</span><input type="checkbox" id="ch3" class="box2 float"> </h4> 
-				<textarea rows="5" cols="169" readonly="readonly">
-					관리자? 어 드민
-				</textarea>
-			</div>
-			
-	
-			
-		<!-- 가입버튼 -->
-			<div id="agree_submit">
-				<button type="reset" id="agree_reset">
-					<span>비동의</span>
-				</button>
-			
-				<input type="button" id="btn" value="동의">
-			</div>
+		<h2 id="divTitle">이용약관</h2>
+		<div id="divLocation">
+			<ul>
+				<li class="home"><a href="#"><img src="${pageContext.request.contextPath }/image/notice/home.png" alt="HOME"></a></li>
+				<li>&gt;</li>
+				<li>이용약관</li>
+			</ul>
 		</div>
-	</div>
-	</form>
+
+	<form name="form" action="#" method="post">
+		<div class="joinCont mt50">
+			<h2 class="jsTxt clauseTxt">회원가입 및 정상적인 서비스 이용을 위해 아래 약관을 읽고, 동의 여부 결정해 주세요.</h2>
+			
+			<div class="eduteClause">
+				<div class="ckAll">
+					<span class="checkForm">
+						도서관 회원 약관 전체 동의&nbsp;<input type="checkbox" name="allCheck" onclick="all_chk()">
+						
+					</span>
+				</div>
+				<div class="clauseBox mt40">
+					<h3 class="jsTxt">도서관 이용약관</h3>
+					<span class="checkForm">
+						동의(필수)&nbsp;<input type="checkbox"name="req1">
+					</span>
+					<div class="clauseCont">
+					동의? 어 보감 
+					</div>
+				</div>
+				<div class="clauseBox mt40">
+					<h3 class="jsTxt">개인정보 수집 이용동의</h3>
+					<span class="checkForm">동의(필수)&nbsp;<input type="checkbox" name="req2">
+					</span>
+					<div class="clauseCont">
+					동의? 어 보감<br>동의? 어 보감<br>동의? 어 보감<br>동의? 어 보감<br>동의? 어 보감<br>동의? 어 보감<br>동의? 어 보감<br>동의? 어 보감<br>동의? 어 보감<br>동의? 어 보감<br>
+					</div>
+				</div>
+				<div class="clauseBox mt40">
+					<h3 class="jsTxt">개인정보 제공 동의</h3>
+					<span class="checkForm">
+						동의(필수)&nbsp;<input type="checkbox" name="req3">
+					</span>
+					<div class="clauseCont">
+					동의? 어 보감
+					</div>
+				</div>
+			</div>
+			
+					<div class="btnCenter mt30" id="center">
+						<span class="button1"><a href="#" class="type4 large" id="btn_NO">취소</a></span> 
+						<span class="button1"><a href="#" class="type1 large" id="btn_OK">다음</a></span> 
+					</div>
+				</div>
+			</form>
+
+
 
 	</div>
 </div>
-
-
 <c:import url="${myContextPath}/temp/footer.jsp"></c:import>
 </body>
 </html>

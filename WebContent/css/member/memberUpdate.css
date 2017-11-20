@@ -1,6 +1,12 @@
 @charset "utf-8";
 
+#leftBar #leftBar1 a{
+	background-color: #555;
+    color: white;
+}
+
 <!--상단 바 시작 -->
+
 #divContentsW{
 	background-color:#fff;
 }
@@ -11,19 +17,14 @@
 }
 
 #divContents{
-	position:relative;
-	width:1040px;
-	margin:0 auto;
-	padding-bottom:40px !important;
+	margin-left:350px;
 	background-color:#fff;
-	z-index:5;
+	margin-right: 200px;
 }
 
 #divTitle{
 	color:#464646;
 	font-size:32px;
-	margin-bottom:20px;
-	padding:40px 450px 0 0;
 }
 
 #divLocation{
@@ -32,12 +33,20 @@
 	overflow:hidden;
 }
 
-#divLocation ul li{
+#divLocation .home{
 	list-style: none;
 	float:left;
 	padding-left:20px;
 	margin-left:13px;
 	background:url(./../../image/common/home.png) no-repeat 0 3px;
+	font-family:NG, sans-serif;
+	line-height:1.5em;
+}
+#divLocation ul li{
+	list-style: none;
+	float:left;
+	padding-left:20px;
+	margin-left:13px;
 	font-family:NG, sans-serif;
 	line-height:1.5em;
 }

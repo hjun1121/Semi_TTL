@@ -47,7 +47,6 @@ $(function(){
 	
 		<form name="frm" class="form-inline" action="./noticeList.notice" method="post">
 			<fieldset>
-				<legend>검색</legend>
 				
 				<span class="bunch">
 					<label class="skip">검색어</label>
@@ -58,7 +57,7 @@ $(function(){
 					</select> 
 					<input type="text" class="inputTextType3 sw" id="search" maxlength="100" title="검색어" placeholder="검색어를 입력하세요" name="search" value=${search }>
 				</span>
-					 <input type="submit" class="btnType5" value="검색">
+					 <input type="submit" class="btnType5" value="검색" style="width: 95px;">
 			 </fieldset>
 		</form>
 		
@@ -129,7 +128,7 @@ $(function(){
 	</c:if>
 	
 	<!-- 페이징 -->
-	
+	<div style = "text-align: center;">
 	<div class="paging">
 		
 		<ul class="pagination">
@@ -160,6 +159,7 @@ $(function(){
 			</c:if>
 			
 		</ul>
+	</div>
 	</div>
 	<!-- 페이징 끝 -->
 	

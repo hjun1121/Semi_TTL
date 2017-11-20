@@ -2,15 +2,18 @@ package com.fnw.book;
 
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
+import javax.servlet.http.HttpSession;
 
 import com.fnw.action.Action;
 import com.fnw.action.ActionFoward;
+import com.fnw.member.MemberDTO;
 
 public class BookOrderUpdateService implements Action {
 	@Override
 	public ActionFoward doProcess(HttpServletRequest request, HttpServletResponse response) {
 		ActionFoward actionFoward = new ActionFoward();
-		
+		HttpSession session = request.getSession();
+		String id = ((MemberDTO)session.getAttribute("member")).getId();
 		String method = request.getMethod();
 		Book_OrderDAO book_OrderDAO = new Book_OrderDAO();
 		Book_OrderDTO book_OrderDTO = null;
@@ -43,10 +46,10 @@ public class BookOrderUpdateService implements Action {
 
 			if(result>0) {
 				request.setAttribute("message", "수정 성공");
-				request.setAttribute("path", "../index.jsp");
+				request.setAttribute("path", "./bookOrderList.book?state=3&id="+id);
 			}else{
 				request.setAttribute("message", "수정 실패");
-				request.setAttribute("path", "../index.jsp");
+				request.setAttribute("path", "./bookOrderList.book?state=3&id="+id);
 			}
 			actionFoward.setCheck(true);
 			actionFoward.setPath("../WEB-INF/view/common/result.jsp");

@@ -8,64 +8,127 @@
 <title>Insert title here</title>
 <link rel="stylesheet" href="${pageContext.request.contextPath }/css/temp/header.css">
 <link rel="stylesheet" href="${pageContext.request.contextPath }/css/temp/footer.css">
+<link rel="stylesheet" href="${pageContext.request.contextPath }/css/member/myPage.css">
+<link rel="stylesheet" href="${pageContext.request.contextPath }/css/market/marketDealsDetails.css">
 <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
 <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
 </head>
 <body>
 <c:import url="${myContextPath}/temp/header.jsp"></c:import>
+<div>
+	<c:import url="../member/myPage.jsp"></c:import>
+</div>
 
-	<h2>마켓 판/구매 내역 상세히</h2>
+<div id="divContentsW">
+	<div id="divContents">
+		<h2 id="divTitle">MARKET 거래 상세 내역</h2>
+		<div id="divLocation">
+			<ul>
+				<li class="home"><a href="${pageContext.request.contextPath}/index.jsp"><img src="${pageContext.request.contextPath }/image/common/home.png" alt="HOME"></a></li>
+				<li>&gt;</li>
+				<li>MY PAGE</li>
+				<li>&gt;</li>
+				<li>MARKET 거래 내역</li>
+				<li>&gt;</li>
+				<li>상세 내역</li>
+			</ul>
+		</div>
 	<form action="../market/marketDealsList.market?id=${member.id }&type=3" method="post">
-		<p>num<input type="text" name="num" value=${bookDealsDetail.num } readonly="readonly"></p>
-		<p>title<input type="text" name="title" value=${bookDealsDetail.title } readonly="readonly"></p>
-		<p>writer<input type="text" name="writer" value=${bookDealsDetail.writer } readonly="readonly"></p>
-		<p>company<input type="text" name="company" value=${bookDealsDetail.company } readonly="readonly"></p>
-		<p>publish_date<input type="text" name="publish_date" value=${bookDealsDetail.publish_date } readonly="readonly"></p>
-		<p>t_date<input type="text" name="t_date" value=${bookDealsDetail.t_date } readonly="readonly"></p>
-		<p>price<input type="text" name="price" value=${bookDealsDetail.price } readonly="readonly"></p>
-		<p>library<input type="text" name="library" value=${bookDealsDetail.library } readonly="readonly"></p>
-		
-		<c:choose>
-			<c:when test="${bookDealsDetail.kind eq 1}">
-				<p>kind<input type="text" value="판매" readonly="readonly"></p>
-				<input type="hidden" name="kind" value=${bookDealsDetail.kind }>
-			</c:when>
-			<c:when test="${bookDealsDetail.kind eq 2}">
-				<p>kind<input type="text" value="구매" readonly="readonly"></p>
-				<input type="hidden" name="kind" value=${bookDealsDetail.kind }>
-			</c:when>
-		</c:choose>
-		
-		<c:choose>
-			<c:when test="${bookDealsDetail.state eq 1}">
-				<p>state<input type="text" value="완료" readonly="readonly"></p>
-				<input type="hidden" name="state" value=${bookDealsDetail.state }>
-			</c:when>
-			<c:when test="${bookDealsDetail.state eq 2}">
-				<p>state<input type="text" value="대기" readonly="readonly"></p>
-				<input type="hidden" name="state" value=${bookDealsDetail.state }>
-			</c:when>
-		</c:choose>
-	
-		<c:choose>
-			<c:when test="${bookDealsDetail.delivery eq 2}">
-				<p>delivery<input type="text" value="택배" readonly="readonly"></p>
-				<input type="hidden" name="delivery" value=${bookDealsDetail.delivery }>
-				<input type="text" name="postcode" value=${bookDealsDetail.postCode }>
-				<input type="text" name="addr" value=${bookDealsDetail.addr }>
-				<input type="text" name="addr2" value=${bookDealsDetail.addr2 }>
-			</c:when>
+		<table class="Dtable">
+			<tr>
+				<th>No.</th>
+				<td><input type="text" class="noneBorder" name="num" value=${bookDealsDetail.num } readonly="readonly"></td>
+			</tr>
+			<tr>
+				<th>서명</th>
+				<td><input type="text" class="noneBorder" name="title" value=${bookDealsDetail.title } readonly="readonly"></td>
+			</tr>
+			<tr>
+				<th>저자</th>
+				<td><input type="text" class="noneBorder" name="writer" value=${bookDealsDetail.writer } readonly="readonly"></td>
+			</tr>
+			<tr>
+				<th>출판사</th>
+				<td><input type="text" class="noneBorder" name="company" value=${bookDealsDetail.company } readonly="readonly"></td>
+			</tr>
+			<tr>
+				<th>출판년도</th>
+				<td><input type="text" class="noneBorder" name="publish_date" value=${bookDealsDetail.publish_date } readonly="readonly"></td>
+			</tr>
+			<tr>
+				<th>거래일자</th>
+				<td><input type="text" class="noneBorder" name="t_date" value=${bookDealsDetail.t_date } readonly="readonly"></td>
+			</tr>
+			<tr>
+				<th>가격</th>
+				<td><input type="text" class="noneBorder" name="price" value=${bookDealsDetail.price } readonly="readonly"></td>
+			</tr>
+			<tr>
+				<th>비치도서관</th>
+				<td><input type="text" class="noneBorder" name="library" value=${bookDealsDetail.library } readonly="readonly"></td>
+			</tr>
+			<tr>
+			<c:choose>
+				<c:when test="${bookDealsDetail.kind eq 1}">
+					<th>거래</th>
+					<td><input type="text" class="noneBorder" value="판매" readonly="readonly"></td>
+					<input type="hidden" name="kind" value=${bookDealsDetail.kind }>
+				</c:when>
+				<c:when test="${bookDealsDetail.kind eq 2}">
+					<th>거래</th>
+					<td><input type="text" class="noneBorder" value="구매" readonly="readonly"></td>
+					<input type="hidden" name="kind" value=${bookDealsDetail.kind }>
+				</c:when>
+			</c:choose>
+			</tr>
+			<tr>
+			<c:choose>
+				<c:when test="${bookDealsDetail.state eq 1}">
+					<th>상태</th>
+					<td><input type="text" class="noneBorder" value="완료" readonly="readonly"></td>
+					<input type="hidden" name="state" value=${bookDealsDetail.state }>
+				</c:when>
+				<c:when test="${bookDealsDetail.state eq 2}">
+					<th>상태</th>
+					<td><input type="text" class="noneBorder" value="대기" readonly="readonly"></td>
+					<input type="hidden" name="state" value=${bookDealsDetail.state }>
+				</c:when>
+			</c:choose>
+			</tr>
+			<c:choose>
 			<c:when test="${bookDealsDetail.delivery eq 1}">
-				<p>delivery<input type="text" value="직접수령" readonly="readonly"></p>
+				<tr>
+				<th>수령방법</th>
+				<td><input type="text" class="noneBorder" value="택배" readonly="readonly"></td>
 				<input type="hidden" name="delivery" value=${bookDealsDetail.delivery }>
+				</tr>
+				<tr>
+				<th></th>
+					<td><input type="text" name="postcode" class="noneBorder" size="5" value=${bookDealsDetail.postCode } readonly="readonly"></tr>
+					<tr>
+					<th></th>
+					<td><input type="text" name="addr" class="noneBorder"  value=${bookDealsDetail.addr } readonly="readonly">
+					<input type="text" name="addr2" class="noneBorder" value=${bookDealsDetail.addr2 } readonly="readonly"></td>
+				</tr>
 			</c:when>
-		</c:choose>
+			<c:when test="${bookDealsDetail.delivery eq 2}">
+			<tr>
+				<th>수령방법</th>
+				<td><input type="text" class="noneBorder" value="직접수령" readonly="readonly"></td>
+				<input type="hidden" name="delivery" value=${bookDealsDetail.delivery }>
+			</tr>
+			</c:when>
+			</c:choose>
+		</table>
 		
-		<button type="submit">확인</button>
-		<a href="./marketDealsDelete.market?num=${bookDealsDetail.num }"><input type="button" value="내역 삭제"></a>
+		<div class="btn">
+			<input type="submit" class="btnType5" id="btn" name="btn" value="확인">
+			<a href="./marketDealsDelete.market?num=${bookDealsDetail.num }"><input type="button" class="btnType5" value="내역 삭제"></a>
+		</div>
 	</form>	
-	
+	</div>
+</div>
 <c:import url="${myContextPath}/temp/footer.jsp"></c:import>
 </body>
 </html>
