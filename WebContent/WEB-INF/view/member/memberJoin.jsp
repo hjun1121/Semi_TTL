@@ -46,13 +46,35 @@
 			
 		});
 
-		
-		//pw 확인 체크
 		$("#pw1").change(function(){
-			$("#ch_pw").html('<p style="color: red">비밀번호를 확인해주세요</p>');
-			$("#pw2").val("");
-			pwCheck = false;
+			var pw1= $("#pw1").val();
+			var pwpw=false;
+			for(var i=0; i<pw1.length;i++){
+				if(pw1.charAt(i) == '!' || pw1.charAt(i) == '@' || pw1.charAt(i) =='#' || pw1.charAt(i) =='$' || pw1.charAt(i) =='%' || pw1.charAt(i) =='^' || pw1.charAt(i) =='&' || pw1.charAt(i) =='*'){
+					i= pw1.length;
+					pwpw=true;
+				}else{
+				}
+			}
+			
+			if(pwpw==true && pw1.length>7 && pw1.length<13 ){
+				
+				$("#ch_pw").html('<p style="color: red">비밀번호를 확인해주세요</p>');
+				$("#pw2").val("");
+				$("#pw2").removeAttr("readonly")
+				pwCheck = false;
+				
+			}else{
+				$("#ch_pw").html('<p style="color: red">비밀번호는 1개 이상의 특수문자 와 8~12 자리 </p>');
+				$("#pw2").val("");
+				
+				$("#pw2").attr("readonly", "readonly")
+				pwCheck = false;
+			}
+			
 		});
+		
+		
 		
 		$("#pw2").change(function(){
 			var pw1= $("#pw1").val();
@@ -260,7 +282,7 @@
 									<span class="writePoint"></span>비밀번호 확인
 								</div>
 								<div class="ansBox">
-									<input type="password" id="pw2">
+									<input type="password" id="pw2" >
 									<div id="ch_pw"></div>
 								</div>
 							</li>
@@ -314,7 +336,7 @@
 									<span class="writePoint"></span>전화번호
 								</div>
 								<div class="ansBox">
-									<select id="f" name="email" class="sel_size" style="margin-bottom: 5px;">
+									<select id="f" name="f" class="sel_size" style="margin-bottom: 5px;">
    										<option value="">선택하세요</option>
     									<option value="010">010</option>
 										<option value="011">011</option>
@@ -338,7 +360,7 @@
 											<input type="text" id="email1">
 											<span class="betweenTxt">@</span>
 											<input type="text" id="email2">
-											<select id = "mailList" class="sel_size">
+											<select id = "mailList"  class="sel_size">
    												<option  value="0">직접입력</option>
 												<option  value="naver.com">naver.com</option>
 												<option  value="daum.net">daum.net</option>
