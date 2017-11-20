@@ -264,46 +264,45 @@ $(function(){
 
 		<!-- /////////////// -->
 
-	<div style = "height: 50px"></div>
 	<form action="../market/marketBuy.market" method="POST">
-	<input type = "hidden" class = "form-control" name = "num" value = ${buyWishList.num }>
-		<input type = "hidden" class = "form-control" name = "id" value = ${member.id }>
-		<input type = "hidden" class = "form-control" name = "kind" value = '1'>
+	<input type = "hidden" name = "num" value = ${buyWishList.num }>
+		<input type = "hidden"  name = "id" value = ${member.id }>
+		<input type = "hidden" name = "kind" value = '1'>
 		<table class = "table">
 			<tr>
 				<td>책제목</td>
-				<td><input type = "text" class = "form-control" name = "title" value="${buyWishList.title}"></td>
+				<td><input type = "text" name = "title" value="${buyWishList.title}"></td>
 				<td>저자</td>
-				<td><input type = "text" class = "form-control" name = "writer" value="${buyWishList.writer}"></td>
+				<td><input type = "text" name = "writer" value="${buyWishList.writer}"></td>
 			</tr>
 			<tr>
 				<td>출판사</td>
-				<td><input type = "text" class = "form-control" name = "company" value="${buyWishList.company}"></td>
+				<td><input type = "text" name = "company" value="${buyWishList.company}"></td>
 				<td>출판년도</td>
-				<td><input type = "text" class = "form-control" name = "publish_date" placeholder = "출판년도는 숫자만 입력해 주세요" value="${buyWishList.publish_date}"></td>
+				<td><input type = "text" name = "publish_date" placeholder = "출판년도는 숫자만 입력해 주세요" value="${buyWishList.publish_date}"></td>
 			</tr>
 			<tr>
 				<td>정가</td>
-				<td><input type = "text" class = "form-control" name = "price" value="${buyWishList.price}"></td>
+				<td><input type = "text" name = "price" value="${buyWishList.price}"></td>
 			</tr>
 			<tr>
 				<td>도서관명</td>
 				<c:choose>
 					<c:when test="${buyWishList.library eq 1}">
-						<td><input type = "text" class = "form-control"value="기흥구"></td>
-						<input type = "hidden" class = "form-control" name = "library" value="1">
+						<td><input type = "text" value="기흥구"></td>
+						<input type = "hidden" name = "library" value="1">
 					</c:when>
 					<c:when test="${buyWishList.library eq 2}">
-						<td><input type = "text" class = "form-control" value="송파구"></td>
-						<input type = "hidden" class = "form-control" name = "library" value="2">
+						<td><input type = "text"  value="송파구"></td>
+						<input type = "hidden" name = "library" value="2">
 					</c:when>
 					<c:when test="${buyWishList.library eq 3}">
-						<td><input type = "text" class = "form-control" value="장안구"></td>
-						<input type = "hidden" class = "form-control" name = "library" value="3">
+						<td><input type = "text"  value="장안구"></td>
+						<input type = "hidden" name = "library" value="3">
 					</c:when>
 					<c:when test="${buyWishList.library eq 4}">
-						<td><input type = "text" class = "form-control" value="분당구"></td>
-						<input type = "hidden" class = "form-control" name = "library" value="4">
+						<td><input type = "text" value="분당구"></td>
+						<input type = "hidden" name = "library" value="4">
 					</c:when>
 					<c:otherwise>
 						<td>-</td>
@@ -329,7 +328,7 @@ $(function(){
 				<td>택배결제시 2500원 추가되어 결제됩니다.</td>
 			</tr>
 		</table>
-		<button class = "btn btn-default" type = "submit">CONFIRM</button>
+		<button type = "submit">CONFIRM</button>
 	</form>
 	
 	
