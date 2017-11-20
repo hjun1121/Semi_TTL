@@ -73,17 +73,43 @@
 
 /* header2 */
 .header2 {
+	text-align: center;
 	position:relative;
 	height:60px;
 	background-color:#004640;
 	z-index:21;
 }
 
-.header2 li a{
+.header2>div {
+	width: 80%;
+}
+
+.header2 li {
+	text-align: center;
     float: left;
-    color: #ffffff;
     font-size: 25px;
     font-family: monospace;
     font-weight: bold;
-    padding-left: 50px;
+    line-height: 60px;
+	width: 200px;
 }
+
+.header2 li a {
+	font-family: NanumBarunGothic,sans-serif;
+    color: #ffffff;
+}
+
+.header2 ul {
+	text-align: center;
+	margin:0 auto;
+}
+
+
+
+
+
+
+
+
+
+
