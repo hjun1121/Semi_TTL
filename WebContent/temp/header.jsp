@@ -44,9 +44,10 @@
 	<div id = "divTopMenu">
 		<ul>
 			<li><a href = "${pageContext.request.contextPath}/book/bookTotalSearch.book">도서검색</a></li>
-			<li><a href = "${pageContext.request.contextPath}/seat/seatTotalList.seat">좌석예약</a></li>
+			<li><a href = "${pageContext.request.contextPath}/seat/seatList.seat">좌석예약</a></li>
 			<li><a href = "${pageContext.request.contextPath}/book/bookOrderForm.book">도서신청</a></li>
 			<li><a href = "${pageContext.request.contextPath}/market/marketTotalList.market">중고장터</a></li>
+			<li><a href = "${pageContext.request.contextPath}/notice/noticeList.notice">공지사항</a></li>
 		</ul>
 	</div>
 </div>
