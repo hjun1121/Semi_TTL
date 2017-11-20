@@ -86,18 +86,11 @@ $(function(){
 </script>
 </head>
 <body>
-<<<<<<< HEAD
-<!-- header 시작 -->
-	<c:import url="../../../temp/header.jsp"></c:import>
-<!-- header 끝 -->
-	
-=======
+
 <!-- header -->
 <c:import url="${myContextPath}/temp/header.jsp"></c:import>
 <!-- header -->
 
-
->>>>>>> 892f8c8f8be74bcc23cabe9051a09d7f51899993
 	<section id="section">
 		<div id = "bts_top_section">
 			<h2 id="divTitle">소장도서</h2>

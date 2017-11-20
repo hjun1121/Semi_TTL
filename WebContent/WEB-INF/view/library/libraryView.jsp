@@ -5,7 +5,7 @@
 <html>
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
-<title>지도 이동시키기</title>
+<title>찾아오시는 길</title>
 <link rel="stylesheet" href="${pageContext.request.contextPath }/css/temp/header.css">
 <link rel="stylesheet" href="${pageContext.request.contextPath }/css/temp/footer.css">
 <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
@@ -80,7 +80,18 @@
 		 	marker.setMap(map);
 		});
 		
-		
+		$("#11").click(function(){
+			window.open("http://map.daum.net/link/to/기흥도서관,${library[0].x_position}, ${library[0].y_position}");
+		});
+		$("#22").click(function(){
+			window.open("http://map.daum.net/link/to/송파도서관,${library[1].x_position}, ${library[1].y_position}");
+		});
+		$("#33").click(function(){
+			window.open("http://map.daum.net/link/to/장안도서관,${library[2].x_position}, ${library[2].y_position}");
+		});
+		$("#44").click(function(){
+			window.open("http://map.daum.net/link/to/분당도서관,${library[3].x_position}, ${library[3].y_position}");
+		});
 		
 	});
 </script>
@@ -106,6 +117,12 @@
     <button class="btn" id="2">송파도서관</button>
     <button class="btn" id="3">장안도서관</button>
     <button class="btn" id="4">분당도서관</button>
+    <br>
+    <br>
+    <input type="button" class="btn" id="11" value="기흥길찾기">
+    <input type="button" class="btn" id="22" value="송파길찾기">
+    <input type="button" class="btn" id="33" value="장안길찾기">
+    <input type="button" class="btn" id="44" value="분당길찾기">
 </p>
 
 	</div>
