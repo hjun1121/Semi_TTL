@@ -14,43 +14,16 @@
 <link rel="stylesheet" href="../css/member/memberJoinAgree.css">
 <title>Insert title here</title>
 <script type="text/javascript">
-function chk(){
- var req1 = document.form.req1.checked;
- var req2 = document.form.req2.checked;
- var req3 = document.form.req3.checked; 
- var num = 0;
- if((req1&&req2&&req3) == true){
-  num = 1;
- }
- if(num==1){
-  document.form.submit();
- }else{
-  alert("모두 약관에 동의하셔야 합니다.");
- }
-}
-
-
-function all_chk() 
-{
-	if((form.req1.checked||form.req1.checked||form.req1.checked)==false)
-		{
-		form.req1.checked = true;
-		form.req2.checked = true;
-		form.req3.checked = true;
-		}
-	else if((form.req1.checked||form.req1.checked||form.req1.checked)==true)
-		{
-			form.req1.checked = false;
-			form.req2.checked = false;
-			form.req3.checked = false;
-		}
-
-}
-
-function nochk(){
- alert("동의하지 않으면 가입하실 수 없습니다.");
- location.href="../index.jsp";
-}
+	$(function(){
+		
+		$("#btn_NO").click(function(){
+			alert("no");
+		});
+	
+		$("#btn_OK").click(function(){
+			alert("ok");
+		});
+	});
 </script>
 </head>
 <body>
@@ -108,8 +81,8 @@ function nochk(){
 			</div>
 			
 					<div class="btnCenter mt30" id="center">
-						<span class="button1"><a href="#" class="type4 large" onclick="nochk()">취소</a></span> 
-						<span class="button1"><a href="#" class="type1 large" onclick="chk()">다음</a></span> 
+						<span class="button1"><a href="#" class="type4 large" id="btn_NO">취소</a></span> 
+						<span class="button1"><a href="#" class="type1 large" id="btn_OK">다음</a></span> 
 					</div>
 				</div>
 			</form>
