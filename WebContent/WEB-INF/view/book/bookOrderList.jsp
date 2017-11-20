@@ -34,87 +34,92 @@ $(function(){
 
 <div id="divContentsW">
 	<div id="divContents">
-		<h2 id="divTitle">책 신청 내역</h2>
+		<h2 id="divTitle">신청 내역</h2>
 		<div id="divLocation">
 			<ul>
 				<li class="home"><a href="../index.jsp"><img src="${pageContext.request.contextPath }/image/notice/home.png" alt="HOME"></a></li>
 				<li>&gt;</li>
-				<li>책 신청 내역</li>
+				<li>MY PAGE</li>
+				<li>&gt;</li>
+				<li>신청 내역</li>
 			</ul>
 		</div>
 
 	<div>
-		<form name="frm" class="form-inline" action="./bookOrderList.book"
-			method="post">
-			<div>
-				<span> <select name="kind" id="kind">
-						<option value="title" class="kind">제목</option>
-						<option value="writer" class="kind">저자</option>
-						<option value="company" class="kind">출판사</option>
-				</select> <input type="text" class="form-control" id="search"
-					placeholder="Enter" name="search" value="${search }">
+	<!-- 검색 시작 -->
+		<form name="frm" class="form-inline" action="./bookOrderList.book" method="post">
+			<fieldset>
+				<span class="bunch">
+					<select id="kind" name = "kind" class="selectBox1">
+						<option class = "kind" value="title">서명</option>
+						<option class = "kind" value="writer">저자</option>
+						<option class = "kind" value="company">출판사</option>
+					</select>
+				<input type="text" id = "search" name = "search" value = "${search}" class="inputTextType3 sw" maxlength="100" title="검색어" placeholder="검색어를 입력하세요">
 				</span>
-				<div class="form-group">
-					<div class="col-sm-offset-2 col-sm-10">
-						<input type="submit" class="btn btn-default">
-					</div>
-				</div>
-			</div>
+				<input type="submit" class="btnType5" value="검색" id = "search">
+			</fieldset>
 		</form>
+		<!-- 검색 끝 -->
 	</div>
-	<a href="./bookOrderList.book?id=${member.id }&state=1&kind=${kind}&search=${search}"><input type="button" value="대기"></a>
-	<a href="./bookOrderList.book?id=${member.id }&state=0&kind=${kind}&search=${search}"><input type="button" value="취소"></a>
-	<a href="./bookOrderList.book?id=${member.id }&state=2&kind=${kind}&search=${search}"><input type="button" value="승인"></a>
-	<a href="./bookOrderList.book?id=${member.id }&state=3&kind=${kind}&search=${search}"><input type="button" value="전체"></a>
-	<table class="table" border="1">
+	<br>
+	<a href="./bookOrderList.book?id=${member.id }&state=1&kind=${kind}&search=${search}"><input class="btnType3" type="button" value="대기"></a>
+	<a href="./bookOrderList.book?id=${member.id }&state=0&kind=${kind}&search=${search}"><input class="btnType3" type="button" value="취소"></a>
+	<a href="./bookOrderList.book?id=${member.id }&state=2&kind=${kind}&search=${search}"><input class="btnType3" type="button" value="승인"></a>
+	<a href="./bookOrderList.book?id=${member.id }&state=3&kind=${kind}&search=${search}"><input class="btnType3" type="button" value="전체"></a>
+	<br><br>
+	
+	<div class="listTable">
+	<table class="mobileTable tablet" >
+	<thead>
 		<tr>
-			<th>num</th>
-			<th>title</th>
-			<th>writer</th>
-			<th>company</th>
-			<th>publish_date</th>
-			<th>price</th>
-			<th>library</th>
-			<th>state</th>
-			<th>cancel</th>
+			<th>No.</th>
+			<th>서명</th>
+			<th>저자</th>
+			<th>출판사</th>
+			<th>출판년도</th>
+			<th>가격</th>
+			<th>비치도서관</th>
+			<th>상태</th>
+			<th>취소사유</th>
 		</tr>
 		<c:forEach items="${bookOrderList }" var="bookOrder_list">
 			<tr>
-				<td>${bookOrder_list.num }</td>
+				<td scope="row" class="footable-first-column">${bookOrder_list.num }</td>
 				<td><a
 					href="./bookOrderDetails.book?num=${bookOrder_list.num }">${bookOrder_list.title }</a></td>
-				<td>${bookOrder_list.writer }</td>
-				<td>${bookOrder_list.company }</td>
-				<td>${bookOrder_list.publish_date }</td>
-				<td>${bookOrder_list.price }</td>
+				<td scope="row" style="display: table-cell;">${bookOrder_list.writer }</td>
+				<td scope="row" style="display: table-cell;">${bookOrder_list.company }</td>
+				<td  scope="row" data-class="expand">${bookOrder_list.publish_date }</td>
+				<td scope="row" style="display: table-cell;">${bookOrder_list.price }</td>
 				<c:choose>
 					<c:when test="${bookOrder_list.library eq 1}">
-						<td>기흥구</td>
+						<td scope="row" style="display: table-cell;">기흥구</td>
 					</c:when>
 					<c:when test="${bookOrder_list.library eq 2}">
-						<td>송파구</td>
+						<td scope="row" style="display: table-cell;">송파구</td>
 					</c:when>
 					<c:when test="${bookOrder_list.library eq 3}">
-						<td>장안구</td>
+						<td scope="row" style="display: table-cell;">장안구</td>
 					</c:when>
 					<c:when test="${bookOrder_list.library eq 4}">
-						<td>분당구</td>
+						<td scope="row" style="display: table-cell;">분당구</td>
 					</c:when>
 					<c:otherwise>
-						<td>없음</td>
+						<td scope="row" style="display: table-cell;">없음</td>
 					</c:otherwise>
 				</c:choose>
 				<c:choose>
 					<c:when test="${bookOrder_list.state eq 0}">
-						<td>취소</td>
+						<td scope="row" style="display: table-cell;">취소</td>
 						<td>${bookOrder_list.cancel }</td>
 					</c:when>
 					<c:when test="${bookOrder_list.state eq 1}">
-						<td>대기</td>
+						<td scope="row" style="display: table-cell;">대기</td>
 						<td>-</td>
 					</c:when>
 					<c:otherwise>
-						<td>승인</td>
+						<td scope="row" style="display: table-cell;">승인</td>
 						<td>-</td>
 					</c:otherwise>
 				</c:choose>
@@ -122,8 +127,8 @@ $(function(){
 		</c:forEach>
 	</table>
 	
-	<div>
-		<ul class="pagination">
+	<div class = "paging" style = "text-align: center;">
+		<ul class="pagination pagination-sm">
 			<c:if test="${page.curBlock>1}">
 				<li><button class="go" id="${page.startNum-1}">[이전]</button></li>
 			</c:if>
