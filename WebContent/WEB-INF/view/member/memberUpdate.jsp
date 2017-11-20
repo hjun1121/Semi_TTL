@@ -251,11 +251,11 @@
 				</tr>
 				<tr>
 					<th>비밀번호</th>
-					<td><input type="password" class="useBorder" name="pw1" id="pw1"value=${DTO.pw }></td>
+					<td><input type="password" class="noneBorder" name="pw1" id="pw1"value=${DTO.pw }></td>
 				</tr>
 				<tr id="pwc" style="display: none;">
 					<th>비밀번호 확인</th>
-					<td><input type="password" class="useBorder" id="pw2"><div id="ch_pw"></div></td>
+					<td><input type="password" class="noneBorder" id="pw2"><div id="ch_pw"></div></td>
 				</tr>
 				<tr>
 					<th>이름</th>
@@ -263,7 +263,7 @@
 				</tr>
 				<tr>
 					<th>생년월일</th>
-					<td><input type="date" class="useBorder" name="birth" value=${DTO.birth }></td>
+					<td><input type="date" class="noneBorder" name="birth" value=${DTO.birth }></td>
 				</tr>
 				<tr>
 					<th>성별</th>
@@ -274,10 +274,10 @@
 				<tr>
 					<th>주소</th>
 					<td>
-						<input type="text" class="useBorder" id="postCode" name="postCode" size="10" placeholder="우편번호" readonly="readonly" value=${DTO.postCode }>
+						<input type="text" class="noneBorder" id="postCode" name="postCode" size="10" placeholder="우편번호" readonly="readonly" value=${DTO.postCode }>
 						<input type="button" id="addrCheck" value="우편번호 찾기" class="btnType4" readonly="readonly"><br><br>
-						<input type="text" class="useBorder" id="addr" name="addr" placeholder="주소" readonly="readonly" size="60" value="${DTO.addr }">
-						<input type="text" class="useBorder" id="addr2" name="addr2" placeholder="나머지주소" size="40" value="${DTO.addr2 }">
+						<input type="text" class="noneBorder" id="addr" name="addr" placeholder="주소" readonly="readonly" size="60" value="${DTO.addr }">
+						<input type="text" class="noneBorder" id="addr2" name="addr2" placeholder="나머지주소" size="40" value="${DTO.addr2 }">
 					</td>
 				</tr>
 				<tr>
@@ -289,14 +289,14 @@
 		   					<option value="031" class="num">031</option>
 		   					<option value="02" class="num">02</option>
 						</select>
-					<input type="text" id="m" name="m" value=${m } size="10" class="useBorder"> <b> - </b> <input class="useBorder" size="10" type="text" id="l" name="l" value=${l }>
+					<input type="text" id="m" name="m" value=${m } size="10" class="noneBorder"> <b> - </b> <input class="noneBorder" size="10" type="text" id="l" name="l" value=${l }>
 					<input type="hidden" id="phone" name="phone" value=${DTO.phone }>
 					</td>
 				</tr>
 				<tr>
 					<th>이메일</th>
 					<td>
-					<input type="text" id="email1" name="email1" class="useBorder" value=${email1 } size="15"><b> @ </b><input type="text" size="15" class="useBorder"  id="email2" name="email2" value=${email2 }>
+					<input type="text" id="email1" name="email1" class="noneBorder" value=${email1 } size="15"><b> @ </b><input type="text" size="15" class="noneBorder"  id="email2" name="email2" value=${email2 }>
 						<select id="mailList" class="sel_size">
 							<option value="0" class="email">직접입력</option>
 		   					<option value="naver.com" class="email">naver.com</option>
@@ -323,7 +323,7 @@
 				<c:if test="${sessionScope.member.kind ne 10 }">
 					<c:if test="${member.kind eq 1}">
 						<th>등급</th>
-						<td><input type="text" class="useBorder" class="noneBorder" value="일반사용자" readonly="readonly"></td>
+						<td><input type="text" class="noneBorder" class="noneBorder" value="일반사용자" readonly="readonly"></td>
 					</c:if>
 				</c:if>
 				<c:if test="${sessionScope.member.kind eq 10 }">
