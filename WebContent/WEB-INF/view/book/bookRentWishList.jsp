@@ -47,77 +47,87 @@ $(document).ready(function() {
 
 <div id="divContentsW">
 	<div id="divContents">
-		<h2 id="divTitle">책 대여 찜</h2>
+		<h2 id="divTitle">대여 찜콩</h2>
 		<div id="divLocation">
 			<ul>
 				<li class="home"><a href="../index.jsp"><img src="${pageContext.request.contextPath }/image/notice/home.png" alt="HOME"></a></li>
 				<li>&gt;</li>
-				<li>책 대여 찜</li>
+				<li>MY PAGE</li>
+				<li>&gt;</li>
+				<li>대여 찜콩 내역</li>
 			</ul>
 		</div>
 
 	<form action="./bookRentWishDelete.book" method="POST">
-		<table class="table" border="1">
+		<div class="listTable">
+		<table class="mobileTable tablet" >
+		<tr>
+			<th>전체선택<input type="checkbox" class="chk" id="checkAll" name="checkAll"></th>
+			<th>No.</th>
+			<th>서명</th>
+			<th>저자</th>
+			<th>출판사</th>
+			<th>출판년도</th>
+			<th>구역</th>
+			<th>비치도서관</th>
+			<th>상태</th>
+			<th></th>
+		</tr>
+		<c:forEach items="${bookRentWishList  }" var="bookRentWishList">
 			<tr>
-				<th>전체선택<input type="checkbox" class="chk" id="checkAll" name="checkAll"></th>
-				<th>num</th>
-				<th>title</th>
-				<th>writer</th>
-				<th>company</th>
-				<th>publish_date</th>
-				<th>section</th>
-				<th>library</th>
-				<th>state</th>
-				<th></th>
+				<td scope="row" style="display: table-cell;">
+				<input type="checkbox" class="chk" name="Pcheck" value="${bookRentWishList.num }">
+				</td>
+				<td scope="row" class="footable-first-column">${bookRentWishList.num }</td>
+ 				<td scope="row" style="display: table-cell;">${bookRentWishList.title }</td>
+				<td scope="row" style="display: table-cell;">${bookRentWishList.writer }</td>
+				<td scope="row" style="display: table-cell;">${bookRentWishList.company }</td>
+				<td scope="row" data-class="expand">${bookRentWishList.publish_date }</td>
+ 				<td scope="row" style="display: table-cell;">${bookRentWishList.section }</td>
+				<c:choose>
+					<c:when test="${bookRentWishList.library eq 1}">
+						<td scope="row" style="display: table-cell;">기흥구</td>
+					</c:when>
+					<c:when test="${bookRentWishList.library eq 2}">
+						<td scope="row" style="display: table-cell;">송파구</td>
+					</c:when>
+					<c:when test="${bookRentWishList.library eq 3}">
+						<td scope="row" style="display: table-cell;">장안구</td>
+					</c:when>
+					<c:when test="${bookRentWishList.library eq 4}">
+						<td scope="row" style="display: table-cell;">분당구</td>
+					</c:when>
+					<c:otherwise>
+						<td scope="row" style="display: table-cell;">*</td>
+					</c:otherwise>
+				</c:choose>
+			
+				<c:choose>
+					<c:when test="${bookRentWishList.state eq 1}">
+						<td scope="row" style="display: table-cell;">대여중</td>
+					</c:when>
+					<c:when test="${bookRentWishList.state eq 0}">
+						<td scope="row" style="display: table-cell;">
+						<a href="./bookRentWishRent.book?num=${bookRentWishList.num }&rent_id=${id}&library=${bookRentWishList.library}">
+						<button class = "btn btn-default wish_btn" type = "button" >대여</button>
+						</a></td>
+					</c:when>
+					<c:otherwise>
+						<td scope="row" style="display: table-cell;">없음</td>
+					</c:otherwise>
+				</c:choose>
 			</tr>
-			<c:forEach items="${bookRentWishList }" var="bookRentWish_list">
-				<tr>
-					<td><input type="checkbox" class="chk" name="Pcheck" value="${bookRentWish_list.num }"></td>
-					<td>${bookRentWish_list.num }</td>
-					<td>${bookRentWish_list.title }</td>
-					<td>${bookRentWish_list.writer }</td>
-					<td>${bookRentWish_list.company }</td>
-					<td>${bookRentWish_list.publish_date }</td>
-					<td>${bookRentWish_list.section }</td>
-					<c:choose>
-		            	<c:when test="${bookRentWish_list.library eq 1}">
-							<td>기흥구</td>
-						</c:when>
-						<c:when test="${bookRentWish_list.library eq 2}">
-							<td>송파구</td>
-						</c:when>
-						<c:when test="${bookRentWish_list.library eq 3}">
-							<td>장안구</td>
-						</c:when>
-						<c:when test="${bookRentWish_list.library eq 4}">
-							<td>분당구</td>
-						</c:when>
-						<c:otherwise>
-							<td>없음</td>
-						</c:otherwise>
-					</c:choose>
-					<c:choose>
-		            	<c:when test="${bookRentWish_list.state eq 1}">
-							<td>대여중</td>
-						</c:when>
-						<c:when test="${bookRentWish_list.state eq 0}">
-							<td><a href="./bookRentWishRent.book?num=${bookRentWish_list.num }&rent_id=${id}&library=${bookRentWish_list.library}"><input type="button" value="대여"></a></td>
-						</c:when>
-						<c:otherwise>
-							<td>없음</td>
-						</c:otherwise>
-					</c:choose>
-					
-					<td><a href="./bookRentWishDelete.book?num=${bookRentWish_list.num }"><input type="button" value="삭제"></a></td>
-				</tr>
-			</c:forEach>
-			<tr>
-				<td><button type="submit" id="Pdelete">삭제 </button></td>
-			</tr>
-		</table>
+		</c:forEach>
+	</table>
+	</div>
+	<br>
+	<button type="submit" id="Pdelete" class="btn btn-default list_btn">삭제 </button>
 	</form>
-	<div>
-		<ul class="pagination">
+	</div>
+	</div>
+	
+	<div class = "paging" style = "text-align: center;">
+			<ul class="pagination pagination-sm">
 			<c:if test="${page.curBlock>1}">
 			<li><button class="go" id="${page.startNum-1}">[이전]</button></li>
 			</c:if>
@@ -131,9 +141,6 @@ $(document).ready(function() {
 			</c:if>
 		</ul>
 	</div>
-	
-	</div>
-</div>	
 <c:import url="${myContextPath}/temp/footer.jsp"></c:import>
 </body>
 </html>
