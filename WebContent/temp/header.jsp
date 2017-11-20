@@ -42,5 +42,11 @@
 
 
 <div class="header2">
+	<ul>
+		<li><a href = "${pageContext.request.contextPath}/WEB-INF/view/book/bookTotalSearch.jsp">도서검색</a></li>
+		<li><a href = "${pageContext.request.contextPath}/WEB-INF/view/library/libraryBookRecommend.jsp">추천도서</a></li>
+		<li><a href = "${pageContext.request.contextPath}/WEB-INF/view/book/bookOrderForm.jsp">도서신청</a></li>
+		<li><a href = "${pageContext.request.contextPath}/WEB-INF/market/marketTotalList.jsp">중고장터</a></li>
+	</ul>
 </div>
 		

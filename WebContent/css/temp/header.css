@@ -78,3 +78,12 @@
 	background-color:#004640;
 	z-index:21;
 }
+
+.header2 li a{
+    float: left;
+    color: #ffffff;
+    font-size: 25px;
+    font-family: monospace;
+    font-weight: bold;
+    padding-left: 50px;
+}
