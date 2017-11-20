@@ -275,7 +275,7 @@
 								</div>
 								<div class="ansBox">
 									<input type="password" name="pw" id="pw1">
-									<span class="pwinfo">(영문, 숫자, 특수문자를 조합한 6~16자리)</span>
+									<span class="pwinfo">(영문, 특수문자를 조합한 8~12자리)</span>
 								</div>
 							</li>
 							<li>

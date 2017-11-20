@@ -1,4 +1,4 @@
- @charset "UTF-8";
+@charset "UTF-8";
 
 *{
 	margin: 0;
@@ -57,7 +57,9 @@
 }
 <!--상단 바 끝 -->
 
+
 <!-- 검색 시작 -->
+
 #divSearch > div .searchForm ul li form fieldset{position:relative;padding:0 75px 0 24px;height:55px;background-color:#fff;border:1px solid #d6d6d6;border-top:none}
 #divSearch > div .searchForm ul li form fieldset input.searchInput{width:100%;height:55px;border:none;color:#9a9a9a;font-size:14px}
 #divSearch > div .searchForm ul li form fieldset input.searchBtn{position:absolute;top:15px;right:15px}
@@ -94,9 +96,8 @@ a.btnType5{display:inline-block;height:33px;border:1px solid #585858;background:
 <!-- 검색 끝 -->
 
 
+
 <!-- list 시작 -->
-
-
 /* list */
 .listTable{clear:both;border-top:1px solid #b3b3b3;border-bottom:1px solid #e6e6e6;text-align:center;}
 .listTable tr:hover{background-color:#fcf9ce}
@@ -137,18 +138,3 @@ td.title2{width:20%;}
 .addedFile{width:12px;height:15px}
 
 <!-- list 끝 -->
-
-<!-- paging -->
-/* paging */
-.paging{clear:both;margin:40px 0 0;text-align:center}
-.paging a{padding:0 10px}
-.paging > a{display:inline-block;padding:0;border:1px solid #e6e6e6;vertical-align: middle}
-.paging > a img{width:28px;height:28px;vertical-align: middle}
-.paging > a.firstPage{border-right:none}
-.paging > a.lastPage{border-left:none}
-.paging > span{margin:0 10px}
-.paging > span span{padding:0 10px;color:#000;text-decoration:underline}
-.paging > span a{color:#747474}
-
-
-<!-- paging -->
