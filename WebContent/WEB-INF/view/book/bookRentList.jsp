@@ -60,10 +60,9 @@ $(function(){
 
 	<div>
 	<form name="frm" action="./bookRentList.book" method="post">
-	
-		<div>
+		<div class ="search">
 			<span>
-				<select id="year" name="year">
+				<select id="year" name="year" class="selectBox1">
 		            <option class="years" value="17" >2017</option>
 		            <option class="years" value="16">2016</option>
 		            <option class="years" value="15">2015</option>
@@ -71,7 +70,7 @@ $(function(){
 		            <option class="years" value="13">2013</option>
   			      </select>
        			 년
-       			 <select id="month" name="month">
+       			 <select id="month" name="month" class="selectBox1">
 		            <option class="month" value="01">01</option>
 		            <option class="month" value="02">02</option>
 		            <option class="month" value="03">03</option>
@@ -86,7 +85,7 @@ $(function(){
 		            <option class="month" value="12">12</option>
 		        </select>
     		    월
-		        <select id="day" name="day">
+		        <select id="day" name="day" class="selectBox1">
 		            <option class="day" value="01">01</option>
 		            <option class="day" value="02">02</option>
 		            <option class="day" value="03">03</option>
@@ -119,7 +118,7 @@ $(function(){
 		            <option class="day" value="30">30</option>
 		            <option class="day" value="31">31</option>
 		        </select>
-		        일 이전 까지<input class="btnType5" id="btbtn" type="submit" value="Search">
+		        일 이전 까지 <input class="btnType5" id="btbtn" type="submit" value=" ">
       		  </span>
 		</div>
 		</form>

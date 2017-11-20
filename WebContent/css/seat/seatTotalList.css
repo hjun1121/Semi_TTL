@@ -59,16 +59,24 @@
 }
 <!--상단 바 끝 -->
 
-#btbtn{
+select#kind {
+    font-family: inherit;
+}
+
+select.selectBox1 {
+    height: 35px;
+    border: 1px solid #d1d0cf;
+    background-color: #fff;
+    line-height: 29px;
 }
 
 .btnType5{
-  	height: 35px;
+  	height: 23px;
     vertical-align: top;
-    border: 1px solid #585858;
+    border: none;
     background: url(../../image/bookTotalSearch/limitSearch.gif) no-repeat 15px 50%;
     background-color: #fff;
-    padding: 0 20px 0 45px;
+    padding: 0 10px 0 25px;
 }
 .listTable {
     clear: both;
