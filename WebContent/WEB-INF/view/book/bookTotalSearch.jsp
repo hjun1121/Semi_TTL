@@ -141,7 +141,7 @@ $(function(){
 				<c:forEach items="${ list }" var="dto">
 					<tr>
 						<td scope="row" class="footable-first-column">${dto.num }</td>
-						<td scope="row" data-class="expand"><a href="./bookInformation.book?num=${dto.num}&curPage=${curPage}">${dto.title }</a></td>
+						<td scope="row" data-class="expand" style="overflow: hidden; max-width: 420px;"><a href="./bookInformation.book?num=${dto.num}&curPage=${curPage}">${dto.title }</a></td>
 						<td scope="row" style="display: table-cell;">${dto.writer }</td>
 						<td scope="row" style="display: table-cell;">${dto.company }</td>
 
