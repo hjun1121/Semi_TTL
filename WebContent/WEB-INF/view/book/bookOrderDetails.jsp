@@ -57,11 +57,11 @@
 				</tr>
 				<tr>
 					<th>출판년도</th>
-					<td><input type="number" name="publish_date" class="noneBorder" value=${bookOrderDetails.publish_date } readonly="readonly"></td>
+					<td><input type="text" name="publish_date" class="noneBorder" value=${bookOrderDetails.publish_date } readonly="readonly"></td>
 				</tr>
 				<tr>
 					<th>신청사유</th>
-					<td><input type="text" class="noneBorder"  class="noneBorder" name="contents" value="${bookOrderDetails.contents }" readonly="readonly"></td>
+					<td><textarea class="noneBorder" row="30"  cols="150"name="contents" style="resize: none; wrap:hard;">${bookOrderDetails.contents }</textarea></td>
 				</tr>
 				<tr>
 					<th>가격</th>
@@ -109,7 +109,7 @@
 				</c:choose>
 				</tr>
 			</table>
-			
+			<br>
 			<div class="btn">
 			<input type="submit" class="btnType5" id="btn" name="btn" value="확인">
 			<c:if test="${bookOrderDetails.state eq 1 }">

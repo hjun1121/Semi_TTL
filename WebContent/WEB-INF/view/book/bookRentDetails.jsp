@@ -173,19 +173,22 @@
 		        </table>
 		    </div>
 		 </div>
+		</div>
 		</div> 
-		
+		<div class="btn2">
 		<c:choose>
 			<c:when test="${empty bookRentDTO.out_time }">
-				<a href="./bookReturn.book?num=${bookRentDTO.num }"><input class="btn btn-default list_btn" type="button" value="반납"></a>
+				<a href="./bookReturn.book?num=${bookRentDTO.num }"><input class="btnType5" type="button" value="반납"></a>
 			</c:when>
 		</c:choose>
-		<a href="./bookRentDelete.book?num=${bookRentDTO.num }"><input class="btn btn-default list_btn" type="button" value="삭제"></a>
-		<button class="btn btn-default list_btn" type="submit" >LIST</button>
-		<!-- 소장정보 끝 -->
+		<c:choose>
+			<c:when test="${not empty bookRentDTO.out_time }">
+				<a href="./bookRentDelete.book?num=${bookRentDTO.num }"><input class="btnType5" type="button" value="삭제"></a>
+			</c:when>
+		</c:choose>
+		<a href="../book/bookRentList.book?id=${member.id }"><input class="btnType5" type="button" value="LIST"></a>
+		</div>
 		</form>
-
-			<div style="height: 100px;"></div>
 	</div>
 </div>
 <c:import url="${myContextPath}/temp/footer.jsp"></c:import>

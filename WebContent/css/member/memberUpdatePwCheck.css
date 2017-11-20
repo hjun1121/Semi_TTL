@@ -9,11 +9,21 @@
 #divContents{
 	margin-left:350px; 
 	margin-bottom: 50px;
+	margin-top: 50px;
 }
 .loginW {overflow:hidden;position:relative;width:698px;border:1px solid #b3b3b3}
 .loginW form {float:left;width:100%}
 
-#divTitle{color:#464646;font-size:32px;margin-bottom: 20px;}
+#divTitle{
+	color:#464646;
+	display: block;
+    font-size: 1.5em;
+    -webkit-margin-before: 0.83em;
+    -webkit-margin-after: 0.83em;
+    -webkit-margin-start: 0px;
+    -webkit-margin-end: 0px;
+    font-weight: bold;
+}
 #divLocation{min-height:20px;margin: 0 56px 20px 0; overflow: hidden;}
 
 #divLocation ul{
@@ -26,7 +36,8 @@
 .loginW .loginContent {position:relative;padding:40px 96px;margin:0 auto}
 .loginW form dl {overflow:hidden;position:relative;height:36px;padding-left:60px;margin-bottom:10px}
 .loginW form dt {position:absolute;left:0;top:0;width:60px;line-height:35px}
-.loginW .inputTextType1 {width:319px;color:#b0afaf}
+
+.loginW .inputTextType1 {width:319px;color:#b0afaf;padding-left: 5px;}
 .loginW .msg {position:absolute;left:156px;top:215px;width:319px}
 
 .loginW .loginBtn {position:absolute;left:497px;top:123px}

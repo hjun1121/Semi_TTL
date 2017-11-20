@@ -17,13 +17,18 @@
 	background-color:#fff;
 	margin-right: 100px;
 	margin-bottom:70px; 
-	
+	margin-top: 50px;
 }
 
-
 #divTitle{
-	color:#464646;
-	font-size:32px;
+	color: #464646;
+    display: block;
+    font-size: 1.5em;
+    -webkit-margin-before: 0.83em;
+    -webkit-margin-after: 0.83em;
+    -webkit-margin-start: 0px;
+    -webkit-margin-end: 0px;
+    font-weight: bold;
 }
 
 #divLocation{
@@ -97,6 +102,7 @@ select#kind {
     background: url(../../image/bookTotalSearch/limitSearch.gif) no-repeat 15px 50%;
     background-color: #fff;
     padding: 0 20px 0 45px;
+    color: black;
 }
 .btnType3{
 	height: 30px;
@@ -104,6 +110,11 @@ select#kind {
     border: 1px solid #585858;
     background-color: #fff;
     padding: 0 20px 0 20px;
+    color: black;
+}
+.btnType3:hover {
+    background: #f4f4f4;
+    color: #033823;
 }
 .listTable {
     clear: both;

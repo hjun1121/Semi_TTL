@@ -7,8 +7,6 @@
 
 <!--상단 바 시작 -->
 
-
-
 #divContentsW{
 	background-color:#fff;
 }
@@ -19,12 +17,19 @@
 	padding-bottom:30px;
 	background-color:#fff;
 	margin-right: 100px;
+	margin-top: 50px;
 }
 
 
 #divTitle{
-	color:#464646;
-	font-size:32px;
+	color: #464646;
+    display: block;
+    font-size: 1.5em;
+    -webkit-margin-before: 0.83em;
+    -webkit-margin-after: 0.83em;
+    -webkit-margin-start: 0px;
+    -webkit-margin-end: 0px;
+    font-weight: bold;
 }
 
 #divLocation{
@@ -213,4 +218,23 @@ table th {
     border-top: 1px solid #e6e6e6;
 }
 
-
+input.btnType5 {
+    height: 35px;
+    vertical-align: top;
+    border: 1px solid #585858;
+    background-color: #fff;
+    padding: 0 20px 0 20px;
+    color: black;
+}
+.btnType5:hover {
+    background: #f4f4f4;
+    color: #033823;
+}
+.btn2{
+	width: 150px;
+	height: 80px;
+	margin:0 auto;
+}
+input[type=text]:focus {
+    border-color:#333;
+}
