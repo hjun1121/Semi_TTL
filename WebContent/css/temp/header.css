@@ -74,42 +74,39 @@
 /* header2 */
 .header2 {
 	text-align: center;
-	position:relative;
 	height:60px;
 	background-color:#004640;
-	z-index:21;
 }
 
-.header2>div {
-	width: 80%;
+#divTopMenu {
+	min-width: 1040px;
+}
+#divTopMenu>ul{
+	list-style: none;
+	line-height: 60px;
 }
 
-.header2 li {
-	text-align: center;
-    float: left;
-    font-size: 25px;
-    font-family: monospace;
-    font-weight: bold;
-    line-height: 60px;
-	width: 200px;
+#divTopMenu > ul > li {
+    float:left;
 }
 
-.header2 li a {
-	font-family: NanumBarunGothic,sans-serif;
-    color: #ffffff;
+#divTopMenu > ul > li a {
+    color: #fff;
+    font-size: 16px;
 }
 
-.header2 ul {
-	text-align: center;
-	margin:0 auto;
+<<<<<<< HEAD
+#divTopMenu > ul > p a {
+    padding-bottom: 13px;
+    color: #bcc922;
+    font-weight: 600;
 }
 
 
 
 
 
-
-
-
+=======
+>>>>>>> d14fd3ba44e7614cf939fce1646c5d6eaf37252a
 
 
