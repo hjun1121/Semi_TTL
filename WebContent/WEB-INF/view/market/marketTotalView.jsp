@@ -41,37 +41,127 @@
 	
 	
 	
-	<table id = "marketList" class="kind" border="1">
-			<tr>
-				<th>num</th>
-				<th>title</th>
-				<th>writer</th>
-				<th>company</th>
-				<th>publish_date</th>
-				<th>library</th>
-				<th>price</th>
-				<th>id</th>
-				<th>wish</th>
-				<th>approval</th>
-				<th>book_state</th>
-				<th>buy</th>
-			</tr>
-				<tr>
-					<td>${dto.num }</td>
-					<td>${dto.title }</td>
-					<td>${dto.writer }</td>
-					<td>${dto.company }</td>
-					<td>${dto.publish_date }</td>
-					<td>${dto.library }</td>
-					<td>${dto.price }</td>
-					<td>${dto.id }</td>
-					<td>${dto.wish }</td>
-					<td>${dto.approval }</td>
-					<td>${dto.book_state }</td>
-					<td><input type="button" id="btn" value="구매하기"></td>
-				</tr>
-		</table>
+	
+				<div class="profile">
+					<div class="profileHeader">
+	 			   	 	<h3>${dto.title }</h3>
+	 			   	 	<br>
+	   			 		<p>${dto.writer } 지음</p>
+					</div>
+					<div class="profileContent">
+		  			<div class="briefInfo">
+		        		<dl>
+		           	 	<dd class="bookImg">
+		            		<img id="coverimage" src="http://image.aladin.co.kr/product/102/27/cover/8901074605_1.jpg" width="120" height="153" alt="표지이미지" style="">
+		           		</dd>
+		        		</dl>
+		    		</div>
 		
+				<div class="table">
+					<div id="divProfile">
+	       				<table id="moreInfo">
+	       				<tbody>
+						<tr>
+							<th scope="row">출판사</th>
+							<td>${dto.company}<br></td>
+						</tr>
+						<tr>
+							<th scope="row">출판년도</th>
+							<td>${dto.publish_date}</td>
+						</tr>
+						<tr>
+							<th scope="row">정가</th>
+							<td></td>
+						</tr>
+						<tr>
+							<th scope="row">판매가</th>
+							<td>${dto.price }</td>
+						</tr>
+						<c:if test="${not empty member}">
+							<tr>
+								<th scope="row">찜하기</th>
+								<c:set var="heart1" value="0" ></c:set>
+								<c:set var="heart2" value="0" ></c:set>
+								<c:if test="${ not empty member }">
+									<c:forEach items="${rent_wish_list}" var="wish">
+										<c:if test="${wish.title eq book.title}">
+											<c:choose>
+												<c:when test="${heart1 == 0}">
+													<td><button class = "btn btn-default wish_btn" type = "submit" value = "${book.num}" title="1">❤</button></td>
+													<c:set var="heart1" value="1" ></c:set>
+													<c:set var="heart2" value="1" ></c:set>
+												</c:when>
+											</c:choose>
+										</c:if>
+									</c:forEach>
+										<c:if test="${heart2 == 0}">
+											<td><button class = "btn btn-default wish_btn" type = "submit" value = "${book.num}" title="0">♡</button></td>
+										</c:if>
+								</c:if>
+							</tr>
+						</c:if>
+						</tbody>
+						</table>
+	   				</div>
+	   			</div>
+			</div>
+		</div>
+	
+	
+		<div class="searchInfo">
+		<div class="searchHeader">
+		    <h3 class="open">상세정보</h3>
+		</div>
+		<div class="searchContents">
+		    <div class="listTable">
+		        <table class="searchTable default">
+		            <thead>
+	                    <tr>
+	                        <th scope="row" data-class="expand" class="footable-first-column">No.</th>
+	                        <th scope="row" data-hide="expand">관할 도서관</th>
+	                        <th scope="row" data-hide="phone">도서상태</th>
+	                        <th scope="row" data-hide="phone">판매자 아이디</th>
+	                        <th scope="row" data-hide="phone">찜</th>
+	                    </tr>
+		            </thead>
+		            <tbody>
+		                <tr>
+		                    <td class="num expand footable-first-column">${dto.num}</td>
+		                    <td>
+								<c:if test="${dto.library eq 1 }">
+									<a href="${pageContext.request.contextPath }/library/libraryMain.library?library=1">기흥 도서관</a>
+								</c:if>
+								<c:if test="${dto.library eq 2}">
+									<a href="${pageContext.request.contextPath }/library/libraryMain.library?library=2">송파 도서관</a>
+								</c:if>
+								<c:if test="${dto.library eq 3}">
+									<a href="${pageContext.request.contextPath }/library/libraryMain.library?library=3">장안 도서관</a>
+								</c:if>
+								<c:if test="${dto.library eq 4 }">
+									<a href="${pageContext.request.contextPath }/library/libraryMain.library?library=4">분당 도서관</a>
+								</c:if>
+							</td>
+		                    <td>
+								<c:if test="${dto.book_state eq 1 }">
+									하
+								</c:if>
+								<c:if test="${dto.book_state eq 2}">
+									중
+								</c:if>
+								<c:if test="${dto.book_state eq 3}">
+									상
+								</c:if>
+							</td>
+							<td>${dto.id }</td>
+							<td>${dto.wish }</td>
+      						
+		            </tbody>
+		        </table>
+		    </div>
+		 </div>
+		</div> 
+			<input type="button" id="btn" value="구매하기">
+			
 		
 		</div>
 	</div>
