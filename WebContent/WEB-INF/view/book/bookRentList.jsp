@@ -47,17 +47,19 @@ $(function(){
 
 <div id="divContentsW">
 	<div id="divContents">
-		<h2 id="divTitle">책 대여 내역</h2>
+		<h2 id="divTitle">대여 내역</h2>
 		<div id="divLocation">
 			<ul>
 				<li class="home"><a href="../index.jsp"><img src="${pageContext.request.contextPath }/image/notice/home.png" alt="HOME"></a></li>
 				<li>&gt;</li>
-				<li>책 대여 내역</li>
+				<li>My Page</li>
+				<li>&gt;</li>
+				<li>대여 내역</li>
 			</ul>
 		</div>
 
 	<div>
-	<form name="frm" class="form-inline" action="./bookRentList.book" method="post">
+	<form name="frm" action="./bookRentList.book" method="post">
 	
 		<div>
 			<span>
@@ -117,65 +119,63 @@ $(function(){
 		            <option class="day" value="30">30</option>
 		            <option class="day" value="31">31</option>
 		        </select>
-		        일 이전 까지
+		        일 이전 까지<input class="btnType5" id="btbtn" type="submit" value="Search">
       		  </span>
-      		  <div class="form-group">
-	      		  <div class="col-sm-offset-2 col-sm-10">
-	      		 	 <input type="submit" class="btn btn-default" value="Search">
-	      		  </div>
-      		  </div>
 		</div>
 		</form>
 	</div>
-<h2>Book Rent List</h2>
-<table class="table" border="1">
+	<br><br>
+	<div class="listTable">
+	<table class="mobileTable tablet" >
 		<tr>
-			<th>num</th>
-			<th>title</th>
-			<th>section</th>
-			<th>writer</th>
-			<th>company</th>
-			<th>publish_date</th>
-			<th>library</th>
-			<th>in_time</th>
-			<th>out_time</th>
-			<th>late_time</th>
+			<th>No.</th>
+			<th>서명</th>
+			<th>구역</th>
+			<th>저자</th>
+			<th>출판사</th>
+			<th>출판년도</th>
+			<th>비치도서관</th>
+			<th>대여시간</th>
+			<th>반납시간</th>
+			<th>연체일</th>
 			<th></th>
 		</tr>
 		<c:forEach items="${bookRentList }" var="bookRent_list">
 			<tr>
-			<td>${bookRent_list.num }</td>
- 				<td><a href="./bookRentDetails.book?num=${bookRent_list.num }">${bookRent_list.title }</a></td>
- 				<td>${bookRent_list.section }</td>
-				<td>${bookRent_list.writer }</td>
-				<td>${bookRent_list.company }</td>
-				<td>${bookRent_list.publish_date }</td>
+			<td scope="row" class="footable-first-column">${bookRent_list.num }</td>
+ 				<td scope="row" style="display: table-cell;"><a href="./bookRentDetails.book?num=${bookRent_list.num }">${bookRent_list.title }</a></td>
+ 				<td scope="row" style="display: table-cell;">${bookRent_list.section }</td>
+				<td scope="row" style="display: table-cell;">${bookRent_list.writer }</td>
+				<td scope="row" style="display: table-cell;">${bookRent_list.company }</td>
+				<td scope="row" data-class="expand">${bookRent_list.publish_date }</td>
 				<c:choose>
 					<c:when test="${bookRent_list.library eq 1}">
-						<td>기흥구</td>
+						<td scope="row" style="display: table-cell;">기흥구</td>
 					</c:when>
 					<c:when test="${bookRent_list.library eq 2}">
-						<td>송파구</td>
+						<td scope="row" style="display: table-cell;">송파구</td>
 					</c:when>
 					<c:when test="${bookRent_list.library eq 3}">
-						<td>장안구</td>
+						<td scope="row" style="display: table-cell;">장안구</td>
 					</c:when>
 					<c:when test="${bookRent_list.library eq 4}">
-						<td>분당구</td>
+						<td scope="row" style="display: table-cell;">분당구</td>
 					</c:when>
 					<c:otherwise>
-						<p>library<input type="number" value="없음" ></p>
+						<td scope="row" style="display: table-cell;">*</td>
 					</c:otherwise>
 				</c:choose>
-				<td>${bookRent_list.in_time }</td>
-				<td>${bookRent_list.out_time }</td>
+				<td scope="row" data-class="expand">${bookRent_list.in_time }</td>
+				<td scope="row" data-class="expand">${bookRent_list.out_time }</td>
 				<c:choose>
 					<c:when test="${empty bookRent_list.out_time }">
 						<td>-</td>
-						<td><a href="./bookReturn.book?num=${bookRent_list.num }"><input type="button" value="반납"></a></td>
+						<td scope="row" style="display: table-cell;">
+						<a href="./bookReturn.book?num=${bookRent_list.num }"><button class = "btn btn-default rent_btn">반납</button></a>
+						</td>
 					</c:when>
 					<c:when test="${! empty bookRent_list.out_time }">
-						<td>${bookRent_list.late_date }</td>
+						<td scope="row" data-class="expand">${bookRent_list.late_date }</td>
 					</c:when>
 					<c:otherwise>
 						<td>0</td>
@@ -184,8 +184,8 @@ $(function(){
 			</tr>
 		</c:forEach>
 	</table>
-	<div>
-		<ul class="pagination">
+	<div class = "paging" style = "text-align: center;">
+			<ul class="pagination pagination-sm">
 			<c:if test="${page.curBlock>1}">
 			<li><button class="go" id="${page.startNum-1}">[이전]</button></li>
 			</c:if>
@@ -199,7 +199,7 @@ $(function(){
 			</c:if>
 		</ul>
 	</div>
-	
+	</div>
 	</div>
 </div>	
 <c:import url="${myContextPath}/temp/footer.jsp"></c:import>

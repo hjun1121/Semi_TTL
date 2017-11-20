@@ -232,16 +232,16 @@
 <form action="./memberUpdate.member" method="post" id="frm" name="frm">
 <div id="divContentsW">
 		<div id="divContents">
-			<h2 id="divTitle">개인정보 관리</h2>
-			<div id="divLocation">
-				<ul>
-					<li class="home"><a href="#"><img src="${pageContext.request.contextPath }/image/common/home.png" alt="HOME"></a></li>
-					<li>&gt;</li>
-					<li>MY PAGE</li>
-					<li>&gt;</li>
-					<li>개인정보 관리</li>
-				</ul>
-			</div>
+		<h2 id="divTitle">개인 정보 관리</h2>
+		<div id="divLocation">
+			<ul>
+				<li class="home"><a href="#"><img src="${pageContext.request.contextPath }/image/common/home.png" alt="HOME"></a></li>
+				<li>&gt;</li>
+				<li>MY PAGE</li>
+				<li>&gt;</li>
+				<li>개인 정보 관리</li>
+			</ul>
+		</div>
 		
 		<div>
 			<table class="revisionTable">
