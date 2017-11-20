@@ -1,7 +1,6 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
 	pageEncoding="UTF-8"%>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>	
-<%@ taglib prefix="fn" uri="http://java.sun.com/jsp/jstl/functions" %>
 <!DOCTYPE html>
 <html>
 <head>
@@ -11,16 +10,32 @@
 <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
 <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+
+<link rel="stylesheet" href="${pageContext.request.contextPath }/css/member/myPage.css">
+<link rel="stylesheet" href="${pageContext.request.contextPath }/css/admin/admin_bookOrderList.css">
 <title>book order list 관리자용</title>
 </head>
 <body>
 <c:import url="${myContextPath}/temp/header.jsp"></c:import>
 
-	<div>
-		<h1>book order list 관리자용</h1>
-	</div>
+<div>
+	<c:import url="${myContextPath}/WEB-INF/view/member/myPage.jsp"></c:import>
+</div>
+
+<div id="divContentsW">
+	<div id="divContents">
+		<h2 id="divTitle">책 신청목록</h2>
+		<div id="divLocation">
+			<ul>
+				<li class="home"><a href="${pageContext.request.contextPath}/index.jsp"><img src="${pageContext.request.contextPath }/image/notice/home.png" alt="HOME"></a></li>
+				<li>&gt;</li>
+				<li>MY PAGE</li>
+				<li>&gt;</li>
+				<li>책 신청목록</li>
+			</ul>
+		</div>
+
 	
-	<h1>${fn:toUpperCase(requestScope.book)}</h1>
 	
 	
 	<table class="table table-hover" border="1">
@@ -77,6 +92,9 @@
 			</c:if>
 		</ul>
 	</div>
+	
+	</div>
+</div>	
 	
 <c:import url="${myContextPath}/temp/footer.jsp"></c:import>
 </body>

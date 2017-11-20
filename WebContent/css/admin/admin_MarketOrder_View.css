@@ -1,5 +1,6 @@
 @charset "UTF-8";
-#leftBar #leftBar10 a{
+
+#leftBar #leftBar12 a{
 	background-color: #555;
     color: white;
 }
@@ -11,14 +12,18 @@
 }
 
 #divContents{
-	margin-left:350px;
-	background-color:#fff;
+	margin-bottom:200px;
 	padding-bottom:30px;
 	background-color:#fff;
-	margin-right: 100px;
-	margin-bottom:70px; 
+	
+	
 }
 
+#divContents{
+	margin-left:350px;
+	background-color:#fff;
+	margin-right: 200px;
+}
 
 #divTitle{
 	color:#464646;

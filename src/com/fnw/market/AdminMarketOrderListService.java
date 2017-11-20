@@ -17,7 +17,6 @@ public class AdminMarketOrderListService implements Action {
 	public ActionFoward doProcess(HttpServletRequest request, HttpServletResponse response) {
 		ActionFoward actionFoward = new ActionFoward();
 		Market_OrderDAO market_OrderDAO = new Market_OrderDAO();
-		
 		int curPage=1;
 		try {
 			curPage=Integer.parseInt(request.getParameter("curPage"));

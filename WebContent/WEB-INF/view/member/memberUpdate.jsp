@@ -30,7 +30,7 @@
 			 }
 		 });
 		
-		 var library = '${member.library}';
+		 var library = '${DTO.library}';
 		 $(".library").each(function(){
 			 if($(this).val() == library) {
 				 $(this).attr("selected", true);
@@ -230,6 +230,7 @@
 </div>
 
 <form action="./memberUpdate.member" method="post" id="frm" name="frm">
+
 <div id="divContentsW">
 		<div id="divContents">
 		<h2 id="divTitle">개인 정보 관리</h2>

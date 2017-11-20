@@ -50,6 +50,7 @@
 	<p><a href="./member/memberList.member">회원리스트 / 블랙리스트(관리자)</a></p>
 	<p><a href="./market/marketOrderList.market?id=${member.id }">Market Order List(관리자)</a></p>
 	<p><a href="./book/bookOrderListAdmin.book?id=${member.id }">book Order List(관리자)</a></p>
+	<p><a href="./market/marketOrderAdmin.market">book Order List(관리자)</a></p>
 	
 	<p>=================================================</p>
 	</c:if>
