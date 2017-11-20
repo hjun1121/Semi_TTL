@@ -27,7 +27,7 @@ public class BookOrderUpdateService implements Action {
 			}
 			request.setAttribute("bookorder", book_OrderDTO);
 			actionFoward.setCheck(true);
-			actionFoward.setPath("../WEB-INF/view/book/bookUpdate.jsp");
+			actionFoward.setPath("../WEB-INF/view/book/bookOrderUpdate.jsp");
 		}else {
 			try {
 				book_OrderDTO = new Book_OrderDTO();

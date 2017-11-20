@@ -61,7 +61,7 @@
 				</tr>
 				<tr>
 					<th>신청사유</th>
-					<td><textarea class="noneBorder" row="30"  cols="150"name="contents" style="resize: none; wrap:hard;">${bookOrderDetails.contents }</textarea></td>
+					<td><textarea class="noneBorder" row="30"  cols="150" readonly="readonly"  name="contents" style="resize: none; wrap:hard;">${bookOrderDetails.contents }</textarea></td>
 				</tr>
 				<tr>
 					<th>가격</th>
