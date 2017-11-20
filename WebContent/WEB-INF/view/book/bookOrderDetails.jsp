@@ -8,11 +8,11 @@
 <title>신청내역</title>
 <link rel="stylesheet" href="${pageContext.request.contextPath }/css/temp/header.css">
 <link rel="stylesheet" href="${pageContext.request.contextPath }/css/temp/footer.css">
-<link rel="stylesheet" href="${pageContext.request.contextPath }/css/member/myPage.css">
-<link rel="stylesheet" href="${pageContext.request.contextPath }/css/book/bookOrderDetails.css">
 <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
 <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+<link rel="stylesheet" href="${pageContext.request.contextPath }/css/member/myPage.css">
+<link rel="stylesheet" href="${pageContext.request.contextPath }/css/book/bookOrderDetails.css">
 </head>
 <body>
 <c:import url="${myContextPath}/temp/header.jsp"></c:import>
@@ -34,6 +34,7 @@
 				<li>상세 내역</li>
 			</ul>
 		</div>
+		
 		<form action="../book/bookOrderList.book?id=${member.id }&state=3" method="post">
 		<div>
 			<input type="hidden" name="num" value=${bookOrderDetails.num }>
