@@ -93,6 +93,20 @@
 			window.open("http://map.daum.net/link/to/분당도서관,${library[3].x_position}, ${library[3].y_position}");
 		});
 		
+		
+		daum.maps.event.addListener(map, 'click', function(mouseEvent) {        
+		    
+		    // 클릭한 위도, 경도 정보를 가져옵니다 
+		    var latlng = mouseEvent.latLng; 
+		    
+		    // 마커 위치를 클릭한 위치로 옮깁니다
+		    marker.setPosition(latlng);
+		    
+		    var resultDiv = document.getElementById('clickLatlng'); 
+		    
+		});
+		
+		
 	});
 </script>
 </head>
