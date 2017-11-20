@@ -14,6 +14,7 @@
 
 <script type="text/javascript" src="https://code.jquery.com/jquery-1.12.4.min.js" ></script>
 <script type="text/javascript" src="https://service.iamport.kr/js/iamport.payment-1.1.5.js"></script>
+<link rel="stylesheet" href="${pageContext.request.contextPath }/css/market/marketTotalView.css">
 <script type="text/javascript">
 	$(function(){
 		$("#btn").click(function(){
@@ -25,7 +26,20 @@
 <body>
 <c:import url="${myContextPath}/temp/header.jsp"></c:import>
 
-	<h2>Market View</h2>
+
+	<div id="divContentsW">
+		<div id="divContents">
+			
+			<h2 id="divTitle">중고 도서 상세보기</h2>
+			<div id="divLocation">
+				<ul>
+					<li class="home"><a href="#"><img src="${pageContext.request.contextPath }/image/notice/home.png" alt="HOME"></a></li>
+					<li>&gt;</li>
+					<li>중고 도서 상세보기</li>
+				</ul>
+			</div>
+	
+	
 	
 	<table id = "marketList" class="kind" border="1">
 			<tr>
@@ -58,6 +72,9 @@
 				</tr>
 		</table>
 		
+		
+		</div>
+	</div>
 <c:import url="${myContextPath}/temp/footer.jsp"></c:import>
 </body>
 </html>

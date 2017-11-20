@@ -106,8 +106,7 @@
 				</ul>
 				<div class="btnBox">
 					<span class="button1">
-					<%-- <a href="${pageContext.request.contextPath }/index.jsp" class="type4 large">취소</a> --%>
-						<input type="button" id="btn_NO" class="type4 large" value="취소">
+					<a href="${pageContext.request.contextPath }/index.jsp" class="type4 large">취소</a>
 					</span>
 					<span class="button1">
 						<input type="button" id="btn_OK" class = "type1 large" value="신청"> 
