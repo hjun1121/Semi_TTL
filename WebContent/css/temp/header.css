@@ -74,46 +74,26 @@
 /* header2 */
 .header2 {
 	text-align: center;
-	position:relative;
 	height:60px;
 	background-color:#004640;
-	z-index:21;
 }
 
 #divTopMenu {
 	min-width: 1040px;
 }
+#divTopMenu>ul{
+	list-style: none;
+	line-height: 60px;
+}
 
 #divTopMenu > ul > li {
-    position: absolute;
-    top: 60px;
-    left: 0;
-    width: 100%;
+    float:left;
 }
 
-#divTopMenu > ul > li > p {
-    position: relative;
-    top: -60px;
-    width: 1040px;
-    margin: 0 auto;
-}
-
-#divTopMenu > ul > li > p a {
-    position: absolute;
-    top: 20px;
+#divTopMenu > ul > li a {
     color: #fff;
     font-size: 16px;
 }
-
-/* #divTopMenu > ul > p a { */
-/*     padding-bottom: 13px; */
-/*     color: #bcc922; */
-/*     font-weight: 600; */
-/* } */
-
-
-
-
 
 
 
