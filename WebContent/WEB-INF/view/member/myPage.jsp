@@ -12,7 +12,7 @@
 		<li id="leftBar3"><a href="../seat/seatTotalList.seat?id=${member.id }">좌석 예약 내역</a></li>
 		<li id="leftBar2"><a href="../market/marketDealsList.market?id=${member.id }&type=3">중고 거래 내역</a></li>
 		<li id="leftBar6"><a href="../market/marketOrderList.market?id=${member.id }">중고 거래 현황 </a></li>
-		<li id="leftBar7"><a href="../market/bookBuyWishList.market?id=${member.id }">책 구매 찜콩</a></li>
+		<li id="leftBar7"><a href="../market/bookBuyWishList.market?id=${member.id }">중고 구매 찜콩</a></li>
 		<li id="leftBar9"><a href="../member/memberLogout.member">로그아웃</a></li>
 	</ul>
 	</c:if>
