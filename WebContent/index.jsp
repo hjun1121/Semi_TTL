@@ -24,12 +24,8 @@
 		<div id="divSearch"></div>
 		<!-- //Search -->
 	
-	
 	<h2>김앤신(통합포털)</h2>
-	<p><a href="./book/bookTotalSearch.book">Book_search</a>
-	<p><a href="./book/bookOrderForm.book">Book_Order(도서 신청서)</a>
 	<p><a href="./book/bookOrderTotalList.book">Book_TotalList(도서 신청목록)</a>
-	<p><a href="./library/libraryView.library">도서관지도</a></p>
 
 	<p></p>
 	
@@ -57,9 +53,6 @@
 	
 	<p>=================================================</p>
 	</c:if>
-	
-	<p><a href="./seat/seatList.seat">Seat List</a></p>
-	<p><a href="./market/marketTotalList.market">Market Total List</a></p>
 	
 <c:import url="${myContextPath}/temp/footer.jsp"></c:import>
 </body>

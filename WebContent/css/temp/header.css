@@ -88,25 +88,21 @@
 
 #divTopMenu > ul > li {
     float:left;
+    padding-left: 13%;
 }
 
 #divTopMenu > ul > li a {
-    color: #fff;
+    color: #ffffff;
     font-size: 16px;
 }
 
-<<<<<<< HEAD
-#divTopMenu > ul > p a {
-    padding-bottom: 13px;
-    color: #bcc922;
-    font-weight: 600;
+#divTopMenu a:hover {
+    text-decoration: none;
 }
 
 
 
 
 
-=======
->>>>>>> d14fd3ba44e7614cf939fce1646c5d6eaf37252a
 
 
