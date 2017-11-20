@@ -62,18 +62,18 @@
 <body>
 <c:import url="${myContextPath}/temp/header.jsp"></c:import>
 
-<div id="divContentsW">
-		<div id="divContents">
-			
-			<h2 id="divTitle">도서신청</h2>
-			<div id="divLocation">
-				<ul>
-					<li class="home"><a href="#"><img src="${pageContext.request.contextPath }/image/notice/home.png" alt="HOME"></a></li>
-					<li>&gt;</li>
-					<li>도서신청</li>
-				</ul>
-			</div>	
-
+<section id = "section">
+	<div id = "bts_top_section">
+		<h2 id="divTitle">도서신청</h2>
+		<div id="divLocation">
+			<ul>
+				<li class="home"><a href="../../index.jsp"><img src="${pageContext.request.contextPath}/image/bookTotalSearch/home.png" alt="HOME"></a></li>
+				<li>&gt;</li>
+				<li>통합검색</li>
+				<li>&gt;</li>
+				<li>소장도서</li>
+			</ul>
+		</div>
 
 
 	<!-- /// -->
@@ -109,7 +109,7 @@
 			</li>
 			<li>
 				<p class="writeTit">비치 도서관</p>
-				<select name = "library" style="height: 40px;">
+				<select name = "library" style="min-width:100px; height: 40px;">
 					<option value = "1" class="library" id = "1">기흥구</option>
 					<option value = "2" class="library" id = "2">송파구</option>
 					<option value = "3" class="library" id = "3">장안구</option>
@@ -135,7 +135,7 @@
 	
 	
 	</div>
-</div>
+</section>
 <c:import url="${myContextPath}/temp/footer.jsp"></c:import>
 </body>
 </html>

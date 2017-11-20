@@ -54,7 +54,9 @@
 			<button style = "float: right;" class = "btn btn-default" type = "submit">신청하기</button>		
 		</form>
 	</section>
-	
+
+<div style = "height: 50px"></div>
+
 <c:import url="${myContextPath}/temp/footer.jsp"></c:import>
 </body>
 </html>
