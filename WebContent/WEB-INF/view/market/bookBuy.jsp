@@ -104,7 +104,6 @@ $(function(){
 		<div class="xans-element- xans-order xans-order-form xans-record-">
 		<div class="orderListArea ">
 			<div class="ec-base-table typeList ">
-				<div id="SMS_order_name" style="display:none">corduroy boy pants</div>
 				<table border="1" summary="">
 					<caption>기본배송</caption>
 						
