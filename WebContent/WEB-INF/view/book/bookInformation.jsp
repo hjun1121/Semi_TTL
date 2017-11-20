@@ -76,7 +76,6 @@ $(function(){
 	<div style = "height: 30px"></div>
 
 	<section>
-	
 			<h2 id="divTitle">상세정보</h2>
 			<div id="divLocation">
 				<ul>
