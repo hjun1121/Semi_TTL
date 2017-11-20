@@ -16,7 +16,41 @@
 <script type="text/javascript">
 
 	$(function() {
-		var library = ${member.library}
+		var library = '${member.library}';
+		 $(".library").each(function(){
+			 if($(this).val() == library) {
+				 $(this).attr("selected", true);
+			 }
+		 });
+		
+		
+		$("#btn_NO").click(function(){
+			location.href="${pageContext.request.contextPath }/index.jsp";
+		});
+		
+		$("#btn_OK").click(function(){
+
+			if($("#title").val() == ""){
+				alert("도서명 입력하세요.");
+				$("#title").focus();
+			}else if($("#writer").val() == ""){
+				alert("저자 입력하세요.");
+				$("#writer").focus();
+			}else if($("#company").val() == ""){
+				alert("출판사 입력하세요.");
+				$("#company").focus();
+			}else if($("#publish_date").val() == ""){
+				alert("출판년도 입력하세요.");
+				$("#publish_date").focus();
+			}else if($("#price").val() == ""){
+				alert("정가 입력하세요.");
+				$("#price").focus();	
+			}else{
+				document.frm.submit();
+			}
+			
+		});
+		
 	});
 
 </script>
@@ -37,42 +71,47 @@
 			</div>	
 			
 			<div class="cstmWrap">
-			<form action="./marketOrder.market" method="post">
-				<input type = "hidden" class = "form-control" name = "id" value = ${member.id}>
+			<form action="./marketOrder.market" name="frm" method="post">
+				<input type = "hidden" class = "form-control" name = "id" value = "${member.id }">
 				<ul class = "otoForm mt30 borTc3">
-					<li id="title" >
+					<li>
 						<p class="writeTit" >도서명</p>
-						<input type="text" name="title">
+						<input type="text" id="title" name="title">
 					</li>
-					<li id="title" >
+					<li>
 						<p class="writeTit" >저자</p>
-						<input type="text" name="writer">
+						<input type="text" id="writer" name="writer">
 					</li>
-					<li id="title" >
+					<li>
 						<p class="writeTit" >출판사</p>
-						<input type="text" name="company">
+						<input type="text" id="company" name="company">
 					</li>
-					<li id="title" >
+					<li>
 						<p class="writeTit" >출판년도</p>
-						<input type="text" name="publish_date" placeholder = "출판년도는 숫자만 입력해 주세요">
+						<input type="number" id="publish_date" name="publish_date" placeholder = "출판년도는 숫자만 입력해 주세요">
 					</li>
-					<li id="title" >
+					<li>
 						<p class="writeTit" >정가</p>
-						<input type="text" name="price">
+						<input type="number" id="price" name="price">
 					</li>
-					<li id="title">
+					<li>
 						<p class="writeTit">도서관명</p>
 						<select name = "library" style="height: 40px;">
-							<option value = "1" id = "1">기흥구</option>
-							<option value = "2" id = "2">송파구</option>
-							<option value = "3" id = "3">장안구</option>
-							<option value = "4" id = "4">분당구</option>
+							<option value = "1" class="library" id = "1">기흥구</option>
+							<option value = "2" class="library" id = "2">송파구</option>
+							<option value = "3" class="library" id = "3">장안구</option>
+							<option value = "4" class="library" id = "4">분당구</option>
 						</select>
 					</li>
 				</ul>
 				<div class="btnBox">
-					<span class="button1"><a href="${pageContext.request.contextPath }/index.jsp" class="type4 large">취소</a></span>
-					<span class="button1"><button id="btn_OK" class = "type1 large" type = "submit">신청</button></span> 
+					<span class="button1">
+					<%-- <a href="${pageContext.request.contextPath }/index.jsp" class="type4 large">취소</a> --%>
+						<input type="button" id="btn_NO" class="type4 large" value="취소">
+					</span>
+					<span class="button1">
+						<input type="button" id="btn_OK" class = "type1 large" value="신청"> 
+					</span> 
 				</div>
 			</form>
 			</div>

@@ -5,72 +5,123 @@
 <html>
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
-<title>Insert title here</title>
+<title>신청내역</title>
 <link rel="stylesheet" href="${pageContext.request.contextPath }/css/temp/header.css">
 <link rel="stylesheet" href="${pageContext.request.contextPath }/css/temp/footer.css">
+<link rel="stylesheet" href="${pageContext.request.contextPath }/css/member/myPage.css">
+<link rel="stylesheet" href="${pageContext.request.contextPath }/css/book/bookOrderDetails.css">
 <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
 <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
 </head>
 <body>
 <c:import url="${myContextPath}/temp/header.jsp"></c:import>
+<div>
+	<c:import url="../member/myPage.jsp"></c:import>
+</div>
 
-<h2>Book Order Details</h2>
-	<form action="../book/bookOrderList.book?id=${member.id }" method="post">
-		<p><input type="hidden" name="num" value=${bookOrderDetails.num }></p>
-		<p>title<input type="text" name="title" value=${bookOrderDetails.title } readonly="readonly"></p>
-		<p>writer<input type="text" name="writer" value=${bookOrderDetails.writer } readonly="readonly"></p>
-		<p>company<input type="text" name="company" value=${bookOrderDetails.company } readonly="readonly"></p>
-		<p>publish_date<input type="text" name="publish_date" value=${bookOrderDetails.publish_date } readonly="readonly"></p>
-		<p>contents<input type="text" name="contents" value=${bookOrderDetails.contents } readonly="readonly"></p>
-		<p><input type="hidden" name="id" value=${bookOrderDetails.id }></p>
-		<p>price<input type="text" name="price" value=${bookOrderDetails.price } readonly="readonly"></p>
-		<c:choose>
-			<c:when test="${bookOrderDetails.library eq 1}">
-				<p>library<input type="text" value="기흥구" ></p>
-				<input type="hidden" name="library" value=${bookOrderDetails.library } readonly="readonly">
-			</c:when>
-			<c:when test="${bookOrderDetails.library eq 2}">
-				<p>library<input type="text" value="송파구" ></p>
-				<input type="hidden" name="library" value=${bookOrderDetails.library } readonly="readonly">
-			</c:when>
-			<c:when test="${bookOrderDetails.library eq 3}">
-				<p>library<input type="text" value="장안구" ></p>
-				<input type="hidden" name="library" value=${bookOrderDetails.library } readonly="readonly">
-			</c:when>
-			<c:when test="${bookOrderDetails.library eq 4}">
-				<p>library<input type="text" value="분당구" ></p>
-				<input type="hidden" name="library" value=${bookOrderDetails.library } readonly="readonly">
-			</c:when>
-			<c:otherwise>
-				<p>library<input type="number" value="없음" ></p>
-			</c:otherwise>
-		</c:choose>
-		
-		<c:choose>
-			<c:when test="${bookOrderDetails.state eq 0}">
-				<p>state<input type="text" value="취소" readonly="readonly"></p>
-				<input type="hidden" name="state" value=${bookOrderDetails.state } readonly="readonly">
-				<p>cancel<input type="text" name="cancel" value=${bookOrderDetails.cancel } ></p>
-			</c:when>
-			<c:when test="${bookOrderDetails.state eq 1}">
-				<p>state<input type="text" value="대기" readonly="readonly"></p>
-				<input type="hidden" name="state" value=${bookOrderDetails.state } readonly="readonly">
-			</c:when>
-			<c:otherwise>
-				<p>state<input type="text" value="승인" readonly="readonly"></p>
-				<input type="hidden" name="state" value=${bookOrderDetails.state } readonly="readonly">
-			</c:otherwise>
-		</c:choose>
-		
-		
-		<button type="submit">확인</button>
-		<c:if test="${bookOrderDetails.state eq 2 }">
-		<a href="./bookOrderUpdate.book?num=${bookOrderDetails.num }"><input type="button" value="정보 수정"></a>
-		<a href="./bookOrderDelete.book?num=${bookOrderDetails.num }"><input type="button" value="신청 취소"></a>
-		</c:if>
-	</form>	
-	
+<div id="divContentsW">
+	<div id="divContents">
+		<h2 id="divTitle">신청 상세 내역</h2>
+		<div id="divLocation">
+			<ul>
+				<li class="home"><a href="#"><img src="${pageContext.request.contextPath }/image/common/home.png" alt="HOME"></a></li>
+				<li>&gt;</li>
+				<li>MY PAGE</li>
+				<li>&gt;</li>
+				<li>신청 내역</li>
+				<li>&gt;</li>
+				<li>신청 상세 내역</li>
+			</ul>
+		</div>
+		<form action="../book/bookOrderList.book?id=${member.id }&state=3" method="post">
+		<div>
+			<input type="hidden" name="num" value=${bookOrderDetails.num }>
+			<input type="hidden" name="id" value=${bookOrderDetails.id }>
+			<table class="revisionTable">
+				<tr>
+					<th>서명</th>
+					<td><input type="text" name="title" class="noneBorder" value="${bookOrderDetails.title }"readonly="readonly"></td>
+				</tr>
+				<tr>
+					<th>권수</th>
+					<td>1</td>
+				</tr>
+				<tr>
+					<th>저자</th>
+					<td><input type="text" name="writer" class="noneBorder" value="${bookOrderDetails.writer } "readonly="readonly"></td>
+				</tr>
+				<tr>
+					<th>출판사</th>
+					<td><input type="text" name="company" class="noneBorder" value="${bookOrderDetails.company } "readonly="readonly"></td>
+				</tr>
+				<tr>
+					<th>출판년도</th>
+					<td><input type="number" name="publish_date" class="noneBorder" value=${bookOrderDetails.publish_date } readonly="readonly"></td>
+				</tr>
+				<tr>
+					<th>신청사유</th>
+					<td><input type="text" class="noneBorder"  class="noneBorder" name="contents" value="${bookOrderDetails.contents }" readonly="readonly"></td>
+				</tr>
+				<tr>
+					<th>가격</th>
+					<td><input type="number" name="price" class="noneBorder" value=${bookOrderDetails.price } readonly="readonly"></td>
+				</tr>
+				<tr>
+					<th>비치도서관</th>
+					<c:choose>
+						<c:when test="${bookOrderDetails.library eq 1}">
+							<td>기흥구</td>
+							<input type="hidden" name="library" value=${bookOrderDetails.library }>
+						</c:when>
+						<c:when test="${bookOrderDetails.library eq 2}">
+							<td>송파구</td>
+							<input type="hidden" name="library" value=${bookOrderDetails.library }>
+						</c:when>
+						<c:when test="${bookOrderDetails.library eq 3}">
+							<td>장안구</td>
+							<input type="hidden" name="library" value=${bookOrderDetails.library }>
+						</c:when>
+						<c:when test="${bookOrderDetails.library eq 4}">
+							<td>분당구</td>
+							<input type="hidden" name="library" value=${bookOrderDetails.library }>
+						</c:when>
+						<c:otherwise>
+							<td>기흥구</td>
+						</c:otherwise>
+					</c:choose>
+				</tr>
+				<tr>
+				<th>상태</th>
+				<c:choose>
+					<c:when test="${bookOrderDetails.state eq 0}">
+						<td>취소(<input type="text" name="cancel" class="noneBorder" value="${bookOrderDetails.cancel }">)</td>
+						<input type="hidden" name="state" class="noneBorder" value=${bookOrderDetails.state } readonly="readonly">
+					</c:when>
+					<c:when test="${bookOrderDetails.state eq 1}">
+						<td>대기<td>
+						<input type="hidden" name="state" class="noneBorder" value=${bookOrderDetails.state } readonly="readonly">
+					</c:when>
+					<c:otherwise>
+						<td>승인</td>
+						<input type="hidden" name="state" class="noneBorder" value=${bookOrderDetails.state } readonly="readonly">
+					</c:otherwise>
+				</c:choose>
+				</tr>
+			</table>
+			
+			<div class="btn">
+			<input type="submit" class="btnType5" id="btn" name="btn" value="확인">
+			<c:if test="${bookOrderDetails.state eq 1 }">
+				<a href="./bookOrderUpdate.book?num=${bookOrderDetails.num }"><input class="btnType5" type="button" value="정보 수정"></a>
+				<a href="./bookOrderDelete.book?num=${bookOrderDetails.num }"><input class="btnType5" type="button" value="신청 취소"></a>
+			</c:if>
+			</div>
+		</div>
+		</form>
+	</div>
+</div>
+</form>
 <c:import url="${myContextPath}/temp/footer.jsp"></c:import>
 </body>
 </html>

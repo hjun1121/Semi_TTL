@@ -32,7 +32,7 @@
     				<li><a href="${pageContext.request.contextPath }/notice/noticeList.notice" title="공지사항">공지사항</a></li>
 					<li><a href="${pageContext.request.contextPath }/qna/qnaList.qna" title="Qna">QnA</a></li>
 					<li><a href="${pageContext.request.contextPath }/library/libraryView.library" title="찾아오시는길">찾아오시는길</a></li>
-  					</ul>
+  				</ul>
 			</div>
 				
 		</div>
@@ -41,12 +41,12 @@
 </div>
 
 <div class="header2">
-	<div>
+	<div id = "divTopMenu">
 		<ul>
-			<li><a href = "${pageContext.request.contextPath}/view/book/bookTotalSearch.jsp">도서검색</a></li>
-			<li><a href = "${pageContext.request.contextPath}/view/seat/seatTotalList.jsp">좌석예약</a></li>
-			<li><a href = "${pageContext.request.contextPath}/view/book/bookOrderForm.jsp">도서신청</a></li>
-			<li><a href = "${pageContext.request.contextPath}/view/marketTotalList.jsp">중고장터</a></li>
+			<li><a href = "${pageContext.request.contextPath}/book/bookTotalSearch.book">도서검색</a></li>
+			<li><a href = "${pageContext.request.contextPath}/seat/seatTotalList.seat">좌석예약</a></li>
+			<li><a href = "${pageContext.request.contextPath}/book/bookOrderForm.book">도서신청</a></li>
+			<li><a href = "${pageContext.request.contextPath}/market/marketTotalList.market">중고장터</a></li>
 		</ul>
 	</div>
 </div>
