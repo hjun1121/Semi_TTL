@@ -14,19 +14,113 @@
 <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
 <link rel="stylesheet" href="${pageContext.request.contextPath }/css/index/index.css">
 <title>Total Library Page</title>
-</head>
+<script type="text/javascript">
+$(function(){
+	 var kind = '${kind}';
 
+	 $(".kind").each(function(){
+		 if($(this).val() == kind) {
+			 $(this).attr("selected", true);
+		 }
+	 });
+
+	$(".rent_btn").click(function() {
+		var num = $(this).val();
+		$.ajax({
+			url: "./bookRent.book",
+			type: "GET",
+			data: {
+				num:num,
+				kind:'${kind}',
+				curPage: ${curPage},
+				search: '${search}',
+				rent_id:'${member.id}'
+			},
+			success: function(data) {
+				alert(data);
+				location.href="./bookTotalSearch.book?search=${search}&curPage=${curPage}&kind=${kind}";
+			}
+		});
+	});
+	
+	$(".wish_btn").click(function() {
+		var num = $(this).val();
+		var title = $(this).attr("title");
+		
+		if (title == 1) {
+			$.ajax({
+				url: "../book/bookRentWishReturn.book",
+				type: "GET",
+				data: {
+					num:num,
+					kind:'${kind}',
+					curPage: ${curPage},
+					search: '${search}',
+					rent_id:'${member.id}'
+				},
+				success: function(data) {
+					alert(data);
+					location.href="./bookTotalSearch.book?&search=${search}&curPage=${curPage}&kind=${kind}";
+				}
+			});
+
+		} else if (title == 0) {
+			$.ajax({
+				url: "../book/bookRentWish.book",
+				type: "GET",
+				data: {
+					num:num,
+					kind:'${kind}',
+					curPage: ${curPage},
+					search: '${search}',
+					rent_id:'${member.id}'
+				},
+				success: function(data) {
+					alert(data);
+					location.href="./bookTotalSearch.book?&search=${search}&curPage=${curPage}&kind=${kind}";
+				}
+			});
+		}
+	});
+
+ });
+</script>
+<style type="text/css">
+	#search_hidden {
+		display: none;
+	}
+</style>
+</head>
 <body>
 <c:import url="${myContextPath}/temp/header.jsp"></c:import>
-	
-			<!-- Search -->
+
+	<div id = "search_hidden">
+ 		<!-- 검색 시작 -->
+		<form name="frm" class="form-inline" action="./bookTotalSearch.book" method="post">
+			<fieldset>
+				<span class="bunch">
+					<select id="kind" name = "kind" class="selectBox1">
+						<option class = "kind" value="title">서명</option>
+						<option class = "kind" value="writer">저자</option>
+						<option class = "kind" value="company">출판사</option>
+						<option class = "kind" value="type">분류</option>
+					</select>
+				<input type="text" id = "search" name = "search" value = "${search}" class="inputTextType3 sw" maxlength="100" title="검색어" placeholder="검색어를 입력하세요">
+				</span>
+				<input type="submit" class="btnType5" value="검색" id = "search">
+			</fieldset>
+		</form>
+		<!-- 검색 끝 -->
+	</div>
+
+		<!-- Search -->
 		<input type="hidden" id="_isSSOLogin" name="_isSSOLogin" value="false">
 		<div id="divSearch">
 			<div>
 				<h2 class="skip">통합검색</h2>
 				<div class="searchForm">
 					<ul>
-						<li class="on"><a href="#"><span>제목 검색</span></a>
+						<li class="on" value = "title"><span>제목 검색</span>
 							<form name="totalForm" action="/search/tot/result" method="get">	
 								<input type="hidden" id="service_type" name="service_type" value="brief">
 								<fieldset>
@@ -35,11 +129,11 @@
 										<input type="text" class="searchInput" id="type1q" name="q" title="제목으로 검색" placeholder="제목으로 도서관 소장자료를 검색할 수 있습니다.">
 										<span class="widesrchBtn"><img  src="./image/index/widesrchDown.gif" style="cursor:pointer"></span>
 									</span>
-									<input type="image" src="./image/index/searchBtn.png" value="검색" class="searchBtn" title="검색">
+									<input type="image" src="./image/index/searchBtn.png" id = "search" name = "search" value="${search}" class="searchBtn" title="검색">
 								</fieldset>
 							</form>
 						</li>
-						<li><a href="#"><span>저자 검색</span></a>
+						<li value = "writer"><a href="#"><span>저자 검색</span></a>
 							<form name="discoveryForm" action="/eds/brief/discoveryResult" method="get">
 								<input type="hidden" name="st" value="KWRD">
 								<input type="hidden" name="si" value="TOTAL">
@@ -48,11 +142,11 @@
 									<span class="searchBox">
 										<input type="text" class="searchInput" name="q" title="저자로 검색" placeholder="저자로 도서관 소장자료를 검색할 수 있습니다.">
 									</span>
-									<input type="image" src="./image/index/searchBtn.png" value="검색" class="searchBtn" title="검색">
+									<input type="image" src="./image/index/searchBtn.png" id = "search" name = "search" value="${search}" class="searchBtn" title="검색">
 								</fieldset>
 							</form>
 						</li>
-						<li><a href="#"><span>출판사 검색</span></a>
+						<li value = "company"><a href="#"><span>출판사 검색</span></a>
 							<form name="discoveryForm" action="/eds/brief/discoveryResult" method="get">
 								<input type="hidden" name="st" value="KWRD">
 								<input type="hidden" name="si" value="TOTAL">
@@ -61,12 +155,11 @@
 									<span class="searchBox">
 										<input type="text" class="searchInput" name="q" title="출판사로 검색" placeholder="출판사로 도서관 소장자료를 검색할 수 있습니다.">
 									</span>
-									<input type="image" src="./image/index/searchBtn.png" value="검색" class="searchBtn" title="검색">
+									<input type="image" src="./image/index/searchBtn.png" id = "search" name = "search" value="${search}" class="searchBtn" title="검색">
 								</fieldset>
 							</form>
 						</li>
 					</ul>
-					
 					
 				</div>
 				<div class="etcOpiton">

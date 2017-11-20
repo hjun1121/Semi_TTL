@@ -242,7 +242,6 @@
     background: #033823;
 }
 .button1 a, .button1 a:hover, .button1 a:focus {
-    /* -webkit-transition-duration: .5s; */
     -moz-transition-duration: .5s;
     -ms-transition-duration: .5s;
     -o-transition-duration: .5s;
