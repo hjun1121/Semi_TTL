@@ -62,6 +62,7 @@ $(function(){
 		<div>
 			<span>
 				<select id="year" name="year" class="selectBox1">
+					<option class="years" value="18" >2018</option>
 		            <option class="years" value="17" >2017</option>
 		            <option class="years" value="16">2016</option>
 		            <option class="years" value="15">2015</option>
@@ -117,7 +118,7 @@ $(function(){
 		            <option class="day" value="30">30</option>
 		            <option class="day" value="31">31</option>
 		        </select>
-		        일 이전 까지 <input class="btnType5" type="submit" value="Search">
+		        일 이전 까지 <input class="btnType5" type="submit" value=" ">
       		  </span>
 		</form>
 	</div>
@@ -228,7 +229,6 @@ $(function(){
 	</div>
 </div>
 </div>
-	
 <c:import url="${myContextPath}/temp/footer.jsp"></c:import>
 </body>
 </html>

@@ -31,7 +31,7 @@ $(function(){
 <div>
 	<c:import url="${myContextPath}/WEB-INF/view/member/myPage.jsp"></c:import>
 </div>
-
+<section id="section">
 <div id="divContentsW">
 	<div id="divContents">
 		<h2 id="divTitle">중고 거래 현황</h2>
@@ -45,9 +45,8 @@ $(function(){
 			</ul>
 		</div>
 
-	<div>
 	<!-- 검색 시작 -->
-		<form name="frm" class="form-inline" action="./bookOrderList.book" method="post">
+		<form name="frm" class="form-inline" action="./marketOrderList.market" method="post">
 			<fieldset>
 				<span class="bunch">
 					<select id="kind" name = "kind" class="selectBox1">
@@ -61,7 +60,6 @@ $(function(){
 			</fieldset>
 		</form>
 		<!-- 검색 끝 -->
-	</div>
 	<br><br>
 	
 	<div class="listTable">
@@ -137,7 +135,7 @@ $(function(){
 	</div>
 	</div>
 </div>		
-	
+	</section>
 <c:import url="${myContextPath}/temp/footer.jsp"></c:import>
 </body>
 </html>
