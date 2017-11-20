@@ -27,6 +27,8 @@
 				<ul>
 					<li class="home"><a href="${pageContext.request.contextPath}/index.jsp"><img src="${pageContext.request.contextPath}/image/bookTotalSearch/home.png" alt="HOME"></a></li>
 					<li>&gt;</li>
+					<li>MY PAGE</li>
+					<li>&gt;</li>
 					<li>대여 내역</li>
 					<li>&gt;</li>
 					<li>대여 상세정보</li>
@@ -69,9 +71,6 @@
 							<th scope="row">대여여부</th>
 							<c:choose>
 								<c:when test="${ book.state == 0 and not empty member }">
-									<td><button class = "btn btn-default rent_btn" type = "submit" id = "rent_btn" value = "${book.num}">대여</button></td>
-								</c:when>
-								<c:when test="${ book.state == 0 and empty member }">
 									<td>대여가능</td>
 								</c:when>
 								<c:when test="${ book.state == 1 }">

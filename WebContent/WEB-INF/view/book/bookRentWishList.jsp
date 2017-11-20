@@ -50,7 +50,7 @@ $(document).ready(function() {
 		<h2 id="divTitle">대여 찜콩</h2>
 		<div id="divLocation">
 			<ul>
-				<li class="home"><a href="../index.jsp"><img src="${pageContext.request.contextPath }/image/notice/home.png" alt="HOME"></a></li>
+				<li class="home"><a href="${pageContext.request.contextPath}/index.jsp"><img src="${pageContext.request.contextPath }/image/notice/home.png" alt="HOME"></a></li>
 				<li>&gt;</li>
 				<li>MY PAGE</li>
 				<li>&gt;</li>
@@ -62,7 +62,7 @@ $(document).ready(function() {
 		<div class="listTable">
 		<table class="mobileTable tablet" >
 		<tr>
-			<th>전체선택<input type="checkbox" class="chk" id="checkAll" name="checkAll"></th>
+			<th>전체선택 <input type="checkbox" class="chk" id="checkAll" name="checkAll"></th>
 			<th>No.</th>
 			<th>서명</th>
 			<th>저자</th>

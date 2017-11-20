@@ -50,7 +50,7 @@ $(function(){
 		<h2 id="divTitle">대여 내역</h2>
 		<div id="divLocation">
 			<ul>
-				<li class="home"><a href="../index.jsp"><img src="${pageContext.request.contextPath }/image/notice/home.png" alt="HOME"></a></li>
+				<li class="home"><a href="${pageContext.request.contextPath}/index.jsp"><img src="${pageContext.request.contextPath }/image/notice/home.png" alt="HOME"></a></li>
 				<li>&gt;</li>
 				<li>My Page</li>
 				<li>&gt;</li>

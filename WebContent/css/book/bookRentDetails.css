@@ -33,12 +33,20 @@
 	overflow:hidden;
 }
 
-#divLocation ul li{
+#divLocation .home{
 	list-style: none;
 	float:left;
 	padding-left:20px;
 	margin-left:13px;
 	background:url(./../../image/common/home.png) no-repeat 0 3px;
+	font-family:NG, sans-serif;
+	line-height:1.5em;
+}
+#divLocation ul li{
+	list-style: none;
+	float:left;
+	padding-left:20px;
+	margin-left:13px;
 	font-family:NG, sans-serif;
 	line-height:1.5em;
 }

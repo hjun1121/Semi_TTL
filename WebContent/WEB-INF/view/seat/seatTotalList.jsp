@@ -49,7 +49,9 @@ $(function(){
 		<h2 id="divTitle">좌석 예약 내역</h2>
 		<div id="divLocation">
 			<ul>
-				<li class="home"><a href="../index.jsp"><img src="${pageContext.request.contextPath }/image/notice/home.png" alt="HOME"></a></li>
+				<li class="home"><a href="${pageContext.request.contextPath}/index.jsp"><img src="${pageContext.request.contextPath }/image/notice/home.png" alt="HOME"></a></li>
+				<li>&gt;</li>
+				<li>MY PAGE</li>
 				<li>&gt;</li>
 				<li>좌석 예약 내역</li>
 			</ul>
@@ -117,76 +119,72 @@ $(function(){
 		            <option class="day" value="30">30</option>
 		            <option class="day" value="31">31</option>
 		        </select>
-		        일 이전 까지
+		        일 이전 까지 <input class="btnType5" id="btbtn" type="submit" value="Search">
       		  </span>
-      		  <div class="form-group">
-	      		  <div class="col-sm-offset-2 col-sm-10">
-	      		 	 <input type="submit" class="btn btn-default" value="Search">
-	      		  </div>
-      		  </div>
 		</div>
 		</form>
 	</div>
-
-	<h2>SeatTotalList</h2>
-	<table class="table" border="1">
+	<br><br>
+	
+<div class="listTable">
+		<table class="mobileTable tablet" >
 		<tr>
-			<th>num</th>
-			<th>seat_num</th>
-			<th>library</th>
-			<th>in_time</th>
-			<th>out_time</th>
-			<th>state</th>
+			<th>No.</th>
+			<th>좌석 번호</th>
+			<th>도서관 명</th>
+			<th>입실 시간</th>
+			<th>퇴실 시간</th>
+			<th>상태</th>
 			<th></th>
 		</tr>
 		<c:forEach items="${seatList }" var="seatTotal_list">
 			<tr>
-			<td>${seatTotal_list.num }</td>
-			<td>${seatTotal_list.seat_num }</td>
+			<td scope="row" class="footable-first-column">${seatTotal_list.num }</td>
+			<td scope="row" style="display: table-cell;">${seatTotal_list.seat_num }</td>
 			<c:choose>
 				<c:when test="${seatTotal_list.library eq 1}">
-					<td>기흥구</td>
+					<td scope="row" style="display: table-cell;">기흥구</td>
 				</c:when>
 				<c:when test="${seatTotal_list.library eq 2}">
-					<td>송파구</td>
+					<td scope="row" style="display: table-cell;">송파구</td>
 				</c:when>
 				<c:when test="${seatTotal_list.library eq 3}">
-					<td>장안구</td>
+					<td scope="row" style="display: table-cell;">장안구</td>
 				</c:when>
 				<c:when test="${seatTotal_list.library eq 4}">
-					<td>분당구</td>
+					<td scope="row" style="display: table-cell;">분당구</td>
 				</c:when>
 				<c:otherwise>
-					<td>없음</td>
+					<td scope="row" style="display: table-cell;">없음</td>
 				</c:otherwise>
 			</c:choose>
-				<td>${seatTotal_list.in_time }</td>
-				<td>${seatTotal_list.out_time }</td>
+				<td scope="row" data-class="expand">${seatTotal_list.in_time }</td>
+				<td scope="row" data-class="expand">${seatTotal_list.out_time }</td>
 				<c:choose>
 				<c:when test="${seatTotal_list.state eq 0 && empty seatTotal_list.in_time && empty seatTotal_list.out_time}">
-					<td>예약중</td>
-					<td><a href="./seatCancel.seat?seat_num=${seatTotal_list.seat_num }"><input type="button" value="취소"></a></td>
+					<td scope="row" style="display: table-cell;">예약중</td>
+					<td><a href="./seatCancel.seat?seat_num=${seatTotal_list.seat_num }"><button class = "btn btn-default wish_btn" type = "button" >취소</button></a></td>
 				</c:when>
 				<c:when test="${seatTotal_list.state eq 1 && !empty seatTotal_list.in_time && empty seatTotal_list.out_time}">
-					<td>입실 완료</td>
-					<td><a href="./seatOut.seat?seat_num=${seatTotal_list.seat_num }"><input type="button" value="퇴실"></a></td>
+					<td scope="row" style="display: table-cell;">입실 완료</td>
+					<td><a href="./seatOut.seat?seat_num=${seatTotal_list.seat_num }"><button class = "btn btn-default wish_btn" type = "button" >퇴실</button></a></td>
 				</c:when>
 				<c:when test="${seatTotal_list.state eq 2 && !empty seatTotal_list.out_time && !empty seatTotal_list.in_time}">
-					<td>퇴실 완료</td>
+					<td scope="row" style="display: table-cell;">퇴실 완료</td>
 				</c:when>
 				<c:when test="${seatTotal_list.state eq 3 && empty seatTotal_list.out_time && empty seatTotal_list.in_time}">
-					<td>취소</td>
+					<td scope="row" style="display: table-cell;">취소</td>
 				</c:when>
 				<c:otherwise>
-					<td>없음</td>
+					<td scope="row" style="display: table-cell;">없음</td>
 				</c:otherwise>
 			</c:choose>
 			</tr>
 		</c:forEach>
 	</table>
 	
-	<div>
-		<ul class="pagination">
+	<div class = "paging" style = "text-align: center;">
+			<ul class="pagination pagination-sm">
 			<c:if test="${page.curBlock>1}">
 			<li><button class="go" id="${page.startNum-1}">[이전]</button></li>
 			</c:if>

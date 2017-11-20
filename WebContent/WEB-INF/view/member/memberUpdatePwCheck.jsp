@@ -25,7 +25,9 @@
 		<h2 id="divTitle">회원 정보 수정</h2>
 		<div id="divLocation">
 			<ul>
-				<li class="home"><a href="../index.jsp"><img src="${pageContext.request.contextPath }/image/notice/home.png" alt="HOME"></a></li>
+				<li class="home"><a href="${pageContext.request.contextPath}/index.jsp"><img src="${pageContext.request.contextPath }/image/notice/home.png" alt="HOME"></a></li>
+				<li>&gt;</li>
+				<li>MY PAGE</li>
 				<li>&gt;</li>
 				<li>회원 정보 수정</li>
 			</ul>
@@ -35,7 +37,7 @@
 		<form id="login" name="login" action="./memberUpdatePwCheck.member" method="post">
 			<fieldset>
 			<div class="loginContent">
-				<div class="intro"><img src="./image/ko/local/home/loginIco.png" alt="MEMBER LOGIN"><p class="welcome">이화여자대학교 <span>도서관</span>에 오신것을 환영합니다.</p><p>로그인 하시면 더 많은 도서관 서비스를 이용할 수 있습니다.</p></div>
+				<div class="intro"><img src="./image/ko/local/home/loginIco.png" alt="MEMBER LOGIN"><p class="welcome">TTL <span>도서관</span>에 오신것을 환영합니다.</p><p>로그인 하시면 더 많은 도서관 서비스를 이용할 수 있습니다.</p></div>
 					<dl>
 						<dt><label for="id">아이디</label></dt>
 						<dd><input id="id" name="id" class="inputTextType1" title="아이디입력" type="text" readonly="readonly" value=${member.id } size="20" maxlength="15" alt="아이디입력"></dd>
