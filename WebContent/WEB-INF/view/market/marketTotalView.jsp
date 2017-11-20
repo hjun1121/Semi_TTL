@@ -17,7 +17,7 @@
 <script type="text/javascript">
 	$(function(){
 		$("#btn").click(function(){
-			location.href="./marketBuy.market?num=${dto.num}";
+			location.href="./bookBuy.market?num=${dto.num}";
 		});
 	});
 </script>
