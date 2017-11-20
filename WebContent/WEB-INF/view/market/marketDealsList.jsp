@@ -44,18 +44,17 @@ $(function(){
 	<c:import url="../member/myPage.jsp"></c:import>
 </div>
 <div id="divContentsW">
-		<div id="divContents">
-			<h2 id="divTitle">MARKET 내역 검색</h2>
-			<div id="divLocation">
-				<ul>
-					<li class="home"><a href="#"><img src="${pageContext.request.contextPath }/image/common/home.png" alt="HOME"></a></li>
-					<li>&gt;</li>
-					<li>MY PAGE</li>
-					<li>&gt;</li>
-					<li>MARKET 내역 검색</li>
-				</ul>
-			</div>
-	<div>
+	<div id="divContents">
+		<h2 id="divTitle">MARKET 내역 검색</h2>
+		<div id="divLocation">
+			<ul>
+				<li class="home"><a href="#"><img src="${pageContext.request.contextPath }/image/common/home.png" alt="HOME"></a></li>
+				<li>&gt;</li>
+				<li>MY PAGE</li>
+				<li>&gt;</li>
+				<li>MARKET 내역 검색</li>
+			</ul>
+		</div>
 	<form name="frm" class="form-inline" action="./marketDealsList.market" method="post">
 	<!-- 검색 시작 -->
 	<input type="hidden" name="type" id="type" value="${type }">
@@ -120,17 +119,18 @@ $(function(){
 		        </select>
 		        일 이전 까지<input class="btnType5" type="submit" value="Search">
       		  </span>
-		</div>
 		</form>
 	</div>
 	<!-- 검색 끝 -->
-	
+	<br><br>
 	<a href="./marketDealsList.market?id=${id }&type=3&year=${year}&month=${month}&day=${day}"><input class="btnType3" type="button" value="전체"></a>
 	<a href="./marketDealsList.market?id=${id }&type=1&year=${year}&month=${month}&day=${day}"><input class="btnType3" type="button" value="판매"></a>
 	<a href="./marketDealsList.market?id=${id }&type=2&year=${year}&month=${month}&day=${day}"><input class="btnType3" type="button" value="구매"></a>
-	<a href="../index.jsp"><input class="btnType3" type="button" value="list"></a>
+	<br><br>
 	
-	<table class="table" border="1">
+	<div class="listTable">
+	<table class="mobileTable tablet" >
+	<thead>
 		<tr>
 			<th>No.</th>
 			<th>서명</th>
@@ -144,74 +144,75 @@ $(function(){
 			<th>상태</th>
 			<th>수령방법</th>
 		</tr>
+	</thead>
 		<c:forEach items="${bookDeals }" var="bookDeals_list">
 			<tr>
-				<td>${bookDeals_list.num }</td>
-				<td><a
+				<td scope="row" class="footable-first-column">${bookDeals_list.num }</td>
+				<td scope="row" data-class="expand"><a
 					href="./marketDealsDetails.market?num=${bookDeals_list.num }">${bookDeals_list.title }</a></td>
-				<td>${bookDeals_list.writer }</td>
-				<td>${bookDeals_list.company }</td>
-				<td>${bookDeals_list.publish_date }</td>
-				<td>${bookDeals_list.t_date }</td>
+				<td scope="row" style="display: table-cell;">${bookDeals_list.writer }</td>
+				<td scope="row" style="display: table-cell;">${bookDeals_list.company }</td>
+				<td scope="row" style="display: table-cell;">${bookDeals_list.publish_date }</td>
+				<td scope="row" style="display: table-cell;">${bookDeals_list.t_date }</td>
 				<c:choose>
 					<c:when test="${bookDeals_list.library eq 1}">
-						<td>기흥구</td>
+						<td scope="row" style="display: table-cell;">기흥구</td>
 					</c:when>
 					<c:when test="${bookDeals_list.library eq 2}">
-						<td>송파구</td>
+						<td scope="row" style="display: table-cell;">송파구</td>
 					</c:when>
 					<c:when test="${bookDeals_list.library eq 3}">
-						<td>장안구</td>
+						<td scope="row" style="display: table-cell;">장안구</td>
 					</c:when>
 					<c:when test="${bookDeals_list.library eq 4}">
-						<td>분당구</td>
+						<td scope="row" style="display: table-cell;">분당구</td>
 					</c:when>
 					<c:otherwise>
-						<td>없음</td>
+						<td scope="row" style="display: table-cell;">없음</td>
 					</c:otherwise>
 				</c:choose>
 				<td>${bookDeals_list.price }</td>
 				<c:choose>
 					<c:when test="${bookDeals_list.kind eq 1}">
-						<td>판매</td>
+						<td scope="row" style="display: table-cell;">판매</td>
 					</c:when>
 					<c:when test="${bookDeals_list.kind eq 2}">
-						<td>구매</td>
+						<td scope="row" style="display: table-cell;">구매</td>
 					</c:when>
 					<c:otherwise>
-						<td>없음</td>
+						<td scope="row" style="display: table-cell;">없음</td>
 					</c:otherwise>
 				</c:choose>
 				<c:choose>
 					<c:when test="${bookDeals_list.state eq 1}">
-						<td>상</td>
+						<td scope="row" style="display: table-cell;">상</td>
 					</c:when>
 					<c:when test="${bookDeals_list.state eq 2}">
-						<td>중</td>
+						<td scope="row" style="display: table-cell;">중</td>
 					</c:when>
 					<c:when test="${bookDeals_list.state eq 3}">
-						<td>하</td>
+						<td scope="row" style="display: table-cell;">하</td>
 					</c:when>
 					<c:otherwise>
-						<td>없음</td>
+						<td scope="row" style="display: table-cell;">*</td>
 					</c:otherwise>
 				</c:choose>
 				<c:choose>
-					<c:when test="${bookDeals_list.delivery eq 2}">
-						<td>택배</td>
-					</c:when>
 					<c:when test="${bookDeals_list.delivery eq 1}">
-						<td>직접수령</td>
+						<td scope="row" style="display: table-cell;">택배</td>
+					</c:when>
+					<c:when test="${bookDeals_list.delivery eq 2}">
+						<td scope="row" style="display: table-cell;">직접수령</td>
 					</c:when>
 					<c:otherwise>
-						<td>없음</td>
+						<td scope="row" style="display: table-cell;">없음</td>
 					</c:otherwise>
 				</c:choose>
 			</tr>
 		</c:forEach>
 	</table>
-	<div>
-		<ul>
+	<div class = "paging" style = "text-align: center;">
+		<ul class="pagination pagination-sm">
 			<c:if test="${page.curBlock>1}">
 			<li><button class="go" id="${page.startNum-1}">[이전]</button></li>
 			</c:if>

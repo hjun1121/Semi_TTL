@@ -37,7 +37,7 @@
 					<li>수정</li>
 				</ul>
 			</div>
-			
+
 		<div class="cstmWrap">
 			<form action="./noticeUpdate.notice" name="frm" method="post">
 				<input type="hidden" name="num" value="${view.num}">
