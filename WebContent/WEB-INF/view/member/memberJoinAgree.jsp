@@ -11,7 +11,7 @@
 <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
 <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
-<link rel="stylesheet" href="${pageContext.request.contextPath }/css/member/memberJoinAgree.css">
+<link rel="stylesheet" href="../css/member/memberJoinAgree.css">
 <title>Insert title here</title>
 <script type="text/javascript">
 function chk(){
@@ -75,32 +75,31 @@ function nochk(){
 			<div class="eduteClause">
 				<div class="ckAll">
 					<span class="checkForm">
-						도서관 회원 약관 전체 동의&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<input type="checkbox" name="allCheck" onclick="all_chk()">
+						도서관 회원 약관 전체 동의&nbsp;<input type="checkbox" name="allCheck" onclick="all_chk()">
 						
 					</span>
 				</div>
 				<div class="clauseBox mt40">
-					<h3 class="jsTxt">도서관 이용약관(필수정보)</h3>
+					<h3 class="jsTxt">도서관 이용약관</h3>
 					<span class="checkForm">
-						동의(필수)&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<input type="checkbox"name="req1">
+						동의(필수)&nbsp;<input type="checkbox"name="req1">
 					</span>
 					<div class="clauseCont">
 					동의? 어 보감 
 					</div>
 				</div>
 				<div class="clauseBox mt40">
-					<h3 class="jsTxt">개인정보 수집 이용동의 (필수정보)</h3>
-					<span class="checkForm">
-						동의(필수)&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<input type="checkbox" name="req2">
+					<h3 class="jsTxt">개인정보 수집 이용동의</h3>
+					<span class="checkForm">동의(필수)&nbsp;<input type="checkbox" name="req2">
 					</span>
 					<div class="clauseCont">
-					동의? 어 보감
+					동의? 어 보감<br>동의? 어 보감<br>동의? 어 보감<br>동의? 어 보감<br>동의? 어 보감<br>동의? 어 보감<br>동의? 어 보감<br>동의? 어 보감<br>동의? 어 보감<br>동의? 어 보감<br>
 					</div>
 				</div>
 				<div class="clauseBox mt40">
-					<h3 class="jsTxt">개인정보 제공 동의 (필수정보)</h3>
+					<h3 class="jsTxt">개인정보 제공 동의</h3>
 					<span class="checkForm">
-						동의(필수)&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<input type="checkbox" name="req3">
+						동의(필수)&nbsp;<input type="checkbox" name="req3">
 					</span>
 					<div class="clauseCont">
 					동의? 어 보감
@@ -108,7 +107,7 @@ function nochk(){
 				</div>
 			</div>
 			
-					<div class="btnBox">
+					<div class="btnCenter mt30" id="center">
 						<span class="button1"><a href="#" class="type4 large" onclick="nochk()">취소</a></span> 
 						<span class="button1"><a href="#" class="type1 large" onclick="chk()">다음</a></span> 
 					</div>

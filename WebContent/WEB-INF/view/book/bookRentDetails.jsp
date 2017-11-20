@@ -8,18 +8,20 @@
 <title>Insert title here</title>
 <link rel="stylesheet" href="${pageContext.request.contextPath }/css/temp/header.css">
 <link rel="stylesheet" href="${pageContext.request.contextPath }/css/temp/footer.css">
-<link rel="stylesheet" href="${pageContext.request.contextPath }/css/book/bookRentDetails.css">
-<link rel="stylesheet" href="${pageContext.request.contextPath }/css/member/myPage.css">
 <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
 <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+<link rel="stylesheet" href="${pageContext.request.contextPath }/css/member/myPage.css">
+<link rel="stylesheet" href="${pageContext.request.contextPath }/css/book/bookRentDetails.css">
 </head>
 <body>
 <c:import url="${myContextPath}/temp/header.jsp"></c:import>
 <div>
 	<c:import url="${myContextPath}/WEB-INF/view/member/myPage.jsp"></c:import>
 </div>
-	<section>
+
+<div id="divContentsW">
+	<div id="divContents">	
 			<h2 id="divTitle">대여 상세정보</h2>
 			<div id="divLocation">
 				<ul>
@@ -32,7 +34,7 @@
 			</div>
 			
 			<form action="../book/bookRentList.book?id=${member.id }" method="post">
-			<div class="profile">
+			<div class="profile borderIn">
 					<div class="profileHeader">
 	 			   	 	<h3>${book.title}</h3>
 	 			   	 	<br>
@@ -183,9 +185,10 @@
 		<button class="btn btn-default list_btn" type="submit" >LIST</button>
 		<!-- 소장정보 끝 -->
 		</form>
-	   			
+
 			<div style="height: 100px;"></div>
-	</section>
+	</div>
+</div>
 <c:import url="${myContextPath}/temp/footer.jsp"></c:import>
 </body>
 </html>

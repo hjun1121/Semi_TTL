@@ -56,68 +56,158 @@
 }
 <!--상단 바 끝 -->
 
-.mt50 {margin-top: 50px !important;}
-.jsTxt {font-size: 16px !important; font-weight: 500; color: #333 !important;}
-.clauseTxt {text-align: center; padding: 50px 0; background: #fcf7ed;}
+<!-- 약관 폼 시작 -->
 
-.ckAll {position: relative; text-align: right; border-bottom: 1px solid #e5e5e5; padding: 40px 0 12px 0;}
-.ckAll .checkForm label {padding: 0 30px 0 0; background-position: right 0;}
-.ckAll .checkForm input {left: inherit; right: 0;}
-.ckAll .checkForm input:checked + label {background-position: right -80px;}
-.ckAll .checkForm input:disabled + label {background-position: right -160px;}
+.mt50 {
+	margin-top: 50px !important;
+}
+.jsTxt {
+	font-size: 16px !important; 
+	font-weight: 500; 
+	color: #333 !important;
+}
+.clauseTxt {
+	text-align: center; 
+	padding: 50px 0; 
+	background: #fcf7ed;
+}
 
-.checkForm {display:inline-block; position: relative; height: 20px; vertical-align: middle;}
-.checkForm input[type="checkbox"] {position: absolute; top: 0; left: 0; width: 20px; height: 20px; border: 0; /*z-index: -1; opacity: 0; filter:alpha(opacity=0);*/}
-.checkForm label {display:inline-block; position: relative; height: 20px; line-height: 20px; padding-left: 30px; vertical-align: top; font-size: 14px; color: #666; background: url(/kr/ko/web_resource/front/images/common/bg_checkForm.png) no-repeat 0 0;  z-index: 1;}
-.checkForm input:checked + label {color: #333; background-position: 0 -80px;}
-.checkForm input:disabled + label {color: #ccc; background-position: 0 -160px;}
+.ckAll {
+	position: relative; 
+	text-align: right; 
+	border-bottom: 1px solid #e5e5e5; 
+	padding: 40px 0 12px 0;
+}
+.ckAll .checkForm label {
+	padding: 0 30px 0 0; 
+	background-position: right 0;
+}
+.ckAll .checkForm input {
+	left: inherit; 
+	right: 0;
+}
+.ckAll .checkForm input:checked + label {
+	background-position: right -80px;
+}
+.ckAll .checkForm input:disabled + label {
+	background-position: right -160px;
+}
 
+.checkForm {
+	display:inline-block; 
+	position: relative; 
+	height: 20px; 
+	vertical-align: middle;
+}
+.checkForm input[type="checkbox"] {
+	top: 0; 
+	left: 0; 
+	width: 20px;
+	border: 0;
+}
+.checkForm label {
+	display:inline-block;
+	position: relative; 
+	height: 20px; 
+	line-height: 20px; 
+	padding-left: 30px; 
+	vertical-align: top; 
+	font-size: 14px; 
+	color: #666; 
+	z-index: 1;
+}
+.checkForm input:checked + label {
+	color: #333; 
+	background-position: 0 -80px;
+}
+.checkForm input:disabled + label {
+	color: #ccc; 
+	background-position: 0 -160px;
+}
+.clauseBox {
+	position: relative;
+}
+.clauseBox .checkForm {
+	position: absolute;
+	top: 2px; right: 0;
+}
+.clauseBox .checkForm label {
+	padding: 0 30px 0 0; 
+	background-position: right 0;
+}
+.clauseBox .checkForm input {
+	left: inherit; 
+	right: 0;
+}
+.clauseBox .checkForm input:checked + label {
+	background-position: right -80px;
+}
+.clauseBox .checkForm input:disabled + label {
+	background-position: right -160px;
+}
+.clauseCont {
+	position: relative; 
+	margin: 10px auto 30px; 
+	word-break: break-all; 
+	overflow: auto;
+	width: 100%; 
+	height: 180px; 
+	padding: 12px 20px; 
+	border: 1px solid #dadada; 
+	box-sizing: border-box; 
+	-webkit-box-sizing: border-box; 
+	-moz-box-sizing: border-box; 
+	-ms-box-sizing: border-box; 
+	-o-box-sizing: border-box;
+}
+.clauseCont.terms_area .util_txtBox.scroll {
+	padding: 0; 
+	margin-bottom: 0; 
+	max-height: none; 
+	border: 0 none;
+}
+.clauseCont h4 {
+	font-size: 14px; 
+	color: #333; 
+	font-weight: 500;
+}
+.clauseCont .tblType2 {
+	margin: 10px 0 12px;
+}
 
-.clauseBox {position: relative;}
-.clauseBox .checkForm {position: absolute; top: 2px; right: 0;}
-.clauseBox .checkForm label {padding: 0 30px 0 0; background-position: right 0;}
-.clauseBox .checkForm input {left: inherit; right: 0;}
-.clauseBox .checkForm input:checked + label {background-position: right -80px;}
-.clauseBox .checkForm input:disabled + label {background-position: right -160px;}
-.clauseBox .checkForm .button2 {margin-right: 8px;}
+<!-- 약관 폼 끝 -->
 
-.clauseCont {position: relative; margin: 10px auto 30px; word-break: break-all; overflow: auto; width: 100%; height: 180px; padding: 12px 20px; border: 1px solid #dadada; box-sizing: border-box; -webkit-box-sizing: border-box; -moz-box-sizing: border-box; -ms-box-sizing: border-box; -o-box-sizing: border-box;}
-.clauseCont.terms_area .util_txtBox.scroll {padding: 0; margin-bottom: 0; max-height: none; border: 0 none;}
-.clauseCont h4 {font-size: 14px; color: #333; font-weight: 500;/* margin-bottom: 10px;*/}
-
-.clauseCont .tblType2 {margin: 10px 0 12px;}
 
 <!-- 버튼 시작 -->
 
-.joinCont .btnBox {
-	text-align: center;
-	margin-bottom: 60px;
-}
-.joinCont .btnBox .button1 {
-	margin: 0 1px;
+.btnCenter {
+    margin: 10px 0;
+    text-align: center;
 }
 
+
+.mt30 {
+    margin-top: 30px !important;
+}
+
+.joinCont .btnCenter span {
+    margin: 0px 1px;
+}
 
 .button1 {
-	display:inline-block; 
-	vertical-align:middle;
+    display: inline-block;
+    vertical-align: middle;
 }
-
-.joinCont .button1 a.large {
+.button1 a.large {
     width: 150px;
     height: 50px;
     line-height: 48px;
     font-size: 16px;
 }
-.button1 .type1 {
-    color: #fff;
-    background: #033823;
-}
-.button1 a, .button1 a:hover, .button1 a:focus {
-    -moz-transition-duration: .5s;
-    -ms-transition-duration: .5s;
-    -o-transition-duration: .5s;
-    transition-duration: .5s;
+.button1 .type4 {
+    color: #666;
+    background: #fff;
+    border: 1px solid #aaa;
 }
 .button1 a {
     font-weight: 500;
@@ -129,13 +219,26 @@
     box-sizing: border-box;
 }
 
-.button1 .type4 {
-    color: #666;
-    background: #fff;
-    border: 1px solid #aaa;
+a:visited {
+    color: #4c4c4c;
 }
-a:hover {
-	text-decoration: none;
+a:link {
+    color: #4c4c4c;
+    text-decoration: none;
 }
+span a {
+    display: block;
+}
+.button1 .type1 {
+	width: 150px;
+    height: 50px;
+    color: #fff;
+    background: #033823;
+}
+#center
+{
+	text-align: center;
+}
+
 
 <!-- 버튼 끝 -->
