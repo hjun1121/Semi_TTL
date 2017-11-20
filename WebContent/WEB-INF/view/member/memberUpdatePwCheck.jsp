@@ -37,7 +37,7 @@
 		<form id="login" name="login" action="./memberUpdatePwCheck.member" method="post">
 			<fieldset>
 			<div class="loginContent">
-				<div class="intro"><img src="./image/ko/local/home/loginIco.png" alt="MEMBER LOGIN"><p class="welcome">TTL <span>도서관</span>에 오신것을 환영합니다.</p><p>로그인 하시면 더 많은 도서관 서비스를 이용할 수 있습니다.</p></div>
+				<div class="intro"><img src="http://localhost/FnW_Project/image/header/kim_lib.png" alt="MEMBER LOGIN"><p class="welcome"><span>형준도서관</span>에 오신것을 환영합니다.</p><p>로그인 하시면 더 많은 도서관 서비스를 이용할 수 있습니다.</p></div>
 					<dl>
 						<dt><label for="id">아이디</label></dt>
 						<dd><input id="id" name="id" class="inputTextType1" title="아이디입력" type="text" readonly="readonly" value=${member.id } size="20" maxlength="15" alt="아이디입력"></dd>

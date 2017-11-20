@@ -12,19 +12,23 @@
 }
 
 #divContents{
-	padding-bottom:30px;
-	background-color:#fff;
-}
-
-#divContents{
 	margin-left:350px;
 	background-color:#fff;
 	margin-right: 200px;
+	padding-bottom:30px;
+	background-color:#fff;
+	margin-top: 50px;
 }
 
 #divTitle{
-	color:#464646;
-	font-size:32px;
+	color: #464646;
+    display: block;
+    font-size: 1.5em;
+    -webkit-margin-before: 0.83em;
+    -webkit-margin-after: 0.83em;
+    -webkit-margin-start: 0px;
+    -webkit-margin-end: 0px;
+    font-weight: bold;
 }
 
 #divLocation{
@@ -79,7 +83,11 @@ table {
     height: 40px;
     padding: 10px 8px;
 }
-
+.revisionTable th {
+	width:180px;
+    height: 40px;
+    padding: 10px 8px;
+}
 .revisionTable td {
     padding: 14px 10px;
     border-top: 1px solid #e6e6e6;
@@ -101,29 +109,20 @@ table th {
     background-color: #f3f3f3;
     color: #727272;
 }
-input.btnType3 {
-    height: 30px;
-    vertical-align: top;
-    border: 1px solid #585858;
-    background-color: #fff;
-    padding: 0 10px 0 10px;
-}
 
-input.btnType4 {
-    height: 30px;
-    vertical-align: top;
-    border: 1px solid #585858;
-    background: url(../../image/bookTotalSearch/limitSearch.gif) no-repeat 15px 50%;
-    background-color: #fff;
-    padding: 0 10px 0 35px;
-}
-input.btnType5 {
-    height: 35px;
+.btnType5{
+	height: 30px;
     vertical-align: top;
     border: 1px solid #585858;
     background-color: #fff;
     padding: 0 20px 0 20px;
+    color: black;
 }
+.btnType5:hover {
+    background: #f4f4f4;
+    color: #033823;
+}
+
 .btn{
 	width: 1040px;
 	height: 80px;

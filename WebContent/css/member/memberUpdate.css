@@ -13,20 +13,22 @@
 
 #divContents{
 	padding-bottom:30px;
-	background-color:#fff;
-}
-
-#divContents{
 	margin-left:350px;
+	margin-top: 50px;
 	background-color:#fff;
 	margin-right: 200px;
 }
 
 #divTitle{
 	color:#464646;
-	font-size:32px;
+	display: block;
+    font-size: 1.5em;
+    -webkit-margin-before: 0.83em;
+    -webkit-margin-after: 0.83em;
+    -webkit-margin-start: 0px;
+    -webkit-margin-end: 0px;
+    font-weight: bold;
 }
-
 #divLocation{
 	min-height:20px;
 	margin:0 56px 20px 0;
@@ -86,13 +88,18 @@ table {
     height: 40px;
     text-align: left;
 }
+.revisionTable th {
+	width: 180px;
+}
 .noneBorder{
-	border:none;border-right:0px; border-top:0px; boder-left:0px; boder-bottom:0px;
+	line-height: 24px;
+    padding: 2px 8px;
+    border: 2px solid #e6e6e6;
 }
 
 .useBorder{
 	padding:5px; 
-    border:2px solid #ccc; 
+    border:1px solid #ccc; 
     -webkit-border-radius: 5px;
     border-radius: 5px;
 }
@@ -110,19 +117,28 @@ input.btnType3 {
 }
 
 input.btnType4 {
-    height: 30px;
-    vertical-align: top;
-    border: 1px solid #585858;
-    background: url(../../image/bookTotalSearch/limitSearch.gif) no-repeat 15px 50%;
-    background-color: #fff;
-    padding: 0 10px 0 35px;
+	height: 30px;
+ 	color: #666;
+    border: 1px solid #e3e3e3;
+    border-bottom-color: #c7c7c7;
+    box-shadow: 0 1px 2px rgba(0,0,0,0.04);
+    background: #fff;
+    padding: 0 10px 0 10px;
 }
-input.btnType5 {
+.btnType4:hover {
+    background: #f4f4f4;
+}
+.btnType5 {
     height: 35px;
     vertical-align: top;
     border: 1px solid #585858;
     background-color: #fff;
     padding: 0 20px 0 20px;
+    color: black;
+}
+.btnType5:hover {
+    background: #f4f4f4;
+    color: #033823;
 }
 .btn{
 	width: 1040px;
@@ -139,7 +155,7 @@ select{
 	line-height: normal;
 	font-family: inherit;
 	padding: .5em .2em;
-	border:2px solid #ccc; 
+	border:1px solid #e6e6e6; 
 	-webkit-border-radius: 5px;
     border-radius: 5px;
 }

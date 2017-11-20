@@ -171,12 +171,15 @@ $(function(){
 				</c:when>
 				<c:when test="${seatTotal_list.state eq 2 && !empty seatTotal_list.out_time && !empty seatTotal_list.in_time}">
 					<td scope="row" style="display: table-cell;">퇴실 완료</td>
-				</c:when>
+					<td></td>
+				</c:when >
 				<c:when test="${seatTotal_list.state eq 3 && empty seatTotal_list.out_time && empty seatTotal_list.in_time}">
 					<td scope="row" style="display: table-cell;">취소</td>
+					<td> </td>
 				</c:when>
 				<c:otherwise>
 					<td scope="row" style="display: table-cell;">없음</td>
+					<td> </td>
 				</c:otherwise>
 			</c:choose>
 			</tr>

@@ -86,6 +86,10 @@ $(function(){
 </script>
 </head>
 <body>
+<<<<<<< HEAD
+=======
+
+>>>>>>> 71bd39d13c8b1f1afd684aea6172c4cecddb5679
 <!-- header -->
 <c:import url="${myContextPath}/temp/header.jsp"></c:import>
 <!-- header -->

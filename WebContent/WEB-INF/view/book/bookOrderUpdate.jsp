@@ -9,11 +9,20 @@
 <link rel="stylesheet" href="${pageContext.request.contextPath }/css/temp/header.css">
 <link rel="stylesheet" href="${pageContext.request.contextPath }/css/temp/footer.css">
 <link rel="stylesheet" href="${pageContext.request.contextPath }/css/member/myPage.css">
-<link rel="stylesheet" href="${pageContext.request.contextPath }/css/book/bookUpdate.css">
+<link rel="stylesheet" href="${pageContext.request.contextPath }/css/book/bookOrderUpdate.css">
 <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
 <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
-
+<script type="text/javascript">
+var library = '${DTO.library}';
+$(function(){
+	$(".library").each(function(){
+		 if($(this).val() == ${bookorder.library }) {
+			 $(this).attr("selected", true);
+		 }
+	});
+});
+</script>
 </head>
 <body>
 <c:import url="${myContextPath}/temp/header.jsp"></c:import>
@@ -52,47 +61,33 @@
 				</tr>
 				<tr>
 					<th>저자</th>
-					<td><input type="text" name="writer" class="useBorder" value="${bookorder.writer } "></td>
+					<td><input type="text" name="writer" class="useBorder" value="${bookorder.writer }"></td>
 				</tr>
 				<tr>
 					<th>출판사</th>
-					<td><input type="text" name="company" class="useBorder" value="${bookorder.company } "></td>
+					<td><input type="text" name="company" class="useBorder" value="${bookorder.company }"></td>
 				</tr>
 				<tr>
 					<th>출판년도</th>
-					<td><input type="number" name="publish_date" class="useBorder" value=${bookorder.publish_date } ></td>
+					<td><input type="text" name="publish_date" class="useBorder" value=${bookorder.publish_date }></td>
 				</tr>
 				<tr>
 					<th>신청사유</th>
-					<td><input type="text" class="useBorder"  class="useBorder" name="contents" value="${bookorder.contents }" ></td>
+					<td><textarea class="noneBorder" row="30"  cols="150"name="contents" style="resize: none; wrap:hard;">${bookorder.contents }</textarea></td>
 				</tr>
 				<tr>
 					<th>가격</th>
-					<td><input type="number" name="price" class="useBorder" value=${bookorder.price } ></td>
+					<td><input type="number" name="price" class="useBorder" value=${bookorder.price }></td>
 				</tr>
 				<tr>
 					<th>비치도서관</th>
-					<c:choose>
-						<c:when test="${bookorder.library eq 1}">
-							<td>기흥구</td>
-							<input type="hidden" name="library" value=${bookorder.library }>
-						</c:when>
-						<c:when test="${bookorder.library eq 2}">
-							<td>송파구</td>
-							<input type="hidden" name="library" value=${bookorder.library }>
-						</c:when>
-						<c:when test="${bookorder.library eq 3}">
-							<td>장안구</td>
-							<input type="hidden" name="library" value=${bookorder.library }>
-						</c:when>
-						<c:when test="${bookorder.library eq 4}">
-							<td>분당구</td>
-							<input type="hidden" name="library" value=${bookorder.library }>
-						</c:when>
-						<c:otherwise>
-							<td>기흥구</td>
-						</c:otherwise>
-					</c:choose>
+					<td>
+					<select name="library" class="sel_size">
+						<option value="1" class="library">기흥구</option>
+	   					<option value="2" class="library">송파구</option>
+	   					<option value="3" class="library">장안구</option>
+	   					<option value="4" class="library">분당구</option>
+					</select>
 				</tr>
 				<tr>
 				<th>상태</th>

@@ -18,14 +18,19 @@
 	background-color:#fff;
 	margin-right: 100px;
 	margin-bottom: 70px; 
-	
-	
+	margin-top: 50px;
 }
 
 
 #divTitle{
-	color:#464646;
-	font-size:32px;
+	color: #464646;
+    display: block;
+    font-size: 1.5em;
+    -webkit-margin-before: 0.83em;
+    -webkit-margin-after: 0.83em;
+    -webkit-margin-start: 0px;
+    -webkit-margin-end: 0px;
+    font-weight: bold;
 }
 
 #divLocation{
@@ -39,6 +44,7 @@
 	float:left;
 	padding-left:20px;
 	margin-left:13px;
+	margin-top:5px;
 	background:url(./../../image/common/home.png) no-repeat 0 3px;
 	font-family:NG, sans-serif;
 	line-height:1.5em;
@@ -73,7 +79,9 @@ select.selectBox1 {
     background-color: #fff;
     line-height: 29px;
 }
-
+input#btbtn{
+	margin-top: 5px;
+}
 .btnType5{
   	height: 23px;
     vertical-align: top;

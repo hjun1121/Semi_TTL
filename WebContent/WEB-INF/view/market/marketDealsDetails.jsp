@@ -104,10 +104,10 @@
 				<input type="hidden" name="delivery" value=${bookDealsDetail.delivery }>
 				</tr>
 				<tr>
-				<th></th>
+				<th>주소(우편번호)</th>
 					<td><input type="text" name="postcode" class="noneBorder" size="5" value=${bookDealsDetail.postCode } readonly="readonly"></tr>
 					<tr>
-					<th></th>
+					<th>(상세주소)</th>
 					<td><input type="text" name="addr" class="noneBorder"  value=${bookDealsDetail.addr } readonly="readonly">
 					<input type="text" name="addr2" class="noneBorder" value=${bookDealsDetail.addr2 } readonly="readonly"></td>
 				</tr>

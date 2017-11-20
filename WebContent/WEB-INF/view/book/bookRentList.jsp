@@ -137,7 +137,7 @@ $(function(){
 			<th>대여시간</th>
 			<th>반납시간</th>
 			<th>연체일</th>
-			<th></th>
+			<th> </th>
 		</tr>
 		<c:forEach items="${bookRentList }" var="bookRent_list">
 			<tr>
@@ -175,9 +175,11 @@ $(function(){
 					</c:when>
 					<c:when test="${! empty bookRent_list.out_time }">
 						<td scope="row" data-class="expand">${bookRent_list.late_date }</td>
+						<td></td>
 					</c:when>
 					<c:otherwise>
-						<td>0</td>
+						<td>*</td>
+						<td></td>
 					</c:otherwise>
 				</c:choose>
 			</tr>

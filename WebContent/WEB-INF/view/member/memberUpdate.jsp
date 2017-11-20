@@ -278,7 +278,7 @@
 					<th>주소</th>
 					<td>
 						<input type="text" class="noneBorder" id="postCode" name="postCode" size="10" placeholder="우편번호" readonly="readonly" value=${DTO.postCode }>
-						<input type="button" id="addrCheck" value="우편번호 찾기" class="btnType4" readonly="readonly"><br><br>
+						<input type="button" id="addrCheck" value="주소 찾기" class="btnType4" readonly="readonly"><br><br>
 						<input type="text" class="noneBorder" id="addr" name="addr" placeholder="주소" readonly="readonly" size="60" value="${DTO.addr }">
 						<input type="text" class="noneBorder" id="addr2" name="addr2" placeholder="나머지주소" size="40" value="${DTO.addr2 }">
 					</td>
@@ -326,7 +326,7 @@
 				<c:if test="${sessionScope.member.kind ne 10 }">
 					<c:if test="${member.kind eq 1}">
 						<th>등급</th>
-						<td><input type="text" class="noneBorder" class="noneBorder" value="일반사용자" readonly="readonly"></td>
+						<td><input type="text" class="noneBorder" value="일반사용자" readonly="readonly"></td>
 					</c:if>
 				</c:if>
 				<c:if test="${sessionScope.member.kind eq 10 }">
@@ -345,12 +345,12 @@
 			<input type="submit" class="btnType5" id="btn" name="btn" value="정보 수정">
 				<span>
 					<a href="./memberDelete.member?id=${DTO.id }">
-						<input type="button" class="btnType5" value="회원탈퇴">
+					<button class = "btnType5" type = "button" >회원탈퇴</button>
 					</a>
 				</span>
 				<span>
 					<a href="../index.jsp">
-						<input type="button" class="btnType5" value="메인으로">
+						<button class = "btnType5" type = "button" >메인</button>
 					</a>
 				</span>
 			</div>
