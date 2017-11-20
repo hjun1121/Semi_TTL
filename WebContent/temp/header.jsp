@@ -40,7 +40,13 @@
 	</div>
 </div>
 
-
 <div class="header2">
+	<div>
+		<ul>
+			<li><a href = "${pageContext.request.contextPath}/view/book/bookTotalSearch.jsp">도서검색</a></li>
+			<li><a href = "${pageContext.request.contextPath}/view/seat/seatTotalList.jsp">좌석예약</a></li>
+			<li><a href = "${pageContext.request.contextPath}/view/book/bookOrderForm.jsp">도서신청</a></li>
+			<li><a href = "${pageContext.request.contextPath}/view/marketTotalList.jsp">중고장터</a></li>
+		</ul>
+	</div>
 </div>
-		
