@@ -53,6 +53,7 @@ public class BookOrderListService implements Action {
 				}
 				PageMaker pageMaker = new PageMaker(curPage, totalCount);
 				list = book_OrderDAO.selectList(id,pageMaker.getMakeRow(),kind,search,state);
+				request.setAttribute("size", list.size());
 				request.setAttribute("bookOrderList", list);
 				request.setAttribute("id", id);
 				request.setAttribute("search", search);
@@ -72,6 +73,7 @@ public class BookOrderListService implements Action {
 				}
 				PageMaker pageMaker = new PageMaker(curPage, totalCount);
 				list = book_OrderDAO.selectList(id,pageMaker.getMakeRow(),kind,search,state);
+				request.setAttribute("size", list.size());
 				request.setAttribute("bookOrderList", list);
 				request.setAttribute("id", id);
 				request.setAttribute("search", search);
@@ -92,6 +94,7 @@ public class BookOrderListService implements Action {
 				PageMaker pageMaker = new PageMaker(curPage, totalCount);
 				list = book_OrderDAO.selectList(id,pageMaker.getMakeRow(),kind,search,state);
 				request.setAttribute("bookOrderList", list);
+				request.setAttribute("size", list.size());
 				request.setAttribute("id", id);
 				request.setAttribute("search", search);
 				request.setAttribute("kind", kind);
@@ -111,6 +114,7 @@ public class BookOrderListService implements Action {
 				PageMaker pageMaker = new PageMaker(curPage, totalCount);
 				list = book_OrderDAO.selectList(id,pageMaker.getMakeRow(),kind,search);
 				request.setAttribute("bookOrderList", list);
+				request.setAttribute("size", list.size());
 				request.setAttribute("id", id);
 				request.setAttribute("search", search);
 				request.setAttribute("kind", kind);
