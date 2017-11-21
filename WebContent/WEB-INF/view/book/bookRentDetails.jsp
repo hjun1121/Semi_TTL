@@ -130,7 +130,7 @@
 	   			</div>
 			</div>
 		</div>
-	   			
+	</form>   			
    <!-- 소장정보 -->
 	<div class="searchInfo">
 		<div class="searchHeader">
@@ -178,19 +178,17 @@
 		<div class="btn2">
 		<c:choose>
 			<c:when test="${empty bookRentDTO.out_time }">
-				<a href="./bookReturn.book?num=${bookRentDTO.num }"><input class="btnType5" type="button" value="반납"></a>
+				<a href="./bookReturn.book?num=${bookRentDTO.num }&bnum=${bookRentDTO.bnum }"><input class="btnType5" type="button" value="반납"></a>
 			</c:when>
 		</c:choose>
 		<c:choose>
 			<c:when test="${not empty bookRentDTO.out_time }">
-				<a href="./bookRentDelete.book?num=${bookRentDTO.num }"><input class="btnType5" type="button" value="삭제"></a>
+				<a href="./bookRentDelete.book?bnum=${bookRentDTO.bnum }"><input class="btnType5" type="button" value="삭제"></a>
 			</c:when>
 		</c:choose>
 		<a href="../book/bookRentList.book?id=${member.id }"><input class="btnType5" type="button" value="LIST"></a>
 		</div>
-		</form>
 	</div>
-</div>
 <c:import url="${myContextPath}/temp/footer.jsp"></c:import>
 </body>
 </html>

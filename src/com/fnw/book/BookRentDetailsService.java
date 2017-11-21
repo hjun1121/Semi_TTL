@@ -15,9 +15,8 @@ public class BookRentDetailsService implements Action {
 		Book_Rent_DetailsDTO book_Rent_DetailsDTO = null;
 		Book_TotalDAO book_TotalDAO = new Book_TotalDAO();
 		Book_TotalDTO book_TotalDTO = new Book_TotalDTO();
-		
 		try {
-			book_Rent_DetailsDTO = book_Rent_DetailsDAO.selectOne(Integer.parseInt(request.getParameter("num")));
+			book_Rent_DetailsDTO = book_Rent_DetailsDAO.selectOne(Integer.parseInt(request.getParameter("bnum")));
 			book_TotalDTO = book_TotalDAO.selectOne(Integer.parseInt(request.getParameter("num")));
 		} catch (Exception e) {
 			e.printStackTrace();
