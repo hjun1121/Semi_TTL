@@ -21,7 +21,6 @@ public class AdminMarketOrderListService implements Action {
 		try {
 			curPage=Integer.parseInt(request.getParameter("curPage"));
 		}catch (Exception e) {
-			e.printStackTrace();
 		}
 		
 		String kind = request.getParameter("kind");
@@ -41,8 +40,8 @@ public class AdminMarketOrderListService implements Action {
 			request.setAttribute("size", ar.size());
 			request.setAttribute("list", ar);
 			request.setAttribute("page", pageMaker.getMakePage());
+			request.setAttribute("curPage", curPage);
 		} catch (Exception e) {
-			// TODO Auto-generated catch block
 			e.printStackTrace();
 		}
 		actionFoward.setCheck(true);

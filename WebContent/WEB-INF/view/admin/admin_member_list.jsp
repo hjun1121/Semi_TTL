@@ -17,6 +17,13 @@
 <title>Insert title here</title>
 <script type="text/javascript">
 $(function(){
+	
+	$("#list").on("each", ".cur", function(){
+		 if($(this).attr("title") == ${curPage }) {
+			 $(this).attr("style", "color:red;");
+		 }
+	});
+	
 	$(".cur").each(function(){
 		 if($(this).attr("title") == ${curPage }) {
 			 $(this).attr("style", "color:red;");
@@ -29,16 +36,17 @@ $(function(){
 				 $(this).attr("selected", true);
 			 }
 		 });
-			if(${kind} == 10){
-				$(".kind1").attr("style", "background-color: #fff");
-		 		$("#btn_admin").attr("style", "background-color: #dcdcdc");
-			}else if(${kind} == 0){
-				$(".kind1").attr("style", "background-color: #fff");
-		 		$("#btn_black").attr("style", "background-color: #dcdcdc");
-			}else{
-				$(".kind1").attr("style", "background-color: #fff");
-		 		$("#btn_member").attr("style", "background-color: #dcdcdc");
-			}
+		 
+		if(${kind} == 10){
+			$(".kind1").attr("style", "background-color: #fff");
+	 		$("#btn_admin").attr("style", "background-color: #dcdcdc");
+		}else if(${kind} == 0){
+			$(".kind1").attr("style", "background-color: #fff");
+	 		$("#btn_black").attr("style", "background-color: #dcdcdc");
+		}else{
+			$(".kind1").attr("style", "background-color: #fff");
+	 		$("#btn_member").attr("style", "background-color: #dcdcdc");
+		}
 		
 	$("#btn_admin").click(function() {
 		$("#kind0").val("10");

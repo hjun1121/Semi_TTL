@@ -7,7 +7,7 @@
 </c:if>
 <c:if test="${size ne 0 }">
 <input type="hidden" name="kind" id="kind0" value="${kind }">
-<table id = "member" class="kind" border="1">
+<table id = "member" class="kind" >
 			<tr>
 			<th>ID</th>
 			<th>PASSWORD</th>
