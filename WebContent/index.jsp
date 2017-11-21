@@ -15,6 +15,35 @@
 <link rel="stylesheet" href="${pageContext.request.contextPath }/css/index/index.css">
 <title>Total Library Page</title>
 
+<script>
+var slideIndex = 1;
+showSlides(slideIndex);
+
+function plusSlides(n) {
+  showSlides(slideIndex += n);
+}
+
+function currentSlide(n) {
+  showSlides(slideIndex = n);
+}
+
+function showSlides(n) {
+  var i;
+  var slides = document.getElementsByClassName("mySlides");
+  var dots = document.getElementsByClassName("dot");
+  if (n > slides.length) {slideIndex = 1}    
+  if (n < 1) {slideIndex = slides.length}
+  for (i = 0; i < slides.length; i++) {
+      slides[i].style.display = "none";  
+  }
+  for (i = 0; i < dots.length; i++) {
+      dots[i].className = dots[i].className.replace(" active", "");
+  }
+  slides[slideIndex-1].style.display = "block";  
+  dots[slideIndex-1].className += " active";
+}
+</script>
+
 </head>
 <body>
 <c:import url="${myContextPath}/temp/header.jsp"></c:import>
@@ -44,6 +73,174 @@
 			</div>
 		</div>
 		<!-- 메인 Search 끝 -->
+		
+		<br><br><br>
+		
+		<!-- 메인  컨텐츠 시작 -->
+		
+		<div class="contents">
+			<div class="content1">
+				<div>
+					<div class="banner">
+						<div class="slideshow-container">
+							  <div class="mySlides fade">
+							    <div class="numbertext">1 / 4</div>
+							    <img src="${pageContext.request.contextPath }/image/index/hj.png" style="width:100%">
+							    <div class="text">Caption Text</div>
+							  </div>
+							
+							  <div class="mySlides fade">
+							    <div class="numbertext">2 / 4</div>
+							    <img src="${pageContext.request.contextPath }/image/index/hj.png"" style="width:100%">
+							    <div class="text">Caption Two</div>
+							  </div>
+							
+							  <div class="mySlides fade">
+							    <div class="numbertext">3 / 4</div>
+							    <img src="${pageContext.request.contextPath }/image/index/hj.png"" style="width:100%">
+							    <div class="text">Caption Three</div>
+							  </div>
+							  <div class="mySlides fade">
+							    <div class="numbertext">4 / 4</div>
+							    <img src="${pageContext.request.contextPath }/image/index/hj.png"" style="width:100%">
+							    <div class="text">Caption Three</div>
+							  </div>
+							  
+							<a class="prev" onclick="plusSlides(-1)">&#10094;</a>
+							<a class="next" onclick="plusSlides(1)">&#10095;</a>
+						
+						</div>
+						<br>
+						
+						<div style="text-align:center">
+  							<span class="dot" onclick="currentSlide(1)"></span> 
+  							<span class="dot" onclick="currentSlide(2)"></span> 
+  							<span class="dot" onclick="currentSlide(3)"></span> 
+  							<span class="dot" onclick="currentSlide(4)"></span>
+						</div>
+					
+						<%-- <ul>
+							<li class="">
+								<a href="#" class="navi"><img src="#"></a>
+								<a href="#" target="_blank" class="bannerImg">
+									<img src="${pageContext.request.contextPath }/image/index/hj.png" width="305px;" height="223px;">
+								</a>
+							</li>							
+							<li class="">
+								<a href="#" class="navi"><img src="#"></a>
+								<a href="#" target="_blank" class="bannerImg"><img src="${pageContext.request.contextPath }/image/index/hj.png" width="305px;" height="223px;"></a>
+							</li>						
+							<li class="on">
+								<a href="#" class="navi"><img src="#"></a>
+								<a href="#" target="_blank" class="bannerImg"><img src="${pageContext.request.contextPath }/image/index/hj.png" width="305px;" height="223px;"></a>
+							</li>
+							<li class="">
+								<a href="#" class="navi"><img src="#"></a>
+								<a href="#" target="_blank" class="bannerImg"><img src="${pageContext.request.contextPath }/image/index/hj.png" width="305px;" height="223px;"></a>
+							</li>
+						</ul> --%>
+					</div>
+					<div class="notice">
+						<h2>공지사항</h2>
+						<ul>
+							<li>	
+								<span class="noticeType1">공지</span>
+								<a href="#">내용입력</a>
+							</li>			
+						</ul>
+					<a href="#" class="more"><img src="${pageContext.request.contextPath }/image/index/more.png" alt="더보기"></a>
+					</div>
+				</div>
+			</div>
+			<div class="content2">
+				<div class="seat">
+					<div>
+						<h2>열람실 좌석 현황</h2>
+					</div>
+					<dl class="readingRoom1">
+						<dt>중앙도서관</dt>
+						<dd>
+							<ul>
+								<li><img src="./image/ko/local/main/readingRoom2.png" alt="자유열람실" id="roomName0_2" title="자유열람실"> <span id="useSeat0_2">105</span> / <span id="totalSeat0_2">292</span></li>
+								<li><img src="./image/ko/local/main/readingRoom1.png" alt="PC실" id="roomName0_1" title="PC실"> <span id="useSeat0_1">47</span> / <span id="totalSeat0_1">124</span></li>
+								<li><img src="./image/ko/local/main/readingRoom3.png" alt="노트북실" id="roomName0_3" title="노트북실"> <span id="useSeat0_3">51</span> / <span id="totalSeat0_3">139</span></li>
+							</ul>
+						</dd>
+					</dl>
+					<dl class="readingRoom2">
+						<dt>법학도서관</dt>
+						<dd>
+							<ul>
+								<li><img src="./image/ko/local/main/readingRoom2.png" alt="법학 자유열람실" id="roomName0_4" title="법학 자유열람실"> <span id="useSeat0_4">0</span> / <span id="totalSeat0_4">88</span></li>
+							</ul>
+						</dd>
+					</dl>
+					<dl class="readingRoom3">
+						<dt>ECC열람실</dt>
+						<dd>
+							<ul>
+								<li><img src="./image/ko/local/main/readingRoom5.png" alt="이화 신한열람실" id="roomName1_4" title="이화 신한열람실"> <span id="useSeat1_4">49</span> / <span id="totalSeat1_4">300</span></li>
+								<li><img src="./image/ko/local/main/readingRoom6.png" alt="이화 신한노트북석" id="roomName1_5" title="이화 신한노트북석"> <span id="useSeat1_5">114</span> / <span id="totalSeat1_5">191</span></li>
+								<li><img src="./image/ko/local/main/readingRoom4.png" alt="이화 YBM열람실" id="roomName1_2" title="이화 YBM열람실"> <span id="useSeat1_2">47</span> / <span id="totalSeat1_2">294</span></li>
+								<li><img src="./image/ko/local/main/readingRoom2.png" alt="자유열람실" id="roomName1_1" title="자유열람실"> <span id="useSeat1_1">54</span> / <span id="totalSeat1_1">280</span></li>
+							</ul>
+						</dd>
+					</dl>
+					<a href="#" target="_blank" class="more"><img src="${pageContext.request.contextPath }/image/index/more.png" alt="더보기"></a>
+				</div>
+				
+			</div>
+<%-- 			<div class="book">
+				<ul>
+					<li class="on"><h2><a href="#">신작 도서</a></h2>
+					
+						<div>	
+							<div>
+								<ul style="width: 2288px;">
+									<li style="width: 143px;">
+										<a href="#">
+											<span class="bookCover"><img src="#" width="107px;" height="150px;" id="newArrivalList1" alt="책표지"></span>
+											<span class="bookTit">나는 염소가 처음이야 : 김숨 소설</span>
+											<span class="writer">김숨</span>
+										</a>
+									</li>
+								</ul>
+							</div>
+						</div>
+						<div class="btns">
+							<a href="#" class="prev"><img src="./image/ko/local/main/prev.png" alt="이전"></a>
+							<a href="#" class="next"><img src="./image/ko/local/main/next.png" alt="다음"></a>
+						</div>
+					 	
+					</li>
+					<li class=""><h2><a href="#">추천도서</a></h2>
+					<a href="#" class="more"><img src="${pageContext.request.contextPath }/image/index/more.png" alt="more"></a>
+					
+					 	
+					 		<div>	
+								<div>
+									<ul style="width: 2288px;">
+										<li style="width: 143px;">
+											<a href="#">
+												<span class="bookCover"><img src="#" id="recommendList16" width="107px;" height="150px;" alt="책표지" title="올가에게 보낸는 편지 : 체코 민주화의 상징 하벨 대통령의 서한집 : 감옥으로부터의 사색과 사랑 "></span>
+												<span class="bookTit">올가에게 보낸는 편지 : 체코 민주화의 상징 하벨 대통령의 서한집 : 감옥으로부터의 사색과 사랑 </span>
+												<span class="writer">Havel, Vaclav</span>
+											</a>
+										</li>
+									</ul>
+								</div>
+							</div>
+							<div class="btns">
+								<a href="#" class="prev"><img src="./image/ko/local/main/prev.png" alt="이전"></a>
+								<a href="#" class="next"><img src="./image/ko/local/main/next.png" alt="다음"></a>
+							</div>
+					</li>
+				</ul>
+			</div> --%>
+		</div>
+		
+		<!-- 메인 컨텐츠 끝 -->
+		
 		<!-- ////////////////// -->
 	
 	<h2>김앤신(통합포털)</h2>
