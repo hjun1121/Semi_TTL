@@ -80,24 +80,6 @@ $(function(){
 				</thead>
 				<c:forEach items="${requestScope.list}" var="dto">
 				<tbody>
-					<!-- <tr class="always">
-						<td class="alwaysNum footable-first-column">
-						<span>공지</span>
-						</td>
-						<td class="title expand">
-							<a href="#">
-								<strong>도서관 소식지 제69호(2017 가을) 발행</strong>
-							</a>&nbsp;
-						</td>
-						<td class="writer" style="display: table-cell;">
-							이인영
-						</td>
-						<td class="reportDate" style="display: table-cell;">2017-09-11</td>
-						<td class="view_cnt" style="display: table-cell;">156</td>
-						<td class="footable-last-column" style="display: table-cell;">
-							&nbsp;	
-						</td>
-					</tr> -->
 					<tr>
 						<td class="num footable-first-column">${dto.num}</td>
 						<td class="title expand">
