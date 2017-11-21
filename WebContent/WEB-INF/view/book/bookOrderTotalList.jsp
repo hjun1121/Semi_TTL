@@ -1,6 +1,7 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
+<%@ taglib prefix="fn" uri="http://java.sun.com/jsp/jstl/functions" %>
 <!DOCTYPE html>
 <html>
 <head>
@@ -59,7 +60,7 @@
 	 				<td scope="row" data-class="expand" style="overflow: hidden; max-width: 420px;">${bookOrder_list.title }</td>
 					<td scope="row" style="display: table-cell;">${bookOrder_list.writer}</td>
 					<td scope="row" style="display: table-cell;">${bookOrder_list.company}</td>
-					<td scope="row" style="display: table-cell;">${bookOrder_list.id}</td>
+					<td scope="row" style="display: table-cell;">${fn:substring(bookOrder_list.id,0,2) }***</td>
 					<c:choose>
 					<c:when test="${bookOrder_list.state ne 1}">
 						<td scope="row" style="display: table-cell;">대기</td>

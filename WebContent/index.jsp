@@ -46,9 +46,6 @@
 		<!-- 메인 Search 끝 -->
 		<!-- ////////////////// -->
 	
-	<h2>김앤신(통합포털)</h2>
-	<p><a href="./book/bookOrderTotalList.book">Book_TotalList(도서 신청목록)</a>
-	
 	<!-- 도서관 페이지  -->
 	
 	<h2>도서관 페이지</h2>
