@@ -92,23 +92,36 @@
 						</c:otherwise>
 					</c:choose>
 				</tr>
-				<tr>
-				<th>상태</th>
+					
 				<c:choose>
 					<c:when test="${bookOrderDetails.state eq 0}">
-						<td>취소(<input type="text" name="cancel" class="noneBorder" value="${bookOrderDetails.cancel }">)</td>
+						<tr>
+						<th>상태</th>
+						<td>취소</td>
+						</tr>
+						<tr>
+						<th></th>
+						<td>
+						<textarea class="noneBorder" row="30"  cols="150" readonly="readonly"  name="cancel" style="resize: none; wrap:hard;">${bookOrderDetails.cancel }</textarea></td>
 						<input type="hidden" name="state" class="noneBorder" value=${bookOrderDetails.state } readonly="readonly">
+						</tr>
 					</c:when>
 					<c:when test="${bookOrderDetails.state eq 1}">
+					<tr>
+					<th>상태</th>
 						<td>대기<td>
 						<input type="hidden" name="state" class="noneBorder" value=${bookOrderDetails.state } readonly="readonly">
+						</tr>
 					</c:when>
 					<c:otherwise>
+					<tr>
+					<th>상태</th>
 						<td>승인</td>
 						<input type="hidden" name="state" class="noneBorder" value=${bookOrderDetails.state } readonly="readonly">
+						</tr>
 					</c:otherwise>
 				</c:choose>
-				</tr>
+				
 			</table>
 			<br>
 			<div class="btn">

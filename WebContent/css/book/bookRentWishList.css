@@ -68,9 +68,6 @@
 }
 <!--상단 바 끝 -->
 
-#btbtn{
-}
-
 .btnType5{
   	height: 35px;
     vertical-align: top;
@@ -84,6 +81,10 @@
     border-top: 1px solid #b3b3b3;
     border-bottom: 1px solid #e6e6e6;
     text-align: center;
+}
+
+btnTD{
+	border: none;
 }
 
 table {
