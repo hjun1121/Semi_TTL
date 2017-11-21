@@ -8,7 +8,6 @@ import javax.servlet.http.HttpSession;
 
 import com.fnw.action.Action;
 import com.fnw.action.ActionFoward;
-import com.fnw.member.MemberDAO;
 import com.fnw.member.MemberDTO;
 import com.fnw.util.PageMaker;
 
@@ -36,6 +35,17 @@ public class MarketTotalListService implements Action {
 			curPage=Integer.parseInt(request.getParameter("curPage"));
 		}catch (Exception e) {
 		}
+		
+		String kind = request.getParameter("kind");
+		if(kind==null) {
+			kind="title";
+		}
+		String search = request.getParameter("search");
+		if(search==null) {
+			search="";
+		}
+		
+		
 		int totalCount =0;
 		Market_TotalDAO market_TotalDAO = new Market_TotalDAO();
 		ArrayList<Market_TotalDTO> ar = new ArrayList<>();
@@ -44,16 +54,17 @@ public class MarketTotalListService implements Action {
 			request.setAttribute("curPage", curPage);
 			request.setAttribute("buy_wish_list", buy_wish_list);
 		} catch (Exception e) {
-			// TODO Auto-generated catch block
 			e.printStackTrace();
 		}
 		try {
 			totalCount = market_TotalDAO.getTotalCount();
 			PageMaker pageMaker = new PageMaker(curPage, totalCount);
-			ar = market_TotalDAO.selectList(pageMaker.getMakeRow());
+			ar = market_TotalDAO.selectList(pageMaker.getMakeRow(), kind, search);
 			request.setAttribute("list", ar);
 			request.setAttribute("page", pageMaker.getMakePage());
 			request.setAttribute("curPage", curPage);
+			request.setAttribute("kind", kind);
+			request.setAttribute("search", search);
 		} catch (Exception e) {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
