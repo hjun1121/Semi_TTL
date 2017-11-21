@@ -107,7 +107,7 @@ public class BookOrderListService implements Action {
 		}else {
 			Book_OrderDAO book_OrderDAO = new Book_OrderDAO();
 			try {
-				totalCount = book_OrderDAO.getTotalCount(kind, search);
+				totalCount = book_OrderDAO.getTotalCount(kind, search,state);
 				if(totalCount==0) {
 					totalCount=1;
 				}

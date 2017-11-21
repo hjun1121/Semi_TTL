@@ -70,7 +70,7 @@ $(function(){
 	<a href="./bookOrderList.book?id=${member.id }&state=2&kind=${kind}&search=${search}"><input class="btnType3" type="button" value="승인"></a>
 	<br><br>
 	<c:if test="${size eq 0 }">
-		<h2 id="divTitle">대여 내역이 없습니다.</h2>
+		<h2 id="divTitle">신청 내역이 없습니다.</h2>
 	</c:if>
 	<c:if test="${size ne 0 }">
 	<div class="listTable">
@@ -120,11 +120,11 @@ $(function(){
 					</c:when>
 					<c:when test="${bookOrder_list.state eq 1}">
 						<td scope="row" style="display: table-cell;">대기</td>
-						<td>-</td>
+						<td></td>
 					</c:when>
 					<c:otherwise>
 						<td scope="row" style="display: table-cell;">승인</td>
-						<td>-</td>
+						<td></td>
 					</c:otherwise>
 				</c:choose>
 			</tr>
