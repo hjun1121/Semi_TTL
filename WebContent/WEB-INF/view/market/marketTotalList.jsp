@@ -101,11 +101,11 @@
 					<th style="display: table-cell;">저자</th>
 					<th style="display: table-cell;">출판사</th>
 					<th style="display: table-cell;">출판년도</th>
-					<th style="display: table-cell;">판매 도서관</th>
+					
 					<th style="display: table-cell;">가격</th>
-					<th style="display: table-cell;">판매인</th>
+					
 					<th style="display: table-cell;">찜</th>
-					<th style="display: table-cell;">책 상태</th>
+				
 					<c:if test="${ not empty member }">
 						<th>찜</th>
 					</c:if>
@@ -120,34 +120,11 @@
 					<td>${dto.writer }</td>
 					<td>${dto.company }</td>
 					<td>${dto.publish_date }</td>
-					<td>
-						<c:if test="${dto.library eq 1 }">
-							기흥 도서관
-						</c:if>
-						<c:if test="${dto.library eq 2}">
-							송파 도서관
-						</c:if>
-						<c:if test="${dto.library eq 3}">
-							장안 도서관
-						</c:if>
-						<c:if test="${dto.library eq 4 }">
-							분당 도서관
-						</c:if>
-					</td>
+					
 					<td>${dto.price }</td>
-					<td>${dto.id }</td>
+				
 					<td>${dto.wish }</td>
-					<td>
-						<c:if test="${dto.book_state eq 1 }">
-							하
-						</c:if>
-						<c:if test="${dto.book_state eq 2 }">
-							중
-						</c:if>
-						<c:if test="${dto.book_state eq 3 }">
-							상
-						</c:if>
-					</td>
+					
 			<c:set var="heart1" value="0" ></c:set>
 			<c:set var="heart2" value="0" ></c:set>
 			<c:if test="${ not empty member }">
