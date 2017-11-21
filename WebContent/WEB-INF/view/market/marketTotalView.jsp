@@ -22,7 +22,7 @@
 		});
 		
 		$("#btn_NO").click(function(){
-			location.href="../index.jsp";
+			location.href="./marketTotalList.market";
 		});
 		
 	});
