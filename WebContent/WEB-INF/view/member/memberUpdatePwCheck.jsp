@@ -33,24 +33,35 @@
 			</ul>
 		</div>
 		
+		
+		<!-- ////////////// -->
 		<div class="loginW">
-		<form id="login" name="login" action="./memberUpdatePwCheck.member" method="post">
-			<fieldset>
-			<div class="loginContent">
-				<div class="intro"><img src="http://localhost/FnW_Project/image/header/kim_lib.png" alt="MEMBER LOGIN"><p class="welcome"><span>형준도서관</span>에 오신것을 환영합니다.</p><p>로그인 하시면 더 많은 도서관 서비스를 이용할 수 있습니다.</p></div>
-					<dl>
-						<dt><label for="id">아이디</label></dt>
-						<dd><input id="id" name="id" class="inputTextType1" title="아이디입력" type="text" readonly="readonly" value=${member.id } size="20" maxlength="15" alt="아이디입력"></dd>
-					</dl>
-					<dl>
-						<dt><label for="pw">비밀번호</label></dt>
-						<dd><input id="pw" name="pw" class="inputTextType1" title="비밀번호 입력" type="password" value="" size="20" maxlength="20" alt="비밀번호 입력"></dd>
-					</dl>
-					<p class="loginBtn"><input type="submit" value="로그인"></p>
-			</div>
-			</fieldset>
-		</form>
+			<form action="./memberUpdatePwCheck.member" name="frm" method="post">
+				<div class="loginContent">
+					<div id="login_all">
+			
+					<!-- menu -->	
+					<div id="login_menu">
+						<a href="#" class="login_login"><span>정보 수정</span></a>
+					</div>
+					<!-- id -->
+					<div id="login_id">
+						<input type="text" id="id" name="id" value=${member.id } readonly="readonly">
+					</div>
+					<!-- pw -->
+					<div id="login_pw">
+						<input type="password"  id="pw" name="pw" placeholder="비밀번호 입력">
+					</div>
+					<!-- 수정버튼 -->
+					<div id="login_btn">
+						<p class="loginBtn"><input type="submit" value="수정하기"></p>
+					</div>	
+					
+					</div>
+				</div>
+			</form>
 		</div>
+		<!-- ////////////// -->
 	</div>
 </div>
 
