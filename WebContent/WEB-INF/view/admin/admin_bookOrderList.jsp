@@ -14,6 +14,18 @@
 <link rel="stylesheet" href="${pageContext.request.contextPath }/css/member/myPage.css">
 <link rel="stylesheet" href="${pageContext.request.contextPath }/css/admin/admin_bookOrderList.css">
 <title>book order list 관리자용</title>
+<script type="text/javascript">
+	$(function(){
+		$(".cur").each(function(){
+			 if($(this).attr("title") == ${curPage }) {
+				 $(this).attr("style", "color:red;");
+			 }
+		 });
+		
+		
+	});
+
+</script>
 </head>
 <body>
 <c:import url="${myContextPath}/temp/header.jsp"></c:import>
@@ -34,8 +46,19 @@
 				<li>책 신청 내역</li>
 			</ul>
 		</div>
+		
+	<br><br>
+	<a href="./bookOrderListAdmin.book?state=3"><input class="btnType3" type="button" value="전체"></a>
+	<a href="./bookOrderListAdmin.book?state=0"><input class="btnType3" type="button" value="승인"></a>
+	<a href="./bookOrderListAdmin.book?state=1"><input class="btnType3" type="button" value="거절"></a>
+	<br><br>
 	
+	<c:if test="${size eq 0 }">
+		<h2 id="divTitle">도서 신청 내역이 없습니다.</h2>
+		<br><br><br><br><br><br><br><br><br><br><br>
+	</c:if>
 	
+	<c:if test="${size ne 0 }">
 	<div class="listTable">
 	<table class="mobileTable tablet" >
 	<thead>
@@ -50,8 +73,7 @@
 			<th>상태</th>
 			<th>취소사유</th>
 		</tr>
-		<c:forEach items="${requestScope.list}" var="dto">
-		<c:if test="${dto.state eq 1 }">
+		<c:forEach items="${orderList}" var="dto">
 			<tr>
 				<td scope="row" class="footable-first-column">${dto.num}</td>
 				<td scope="row" class="footable-first-column">
@@ -80,7 +102,6 @@
 				<td scope="row" style="display: table-cell;">${dto.state }</td>
 				<td scope="row" style="display: table-cell;">${dto.cancel }</td>
 			</tr>
-			</c:if>
 		</c:forEach>
 	</table>
 	
@@ -91,17 +112,16 @@
 			</c:if>
 			
 			<c:forEach begin="${page.startNum}" end="${page.lastNum}" var="i">
-			<li><a
-				href="./bookOrderListAdmin.book?curPage=${i}">${i}</a></li>
+			<li><a class="cur" title="${i }" href="./bookOrderListAdmin.book?curPage=${i}">${i}</a></li>
 			</c:forEach>
 			
 			<c:if test="${page.curBlock < page.totalBlock}">
-			<li><a
-				href="./bookOrderListAdmin.book?curPage=${requestScope.page.lastNum+1}">[다음]</a></li>
+			<li><a href="./bookOrderListAdmin.book?curPage=${requestScope.page.lastNum+1}">[다음]</a></li>
 			</c:if>
 		</ul>
 	</div>
 	</div>
+	</c:if>
 	</div>
 </div>		
 	</section>

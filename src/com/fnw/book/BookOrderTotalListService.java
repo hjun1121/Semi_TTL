@@ -37,8 +37,12 @@ public class BookOrderTotalListService implements Action {
 
 		try {
 			totalCount = book_OrderDAO.getTotalCount(kind, search);
+			if(totalCount==0) {
+				totalCount=1;
+			}
 			PageMaker pageMaker = new PageMaker(curPage, totalCount);
 			list = book_OrderDAO.selectList(pageMaker.getMakeRow());
+			request.setAttribute("size", list.size());
 			request.setAttribute("bookOrderTotalList", list);
 			request.setAttribute("id", id);
 			request.setAttribute("curPage", curPage);

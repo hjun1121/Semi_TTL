@@ -15,7 +15,6 @@ public class AdminMemberListService implements Action {
 	public ActionFoward doProcess(HttpServletRequest request, HttpServletResponse response) {
 		ActionFoward actionFoward = new ActionFoward();
 		String method=request.getMethod();
-		System.out.println(method);
 		if(method.equals("GET")) {
 			this.pagination(request);
 			
@@ -92,6 +91,7 @@ public class AdminMemberListService implements Action {
 			request.setAttribute("kind1", kind1);
 			request.setAttribute("search", search);
 			request.setAttribute("page", pageMaker.getMakePage());
+			request.setAttribute("curPage", curPage);
 			
 		} catch (Exception e) {
 			// TODO Auto-generated catch block

@@ -15,6 +15,12 @@
 <link rel="stylesheet" href="${pageContext.request.contextPath }/css/book/bookRentList.css">
 <script type="text/javascript">
 $(function(){
+		$(".cur").each(function(){
+			 if($(this).attr("title") == ${curPage }) {
+				 $(this).attr("style", "color:red;");
+			 }
+		 });
+	
 		var y = '${year}';
 		$(".years").each(function() {
 			if($(this).val()==y){
@@ -172,22 +178,25 @@ $(function(){
 				<td scope="row" data-class="expand">${bookRent_list.out_time }</td>
 				<c:choose>
 					<c:when test="${empty bookRent_list.out_time }">
+						<td> </td>
 						<td scope="row" style="display: table-cell;">
 						<a href="./bookReturn.book?num=${bookRent_list.num }&bnum=${bookRent_list.bnum }"><button class = "btn btn-default rent_btn">반납</button></a>
 						</td>
 					</c:when>
 					<c:when test="${! empty bookRent_list.out_time }">
-						<td></td>
 						<c:if test="${bookRent_list.late_date > 7}">
 							<td scope="row" data-class="expand">${bookRent_list.late_date-7 }일</td>
 						</c:if>
+						<c:if test="${bookRent_list.late_date < 7}">
+							<td scope="row" data-class="expand">0일</td>
+						</c:if>
+						<td> </td>
 					</c:when>
 					<c:otherwise>
-						<td></td>
-						<td></td>
+						<td> </td>
+						<td> </td>
 					</c:otherwise>
 				</c:choose>
-				<td></td>
 			</tr>
 		</c:forEach>
 	</table>
@@ -197,8 +206,7 @@ $(function(){
 			<li><button class="go" id="${page.startNum-1}">[이전]</button></li>
 			</c:if>
 			<c:forEach begin="${page.startNum}" end="${page.lastNum}" var="i">
-			<li><a
-				href="./bookRentList.book?curPage=${i}&id=${id }&year=${year}&month=${month}&day=${day}">${i}</a></li>
+			<li><a class="cur" title="${i }" href="./bookRentList.book?curPage=${i}&id=${id }&year=${year}&month=${month}&day=${day}">${i}</a></li>
 			</c:forEach>
 			<c:if test="${page.curBlock < page.totalBlock}">
 			<li><a

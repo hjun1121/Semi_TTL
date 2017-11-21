@@ -24,29 +24,60 @@ public class AdminBookOrderListService implements Action {
 		}catch (Exception e) {
 		}
 		
-		String kind = request.getParameter("kind");
-		if(kind==null) {
-			kind="title";
+		int state = 3;
+		try {
+			state = Integer.parseInt(request.getParameter("state"));
+		}catch (Exception e) {
+			
 		}
-		String search=request.getParameter("search");
-		if(search==null) {
-			search="";
-		}
+		System.out.println("state"+state);
 		
 		int totalCount=0;
-		try {
-			totalCount = book_OrderDAO.getTotalCount(kind, search);
-			PageMaker pageMaker = new PageMaker(curPage, totalCount);
-			List<Book_OrderDTO> ar=book_OrderDAO.selectList(pageMaker.getMakeRow(), kind, search);
-			request.setAttribute("list", ar);
-			request.setAttribute("page", pageMaker.getMakePage());
-			
-		} catch (Exception e) {
-			// TODO Auto-generated catch block
-			e.printStackTrace();
+		if(state==0) {
+			try {
+				totalCount = book_OrderDAO.getTotalCount(state);
+				PageMaker pageMaker = new PageMaker(curPage, totalCount);
+				List<Book_OrderDTO> ar = book_OrderDAO.selectList(pageMaker.getMakeRow(),state);
+				request.setAttribute("size", ar.size());
+				request.setAttribute("orderList", ar);
+				request.setAttribute("page", pageMaker.getMakePage());
+				request.setAttribute("curPage", curPage);
+			} catch (Exception e) {
+				e.printStackTrace();
+			}
+			actionFoward.setCheck(true);
+			actionFoward.setPath("../WEB-INF/view/admin/admin_bookOrderList.jsp");
+		}else if(state==1) {
+			try {
+				totalCount = book_OrderDAO.getTotalCount(state);
+				PageMaker pageMaker = new PageMaker(curPage, totalCount);
+				List<Book_OrderDTO> ar = book_OrderDAO.selectList(pageMaker.getMakeRow(),state);
+				request.setAttribute("size", ar.size());
+				request.setAttribute("orderList", ar);
+				request.setAttribute("page", pageMaker.getMakePage());
+				request.setAttribute("curPage", curPage);
+				
+			} catch (Exception e) {
+				e.printStackTrace();
+			}
+			actionFoward.setCheck(true);
+			actionFoward.setPath("../WEB-INF/view/admin/admin_bookOrderList.jsp");
+		} else {
+			try {
+				totalCount = book_OrderDAO.getTotalCount();
+				PageMaker pageMaker = new PageMaker(curPage, totalCount);
+				List<Book_OrderDTO> ar = book_OrderDAO.selectList(pageMaker.getMakeRow());
+				request.setAttribute("size", ar.size());
+				request.setAttribute("orderList", ar);
+				request.setAttribute("page", pageMaker.getMakePage());
+				request.setAttribute("curPage", curPage);
+				
+			} catch (Exception e) {
+				e.printStackTrace();
+			}
+			actionFoward.setCheck(true);
+			actionFoward.setPath("../WEB-INF/view/admin/admin_bookOrderList.jsp");
 		}
-		actionFoward.setCheck(true);
-		actionFoward.setPath("../WEB-INF/view/admin/admin_bookOrderList.jsp");
 		
 		return actionFoward;
 	

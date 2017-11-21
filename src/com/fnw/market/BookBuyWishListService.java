@@ -41,6 +41,7 @@ public class BookBuyWishListService implements Action {
 			}
 			PageMaker pageMaker = new PageMaker(curPage, totalCount);
 			list = book_Buy_WishDAO.selectList(id,pageMaker.getMakeRow(),kind,search);
+			request.setAttribute("size", list.size());
 			request.setAttribute("bookBuyWishList", list);
 			request.setAttribute("id", id);
 			request.setAttribute("page", pageMaker.getMakePage());

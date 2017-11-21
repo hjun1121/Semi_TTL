@@ -72,7 +72,10 @@ $(function(){
 		
 		<br>
 	<!-- 검색 끝 -->
-
+<c:if test="${size eq 0 }">
+		<h2 id="divTitle">공지사항이 없습니다.</h2>
+	</c:if>
+	<c:if test="${size ne 0 }">
 	<!-- list 시작 -->
 	<div class="listTable">
 			<table class="mobileTable tablet">
@@ -113,7 +116,7 @@ $(function(){
 			</table>
 		</div>
 	
-	
+	</c:if>
 	<c:if test="${not empty member and member.kind eq 10}">
 		<a id = "adm_write_btn" class="btn btn-default" href="./noticeWrite.notice">WRITE</a>
 	</c:if>

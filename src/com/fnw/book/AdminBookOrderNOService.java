@@ -30,7 +30,7 @@ public class AdminBookOrderNOService implements Action {
 			
 			book_OrderDTO = book_OrderDAO.selectOne(num);
 			result = book_OrderDAO.updateAdminCancel(num, cancel);
-			result = book_OrderDAO.updateAdmin(num, 0);
+			result = book_OrderDAO.updateAdmin(num, 1);
 		} catch (Exception e) {
 			// TODO Auto-generated catch block
 			e.printStackTrace();

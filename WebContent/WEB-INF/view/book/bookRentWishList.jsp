@@ -14,7 +14,14 @@
 <link rel="stylesheet" href="${pageContext.request.contextPath }/css/book/bookRentWishList.css">
 <title></title>
 <script type="text/javascript">
-$(document).ready(function() {
+$(function(){	
+	$(".cur").each(function(){
+		 if($(this).attr("title") == ${curPage }) {
+			 $(this).attr("style", "color:red;");
+		 }
+	 });
+	
+	
 	$("#checkAll").click(function() {
 		if($("#checkAll").prop("checked")){
 			$("input[name=Pcheck]").prop("checked",true);
@@ -136,8 +143,7 @@ $(document).ready(function() {
 			<li><button class="go" id="${page.startNum-1}">[이전]</button></li>
 			</c:if>
 			<c:forEach begin="${page.startNum}" end="${page.lastNum}" var="i">
-			<li><a
-				href="./bookRentWishList.book?curPage=${i}&id=${id }">${i}</a></li>
+			<li><a class="cur" title="${i }" href="./bookRentWishList.book?curPage=${i}&id=${id }">${i}</a></li>
 			</c:forEach>
 			<c:if test="${page.curBlock < page.totalBlock}">
 			<li><a

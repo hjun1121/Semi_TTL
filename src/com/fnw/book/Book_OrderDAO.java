@@ -45,7 +45,7 @@ public class Book_OrderDAO {
 	//구매 도서 신청
 	public int insert(Book_OrderDTO book_OrderDTO) throws Exception {
 		Connection con = DBConnector.getConnect();
-		String sql = "insert into book_order values((select nvl(max(num),0) from book_order)+1,?,?,?,?,?,?,?,?,1,0)";
+		String sql = "insert into book_order values((select nvl(max(num),0) from book_order)+1,?,?,?,?,?,?,?,?,0,0)";
 		PreparedStatement st = con.prepareStatement(sql);
 		st.setString(1, book_OrderDTO.getTitle());
 		st.setString(2, book_OrderDTO.getWriter());
@@ -174,6 +174,42 @@ public class Book_OrderDAO {
 		DBConnector.disConnect(rs, st, con);
 		return list;
 	}
+	public ArrayList<Book_OrderDTO> selectList(MakeRow makeRow,int state) throws Exception {
+		Connection con = DBConnector.getConnect();
+		String sql = "select * from" + 
+				"(select rownum R, N.* from" + 
+				"(select * from book_order where state=? order by num asc) N)" + 
+				"where R between ? and ?";
+		PreparedStatement st = con.prepareStatement(sql);
+		st.setInt(1, state);
+		st.setInt(2, makeRow.getStartRow());
+		st.setInt(3, makeRow.getLastRow());
+
+		ResultSet rs = st.executeQuery();
+		ArrayList<Book_OrderDTO> list = new ArrayList<>();
+		Book_OrderDTO book_OrderDTO = null;
+
+		while(rs.next()) {
+			book_OrderDTO = new Book_OrderDTO();
+			book_OrderDTO.setNum(rs.getInt("num"));
+			book_OrderDTO.setTitle(rs.getString("title"));
+			book_OrderDTO.setWriter(rs.getString("writer"));
+			book_OrderDTO.setCompany(rs.getString("company"));
+			book_OrderDTO.setPublish_date(rs.getString("publish_date"));
+			book_OrderDTO.setContents(rs.getString("contents"));
+			book_OrderDTO.setId(rs.getString("id"));
+			book_OrderDTO.setPrice(rs.getInt("price"));
+			book_OrderDTO.setLibrary(rs.getInt("library"));
+			book_OrderDTO.setPrice(rs.getInt("price"));
+			book_OrderDTO.setState(rs.getInt("state"));
+			book_OrderDTO.setCancel(rs.getString("cancel"));
+
+			list.add(book_OrderDTO);
+		}
+
+		DBConnector.disConnect(rs, st, con);
+		return list;
+	}
 	
 	public int getTotalCount(String kind, String search) throws Exception {
 		Connection con = DBConnector.getConnect();
@@ -188,9 +224,34 @@ public class Book_OrderDAO {
 		DBConnector.disConnect(rs, st, con);
 		return result;
 	}
+	public int getTotalCount(int state) throws Exception {
+		Connection con = DBConnector.getConnect();
+		String sql = "select nvl(count(num), 0) from book_order where state=?" ;
+
+		PreparedStatement st = con.prepareStatement(sql);
+		st.setInt(1, state);
+		ResultSet rs = st.executeQuery();
+		rs.next();
+		int result = rs.getInt(1);
+
+		DBConnector.disConnect(rs, st, con);
+		return result;
+	}
+	public int getTotalCount() throws Exception {
+		Connection con = DBConnector.getConnect();
+		String sql = "select nvl(count(num), 0) from book_order" ;
+
+		PreparedStatement st = con.prepareStatement(sql);
+		ResultSet rs = st.executeQuery();
+		rs.next();
+		int result = rs.getInt(1);
+
+		DBConnector.disConnect(rs, st, con);
+		return result;
+	}
 	public int getTotalCount(String kind, String search,int state) throws Exception {
 		Connection con = DBConnector.getConnect();
-		String sql = "select nvl(count(num), 0) from book_order where state=? and "+ kind +" like ?" ;
+		String sql = "select nvl(count(num), 0) from book_order where state= ? and "+ kind +" like ?" ;
 
 		PreparedStatement st = con.prepareStatement(sql);
 		st.setInt(1, state);

@@ -57,6 +57,10 @@ $(document).ready(function() {
 			</ul>
 		</div>
 	<br><br>
+	<c:if test="${size eq 0 }">
+		<h2 id="divTitle">MARKET 찜콩 내역이 없습니다.</h2>
+	</c:if>
+	<c:if test="${size ne 0 }">
 <form action="./bookBuyWishDelete.market" method="POST">
 		<div class="listTable">
 		<table class="mobileTable tablet" >
@@ -120,13 +124,13 @@ $(document).ready(function() {
 	            </c:choose>
 			</tr>
 		</c:forEach>
+	<tr>
+			<td class="btnTD"><button type="submit" id="Pdelete" class="btn btn-default list_btn">삭제 </button></td>
+		</tr>
 	</table>
-	</div>
-	<br>
-		<button type="submit" id="Pdelete" class="btn btn-default list_btn">삭제 </button>
+	
 	</form>
-	</div>
-	</div>
+	</c:if>
 	
 	<div class = "paging" style = "text-align: center;">
 			<ul class="pagination pagination-sm">
@@ -142,10 +146,10 @@ $(document).ready(function() {
             href="./bookBuyWishList.market?curPage=${requestScope.page.lastNum+1}">[다음]</a></li>
          </c:if>
       </ul>
-   </div>
-   
-   </div>
-</div>   
+ </div>
+	</div>
+	</div>
+	</div> 
 <c:import url="${myContextPath}/temp/footer.jsp"></c:import>
 </body>
 </html>

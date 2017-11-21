@@ -7,7 +7,7 @@
 </c:if>
 <c:if test="${size ne 0 }">
 <input type="hidden" name="kind" id="kind0" value="${kind }">
-<table id = "member" class="kind" border="1">
+<table id = "member" class="kind" >
 			<tr>
 			<th>ID</th>
 			<th>PASSWORD</th>
@@ -42,7 +42,7 @@
 				</c:if>
 				
 				<c:forEach begin="${page.startNum}" end="${page.lastNum}" var="i">
-				<li><a href="./memberList.member?curPage=${i}&kind=${kind}&search=${search}&kind1=${kind1}">${i}</a></li>
+				<li><a class="cur" title="${i }" href="./memberList.member?curPage=${i}&kind=${kind}&search=${search}&kind1=${kind1}">${i}</a></li>
 				</c:forEach>
 
 				<c:if test="${page.curBlock < page.totalBlock}">

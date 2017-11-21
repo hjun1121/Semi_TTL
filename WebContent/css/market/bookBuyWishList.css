@@ -113,6 +113,9 @@ table th {
     background-color: #f3f3f3;
     color: #727272;
 }
+td.btnTD {
+    border: none;
+}
 
 .paging {
     clear: both;

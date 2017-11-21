@@ -44,6 +44,14 @@ function showSlides(n) {
 }
 </script>
 
+<script type="text/javascript">
+	$(function(){
+		$("#btnS").click(function(){
+			document.totalForm.submin();
+		});
+	});
+</script>
+
 </head>
 <body>
 <c:import url="${myContextPath}/temp/header.jsp"></c:import>
@@ -57,14 +65,14 @@ function showSlides(n) {
 				<div class="searchForm">
 					<ul>
 						<li class="on">
-							<form name="totalForm" action="#" method="get">
+							<form name="totalForm" action="./book/bookTotalSearch.book" method="get">
 								<input type="hidden" id="service_type" name="service_type" value="brief">
 								<fieldset>
 									<legend>제목으로 검색</legend>
 									<span class="searchBox">
-										<input type="text" class="searchInput" title="제목으로 검색" placeholder="제목으로 도서관 소장자료를 검색할 수 있습니다.">
+										<input type="text" class="searchInput" name="search" title="제목으로 검색" placeholder="제목으로 도서관 소장자료를 검색할 수 있습니다.">
 									</span>
-									<input type="image" src="${pageContext.request.contextPath }/image/index/searchBtn.png" value="검색" class="searchBtn" title="검색">
+									<input type="image" id="btnS" src="${pageContext.request.contextPath }/image/index/searchBtn.png" value="검색" class="searchBtn" title="검색">
 								</fieldset>
 							</form>
 						</li>
@@ -242,9 +250,6 @@ function showSlides(n) {
 		<!-- 메인 컨텐츠 끝 -->
 		
 		<!-- ////////////////// -->
-	
-	<h2>김앤신(통합포털)</h2>
-	<p><a href="./book/bookOrderTotalList.book">Book_TotalList(도서 신청목록)</a>
 	
 	<!-- 도서관 페이지  -->
 	

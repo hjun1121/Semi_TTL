@@ -50,6 +50,7 @@ public class BookRentWishListService implements Action {
 			request.setAttribute("bookRentWishList", list);
 			request.setAttribute("id", id);
 			request.setAttribute("page", pageMaker.getMakePage());
+			request.setAttribute("curPage", curPage);
 		} catch (Exception e) {
 			e.printStackTrace();
 		}

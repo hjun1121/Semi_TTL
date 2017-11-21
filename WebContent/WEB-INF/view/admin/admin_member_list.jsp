@@ -17,22 +17,36 @@
 <title>Insert title here</title>
 <script type="text/javascript">
 $(function(){
+	
+	$("#list").on("each", ".cur", function(){
+		 if($(this).attr("title") == ${curPage }) {
+			 $(this).attr("style", "color:red;");
+		 }
+	});
+	
+	$(".cur").each(function(){
+		 if($(this).attr("title") == ${curPage }) {
+			 $(this).attr("style", "color:red;");
+		 }
+	 });
+	
 	 var kind1 = '${kind1}';
 		 $(".kind1").each(function(){
 			 if($(this).val() == kind1) {
 				 $(this).attr("selected", true);
 			 }
 		 });
-			if(${kind} == 10){
-				$(".kind1").attr("style", "background-color: #fff");
-		 		$("#btn_admin").attr("style", "background-color: #dcdcdc");
-			}else if(${kind} == 0){
-				$(".kind1").attr("style", "background-color: #fff");
-		 		$("#btn_black").attr("style", "background-color: #dcdcdc");
-			}else{
-				$(".kind1").attr("style", "background-color: #fff");
-		 		$("#btn_member").attr("style", "background-color: #dcdcdc");
-			}
+		 
+		if(${kind} == 10){
+			$(".kind1").attr("style", "background-color: #fff");
+	 		$("#btn_admin").attr("style", "background-color: #dcdcdc");
+		}else if(${kind} == 0){
+			$(".kind1").attr("style", "background-color: #fff");
+	 		$("#btn_black").attr("style", "background-color: #dcdcdc");
+		}else{
+			$(".kind1").attr("style", "background-color: #fff");
+	 		$("#btn_member").attr("style", "background-color: #dcdcdc");
+		}
 		
 	$("#btn_admin").click(function() {
 		$("#kind0").val("10");
@@ -45,7 +59,8 @@ $(function(){
 			data: {
 				kind:10,
 				kind1:'${kind1}',
-				search:'${search}'
+				search:'${search}',
+				curPage:'${curPage}'
 			},
 			success:function(data){
 				$("#list").html(data);
@@ -190,7 +205,7 @@ $(function(){
 				</c:if>
 				
 				<c:forEach begin="${page.startNum}" end="${page.lastNum}" var="i">
-				<li><a id="pa" href="./memberList.member?curPage=${i}&kind=${kind}&search=${search}&kind1=${kind1}">${i}</a></li>
+				<li><a id="pa" class="cur" title="${i }" href="./memberList.member?curPage=${i}&kind=${kind}&search=${search}&kind1=${kind1}">${i}</a></li>
 				</c:forEach>
 
 				<c:if test="${page.curBlock < page.totalBlock}">

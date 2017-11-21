@@ -70,9 +70,6 @@ public class AdminBookOrderOKService implements Action {
 			
 			book_OrderDTO = book_OrderDAO.selectOne(num);
 			
-			
-			
-			
 			book_TotalDTO.setTitle(book_OrderDTO.getTitle());
 			book_TotalDTO.setWriter(book_OrderDTO.getWriter());
 			book_TotalDTO.setCompany(book_OrderDTO.getCompany());
