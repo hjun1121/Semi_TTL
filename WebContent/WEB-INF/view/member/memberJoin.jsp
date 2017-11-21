@@ -341,8 +341,6 @@
    										<option value="">선택하세요</option>
     									<option value="010">010</option>
 										<option value="011">011</option>
-										<option value="031">031</option>
-										<option value="02">02</option>
 									</select>
 									<div class="phoneNumBox">
 										<input type="text" name="homePhoneNo1" id="m">
