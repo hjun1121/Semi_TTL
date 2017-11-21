@@ -108,8 +108,8 @@
 				
 					<c:if test="${ not empty member }">
 						<th>찜</th>
+						<th>구매</th>
 					</c:if>
-					<th>*****</th>
 				</tr>
 			</thead>
 			<c:forEach items="${list }" var="dto">
@@ -142,8 +142,8 @@
 					<c:if test="${heart2 == 0}">
 						<td><button class = "btn btn-default wish_btn" type = "submit" value = "${dto.num}" title="0">♡</button></td>
 					</c:if>
+				<td><a href="./bookBuy.market?num=${dto.num }"><input type="button"  class = "btn btn-default wish_btn" value="구매"></a></td>
 			</c:if>
-			<td><a href="./bookBuy.market?num=${dto.num }"><input type="button"  class = "btn btn-default wish_btn" value="구매"></a></td>
 			</tr>
 			</tbody>
 					
