@@ -42,11 +42,11 @@ public class QnaViewCheckService implements Action {
 			}
 			
 			if(result>0) {
-				
 				QnaDTO qnaDTO = new QnaDTO();
 				Qna_ReplyDAO qna_ReplyDAO = new Qna_ReplyDAO();
 				ArrayList<Qna_ReplyDTO> list = new ArrayList<>();
 				try {
+					qnaDAO.hitUpdate(num);
 					qnaDTO = qnaDAO.selectOne(num);
 					list = qna_ReplyDAO.selectList(num);
 				} catch (Exception e) {

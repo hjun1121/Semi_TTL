@@ -118,15 +118,14 @@ public class Book_Rent_DetailsDAO {
 		return result;
 	}
 	
-	public int bookReturn(int num,long lateDate) throws Exception {
-		Connection con = DBConnector.getConnect();
+	public int bookReturn(int num,long lateDate,Connection con) throws Exception {
 		String sql = "update book_rent_details set out_time=sysdate, late_date=? where num = ?";
 		PreparedStatement st = con.prepareStatement(sql);
 		st.setLong(1, lateDate);
 		st.setInt(2, num);
 
 		int result = st.executeUpdate();
-		DBConnector.disConnect(st, con);
+		st.close();
 		return result;
 	}
 	

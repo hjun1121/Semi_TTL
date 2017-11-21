@@ -174,7 +174,9 @@ $(function(){
 						</td>
 					</c:when>
 					<c:when test="${! empty bookRent_list.out_time }">
-						<td scope="row" data-class="expand">${bookRent_list.late_date }</td>
+						<c:if test="${bookRent_list.late_date > 7}">
+							<td scope="row" data-class="expand">${bookRent_list.late_date-7 }일</td>
+						</c:if>
 						<td></td>
 					</c:when>
 					<c:otherwise>

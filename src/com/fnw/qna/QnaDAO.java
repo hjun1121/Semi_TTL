@@ -9,6 +9,19 @@ import com.fnw.util.DBConnector;
 import com.fnw.util.MakeRow;
 
 public class QnaDAO {
+	
+	public int hitUpdate(int num) throws Exception {
+		Connection con = DBConnector.getConnect();
+		String sql ="update qna set hit=hit+1 where num=?";
+		
+		PreparedStatement st = con.prepareStatement(sql);
+		st.setInt(1, num);
+		int result = st.executeUpdate();
+		
+		DBConnector.disConnect(st, con);
+		return result;
+	}
+	
 	public int insert(QnaDTO qnaDTO) throws Exception {
 		Connection con = DBConnector.getConnect();
 		String sql = "insert into qna values(qna_seq.nextval,?,?,?,?,sysdate,0,?,?)";
