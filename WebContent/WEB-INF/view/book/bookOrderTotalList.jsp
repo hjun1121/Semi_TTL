@@ -40,7 +40,10 @@
 					<li>소장도서</li>
 				</ul>
 			</div>
-	
+	<c:if test="${size eq 0 }">
+		<h2 id="divTitle">도서 신청 내역이 없습니다.</h2>
+	</c:if>
+	<c:if test="${size ne 0 }">
 		<div class = "listTable">
 			<table class = "mobileTable tablet">
 				<thead>
@@ -73,7 +76,7 @@
 			</c:forEach>	
 			</table>
 		</div>
-				
+		</c:if>
 		<c:if test="${not empty member}">
 		<form id = "order_btn" action="./bookOrderForm.book">
 			<button style = "float: right;" class = "btn btn-default" type = "submit">신청하기</button>		
