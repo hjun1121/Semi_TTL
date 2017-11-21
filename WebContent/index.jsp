@@ -43,28 +43,24 @@ function showSlides(n) {
   dots[slideIndex-1].className += " active";
 }
 
-	$(function(){
-		$("#btnS").click(function(){
-			document.totalForm.submit();
-		});
-		
-		$.ajax({
-			url:"./index.jsp",
-			type:"GET",
-			data: {
-			},
-			success:function(data){
-				alert("asd");
-				$("#noticeForm").html(data);
-			}
-		});
+</script>
 
-		
-		
+<script type="text/javascript">
+$(function(){
+	$.ajax({
+		url:"./notice/noticeList.notice",
+		type:"POST",
+		data: {
+		},
+		success:function(data){
+			$("#noticeForm").html(data);
+		}
 	});
 	
-	
+});
 </script>
+	
+	
 
 </head>
 <body>
