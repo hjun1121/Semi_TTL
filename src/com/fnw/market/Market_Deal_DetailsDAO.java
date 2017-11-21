@@ -32,6 +32,23 @@ public class Market_Deal_DetailsDAO {
 		DBConnector.disConnect(st, con);
 		return result;
 	}
+	public int insert(Market_OrderDTO market_OrderDTO,int state,double price,Connection con) throws Exception{
+		String sql = "insert into market_deal_details values(marketdeals_seq.nextval,?,?,?,?,?,to_char(sysdate,'YYYY-mm-DD'),?,?,1,?,null,null,null,null)";
+		PreparedStatement st = con.prepareStatement(sql);
+		
+		st.setString(1, market_OrderDTO.getTitle());
+		st.setString(2, market_OrderDTO.getWriter());
+		st.setString(3, market_OrderDTO.getCompany());
+		st.setString(4, market_OrderDTO.getPublish_date());
+		st.setString(5, market_OrderDTO.getId());
+		st.setDouble(6, price);
+		st.setInt(7, market_OrderDTO.getLibrary());
+		st.setInt(8, state);
+
+		int result = st.executeUpdate();
+		st.close();
+		return result;
+	}
 	public int insert(Market_Deal_DetailsDTO market_Deal_DetailsDTO,Connection con) throws Exception{
 		con = DBConnector.getConnect();
 		String sql = "insert into market_deal_details values(?,?,?,?,?,?,to_char(sysdate,'YYYY-mm-DD'),?,?,?,0,?,?,?,?)";

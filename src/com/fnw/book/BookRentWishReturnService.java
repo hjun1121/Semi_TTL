@@ -26,7 +26,6 @@ public class BookRentWishReturnService implements Action {
 		try {
 			library = Integer.parseInt(request.getParameter("library"));
 		} catch (Exception e) {
-			// TODO: handle exception
 		}
 		String search = request.getParameter("search");
 		if(search == null) {
@@ -36,7 +35,6 @@ public class BookRentWishReturnService implements Action {
 		try {
 			curPage = Integer.parseInt(request.getParameter("curPage"));
 		} catch (Exception e) {
-			// TODO: handle exception
 		}
 		String id = request.getParameter("rent_id");
 		if(id == null) {
@@ -46,7 +44,6 @@ public class BookRentWishReturnService implements Action {
 		try {
 			result = book_Rent_WishDAO.bookRentWishReturn(num, id);
 		} catch (Exception e) {
-			// TODO Auto-generated catch block
 			e.printStackTrace();
 		}
 		if(result > 0) {

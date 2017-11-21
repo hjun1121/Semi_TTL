@@ -50,6 +50,8 @@ public class BookRentService implements Action {
 				result = libraryDAO.bookRent(book_TotalDTO, rent_id, con);
 				Book_Rent_DetailsDAO book_Rent_DetailsDAO = new Book_Rent_DetailsDAO();
 				result = book_Rent_DetailsDAO.insert(book_TotalDTO, rent_id, con);
+				Book_Rent_WishDAO book_Rent_WishDAO = new Book_Rent_WishDAO();
+				result = book_Rent_WishDAO.stateUpdate(num,con);
 			} catch (Exception e) {
 				e.printStackTrace();
 				try {

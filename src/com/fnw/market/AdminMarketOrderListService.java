@@ -21,7 +21,6 @@ public class AdminMarketOrderListService implements Action {
 		try {
 			curPage=Integer.parseInt(request.getParameter("curPage"));
 		}catch (Exception e) {
-			e.printStackTrace();
 		}
 		
 		String kind = request.getParameter("kind");

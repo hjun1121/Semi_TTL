@@ -50,10 +50,8 @@ public class AdminBookOrderListService implements Action {
 		}else if(state==1) {
 			try {
 				totalCount = book_OrderDAO.getTotalCount(state);
-				System.out.println("totalCount"+totalCount);
 				PageMaker pageMaker = new PageMaker(curPage, totalCount);
 				List<Book_OrderDTO> ar = book_OrderDAO.selectList(pageMaker.getMakeRow(),state);
-				System.out.println("size"+ar.size());
 				request.setAttribute("size", ar.size());
 				request.setAttribute("orderList", ar);
 				request.setAttribute("page", pageMaker.getMakePage());
@@ -66,10 +64,8 @@ public class AdminBookOrderListService implements Action {
 		} else {
 			try {
 				totalCount = book_OrderDAO.getTotalCount();
-				System.out.println("totalCount"+totalCount);
 				PageMaker pageMaker = new PageMaker(curPage, totalCount);
 				List<Book_OrderDTO> ar = book_OrderDAO.selectList(pageMaker.getMakeRow());
-				System.out.println("size"+ar.size());
 				request.setAttribute("size", ar.size());
 				request.setAttribute("orderList", ar);
 				request.setAttribute("page", pageMaker.getMakePage());
