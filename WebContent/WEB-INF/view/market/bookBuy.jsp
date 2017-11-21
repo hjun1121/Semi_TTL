@@ -123,7 +123,7 @@ $(function(){
 				
 				if($("#chk_purchase_agreement0").prop("checked")==true){
 					
-					if()
+					
 					
 					
 				}else{

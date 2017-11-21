@@ -22,7 +22,7 @@
 			 }
 		});
 		
-		$("#btn").click(function(){
+		$("#write_btn").click(function(){
 			location.href="./qnaWrite.qna";
 		});
 		
@@ -89,7 +89,7 @@
 					
 				</tr>
 			</thead>
-			<c:forEach items="${requestScope.list}" var="dto">
+			<c:forEach items="${list}" var="dto">
 			<tbody>
 				<tr>
 					<td class="num footable-first-column">${dto.num}</td>
