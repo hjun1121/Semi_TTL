@@ -58,8 +58,10 @@ public class BookRentWishRentService implements Action {
 			totalCount = book_Rent_WishDAO.getTotalCount(kind, search);
 			Book_TotalDTO book_TotalDTO = new Book_TotalDTO();
 			Book_TotalDAO book_TotalDAO = new Book_TotalDAO();
+			Book_Rent_DetailsDAO book_Rent_DetailsDAO = new Book_Rent_DetailsDAO();
 			book_TotalDTO = book_TotalDAO.selectOne(num);
 			result = libraryDAO.bookRent(book_TotalDTO, rent_id);
+			book_Rent_DetailsDAO.insert(book_TotalDTO, rent_id);
 			book_Rent_WishDAO.stateUpdate(num);
 			if(totalCount==0) {
 				totalCount=1;

@@ -26,7 +26,7 @@ public class BookReturnService implements Action {
 		HttpSession session = request.getSession();
 		String id = ((MemberDTO)session.getAttribute("member")).getId();
 		try {
-			book_Rent_DetailsDTO = book_Rent_DetailsDAO.selectTime(Integer.parseInt(request.getParameter("num")));
+			book_Rent_DetailsDTO = book_Rent_DetailsDAO.selectTime(Integer.parseInt(request.getParameter("bnum")));
 			book_Rent_WishDAO.updateReturn(Integer.parseInt(request.getParameter("num")));
 		}catch (Exception e1) {
 			e1.printStackTrace();
@@ -46,7 +46,7 @@ public class BookReturnService implements Action {
 		
 		try {
 			con = DBConnector.getConnect();
-			result = book_Rent_DetailsDAO.bookReturn(Integer.parseInt(request.getParameter("num")),diffDays,con);
+			result = book_Rent_DetailsDAO.bookReturn(Integer.parseInt(request.getParameter("bnum")),diffDays,con);
 			result = book_TotalDAO.update(Integer.parseInt(request.getParameter("num")),con);
 		} catch (Exception e) {
 			e.printStackTrace();

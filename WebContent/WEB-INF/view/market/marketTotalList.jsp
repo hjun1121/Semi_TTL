@@ -72,12 +72,12 @@
 		<div id="divContents">
 			
 			<div id = "bts_top_section">
-			<h2 id="divTitle">중고 책 장터</h2>
+			<h2 id="divTitle">중고 장터</h2>
 			<div id="divLocation">
 				<ul>
 					<li class="home"><a href="#"><img src="${pageContext.request.contextPath }/image/notice/home.png" alt="HOME"></a></li>
 					<li>&gt;</li>
-					<li>중고 책 장터</li>
+					<li>중고 장터</li>
 				</ul>
 			</div>
 			
