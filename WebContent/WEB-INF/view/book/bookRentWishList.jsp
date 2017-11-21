@@ -117,12 +117,13 @@ $(function(){
 				<c:choose>
 					<c:when test="${bookRentWishList.state eq 1}">
 						<td scope="row" style="display: table-cell;">대여중</td>
+						<td> </td>
 					</c:when>
 					<c:when test="${bookRentWishList.state eq 0}">
+						<td> </td>
 						<td scope="row" style="display: table-cell;">
 						<a href="./bookRentWishRent.book?num=${bookRentWishList.num }&rent_id=${id}&library=${bookRentWishList.library}">
-						<button class = "btn btn-default wish_btn" type = "button" >대여</button>
-						</a></td>
+						<button class = "btn btn-default wish_btn" type = "button" >대여</button></a></td>
 					</c:when>
 					<c:otherwise>
 						<td scope="row" style="display: table-cell;">없음</td>

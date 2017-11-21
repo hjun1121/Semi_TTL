@@ -71,8 +71,8 @@ $(function(){
 	
 	<br>
 	<a href="./bookOrderList.book?id=${member.id }&state=3&kind=${kind}&search=${search}"><input class="btnType3" type="button" value="전체"></a>
-	<a href="./bookOrderList.book?id=${member.id }&state=1&kind=${kind}&search=${search}"><input class="btnType3" type="button" value="대기"></a>
-	<a href="./bookOrderList.book?id=${member.id }&state=0&kind=${kind}&search=${search}"><input class="btnType3" type="button" value="취소"></a>
+	<a href="./bookOrderList.book?id=${member.id }&state=0&kind=${kind}&search=${search}"><input class="btnType3" type="button" value="대기"></a>
+	<a href="./bookOrderList.book?id=${member.id }&state=1&kind=${kind}&search=${search}"><input class="btnType3" type="button" value="취소"></a>
 	<a href="./bookOrderList.book?id=${member.id }&state=2&kind=${kind}&search=${search}"><input class="btnType3" type="button" value="승인"></a>
 	<br><br>
 	<c:if test="${size eq 0 }">
@@ -120,11 +120,11 @@ $(function(){
 					</c:otherwise>
 				</c:choose>
 				<c:choose>
-					<c:when test="${bookOrder_list.state eq 0}">
+					<c:when test="${bookOrder_list.state eq 1}">
 						<td scope="row" style="display: table-cell;">취소</td>
 						<td>${bookOrder_list.cancel }</td>
 					</c:when>
-					<c:when test="${bookOrder_list.state eq 1}">
+					<c:when test="${bookOrder_list.state eq 0}">
 						<td scope="row" style="display: table-cell;">대기</td>
 						<td></td>
 					</c:when>

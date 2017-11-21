@@ -21,6 +21,29 @@ $(function(){
 			 $(this).attr("selected", true);
 		 }
 	});
+	$("#btn").click(function(){
+		if($("#title").val()==""){
+			alert("서명을 입력 해주세요.");
+			$("#title").focus();
+		}else if($("#writer").val()==""){
+			alert("저자를 입력해주세요.");	
+			$("#writer").focus();
+		}else if($("#company").val()==""){
+			alert("출판사를 입력 해주세요.");	
+			$("#company").focus();	
+		}else if($("#publish_date").val()==""){
+			alert("출판년도를 입력 해주세요.");	
+			$("#publish_date").focus();	
+		}else if($("contents").val()==""){
+			alert("신청사유을 입력 해주세요.");
+			$("#contents").focus();
+		}else if($("#price").val()==""){
+			alert("가격을 입력 해주세요.");
+			$("#price").focus();
+		}else{
+			document.frm.submit();
+		}
+	});
 });
 </script>
 </head>
@@ -30,7 +53,7 @@ $(function(){
 	<c:import url="${myContextPath}/WEB-INF/view/member/myPage.jsp"></c:import>
 </div>
 
-<form action="./bookOrderUpdate.book" method="post">
+<form action="./bookOrderUpdate.book" method="post" name="frm" id="frm">
 <div id="divContentsW">
 		<div id="divContents">
 		<h2 id="divTitle">신청 내역 수정</h2>
@@ -53,7 +76,7 @@ $(function(){
 			<table class="revisionTable">
 				<tr>
 					<th>서명</th>
-					<td><input type="text" name="title" class="useBorder" value="${bookorder.title }"></td>
+					<td><input type="text" name="title" id="title" class="useBorder" value="${bookorder.title }"></td>
 				</tr>
 				<tr>
 					<th>권수</th>
@@ -61,23 +84,23 @@ $(function(){
 				</tr>
 				<tr>
 					<th>저자</th>
-					<td><input type="text" name="writer" class="useBorder" value="${bookorder.writer }"></td>
+					<td><input type="text" name="writer" id="writer" class="useBorder" value="${bookorder.writer }"></td>
 				</tr>
 				<tr>
 					<th>출판사</th>
-					<td><input type="text" name="company" class="useBorder" value="${bookorder.company }"></td>
+					<td><input type="text" name="company" id="company" class="useBorder" value="${bookorder.company }"></td>
 				</tr>
 				<tr>
 					<th>출판년도</th>
-					<td><input type="text" name="publish_date" class="useBorder" value=${bookorder.publish_date }></td>
+					<td><input type="text" name="publish_date" id="publish_date" class="useBorder" value=${bookorder.publish_date }></td>
 				</tr>
 				<tr>
 					<th>신청사유</th>
-					<td><textarea class="noneBorder" row="30"  cols="150"name="contents" style="resize: none; wrap:hard;">${bookorder.contents }</textarea></td>
+					<td><textarea class="noneBorder" row="30"  cols="150" id="contents" name="contents" style="resize: none; wrap:hard;">${bookorder.contents }</textarea></td>
 				</tr>
 				<tr>
 					<th>가격</th>
-					<td><input type="number" name="price" class="useBorder" value=${bookorder.price }></td>
+					<td><input type="number" name="price" id="price" class="useBorder" value=${bookorder.price }></td>
 				</tr>
 				<tr>
 					<th>비치도서관</th>
@@ -92,11 +115,11 @@ $(function(){
 				<tr>
 				<th>상태</th>
 				<c:choose>
-					<c:when test="${bookorder.state eq 0}">
-						<td>취소(<input type="text" name="cancel" class="useBorder" value="${bookorder.cancel }">)</td>
+					<c:when test="${bookorder.state eq 1}">
+						<td>취소</td>
 						<input type="hidden" name="state" class="useBorder" value=${bookorder.state } >
 					</c:when>
-					<c:when test="${bookorder.state eq 1}">
+					<c:when test="${bookorder.state eq 0}">
 						<td>대기<td>
 						<input type="hidden" name="state" class="useBorder" value=${bookorder.state } >
 					</c:when>

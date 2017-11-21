@@ -54,7 +54,7 @@
 		 
 		//pw 확인 체크
 			$("#pw1").change(function(){
-				$("#ch_pw").html('<p style="color: red">pw 확인해주세요</p>');
+				$("#ch_pw").html('<p style="color: red">비밀번호를 확인해주세요.</p>');
 				$("#pw2").val(""); 
 				$("#pwc").removeAttr("style");
 
@@ -65,10 +65,10 @@
 				var pw1= $("#pw1").val();
 				var pw2= $("#pw2").val();
 				if(pw1 == pw2){
-					$("#ch_pw").html('<p style="color: green">pw 확인 완료</p>');
+					$("#ch_pw").html('<p style="color: green">비밀번호가 동일합니다.</p>');
 					pwCheck = true;
 				}else{
-					$("#ch_pw").html('<p style="color: red">pw가 다릅니다</p>');
+					$("#ch_pw").html('<p style="color: red">비밀번호가 다릅니다.</p>');
 					pwCheck = false;
 				}
 			}); 
@@ -137,12 +137,12 @@
 		
 		$("#email1").change(function(){
 			mailCheck=false;
-			$("#ch_email").html("<p style=\"color: red\">이메일 인증 필요</p>");
+			$("#ch_email").html("<p style=\"color: red\">이메일 인증 필요합니다.</p>");
 			$("#mailCheck").attr("style","display:inline;");
 		});
 		$("#mailList").change(function(){
 			mailCheck=false;
-			$("#ch_email").html("<p style=\"color: red\">이메일 인증 필요</p>");
+			$("#ch_email").html("<p style=\"color: red\">이메일 인증 필요합니다.</p>");
 			$("#mailCheck").attr("style","display:inline;");
 		});
 		
@@ -168,18 +168,18 @@
 		 
 		 $("#email").change(function(){
 				mailCheck=false;
-				$("#ch_email").html("<p style=\"color: red\">이메일 인증 필요</p>");
+				$("#ch_email").html("<p style=\"color: red\">이메일 인증 필요합니다.</p>");
 				$("#mailCheck").attr("style","display:inline;");
 				
 			});
 			
 		$("#ch_email").on("click", "#check_mail" , function(){
 			if($("#num").val() == $("#check").val()){
-				alert("인증번호 일치");
+				alert("인증번호 일치합니다.");
 				mailCheck=true;
-				$("#ch_email").html("<p style=\"color: green\">인증된 이메일</p>");
+				$("#ch_email").html("<p style=\"color: green\">인증된 이메일합니다.</p>");
 			}else{
-				alert("인증번호 불일치");
+				alert("인증번호 불일치합니다.");
 				mailCheck=false;
 			}	
 		});
@@ -194,25 +194,25 @@
 			
 			
 			if(pwCheck == false){
-				alert("pw확인해주세요");
+				alert("비밀번호를 입력해주세요.");
 				$("#pw1").focus();
 			}else if($("#birth").val()==""){
-				alert("birth 입력");	
+				alert("생일를 입력해주세요.");	
 				$("#birth").focus();
 			}else if($("#addr").val()==""){
-				alert("addr 입력");	
+				alert("주소를 입력해주세요.");	
 				$("#addr").focus();	
 			}else if($("#addr2").val()==""){
-				alert("addr2 입력");	
+				alert("주소를 입력해주세요.");	
 				$("#addr2").focus();	
 			}else if($("#m").val()==""){
-				alert("중간번호 확인");
+				alert("주소를 입력해주세요.");
 				$("#m").focus();
 			}else if($("#l").val()==""){
-				alert("끝번호 확인");
+				alert("번호를 입력해주세요.");
 				$("#l").focus();
 			}else if(mailCheck == false){
-				alert("email확인해주세요");
+				alert("이메일을 입력해주세요.");
 				$("#email1").focus();
 			}else{
 				document.frm.submit();

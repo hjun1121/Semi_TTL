@@ -29,7 +29,6 @@
 		});
 		
 		$("#btn_OK").click(function(){
-
 			if($("#title").val() == ""){
 				alert("도서명 입력하세요.");
 				$("#title").focus();
@@ -48,7 +47,6 @@
 			}else{
 				document.frm.submit();
 			}
-			
 		});
 		
 	});

@@ -54,6 +54,22 @@ public class Market_TotalDAO {
 		DBConnector.disConnect(st, con);
 		return result;
 	}
+	public int insert(Market_OrderDTO market_OrderDTO,int state, double price, Connection con) throws Exception{
+		String sql = "insert into market_total values((select nvl(max(num),0) from market_total)+1,?,?,?,?,?,?,?,0,1,?)";
+		PreparedStatement st = con.prepareStatement(sql);
+		st.setString(1, market_OrderDTO.getTitle());
+		st.setString(2, market_OrderDTO.getWriter());
+		st.setString(3, market_OrderDTO.getCompany());
+		st.setString(4, market_OrderDTO.getPublish_date());
+		st.setInt(5, market_OrderDTO.getLibrary());
+		st.setDouble(6, price);
+		st.setString(7, market_OrderDTO.getId());
+		st.setInt(8, state);
+
+		int result = st.executeUpdate();
+		st.close();
+		return result;
+	}
 	public  int delete(String id) throws Exception {
 		Connection con = DBConnector.getConnect();
 		String sql ="delete market_total where id=?";
