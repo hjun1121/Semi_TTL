@@ -10,6 +10,20 @@ import com.fnw.util.MakeRow;
 
 public class Market_TotalDAO {
 	
+	public int bookBuyWishReturn(int num) throws Exception {
+		Connection con = DBConnector.getConnect();
+		String sql = "update market_total set wish = "
+				+ "(select wish from market_total where num = ? ) - 1"
+				+ "where num = ? ";
+		PreparedStatement st = con.prepareStatement(sql);
+		st.setInt(1, num);
+		st.setInt(2, num);
+		
+		int result = st.executeUpdate();
+		DBConnector.disConnect(st, con);
+		return result;
+	}
+	
 	public int bookBuyWish(int num) throws Exception {
 		Connection con = DBConnector.getConnect();
 		String sql = "update market_total set wish = "
