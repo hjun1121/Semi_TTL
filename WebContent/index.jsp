@@ -152,9 +152,9 @@ function showSlides(n) {
 						<dt>중앙도서관</dt>
 						<dd>
 							<ul>
-								<li><img src="./image/ko/local/main/readingRoom2.png" alt="자유열람실" id="roomName0_2" title="자유열람실"> <span id="useSeat0_2">105</span> / <span id="totalSeat0_2">292</span></li>
-								<li><img src="./image/ko/local/main/readingRoom1.png" alt="PC실" id="roomName0_1" title="PC실"> <span id="useSeat0_1">47</span> / <span id="totalSeat0_1">124</span></li>
-								<li><img src="./image/ko/local/main/readingRoom3.png" alt="노트북실" id="roomName0_3" title="노트북실"> <span id="useSeat0_3">51</span> / <span id="totalSeat0_3">139</span></li>
+								<li><img src="${pageContext.request.contextPath }/image/index/readingRoom2.png" alt="자유열람실" id="roomName0_2" title="자유열람실"> <span id="useSeat0_2">105</span> / <span id="totalSeat0_2">292</span></li>
+								<li><img src="${pageContext.request.contextPath }/image/indexreadingRoom1.png" alt="PC실" id="roomName0_1" title="PC실"> <span id="useSeat0_1">47</span> / <span id="totalSeat0_1">124</span></li>
+								<li><img src="${pageContext.request.contextPath }/image/index/readingRoom3.png" alt="노트북실" id="roomName0_3" title="노트북실"> <span id="useSeat0_3">51</span> / <span id="totalSeat0_3">139</span></li>
 							</ul>
 						</dd>
 					</dl>
@@ -162,7 +162,7 @@ function showSlides(n) {
 						<dt>법학도서관</dt>
 						<dd>
 							<ul>
-								<li><img src="./image/ko/local/main/readingRoom2.png" alt="법학 자유열람실" id="roomName0_4" title="법학 자유열람실"> <span id="useSeat0_4">0</span> / <span id="totalSeat0_4">88</span></li>
+								<li><img src="${pageContext.request.contextPath }/image/index/readingRoom2.png" alt="법학 자유열람실" id="roomName0_4" title="법학 자유열람실"> <span id="useSeat0_4">0</span> / <span id="totalSeat0_4">88</span></li>
 							</ul>
 						</dd>
 					</dl>
@@ -170,10 +170,10 @@ function showSlides(n) {
 						<dt>ECC열람실</dt>
 						<dd>
 							<ul>
-								<li><img src="./image/ko/local/main/readingRoom5.png" alt="이화 신한열람실" id="roomName1_4" title="이화 신한열람실"> <span id="useSeat1_4">49</span> / <span id="totalSeat1_4">300</span></li>
-								<li><img src="./image/ko/local/main/readingRoom6.png" alt="이화 신한노트북석" id="roomName1_5" title="이화 신한노트북석"> <span id="useSeat1_5">114</span> / <span id="totalSeat1_5">191</span></li>
-								<li><img src="./image/ko/local/main/readingRoom4.png" alt="이화 YBM열람실" id="roomName1_2" title="이화 YBM열람실"> <span id="useSeat1_2">47</span> / <span id="totalSeat1_2">294</span></li>
-								<li><img src="./image/ko/local/main/readingRoom2.png" alt="자유열람실" id="roomName1_1" title="자유열람실"> <span id="useSeat1_1">54</span> / <span id="totalSeat1_1">280</span></li>
+								<li><img src="${pageContext.request.contextPath }/image/index/readingRoom5.png" alt="이화 신한열람실" id="roomName1_4" title="이화 신한열람실"> <span id="useSeat1_4">49</span> / <span id="totalSeat1_4">300</span></li>
+								<li><img src="${pageContext.request.contextPath }/image/index/readingRoom6.png" alt="이화 신한노트북석" id="roomName1_5" title="이화 신한노트북석"> <span id="useSeat1_5">114</span> / <span id="totalSeat1_5">191</span></li>
+								<li><img src="${pageContext.request.contextPath }/image/index/readingRoom4.png" alt="이화 YBM열람실" id="roomName1_2" title="이화 YBM열람실"> <span id="useSeat1_2">47</span> / <span id="totalSeat1_2">294</span></li>
+								<li><img src="${pageContext.request.contextPath }/image/index/readingRoom2.png" alt="자유열람실" id="roomName1_1" title="자유열람실"> <span id="useSeat1_1">54</span> / <span id="totalSeat1_1">280</span></li>
 							</ul>
 						</dd>
 					</dl>
@@ -199,8 +199,8 @@ function showSlides(n) {
 							</div>
 						</div>
 						<div class="btns">
-							<a href="#" class="prev"><img src="./image/ko/local/main/prev.png" alt="이전"></a>
-							<a href="#" class="next"><img src="./image/ko/local/main/next.png" alt="다음"></a>
+							<a href="#" class="prev"><img src="${pageContext.request.contextPath }/image/index/prev.png" alt="이전"></a>
+							<a href="#" class="next"><img src="${pageContext.request.contextPath }/image/index/next.png" alt="다음"></a>
 						</div>
 					 	
 					</li>
@@ -222,8 +222,8 @@ function showSlides(n) {
 								</div>
 							</div>
 							<div class="btns">
-								<a href="#" class="prev"><img src="./image/ko/local/main/prev.png" alt="이전"></a>
-								<a href="#" class="next"><img src="./image/ko/local/main/next.png" alt="다음"></a>
+								<a href="#" class="prev"><img src="${pageContext.request.contextPath }/image/index/prev.png" alt="이전"></a>
+								<a href="#" class="next"><img src="${pageContext.request.contextPath }/image/index/next.png" alt="다음"></a>
 							</div>
 					</li>
 				</ul>
