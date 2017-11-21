@@ -8,6 +8,7 @@
 <link rel="stylesheet" href="${pageContext.request.contextPath }/css/notice/noticeUpdate.css">
 <link rel="stylesheet" href="${pageContext.request.contextPath }/css/temp/header.css">
 <link rel="stylesheet" href="${pageContext.request.contextPath }/css/temp/footer.css">
+<link rel="stylesheet" href="${pageContext.request.contextPath }/css/notice/noticeWrite.css">
 <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
 <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
@@ -27,6 +28,8 @@
 <c:import url="${myContextPath}/temp/header.jsp"></c:import>
 
 	
+<section id = "section">
+<div id = "bts_top_section">
 	<div id="divContentsW">
 		<div id="divContents">
 			
@@ -93,7 +96,8 @@
 		</form>
 	</div>
 </div> --%>
-
+</div>
+</section>
 <c:import url="${myContextPath }/temp/footer.jsp"></c:import>		
 </body>
 </html>
