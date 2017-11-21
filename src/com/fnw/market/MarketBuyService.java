@@ -50,7 +50,7 @@ public class MarketBuyService implements Action {
 		market_Deal_DetailsDTO.setId(request.getParameter("id"));
 		market_Deal_DetailsDTO.setPrice(price);
 		market_Deal_DetailsDTO.setLibrary(Integer.parseInt(request.getParameter("library")));
-		market_Deal_DetailsDTO.setKind(Integer.parseInt(request.getParameter("kind")));
+		market_Deal_DetailsDTO.setKind(1);
 		market_Deal_DetailsDTO.setDelivery(delivery);
 		market_Deal_DetailsDTO.setPostCode(request.getParameter("postCode"));
 		market_Deal_DetailsDTO.setAddr(request.getParameter("addr"));

@@ -45,6 +45,12 @@ public class BookBuyWishReturnService implements Action {
 			e.printStackTrace();
 		}
 		if(result > 0) {
+			try {
+				result = market_TotalDAO.bookBuyWishReturn(num);
+			} catch (Exception e) {
+				// TODO Auto-generated catch block
+				e.printStackTrace();
+			}
 			request.setAttribute("message", "❤ 해제 완료");
 		} else {
 			request.setAttribute("message", "❤ 해제 실패");

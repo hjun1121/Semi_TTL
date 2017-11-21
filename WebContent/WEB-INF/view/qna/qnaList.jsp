@@ -9,10 +9,10 @@
 
 <link rel="stylesheet" href="${pageContext.request.contextPath }/css/temp/header.css">
 <link rel="stylesheet" href="${pageContext.request.contextPath }/css/temp/footer.css">
+<link rel="stylesheet" href="${pageContext.request.contextPath }/css/qna/qnaList.css">
 <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
 <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
-<link rel="stylesheet" href="${pageContext.request.contextPath }/css/qna/qnaList.css">
 <script type="text/javascript">
 	$(function(){
 		var kind = '${kind}';
@@ -33,6 +33,8 @@
 <body>
 <c:import url="${myContextPath}/temp/header.jsp"></c:import>
 
+<section id = "section">
+<div id = "bts_top_section">
 <div id="divContentsW">
 		<div id="divContents">
 			
@@ -112,16 +114,13 @@
 			</c:forEach>
 		</table>
 	</div>
-	
-	
-	<!-- /////////////////////// -->
 
+	<c:if test="${not empty member}">
+	<input type="button" class = "btn btn-default" id="write_btn" value="글쓰기">
+	</c:if>
 
-		<input type="button" id="btn" value="글쓰기">
 	
-	<!-- qna list 끝 -->
-	
-	<div style = "text-align: center;">
+	<div class = "paging" style = "text-align: center;">
 		<ul class="pagination pagination-sm">
 			<c:if test="${page.curBlock>1}">
 			<li><a href = "./qnaList.qna?curPage=${page.startNum-1}">[이전]</a></li>
@@ -140,6 +139,8 @@
 	
 	</div>
 </div>
+</div>
+</section>
 <c:import url="${myContextPath}/temp/footer.jsp"></c:import>
 </body>
 </html>

@@ -5,55 +5,111 @@
 }
 
 <!--상단 바 시작 -->
-#divContentsW{
-	background-color:#fff;
+/* #divContentsW{ */
+/* 	background-color:#fff; */
+/* } */
+
+/* #divContents{ */
+/* 	padding-bottom:30px; */
+/* 	background-color:#fff; */
+/* } */
+
+/* #divContents{ */
+/* 	position:relative; */
+/* 	width:1040px; */
+/* 	margin:0 auto; */
+/* 	padding-bottom:40px !important; */
+/* 	background-color:#fff; */
+/* 	z-index:5; */
+/* } */
+
+/* #divTitle{ */
+/* 	color:#464646; */
+/* 	font-size:32px; */
+/* 	margin-bottom:20px; */
+/* 	padding:40px 450px 0 0; */
+/* } */
+
+/* #divLocation{ */
+/* 	min-height:20px; */
+/* 	margin:0 56px 20px 0; */
+/* 	overflow:hidden; */
+/* } */
+
+/* #divLocation ul li{ */
+/* 	list-style:none; */
+/* 	float:left; */
+/* 	padding-left:20px; */
+/* 	margin-left:13px; */
+/* 	font-family:NG, sans-serif; */
+/* 	line-height:1.5em; */
+/* } */
+
+/* #divLocation ul li a{ */
+/* 	color:#454545; */
+/* } */
+
+/* #divLocation ul li:first-child{ */
+/* 	margin:0; */
+/* 	padding:0; */
+/* 	background:none; */
+/* } */
+
+#section a:hover {
+	text-decoration: none;
 }
 
-#divContents{
-	padding-bottom:30px;
-	background-color:#fff;
+#section {
+    width: 1040px;
+    margin: 0 auto;
+    padding-bottom: 40px !important;
+    background-color: #fff;
+    z-index: 5;
 }
 
-#divContents{
-	position:relative;
-	width:1040px;
-	margin:0 auto;
-	padding-bottom:40px !important;
-	background-color:#fff;
-	z-index:5;
+
+#section h2 {
+    display: block;
+    font-size: 1.5em;
+    -webkit-margin-before: 0.83em;
+    -webkit-margin-after: 0.83em;
+    -webkit-margin-start: 0px;
+    -webkit-margin-end: 0px;
+    font-weight: bold;
 }
 
-#divTitle{
-	color:#464646;
-	font-size:32px;
-	margin-bottom:20px;
-	padding:40px 450px 0 0;
+#bts_top_section {
+	margin: 0 auto;
+	padding-bottom: 40px;
 }
 
-#divLocation{
-	min-height:20px;
-	margin:0 56px 20px 0;
-	overflow:hidden;
+#divTitle {
+    color: #464646;
+    font-size: 32px;
+    margin-bottom: 20px;
+    padding: 40px 450px 0 0;
 }
 
-#divLocation ul li{
-	list-style:none;
-	float:left;
-	padding-left:20px;
-	margin-left:13px;
-	font-family:NG, sans-serif;
-	line-height:1.5em;
+#divLocation {
+    min-height: 20px;
+    margin: 0 56px 20px 0;
 }
 
-#divLocation ul li a{
-	color:#454545;
+#divLocation ul li:first-child {
+    margin: 0;
+    padding: 0;
+    background: none;
 }
 
-#divLocation ul li:first-child{
-	margin:0;
-	padding:0;
-	background:none;
+#divLocation ul li {
+    float: left;
+    padding-left: 20px;
+    margin-left: 13px;
+	list-style: none;
+    font-family: NG, sans-serif;
+    line-height: 1.5em;
 }
+
 <!--상단 바 끝 -->
 
 <!-- 약관 폼 시작 -->
@@ -205,6 +261,8 @@
     font-size: 16px;
 }
 .button1 .type4 {
+	width: 150px;
+    height: 50px;
     color: #666;
     background: #fff;
     border: 1px solid #aaa;
@@ -234,7 +292,9 @@ span a {
     height: 50px;
     color: #fff;
     background: #033823;
+    border: 1px solid #033823;
 }
+
 #center
 {
 	text-align: center;

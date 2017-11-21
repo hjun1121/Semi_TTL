@@ -6,7 +6,7 @@ import javax.servlet.http.HttpServletResponse;
 import com.fnw.action.Action;
 import com.fnw.action.ActionFoward;
 
-public class BookRentDetailsService implements Action {
+public class BookRentWishDetailsService implements Action {
 
 	@Override
 	public ActionFoward doProcess(HttpServletRequest request, HttpServletResponse response) {
@@ -15,8 +15,9 @@ public class BookRentDetailsService implements Action {
 		Book_Rent_DetailsDTO book_Rent_DetailsDTO = null;
 		Book_TotalDAO book_TotalDAO = new Book_TotalDAO();
 		Book_TotalDTO book_TotalDTO = new Book_TotalDTO();
+		
 		try {
-			book_Rent_DetailsDTO = book_Rent_DetailsDAO.selectOne(Integer.parseInt(request.getParameter("bnum")));
+			book_Rent_DetailsDTO = book_Rent_DetailsDAO.selectOne(Integer.parseInt(request.getParameter("num")));
 			book_TotalDTO = book_TotalDAO.selectOne(Integer.parseInt(request.getParameter("num")));
 		} catch (Exception e) {
 			e.printStackTrace();
@@ -24,7 +25,7 @@ public class BookRentDetailsService implements Action {
 		request.setAttribute("book", book_TotalDTO);
 		request.setAttribute("bookRentDTO", book_Rent_DetailsDTO);
 		actionFoward.setCheck(true);
-		actionFoward.setPath("../WEB-INF/view/book/bookRentDetails.jsp");
+		actionFoward.setPath("../WEB-INF/view/book/bookRentWishDetails.jsp");
 		return actionFoward;
 	}
 }

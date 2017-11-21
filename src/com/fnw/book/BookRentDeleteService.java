@@ -16,7 +16,7 @@ public class BookRentDeleteService implements Action {
 		Book_Rent_DetailsDAO book_Rent_DetailsDAO = new Book_Rent_DetailsDAO();
 		int result = 0;
 		try {
-			result = book_Rent_DetailsDAO.delete(Integer.parseInt(request.getParameter("num")));
+			result = book_Rent_DetailsDAO.delete(Integer.parseInt(request.getParameter("bnum")));
 		} catch (Exception e) {
 			e.printStackTrace();
 		}

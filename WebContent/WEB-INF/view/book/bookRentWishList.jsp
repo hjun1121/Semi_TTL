@@ -57,7 +57,10 @@ $(document).ready(function() {
 				<li>대여 찜콩 내역</li>
 			</ul>
 		</div>
-
+	<c:if test="${size eq 0 }">
+		<h2 id="divTitle">대여 찜콩 내역이 없습니다.</h2>
+	</c:if>
+	<c:if test="${size ne 0 }">
 	<form action="./bookRentWishDelete.book" method="POST">
 		<div class="listTable">
 		<table class="mobileTable tablet" >
@@ -79,7 +82,9 @@ $(document).ready(function() {
 				<input type="checkbox" class="chk" name="Pcheck" value="${bookRentWishList.num }">
 				</td>
 				<td scope="row" class="footable-first-column">${bookRentWishList.num }</td>
- 				<td scope="row" style="display: table-cell;">${bookRentWishList.title }</td>
+ 				<td scope="row" style="display: table-cell;">
+ 				<a href="./bookRentWishDetails.book?num=${bookRentWishList.num }">${bookRentWishList.title }</a>
+ 				</td>
 				<td scope="row" style="display: table-cell;">${bookRentWishList.writer }</td>
 				<td scope="row" style="display: table-cell;">${bookRentWishList.company }</td>
 				<td scope="row" data-class="expand">${bookRentWishList.publish_date }</td>
@@ -118,14 +123,13 @@ $(document).ready(function() {
 				</c:choose>
 			</tr>
 		</c:forEach>
+		<tr>
+			<td class="btnTD"><button type="submit" id="Pdelete" class="btn btn-default list_btn">삭제 </button></td>
+		</tr>
 	</table>
-	</div>
-	<br>
-	<button type="submit" id="Pdelete" class="btn btn-default list_btn">삭제 </button>
-	</form>
-	</div>
-	</div>
 	
+	</form>
+	</c:if>
 	<div class = "paging" style = "text-align: center;">
 			<ul class="pagination pagination-sm">
 			<c:if test="${page.curBlock>1}">
@@ -140,6 +144,9 @@ $(document).ready(function() {
 				href="./bookRentWishList.book?curPage=${requestScope.page.lastNum+1}">[다음]</a></li>
 			</c:if>
 		</ul>
+	</div>
+	</div>
+	</div>
 	</div>
 <c:import url="${myContextPath}/temp/footer.jsp"></c:import>
 </body>

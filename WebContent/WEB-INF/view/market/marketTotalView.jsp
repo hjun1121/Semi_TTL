@@ -20,12 +20,19 @@
 		$("#btn").click(function(){
 			location.href="./bookBuy.market?num=${dto.num}";
 		});
+		
+		$("#btn_NO").click(function(){
+			location.href="./marketTotalList.market";
+		});
+		
 	});
 </script>
 </head>
 <body>
 <c:import url="${myContextPath}/temp/header.jsp"></c:import>
 
+<section id = "section">
+<div id = "bts_top_section">
 
 	<div id="divContentsW">
 		<div id="divContents">
@@ -160,11 +167,20 @@
 		    </div>
 		 </div>
 		</div> 
-			<input type="button" id="btn" value="구매하기">
+
+			<div class="btnCenter mt30" id="center">
+				<span class="button1">
+					<input type="button" class="type4 large" id="btn_NO" value="취소">
+				</span>	
+				<span class="button1">
+					<input type="button" class="type1 large" id="btn" value="구매">
+				</span> 
+			</div>
 			
-		
 		</div>
 	</div>
+</div>
+</section>
 <c:import url="${myContextPath}/temp/footer.jsp"></c:import>
 </body>
 </html>

@@ -117,81 +117,74 @@ $(function(){
 				<li>회원 리스트</li>
 			</ul>
 		</div>
-
-	<form name="frm" class="form-inline" action="./memberList.member" method="post">
-	<input type="hidden" name="sel" value="sel">
-	<input type="hidden" name="kind" id="kind0" value="${kind }">
-		<!-- KIND -->
-		<div class="form-group">
-			<div class="col-sm-10">
-				<select name="kind1" id = "kind1">
-					<option class = "kind1" value="id">id</option>
-					<option class = "kind1" value="name">name</option>
-					<option class = "kind1" value="email">email</option>
+	<!-- 검색 시작 -->
+		<form name="frm" class="form-inline" action="./memberList.member" method="post">
+		<input type="hidden" name="sel" value="sel">
+		<input type="hidden" name="kind" id="kind0" value="${kind }">
+			<fieldset>
+				<span class="bunch">
+					<select name="kind1" id = "kind1">
+					<option class = "kind1" value="id">ID</option>
+					<option class = "kind1" value="name">NAME</option>
+					<option class = "kind1" value="email">EMAIL</option>
 				</select>
-			</div>
-		</div>
-			<!-- SEARCH -->
-		<div class="form-group">
-			<div class="col-sm-10">
-				<input type="text" class="form-control" id="search" placeholder="Enter" name="search" value = "${search}">
-			</div>
-		</div>
-			<div class="form-group">
-			<div class="col-sm-offset-2 col-sm-10">
-				<input type="submit" id = "search" class="btn btn-default" value="Search">
-			</div>
-		</div>
-	</form>
+				<input type="text" id = "search" name = "search" value = "${search}" class="inputTextType3 sw" maxlength="100" title="검색어" placeholder="검색어를 입력하세요">
+				</span>
+				<input type="submit" class="btnType5" value="검색" id = "search">
+			</fieldset>
+		</form>
+		<!-- 검색 끝 -->
 	
 	<div style = "height: 50px"></div>
 	<form action="">
 		<table class = "table">
 			<tr>
-				<td><input type = "button" id = "btn_admin" class = "btn btn-default kind1" value = "ADMIN"></td>
-				<td><input type = "button" id = "btn_member" class = "btn btn-default kind1" style = "background-color: #dcdcdc" value = "MEMBER"></td>
-				<td><input type = "button" id = "btn_black" class = "btn btn-default kind1" value = "BLACKLIST"></td>
+				<td><input type = "button" id = "btn_admin" class = "btnType3 kind1" value = "ADMIN"></td>
+				<td><input type = "button" id = "btn_member" class = "btnType3 kind1" style = "background-color: #dcdcdc" value = "MEMBER"></td>
+				<td><input type = "button" id = "btn_black" class = "btnType3 kind1" value = "BLACKLIST"></td>
 			</tr>
 		</table>
 	</form>
-
-	<h2 id="info" >${type} List</h2>
 	
 	<div id = "list"> 
 	<c:if test="${size eq 0 }">
-		<h2>검색 결과가 없습니다.</h2>
+		<h3>검색 결과가 없습니다.</h3>
 	</c:if>
 	<c:if test="${size ne 0 }">
-		<table id = "member" class="kind" border="1">
+	<table class="mobileTable tablet kind" id = "member">
+	<thead>
+		<tr>
+			<th>ID</th>
+			<th>PASSWORD</th>
+			<th>NAME</th>
+			<th>BIRTH</th>
+			<th>GENDER</th>
+			<th>ADDRESS</th>
+			<th>PHONE</th>
+			<th>EMAIL</th>
+			<th>LIBRARY</th>
+			<th>KIND</th>
+		</tr>
+		<c:forEach items="${list }" var="dto">
 			<tr>
-				<th>id</th>
-				<th>pw</th>
-				<th>name</th>
-				<th>birth</th>
-				<th>gender</th>
-				<th>addr</th>
-				<th>phone</th>
-				<th>email</th>
-				<th>library</th>
-				<th>kind</th>
+				<td scope="row" class="footable-first-column">
+				<a href="./memberUpdate.member?id=${dto.id }">${dto.id }</a></td>
+				<td scope="row" class="footable-first-column">${dto.pw }</td>
+				<td scope="row" style="display: table-cell;">${dto.name }</td>
+				<td scope="row" style="display: table-cell;">${dto.birth }</td>
+				<td  scope="row" data-class="expand">${dto.gender }</td>
+				<td scope="row" style="display: table-cell;">${dto.addr }</td>
+				<td scope="row" style="display: table-cell;">${dto.phone }</td>
+				<td scope="row" style="display: table-cell;">${dto.email }</td>
+				<td scope="row" style="display: table-cell;">${dto.library }</td>
+				<td scope="row" style="display: table-cell;">${dto.kind }</td>
 			</tr>
-			<c:forEach items="${list }" var="dto">
-				<tr>
-					<td><a href="./memberUpdate.member?id=${dto.id }">${dto.id }</a></td>
-					<td>${dto.pw }</td>
-					<td>${dto.name }</td>
-					<td>${dto.birth }</td>
-					<td>${dto.gender }</td>
-					<td>${dto.addr }</td>
-					<td>${dto.phone }</td>
-					<td>${dto.email }</td>
-					<td>${dto.library }</td>
-					<td>${dto.kind }</td>
-				</tr>
-			</c:forEach>
-		</table>
-		<div style = "text-align: center;">
-			<ul class="pagination pagination-sm">
+		</c:forEach>
+	</thead>
+	</table>
+	
+	<div class = "paging" style = "text-align: center;">
+		<ul class="pagination pagination-sm">
 				<c:if test="${page.curBlock>1}">
 				<li><a href = "./memberList.member?curPage=${page.startNum-1}&kind=${kind}&search=${search}&kind1=${kind1}">[이전]</a></li>
 				</c:if>
@@ -208,7 +201,7 @@ $(function(){
 	</c:if>
 	</div>
 
-	<a href="../index.jsp">home</a>
+	<a href="../index.jsp" class="btnType3">HOME</a>
 	
 	</div>
 </div>	

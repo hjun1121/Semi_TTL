@@ -15,7 +15,7 @@ public class Book_Rent_DetailsDTO {
 	private Date in_time;
 	private Date out_time;
 	private int late_date;
-	
+	private int bnum;
 	public int getNum() {
 		return num;
 	}
@@ -46,7 +46,6 @@ public class Book_Rent_DetailsDTO {
 	public void setCompany(String company) {
 		this.company = company;
 	}
-	
 	public String getPublish_date() {
 		return publish_date;
 	}
@@ -83,4 +82,11 @@ public class Book_Rent_DetailsDTO {
 	public void setLate_date(int late_date) {
 		this.late_date = late_date;
 	}
+	public int getBnum() {
+		return bnum;
+	}
+	public void setBnum(int bnum) {
+		this.bnum = bnum;
+	}
+	
 }

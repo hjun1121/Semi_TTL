@@ -12,7 +12,7 @@
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
 <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
 <link rel="stylesheet" href="${pageContext.request.contextPath }/css/member/myPage.css">
-<link rel="stylesheet" href="${pageContext.request.contextPath }/css/book/bookRentDetails.css">
+<link rel="stylesheet" href="${pageContext.request.contextPath }/css/book/bookRentWishDetails.css">
 </head>
 <body>
 <c:import url="${myContextPath}/temp/header.jsp"></c:import>
@@ -29,7 +29,7 @@
 					<li>&gt;</li>
 					<li>MY PAGE</li>
 					<li>&gt;</li>
-					<li>대여 내역</li>
+					<li>대여 찜콩</li>
 					<li>&gt;</li>
 					<li>상세정보</li>
 				</ul>
@@ -81,48 +81,26 @@
 						<tr>
 							<th scope="row">대여도서관</th>
 							<c:choose>
-								<c:when test="${bookRentDTO.library eq 1}">
+								<c:when test="${book.library eq 1}">
 									<td>기흥구</td>
-									<input type="hidden" name="library" value=${bookRentDTO.library } readonly="readonly">
+									<input type="hidden" name="library" value=${book.library } readonly="readonly">
 								</c:when>
-								<c:when test="${bookRentDTO.library eq 2}">
+								<c:when test="${book.library eq 2}">
 									<td>송파구</td>
-									<input type="hidden" name="library" value=${bookRentDTO.library } readonly="readonly">
+									<input type="hidden" name="library" value=${book.library } readonly="readonly">
 								</c:when>
-								<c:when test="${bookRentDTO.library eq 3}">
+								<c:when test="${book.library eq 3}">
 									<td>장안구</td>
-									<input type="hidden" name="library" value=${bookRentDTO.library } readonly="readonly">
+									<input type="hidden" name="library" value=${book.library } readonly="readonly">
 								</c:when>
-								<c:when test="${bookRentDTO.library eq 4}">
+								<c:when test="${book.library eq 4}">
 									<td>분당구</td>
-									<input type="hidden" name="library" value=${bookRentDTO.library } readonly="readonly">
+									<input type="hidden" name="library" value=${book.library } readonly="readonly">
 								</c:when>
 								<c:otherwise>
 									<td><input type="number" value="없음" ></td>
 								</c:otherwise>
 							</c:choose>
-						</tr>
-						<tr>
-							<th>대여시간</th>
-							<td>${bookRentDTO.in_time }</td>
-						</tr>
-						<tr>
-							<th>반납시간</th>
-							<c:choose>
-								<c:when test="${empty bookRentDTO.out_time }">
-									<td>*</td>
-								</c:when>
-								<c:when test="${! empty bookRentDTO.out_time }">
-									<td>${bookRentDTO.out_time }</td>
-								</c:when>
-								<c:otherwise>
-									<td>0</td>
-								</c:otherwise>
-							</c:choose>
-						</tr>
-						<tr>
-							<th>연체일</th>
-							<td>${bookRentDTO.late_date }일</td>
 						</tr>
 						</tbody>
 						</table>
@@ -130,7 +108,7 @@
 	   			</div>
 			</div>
 		</div>
-	</form>   			
+	   			
    <!-- 소장정보 -->
 	<div class="searchInfo">
 		<div class="searchHeader">
@@ -178,17 +156,19 @@
 		<div class="btn2">
 		<c:choose>
 			<c:when test="${empty bookRentDTO.out_time }">
-				<a href="./bookReturn.book?num=${bookRentDTO.num }&bnum=${bookRentDTO.bnum }"><input class="btnType5" type="button" value="반납"></a>
+				<a href="./bookReturn.book?num=${bookRentDTO.num }"><input class="btnType5" type="button" value="반납"></a>
 			</c:when>
 		</c:choose>
 		<c:choose>
 			<c:when test="${not empty bookRentDTO.out_time }">
-				<a href="./bookRentDelete.book?bnum=${bookRentDTO.bnum }"><input class="btnType5" type="button" value="삭제"></a>
+				<a href="./bookRentDelete.book?num=${bookRentDTO.num }"><input class="btnType5" type="button" value="삭제"></a>
 			</c:when>
 		</c:choose>
 		<a href="../book/bookRentList.book?id=${member.id }"><input class="btnType5" type="button" value="LIST"></a>
 		</div>
+		</form>
 	</div>
+</div>
 <c:import url="${myContextPath}/temp/footer.jsp"></c:import>
 </body>
 </html>

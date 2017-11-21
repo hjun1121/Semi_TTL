@@ -18,16 +18,12 @@
 </head>
 <body>
 <c:import url="${myContextPath}/temp/header.jsp"></c:import>
-
-
 		<!-- Search -->
 		<div id="divSearch"></div>
 		<!-- //Search -->
 	
 	<h2>김앤신(통합포털)</h2>
 	<p><a href="./book/bookOrderTotalList.book">Book_TotalList(도서 신청목록)</a>
-
-	<p></p>
 	
 	<!-- 도서관 페이지  -->
 	
@@ -39,21 +35,10 @@
 	<div style = "height: 10px"></div>
 
 	
-	<p>=================================================</p>
 	<c:if test="${not empty sessionScope.member }">
 	<p><a href="./market/marketOrder.market?id=${member.id }">마켓판매신청form</a></p><!-- 로그인시만 이용 -->
-	<p>=================================================</p>
 	</c:if>
-
-	<c:if test="${not empty member and member.kind eq 10}">
-	<h2>admin page</h2>
-	<p><a href="./member/memberList.member">회원리스트 / 블랙리스트(관리자)</a></p>
-	<p><a href="./market/marketOrderList.market?id=${member.id }">Market Order List(관리자)</a></p>
-	<p><a href="./book/bookOrderListAdmin.book?id=${member.id }">book Order List(관리자)</a></p>
-	<p><a href="./market/marketOrderAdmin.market">book Order List(관리자)</a></p>
 	
-	<p>=================================================</p>
-	</c:if>
 	
 <c:import url="${myContextPath}/temp/footer.jsp"></c:import>
 </body>

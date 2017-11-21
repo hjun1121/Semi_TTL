@@ -3,23 +3,22 @@
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 
 <c:if test="${size eq 0 }">
-		<h2>검색 결과가 없습니다.</h2>
+		<h3 id="eqeq">검색 결과가 없습니다.</h3>
 </c:if>
-
 <c:if test="${size ne 0 }">
 <input type="hidden" name="kind" id="kind0" value="${kind }">
 <table id = "member" class="kind" border="1">
 			<tr>
-				<th>id</th>
-				<th>pw</th>
-				<th>name</th>
-				<th>birth</th>
-				<th>gender</th>
-				<th>addr</th>
-				<th>phone</th>
-				<th>email</th>
-				<th>library</th>
-				<th>kind</th>
+			<th>ID</th>
+			<th>PASSWORD</th>
+			<th>NAME</th>
+			<th>BIRTH</th>
+			<th>GENDER</th>
+			<th>ADDRESS</th>
+			<th>PHONE</th>
+			<th>EMAIL</th>
+			<th>LIBRARY</th>
+			<th>KIND</th>
 			</tr>
 			<c:forEach items="${list }" var="dto">
 				<tr>

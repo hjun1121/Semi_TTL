@@ -5,9 +5,11 @@ import java.sql.SQLException;
 
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
+import javax.servlet.http.HttpSession;
 
 import com.fnw.action.Action;
 import com.fnw.action.ActionFoward;
+import com.fnw.member.MemberDTO;
 import com.fnw.util.DBConnector;
 
 public class BookBuyService implements Action {
@@ -26,10 +28,26 @@ public class BookBuyService implements Action {
 			} catch (Exception e1) {
 				e1.printStackTrace();
 			}
-
+			HttpSession session = null;
+			MemberDTO memberDTO = null;
+			try {
+				session = request.getSession();
+				memberDTO =  (MemberDTO)session.getAttribute("member");
+				String p = memberDTO.getPhone();
+				String[] ar2 = p.split("-");
+				String f = ar2[0];
+				String m = ar2[1];
+				String l = ar2[2];
+				request.setAttribute("f", f);
+				request.setAttribute("m", m);
+				request.setAttribute("l", l);
+			}catch (Exception e) {
+			}
+			
 			request.setAttribute("buyWishList", market_TotalDTO);
 			actionFoward.setCheck(true);
 			actionFoward.setPath("../WEB-INF/view/market/bookBuy.jsp");
+			
 		} else {
 			Book_Buy_WishDAO book_Buy_WishDAO = new Book_Buy_WishDAO();
 			

@@ -64,6 +64,7 @@ public class BookRentListService implements Action {
 			}
 			PageMaker pageMaker = new PageMaker(curPage, totalCount);
 			list = book_Rent_DetailsDAO.selectList(id,pageMaker.getMakeRow(),p_date);
+			request.setAttribute("size", list.size());
 			request.setAttribute("bookRentList", list);
 			request.setAttribute("id", id);
 			request.setAttribute("year", year);

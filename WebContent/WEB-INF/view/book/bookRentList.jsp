@@ -124,6 +124,10 @@ $(function(){
 		</form>
 	</div>
 	<br><br>
+	<c:if test="${size eq 0 }">
+		<h2 id="divTitle">대여 내역이 없습니다.</h2>
+	</c:if>
+	<c:if test="${size ne 0 }">
 	<div class="listTable">
 	<table class="mobileTable tablet" >
 		<tr>
@@ -137,12 +141,12 @@ $(function(){
 			<th>대여시간</th>
 			<th>반납시간</th>
 			<th>연체일</th>
-			<th> </th>
+			<th></th>
 		</tr>
 		<c:forEach items="${bookRentList }" var="bookRent_list">
-			<tr>
-			<td scope="row" class="footable-first-column">${bookRent_list.num }</td>
- 				<td scope="row" style="display: table-cell;"><a href="./bookRentDetails.book?num=${bookRent_list.num }">${bookRent_list.title }</a></td>
+		<tr>
+			<td scope="row" class="footable-first-column">${bookRent_list.bnum }</td>
+ 				<td scope="row" style="display: table-cell;"><a href="./bookRentDetails.book?num=${bookRent_list.num }&bnum=${bookRent_list.bnum }">${bookRent_list.title }</a></td>
  				<td scope="row" style="display: table-cell;">${bookRent_list.section }</td>
 				<td scope="row" style="display: table-cell;">${bookRent_list.writer }</td>
 				<td scope="row" style="display: table-cell;">${bookRent_list.company }</td>
@@ -168,20 +172,22 @@ $(function(){
 				<td scope="row" data-class="expand">${bookRent_list.out_time }</td>
 				<c:choose>
 					<c:when test="${empty bookRent_list.out_time }">
-						<td>-</td>
 						<td scope="row" style="display: table-cell;">
-						<a href="./bookReturn.book?num=${bookRent_list.num }"><button class = "btn btn-default rent_btn">반납</button></a>
+						<a href="./bookReturn.book?num=${bookRent_list.num }&bnum=${bookRent_list.bnum }"><button class = "btn btn-default rent_btn">반납</button></a>
 						</td>
 					</c:when>
 					<c:when test="${! empty bookRent_list.out_time }">
-						<td scope="row" data-class="expand">${bookRent_list.late_date }</td>
 						<td></td>
+						<c:if test="${bookRent_list.late_date > 7}">
+							<td scope="row" data-class="expand">${bookRent_list.late_date-7 }일</td>
+						</c:if>
 					</c:when>
 					<c:otherwise>
-						<td>*</td>
+						<td></td>
 						<td></td>
 					</c:otherwise>
 				</c:choose>
+				<td></td>
 			</tr>
 		</c:forEach>
 	</table>
@@ -201,6 +207,7 @@ $(function(){
 		</ul>
 	</div>
 	</div>
+	</c:if>
 	</div>
 </div>	
 <c:import url="${myContextPath}/temp/footer.jsp"></c:import>
