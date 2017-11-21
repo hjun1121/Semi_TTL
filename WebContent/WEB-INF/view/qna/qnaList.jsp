@@ -115,7 +115,7 @@
 			</c:forEach>
 		</table>
 	</div>
-	
+
 	<c:if test="${not empty member}">
 	<input type="button" class = "btn btn-default" id="write_btn" value="글쓰기">
 	</c:if>
