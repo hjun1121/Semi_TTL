@@ -64,12 +64,15 @@ $(function(){
 	</div>
 	
 	<br>
+	<a href="./bookOrderList.book?id=${member.id }&state=3&kind=${kind}&search=${search}"><input class="btnType3" type="button" value="전체"></a>
 	<a href="./bookOrderList.book?id=${member.id }&state=1&kind=${kind}&search=${search}"><input class="btnType3" type="button" value="대기"></a>
 	<a href="./bookOrderList.book?id=${member.id }&state=0&kind=${kind}&search=${search}"><input class="btnType3" type="button" value="취소"></a>
 	<a href="./bookOrderList.book?id=${member.id }&state=2&kind=${kind}&search=${search}"><input class="btnType3" type="button" value="승인"></a>
-	<a href="./bookOrderList.book?id=${member.id }&state=3&kind=${kind}&search=${search}"><input class="btnType3" type="button" value="전체"></a>
 	<br><br>
-	
+	<c:if test="${size eq 0 }">
+		<h2 id="divTitle">신청 내역이 없습니다.</h2>
+	</c:if>
+	<c:if test="${size ne 0 }">
 	<div class="listTable">
 	<table class="mobileTable tablet" >
 	<thead>
@@ -117,11 +120,11 @@ $(function(){
 					</c:when>
 					<c:when test="${bookOrder_list.state eq 1}">
 						<td scope="row" style="display: table-cell;">대기</td>
-						<td>-</td>
+						<td></td>
 					</c:when>
 					<c:otherwise>
 						<td scope="row" style="display: table-cell;">승인</td>
-						<td>-</td>
+						<td></td>
 					</c:otherwise>
 				</c:choose>
 			</tr>
@@ -144,6 +147,7 @@ $(function(){
 		</ul>
 	</div>
 	</div>
+	</c:if>
 </div>
 </div>
 <c:import url="${myContextPath}/temp/footer.jsp"></c:import>

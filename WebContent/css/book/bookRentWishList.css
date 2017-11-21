@@ -68,9 +68,6 @@
 }
 <!--상단 바 끝 -->
 
-#btbtn{
-}
-
 .btnType5{
   	height: 35px;
     vertical-align: top;
@@ -85,6 +82,7 @@
     border-bottom: 1px solid #e6e6e6;
     text-align: center;
 }
+
 
 table {
     width: 100%;
@@ -111,6 +109,9 @@ table th {
     border: none;
     background-color: #f3f3f3;
     color: #727272;
+}
+td.btnTD {
+    border: none;
 }
 
 .paging {
