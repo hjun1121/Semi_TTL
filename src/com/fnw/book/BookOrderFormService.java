@@ -43,7 +43,7 @@ public class BookOrderFormService implements Action {
 				message = "등록 실패";
 			}
 			request.setAttribute("message", message);
-			request.setAttribute("path", "../index.jsp");
+			request.setAttribute("path", "../book/bookOrderTotalList.book");
 			
 			actionFoward.setCheck(true);
 			actionFoward.setPath("../WEB-INF/view/common/result.jsp");
