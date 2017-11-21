@@ -1,6 +1,7 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
+<%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt" %>
 <!DOCTYPE html>
 <html>
 <head>
@@ -99,76 +100,107 @@ $(function(){
 
 
 		<!-- ////////////// -->
-
-
+	
+		<div class="ec-base-table typeList ">
+		<table border="1" summary="">
+			<thead>
+			<tr>
+				<th><input type="radio">&nbsp;택배수령 &nbsp; <input type="radio">&nbsp;직접수령</th>
+			</tr>
+			</thead>
+		</table>
+		</div>
+		
+		<br>
+		
+	<form action="../market/marketBuy.market" method="POST">
 		<div class="xans-element- xans-order xans-order-form xans-record-">
 		<div class="orderListArea ">
 			<div class="ec-base-table typeList ">
-				<table border="1" summary="">
+				<table border="1">
 					<caption>기본배송</caption>
-						
 					<thead>
 						<tr>
-							<th scope="col" class="displaynone"><input type="checkbox" disabled=""></th>
 							<th scope="col">상품정보</th>
 							<th scope="col">판매가</th>
 							<th scope="col">수량</th>
-							<th scope="col">배송구분</th>
+							<th scope="col"></th>
 							<th scope="col">배송비</th>
 							<th scope="col">합계</th>
 						</tr>
 					</thead>
 					<tfoot class="right">
 						<tr>
-							<td class="displaynone"></td>
 							<td colspan="8">
 								<span class="gLeft">[기본배송]</span>
-								상품구매금액 <strong>42,000
-								</strong> + 배송비 
+								상품구매금액 <strong><fmt:formatNumber value="${buyWishList.price}" groupingUsed="true" /></strong> + 배송비 
 								<span id="domestic_ship_fee">2,500</span> 
-								 = 합계 : <strong class="txtEm gIndent10">
-								 <span id="domestic_ship_fee_sum" class="txt18">44,500</span>
-								 won</strong> <span class="displaynone"></span>
+								 = 합계 : 
+								 <strong class="txtEm gIndent10">
+								 <span id="domestic_ship_fee_sum" class="txt18">
+									 <fmt:formatNumber value="${buyWishList.price+2500}" groupingUsed="true" /> 
+								 </span>
+								 won
+								 </strong> 
 							</td>
-							
 						</tr>
 					</tfoot>
 					<tbody class="xans-element- xans-order xans-order-normallist center">
 						<tr class="xans-record-">
-							
-							
 							<td class="left">
-								<a href="#"><strong>corduroy boy pants</strong></a>
-								<div class="option ">[옵션: 크림/Small]</div>
-								<p class="gBlank5 displaynone">무이자할부 상품</p>
-								<p class="gBlank5 displaynone">유효기간 : </p>
+								<a href="${pageContext.request.contextPath }/market/marketTotalView.market?num=${buyWishList.num}"><strong>${buyWishList.title}</strong></a>
+								<div class="option ">[저자: ${buyWishList.writer}]</div>
+								<div class="option ">[출판사: ${buyWishList.company}]</div>
 							</td>
-							<td class="right">
-								<div class="">
-									<strong>42,000won</strong>
-									<p class="displaynone"></p>
-								</div>
-								<div class="displaynone">
-									<strong>42,000won</strong>
-									<p class="displaynone"></p>
+							<td class="left">
+								<div>
+									<strong><fmt:formatNumber value="${buyWishList.price}" groupingUsed="true" /> won</strong>
 								</div>
 							</td>
-							<td>1</td>
-							
+							<td class="left">1</td>
 							<td>
-								<div class="txtInfo">기본배송</div>
 							</td>
-							<td>[조건]</td>
-							<td class="right">
-								<strong>42,000won</strong>
-								<div class="displaynone"></div>
+							<td class="left">2,500won</td>
+							<td class="left">
+								<strong><fmt:formatNumber value="${buyWishList.price+2500}" groupingUsed="true" /> won</strong>
 							</td>
 						</tr>
 					</tbody>
 				</table>
 			</div>
 		</div>
-
+		
+		<!-- 직접수령 정보-->
+		<br>
+		<div class="orderArea">
+			<div class="ec-base-table typeWrite">
+				<table border="1" summary="">
+					<caption>도서관명</caption>
+					<colgroup>
+						<col style="width:139px;">
+						<col style="width:auto;">
+					</colgroup>
+				<tbody>
+					<tr>
+						<th scope="row">수령도서관</th>
+						<td>
+							<c:if test="${ buyWishList.library eq 1 }">형준 도서관</c:if>
+							<c:if test="${ buyWishList.library eq 2 }">지현 도서관</c:if>
+							<c:if test="${ buyWishList.library eq 3 }">희성 도서관</c:if>
+							<c:if test="${ buyWishList.library eq 4 }">형민 도서관</c:if>
+						</td>
+					</tr>
+					<tr>
+						<th scope="row">수령인</th>
+						<td>
+							<input class="inputTypeText" placeholder="" size="15" type="text" value="${member.id }">
+						</td>
+					</tr>
+				</tbody>
+				</table>
+			</div>
+		</div>
+		
 		<!-- 배송 정보 -->
 		<div class="orderArea">
 			<div class="title">
@@ -183,18 +215,19 @@ $(function(){
 					</colgroup>
 				<tbody class="">
 					<tr>
-						<th scope="row">받으시는 분 </th>
+						<th scope="row">주문자명 </th>
 						<td>
-							<input id="rname" name="rname" class="inputTypeText" placeholder="" size="15" type="text">
+							<input class="inputTypeText" placeholder="" size="15" type="text" value="${member.id }">
 						</td>
 					</tr>
 					<tr>
-						<th scope="row">주소 <img src="#" alt="필수"></th>
+						<th scope="row">주소 </th>
 						<td>
-							<input id="rzipcode1" class="inputTypeText" size="6" maxlength="6" type="text">							
-							<a href="#none" id="btn_search_rzipcode" class="-btn -white"><i class="fa fa-map-o"></i> &nbsp; 우편번호</a><br>
-							<input id="raddr1" class="inputTypeText"  size="40" readonly="1" value="" type="text"> <span class="grid">기본주소</span><br>
-							<input id="raddr2" class="inputTypeText" size="40" value="" type="text"> <span class="grid">나머지주소</span><span class="grid displaynone">(선택입력가능)</span>
+							<input type="text" id="postCode" name="postCode" placeholder="우편번호" readonly="readonly" value="${member.postCode }" class="inputTypeText" size="6" maxlength="6">							
+							<input type="button" id="addrCheck" value="우편번호 찾기" class="-btn -white"><br>
+							<input  type="text" id="addr" name="addr" placeholder="주소" readonly="readonly" value="${member.addr }" class="inputTypeText"  size="40"> <span class="grid">기본주소</span><br>
+							<input type="text" id="addr2" name="addr2" placeholder="나머지주소 " value="${member.addr2 }" class="inputTypeText" size="40"> <span class="grid">나머지주소</span>
+							<td>
 						</td>
 					</tr>
 					<tr class="">
@@ -206,11 +239,8 @@ $(function(){
 							<option value="010">010</option>
 							<option value="011">011</option>
 							<option value="016">016</option>
-							<option value="017">017</option>
-							<option value="018">018</option>
-							<option value="019">019</option>
 						</select>
-						-<input id="rphone2_2" maxlength="4" size="4" type="text">-<input id="rphone2_3" maxlength="4" size="4" type="text"></td>
+						-<input id="rphone2_2" maxlength="4" size="4" type="text" value="${m }">-<input id="rphone2_3" maxlength="4" size="4" type="text" value="${l }"></td>
 					</tr>
 				</tbody>
 				<tbody class="delivery ">
@@ -223,47 +253,21 @@ $(function(){
 				</table>
 			</div>
 		</div>
-
-		<div class="-titlepack">
-			<br><br>
-			<h3 class="-font-ns">결제수단</h3>
-		</div>
-		<div class="payArea">
-			<div class="payment">
-				<div class="method">
-					<span class="ec-base-label">
-					<input id="addr_paymethod2" type="radio"><label for="addr_paymethod2">카드 결제</label></span>
-					<span class="ec-base-label">
-					<input id="addr_paymethod3" type="radio"><label for="addr_paymethod3">직접수령</label></span>
-				</div>
+			<br>
+			<input id="chk_purchase_agreement0" type="checkbox" >결제정보를 확인하였으며, 구매진행에 동의합니다.
+			<div class="btnCenter mt30" id="center">
+				<span class="button1">
+					<input type="button" class="type4 large" value="결제">
+				</span>	
 			</div>
-
-			<!-- 최종결제금액 -->
-			<div class="total">
-				<h4>
-					<strong id="current_pay_name">무통장 입금</strong> <span>최종결제 금액</span>
-				</h4>
-				<p class="price">
-				<span></span>
-				<input id="total_price" class="inputTypeText" style="text-align:right;ime-mode:disabled;clear:none;border:0px;float:none;" size="10" readonly="1" value="44500" type="text"><span>won</span></p>
-				<p class="paymentAgree" id="chk_purchase_agreement" style="display: block;"><input id="chk_purchase_agreement0" name="chk_purchase_agreement" fw-filter="" fw-label="구매진행 동의" fw-msg="" value="T" type="checkbox" style="display: block;"><label for="chk_purchase_agreement0">결제정보를 확인하였으며, 구매진행에 동의합니다.</label></p>
-				<div class="button smp-btn-pay-info"><a href="#none"><img src="/_panda/image/cafe24/btn_place_order.gif" id="btn_payment" alt="결제하기"></a></div>
-				
-			</div>
-		</div>
-
-
-
-
-
-
-</div>
+	</div>
+</form>
 
 
 
 		<!-- /////////////// -->
 
-	<form action="../market/marketBuy.market" method="POST">
+<%-- 	<form action="../market/marketBuy.market" method="POST">
 	<input type = "hidden" name = "num" value = ${buyWishList.num }>
 		<input type = "hidden"  name = "id" value = ${member.id }>
 		<input type = "hidden" name = "kind" value = '1'>
@@ -329,7 +333,7 @@ $(function(){
 		</table>
 		<button type = "submit">CONFIRM</button>
 	</form>
-	
+	 --%>
 	
 	</div>
 </div>
