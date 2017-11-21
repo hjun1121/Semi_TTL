@@ -196,15 +196,50 @@ td.title2{width:20%;}
 
 <!-- paging -->
 /* paging */
-.paging{clear:both;margin:40px 0 0;text-align:center}
-.paging a{padding:0 10px}
-.paging > a{display:inline-block;padding:0;border:1px solid #e6e6e6;vertical-align: middle}
-.paging > a img{width:28px;height:28px;vertical-align: middle}
-.paging > a.firstPage{border-right:none}
-.paging > a.lastPage{border-left:none}
-.paging > span{margin:0 10px}
-.paging > span span{padding:0 10px;color:#000;text-decoration:underline}
-.paging > span a{color:#747474}
+/* .paging{clear:both;margin:40px 0 0;text-align:center} */
+/* .paging a{padding:0 10px} */
+/* .paging > a{display:inline-block;padding:0;border:1px solid #e6e6e6;vertical-align: middle} */
+/* .paging > a img{width:28px;height:28px;vertical-align: middle} */
+/* .paging > a.firstPage{border-right:none} */
+/* .paging > a.lastPage{border-left:none} */
+/* .paging > span{margin:0 10px} */
+/* .paging > span span{padding:0 10px;color:#000;text-decoration:underline} */
+/* .paging > span a{color:#747474} */
 
+#section .paging {
+    clear: both;
+    margin: 40px 0 0;
+    text-align: center;
+}
+
+#section .paging > span {
+    margin: 0 10px;
+}
+
+#section .paging > span span {
+    padding: 0 10px;
+    color: #000;
+    text-decoration: underline;
+}
+
+#section .paging > a {
+    width: 28px;
+    height: 28px;
+    display: inline-block;
+    padding: 0;
+    border: 1px solid #e6e6e6;
+    vertical-align: middle;
+}
+
+#section .paging > a img {
+    width: 28px;
+    height: 28px;
+    vertical-align: middle;
+}
 
 <!-- paging -->
+
+#section #adm_write_btn {
+	margin-top: 40px;
+	float: right;
+}

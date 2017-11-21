@@ -192,3 +192,39 @@ td.title2{width:20%;}
 .addedFile{width:12px;height:15px}
 
 <!-- list 끝 -->
+
+#section #write_btn {
+	margin-top: 40px;
+	float: right;
+}
+
+#section .paging {
+    clear: both;
+    margin: 40px 0 0;
+    text-align: center;
+}
+
+#section .paging > span {
+    margin: 0 10px;
+}
+
+#section .paging > span span {
+    padding: 0 10px;
+    color: #000;
+    text-decoration: underline;
+}
+
+#section .paging > a {
+    width: 28px;
+    height: 28px;
+    display: inline-block;
+    padding: 0;
+    border: 1px solid #e6e6e6;
+    vertical-align: middle;
+}
+
+#section .paging > a img {
+    width: 28px;
+    height: 28px;
+    vertical-align: middle;
+}
