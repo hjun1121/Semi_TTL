@@ -79,10 +79,9 @@
 		</c:if>
 		<c:if test="${not empty member}">
 		<form id = "order_btn" action="./bookOrderForm.book">
-			<button style = "float: right;" class = "btn btn-default" type = "submit">신청하기</button>		
+			<button style = "float: right;" class = "adv" type = "submit">신청하기</button>		
 		</form>
 		</c:if>
-
 				<div class = "paging" style = "text-align: center;">
 			<ul class="pagination pagination-sm">
 				<c:if test="${page.curBlock>1}">

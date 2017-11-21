@@ -36,31 +36,33 @@
 				<li>상세정보</li>
 			</ul>
 		</div>
-
+		
+	<form action="./marketOrderOK.market" method="POST">
+	<input type="hidden" name="num" id="num" value=${view.num }>
 	<table class="Dtable">
 			<tr>
 				<th>서명</th>
-				<td><input type="text" class="noneBorder" name="title" value=${view.title }  readonly="readonly"></td>
+				<td><input type="text" class="noneBorder" name="title" value="${view.title }"  readonly="readonly"></td>
 			</tr>
 			<tr>
 				<th>저자</th>
-				<td><input type="text" class="noneBorder" name="writer" value=${view.writer } readonly="readonly"></td>
+				<td><input type="text" class="noneBorder" name="writer" value="${view.writer }" readonly="readonly"></td>
 			</tr>
 			<tr>
 				<th>출판사</th>
-				<td><input type="text" class="noneBorder" name="company" value=${view.company } readonly="readonly"></td>
+				<td><input type="text" class="noneBorder" name="company" value="${view.company }" readonly="readonly"></td>
 			</tr>
 			<tr>
 				<th>출판년도</th>
-				<td><input type="text" class="noneBorder" name="publish_date" value=${view.publish_date } readonly="readonly"></td>
+				<td><input type="text" class="noneBorder" name="publish_date" value="${view.publish_date }" readonly="readonly"></td>
 			</tr>
 			<tr>
 				<th>신청인</th>
-				<td><input type="text" class="noneBorder" name="t_date" value=${view.id } readonly="readonly"></td>
+				<td><input type="text" class="noneBorder" name="t_date" value="${view.id }" readonly="readonly"></td>
 			</tr>
 			<tr>
 				<th>가격</th>
-				<td><input type="text" class="noneBorder" name="price" value=${view.price } readonly="readonly"></td>
+				<td><input type="number" class="noneBorder" name="price" value=${view.price } readonly="readonly"></td>
 			</tr>
 			<tr>
 			<th>비치도서관</th>
@@ -79,15 +81,25 @@
 				</c:when>
 			</c:choose>
 			</tr>
+			<tr>
+				<th>상태</th>
+				<td>
+					<select name="state" class="state">
+						<option value="1" class="library">상</option>
+	   					<option value="2" class="library">중</option>
+	   					<option value="3" class="library">하</option>
+					</select>
+				</td>
+			</tr>
 		</table>
 		<div class="btn">
-			<a href="./marketOrderOK.market?num=${view.num }">
-			<input type="button" class="btnType5" value="승인"></a>
+			<input type="submit" class="btnType5" value="승인">
 			<a href="./marketOrderNO.market?num=${view.num }">
 			<input type="button" class="btnType5" value="거절"></a>
 			<a href="./marketOrderAdmin.market">
 			<input type="button" class="btnType5" value="LIST"></a>
 		</div>
+		</form>
 		</div>
 </div>		
 <c:import url="${myContextPath}/temp/footer.jsp"></c:import>

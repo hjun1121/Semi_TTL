@@ -16,7 +16,10 @@
 
 <title>Total Library Page</title>
 
-<script>
+
+
+
+<script type="text/javascript">
 
 var slideIndex = 1;
 showSlides(slideIndex);
@@ -44,15 +47,25 @@ function showSlides(n) {
   slides[slideIndex-1].style.display = "block";  
   dots[slideIndex-1].className += " active";
 }
+
 </script>
 
 <script type="text/javascript">
-	$(function(){
-		$("#btnS").click(function(){
-			document.totalForm.submin();
-		});
+$(function(){
+	$.ajax({
+		url:"./notice/noticeList.notice",
+		type:"POST",
+		data: {
+		},
+		success:function(data){
+			$("#noticeForm").html(data);
+		}
 	});
+	
+});
 </script>
+	
+	
 
 </head>
 <body>
@@ -136,9 +149,7 @@ function showSlides(n) {
 					<div class="notice">
 						<h2>공지사항</h2>
 						<ul>
-							<li>	
-								<span class="noticeType1">공지</span>
-								<a href="#">내용입력</a>
+							<li id="noticeForm">	
 							</li>			
 						</ul>
 					<a href="#" class="more"><img src="${pageContext.request.contextPath }/image/index/more.png" alt="더보기"></a>

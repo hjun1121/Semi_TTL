@@ -165,6 +165,6 @@
 .buttons input{height:40px;margin:0 5px;padding:0 19px;border:1px solid #585858;background: none;color:#1a1a1a;cursor:pointer;vertical-align:top;line-height:1.0em;font-size:14px;font-weight:600;overflow:visible}
 .buttons input.searchBtn{padding:0 20px 0 45px;background:url(../../../image/ko/solution/common/ico/searchBtnBg.png) no-repeat 20px 50% #06603c;border:1px solid #06603c;color:#fff}
 .buttons a{height:38px;display:inline-block;margin:0 5px;padding:0 19px;border:1px solid #585858;color:#1a1a1a;font-size:14px;font-weight:600;line-height:38px;vertical-align:top}
-
+.adv a{height:38px;display:inline-block;margin:0 5px;padding:0 19px;border:1px solid #585858;color:#1a1a1a;font-size:14px;font-weight:600;line-height:38px;vertical-align:top}
 
 <!-- 내용 끝 -->

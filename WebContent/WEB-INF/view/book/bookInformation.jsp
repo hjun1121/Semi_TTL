@@ -231,7 +231,7 @@ $(function(){
 	
 
 			<form action="./bookTotalSearch.book?curPage=${curPage}">
-				<button class = "btn btn-default list_btn" type = "submit" >LIST</button>
+				<button class = "adv" type = "submit" >LIST</button>
 			</form>
 			<div style="height: 100px;"></div>
 	</section>

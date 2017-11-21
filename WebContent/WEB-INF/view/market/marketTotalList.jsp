@@ -122,11 +122,8 @@
 					<th style="display: table-cell;">저자</th>
 					<th style="display: table-cell;">출판사</th>
 					<th style="display: table-cell;">출판년도</th>
-					
 					<th style="display: table-cell;">가격</th>
-					
 					<th style="display: table-cell;">찜</th>
-				
 					<c:if test="${ not empty member }">
 						<th>찜</th>
 						<th>구매</th>
@@ -141,11 +138,8 @@
 					<td>${dto.writer }</td>
 					<td>${dto.company }</td>
 					<td>${dto.publish_date }</td>
-					
 					<td>${dto.price }</td>
-				
 					<td>${dto.wish }</td>
-					
 			<c:set var="heart1" value="0" ></c:set>
 			<c:set var="heart2" value="0" ></c:set>
 			<c:if test="${ not empty member }">
@@ -173,6 +167,13 @@
 			</div>
 			<!-- list 끝 -->
 		</c:if>	
+		<br><br>
+		<c:if test="${not empty member}">
+		<form id = "order_btn" action="./marketOrder.market?id=${member.id }">
+			<button style = "float: right;" class ="adv" type = "submit">신청하기</button>		
+		</form>
+		</c:if>
+		<br><br>
 		<!-- 페이징  시작 -->
 		<div style = "text-align: center;">
 			<ul class="pagination pagination-sm">

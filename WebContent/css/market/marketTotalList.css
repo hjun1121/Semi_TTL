@@ -4,7 +4,19 @@
 	margin: 0;
 	padding: 0;
 }
-
+button.adv{
+height:38px;
+display:inline-block;
+margin:0 5px;
+padding:0 19px;
+border:1px solid #585858;
+color:#1a1a1a;
+font-size:14px;
+font-weight:600;
+line-height:38px;
+vertical-align:top;
+background-color:white;
+}
 <!--상단 바 시작 -->
 /* #divContentsW{ */
 /* 	background-color:#fff; */
@@ -150,8 +162,6 @@ input.inputTextType3:focus{border:1px solid #2ed8de}
 a.btnType5{display:inline-block;height:33px;border:1px solid #585858;background:url(../../image/notice/limitSearch.gif) no-repeat 15px 50%;line-height:2.3em;color:#4d4d4d;padding:0 20px 0 45px;vertical-align:top;}
 
 <!-- 검색 끝 -->
-
-
 
 <!-- list 시작 -->
 /* list */

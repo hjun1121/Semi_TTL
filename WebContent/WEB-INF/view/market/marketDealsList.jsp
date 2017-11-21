@@ -130,7 +130,9 @@ $(function(){
 	<br><br>
 	<c:if test="${size eq 0 }">
 		<h2 id="divTitle">MARKET 거래 내역이 없습니다.</h2>
+		<br><br><br><br><br><br>
 	</c:if>
+	
 	<c:if test="${size ne 0 }">
 	<div class="listTable">
 	<table class="mobileTable tablet" >
@@ -198,7 +200,7 @@ $(function(){
 						<td scope="row" style="display: table-cell;">하</td>
 					</c:when>
 					<c:otherwise>
-						<td scope="row" style="display: table-cell;">*</td>
+						<td scope="row" style="display: table-cell;"> </td>
 					</c:otherwise>
 				</c:choose>
 				<c:choose>
@@ -213,8 +215,10 @@ $(function(){
 					</c:otherwise>
 				</c:choose>
 			</tr>
-		</c:forEach>
-	</table>
+		</c:forEach>	
+			</table>
+		</div>
+		</c:if>
 	<div class = "paging" style = "text-align: center;">
 		<ul class="pagination pagination-sm">
 			<c:if test="${page.curBlock>1}">
@@ -228,11 +232,10 @@ $(function(){
 			<li><a
 				href="./marketDealsList.market?curPage=${requestScope.page.lastNum+1}">[다음]</a></li>
 			</c:if>
-		</ul>
-	</div>
-</div>
-</c:if>
-</div>
+			</ul>
+		</div>
+		</div>
+	</section>
 <c:import url="${myContextPath}/temp/footer.jsp"></c:import>
 </body>
 </html>

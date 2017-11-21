@@ -78,11 +78,11 @@
 						</tr>
 						<tr>
 							<th scope="row">정가</th>
-							<td></td>
+							<td>${dto.price/(1-((dto.book_state*2)/10))}원</td>
 						</tr>
 						<tr>
 							<th scope="row">판매가</th>
-							<td>${dto.price }</td>
+							<td>${dto.price }원</td>
 						</tr>
 						<c:if test="${not empty member}">
 							<tr>
@@ -149,13 +149,13 @@
 								</c:if>
 							</td>
 		                    <td>
-								<c:if test="${dto.book_state eq 1 }">
+								<c:if test="${dto.book_state eq 3 }">
 									하
 								</c:if>
 								<c:if test="${dto.book_state eq 2}">
 									중
 								</c:if>
-								<c:if test="${dto.book_state eq 3}">
+								<c:if test="${dto.book_state eq 1}">
 									상
 								</c:if>
 							</td>

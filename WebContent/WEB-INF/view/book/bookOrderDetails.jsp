@@ -94,7 +94,7 @@
 				</tr>
 					
 				<c:choose>
-					<c:when test="${bookOrderDetails.state eq 0}">
+					<c:when test="${bookOrderDetails.state eq 1}">
 						<tr>
 						<th>상태</th>
 						<td>취소</td>
@@ -106,7 +106,7 @@
 						<input type="hidden" name="state" class="noneBorder" value=${bookOrderDetails.state } readonly="readonly">
 						</tr>
 					</c:when>
-					<c:when test="${bookOrderDetails.state eq 1}">
+					<c:when test="${bookOrderDetails.state eq 0}">
 					<tr>
 					<th>상태</th>
 						<td>대기<td>
@@ -126,7 +126,7 @@
 			<br>
 			<div class="btn">
 			<input type="submit" class="btnType5" id="btn" name="btn" value="확인">
-			<c:if test="${bookOrderDetails.state eq 1 }">
+			<c:if test="${bookOrderDetails.state eq 0 }">
 				<a href="./bookOrderUpdate.book?num=${bookOrderDetails.num }"><input class="btnType5" type="button" value="정보 수정"></a>
 				<a href="./bookOrderDelete.book?num=${bookOrderDetails.num }"><input class="btnType5" type="button" value="신청 취소"></a>
 			</c:if>
