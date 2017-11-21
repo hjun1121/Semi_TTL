@@ -79,7 +79,9 @@ $(document).ready(function() {
 				<input type="checkbox" class="chk" name="Pcheck" value="${bookRentWishList.num }">
 				</td>
 				<td scope="row" class="footable-first-column">${bookRentWishList.num }</td>
- 				<td scope="row" style="display: table-cell;">${bookRentWishList.title }</td>
+ 				<td scope="row" style="display: table-cell;">
+ 				<a href="./bookRentWishDetails.book?num=${bookRentWishList.num }">${bookRentWishList.title }</a>
+ 				</td>
 				<td scope="row" style="display: table-cell;">${bookRentWishList.writer }</td>
 				<td scope="row" style="display: table-cell;">${bookRentWishList.company }</td>
 				<td scope="row" data-class="expand">${bookRentWishList.publish_date }</td>

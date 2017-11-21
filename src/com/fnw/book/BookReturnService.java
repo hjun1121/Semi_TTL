@@ -1,5 +1,6 @@
 package com.fnw.book;
 
+import java.sql.Connection;
 import java.text.ParseException;
 import java.text.SimpleDateFormat;
 import java.util.Date;
@@ -11,6 +12,7 @@ import javax.servlet.http.HttpSession;
 import com.fnw.action.Action;
 import com.fnw.action.ActionFoward;
 import com.fnw.member.MemberDTO;
+import com.fnw.util.DBConnector;
 
 public class BookReturnService implements Action {
 	@Override
@@ -19,6 +21,7 @@ public class BookReturnService implements Action {
 		Book_Rent_DetailsDAO book_Rent_DetailsDAO = new Book_Rent_DetailsDAO();
 		Book_Rent_DetailsDTO book_Rent_DetailsDTO = null;
 		Book_Rent_WishDAO book_Rent_WishDAO = new Book_Rent_WishDAO();
+		Book_TotalDAO book_TotalDAO = new Book_TotalDAO();
 		int result = 0;
 		HttpSession session = request.getSession();
 		String id = ((MemberDTO)session.getAttribute("member")).getId();
@@ -39,9 +42,12 @@ public class BookReturnService implements Action {
 		}
 		long diff = todayDate.getTime() - (book_Rent_DetailsDTO.getIn_time()).getTime();
 		long diffDays = diff / (24 * 60 * 60 * 1000);
+		Connection con = null;
 		
 		try {
-			result = book_Rent_DetailsDAO.bookReturn(Integer.parseInt(request.getParameter("num")),diffDays);
+			con = DBConnector.getConnect();
+			result = book_Rent_DetailsDAO.bookReturn(Integer.parseInt(request.getParameter("num")),diffDays,con);
+			result = book_TotalDAO.update(Integer.parseInt(request.getParameter("num")),con);
 		} catch (Exception e) {
 			e.printStackTrace();
 		}

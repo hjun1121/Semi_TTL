@@ -168,6 +168,15 @@ public class Book_TotalDAO {
 		DBConnector.disConnect(st, con);
 		return result;
 	}
+	public int update(int num,Connection con) throws Exception{
+		String sql="UPDATE book_total SET state=0,rent_id=0 WHERE num=?";
+		PreparedStatement st = con.prepareStatement(sql);
+		
+		st.setInt(1, num);
+		int result = st.executeUpdate();
+		st.close();
+		return result;
+	}
 	
 }
 

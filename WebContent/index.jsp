@@ -18,8 +18,6 @@
 </head>
 <body>
 <c:import url="${myContextPath}/temp/header.jsp"></c:import>
-
-
 		<!-- Search -->
 		<div id="divSearch"></div>
 		<!-- //Search -->
