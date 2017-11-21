@@ -7,10 +7,10 @@
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
 <link rel="stylesheet" href="${pageContext.request.contextPath }/css/notice/detail.css">
-<link rel="stylesheet" href="${pageContext.request.contextPath }/css/notice/noticeList.css">
 <link rel="stylesheet" href="${pageContext.request.contextPath }/css/member/memberJoin.css">
 <link rel="stylesheet" href="${pageContext.request.contextPath }/css/temp/header.css">
 <link rel="stylesheet" href="${pageContext.request.contextPath }/css/temp/footer.css">
+<link rel="stylesheet" href="${pageContext.request.contextPath }/css/notice/noticeList.css">
 <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
 <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
@@ -29,6 +29,8 @@ $(function(){
 <body>
 <c:import url="${myContextPath }/temp/header.jsp"></c:import>
 
+<section id = "section">
+<div id = "bts_top_section">
 	<div id="divContentsW">
 		<div id="divContents">
 			
@@ -106,47 +108,67 @@ $(function(){
 	
 	
 	<c:if test="${not empty member and member.kind eq 10}">
-		<a class="btn btn-default" href="./noticeWrite.notice">WRITE</a>
+		<a id = "adm_write_btn" class="btn btn-default" href="./noticeWrite.notice">WRITE</a>
 	</c:if>
 	
 	<!-- 페이징 -->
-	<div style = "text-align: center;">
-	<div class="paging">
+<!-- 	<div style = "text-align: center;"> -->
+<!-- 	<div class="paging"> -->
 		
-		<ul class="pagination">
+<!-- 		<ul class="pagination"> -->
 			
-			<c:if test="${page.curBlock>1}">
-				<li>
-					<a href="./noticeList.notice?curPage=${page.startNum-1}">
-					<img src="${pageContext.request.contextPath }/image/notice/prevPage.gif" alt="이전" title="이전">
-					</a>
-				</li>
-			</c:if>
+<%-- 			<c:if test="${page.curBlock>1}"> --%>
+<!-- 				<li> -->
+<%-- 					<a href="./noticeList.notice?curPage=${page.startNum-1}"> --%>
+<%-- 					<img src="${pageContext.request.contextPath }/image/notice/prevPage.gif" alt="이전" title="이전"> --%>
+<!-- 					</a> -->
+<!-- 				</li> -->
+<%-- 			</c:if> --%>
 			
-			<c:forEach begin="${page.startNum}" end="${page.lastNum}" var="i">
-			<li>
-				<a href="./noticeList.notice?curPage=${i}&kind=${kind}&search=${search}">
-					<span>${i}</span>
-				</a>
-			</li>
-			</c:forEach>
+<%-- 			<c:forEach begin="${page.startNum}" end="${page.lastNum}" var="i"> --%>
+<!-- 			<li> -->
+<%-- 				<a href="./noticeList.notice?curPage=${i}&kind=${kind}&search=${search}"> --%>
+<%-- 					<span>${i}</span> --%>
+<!-- 				</a> -->
+<!-- 			</li> -->
+<%-- 			</c:forEach> --%>
 		
 			
-			<c:if test="${page.curBlock < page.totalBlock}">
-				<li>
-					<a href="./${requestScope.notice}List.${requestScope.notice}?curPage=${requestScope.page.lastNum+1}">
-						<img src="${pageContext.request.contextPath }/image/notice/nextPage.gif" alt="다음" title="다음">
-					</a>
-				</li>
-			</c:if>
+<%-- 			<c:if test="${page.curBlock < page.totalBlock}"> --%>
+<!-- 				<li> -->
+<%-- 					<a href="./${requestScope.notice}List.${requestScope.notice}?curPage=${requestScope.page.lastNum+1}"> --%>
+<%-- 						<img src="${pageContext.request.contextPath }/image/notice/nextPage.gif" alt="다음" title="다음"> --%>
+<!-- 					</a> -->
+<!-- 				</li> -->
+<%-- 			</c:if> --%>
 			
-		</ul>
-	</div>
-	</div>
+<!-- 		</ul> -->
+<!-- 	</div> -->
+<!-- 	</div> -->
+	
+		<div class = "paging" style = "text-align: center;">
+			<ul class="pagination pagination-sm">
+				<c:if test="${page.curBlock>1}">
+				<li><a href = "./noticeList.notice?curPage=${page.startNum-1}"><img width="13" height="16"  src="${pageContext.request.contextPath}/image/bookTotalSearch/prevPage.gif" alt="이전" title="이전"></a></li>
+				</c:if>
+
+				<c:forEach begin="${page.startNum}" end="${page.lastNum}" var="i">
+				<li><a
+					href="./noticeList.notice?curPage=${i}&kind=${kind}&search=${search}">${i}</a></li>
+				</c:forEach>
+				
+				<c:if test="${page.curBlock < page.totalBlock}">
+				<li><a href="./${requestScope.notice}List.${requestScope.notice}?curPage=${requestScope.page.lastNum+1}"><img width="13" height="16" src="${pageContext.request.contextPath}/image/bookTotalSearch/nextPage.gif" alt="다음" title="다음"></a></li>
+				</c:if>
+			</ul>
+		</div>
+	
 	<!-- 페이징 끝 -->
 	
 	</div>
 </div>
+</div>
+</section>
 <c:import url="${myContextPath }/temp/footer.jsp"></c:import>
 </body>
 </html>

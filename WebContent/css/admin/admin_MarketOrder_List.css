@@ -16,18 +16,22 @@
 	padding-bottom:30px;
 	background-color:#fff;
 	margin-bottom: 170px;	
-	
-}
-
-#divContents{
 	margin-left:350px;
 	background-color:#fff;
 	margin-right: 200px;
+	margin-top: 50px;
 }
 
-#divTitle{
-	color:#464646;
-	font-size:32px;
+
+#divTitle {
+    color: #464646;
+    display: block;
+    font-size: 1.5em;
+    -webkit-margin-before: 0.83em;
+    -webkit-margin-after: 0.83em;
+    -webkit-margin-start: 0px;
+    -webkit-margin-end: 0px;
+    font-weight: bold;
 }
 
 #divLocation{

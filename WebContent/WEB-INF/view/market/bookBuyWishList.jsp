@@ -56,7 +56,7 @@ $(document).ready(function() {
 				<li>MARKET 찜콩</li>
 			</ul>
 		</div>
-
+	<br><br>
 <form action="./bookBuyWishDelete.market" method="POST">
 		<div class="listTable">
 		<table class="mobileTable tablet" >

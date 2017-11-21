@@ -117,32 +117,23 @@ $(function(){
 				<li>회원 리스트</li>
 			</ul>
 		</div>
-
-	<form name="frm" class="form-inline" action="./memberList.member" method="post">
-	<input type="hidden" name="sel" value="sel">
+<!-- 검색 시작 -->
+		<form name="frm" class="form-inline" action="./memberList.member" method="post">
+		<input type="hidden" name="sel" value="sel">
 	<input type="hidden" name="kind" id="kind0" value="${kind }">
-		<!-- KIND -->
-		<div class="form-group">
-			<div class="col-sm-10">
-				<select name="kind1" id = "kind1">
-					<option class = "kind1" value="id">id</option>
-					<option class = "kind1" value="name">name</option>
-					<option class = "kind1" value="email">email</option>
+			<fieldset>
+				<span class="bunch">
+					<select name="kind1" id = "kind1">
+					<option class = "kind1" value="id">ID</option>
+					<option class = "kind1" value="name">NAME</option>
+					<option class = "kind1" value="email">EMAIL</option>
 				</select>
-			</div>
-		</div>
-			<!-- SEARCH -->
-		<div class="form-group">
-			<div class="col-sm-10">
-				<input type="text" class="form-control" id="search" placeholder="Enter" name="search" value = "${search}">
-			</div>
-		</div>
-			<div class="form-group">
-			<div class="col-sm-offset-2 col-sm-10">
-				<input type="submit" id = "search" class="btn btn-default" value="Search">
-			</div>
-		</div>
-	</form>
+				<input type="text" id = "search" name = "search" value = "${search}" class="inputTextType3 sw" maxlength="100" title="검색어" placeholder="검색어를 입력하세요">
+				</span>
+				<input type="submit" class="btnType5" value="검색" id = "search">
+			</fieldset>
+		</form>
+		<!-- 검색 끝 -->
 	
 	<div style = "height: 50px"></div>
 	<form action="">
