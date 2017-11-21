@@ -1,7 +1,5 @@
 package com.fnw.market;
 
-import java.util.ArrayList;
-
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
@@ -27,7 +25,6 @@ public class BookBuyWishService implements Action {
 			// TODO Auto-generated catch block
 			e1.printStackTrace();
 		}
-		
 		int curPage = 1;
 		try {
 			curPage = Integer.parseInt(request.getParameter("curPage"));
@@ -46,6 +43,12 @@ public class BookBuyWishService implements Action {
 			e.printStackTrace();
 		}
 		if(result > 0) {
+			try {
+				result = new Market_TotalDAO().bookBuyWish(num);
+			} catch (Exception e) {
+				// TODO Auto-generated catch block
+				e.printStackTrace();
+			}
 			request.setAttribute("message", "❤ 완료");
 		} else {
 			request.setAttribute("message", "❤ 실패");
