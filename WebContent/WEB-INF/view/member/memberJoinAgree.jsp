@@ -63,6 +63,8 @@
 <body>
 <c:import url="${myContextPath}/temp/header.jsp"></c:import>
 
+<section id = "section">
+<div id = "bts_top_section">
 <div id="divContentsW">
 	<div id="divContents">
 			
@@ -129,6 +131,8 @@
 
 	</div>
 </div>
+</div>
+</section>
 <c:import url="${myContextPath}/temp/footer.jsp"></c:import>
 </body>
 </html>
