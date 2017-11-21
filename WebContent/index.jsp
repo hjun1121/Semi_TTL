@@ -91,62 +91,45 @@ function showSlides(n) {
 				<div>
 					<div class="banner">
 						<div class="slideshow-container">
-							  <div class="mySlides fade">
+							  <div class="mySlides fade_banner" style="display: block;">
 							    <div class="numbertext">1 / 4</div>
-							    <img src="${pageContext.request.contextPath }/image/index/hj.png" style="width:100%">
-							    <div class="text">Caption Text</div>
+							    <a href="./library/libraryMain.library?library=1" target="_blank" class="bannerImg">
+							    	<img src="${pageContext.request.contextPath }/image/index/hj.png" style="width:100%">
+							    </a>
+							    <div class="text">기흥 도서관</div>
 							  </div>
 							
-							  <div class="mySlides fade">
+							  <div class="mySlides fade_banner">
 							    <div class="numbertext">2 / 4</div>
-							    <img src="${pageContext.request.contextPath }/image/index/hj.png"" style="width:100%">
-							    <div class="text">Caption Two</div>
+							    <a href="./library/libraryMain.library?library=2" target="_blank" class="bannerImg">
+							   		<img src="${pageContext.request.contextPath }/image/index/hj2.png" style="width:100%">
+							    </a>
+							    <div class="text">송파 도서관</div>
 							  </div>
 							
-							  <div class="mySlides fade">
+							  <div class="mySlides fade_banner">
 							    <div class="numbertext">3 / 4</div>
-							    <img src="${pageContext.request.contextPath }/image/index/hj.png"" style="width:100%">
-							    <div class="text">Caption Three</div>
+							    <a href="./library/libraryMain.library?library=3" target="_blank" class="bannerImg">
+							    	<img src="${pageContext.request.contextPath }/image/index/hj3.png" style="width:100%">
+							    </a>
+							    <div class="text">장안 도서관</div>
 							  </div>
-							  <div class="mySlides fade">
+							  <div class="mySlides fade_banner">
 							    <div class="numbertext">4 / 4</div>
-							    <img src="${pageContext.request.contextPath }/image/index/hj.png"" style="width:100%">
-							    <div class="text">Caption Three</div>
+							    <a href="./library/libraryMain.library?library=4" target="_blank" class="bannerImg">
+							   		<img src="${pageContext.request.contextPath }/image/index/hj4.png" style="width:100%">
+							    </a>
+							    <div class="text">분당 도서관</div>
 							  </div>
-							  
-							<a class="prev" onclick="plusSlides(-1)">&#10094;</a>
-							<a class="next" onclick="plusSlides(1)">&#10095;</a>
+							
+							<div >
+								<a class="prev" onclick="plusSlides(-1)">&#10094;</a>
+								<a class="next" onclick="plusSlides(1)">&#10095;</a>
+							</div>
 						
 						</div>
 						<br>
 						
-						<div style="text-align:center">
-  							<span class="dot" onclick="currentSlide(1)"></span> 
-  							<span class="dot" onclick="currentSlide(2)"></span> 
-  							<span class="dot" onclick="currentSlide(3)"></span> 
-  							<span class="dot" onclick="currentSlide(4)"></span>
-						</div>
-					
-						<%-- <ul>
-							<li class="">
-								<a href="#" class="navi"><img src="#"></a>
-								<a href="#" target="_blank" class="bannerImg">
-									<img src="${pageContext.request.contextPath }/image/index/hj.png" width="305px;" height="223px;">
-								</a>
-							</li>							
-							<li class="">
-								<a href="#" class="navi"><img src="#"></a>
-								<a href="#" target="_blank" class="bannerImg"><img src="${pageContext.request.contextPath }/image/index/hj.png" width="305px;" height="223px;"></a>
-							</li>						
-							<li class="on">
-								<a href="#" class="navi"><img src="#"></a>
-								<a href="#" target="_blank" class="bannerImg"><img src="${pageContext.request.contextPath }/image/index/hj.png" width="305px;" height="223px;"></a>
-							</li>
-							<li class="">
-								<a href="#" class="navi"><img src="#"></a>
-								<a href="#" target="_blank" class="bannerImg"><img src="${pageContext.request.contextPath }/image/index/hj.png" width="305px;" height="223px;"></a>
-							</li>
-						</ul> --%>
 					</div>
 					<div class="notice">
 						<h2>공지사항</h2>
@@ -198,7 +181,7 @@ function showSlides(n) {
 				</div>
 				
 			</div>
-<%-- 			<div class="book">
+			<div class="book">
 				<ul>
 					<li class="on"><h2><a href="#">신작 도서</a></h2>
 					
@@ -244,22 +227,12 @@ function showSlides(n) {
 							</div>
 					</li>
 				</ul>
-			</div> --%>
+			</div>
 		</div>
 		
 		<!-- 메인 컨텐츠 끝 -->
-		
+		<br><br><br><br>
 		<!-- ////////////////// -->
-	
-	<!-- 도서관 페이지  -->
-	
-	<h2>도서관 페이지</h2>
-	<p><a href="./library/libraryMain.library?library=1">Kim_Lib</a></p>
-	<p><a href="./library/libraryMain.library?library=2">Gee_Lib</a></p>
-	<p><a href="./library/libraryMain.library?library=3">Hee_Lib</a></p>
-	<p><a href="./library/libraryMain.library?library=4">Ssin_Lib</a></p>
-	<div style = "height: 10px"></div>
-
 	
 	<c:if test="${not empty sessionScope.member }">
 	<p><a href="./market/marketOrder.market?id=${member.id }">마켓판매신청form</a></p><!-- 로그인시만 이용 -->
