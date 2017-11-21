@@ -14,9 +14,9 @@
 		<li id="leftBar6"><a href="../market/marketOrderList.market?id=${member.id }">중고 거래 현황 </a></li>
 		<li id="leftBar7"><a href="../market/bookBuyWishList.market?id=${member.id }">중고 구매 찜콩</a></li>
 		<c:if test="${member.kind eq 10 }">
-		<li id="leftBar10"><a href="../member/memberList.member">회원리스트(관)</a></li>
-		<li id="leftBar11"><a href="../book/bookOrderListAdmin.book">책 신청 목록(관)</a></li>
-		<li id="leftBar12"><a href="../market/marketOrderAdmin.market">마켓 신청 목록(관)</a></li>
+		<li id="leftBar10"><a href="../member/memberList.member">회원리스트(관리자)</a></li>
+		<li id="leftBar11"><a href="../book/bookOrderListAdmin.book">책 신청 내역(관리자)</a></li>
+		<li id="leftBar12"><a href="../market/marketOrderAdmin.market">중고 신청 내역(관리자)</a></li>
 		</c:if>
 		<li id="leftBar9"><a href="../member/memberLogout.member">로그아웃</a></li>
 	</ul>
