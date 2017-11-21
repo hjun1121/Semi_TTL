@@ -20,6 +20,11 @@
 		$("#btn").click(function(){
 			location.href="./bookBuy.market?num=${dto.num}";
 		});
+		
+		$("#btn_NO").click(function(){
+			location.href="../index.jsp";
+		});
+		
 	});
 </script>
 </head>
@@ -160,9 +165,16 @@
 		    </div>
 		 </div>
 		</div> 
-			<input type="button" id="btn" value="구매하기">
-			
 		
+			<div class="btnCenter mt30" id="center">
+				<span class="button1">
+					<input type="button" class="type4 large" id="btn_NO" value="취소">
+				</span>	
+				<span class="button1">
+					<input type="button" class="type1 large" id="btn" value="구매">
+				</span> 
+			</div>
+			
 		</div>
 	</div>
 <c:import url="${myContextPath}/temp/footer.jsp"></c:import>

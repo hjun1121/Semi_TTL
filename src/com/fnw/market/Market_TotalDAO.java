@@ -18,7 +18,7 @@ public class Market_TotalDAO {
 		PreparedStatement st = con.prepareStatement(sql);
 		st.setInt(1, num);
 		st.setInt(2, num);
-		
+
 		int result = st.executeUpdate();
 		DBConnector.disConnect(st, con);
 		return result;
