@@ -65,7 +65,7 @@
 	background:none;
 }
 <!--상단 바 끝 -->
-input.btnType5{
+input.btnType5.sBtn{
 	margin-top: 5px;
 }
 select#kind {
