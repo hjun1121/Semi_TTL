@@ -249,3 +249,74 @@ form {
 	text-align: center;
 }
 
+
+<!-- 버튼 시작 -->
+
+.btnCenter {
+    margin: 10px 0;
+    text-align: center;
+}
+
+
+.mt30 {
+    margin-top: 30px !important;
+}
+
+.joinCont .btnCenter span {
+    margin: 0px 1px;
+}
+
+.button1 {
+    display: inline-block;
+    vertical-align: middle;
+}
+.button1 a.large {
+    width: 150px;
+    height: 50px;
+    line-height: 48px;
+    font-size: 16px;
+}
+.button1 .type4 {
+	width: 150px;
+    height: 50px;
+    color: #666;
+    background: #fff;
+    border: 1px solid #aaa;
+}
+.button1 a {
+    font-weight: 500;
+    text-align: center;
+    -webkit-box-sizing: border-box;
+    -moz-box-sizing: border-box;
+    -ms-box-sizing: border-box;
+    -o-box-sizing: border-box;
+    box-sizing: border-box;
+}
+
+a:visited {
+    color: #4c4c4c;
+}
+a:link {
+    color: #4c4c4c;
+    text-decoration: none;
+}
+span a {
+    display: block;
+}
+.button1 .type1 {
+	width: 150px;
+    height: 50px;
+    color: #fff;
+    background: #033823;
+    border: 1px solid #033823;
+}
+
+#center
+{
+	text-align: center;
+}
+
+
+<!-- 버튼 끝 -->
+
+
