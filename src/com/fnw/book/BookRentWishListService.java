@@ -45,6 +45,7 @@ public class BookRentWishListService implements Action {
 			}
 			PageMaker pageMaker = new PageMaker(curPage, totalCount);
 			list = book_Rent_WishDAO.selectList(id,pageMaker.getMakeRow(),kind,search);
+			request.setAttribute("size", list.size());
 			request.setAttribute("id", id);
 			request.setAttribute("bookRentWishList", list);
 			request.setAttribute("id", id);

@@ -1,11 +1,15 @@
 package com.fnw.book;
 
+import java.sql.Connection;
+import java.sql.SQLException;
+
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
 import com.fnw.action.Action;
 import com.fnw.action.ActionFoward;
 import com.fnw.library.LibraryDAO;
+import com.fnw.util.DBConnector;
 
 public class BookRentService implements Action {
 
@@ -37,14 +41,32 @@ public class BookRentService implements Action {
 				rent_id = "";
 			}
 			int result = 0;
+			Connection con = null;
 			try {
+				con = DBConnector.getConnect();
+				con.setAutoCommit(false);
 				Book_TotalDAO book_TotalDAO = new Book_TotalDAO();
 				Book_TotalDTO book_TotalDTO = book_TotalDAO.selectOne(num);
-				result = libraryDAO.bookRent(book_TotalDTO, rent_id);
+				result = libraryDAO.bookRent(book_TotalDTO, rent_id, con);
+				Book_Rent_DetailsDAO book_Rent_DetailsDAO = new Book_Rent_DetailsDAO();
+				result = book_Rent_DetailsDAO.insert(book_TotalDTO, rent_id, con);
 			} catch (Exception e) {
 				e.printStackTrace();
+				try {
+					con.rollback();
+					result=0;
+				} catch (SQLException e1) {
+					e1.printStackTrace();
+				}
+			}finally {
+				try {
+					con.setAutoCommit(true);
+					con.close();
+				} catch (SQLException e) {
+					e.printStackTrace();
+				}
 			}
-
+			
 			if(result > 0) {
 				request.setAttribute("message", "대여 완료");
 			}else {

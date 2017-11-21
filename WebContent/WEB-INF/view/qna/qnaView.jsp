@@ -7,6 +7,7 @@
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
 <link rel="stylesheet" href="${pageContext.request.contextPath }/css/temp/header.css">
 <link rel="stylesheet" href="${pageContext.request.contextPath }/css/temp/footer.css">
+<link rel="stylesheet" href="${pageContext.request.contextPath }/css/qna/qnaView.css">
 <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
 <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
@@ -76,31 +77,61 @@ $(function(){
 <body>
 <c:import url="${myContextPath}/temp/header.jsp"></c:import>
 
-<h2>QnA Details</h2>
-<form action="../qna/qnaUpdate.qna" method="get" name="frm">
-		<p>num<input type="text" name="num" value=${qnaDTO.num } readonly="readonly"></p>
-		<input type="hidden" name="type" value=${qnaDTO.type } readonly="readonly">
-		<p>type<input type="text" id="type" readonly="readonly" ></p>
-		<p>title<input type="text" name="title" value=${qnaDTO.title } readonly="readonly"></p>
-		<p>contents<input type="text" name="contents" value=${qnaDTO.contents } readonly="readonly"></p>
-		<p>writer<input type="text" name="writer" value=${qnaDTO.writer } readonly="readonly"></p>
-		<p>date<input type="text" name="date" value=${qnaDTO.reg_date } readonly="readonly"></p>
-		<p>hit<input type="text" name="hit" value=${qnaDTO.hit } readonly="readonly" ></p>
-		<input type="hidden" name="library" value=${qnaDTO.library } readonly="readonly">
-		<p>library <input type="text" id="library" value=${qnaDTO.library } readonly="readonly"></p>
+<section id = "section">
+<div id = "bts_top_section">
+	<div id="divContentsW">
+		<div id="divContents">
+			
+			<h2 id="divTitle">QnA</h2>
+			<div id="divLocation">
+				<ul>
+					<li class="home"><a href="#"><img src="${pageContext.request.contextPath }/image/notice/home.png" alt="HOME"></a></li>
+					<li>&gt;</li>
+					<li>QnA</li>
+				</ul>
+			</div>
+		</div>
 		
-		<input type="submit" value="수정">
-		<a href="../qna/qnaDelete.qna?num=${qnaDTO.num }"><input type="button" value="삭제"></a>
-		<a href="../qna/qnaList.qna"><input type="button" value="list"></a>
-</form>	
-<hr>
-<form action="../qnaReply/qnaReplyInsert.qnaReply" method="post">
-	<input type ="hidden" value="${qnaDTO.num }" name="pNum">
-	<input type ="hidden" value="${qnaDTO.pw }" name="pw">
-	<p><textarea name="contents"></textarea>
-	<button type="submit">등록</button> </p>
-</form>
-
+		<form id = "qnaDetail_frm" action="../qna/qnaUpdate.qna" method="get" name="frm">
+		<div class = "boardInfo">
+			<input type="hidden" name="library" value=${qnaDTO.library } readonly="readonly">
+			<p class="boardInfoTitle">${qnaDTO.title}</p>
+			<p class="writeInfo">${qnaDTO.reg_date}<span>조회&nbsp;${qnaDTO.hit}</span></p>
+			<dl class="writerInfo">
+					<dd class="writer">
+						<span>${qnaDTO.writer}</span>
+					</dd>
+					<dd class="writerEmail">
+							<span>${qnaDTO.type}</span>
+					</dd>
+			</dl>
+		</div>
+		<div class = "boardContent">
+		<br>
+			<p>${qnaDTO.contents}</p>
+		<br>
+		</div>
+		<div id = "bottom_btns">
+			<input type="submit" value="수정">
+			<a href="../qna/qnaDelete.qna?num=${qnaDTO.num }"><input type="button" value="삭제"></a>
+			<a href="../qna/qnaList.qna"><input type="button" value="list"></a>
+		</div>
+		</form>
+		
+		<hr>
+		
+		<div class = "boardList">
+		<form action="../qnaReply/qnaReplyInsert.qnaReply" method="post">
+			<input type ="hidden" value="${qnaDTO.num}" name="pNum">
+			<input type ="hidden" value="${qnaDTO.pw}" name="pw">
+			<p><textarea name="contents" class = "reply"></textarea>
+			<button type="submit">등록</button> </p>
+		</form>
+		</div>
+	</div>
+</div>
+</section>
+<!-- -------------------------------------------------------------------- -->
 <c:if test="${replyList ne null }">
 	<table border="1">
 		<c:forEach items="${replyList }" var="dto" varStatus="i">

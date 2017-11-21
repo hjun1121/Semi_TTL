@@ -64,6 +64,7 @@ public class SeatDetailsListService implements Action {
 			}
 			PageMaker pageMaker = new PageMaker(curPage, totalCount);
 			list = seat_DetailsDAO.selectList(id,pageMaker.getMakeRow(), p_date);
+			request.setAttribute("size", list.size());
 			request.setAttribute("seatList", list);
 			request.setAttribute("id", id);
 			request.setAttribute("year", year);

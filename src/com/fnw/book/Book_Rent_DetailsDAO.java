@@ -17,7 +17,7 @@ public class Book_Rent_DetailsDAO {
 		Connection con = DBConnector.getConnect();
 		String sql = "select * from "
 				+ "(select rownum R, N.* from "
-				+ "(select * from book_rent_details where in_time<= ? and id=? order by num asc) N)"
+				+ "(select * from book_rent_details where TO_CHAR(in_time,'YY/MM/DD') <= ? and id=? order by bnum asc) N)"
 				+ "where R between ? and ?";
 		PreparedStatement st = con.prepareStatement(sql);
 		st.setString(1, search);
@@ -42,6 +42,7 @@ public class Book_Rent_DetailsDAO {
 			book_Rent_DetailsDTO.setIn_time(rs.getDate("in_time"));
 			book_Rent_DetailsDTO.setOut_time(rs.getDate("out_time"));
 			book_Rent_DetailsDTO.setLate_date(rs.getInt("late_date"));
+			book_Rent_DetailsDTO.setBnum(rs.getInt("bnum"));
 			
 			list.add(book_Rent_DetailsDTO);
 		}
@@ -49,12 +50,12 @@ public class Book_Rent_DetailsDAO {
 		DBConnector.disConnect(rs, st, con);
 		return list;
 	}
-	public Book_Rent_DetailsDTO selectOne(int num) throws Exception{
+	public Book_Rent_DetailsDTO selectOne(int bnum) throws Exception{
 		Connection con = DBConnector.getConnect();
-		String sql = "select * from book_rent_details where num=?";
+		String sql = "select * from book_rent_details where bnum=?";
 		PreparedStatement st = con.prepareStatement(sql);
-		st.setInt(1, num);
-		
+		st.setInt(1, bnum);
+		System.out.println("DAObNum"+bnum);
 		ResultSet rs = st.executeQuery();
 		
 		Book_Rent_DetailsDTO book_Rent_DetailsDTO = null;
@@ -71,6 +72,7 @@ public class Book_Rent_DetailsDAO {
 			book_Rent_DetailsDTO.setIn_time(rs.getDate("in_time"));
 			book_Rent_DetailsDTO.setOut_time(rs.getDate("out_time"));
 			book_Rent_DetailsDTO.setLate_date(rs.getInt("late_date"));
+			book_Rent_DetailsDTO.setBnum(bnum);
 		}
 		return book_Rent_DetailsDTO;
 	}
@@ -84,11 +86,11 @@ public class Book_Rent_DetailsDAO {
 		DBConnector.disConnect(st, con);
 		return result;
 	}
-	public int delete(int num) throws Exception{
+	public int delete(int bnum) throws Exception{//
 		Connection con = DBConnector.getConnect();
-		String sql = "delete from book_rent_details where num=?";
+		String sql = "delete from book_rent_details where bnum=?";
 		PreparedStatement st = con.prepareStatement(sql);
-		st.setInt(1, num);
+		st.setInt(1, bnum);
 		
 		int result = st.executeUpdate();
 		
@@ -119,7 +121,7 @@ public class Book_Rent_DetailsDAO {
 	}
 	
 	public int bookReturn(int num,long lateDate,Connection con) throws Exception {
-		String sql = "update book_rent_details set out_time=sysdate, late_date=? where num = ?";
+		String sql = "update book_rent_details set out_time=sysdate, late_date=? where bnum = ?";
 		PreparedStatement st = con.prepareStatement(sql);
 		st.setLong(1, lateDate);
 		st.setInt(2, num);
@@ -131,7 +133,7 @@ public class Book_Rent_DetailsDAO {
 	
 	public Book_Rent_DetailsDTO selectTime(int num) throws Exception{
 		Connection con = DBConnector.getConnect();
-		String sql = "select in_time from book_rent_details where num=?";
+		String sql = "select in_time from book_rent_details where bnum=?";
 		PreparedStatement st = con.prepareStatement(sql);
 		st.setInt(1, num);
 		
@@ -143,5 +145,40 @@ public class Book_Rent_DetailsDAO {
 		}
 		
 		return book_Rent_DetailsDTO;
+	}
+	public int insert(Book_TotalDTO book_TotalDTO,String rent_id, Connection con)throws Exception{
+		String sql = "insert into book_rent_details values(?,?,?,?,?,?,?,?,sysdate,null,0,bookdetails_seq.nextval)";
+		PreparedStatement st = con.prepareStatement(sql);
+		st = con.prepareStatement(sql);
+		st.setInt(1, book_TotalDTO.getNum());
+		st.setString(2, book_TotalDTO.getTitle());
+		st.setString(3, book_TotalDTO.getSection());
+		st.setString(4, book_TotalDTO.getWriter());
+		st.setString(5, book_TotalDTO.getCompany());
+		st.setString(6, book_TotalDTO.getPublish_date());
+		st.setString(7, rent_id);
+		st.setInt(8, book_TotalDTO.getLibrary());
+		int result = st.executeUpdate();
+		st.close();
+		
+		return result;
+	}
+	public int insert(Book_TotalDTO book_TotalDTO,String rent_id)throws Exception{
+		Connection con = DBConnector.getConnect();
+		String sql = "insert into book_rent_details values(?,?,?,?,?,?,?,?,sysdate,null,0,bookdetails_seq.nextval)";
+		PreparedStatement st = con.prepareStatement(sql);
+		st = con.prepareStatement(sql);
+		st.setInt(1, book_TotalDTO.getNum());
+		st.setString(2, book_TotalDTO.getTitle());
+		st.setString(3, book_TotalDTO.getSection());
+		st.setString(4, book_TotalDTO.getWriter());
+		st.setString(5, book_TotalDTO.getCompany());
+		st.setString(6, book_TotalDTO.getPublish_date());
+		st.setString(7, rent_id);
+		st.setInt(8, book_TotalDTO.getLibrary());
+		int result = st.executeUpdate();
+		st.close();
+		
+		return result;
 	}
 }
