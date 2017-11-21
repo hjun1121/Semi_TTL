@@ -116,13 +116,9 @@
 		</table>
 	</div>
 	
-	
-	<!-- /////////////////////// -->
-
-
-		<input type="button" class = "btn btn-default" id="write_btn" value="글쓰기">
-	
-	<!-- qna list 끝 -->
+	<c:if test="${not empty member}">
+	<input type="button" class = "btn btn-default" id="write_btn" value="글쓰기">
+	</c:if>
 
 	
 	<div class = "paging" style = "text-align: center;">
