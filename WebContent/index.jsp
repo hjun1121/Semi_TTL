@@ -14,7 +14,13 @@
 <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
 <link rel="stylesheet" href="${pageContext.request.contextPath }/css/index/index.css">
 <title>Total Library Page</title>
-
+<script type="text/javascript">
+	$(function(){
+		$("#btnS").click(function(){
+			document.totalForm.submin();
+		});
+	});
+</script>
 </head>
 <body>
 <c:import url="${myContextPath}/temp/header.jsp"></c:import>
@@ -28,14 +34,14 @@
 				<div class="searchForm">
 					<ul>
 						<li class="on">
-							<form name="totalForm" action="#" method="get">
+							<form name="totalForm" action="./book/bookTotalSearch.book" method="get">
 								<input type="hidden" id="service_type" name="service_type" value="brief">
 								<fieldset>
 									<legend>제목으로 검색</legend>
 									<span class="searchBox">
-										<input type="text" class="searchInput" title="제목으로 검색" placeholder="제목으로 도서관 소장자료를 검색할 수 있습니다.">
+										<input type="text" class="searchInput" name="search" title="제목으로 검색" placeholder="제목으로 도서관 소장자료를 검색할 수 있습니다.">
 									</span>
-									<input type="image" src="${pageContext.request.contextPath }/image/index/searchBtn.png" value="검색" class="searchBtn" title="검색">
+									<input type="image" id="btnS" src="${pageContext.request.contextPath }/image/index/searchBtn.png" value="검색" class="searchBtn" title="검색">
 								</fieldset>
 							</form>
 						</li>

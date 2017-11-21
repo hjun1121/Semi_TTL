@@ -14,6 +14,12 @@
 <link rel="stylesheet" href="${pageContext.request.contextPath }/css/member/myPage.css">
 <link rel="stylesheet" href="${pageContext.request.contextPath }/css/admin/admin_bookOrderList.css">
 <title>book order list 관리자용</title>
+<script type="text/javascript">
+	$(function(){
+		
+	});
+
+</script>
 </head>
 <body>
 <c:import url="${myContextPath}/temp/header.jsp"></c:import>
