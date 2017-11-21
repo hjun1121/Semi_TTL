@@ -48,6 +48,7 @@ public class MarketOrderListService implements Action {
 			request.setAttribute("search", search);
 			request.setAttribute("kind", kind);
 			request.setAttribute("page", pageMaker.getMakePage());
+			request.setAttribute("curPage", curPage);
 		} catch (Exception e) {
 			e.printStackTrace();
 		}

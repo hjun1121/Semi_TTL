@@ -41,7 +41,7 @@ public class AdminBookOrderListService implements Action {
 				request.setAttribute("size", ar.size());
 				request.setAttribute("orderList", ar);
 				request.setAttribute("page", pageMaker.getMakePage());
-				
+				request.setAttribute("curPage", curPage);
 			} catch (Exception e) {
 				e.printStackTrace();
 			}
@@ -55,6 +55,7 @@ public class AdminBookOrderListService implements Action {
 				request.setAttribute("size", ar.size());
 				request.setAttribute("orderList", ar);
 				request.setAttribute("page", pageMaker.getMakePage());
+				request.setAttribute("curPage", curPage);
 				
 			} catch (Exception e) {
 				e.printStackTrace();
@@ -69,6 +70,7 @@ public class AdminBookOrderListService implements Action {
 				request.setAttribute("size", ar.size());
 				request.setAttribute("orderList", ar);
 				request.setAttribute("page", pageMaker.getMakePage());
+				request.setAttribute("curPage", curPage);
 				
 			} catch (Exception e) {
 				e.printStackTrace();

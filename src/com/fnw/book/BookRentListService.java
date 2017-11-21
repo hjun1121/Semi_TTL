@@ -30,7 +30,7 @@ public class BookRentListService implements Action {
 			curPage=1;
 		}
 		
-		SimpleDateFormat sdf = new SimpleDateFormat("yyyy");
+		SimpleDateFormat sdf = new SimpleDateFormat("yy");
         Calendar c1 = Calendar.getInstance();
         String strToday = sdf.format(c1.getTime());
 
@@ -71,6 +71,7 @@ public class BookRentListService implements Action {
 			request.setAttribute("month", month);
 			request.setAttribute("day", day);
 			request.setAttribute("page", pageMaker.getMakePage());
+			request.setAttribute("curPage", curPage);
 		} catch (Exception e) {
 			e.printStackTrace();
 		}

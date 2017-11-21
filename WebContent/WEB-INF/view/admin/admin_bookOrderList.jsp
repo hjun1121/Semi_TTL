@@ -14,6 +14,18 @@
 <link rel="stylesheet" href="${pageContext.request.contextPath }/css/member/myPage.css">
 <link rel="stylesheet" href="${pageContext.request.contextPath }/css/admin/admin_bookOrderList.css">
 <title>book order list 관리자용</title>
+<script type="text/javascript">
+	$(function(){
+		$(".cur").each(function(){
+			 if($(this).attr("title") == ${curPage }) {
+				 $(this).attr("style", "color:red;");
+			 }
+		 });
+		
+		
+	});
+
+</script>
 </head>
 <body>
 <c:import url="${myContextPath}/temp/header.jsp"></c:import>
@@ -100,13 +112,11 @@
 			</c:if>
 			
 			<c:forEach begin="${page.startNum}" end="${page.lastNum}" var="i">
-			<li><a
-				href="./bookOrderListAdmin.book?curPage=${i}">${i}</a></li>
+			<li><a class="cur" title="${i }" href="./bookOrderListAdmin.book?curPage=${i}">${i}</a></li>
 			</c:forEach>
 			
 			<c:if test="${page.curBlock < page.totalBlock}">
-			<li><a
-				href="./bookOrderListAdmin.book?curPage=${requestScope.page.lastNum+1}">[다음]</a></li>
+			<li><a href="./bookOrderListAdmin.book?curPage=${requestScope.page.lastNum+1}">[다음]</a></li>
 			</c:if>
 		</ul>
 	</div>

@@ -15,6 +15,13 @@
 <link rel="stylesheet" href="${pageContext.request.contextPath }/css/market/marketOrderList.css">
 <script type="text/javascript">
 $(function(){
+	
+	$(".cur").each(function(){
+		 if($(this).attr("title") == ${curPage }) {
+			 $(this).attr("style", "color:red;");
+		 }
+	 });
+	
 	 var kind = '${kind}';
 	 
 	 $(".kind").each(function(){
@@ -123,8 +130,7 @@ $(function(){
 			<li><button class="go" id="${page.startNum-1}">[이전]</button></li>
 			</c:if>
 			<c:forEach begin="${page.startNum}" end="${page.lastNum}" var="i">
-			<li><a
-				href="./marketOrderList.market?curPage=${i}&id=${id }&kind=${kind}&search=${search}">${i}</a></li>
+			<li><a class="cur" title="${i }" href="./marketOrderList.market?curPage=${i}&id=${id }&kind=${kind}&search=${search}">${i}</a></li>
 			</c:forEach>
 			<c:if test="${page.curBlock < page.totalBlock}">
 			<li><a

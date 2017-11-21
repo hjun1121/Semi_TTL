@@ -40,8 +40,8 @@ public class AdminMarketOrderListService implements Action {
 			request.setAttribute("size", ar.size());
 			request.setAttribute("list", ar);
 			request.setAttribute("page", pageMaker.getMakePage());
+			request.setAttribute("curPage", curPage);
 		} catch (Exception e) {
-			// TODO Auto-generated catch block
 			e.printStackTrace();
 		}
 		actionFoward.setCheck(true);
