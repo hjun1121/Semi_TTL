@@ -36,8 +36,12 @@ public class NoticeListService implements Action {
 		int totalCount=0;
 		try {
 			totalCount = noticeDAO.getTotalCount(kind, search);
+			if(totalCount==0) {
+				totalCount=1;
+			}
 			PageMaker pageMaker = new PageMaker(curPage, totalCount);
 			List<NoticeDTO> ar=noticeDAO.selectList(pageMaker.getMakeRow(), kind, search);
+			request.setAttribute("size", ar.size());
 			request.setAttribute("list", ar);
 			request.setAttribute("kind", kind);
 			request.setAttribute("search", search);

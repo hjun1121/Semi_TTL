@@ -1,6 +1,7 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
+<%@ taglib prefix="fn" uri="http://java.sun.com/jsp/jstl/functions" %>
 <!DOCTYPE html>
 <html>
 <head>
@@ -39,7 +40,10 @@
 					<li>소장도서</li>
 				</ul>
 			</div>
-	
+	<c:if test="${size eq 0 }">
+		<h2 id="divTitle">도서 신청 내역이 없습니다.</h2>
+	</c:if>
+	<c:if test="${size ne 0 }">
 		<div class = "listTable">
 			<table class = "mobileTable tablet">
 				<thead>
@@ -59,7 +63,7 @@
 	 				<td scope="row" data-class="expand" style="overflow: hidden; max-width: 420px;">${bookOrder_list.title }</td>
 					<td scope="row" style="display: table-cell;">${bookOrder_list.writer}</td>
 					<td scope="row" style="display: table-cell;">${bookOrder_list.company}</td>
-					<td scope="row" style="display: table-cell;">${bookOrder_list.id}</td>
+					<td scope="row" style="display: table-cell;">${fn:substring(bookOrder_list.id,0,2) }***</td>
 					<c:choose>
 					<c:when test="${bookOrder_list.state ne 1}">
 						<td scope="row" style="display: table-cell;">대기</td>
@@ -72,7 +76,7 @@
 			</c:forEach>	
 			</table>
 		</div>
-				
+		</c:if>
 		<c:if test="${not empty member}">
 		<form id = "order_btn" action="./bookOrderForm.book">
 			<button style = "float: right;" class = "btn btn-default" type = "submit">신청하기</button>		

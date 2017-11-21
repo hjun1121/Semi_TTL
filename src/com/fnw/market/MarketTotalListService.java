@@ -10,6 +10,7 @@ import com.fnw.action.Action;
 import com.fnw.action.ActionFoward;
 import com.fnw.member.MemberDTO;
 import com.fnw.util.PageMaker;
+import com.sun.corba.se.spi.orbutil.fsm.Guard.Result;
 
 public class MarketTotalListService implements Action {
 
@@ -52,14 +53,19 @@ public class MarketTotalListService implements Action {
 		try {
 			buy_wish_list = book_Buy_WishDAO.selectList(id);
 			request.setAttribute("curPage", curPage);
+			request.setAttribute("size", buy_wish_list.size());
 			request.setAttribute("buy_wish_list", buy_wish_list);
 		} catch (Exception e) {
 			e.printStackTrace();
 		}
 		try {
 			totalCount = market_TotalDAO.getTotalCount();
+			if(totalCount==0) {
+				totalCount=1;
+			}
 			PageMaker pageMaker = new PageMaker(curPage, totalCount);
 			ar = market_TotalDAO.selectList(pageMaker.getMakeRow(), kind, search);
+			request.setAttribute("size", ar.size());
 			request.setAttribute("list", ar);
 			request.setAttribute("page", pageMaker.getMakePage());
 			request.setAttribute("curPage", curPage);

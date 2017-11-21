@@ -108,7 +108,10 @@
 		</form>
 		<br>
 		<!-- 검색 끝 -->
-			
+		<c:if test="${size eq 0 }">
+			<h2 id="divTitle">중고 내역이 없습니다.</h2>
+		</c:if>	
+		<c:if test="${size ne 0 }">
 		<!-- list 시작 -->
 		<div class="listTable">
 			<table id ="marketList" class="mobileTable tablet">
@@ -169,7 +172,7 @@
 		</table>
 			</div>
 			<!-- list 끝 -->
-		
+		</c:if>	
 		<!-- 페이징  시작 -->
 		<div style = "text-align: center;">
 			<ul class="pagination pagination-sm">
