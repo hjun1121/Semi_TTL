@@ -16,7 +16,6 @@ public class BookOrderListService implements Action {
 	public ActionFoward doProcess(HttpServletRequest request, HttpServletResponse response) {
 		ActionFoward actionFoward = new ActionFoward();
 		String id = ((MemberDTO)request.getSession().getAttribute("member")).getId();
-		
 		ArrayList<Book_OrderDTO> list = new ArrayList<>();
 		
 		int curPage = 0;
@@ -58,6 +57,7 @@ public class BookOrderListService implements Action {
 				request.setAttribute("id", id);
 				request.setAttribute("search", search);
 				request.setAttribute("kind", kind);
+				request.setAttribute("curPage", curPage);
 				request.setAttribute("page", pageMaker.getMakePage());
 			} catch (Exception e) {
 				e.printStackTrace();
@@ -78,6 +78,7 @@ public class BookOrderListService implements Action {
 				request.setAttribute("id", id);
 				request.setAttribute("search", search);
 				request.setAttribute("kind", kind);
+				request.setAttribute("curPage", curPage);
 				request.setAttribute("page", pageMaker.getMakePage());
 			} catch (Exception e) {
 				e.printStackTrace();
@@ -98,6 +99,7 @@ public class BookOrderListService implements Action {
 				request.setAttribute("id", id);
 				request.setAttribute("search", search);
 				request.setAttribute("kind", kind);
+				request.setAttribute("curPage", curPage);
 				request.setAttribute("page", pageMaker.getMakePage());
 			} catch (Exception e) {
 				e.printStackTrace();
@@ -118,6 +120,7 @@ public class BookOrderListService implements Action {
 				request.setAttribute("id", id);
 				request.setAttribute("search", search);
 				request.setAttribute("kind", kind);
+				request.setAttribute("curPage", curPage);
 				request.setAttribute("page", pageMaker.getMakePage());
 			} catch (Exception e) {
 				e.printStackTrace();

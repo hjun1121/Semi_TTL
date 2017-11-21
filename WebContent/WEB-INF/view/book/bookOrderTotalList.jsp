@@ -12,6 +12,16 @@
 <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
 <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+<script type="text/javascript">
+	$(function(){
+		$(".cur").each(function(){
+			 if($(this).attr("title") == ${curPage }) {
+				 $(this).attr("style", "color:red;");
+			 }
+		 });
+	});
+
+</script>
 <title>Insert title here</title>
 </head>
 <body>
@@ -76,8 +86,7 @@
 				</c:if>
 
 				<c:forEach begin="${page.startNum}" end="${page.lastNum}" var="i">
-				<li><a
-					href="./bookOrderTotalList.book?curPage=${i}">${i}</a></li>
+				<li><a class="cur" title="${i }" href="./bookOrderTotalList.book?curPage=${i}">${i}</a></li>
 				</c:forEach>
 				
 				<c:if test="${page.curBlock < page.totalBlock}">
