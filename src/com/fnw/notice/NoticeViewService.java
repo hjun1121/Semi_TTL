@@ -22,11 +22,13 @@ public class NoticeViewService implements Action {
 		}
 		NoticeDTO noticeDTO=null;
 		try {
+			noticeDAO.hitUpdate(num);
 			noticeDTO=noticeDAO.selectOne(num);
 		} catch (Exception e) {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
 		}
+		
 		//boardDTO가 Null이면 다른 곳으로 처리
 		
 		request.setAttribute("view", noticeDTO);
