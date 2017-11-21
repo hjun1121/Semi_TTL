@@ -25,6 +25,13 @@ $(function(){
 		 }
 	 });
 	 
+	 var f = '${f}';
+	 $(".f").each(function(){
+		 if($(this).val() == f) {
+			 $(this).attr("selected", true);
+		 }
+	 });
+	 
 	 $("#delivery").change(function(){
 		 var delivery = $("#delivery").val(); 
 		 if(delivery==2 ){
@@ -79,6 +86,56 @@ $(function(){
 	        }).open();
 		    
 		});	
+		
+		$("#lib").click(function(){
+			$("#carPrice").html("0,000won");
+			$("#allPrice").html("<fmt:formatNumber value="${buyWishList.price}" groupingUsed="true" /> won");
+			$("#libForm").removeAttr("style")
+			$("#carForm").attr("style","display:none;")
+		});
+		
+		$("#car").click(function(){
+			$("#carPrice").html("2,500won");
+			$("#allPrice").html("<fmt:formatNumber value="${buyWishList.price+2500}" groupingUsed="true" /> won");
+			$("#libForm").attr("style","display:none;")
+			$("#carForm").removeAttr("style")
+			
+		});
+		
+		
+		
+		$("#btn").click(function(){
+			var test =0;
+			$("input[name=del]:checked").each(function() {
+			    test = $(this).val();
+			});
+			
+			if(test == 'lib'){
+				
+				if($("#chk_purchase_agreement0").prop("checked")==true){
+					document.frm.submit();
+				}else{
+					alert("동의쳐눌러");
+					$("#chk_purchase_agreement0").focus();
+				}
+				
+			}else{
+				
+				if($("#chk_purchase_agreement0").prop("checked")==true){
+					
+					if()
+					
+					
+				}else{
+					alert("동의쳐눌러");
+				}
+				
+			}			
+			
+			
+		});
+		
+		
 });
 </script>
 </head>
@@ -105,7 +162,7 @@ $(function(){
 		<table border="1" summary="">
 			<thead>
 			<tr>
-				<th><input type="radio">&nbsp;택배수령 &nbsp; <input type="radio">&nbsp;직접수령</th>
+				<th><input type="radio" name="del" class="del" id="lib" value="lib" checked="checked">&nbsp;직접수령 &nbsp; <input type="radio" name="del" class="del" id="car" value="car">&nbsp;택배수령</th>
 			</tr>
 			</thead>
 		</table>
@@ -113,7 +170,7 @@ $(function(){
 		
 		<br>
 		
-	<form action="../market/marketBuy.market" method="POST">
+	<form action="../market/marketBuy.market" name="frm" method="POST">
 		<div class="xans-element- xans-order xans-order-form xans-record-">
 		<div class="orderListArea ">
 			<div class="ec-base-table typeList ">
@@ -129,22 +186,6 @@ $(function(){
 							<th scope="col">합계</th>
 						</tr>
 					</thead>
-					<tfoot class="right">
-						<tr>
-							<td colspan="8">
-								<span class="gLeft">[기본배송]</span>
-								상품구매금액 <strong><fmt:formatNumber value="${buyWishList.price}" groupingUsed="true" /></strong> + 배송비 
-								<span id="domestic_ship_fee">2,500</span> 
-								 = 합계 : 
-								 <strong class="txtEm gIndent10">
-								 <span id="domestic_ship_fee_sum" class="txt18">
-									 <fmt:formatNumber value="${buyWishList.price+2500}" groupingUsed="true" /> 
-								 </span>
-								 won
-								 </strong> 
-							</td>
-						</tr>
-					</tfoot>
 					<tbody class="xans-element- xans-order xans-order-normallist center">
 						<tr class="xans-record-">
 							<td class="left">
@@ -160,20 +201,36 @@ $(function(){
 							<td class="left">1</td>
 							<td>
 							</td>
-							<td class="left">2,500won</td>
+							<td class="left" id="carPrice">0,000won</td>
 							<td class="left">
-								<strong><fmt:formatNumber value="${buyWishList.price+2500}" groupingUsed="true" /> won</strong>
+								<strong id="allPrice"><fmt:formatNumber value="${buyWishList.price}" groupingUsed="true" /> won</strong>
 							</td>
 						</tr>
 					</tbody>
+					<tfoot class="right">
+						<tr>
+							<td id="allPrice2" colspan="8">
+								<span class="gLeft">[기본배송]</span>
+								상품구매금액 <strong><fmt:formatNumber value="${buyWishList.price}" groupingUsed="true" /></strong> + 배송비 
+								<span id="domestic_ship_fee">0,000</span>= 합계 : 
+								 <strong class="txtEm gIndent10">
+								 <span id="domestic_ship_fee_sum" class="txt18">
+									 <fmt:formatNumber value="${buyWishList.price}" groupingUsed="true" /> 
+								 </span>
+								 won
+								 </strong> 
+							</td>
+						</tr>
+					</tfoot>
 				</table>
 			</div>
 		</div>
 		
 		<!-- 직접수령 정보-->
 		<br>
-		<div class="orderArea">
+		<div class="orderArea" id="libForm">
 			<div class="ec-base-table typeWrite">
+						<input type="hidden" name="library" value="${buyWishList.library }">
 				<table border="1" summary="">
 					<caption>도서관명</caption>
 					<colgroup>
@@ -202,7 +259,7 @@ $(function(){
 		</div>
 		
 		<!-- 배송 정보 -->
-		<div class="orderArea">
+		<div class="orderArea" id="carForm" style="display: none;">
 			<div class="title">
 				<h4 class="-titlepack -font-ns">배송 정보</h4>
 			</div>
@@ -232,13 +289,12 @@ $(function(){
 					</tr>
 					<tr class="">
 						<th scope="row">
-						휴대전화 <span class="displaynone"></span>
+						전화번호 <span class="displaynone"></span>
 						</th>
 						<td>
 						<select id="rphone2_1">
-							<option value="010">010</option>
-							<option value="011">011</option>
-							<option value="016">016</option>
+							<option value="010" class="f">010</option>
+							<option value="011" class="f">011</option>
 						</select>
 						-<input id="rphone2_2" maxlength="4" size="4" type="text" value="${m }">-<input id="rphone2_3" maxlength="4" size="4" type="text" value="${l }"></td>
 					</tr>
@@ -257,7 +313,7 @@ $(function(){
 			<input id="chk_purchase_agreement0" type="checkbox" >결제정보를 확인하였으며, 구매진행에 동의합니다.
 			<div class="btnCenter mt30" id="center">
 				<span class="button1">
-					<input type="button" class="type4 large" value="결제">
+					<input type="button" class="type4 large" id="btn" value="결제">
 				</span>	
 			</div>
 	</div>

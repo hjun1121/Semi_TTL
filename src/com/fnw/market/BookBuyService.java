@@ -44,11 +44,10 @@ public class BookBuyService implements Action {
 			}catch (Exception e) {
 			}
 			
-			
-			
 			request.setAttribute("buyWishList", market_TotalDTO);
 			actionFoward.setCheck(true);
 			actionFoward.setPath("../WEB-INF/view/market/bookBuy.jsp");
+			
 		} else {
 			Book_Buy_WishDAO book_Buy_WishDAO = new Book_Buy_WishDAO();
 			
