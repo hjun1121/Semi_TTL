@@ -122,6 +122,10 @@ dl, dt, dd, ul {
     margin-top: 10px;
 }
 
+#qnaDetail_frm {
+	margin-bottom: 20px;
+}
+
 .boardContent {
     font-family: Arial, Verdana, "Trebuchet MS", sans-serif;
     font-size: 12px;
@@ -140,10 +144,13 @@ dl, dt, dd, ul {
 }
 
 #bottom_btns {
-	float: right;
+	margin-bottom: 20px;
+	display: block;
 }
 
-
+textarea.reply {
+    width: 100%;
+}
 
 
 

@@ -92,7 +92,7 @@ $(function(){
 			</div>
 		</div>
 		
-		<form action="../qna/qnaUpdate.qna" method="get" name="frm">
+		<form id = "qnaDetail_frm" action="../qna/qnaUpdate.qna" method="get" name="frm">
 		<div class = "boardInfo">
 			<input type="hidden" name="library" value=${qnaDTO.library } readonly="readonly">
 			<p class="boardInfoTitle">${qnaDTO.title}</p>
@@ -117,19 +117,21 @@ $(function(){
 			<a href="../qna/qnaList.qna"><input type="button" value="list"></a>
 		</div>
 		</form>
+		
 		<hr>
+		
 		<div class = "boardList">
 		<form action="../qnaReply/qnaReplyInsert.qnaReply" method="post">
 			<input type ="hidden" value="${qnaDTO.num}" name="pNum">
 			<input type ="hidden" value="${qnaDTO.pw}" name="pw">
-			<p><textarea name="contents"></textarea>
+			<p><textarea name="contents" class = "reply"></textarea>
 			<button type="submit">등록</button> </p>
 		</form>
 		</div>
 	</div>
 </div>
 </section>
-
+<!-- -------------------------------------------------------------------- -->
 <c:if test="${replyList ne null }">
 	<table border="1">
 		<c:forEach items="${replyList }" var="dto" varStatus="i">
