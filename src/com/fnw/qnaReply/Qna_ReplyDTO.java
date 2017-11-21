@@ -11,6 +11,7 @@ public class Qna_ReplyDTO {
 	private int ref;
 	private int step;
 	private int depth;
+	
 	public int getpNum() {
 		return pNum;
 	}

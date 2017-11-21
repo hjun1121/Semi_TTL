@@ -32,15 +32,6 @@ $(function(){
 		 }
 	 });
 	 
-	 $("#delivery").change(function(){
-		 var delivery = $("#delivery").val(); 
-		 if(delivery==2 ){
-			 $("#addrDis").attr("style","display:inline;");
-		 }else {
-			 $("#addrDis").attr("style","display:none;");
-		 }
-	 });
-	 
 	 
 		//주소검색
 		
@@ -88,6 +79,7 @@ $(function(){
 		});	
 		
 		$("#lib").click(function(){
+			$("#delivery").val("1");
 			$("#carPrice").html("0,000won");
 			$("#allPrice").html("<fmt:formatNumber value="${buyWishList.price}" groupingUsed="true" /> won");
 			$("#libForm").removeAttr("style")
@@ -95,6 +87,7 @@ $(function(){
 		});
 		
 		$("#car").click(function(){
+			$("#delivery").val("2");
 			$("#carPrice").html("2,500won");
 			$("#allPrice").html("<fmt:formatNumber value="${buyWishList.price+2500}" groupingUsed="true" /> won");
 			$("#libForm").attr("style","display:none;")
@@ -122,8 +115,6 @@ $(function(){
 			}else{
 				
 				if($("#chk_purchase_agreement0").prop("checked")==true){
-					
-					if()
 					
 					
 				}else{
@@ -174,6 +165,9 @@ $(function(){
 		<div class="xans-element- xans-order xans-order-form xans-record-">
 		<div class="orderListArea ">
 			<div class="ec-base-table typeList ">
+			<input type="hidden" name="price" value= "${buyWishList.price}">
+			<input type="hidden" id="delivery" name="delivery" value="1">
+			<input type="hidden" name = "num" value = ${buyWishList.num }>
 				<table border="1">
 					<caption>기본배송</caption>
 					<thead>
@@ -292,11 +286,11 @@ $(function(){
 						전화번호 <span class="displaynone"></span>
 						</th>
 						<td>
-						<select id="rphone2_1">
+						<select id="rphone2_1" name="f">
 							<option value="010" class="f">010</option>
 							<option value="011" class="f">011</option>
 						</select>
-						-<input id="rphone2_2" maxlength="4" size="4" type="text" value="${m }">-<input id="rphone2_3" maxlength="4" size="4" type="text" value="${l }"></td>
+						-<input id="rphone2_2" maxlength="4" name="m" size="4" type="text" value="${m }">-<input id="rphone2_3" maxlength="4" size="4" type="text" name="l" value="${l }"></td>
 					</tr>
 				</tbody>
 				<tbody class="delivery ">

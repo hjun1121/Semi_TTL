@@ -16,6 +16,14 @@
 
 	$(function(){
 		
+		$(function(){
+			$(".cur").each(function(){
+				 if($(this).attr("title") == ${curPage }) {
+					 $(this).attr("style", "color:red;");
+				 }
+			 });
+		});
+		
 		var kind = '${kind}';
 		$(".kind").each(function() {
 			if($(this).val() == kind){
@@ -170,7 +178,7 @@
 				</c:if>
 				
 				<c:forEach begin="${page.startNum}" end="${page.lastNum}" var="i">
-				<li><a id="pa" href="./marketTotalList.market?curPage=${i}&kind=${kind }&search=${search }">${i}</a></li>
+				<li><a id="pa" class="cur" title="${i }" href="./marketTotalList.market?curPage=${i}&kind=${kind }&search=${search }">${i}</a></li>
 				</c:forEach>
 
 				<c:if test="${page.curBlock < page.totalBlock}">

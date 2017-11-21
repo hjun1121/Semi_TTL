@@ -16,6 +16,13 @@
 <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
 <script type="text/javascript">
 $(function(){
+	
+		$(".cur").each(function(){
+			 if($(this).attr("title") == ${curPage }) {
+				 $(this).attr("style", "color:red;");
+			 }
+		 });
+	
 		var kind = '${kind}';
 		$(".kind").each(function() {
 			if($(this).val() == kind){
@@ -153,8 +160,7 @@ $(function(){
 				</c:if>
 
 				<c:forEach begin="${page.startNum}" end="${page.lastNum}" var="i">
-				<li><a
-					href="./noticeList.notice?curPage=${i}&kind=${kind}&search=${search}">${i}</a></li>
+				<li><a class="cur" title="${i }" href="./noticeList.notice?curPage=${i}&kind=${kind}&search=${search}">${i}</a></li>
 				</c:forEach>
 				
 				<c:if test="${page.curBlock < page.totalBlock}">

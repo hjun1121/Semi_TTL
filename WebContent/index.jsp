@@ -18,9 +18,33 @@
 </head>
 <body>
 <c:import url="${myContextPath}/temp/header.jsp"></c:import>
-		<!-- Search -->
-		<div id="divSearch"></div>
-		<!-- //Search -->
+
+	<!-- ////////////////// -->
+	
+		<!-- 메인 Search 시작 -->
+		<div id="divSearch">
+			<div>
+				<h2 class="skip">통합검색</h2>
+				<div class="searchForm">
+					<ul>
+						<li class="on">
+							<form name="totalForm" action="#" method="get">
+								<input type="hidden" id="service_type" name="service_type" value="brief">
+								<fieldset>
+									<legend>제목으로 검색</legend>
+									<span class="searchBox">
+										<input type="text" class="searchInput" title="제목으로 검색" placeholder="제목으로 도서관 소장자료를 검색할 수 있습니다.">
+									</span>
+									<input type="image" src="${pageContext.request.contextPath }/image/index/searchBtn.png" value="검색" class="searchBtn" title="검색">
+								</fieldset>
+							</form>
+						</li>
+					</ul>
+				</div>
+			</div>
+		</div>
+		<!-- 메인 Search 끝 -->
+		<!-- ////////////////// -->
 	
 	<h2>김앤신(통합포털)</h2>
 	<p><a href="./book/bookOrderTotalList.book">Book_TotalList(도서 신청목록)</a>

@@ -14,7 +14,6 @@ public class BookOrderTotalListService implements Action {
 	@Override
 	public ActionFoward doProcess(HttpServletRequest request, HttpServletResponse response) {
 		ActionFoward actionFoward = new ActionFoward();
-		
 		Book_OrderDAO book_OrderDAO = new Book_OrderDAO();
 		ArrayList<Book_OrderDTO> list = new ArrayList<>();
 		
@@ -24,7 +23,6 @@ public class BookOrderTotalListService implements Action {
 		} catch (Exception e) {
 			curPage = 1;
 		}
-
 		String kind = request.getParameter("kind");
 		if(kind==null) {
 			kind="title";
@@ -43,6 +41,7 @@ public class BookOrderTotalListService implements Action {
 			list = book_OrderDAO.selectList(pageMaker.getMakeRow());
 			request.setAttribute("bookOrderTotalList", list);
 			request.setAttribute("id", id);
+			request.setAttribute("curPage", curPage);
 			request.setAttribute("page", pageMaker.getMakePage());
 		} catch (Exception e) {
 			e.printStackTrace();
