@@ -59,9 +59,11 @@
 <body>
 <c:import url="${myContextPath}/temp/header.jsp"></c:import>
 
+<section id = "section">
 	<div id="divContentsW">
 		<div id="divContents">
 			
+			<div id = "bts_top_section">
 			<h2 id="divTitle">중고 책 장터</h2>
 			<div id="divLocation">
 				<ul>
@@ -169,9 +171,10 @@
 			</ul>
 		</div>
 		<!-- 페이징 끝 -->
-		
+			</div>
 		</div>
 	</div>
+</section>
 <c:import url="${myContextPath}/temp/footer.jsp"></c:import>
 </body>
 </html>
