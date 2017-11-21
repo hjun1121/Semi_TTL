@@ -13,9 +13,11 @@
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
 <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
 <link rel="stylesheet" href="${pageContext.request.contextPath }/css/index/index.css">
+
 <title>Total Library Page</title>
 
 <script>
+
 var slideIndex = 1;
 showSlides(slideIndex);
 
@@ -181,6 +183,9 @@ function showSlides(n) {
 				</div>
 				
 			</div>
+			
+			<!-- ///////////////////////////////////////// -->
+
 			<div class="book">
 				<ul>
 					<li class="on"><h2><a href="#">신작 도서</a></h2>
@@ -196,6 +201,8 @@ function showSlides(n) {
 										</a>
 									</li>
 								</ul>
+								
+								
 							</div>
 						</div>
 						<div class="btns">
@@ -206,8 +213,6 @@ function showSlides(n) {
 					</li>
 					<li class=""><h2><a href="#">추천도서</a></h2>
 					<a href="#" class="more"><img src="${pageContext.request.contextPath }/image/index/more.png" alt="more"></a>
-					
-					 	
 					 		<div>	
 								<div>
 									<ul style="width: 2288px;">
@@ -228,6 +233,7 @@ function showSlides(n) {
 					</li>
 				</ul>
 			</div>
+			<!-- ///////////////////////////////////////// -->
 		</div>
 		
 		<!-- 메인 컨텐츠 끝 -->
