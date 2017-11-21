@@ -12,6 +12,7 @@
 
 #divContents{
 	margin-left:350px;
+	margin-top: 50px;
 	background-color:#fff;
 	padding-bottom:30px;
 	background-color:#fff;
@@ -20,9 +21,15 @@
 }
 
 
-#divTitle{
-	color:#464646;
-	font-size:32px;
+#divTitle {
+    color: #464646;
+    display: block;
+    font-size: 1.5em;
+    -webkit-margin-before: 0.83em;
+    -webkit-margin-after: 0.83em;
+    -webkit-margin-start: 0px;
+    -webkit-margin-end: 0px;
+    font-weight: bold;
 }
 
 #divLocation{
@@ -59,3 +66,39 @@
 	background:none;
 }
 <!--상단 바 끝 -->
+select#kind1 {
+    font-family: inherit;
+}
+
+select#kind1 {
+    height: 35px;
+    border: 1px solid #d1d0cf;
+    background-color: #fff;
+    line-height: 29px;
+}
+#section option {
+    font-weight: normal;
+    display: block;
+    white-space: pre;
+    min-height: 1.2em;
+    padding: 0px 2px 1px;
+}
+.inputTextType3 {
+	width: 290px;
+    height: 35px;
+    border: 1px solid #d1d0cf;
+    line-height: 2.1em;
+    font-size: 13px;
+    vertical-align: top;
+    color: #4c4c4c;
+    padding: 0 5px;
+    font-family: NanumBarunGothic,sans-serif;
+}
+.btnType5{
+  	height: 35px;
+    vertical-align: top;
+    border: 1px solid #585858;
+    background: url(../../image/bookTotalSearch/limitSearch.gif) no-repeat 15px 50%;
+    background-color: #fff;
+    padding: 0 20px 0 45px;
+}
