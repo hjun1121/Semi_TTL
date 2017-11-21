@@ -18,8 +18,8 @@ public class DBConnector {
 		//String url="jdbc:oracle:thin:@192.168.0.9:1521:xe";  //현민
 		//String url="jdbc:oracle:thin:@192.168.0.8:1521:xe"; //희성
 		//String url="jdbc:oracle:thin:@192.168.0.10:1521:xe";  //형준
-		String url="jdbc:oracle:thin:@192.168.40.51:1521:xe";
-		//String url="jdbc:oracle:thin:@192.168.40.68:1521:xe";
+		//String url="jdbc:oracle:thin:@192.168.40.51:1521:xe";
+		String url="jdbc:oracle:thin:@192.168.40.68:1521:xe";
 
 
 		String driver="oracle.jdbc.driver.OracleDriver";

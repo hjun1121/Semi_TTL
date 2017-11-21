@@ -52,11 +52,13 @@
 				</div>
 			</div>
 		</div>
-	
+		<br>
+	<div class="adv">
 	<c:if test="${member.kind eq 10 }">
 		<a href="./noticeUpdate.notice?num=${view.num}">UPDATE</a>
 		<a href="./noticeDelete.notice?num=${view.num}">DELETE</a>
 	</c:if>
+	</div>
 	<div class="buttons">
 	<a href="noticeList.notice" title="목록">목록</a>
 	</div>

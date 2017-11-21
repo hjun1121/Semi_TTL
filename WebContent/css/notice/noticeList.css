@@ -236,7 +236,7 @@ td.title2{width:20%;}
     height: 28px;
     vertical-align: middle;
 }
-
+.adv{height:38px;display:inline-block;margin:0 5px;padding:0 19px;border:1px solid #585858;color:#1a1a1a;font-size:14px;font-weight:600;line-height:38px;vertical-align:top}
 <!-- paging -->
 
 #section #adm_write_btn {
