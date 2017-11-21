@@ -24,41 +24,71 @@
 
 <div id="divContentsW">
 	<div id="divContents">
-		<h2 id="divTitle">중고장터 신청 상세정보</h2>
+		<h2 id="divTitle">중고 신청 상세 내역</h2>
 		<div id="divLocation">
 			<ul>
 				<li class="home"><a href="${pageContext.request.contextPath}/index.jsp"><img src="${pageContext.request.contextPath }/image/notice/home.png" alt="HOME"></a></li>
 				<li>&gt;</li>
 				<li>MY PAGE</li>
 				<li>&gt;</li>
-				<li>중고장터 신청 상세정보</li>
+				<li>중고 신청 내역</li>
+				<li>&gt;</li>
+				<li>상세정보</li>
 			</ul>
 		</div>
 
-	<table border="1">
-		<tr>
-			<td colspan="3">책이름 : ${view.title }</td>
-			<td colspan="3">작가 : ${view.writer }</td>
-		</tr>
-		<tr>
-			<td colspan="3">출판사 : ${view.company }</td>
-			<td colspan="3">출시년도 : ${view.publish_date }</td>
-		</tr>
-		<tr>
-			<td colspan="6">신청인 : ${view.id }</td>
-		</tr>
-		<tr>
-			<td colspan="6">가격 : ${view.price }</td>
-		</tr>
-		<tr>
-			<td colspan="6">신청도서관 : ${view.library }</td>
-		</tr>
-	</table>
-		<a href="./marketOrderOK.market?num=${view.num }">승인</a>
-		<a href="./marketOrderNO.market?num=${view.num }">거절</a>
-		<a href="./marketOrderAdmin.market">LIST</a>
-		
-	</div>	
+	<table class="Dtable">
+			<tr>
+				<th>서명</th>
+				<td><input type="text" class="noneBorder" name="title" value=${view.title }  readonly="readonly"></td>
+			</tr>
+			<tr>
+				<th>저자</th>
+				<td><input type="text" class="noneBorder" name="writer" value=${view.writer } readonly="readonly"></td>
+			</tr>
+			<tr>
+				<th>출판사</th>
+				<td><input type="text" class="noneBorder" name="company" value=${view.company } readonly="readonly"></td>
+			</tr>
+			<tr>
+				<th>출판년도</th>
+				<td><input type="text" class="noneBorder" name="publish_date" value=${view.publish_date } readonly="readonly"></td>
+			</tr>
+			<tr>
+				<th>신청인</th>
+				<td><input type="text" class="noneBorder" name="t_date" value=${view.id } readonly="readonly"></td>
+			</tr>
+			<tr>
+				<th>가격</th>
+				<td><input type="text" class="noneBorder" name="price" value=${view.price } readonly="readonly"></td>
+			</tr>
+			<tr>
+			<th>비치도서관</th>
+			<c:choose>
+				<c:when test="${view.library eq 1}">
+					<td><input type="text" class="noneBorder" value="기흥구" readonly="readonly"></td>
+				</c:when>
+				<c:when test="${view.library eq 2}">
+					<td><input type="text" class="noneBorder" value="송파구" readonly="readonly"></td>
+				</c:when>
+				<c:when test="${view.library eq 3}">
+					<td><input type="text" class="noneBorder" value="장안구" readonly="readonly"></td>
+				</c:when>
+				<c:when test="${view.library eq 4}">
+					<td><input type="text" class="noneBorder" value="분당구" readonly="readonly"></td>
+				</c:when>
+			</c:choose>
+			</tr>
+		</table>
+		<div class="btn">
+			<a href="./marketOrderOK.market?num=${view.num }">
+			<input type="button" class="btnType5" value="승인"></a>
+			<a href="./marketOrderNO.market?num=${view.num }">
+			<input type="button" class="btnType5" value="거절"></a>
+			<a href="./marketOrderAdmin.market">
+			<input type="button" class="btnType5" value="LIST"></a>
+		</div>
+		</div>
 </div>		
 <c:import url="${myContextPath}/temp/footer.jsp"></c:import>
 </body>
