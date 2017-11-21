@@ -24,59 +24,68 @@
 
 <div id="divContentsW">
 	<div id="divContents">
-		<h2 id="divTitle">책 신청목록</h2>
+		<h2 id="divTitle">책 신청 내역</h2>
 		<div id="divLocation">
 			<ul>
 				<li class="home"><a href="${pageContext.request.contextPath}/index.jsp"><img src="${pageContext.request.contextPath }/image/notice/home.png" alt="HOME"></a></li>
 				<li>&gt;</li>
 				<li>MY PAGE</li>
 				<li>&gt;</li>
-				<li>책 신청목록</li>
+				<li>책 신청 내역</li>
 			</ul>
 		</div>
-
 	
 	
-	
-	<table class="table table-hover" border="1">
+	<div class="listTable">
+	<table class="mobileTable tablet" >
+	<thead>
 		<tr>
-			<td>num</td>
-			<td>title</td>
-			<td>writer</td>
-			<td>company</td>
-			<td>publish_date</td>
-			<td>price</td>
-			<td>library</td>
-			<td>state</td>
-			<td>cancel</td>
+			<th>No.</th>
+			<th>서명</th>
+			<th>저자</th>
+			<th>출판사</th>
+			<th>출판년도</th>
+			<th>가격</th>
+			<th>비치도서관</th>
+			<th>상태</th>
+			<th>취소사유</th>
 		</tr>
 		<c:forEach items="${requestScope.list}" var="dto">
 		<c:if test="${dto.state eq 1 }">
-		<tr>
-			<td>${dto.num}</td>
-			<td>
-			<c:catch>
-			<c:forEach begin="0" end="${dto.depth-1}">
-				--
-			</c:forEach>
-			</c:catch>
-			<a href="./bookOrderViewAdmin.book?num=${dto.num}">${dto.title}</a>
-			</td>
-			<td>${dto.writer}</td>
-			<td>${dto.company}</td>
-			<td>${dto.publish_date}</td>
-			<td>${dto.price}</td>
-			<td>${dto.library}</td>
-			<td>${dto.state}</td>
-			<td>${dto.cancel}</td>
-		</tr>
-		</c:if>
+			<tr>
+				<td scope="row" class="footable-first-column">${dto.num}</td>
+				<td scope="row" class="footable-first-column">
+				<a href="./bookOrderViewAdmin.book?num=${dto.num}">${dto.title}</a></td>
+				<td scope="row" style="display: table-cell;">${dto.writer }</td>
+				<td scope="row" style="display: table-cell;">${dto.company }</td>
+				<td  scope="row" data-class="expand">${dto.publish_date }</td>
+				<td scope="row" style="display: table-cell;">${dto.price }</td>
+				<c:choose>
+					<c:when test="${dto.library eq 1}">
+						<td scope="row" style="display: table-cell;">기흥구</td>
+					</c:when>
+					<c:when test="${dto.library eq 2}">
+						<td scope="row" style="display: table-cell;">송파구</td>
+					</c:when>
+					<c:when test="${dto.library eq 3}">
+						<td scope="row" style="display: table-cell;">장안구</td>
+					</c:when>
+					<c:when test="${dto.library eq 4}">
+						<td scope="row" style="display: table-cell;">분당구</td>
+					</c:when>
+					<c:otherwise>
+						<td scope="row" style="display: table-cell;">없음</td>
+					</c:otherwise>
+				</c:choose>
+				<td scope="row" style="display: table-cell;">${dto.state }</td>
+				<td scope="row" style="display: table-cell;">${dto.cancel }</td>
+			</tr>
+			</c:if>
 		</c:forEach>
 	</table>
 	
-	
-	<div>
-		<ul class="pagination">
+	<div class = "paging" style = "text-align: center;">
+		<ul class="pagination pagination-sm">
 			<c:if test="${page.curBlock>1}">
 			<li><button class="go" id="${page.startNum-1}">[이전]</button></li>
 			</c:if>
@@ -92,10 +101,10 @@
 			</c:if>
 		</ul>
 	</div>
-	
 	</div>
-</div>	
-	
+	</div>
+</div>		
+	</section>
 <c:import url="${myContextPath}/temp/footer.jsp"></c:import>
 </body>
 </html>

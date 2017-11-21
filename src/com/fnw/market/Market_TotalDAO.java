@@ -40,7 +40,7 @@ public class Market_TotalDAO {
 		
 	public int insert(Market_OrderDTO market_OrderDTO) throws Exception{
 		Connection con = DBConnector.getConnect();
-		String sql = "insert into market_total values((select nvl(max(num),0) from market_total)+1,?,?,?,?,?,?,?,0,2,1)";
+		String sql = "insert into market_total values((select nvl(max(num),0) from market_total)+1,?,?,?,?,?,?,?,0,1,1)";
 		PreparedStatement st = con.prepareStatement(sql);
 		st.setString(1, market_OrderDTO.getTitle());
 		st.setString(2, market_OrderDTO.getWriter());
@@ -106,14 +106,15 @@ public class Market_TotalDAO {
 		return ar;
 	}
 
-	public ArrayList<Market_TotalDTO> selectList(MakeRow makeRow) throws Exception {
+	public ArrayList<Market_TotalDTO> selectList(MakeRow makeRow, String kind, String search) throws Exception {
 		Connection con = DBConnector.getConnect();
 		String sql ="select * from "
-				+ "(select rownum R, M.* from market_total M where approval=1 order by num asc) "
+				+ "(select rownum R, M.* from market_total M where approval=1 and " +kind +" like ? order by num asc) "
 				+ "where R between ? and ?";
 		PreparedStatement st = con.prepareStatement(sql);
-		st.setInt(1, makeRow.getStartRow());
-		st.setInt(2, makeRow.getLastRow());
+		st.setString(1, "%"+search+"%");
+		st.setInt(2, makeRow.getStartRow());
+		st.setInt(3, makeRow.getLastRow());
 		
 		ResultSet rs = st.executeQuery();
 

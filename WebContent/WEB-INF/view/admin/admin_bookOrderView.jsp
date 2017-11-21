@@ -64,43 +64,79 @@
 
 <div id="divContentsW">
 	<div id="divContents">
-		<h2 id="divTitle">책신청 view</h2>
+		<h2 id="divTitle">신청 상세 내역</h2>
 		<div id="divLocation">
 			<ul>
 				<li class="home"><a href="${pageContext.request.contextPath}/index.jsp"><img src="${pageContext.request.contextPath }/image/notice/home.png" alt="HOME"></a></li>
 				<li>&gt;</li>
 				<li>MY PAGE</li>
 				<li>&gt;</li>
-				<li>책신청 view</li>
+				<li>책 신청 내역</li>
+				<li>&gt;</li>
+				<li>상세 내역</li>
 			</ul>
 		</div>
 	
 	
-	<div>
-		<p>num<input type="number" name="num" value=${requestScope.view.num }></p>
-		<p>title<input type="text" name="title" value=${requestScope.view.title } ></p>
-		<p>writer<input type="text" name="writer" value=${requestScope.view.writer }></p>
-		<p>company<input type="text" name="company" value=${requestScope.view.company }></p>
-		<p>publish_date<input type="text" name="publish_date" value=${requestScope.view.publish_date }></p>
-		<p>contents<input type="text" name="contents" value=${requestScope.view.contents }></p>
-		<p>id<input type="text" name="id" value=${requestScope.view.id }></p>
-		<p>price<input type="text" name="price" value=${requestScope.view.price }></p>
-		<p>library<input type="text" name="library" value=${requestScope.view.library } ></p>
-		
-	</div>
-		<input type="button" id="btn" value="OK">
-		<div id="OK"></div>
-		
-		<input type="button" id="btn_no" value="NO">
-		<div id="NO"></div>
-		
-			<%-- <a href="./${requestScope.book}Delete.${requestScope.book}?num=${requestScope.view.num}">거절</a> --%>
-	
-		<a href="./bookOrderListAdmin.book">LIST</a>
-
-	</div>
-</div>
-
+	<table class="Dtable">
+			<tr>
+				<th>No.</th>
+				<td><input type="text" class="noneBorder" name="title" value=${requestScope.view.num }  readonly="readonly"></td>
+			</tr>
+			<tr>
+				<th>서명</th>
+				<td><input type="text" class="noneBorder" name="title" value=${requestScope.view.title }  readonly="readonly"></td>
+			</tr>
+			<tr>
+				<th>저자</th>
+				<td><input type="text" class="noneBorder" name="writer" value=${requestScope.view.writer } readonly="readonly"></td>
+			</tr>
+			<tr>
+				<th>출판사</th>
+				<td><input type="text" class="noneBorder" name="company" value=${requestScope.view.company } readonly="readonly"></td>
+			</tr>
+			<tr>
+				<th>출판년도</th>
+				<td><input type="text" class="noneBorder" name="publish_date" value=${requestScope.view.publish_date } readonly="readonly"></td>
+			</tr>
+			<tr>
+				<th>내용</th>
+				<td><input type="text" class="noneBorder" name="t_date" value=${requestScope.view.contents } readonly="readonly"></td>
+			</tr>
+			<tr>
+				<th>ID</th>
+				<td><input type="text" class="noneBorder" name="t_date" value=${requestScope.view.id } readonly="readonly"></td>
+			</tr>
+			<tr>
+				<th>가격</th>
+				<td><input type="text" class="noneBorder" name="price" value=${requestScope.view.price } readonly="readonly"></td>
+			</tr>
+			<tr>
+			<th>비치도서관</th>
+			<c:choose>
+				<c:when test="${requestScope.view.library eq 1}">
+					<td><input type="text" class="noneBorder" value="기흥구" readonly="readonly"></td>
+				</c:when>
+				<c:when test="${requestScope.view.library eq 2}">
+					<td><input type="text" class="noneBorder" value="송파구" readonly="readonly"></td>
+				</c:when>
+				<c:when test="${requestScope.view.library eq 3}">
+					<td><input type="text" class="noneBorder" value="장안구" readonly="readonly"></td>
+				</c:when>
+				<c:when test="${requestScope.view.library eq 4}">
+					<td><input type="text" class="noneBorder" value="분당구" readonly="readonly"></td>
+				</c:when>
+			</c:choose>
+			</tr>
+		</table>
+		<div class="btn">
+			<input type="button" class="btnType5" id="btn" value="승인">
+			<input type="button" class="btnType5" id="btn_no" value="거절">
+			<a href="./bookOrderListAdmin.book">
+			<input type="button" class="btnType5" value="LIST"></a>
+		</div>
+		</div>
+</div>		
 <c:import url="${myContextPath}/temp/footer.jsp"></c:import>
 </body>
 </html>
