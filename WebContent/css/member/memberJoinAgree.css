@@ -205,6 +205,8 @@
     font-size: 16px;
 }
 .button1 .type4 {
+	width: 150px;
+    height: 50px;
     color: #666;
     background: #fff;
     border: 1px solid #aaa;
@@ -234,7 +236,9 @@ span a {
     height: 50px;
     color: #fff;
     background: #033823;
+    border: 1px solid #033823;
 }
+
 #center
 {
 	text-align: center;

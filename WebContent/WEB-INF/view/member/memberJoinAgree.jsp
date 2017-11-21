@@ -16,12 +16,46 @@
 <script type="text/javascript">
 	$(function(){
 		
+		var check= false;
+		
+		$("#chAll").click(function(){
+			check=$("#chAll").prop("checked");
+			for(var i =0; i<$(".box").length;i++){
+				$(".box").prop("checked", check)
+				$(".box2").prop("checked", check)
+			}
+		});//전체동의 끝
+		
+		
+		$(".box").click(function(){
+			if(this.checked){
+				
+				var flag=true;
+				$(".box").each(function(){
+					if(this.checked==false){
+						flag=false;
+					}
+					$("#chAll").prop("checked", flag);
+				});
+				
+			}else{
+				$("#chAll").prop("checked", false);
+			}
+			
+		});//필수동의 끝
+		
+		
 		$("#btn_NO").click(function(){
-			alert("no");
+			location.href="../index.jsp"
 		});
 	
 		$("#btn_OK").click(function(){
-			alert("ok");
+			if($("#chAll").prop("checked")==true ){
+				frm.submit();
+			}else{
+				alert("동의하세요.");
+				$("#chAll").focus();
+			}
 		});
 	});
 </script>
@@ -41,21 +75,21 @@
 			</ul>
 		</div>
 
-	<form name="form" action="#" method="post">
+	<form name="frm" action="./memberJoinAgree.member" method="post">
 		<div class="joinCont mt50">
 			<h2 class="jsTxt clauseTxt">회원가입 및 정상적인 서비스 이용을 위해 아래 약관을 읽고, 동의 여부 결정해 주세요.</h2>
 			
 			<div class="eduteClause">
 				<div class="ckAll">
 					<span class="checkForm">
-						도서관 회원 약관 전체 동의&nbsp;<input type="checkbox" name="allCheck" onclick="all_chk()">
+						도서관 회원 약관 전체 동의&nbsp;<input type="checkbox" id="chAll">
 						
 					</span>
 				</div>
 				<div class="clauseBox mt40">
 					<h3 class="jsTxt">도서관 이용약관</h3>
 					<span class="checkForm">
-						동의(필수)&nbsp;<input type="checkbox"name="req1">
+						동의(필수)&nbsp;<input type="checkbox" class="box">
 					</span>
 					<div class="clauseCont">
 					동의? 어 보감 
@@ -63,7 +97,7 @@
 				</div>
 				<div class="clauseBox mt40">
 					<h3 class="jsTxt">개인정보 수집 이용동의</h3>
-					<span class="checkForm">동의(필수)&nbsp;<input type="checkbox" name="req2">
+					<span class="checkForm">동의(필수)&nbsp;<input type="checkbox" class="box">
 					</span>
 					<div class="clauseCont">
 					동의? 어 보감<br>동의? 어 보감<br>동의? 어 보감<br>동의? 어 보감<br>동의? 어 보감<br>동의? 어 보감<br>동의? 어 보감<br>동의? 어 보감<br>동의? 어 보감<br>동의? 어 보감<br>
@@ -72,7 +106,7 @@
 				<div class="clauseBox mt40">
 					<h3 class="jsTxt">개인정보 제공 동의</h3>
 					<span class="checkForm">
-						동의(필수)&nbsp;<input type="checkbox" name="req3">
+						동의(필수)&nbsp;<input type="checkbox" class="box" >
 					</span>
 					<div class="clauseCont">
 					동의? 어 보감
@@ -81,8 +115,12 @@
 			</div>
 			
 					<div class="btnCenter mt30" id="center">
-						<span class="button1"><a href="#" class="type4 large" id="btn_NO">취소</a></span> 
-						<span class="button1"><a href="#" class="type1 large" id="btn_OK">다음</a></span> 
+						<span class="button1">
+							<input type="button" class="type4 large" id="btn_NO" value="취소">
+						</span> 
+						<span class="button1">
+							<input type="button" class="type1 large" id="btn_OK" value="다음">
+						</span> 
 					</div>
 				</div>
 			</form>
