@@ -38,6 +38,7 @@ public class AdminMarketOrderListService implements Action {
 			totalCount = market_OrderDAO.getTotalCount(kind, search);
 			PageMaker pageMaker = new PageMaker(curPage, totalCount);
 			List<Market_OrderDTO> ar=market_OrderDAO.selectList(pageMaker.getMakeRow(), 1);
+			request.setAttribute("size", ar.size());
 			request.setAttribute("list", ar);
 			request.setAttribute("page", pageMaker.getMakePage());
 		} catch (Exception e) {

@@ -36,7 +36,13 @@
 				<li>중고 신청 내역</li>
 			</ul>
 		</div>
+	<br><br>
+	<c:if test="${size eq 0 }">
+		<h2 id="divTitle">대여 내역이 없습니다.</h2>
+		<br><br><br><br><br><br><br><br><br><br><br>
+	</c:if>
 	
+	<c:if test="${size ne 0 }">
 	<div class="listTable">
 	<table class="mobileTable tablet" >
 	<thead>
@@ -80,6 +86,7 @@
 			</tr>
 		</c:forEach>
 	</table>
+	<br><br><br>
 	<div class = "paging" style = "text-align: center;">
 		<ul class="pagination pagination-sm">
 			<c:if test="${page.curBlock>1}">
@@ -98,6 +105,7 @@
 		</ul>
 	</div>
 	</div>
+	</c:if>
 	</div>
 </div>		
 	</section>

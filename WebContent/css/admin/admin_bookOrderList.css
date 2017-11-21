@@ -105,6 +105,18 @@ table th {
     background-color: #f3f3f3;
     color: #727272;
 }
+input.btnType3 {
+    height: 30px;
+    vertical-align: top;
+    border: 1px solid #585858;
+    background-color: #fff;
+    padding: 0 20px 0 20px;
+    color: black;
+}
+.btnType3:hover {
+    background: #f4f4f4;
+    color: #033823;
+}
 
 .paging {
     clear: both;
