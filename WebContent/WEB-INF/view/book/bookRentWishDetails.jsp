@@ -81,21 +81,21 @@
 						<tr>
 							<th scope="row">대여도서관</th>
 							<c:choose>
-								<c:when test="${bookRentDTO.library eq 1}">
+								<c:when test="${book.library eq 1}">
 									<td>기흥구</td>
-									<input type="hidden" name="library" value=${bookRentDTO.library } readonly="readonly">
+									<input type="hidden" name="library" value=${book.library } readonly="readonly">
 								</c:when>
-								<c:when test="${bookRentDTO.library eq 2}">
+								<c:when test="${book.library eq 2}">
 									<td>송파구</td>
-									<input type="hidden" name="library" value=${bookRentDTO.library } readonly="readonly">
+									<input type="hidden" name="library" value=${book.library } readonly="readonly">
 								</c:when>
-								<c:when test="${bookRentDTO.library eq 3}">
+								<c:when test="${book.library eq 3}">
 									<td>장안구</td>
-									<input type="hidden" name="library" value=${bookRentDTO.library } readonly="readonly">
+									<input type="hidden" name="library" value=${book.library } readonly="readonly">
 								</c:when>
-								<c:when test="${bookRentDTO.library eq 4}">
+								<c:when test="${book.library eq 4}">
 									<td>분당구</td>
-									<input type="hidden" name="library" value=${bookRentDTO.library } readonly="readonly">
+									<input type="hidden" name="library" value=${book.library } readonly="readonly">
 								</c:when>
 								<c:otherwise>
 									<td><input type="number" value="없음" ></td>

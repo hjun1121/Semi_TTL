@@ -60,7 +60,6 @@ $(function(){
 
 	<div>
 	<form name="frm" class="form-inline" action="./seatTotalList.seat" method="post">
-	
 		<div>
 			<span>
 				<select id="year" name="year" class="selectBox1">
@@ -125,8 +124,11 @@ $(function(){
 		</form>
 	</div>
 	<br><br>
-	
-<div class="listTable">
+	<c:if test="${size eq 0 }">
+		<h2 id="divTitle">좌석 예약 내역이 없습니다.</h2>
+	</c:if>
+	<c:if test="${size ne 0 }">
+	<div class="listTable">
 		<table class="mobileTable tablet" >
 		<tr>
 			<th>No.</th>
@@ -202,6 +204,7 @@ $(function(){
 		</ul>
 	</div>
 	</div>
+	</c:if>
 	</div>
 </div>	
 <c:import url="${myContextPath}/temp/footer.jsp"></c:import>
