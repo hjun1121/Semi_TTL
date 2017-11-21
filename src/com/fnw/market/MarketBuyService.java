@@ -43,13 +43,13 @@ public class MarketBuyService implements Action {
 		
 		Market_Deal_DetailsDTO market_Deal_DetailsDTO = new Market_Deal_DetailsDTO();
 		market_Deal_DetailsDTO.setNum(num);
-		market_Deal_DetailsDTO.setTitle(request.getParameter("title"));
-		market_Deal_DetailsDTO.setWriter(request.getParameter("writer"));
-		market_Deal_DetailsDTO.setCompany(request.getParameter("company"));
-		market_Deal_DetailsDTO.setPublish_date(request.getParameter("publish_date"));
-		market_Deal_DetailsDTO.setId(request.getParameter("id"));
+		market_Deal_DetailsDTO.setTitle(market_TotalDTO.getTitle());
+		market_Deal_DetailsDTO.setWriter(market_TotalDTO.getWriter());
+		market_Deal_DetailsDTO.setCompany(market_TotalDTO.getCompany());
+		market_Deal_DetailsDTO.setPublish_date(market_TotalDTO.getPublish_date());
+		market_Deal_DetailsDTO.setId(market_TotalDTO.getId());
 		market_Deal_DetailsDTO.setPrice(price);
-		market_Deal_DetailsDTO.setLibrary(Integer.parseInt(request.getParameter("library")));
+		market_Deal_DetailsDTO.setLibrary(market_TotalDTO.getLibrary());
 		market_Deal_DetailsDTO.setKind(1);
 		market_Deal_DetailsDTO.setDelivery(delivery);
 		market_Deal_DetailsDTO.setPostCode(request.getParameter("postCode"));

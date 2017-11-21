@@ -43,6 +43,7 @@ public class NoticeListService implements Action {
 			request.setAttribute("search", search);
 			request.setAttribute("page", pageMaker.getMakePage());
 			request.setAttribute("notice", "notice");
+			request.setAttribute("curPage", curPage);
 		} catch (Exception e) {
 			e.printStackTrace();
 		}

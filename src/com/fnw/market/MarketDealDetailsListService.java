@@ -70,6 +70,7 @@ public class MarketDealDetailsListService implements Action {
 				}
 				PageMaker pageMaker = new PageMaker(curPage, totalCount);
 				list = market_Deal_DetailsDAO.selectList(id,pageMaker.getMakeRow(), p_date,type);
+				request.setAttribute("size", list.size());
 				request.setAttribute("type", type);
 				request.setAttribute("bookDeals", list);
 				request.setAttribute("id", id);
@@ -90,6 +91,7 @@ public class MarketDealDetailsListService implements Action {
 				}
 				PageMaker pageMaker = new PageMaker(curPage, totalCount);
 				list = market_Deal_DetailsDAO.selectList(id,pageMaker.getMakeRow(), p_date,type);
+				request.setAttribute("size", list.size());
 				request.setAttribute("type", type);
 				request.setAttribute("bookDeals", list);
 				request.setAttribute("id", id);
@@ -110,6 +112,7 @@ public class MarketDealDetailsListService implements Action {
 				}
 				PageMaker pageMaker = new PageMaker(curPage, totalCount);
 				list = market_Deal_DetailsDAO.selectList(id,pageMaker.getMakeRow(), p_date);
+				request.setAttribute("size", list.size());
 				request.setAttribute("type", type);
 				request.setAttribute("bookDeals", list);
 				request.setAttribute("id", id);

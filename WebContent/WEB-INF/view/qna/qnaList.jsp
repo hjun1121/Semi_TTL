@@ -15,6 +15,13 @@
 <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
 <script type="text/javascript">
 	$(function(){
+		
+		$(".cur").each(function(){
+			 if($(this).attr("title") == ${curPage }) {
+				 $(this).attr("style", "color:red;");
+			 }
+		 });
+		
 		var kind = '${kind}';
 		$(".kind").each(function(){
 			 if($(this).val() == kind) {
@@ -22,7 +29,7 @@
 			 }
 		});
 		
-		$("#btn").click(function(){
+		$("#write_btn").click(function(){
 			location.href="./qnaWrite.qna";
 		});
 		
@@ -89,7 +96,7 @@
 					
 				</tr>
 			</thead>
-			<c:forEach items="${requestScope.list}" var="dto">
+			<c:forEach items="${list}" var="dto">
 			<tbody>
 				<tr>
 					<td class="num footable-first-column">${dto.num}</td>
@@ -127,7 +134,7 @@
 			</c:if>
 			
 			<c:forEach begin="${page.startNum}" end="${page.lastNum}" var="i">
-			<li><a id="pa" href="./qnaList.qna?curPage=${i}&kind=${kind}&search=${search}">${i}</a></li>
+			<li><a id="pa" class="cur" title="${i }" href="./qnaList.qna?curPage=${i}&kind=${kind}&search=${search}">${i}</a></li>
 			</c:forEach>
 
 			<c:if test="${page.curBlock < page.totalBlock}">

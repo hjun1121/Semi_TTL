@@ -15,8 +15,14 @@
 <title>Insert title here</title>
 <script type="text/javascript">
 $(function(){
+	$(".cur").each(function(){
+		 if($(this).attr("title") == ${curPage}) {
+			 $(this).attr("style", "color:red;");
+		 }
+	 });
+	
 	 var kind = '${kind}';
-
+	 
 	 $(".kind").each(function(){
 		 if($(this).val() == kind) {
 			 $(this).attr("selected", true);
@@ -186,8 +192,7 @@ $(function(){
 				</c:if>
 
 				<c:forEach begin="${page.startNum}" end="${page.lastNum}" var="i">
-				<li><a
-					href="./bookTotalSearch.book?curPage=${i}&search=${search}&kind=${kind}">${i}</a></li>
+				<li><a class="cur" title="${i }" href="./bookTotalSearch.book?curPage=${i}&search=${search}&kind=${kind}">${i}</a></li>
 				</c:forEach>
 				
 				<c:if test="${page.curBlock < page.totalBlock}">
