@@ -130,7 +130,6 @@ input.btnType4 {
 }
 .btnType5 {
     height: 35px;
-    vertical-align: top;
     border: 1px solid #585858;
     background-color: #fff;
     padding: 0 20px 0 20px;
@@ -140,13 +139,20 @@ input.btnType4 {
     background: #f4f4f4;
     color: #033823;
 }
-.btn{
+.bottom_btn {
 	width: 1040px;
 	height: 80px;
 	margin:0 auto;
+    text-align: center;
+    margin-top: 40px;
 }
+
 input[type=text]:focus {
     border-color:#333;
+}
+
+span>a {
+	text-decoration: none;
 }
 
 select{

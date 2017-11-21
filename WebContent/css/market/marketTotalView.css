@@ -97,32 +97,25 @@
     margin: 0 56px 20px 0;
 }
 
+#divLocation ul li:first-child {
+    margin: 0;
+    padding: 0;
+    background: none;
+}
+
+#divLocation ul li {
+    float: left;
+    padding-left: 20px;
+    margin-left: 13px;
+	list-style: none;
+    font-family: NG, sans-serif;
+    line-height: 1.5em;
+}
+
 
 <!--상단 바 끝 -->
 
-
-a:hover {
-	text-decoration: none;
-}
-
-section {
-    width: 1040px;
-    margin: 0 auto;
-    padding-bottom: 40px !important;
-    background-color: #fff;
-}
-
-h2 {
-    display: block;
-    font-size: 1.5em;
-    -webkit-margin-before: 0.83em;
-    -webkit-margin-after: 0.83em;
-    -webkit-margin-start: 0px;
-    -webkit-margin-end: 0px;
-    font-weight: bold;
-}
-
-h3 {
+#section h3 {
     display: block;
     font-size: 1.17em;
     -webkit-margin-before: 1em;

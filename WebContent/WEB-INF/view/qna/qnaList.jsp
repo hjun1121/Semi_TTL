@@ -13,7 +13,6 @@
 <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
 <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
-<link rel="stylesheet" href="${pageContext.request.contextPath }/css/qna/qnaList.css">
 <script type="text/javascript">
 	$(function(){
 		var kind = '${kind}';
@@ -115,14 +114,10 @@
 			</c:forEach>
 		</table>
 	</div>
-	
-	
-	<!-- /////////////////////// -->
 
-
-		<input type="button" class = "btn btn-default" id="write_btn" value="글쓰기">
-	
-	<!-- qna list 끝 -->
+	<c:if test="${not empty member}">
+	<input type="button" class = "btn btn-default" id="write_btn" value="글쓰기">
+	</c:if>
 
 	
 	<div class = "paging" style = "text-align: center;">
