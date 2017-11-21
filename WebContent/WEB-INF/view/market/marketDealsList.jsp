@@ -118,7 +118,7 @@ $(function(){
 		            <option class="day" value="30">30</option>
 		            <option class="day" value="31">31</option>
 		        </select>
-		        일 이전 까지 <input class="btnType5" type="submit" value=" ">
+		        일 이전 까지 <input class="btnType5 sBtn" type="submit" value=" ">
       		  </span>
 		</form>
 	</div>
@@ -128,7 +128,10 @@ $(function(){
 	<a href="./marketDealsList.market?id=${id }&type=1&year=${year}&month=${month}&day=${day}"><input class="btnType3" type="button" value="판매"></a>
 	<a href="./marketDealsList.market?id=${id }&type=2&year=${year}&month=${month}&day=${day}"><input class="btnType3" type="button" value="구매"></a>
 	<br><br>
-	
+	<c:if test="${size eq 0 }">
+		<h2 id="divTitle">MARKET 거래 내역이 없습니다.</h2>
+	</c:if>
+	<c:if test="${size ne 0 }">
 	<div class="listTable">
 	<table class="mobileTable tablet" >
 	<thead>
@@ -228,6 +231,7 @@ $(function(){
 		</ul>
 	</div>
 </div>
+</c:if>
 </div>
 <c:import url="${myContextPath}/temp/footer.jsp"></c:import>
 </body>
