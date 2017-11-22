@@ -133,7 +133,7 @@ $(function(){
 			
 			<div class="btn">
 			<a href="./bookOrderList.book?state=3&id=joy"><input type="button" class="btn_NO" value="취소"></a>
-			<input type="submit" class="btn_OK" id="btn" name="btn" value="수정">
+			<input type="button" class="btn_OK" id="btn" name="btn" value="수정">
 			</div>
 		</div>
 	</div>

@@ -342,7 +342,7 @@
 			</table>
 			
 			<div class="bottom_btn">
-			<input type="submit" class="btnType5" id="btn" name="btn" value="정보 수정">
+			<input type="button" class="btnType5" id="btn" name="btn" value="정보 수정">
 				<span>
 					<a href="./memberDelete.member?id=${DTO.id}">
 					<button class = "btnType5" type = "button" >회원탈퇴</button>
