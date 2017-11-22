@@ -21,7 +21,7 @@
 	<div id="divContentsW">
 		<div id="divContents">
 			
-			<h2 id="divTitle">QnA View Check</h2>
+			<h2 id="divTitle">QnA</h2>
 			<div id="divLocation">
 				<ul>
 					<li class="home"><a href="#"><img src="${pageContext.request.contextPath }/image/notice/home.png" alt="HOME"></a></li>
