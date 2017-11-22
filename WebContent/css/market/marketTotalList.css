@@ -17,6 +17,10 @@ line-height:38px;
 vertical-align:top;
 background-color:white;
 }
+.adv:hover {
+    background: #033823;
+    color: white;
+}
 <!--상단 바 시작 -->
 /* #divContentsW{ */
 /* 	background-color:#fff; */

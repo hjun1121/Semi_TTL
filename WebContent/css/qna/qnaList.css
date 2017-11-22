@@ -193,10 +193,6 @@ td.title2{width:20%;}
 
 <!-- list 끝 -->
 
-#section #write_btn {
-	margin-top: 40px;
-	float: right;
-}
 
 #section .paging {
     clear: both;
@@ -227,4 +223,24 @@ td.title2{width:20%;}
     width: 28px;
     height: 28px;
     vertical-align: middle;
+}
+
+
+.adv{
+	float:right;
+	height:38px;
+	display:inline-block;
+	margin:0 5px;
+	padding:0 19px;
+	border:1px solid #585858;
+	color:#1a1a1a;
+	font-size:14px;
+	font-weight:600;
+	line-height:38px;
+	vertical-align:top;
+	background-color:white;
+}    
+.adv:hover {
+    background: #033823;
+    color: white;
 }

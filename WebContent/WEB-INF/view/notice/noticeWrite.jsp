@@ -67,7 +67,6 @@
 					<div class="btnBox">
 						<span class="button1"><a href="./noticeList.notice" class="type4 large">취소</a></span> 
 						<span class="button1"><a href="#" id ="btn" class="type1 large">확인</a></span>
-
 					</div>
 				</form>
 				

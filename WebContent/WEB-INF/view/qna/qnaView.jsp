@@ -112,9 +112,9 @@ $(function(){
 		<br>
 		</div>
 		<div id = "bottom_btns">
-			<input type="submit" value="수정">
-			<a href="../qna/qnaDelete.qna?num=${qnaDTO.num }"><input type="button" value="삭제"></a>
-			<a href="../qna/qnaList.qna"><input type="button" value="list"></a>
+			<input type="submit" class="adv" value="수정">
+			<a href="../qna/qnaDelete.qna?num=${qnaDTO.num }"><input type="button" class="adv" value="삭제"></a>
+			<a href="../qna/qnaList.qna"><input type="button" class="adv" value="list"></a>
 		</div>
 		</form>
 		
@@ -125,7 +125,7 @@ $(function(){
 			<input type ="hidden" value="${qnaDTO.num}" name="pNum">
 			<input type ="hidden" value="${qnaDTO.pw}" name="pw">
 			<p><textarea name="contents" class = "reply"></textarea>
-			<button type="submit">등록</button> </p>
+			<button type="submit" class="adv">등록</button> </p>
 		</form>
 		</div>
 	</div>
