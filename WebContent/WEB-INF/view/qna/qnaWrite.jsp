@@ -19,6 +19,20 @@ $(function(){
 			 $(this).attr("selected", true);
 		 }
 	});
+	$("#btn_OK").click(function(){
+		if($("#title2").val() == ""){
+			alert("제목을 입력하세요.");
+			$("#title2").focus();
+		}else if($("#contents2").val() == ""){
+			alert("내용을 입력하세요.");
+			$("#contents2").focus();
+		}else if($("#pw2").val() == ""){
+			alert("비밀번호를 입력하세요.");
+			$("#pw2").focus();
+		}else{
+			document.frm.submit();
+		}
+	});
 });
 
 </script>
@@ -39,7 +53,7 @@ $(function(){
 			</div>	
 			
 			<div class="cstmWrap">
-			<form action="./qnaWrite.qna" method="post">
+			<form action="./qnaWrite.qna" name="frm" method="post" >
 				<input type = "hidden" class = "form-control" name = "id" value = "${member.id }">
 				<ul class = "otoForm mt30 borTc3">
 					<li>
@@ -53,11 +67,11 @@ $(function(){
 					
 					<li>
 						<p class="writeTit" >제목</p>
-						<input type="text" id="title" name="title">
+						<input type="text" id="title2" name="title">
 					</li>
 					<li>
 						<p class="writeTit" >내용</p>
-						<input type="text" id="contents" name="contents">
+						<input type="text" id="contents2" name="contents">
 					</li>
 					<li>
 						<p class="writeTit" >작성자</p>
@@ -65,7 +79,7 @@ $(function(){
 					</li>
 					<li>
 						<p class="writeTit" >비밀번호</p>
-						<input type="password" id="pw" name="pw">
+						<input type="password" id="pw2" name="pw">
 					</li>
 					<li>
 						<p class="writeTit">도서관명</p>
@@ -79,7 +93,7 @@ $(function(){
 				</ul>
 				<div class="btnBox">
 					<button id="btn_NO"><a href="./qnaList.qna">취소</a></button>
-					<button type="submit" id="btn_OK">확인</button>
+					<button type="button" id="btn_OK">확인</button>
 				</div>
 			</form>
 			</div>
