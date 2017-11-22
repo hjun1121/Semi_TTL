@@ -34,6 +34,13 @@ $(function(){
 				$(this).attr("selected", true);
 			}
 		});
+		
+		$(".cur").each(function(){
+			 if($(this).attr("title") == ${curPage }) {
+				 $(this).attr("style", "color:red;");
+			 }
+		 });
+		
 });
 </script>
 </head>
@@ -153,16 +160,16 @@ $(function(){
 			<td scope="row" style="display: table-cell;">${seatTotal_list.seat_num }</td>
 			<c:choose>
 				<c:when test="${seatTotal_list.library eq 1}">
-					<td scope="row" style="display: table-cell;">기흥구</td>
+					<td scope="row" style="display: table-cell;">기흥도서관</td>
 				</c:when>
 				<c:when test="${seatTotal_list.library eq 2}">
-					<td scope="row" style="display: table-cell;">송파구</td>
+					<td scope="row" style="display: table-cell;">송파도서관</td>
 				</c:when>
 				<c:when test="${seatTotal_list.library eq 3}">
-					<td scope="row" style="display: table-cell;">장안구</td>
+					<td scope="row" style="display: table-cell;">장안도서관</td>
 				</c:when>
 				<c:when test="${seatTotal_list.library eq 4}">
-					<td scope="row" style="display: table-cell;">분당구</td>
+					<td scope="row" style="display: table-cell;">분당도서관</td>
 				</c:when>
 				<c:otherwise>
 					<td scope="row" style="display: table-cell;">없음</td>
@@ -205,8 +212,7 @@ $(function(){
 			<li><button class="go" id="${page.startNum-1}">[이전]</button></li>
 			</c:if>
 			<c:forEach begin="${page.startNum}" end="${page.lastNum}" var="i">
-			<li><a
-				href="./seatTotalList.seat?curPage=${i}&id=${id }&year=${year}&month=${month}&day=${day}">${i}</a></li>
+			<li><a class="cur" title="${i }" href="./seatTotalList.seat?curPage=${i}&id=${id }&year=${year}&month=${month}&day=${day}">${i}</a></li>
 			</c:forEach>
 			<c:if test="${page.curBlock < page.totalBlock}">
 			<li><a

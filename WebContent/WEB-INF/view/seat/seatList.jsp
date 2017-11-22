@@ -57,37 +57,20 @@
 		$("#seat_4").click(function(){
 			$.ajax({
 				url: "./seatList.seat",
-				type: "GET",
+				type: "POST",
 				data: {
 					library :4
 				},
 				success:function(data){
-					$("seatTable").attr.display("block");
+					$("#seatList").html(data.trim());
 				}
 			});
-
+			
 		});
+		
 
-// 		$("#seat_4").click(function(){
-// 			$.ajax({
-// 				url: "./seatList.seat",
-// 				type: "GET",
-// 				data: {
-// 					library :4
-// 				},
-// 				success:function(data){
-// 					var table = "<table id = 'seat_Table'>";
-// 					$(data).each(function(index, item) {
-// 						table += "<tr><td>" + this.seat_num + "</td></tr>";
-// 					}
-// 				});
-					
-// 					table += "</table>";
 
-// 					$("#seatTable").html(table);
-// 			});
 
-// 		});
 	});
 </script>
 </head>
@@ -125,50 +108,34 @@
 					<tr>
 						<td scope="row" style="display: table-cell;">기흥 도서관</td>
 						<td scope="row" style="display: table-cell;">
-						<c:forEach items="${seat1 }" var="dto" varStatus="count" >
-							<c:if test="${count.last }">
-								${count.index+1 } 개
-							</c:if>
-						</c:forEach>
+						${cntAlla1} 석
 						</td>
-						<td scope="row" style="display: table-cell;">${cntAlla1-cnta1 }</td>
-						<td><a href="#" id="seat_1"><button class="detail">상세</button></a></td>
+						<td scope="row" style="display: table-cell;">${cnta1 } 석</td>
+						<td><a id="seat_1"><button class="detail">상세</button></a></td>
 					</tr>
 					<tr>
 						<td scope="row" style="display: table-cell;">송파 도서관</td>
 						<td scope="row" style="display: table-cell;">
-						<c:forEach items="${seat2 }" var="dto" varStatus="count" >
-							<c:if test="${count.last }">
-								${count.index+1 } 개
-							</c:if>
-						</c:forEach>
+						${cntAlla2} 석
 						</td>
-						<td scope="row" style="display: table-cell;">${cntAlla2-cnta2 }</td>
-						<td><a href="#" id="seat_2"><button class="detail">상세</button></a></td>
+						<td scope="row" style="display: table-cell;">${cnta2 } 석</td>
+						<td><a id="seat_2"><button class="detail">상세</button></a></td>
 					</tr>
 					<tr>
 						<td scope="row" style="display: table-cell;">장안 도서관</td>
 						<td scope="row" style="display: table-cell;">
-						<c:forEach items="${seat3 }" var="dto" varStatus="count" >
-							<c:if test="${count.last }">
-								${count.index+1 } 개
-							</c:if>
-						</c:forEach>
+						${cntAlla3} 석
 						</td>
-						<td scope="row" style="display: table-cell;">${cntAlla3-cnta3 }</td>
-						<td><a href="#" id="seat_3"><button class="detail">상세</button></a></td>
+						<td scope="row" style="display: table-cell;">${cnta3 } 석</td>
+						<td><a id="seat_3"><button class="detail">상세</button></a></td>
 					</tr>
 					<tr>
 						<td scope="row" style="display: table-cell;">분당 도서관</td>
 						<td scope="row" style="display: table-cell;">
-						<c:forEach items="${seat4 }" var="dto" varStatus="count" >
-							<c:if test="${count.last }">
-								${count.index+1 } 개
-							</c:if>
-						</c:forEach>
+						${cntAlla4} 석
 						</td>
-						<td scope="row" style="display: table-cell;">${cntAlla4-cnta4 }</td>
-						<td><a href="#" id="seat_4"><button class="detail">상세</button></a></td>
+						<td scope="row" style="display: table-cell;">${cnta4 } 석</td>
+						<td><a id="seat_4"><button class="detail">상세</button></a></td>
 					</tr>
 				</tbody>
 			</table>

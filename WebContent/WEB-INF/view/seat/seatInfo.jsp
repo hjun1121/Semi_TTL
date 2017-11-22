@@ -62,7 +62,7 @@
 					<th>도서관</th>
 					<th>상태</th>
 					<th>사용자</th>
-					<th>시간</th>
+					<th>예약시간</th>
 				</tr>
 				<tr>
 					<td>${seat.seat_num }</td>

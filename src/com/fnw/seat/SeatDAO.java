@@ -79,7 +79,7 @@ public class SeatDAO {
 	
 	public int count(int f, int library) throws Exception{
 		 Connection con = DBConnector.getConnect();
-		 String sql = "select count(*) from seat where seat_num like ? and library=? and state=0";
+		 String sql = "select count(*) from seat where seat_num like ? and library=? and state=1";
 		 PreparedStatement st = con.prepareStatement(sql);
 		 
 		 st.setString(1, f+"%");

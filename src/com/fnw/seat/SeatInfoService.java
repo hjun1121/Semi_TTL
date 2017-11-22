@@ -18,13 +18,13 @@ public class SeatInfoService implements Action {
 		ActionFoward actionFoward = new ActionFoward();
 		String method=request.getMethod();
 		int seat_num = 1;
+		
 		int state =1;
 
 		int library = 0;
 		try {
 			library = Integer.parseInt(request.getParameter("library"));
 		} catch (Exception e) {
-			// TODO: handle exception
 		}
 		String id = request.getParameter("id");
 		try {
@@ -45,7 +45,6 @@ public class SeatInfoService implements Action {
 				try {
 					seatDTO = seatDAO.selectOne(library, seat_num);
 				} catch (Exception e) {
-					// TODO Auto-generated catch block
 					e.printStackTrace();
 				}
 				if(seatDTO.equals(null)) {
