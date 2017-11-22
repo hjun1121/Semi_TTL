@@ -134,6 +134,7 @@ $(function(){
 	<a href="./marketDealsList.market?id=${id }&type=3&year=${year}&month=${month}&day=${day}"><input class="btnType3" type="button" value="전체"></a>
 	<a href="./marketDealsList.market?id=${id }&type=1&year=${year}&month=${month}&day=${day}"><input class="btnType3" type="button" value="판매"></a>
 	<a href="./marketDealsList.market?id=${id }&type=2&year=${year}&month=${month}&day=${day}"><input class="btnType3" type="button" value="구매"></a>
+	<a href="./bookBuyFinish.market"><input class="btnType3" type="button" value="결제확인"></a>
 	<br><br>
 	<c:if test="${size eq 0 }">
 		<h2 id="divTitle">MARKET 거래 내역이 없습니다.</h2>

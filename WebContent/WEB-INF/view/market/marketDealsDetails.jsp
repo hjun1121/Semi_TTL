@@ -49,15 +49,15 @@
 			</tr>
 			<tr>
 				<th>서명</th>
-				<td><input type="text" class="noneBorder" name="title" value=${bookDealsDetail.title } readonly="readonly"></td>
+				<td><input type="text" class="noneBorder" name="title" value="${bookDealsDetail.title }" readonly="readonly"></td>
 			</tr>
 			<tr>
 				<th>저자</th>
-				<td><input type="text" class="noneBorder" name="writer" value=${bookDealsDetail.writer } readonly="readonly"></td>
+				<td><input type="text" class="noneBorder" name="writer" value="${bookDealsDetail.writer }" readonly="readonly"></td>
 			</tr>
 			<tr>
 				<th>출판사</th>
-				<td><input type="text" class="noneBorder" name="company" value=${bookDealsDetail.company } readonly="readonly"></td>
+				<td><input type="text" class="noneBorder" name="company" value="${bookDealsDetail.company }" readonly="readonly"></td>
 			</tr>
 			<tr>
 				<th>출판년도</th>
