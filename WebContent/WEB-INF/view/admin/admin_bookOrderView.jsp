@@ -14,44 +14,42 @@
 
 <link rel="stylesheet" href="${pageContext.request.contextPath }/css/member/myPage.css">
 <link rel="stylesheet" href="${pageContext.request.contextPath }/css/admin/admin_bookOrderView.css">
-  <script type="text/javascript">
-  $(function(){
-	  $("#btn").click(function(){
-		  
-	  $.ajax({
-			url:"./bookOrderAjax.book",
-			type:"POST",
-			data: {
-				num:${requestScope.view.num }
-				
-			},
-			success:function(data){
-				$("#OK").html(data);
-				
-			}
-		});
-	  });
-  });
-  
-  $(function(){
-	  $("#btn_no").click(function(){
-		  
-	  $.ajax({
-			url:"./bookOrderNOAjax.book",
-			type:"POST",
-			data: {
-				num:${requestScope.view.num }
-				
-			},
-			success:function(data){
-				$("#NO").html(data);
-				
-			}
-		});
-	  });
+<script type="text/javascript">
+	$(function(){
+		
+		$("#btn").click(function(){
+			$.ajax({
+				url:"./bookOrderAjax.book",
+				type:"POST",
+				data: {
+					num:${requestScope.view.num }
+				},
+				success:function(data){
+					$("#result").html(data);
+				}
+			});
+		 });
+	 
+		$("#btn_no").click(function(){
 	  
-  });
-  </script>
+			$.ajax({
+				url:"./bookOrderNOAjax.book",
+				type:"POST",
+				data: {
+					num:${requestScope.view.num }
+				},
+				success:function(data){
+					$("#result").html(data);
+				}
+			});
+		 });
+	 
+		$("#btnList").click(function(){
+			location.href="./bookOrderListAdmin.book?state=3";
+		});
+		
+	});//
+</script>
 </head>
 <body>
 <c:import url="${myContextPath}/temp/header.jsp"></c:import>
@@ -128,13 +126,14 @@
 			</c:choose>
 			</tr>
 		</table>
+		<div id="result">
+		</div>
 		<div class="btn">
 			<input type="button" class="btnType5" id="btn" value="승인">
 			<input type="button" class="btnType5" id="btn_no" value="거절">
-			<a href="./bookOrderListAdmin.book">
-			<input type="button" class="btnType5" value="LIST"></a>
+			<input type="button" class="btnType5" id="btnList" value="LIST">
 		</div>
-		</div>
+	</div>
 </div>		
 <c:import url="${myContextPath}/temp/footer.jsp"></c:import>
 </body>

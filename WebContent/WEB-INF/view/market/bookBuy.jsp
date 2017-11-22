@@ -104,30 +104,28 @@ $(function(){
 			});
 			
 			if(test == 'lib'){
-				
 				if($("#chk_purchase_agreement0").prop("checked")==true){
 					document.frm.submit();
 				}else{
+<<<<<<< HEAD
+					alert("동의좀 눌러주시겠습니까?");
+=======
 					alert("동의하지 않으시면 결제하실 수 없습니다.");
+>>>>>>> 40da204c6350dc4207f759d973fe6f6d41b90b6e
 					$("#chk_purchase_agreement0").focus();
 				}
-				
 			}else{
-				
 				if($("#chk_purchase_agreement0").prop("checked")==true){
-					
-					
+					document.frm.submit();
 				}else{
-					alert("동의쳐눌러");
+					alert("동의좀 눌러주시겠습니까?");
+					$("#chk_purchase_agreement0").focus();
 				}
-				
-			}			
-			
-			
+			}
 		});
 		
-		
-});
+	});
+
 </script>
 </head>
 <body>
@@ -268,7 +266,7 @@ $(function(){
 					<tr>
 						<th scope="row">주문자명 </th>
 						<td>
-							<input class="inputTypeText" placeholder="" size="15" type="text" value="${member.id }">
+							<input class="inputTypeText" placeholder="" id="id" size="15" type="text" value="${member.id }">
 						</td>
 					</tr>
 					<tr>
@@ -313,77 +311,6 @@ $(function(){
 	</div>
 </form>
 
-
-
-		<!-- /////////////// -->
-
-<%-- 	<form action="../market/marketBuy.market" method="POST">
-	<input type = "hidden" name = "num" value = ${buyWishList.num }>
-		<input type = "hidden"  name = "id" value = ${member.id }>
-		<input type = "hidden" name = "kind" value = '1'>
-		<table class = "table">
-			<tr>
-				<td>책제목</td>
-				<td><input type = "text" name = "title" value="${buyWishList.title}"></td>
-				<td>저자</td>
-				<td><input type = "text" name = "writer" value="${buyWishList.writer}"></td>
-			</tr>
-			<tr>
-				<td>출판사</td>
-				<td><input type = "text" name = "company" value="${buyWishList.company}"></td>
-				<td>출판년도</td>
-				<td><input type = "text" name = "publish_date" placeholder = "출판년도는 숫자만 입력해 주세요" value="${buyWishList.publish_date}"></td>
-			</tr>
-			<tr>
-				<td>정가</td>
-				<td><input type = "text" name = "price" value="${buyWishList.price}"></td>
-			</tr>
-			<tr>
-				<td>도서관명</td>
-				<c:choose>
-					<c:when test="${buyWishList.library eq 1}">
-						<td><input type = "text" value="기흥구"></td>
-						<input type = "hidden" name = "library" value="1">
-					</c:when>
-					<c:when test="${buyWishList.library eq 2}">
-						<td><input type = "text"  value="송파구"></td>
-						<input type = "hidden" name = "library" value="2">
-					</c:when>
-					<c:when test="${buyWishList.library eq 3}">
-						<td><input type = "text"  value="장안구"></td>
-						<input type = "hidden" name = "library" value="3">
-					</c:when>
-					<c:when test="${buyWishList.library eq 4}">
-						<td><input type = "text" value="분당구"></td>
-						<input type = "hidden" name = "library" value="4">
-					</c:when>
-					<c:otherwise>
-						<td>-</td>
-					</c:otherwise>
-				</c:choose>
-			</tr>
-			<tr>
-				<td>구입방법</td>
-				<td><select name = "delivery" id="delivery">
-					<option class = "delivery" value = "1">직접수령</option>
-					<option class = "delivery" value = "2">택배</option>
-				</select>
-				<td id="price"></td>
-			</tr>
-			<tr id="addrDis" style="display: none;">
-				<td>주소</td>
-				<td>
-					<input type="text" id="postCode" name="postCode" placeholder="우편번호" readonly="readonly" value="${member.postCode }">
-					<input type="button" id="addrCheck" value="우편번호 찾기" ><br>
-					<input type="text" id="addr" name="addr" placeholder="주소" readonly="readonly" value="${member.addr }">
-					<input type="text" id="addr2" name="addr2" placeholder="나머지주소 " value="${member.addr2 }">	
-				</td>
-				<td>택배결제시 2500원 추가되어 결제됩니다.</td>
-			</tr>
-		</table>
-		<button type = "submit">CONFIRM</button>
-	</form>
-	 --%>
 	
 	</div>
 </div>

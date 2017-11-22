@@ -15,8 +15,17 @@
 
 <script type="text/javascript">
 	$(function(){
+		
 		$("#login").click(function(){
-			document.frm.submit();
+			if($("#id_text").val()==""){
+				alert("아이디를 입력해주세요");
+				$("#id_text").focus();
+			}else if($("#pw_text").val()==""){
+				alert("비밀번호를 입력해주세요");
+				$("#pw_text").focus();
+			}else{
+				document.frm.submit();
+			}
 		});
 		
 		
@@ -73,7 +82,7 @@
 			
 		<!-- 로그인버튼 -->
 			<div id="login_btn">
-				<a href="#" id="login">로그인</a>
+				<a id="login" style="cursor: pointer;">로그인</a>
 			</div>	
 		
 		<!-- 찾기버튼들 -->
