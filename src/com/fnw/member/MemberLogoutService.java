@@ -13,6 +13,14 @@ public class MemberLogoutService implements Action {
 		ActionFoward actionFoward = new ActionFoward();
 		request.getSession().invalidate();
 		
+		int library = 0;
+		try {
+			library = Integer.parseInt(request.getParameter("library"));
+		} catch (Exception e) {
+			// TODO: handle exception
+		}
+
+		request.setAttribute("library", library);
 		actionFoward.setCheck(false);
 		actionFoward.setPath("../index.jsp");
 		return actionFoward;

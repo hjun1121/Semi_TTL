@@ -19,6 +19,12 @@ public class QnaReplyDeleteService implements Action {
 		ActionFoward actionFoward = new ActionFoward();
 		Qna_ReplyDAO qna_ReplyDAO = new Qna_ReplyDAO();
 		
+		int library = 0;
+		try {
+			library = Integer.parseInt(request.getParameter("library"));
+		} catch (Exception e) {
+			// TODO: handle exception
+		}
 		int result = 0;
 		try {
 			result = qna_ReplyDAO.delete(Integer.parseInt(request.getParameter("num")));
@@ -53,7 +59,7 @@ public class QnaReplyDeleteService implements Action {
 			actionFoward.setPath("../WEB-INF/view/common/result.jsp");
 		}
 		
-
+		request.setAttribute("library", library);
 		return actionFoward;
 	}
 }

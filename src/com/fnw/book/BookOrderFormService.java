@@ -12,7 +12,13 @@ public class BookOrderFormService implements Action {
 	public ActionFoward doProcess(HttpServletRequest request, HttpServletResponse response) {
 		ActionFoward actionFoward = new ActionFoward();
 		String method = request.getMethod();
-
+		
+		int library = 0;
+		try {
+			library = Integer.parseInt(request.getParameter("library"));
+		} catch (Exception e) {
+			// TODO: handle exception
+		}
 		if(method.equals("GET")) {
 			actionFoward.setCheck(true);
 			actionFoward.setPath("../WEB-INF/view/book/bookOrderForm.jsp");
@@ -44,6 +50,7 @@ public class BookOrderFormService implements Action {
 			}
 			request.setAttribute("message", message);
 			request.setAttribute("path", "../book/bookOrderTotalList.book");
+			request.setAttribute("library", library);
 			
 			actionFoward.setCheck(true);
 			actionFoward.setPath("../WEB-INF/view/common/result.jsp");

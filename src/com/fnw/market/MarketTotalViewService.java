@@ -11,6 +11,13 @@ public class MarketTotalViewService implements Action {
 	@Override
 	public ActionFoward doProcess(HttpServletRequest request, HttpServletResponse response) {
 		ActionFoward actionFoward = new ActionFoward();
+		
+		int library = 0;
+		try {
+			library = Integer.parseInt(request.getParameter("library"));
+		} catch (Exception e) {
+			// TODO: handle exception
+		}
 		int num = 1;
 		try {
 			num = Integer.parseInt(request.getParameter("num"));
@@ -33,6 +40,7 @@ public class MarketTotalViewService implements Action {
 		}
 		
 		request.setAttribute("dto", market_TotalDTO);
+		request.setAttribute("library", library);
 		
 		actionFoward.setCheck(true);
 		actionFoward.setPath("../WEB-INF/view/market/marketTotalView.jsp");

@@ -17,6 +17,12 @@ public class BookListNewAjaxService implements Action {
 		ActionFoward actionFoward = new ActionFoward();
 		Book_TotalDAO book_TotalDAO = new Book_TotalDAO();
 		
+		int library = 0;
+		try {
+			library = Integer.parseInt(request.getParameter("library"));
+		} catch (Exception e) {
+			// TODO: handle exception
+		}
 		int curPage=1;
 		try {
 			curPage=Integer.parseInt(request.getParameter("curPage"));
@@ -46,6 +52,7 @@ public class BookListNewAjaxService implements Action {
 			request.setAttribute("search", search);
 			request.setAttribute("page", pageMaker.getMakePage());
 			request.setAttribute("curPage", curPage);
+			request.setAttribute("library", library);
 		} catch (Exception e) {
 			e.printStackTrace();
 		}

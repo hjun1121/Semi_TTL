@@ -20,6 +20,12 @@ public class MarketTotalListService implements Action {
 		Book_Buy_WishDAO book_Buy_WishDAO = new Book_Buy_WishDAO();
 		ArrayList<Book_Buy_WishDTO> buy_wish_list = new ArrayList<>();
 		
+		int library = 0;
+		try {
+			library = Integer.parseInt(request.getParameter("library"));
+		} catch (Exception e) {
+			// TODO: handle exception
+		}
 		////id 받아오기
 		HttpSession session = null;
 		String id = null;
@@ -71,11 +77,12 @@ public class MarketTotalListService implements Action {
 			request.setAttribute("curPage", curPage);
 			request.setAttribute("kind", kind);
 			request.setAttribute("search", search);
+			request.setAttribute("library", library);
 		} catch (Exception e) {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
 		}
-		
+		request.setAttribute("library", library);
 		actionFoward.setCheck(true);
 		actionFoward.setPath("../WEB-INF/view/market/marketTotalList.jsp");
 		return actionFoward;

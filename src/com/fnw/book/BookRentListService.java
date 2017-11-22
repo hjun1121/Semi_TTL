@@ -22,8 +22,14 @@ public class BookRentListService implements Action {
 		ArrayList<Book_Rent_DetailsDTO> list = new ArrayList<>();
 		HttpSession session = request.getSession();
 		String id = ((MemberDTO)session.getAttribute("member")).getId();
-		int curPage = 1;
 		
+		int library = 0;
+		try {
+			library = Integer.parseInt(request.getParameter("library"));
+		} catch (Exception e) {
+			// TODO: handle exception
+		}
+		int curPage = 1;		
 		try {
 			curPage = Integer.parseInt(request.getParameter("curPage"));
 		} catch (Exception e) {
@@ -72,6 +78,7 @@ public class BookRentListService implements Action {
 			request.setAttribute("day", day);
 			request.setAttribute("page", pageMaker.getMakePage());
 			request.setAttribute("curPage", curPage);
+			request.setAttribute("library", library);
 		} catch (Exception e) {
 			e.printStackTrace();
 		}

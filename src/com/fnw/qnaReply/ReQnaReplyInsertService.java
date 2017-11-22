@@ -16,6 +16,12 @@ public class ReQnaReplyInsertService implements Action {
 		ActionFoward actionFoward = new ActionFoward();
 		String contents = request.getParameter("contents");
 		
+		int library = 0;
+		try {
+			library = Integer.parseInt(request.getParameter("library"));
+		} catch (Exception e) {
+			// TODO: handle exception
+		}
 		int pNum =0; //qna 글 번호
 		try {
 			pNum = Integer.parseInt(request.getParameter("pNum"));
@@ -95,6 +101,7 @@ public class ReQnaReplyInsertService implements Action {
 		}
 		request.setAttribute("num", pNum);
 		request.setAttribute("pw", pw);
+		request.setAttribute("library", library);
 		actionFoward.setCheck(true);
 		actionFoward.setPath("../WEB-INF/view/common/resultQna.jsp");
 		

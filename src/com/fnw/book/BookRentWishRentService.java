@@ -20,6 +20,12 @@ public class BookRentWishRentService implements Action {
 		LibraryDAO libraryDAO = new LibraryDAO();
 		ArrayList<Book_Rent_WishDTO> list = new ArrayList<>();
 
+		int library = 0;
+		try {
+			library = Integer.parseInt(request.getParameter("library"));
+		} catch (Exception e) {
+			// TODO: handle exception
+		}
 		int curPage = 0;
 		try {
 			curPage = Integer.parseInt(request.getParameter("curPage"));
@@ -34,12 +40,6 @@ public class BookRentWishRentService implements Action {
 		String search = request.getParameter("search");
 		if(search==null) {
 			search="";
-		}
-
-		int library = 1;
-		try {
-			library = Integer.parseInt(request.getParameter("library"));
-		} catch (Exception e) {
 		}
 		int num = 0;
 		try {
@@ -82,6 +82,7 @@ public class BookRentWishRentService implements Action {
 			request.setAttribute("message", "대여 실패");
 			request.setAttribute("path", "../book/bookRentWishList.book?id="+rent_id);
 		}
+		request.setAttribute("library", library);
 		actionFoward.setCheck(true);
 		actionFoward.setPath("../WEB-INF/view/common/result.jsp");
 		return actionFoward;

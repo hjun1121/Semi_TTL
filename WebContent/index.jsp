@@ -16,13 +16,11 @@
 
 <title>Total Library Page</title>
 
-
-
 <script type="text/javascript">
-	
+
 	var slideIndex = 1;
 	showSlides(slideIndex);
-	
+
 	function plusSlides(n) {
 	  showSlides(slideIndex += n);
 	}
@@ -46,7 +44,6 @@
 	  slides[slideIndex-1].style.display = "block";  
 	  dots[slideIndex-1].className += " active";
 	}
-
 </script>
 
 <script type="text/javascript">
@@ -81,7 +78,6 @@ $(function(){
 			$("#bookForm_new").html(data);
 		}
 	});
-	
 	
  	$.ajax({
 		url:"./seat/seatAjax_1.seat",
@@ -129,9 +125,6 @@ $(function(){
 	
 });
 </script>
-
-
-
 
 </head>
 <body>

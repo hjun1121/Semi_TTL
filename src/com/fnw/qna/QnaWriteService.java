@@ -16,7 +16,12 @@ public class QnaWriteService implements Action {
 	public ActionFoward doProcess(HttpServletRequest request, HttpServletResponse response) {
 		ActionFoward actionFoward = new ActionFoward();
 		String method = request.getMethod();
-		
+		int library = 0;
+		try {
+			library = Integer.parseInt(request.getParameter("library"));
+		} catch (Exception e) {
+			// TODO: handle exception
+		}
 		if(method.equals("GET")) {
 			actionFoward.setCheck(true);
 			actionFoward.setPath("../WEB-INF/view/qna/qnaWrite.jsp");
@@ -49,7 +54,7 @@ public class QnaWriteService implements Action {
 				e1.printStackTrace();
 			}
 		}
-
+		request.setAttribute("library", library);
 		return actionFoward;
 	}
 }

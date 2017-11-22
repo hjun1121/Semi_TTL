@@ -14,6 +14,13 @@ public class AdminMarketOrderViewService implements Action {
 	public ActionFoward doProcess(HttpServletRequest request, HttpServletResponse response) {
 		ActionFoward actionFoward = new ActionFoward();
 		Market_OrderDAO market_OrderDAO = new Market_OrderDAO();
+		
+		int library = 0;
+		try {
+			library = Integer.parseInt(request.getParameter("library"));
+		} catch (Exception e) {
+			// TODO: handle exception
+		}
 		int num =0;
 		try {
 		num = Integer.parseInt(request.getParameter("num"));
@@ -29,6 +36,7 @@ public class AdminMarketOrderViewService implements Action {
 		}
 		//boardDTO가 Null이면 다른 곳으로 처리
 		
+		request.setAttribute("library", library);
 		request.setAttribute("view", market_OrderDTO);
 		actionFoward.setCheck(true);
 		actionFoward.setPath("../WEB-INF/view/admin/admin_MarketOrder_View.jsp");

@@ -18,6 +18,12 @@ public class AdminBookOrderListService implements Action {
 		ActionFoward actionFoward = new ActionFoward();
 		Book_OrderDAO book_OrderDAO = new Book_OrderDAO();
 		
+		int library = 0;
+		try {
+			library = Integer.parseInt(request.getParameter("library"));
+		} catch (Exception e) {
+			// TODO: handle exception
+		}
 		int curPage=1;
 		try {
 			curPage=Integer.parseInt(request.getParameter("curPage"));
@@ -38,6 +44,7 @@ public class AdminBookOrderListService implements Action {
 				PageMaker pageMaker = new PageMaker(curPage, totalCount);
 				List<Book_OrderDTO> ar = book_OrderDAO.selectList(pageMaker.getMakeRow(),state);
 				request.setAttribute("size", ar.size());
+				request.setAttribute("library", library);
 				request.setAttribute("orderList", ar);
 				request.setAttribute("page", pageMaker.getMakePage());
 				request.setAttribute("curPage", curPage);
@@ -52,6 +59,7 @@ public class AdminBookOrderListService implements Action {
 				PageMaker pageMaker = new PageMaker(curPage, totalCount);
 				List<Book_OrderDTO> ar = book_OrderDAO.selectList(pageMaker.getMakeRow(),state);
 				request.setAttribute("size", ar.size());
+				request.setAttribute("library", library);
 				request.setAttribute("orderList", ar);
 				request.setAttribute("page", pageMaker.getMakePage());
 				request.setAttribute("curPage", curPage);
@@ -67,6 +75,7 @@ public class AdminBookOrderListService implements Action {
 				PageMaker pageMaker = new PageMaker(curPage, totalCount);
 				List<Book_OrderDTO> ar = book_OrderDAO.selectList(pageMaker.getMakeRow(),state);
 				request.setAttribute("size", ar.size());
+				request.setAttribute("library", library);
 				request.setAttribute("orderList", ar);
 				request.setAttribute("page", pageMaker.getMakePage());
 				request.setAttribute("curPage", curPage);
@@ -82,6 +91,7 @@ public class AdminBookOrderListService implements Action {
 				PageMaker pageMaker = new PageMaker(curPage, totalCount);
 				List<Book_OrderDTO> ar = book_OrderDAO.selectList(pageMaker.getMakeRow());
 				request.setAttribute("size", ar.size());
+				request.setAttribute("library", library);
 				request.setAttribute("orderList", ar);
 				request.setAttribute("page", pageMaker.getMakePage());
 				request.setAttribute("curPage", curPage);

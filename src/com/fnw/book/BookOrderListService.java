@@ -18,6 +18,12 @@ public class BookOrderListService implements Action {
 		String id = ((MemberDTO)request.getSession().getAttribute("member")).getId();
 		ArrayList<Book_OrderDTO> list = new ArrayList<>();
 		
+		int library = 0;
+		try {
+			library = Integer.parseInt(request.getParameter("library"));
+		} catch (Exception e) {
+			// TODO: handle exception
+		}
 		int curPage = 0;
 		try {
 			curPage = Integer.parseInt(request.getParameter("curPage"));
@@ -59,6 +65,7 @@ public class BookOrderListService implements Action {
 				request.setAttribute("kind", kind);
 				request.setAttribute("curPage", curPage);
 				request.setAttribute("page", pageMaker.getMakePage());
+				request.setAttribute("library", library);
 			} catch (Exception e) {
 				e.printStackTrace();
 			}
@@ -80,6 +87,7 @@ public class BookOrderListService implements Action {
 				request.setAttribute("kind", kind);
 				request.setAttribute("curPage", curPage);
 				request.setAttribute("page", pageMaker.getMakePage());
+				request.setAttribute("library", library);
 			} catch (Exception e) {
 				e.printStackTrace();
 			}
@@ -101,6 +109,7 @@ public class BookOrderListService implements Action {
 				request.setAttribute("kind", kind);
 				request.setAttribute("curPage", curPage);
 				request.setAttribute("page", pageMaker.getMakePage());
+				request.setAttribute("library", library);
 			} catch (Exception e) {
 				e.printStackTrace();
 			}
@@ -122,6 +131,7 @@ public class BookOrderListService implements Action {
 				request.setAttribute("kind", kind);
 				request.setAttribute("curPage", curPage);
 				request.setAttribute("page", pageMaker.getMakePage());
+				request.setAttribute("library", library);
 			} catch (Exception e) {
 				e.printStackTrace();
 			}

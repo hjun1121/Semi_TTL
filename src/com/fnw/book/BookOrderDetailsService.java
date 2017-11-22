@@ -13,6 +13,13 @@ public class BookOrderDetailsService implements Action {
 	public ActionFoward doProcess(HttpServletRequest request, HttpServletResponse response) {
 		ActionFoward actionFoward = new ActionFoward();
 		
+		int library = 0;
+		try {
+			library = Integer.parseInt(request.getParameter("library"));
+		} catch (Exception e) {
+			// TODO: handle exception
+		}
+
 		Book_OrderDTO book_OrderDTO = null;
 		Book_OrderDAO book_OrderDAO = new Book_OrderDAO();
 		
@@ -22,6 +29,7 @@ public class BookOrderDetailsService implements Action {
 			e.printStackTrace();
 		}
 		request.setAttribute("bookOrderDetails", book_OrderDTO);
+		request.setAttribute("library", library);
 		actionFoward.setCheck(true);
 		actionFoward.setPath("../WEB-INF/view/book/bookOrderDetails.jsp");
 		return actionFoward;

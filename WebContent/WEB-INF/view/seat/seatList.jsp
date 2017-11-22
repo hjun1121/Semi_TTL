@@ -53,24 +53,52 @@
 			});
 			
 		});
+		
 		$("#seat_4").click(function(){
 			$.ajax({
 				url: "./seatList.seat",
-				type: "POST",
+				type: "GET",
 				data: {
 					library :4
 				},
 				success:function(data){
-					$("#seatTable").attr.display("block");
+					$("seatTable").attr.display("block");
 				}
 			});
-			
+
 		});
+
+// 		$("#seat_4").click(function(){
+// 			$.ajax({
+// 				url: "./seatList.seat",
+// 				type: "GET",
+// 				data: {
+// 					library :4
+// 				},
+// 				success:function(data){
+// 					var table = "<table id = 'seat_Table'>";
+// 					$(data).each(function(index, item) {
+// 						table += "<tr><td>" + this.seat_num + "</td></tr>";
+// 					}
+// 				});
+					
+// 					table += "</table>";
+
+// 					$("#seatTable").html(table);
+// 			});
+
+// 		});
 	});
 </script>
 </head>
 <body>
-<c:import url="${myContextPath}/temp/header.jsp"></c:import>
+<c:choose>
+	<c:when test="${library eq 1}"><c:import url="${myContextPath}/temp/header_1.jsp"></c:import></c:when>
+	<c:when test="${library eq 2}"><c:import url="${myContextPath}/temp/header_2.jsp"></c:import></c:when>
+	<c:when test="${library eq 3}"><c:import url="${myContextPath}/temp/header_3.jsp"></c:import></c:when>
+	<c:when test="${library eq 4}"><c:import url="${myContextPath}/temp/header_4.jsp"></c:import></c:when>
+	<c:otherwise><c:import url="${myContextPath}/temp/header.jsp"></c:import></c:otherwise>
+</c:choose>
 
 <section id = "section">
 <div id = "bts_top_section">
@@ -94,18 +122,30 @@
 					</tr>
 				</thead>
 				<tbody>
-					<tr>
-						<td scope="row" style="display: table-cell;">기흥 도서관</td>
-						<td scope="row" style="display: table-cell;">
-						<c:forEach items="${seat1 }" var="dto" varStatus="count" >
-							<c:if test="${count.last }">
-								${count.index+1 } 개
-							</c:if>
-						</c:forEach>
-						</td>
-						<td scope="row" style="display: table-cell;">잔여좌석</td>
-						<td><a href="#" id="seat_1"><button class="detail">상세</button></a></td>
-					</tr>
+<!-- 					<tr> -->
+<!-- 						<td scope="row" style="display: table-cell;">기흥 도서관</td> -->
+<!-- 						<td scope="row" style="display: table-cell;"> -->
+<%-- 						<c:forEach items="${seat1 }" var="dto" varStatus="count" > --%>
+<%-- 							<c:if test="${count.last }"> --%>
+<%-- 								${count.index+1 } 개 --%>
+<%-- 							</c:if> --%>
+<%-- 						</c:forEach> --%>
+<!-- 						</td> -->
+<!-- 						<td scope="row" style="display: table-cell;"> -->
+<%-- 						<c:forEach items="${seat1}" var="dto"> --%>
+<%-- 							<c:set var="count" value="0"></c:set> --%>
+<%-- 							<c:if test="${dto.state eq 1}"> --%>
+<%-- 								${count + 1} --%>
+<%-- 							</c:if> --%>
+<%-- 						</c:forEach> --%>
+<%-- 						<c:forEach items="${seat1}" var="dto" varStatus="count" > --%>
+<%-- 							<c:if test="${count.last}"> --%>
+<%-- 								${count.index+1 - count} 개 --%>
+<%-- 							</c:if> --%>
+<%-- 						</c:forEach> --%>
+<!-- 						</td> -->
+<!-- 						<td><a href="#" id="seat_1"><button class="detail">상세</button></a></td> -->
+<!-- 					</tr> -->
 					<tr>
 						<td scope="row" style="display: table-cell;">송파 도서관</td>
 						<td scope="row" style="display: table-cell;">
@@ -151,30 +191,6 @@
 <div id="seatList">
 
 </div>
-
-<table id = "seatTable" style="display: none;">
-	<tr>
-		<td title = "1001">1001</td>
-		<td title = "1002">1002</td>
-		<td title = "1003">1003</td>
-		<td title = "1004">1004</td>
-		<td title = "1005">1005</td>
-	</tr>
-	<tr>
-		<td title = "2001">2001</td>
-		<td title = "2002">2002</td>
-		<td title = "2003">2003</td>
-		<td title = "2004">2004</td>
-		<td title = "2005">2005</td>
-	</tr>
-	<tr>
-		<td title = "3001">3001</td>
-		<td title = "3002">3002</td>
-		<td title = "3003">3003</td>
-		<td title = "3004">3004</td>
-		<td title = "3005">3005</td>
-	</tr>
-</table>
 
 </section>
 <c:import url="${myContextPath}/temp/footer.jsp"></c:import>

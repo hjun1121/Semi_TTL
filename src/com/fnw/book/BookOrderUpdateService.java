@@ -18,7 +18,12 @@ public class BookOrderUpdateService implements Action {
 		Book_OrderDAO book_OrderDAO = new Book_OrderDAO();
 		Book_OrderDTO book_OrderDTO = null;
 		int result = 0;
-		
+		int library = 0;
+		try {
+			library = Integer.parseInt(request.getParameter("library"));
+		} catch (Exception e) {
+			// TODO: handle exception
+		}
 		if(method.equals("GET")) {
 			try {
 				book_OrderDTO = book_OrderDAO.selectOne(Integer.parseInt(request.getParameter("num")));
@@ -51,6 +56,7 @@ public class BookOrderUpdateService implements Action {
 				request.setAttribute("message", "수정 실패");
 				request.setAttribute("path", "./bookOrderList.book?state=3&id="+id);
 			}
+			request.setAttribute("library", library);
 			actionFoward.setCheck(true);
 			actionFoward.setPath("../WEB-INF/view/common/result.jsp");
 		}
