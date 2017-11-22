@@ -16,10 +16,11 @@ public class SeatListService implements Action {
 		ActionFoward actionFoward = new ActionFoward();
 		String method = request.getMethod();
 		
-		int library=1;
+		int library = 0;
 		try {
 			library = Integer.parseInt(request.getParameter("library"));
-		}catch (Exception e) {
+		} catch (Exception e) {
+			// TODO: handle exception
 		}
 
 		if(method.equals("POST")) {
@@ -43,6 +44,7 @@ public class SeatListService implements Action {
 			request.setAttribute("seat2", ar2);
 			request.setAttribute("seat3", ar3);
 			request.setAttribute("seat4", ar4);
+			request.setAttribute("library", library);
 
 			actionFoward.setCheck(true);
 			actionFoward.setPath("../WEB-INF/view/seat/seatList.jsp");
@@ -55,7 +57,7 @@ public class SeatListService implements Action {
 				// TODO Auto-generated catch block
 				e.printStackTrace();
 			}
-			
+			request.setAttribute("library", library);
 			request.setAttribute("seat", ar);
 			actionFoward.setCheck(true);
 			actionFoward.setPath("../WEB-INF/view/seat/seatView.jsp");

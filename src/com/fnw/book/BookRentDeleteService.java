@@ -14,6 +14,12 @@ public class BookRentDeleteService implements Action {
 
 		ActionFoward actionFoward = new ActionFoward();
 		Book_Rent_DetailsDAO book_Rent_DetailsDAO = new Book_Rent_DetailsDAO();
+		int library = 0;
+		try {
+			library = Integer.parseInt(request.getParameter("library"));
+		} catch (Exception e) {
+			// TODO: handle exception
+		}
 		int result = 0;
 		try {
 			result = book_Rent_DetailsDAO.delete(Integer.parseInt(request.getParameter("bnum")));
@@ -28,6 +34,7 @@ public class BookRentDeleteService implements Action {
 			request.setAttribute("message", "삭제 실패");
 			request.setAttribute("path", "./bookRentList.book?curPage=1&id="+id);
 		}
+		request.setAttribute("library", library);
 		actionFoward.setCheck(true);
 		actionFoward.setPath("../WEB-INF/view/common/result.jsp");
 

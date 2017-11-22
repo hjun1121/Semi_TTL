@@ -12,6 +12,14 @@ public class MemberEmailCheckService implements Action {
 	@Override
 	public ActionFoward doProcess(HttpServletRequest request, HttpServletResponse response) {
 		ActionFoward actionFoward = new ActionFoward();
+		
+		int library = 0;
+		try {
+			library = Integer.parseInt(request.getParameter("library"));
+		} catch (Exception e) {
+			// TODO: handle exception
+		}
+
 		String email = request.getParameter("email");
 			EmailDAO emailDAO = new EmailDAO();
 			int result = emailDAO.send(request, email);
@@ -26,10 +34,8 @@ public class MemberEmailCheckService implements Action {
 				actionFoward.setCheck(true);
 				actionFoward.setPath("../WEB-INF/view/common/result.jsp");
 			}
-			
 		
-
-		
+		request.setAttribute("library", library);
 		return actionFoward;
 	}
 

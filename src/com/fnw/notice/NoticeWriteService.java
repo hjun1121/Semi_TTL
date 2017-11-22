@@ -13,6 +13,14 @@ public class NoticeWriteService implements Action {
 	public ActionFoward doProcess(HttpServletRequest request, HttpServletResponse response) {
 		String method = request.getMethod();
 		ActionFoward actionFoward = new ActionFoward();
+		
+		int library = 0;
+		try {
+			library = Integer.parseInt(request.getParameter("library"));
+		} catch (Exception e) {
+			// TODO: handle exception
+		}
+
 		String id = ((MemberDTO)request.getSession().getAttribute("member")).getId();
 		if(method.equals("POST")) {
 			NoticeDAO noticeDAO = new NoticeDAO();
@@ -40,6 +48,7 @@ public class NoticeWriteService implements Action {
 			actionFoward.setCheck(true);
 			actionFoward.setPath("../WEB-INF/view/notice/noticeWrite.jsp");
 		}
+		request.setAttribute("library", library);
 		return actionFoward;
 	}
 

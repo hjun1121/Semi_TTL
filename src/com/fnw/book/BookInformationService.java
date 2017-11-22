@@ -18,6 +18,12 @@ public class BookInformationService implements Action {
 		ArrayList<Book_Rent_WishDTO> ar = new ArrayList<>();
 		Book_Rent_WishDAO book_Rent_WishDAO = new Book_Rent_WishDAO();
 
+		int library = 0;
+		try {
+			library = Integer.parseInt(request.getParameter("library"));
+		} catch (Exception e) {
+			// TODO: handle exception
+		}
 		////id 받아오기
 		HttpSession session = null;
 		String id = null;
@@ -59,6 +65,7 @@ public class BookInformationService implements Action {
 		request.setAttribute("rent_wish_list", ar);
 		request.setAttribute("curPage", curPage);
 		request.setAttribute("num", num);
+		request.setAttribute("library", library);
 		actionFoward.setCheck(true);
 		actionFoward.setPath("../WEB-INF/view/book/bookInformation.jsp");
 

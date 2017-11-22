@@ -22,6 +22,12 @@ public class BookTotalSearchService implements Action {
 		ArrayList<Book_Rent_WishDTO> rent_wish_list = new ArrayList<>();
 		Book_Rent_WishDAO book_Rent_WishDAO = new Book_Rent_WishDAO();
 		
+		int library = 0;
+		try {
+			library = Integer.parseInt(request.getParameter("library"));
+		} catch (Exception e) {
+			// TODO: handle exception
+		}
 		////id 받아오기
 		HttpSession session = null;
 		String id = null;
@@ -73,6 +79,7 @@ public class BookTotalSearchService implements Action {
 		} catch (Exception e) {
 			e.printStackTrace();
 		}
+		request.setAttribute("library", library);
 		actionFoward.setCheck(true);
 		actionFoward.setPath("../WEB-INF/view/book/bookTotalSearch.jsp");
 

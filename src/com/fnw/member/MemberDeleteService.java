@@ -26,6 +26,13 @@ public class MemberDeleteService implements Action {
 		ActionFoward actionFoward = new ActionFoward();
 		String memberid = request.getParameter("id");
 		
+		int library = 0;
+		try {
+			library = Integer.parseInt(request.getParameter("library"));
+		} catch (Exception e) {
+			// TODO: handle exception
+		}
+		
 		MemberDAO memberDAO = new MemberDAO();
 		Book_Buy_WishDAO book_Buy_WishDAO = new Book_Buy_WishDAO();
 		Book_OrderDAO book_OrderDAO = new Book_OrderDAO();
@@ -88,6 +95,7 @@ public class MemberDeleteService implements Action {
 				request.setAttribute("path", "../index.jsp");
 			}
 		}
+		request.setAttribute("library", library);
 		actionFoward.setCheck(true);
 		actionFoward.setPath("../WEB-INF/view/common/result.jsp");
 		return actionFoward;

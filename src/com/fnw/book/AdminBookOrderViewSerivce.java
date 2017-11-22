@@ -14,6 +14,13 @@ public class AdminBookOrderViewSerivce implements Action {
 	public ActionFoward doProcess(HttpServletRequest request, HttpServletResponse response) {
 		ActionFoward actionFoward = new ActionFoward();
 		Book_OrderDAO book_OrderDAO = new Book_OrderDAO();
+		
+		int library = 0;
+		try {
+			library = Integer.parseInt(request.getParameter("library"));
+		} catch (Exception e) {
+			// TODO: handle exception
+		}
 		int num =0;
 		try {
 		num = Integer.parseInt(request.getParameter("num"));
@@ -30,6 +37,7 @@ public class AdminBookOrderViewSerivce implements Action {
 		//boardDTO가 Null이면 다른 곳으로 처리
 		
 		request.setAttribute("view", book_OrderDTO);
+		request.setAttribute("library", library);
 		actionFoward.setCheck(true);
 		actionFoward.setPath("../WEB-INF/view/admin/admin_bookOrderView.jsp");
 		

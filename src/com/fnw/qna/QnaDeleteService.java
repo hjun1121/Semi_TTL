@@ -14,7 +14,12 @@ public class QnaDeleteService implements Action {
 	public ActionFoward doProcess(HttpServletRequest request, HttpServletResponse response) {
 		ActionFoward actionFoward = new ActionFoward();
 		QnaDAO qnaDAO = new QnaDAO();
-		
+		int library = 0;
+		try {
+			library = Integer.parseInt(request.getParameter("library"));
+		} catch (Exception e) {
+			// TODO: handle exception
+		}
 		int result = 0;
 		try {
 			result = qnaDAO.delete(Integer.parseInt(request.getParameter("num")));
@@ -28,6 +33,7 @@ public class QnaDeleteService implements Action {
 			request.setAttribute("message", "삭제 실패");
 			request.setAttribute("path", "./qnaList.qna");
 		}
+		request.setAttribute("library", library);
 		actionFoward.setCheck(true);
 		actionFoward.setPath("../WEB-INF/view/common/result.jsp");
 

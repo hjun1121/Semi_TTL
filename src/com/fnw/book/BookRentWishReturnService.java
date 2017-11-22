@@ -22,10 +22,11 @@ public class BookRentWishReturnService implements Action {
 		if(kind == null) {
 			kind = "title";
 		}
-		int library = 1;
+		int library = 0;
 		try {
 			library = Integer.parseInt(request.getParameter("library"));
 		} catch (Exception e) {
+			// TODO: handle exception
 		}
 		String search = request.getParameter("search");
 		if(search == null) {
@@ -51,7 +52,7 @@ public class BookRentWishReturnService implements Action {
 		}else {
 			request.setAttribute("message", "❤ 해제 실패");
 		}
-
+		request.setAttribute("library", library);
 		request.setAttribute("search", search);
 		request.setAttribute("kind", kind);
 		request.setAttribute("library", library);

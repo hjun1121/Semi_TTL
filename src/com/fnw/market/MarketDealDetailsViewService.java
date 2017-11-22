@@ -15,11 +15,18 @@ public class MarketDealDetailsViewService implements Action {
 		Market_Deal_DetailsDTO market_Deal_DetailsDTO = null;
 		Market_Deal_DetailsDAO market_Deal_DetailsDAO = new Market_Deal_DetailsDAO();
 		
+		int library = 0;
+		try {
+			library = Integer.parseInt(request.getParameter("library"));
+		} catch (Exception e) {
+			// TODO: handle exception
+		}
 		try {
 			market_Deal_DetailsDTO = market_Deal_DetailsDAO.selectOne(Integer.parseInt(request.getParameter("num")));
 		} catch (Exception e) {
 			e.printStackTrace();
 		}
+		request.setAttribute("library", library);
 		request.setAttribute("bookDealsDetail", market_Deal_DetailsDTO);
 		actionFoward.setCheck(true);
 		actionFoward.setPath("../WEB-INF/view/market/marketDealsDetails.jsp");

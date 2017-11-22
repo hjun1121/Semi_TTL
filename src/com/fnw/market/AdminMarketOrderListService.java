@@ -17,12 +17,19 @@ public class AdminMarketOrderListService implements Action {
 	public ActionFoward doProcess(HttpServletRequest request, HttpServletResponse response) {
 		ActionFoward actionFoward = new ActionFoward();
 		Market_OrderDAO market_OrderDAO = new Market_OrderDAO();
+
+		int library = 0;
+		try {
+			library = Integer.parseInt(request.getParameter("library"));
+		} catch (Exception e) {
+			// TODO: handle exception
+		}
 		int curPage=1;
 		try {
 			curPage=Integer.parseInt(request.getParameter("curPage"));
-		}catch (Exception e) {
+		}catch (Exception e1) {
 		}
-		
+
 		String kind = request.getParameter("kind");
 		if(kind==null) {
 			kind="title";
@@ -31,7 +38,7 @@ public class AdminMarketOrderListService implements Action {
 		if(search==null) {
 			search="";
 		}
-		
+
 		int totalCount=0;
 		try {
 			totalCount = market_OrderDAO.getTotalCount(kind, search);
@@ -41,14 +48,14 @@ public class AdminMarketOrderListService implements Action {
 			request.setAttribute("list", ar);
 			request.setAttribute("page", pageMaker.getMakePage());
 			request.setAttribute("curPage", curPage);
-		} catch (Exception e) {
-			e.printStackTrace();
+		} catch (Exception e1) {
+			e1.printStackTrace();
 		}
+		request.setAttribute("library", library);
 		actionFoward.setCheck(true);
 		actionFoward.setPath("../WEB-INF/view/admin/admin_MarketOrder_List.jsp");
-		
-		return actionFoward;
-	
-	}
 
+		return actionFoward;
+
+	}
 }

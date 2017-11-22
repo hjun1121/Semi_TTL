@@ -15,6 +15,13 @@ public class MemberUpdatePwCheckService implements Action {
 		
 		MemberDAO memberDAO = new MemberDAO();
 		
+		int library = 0;
+		try {
+			library = Integer.parseInt(request.getParameter("library"));
+		} catch (Exception e) {
+			// TODO: handle exception
+		}
+
 		if(method.equals("GET")) {
 			actionFoward.setCheck(true);
 			actionFoward.setPath("../WEB-INF/view/member/memberUpdatePwCheck.jsp");
@@ -36,7 +43,7 @@ public class MemberUpdatePwCheckService implements Action {
 				actionFoward.setPath("../WEB-INF/view/common/result.jsp");
 			}
 		}
-		
+		request.setAttribute("library", library);
 		return actionFoward;
 	}
 

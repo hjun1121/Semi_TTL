@@ -15,6 +15,12 @@ public class BookBuyWishReturnService implements Action {
 		Market_TotalDAO market_TotalDAO = new Market_TotalDAO();
 		Market_TotalDTO market_TotalDTO = new Market_TotalDTO();
 		
+		int library = 0;
+		try {
+			library = Integer.parseInt(request.getParameter("library"));
+		} catch (Exception e) {
+			// TODO: handle exception
+		}
 		String id = request.getParameter("id");
 		if(id == null) {
 			id = "";
@@ -56,6 +62,7 @@ public class BookBuyWishReturnService implements Action {
 			request.setAttribute("message", "❤ 해제 실패");
 		}
 		
+		request.setAttribute("library", library);
 		request.setAttribute("curPage", curPage);
 		actionFoward.setCheck(true);
 		actionFoward.setPath("../WEB-INF/view/market/bookBuyWishReturn.jsp");

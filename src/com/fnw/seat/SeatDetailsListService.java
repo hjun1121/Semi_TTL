@@ -21,6 +21,12 @@ public class SeatDetailsListService implements Action {
 
 		String id = ((MemberDTO)request.getSession().getAttribute("member")).getId();
 
+		int library = 0;
+		try {
+			library = Integer.parseInt(request.getParameter("library"));
+		} catch (Exception e) {
+			// TODO: handle exception
+		}
 		int curPage=1;
 		try {
 			curPage=Integer.parseInt(request.getParameter("curPage"));
@@ -74,6 +80,7 @@ public class SeatDetailsListService implements Action {
 		} catch (Exception e) {
 			e.printStackTrace();
 		}
+		request.setAttribute("library", library);
 		actionFoward.setCheck(true);
 		actionFoward.setPath("../WEB-INF/view/seat/seatTotalList.jsp");
 		return actionFoward;

@@ -18,6 +18,12 @@ public class NoticeListService implements Action {
 		ActionFoward actionFoward = new ActionFoward();
 		NoticeDAO noticeDAO = new NoticeDAO();
 		
+		int library = 0;
+		try {
+			library = Integer.parseInt(request.getParameter("library"));
+		} catch (Exception e) {
+			// TODO: handle exception
+		}
 		int curPage=1;
 		try {
 			curPage=Integer.parseInt(request.getParameter("curPage"));
@@ -48,9 +54,11 @@ public class NoticeListService implements Action {
 			request.setAttribute("page", pageMaker.getMakePage());
 			request.setAttribute("notice", "notice");
 			request.setAttribute("curPage", curPage);
+			request.setAttribute("library", library);
 		} catch (Exception e) {
 			e.printStackTrace();
 		}
+		request.setAttribute("library", library);
 		actionFoward.setCheck(true);
 		actionFoward.setPath("../WEB-INF/view/notice/noticeList.jsp");
 		

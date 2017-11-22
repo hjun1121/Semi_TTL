@@ -23,6 +23,12 @@ public class BookReturnService implements Action {
 		Book_Rent_WishDAO book_Rent_WishDAO = new Book_Rent_WishDAO();
 		Book_TotalDAO book_TotalDAO = new Book_TotalDAO();
 		int result = 0;
+		int library = 0;
+		try {
+			library = Integer.parseInt(request.getParameter("library"));
+		} catch (Exception e) {
+			// TODO: handle exception
+		}
 		HttpSession session = request.getSession();
 		String id = ((MemberDTO)session.getAttribute("member")).getId();
 		try {
@@ -58,6 +64,7 @@ public class BookReturnService implements Action {
 			request.setAttribute("message", "반납 실패");
 			request.setAttribute("path", "../book/bookRentList.book?id="+id);
 		}
+		request.setAttribute("library", library);
 		actionFoward.setCheck(true);
 		actionFoward.setPath("../WEB-INF/view/common/result.jsp");
 		

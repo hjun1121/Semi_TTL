@@ -16,6 +16,13 @@ public class NoticeUpdateService implements Action {
 		NoticeDAO noticeDAO = new NoticeDAO();
 		String method = request.getMethod();
 		
+		int library = 0;
+		try {
+			library = Integer.parseInt(request.getParameter("library"));
+		} catch (Exception e) {
+			// TODO: handle exception
+		}
+
 		if(method.equals("POST")) {
 			int result = this.doPost(request);
 			
@@ -45,7 +52,7 @@ public class NoticeUpdateService implements Action {
 			}
 			
 		}
-		
+		request.setAttribute("library", library);
 		return actionFoward;
 	}
 	
