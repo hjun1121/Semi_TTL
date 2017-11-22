@@ -19,20 +19,14 @@ public class AdminBookOrderNOService implements Action {
 		
 		String cancel = request.getParameter("cancel");
 		if(cancel==null){
-			cancel="구냥";
+			cancel="";
 		}
-		
 		Book_OrderDAO book_OrderDAO = new Book_OrderDAO();
-		Book_OrderDTO book_OrderDTO = new Book_OrderDTO();
 		
 		int result =0;
 		try {
-			
-			book_OrderDTO = book_OrderDAO.selectOne(num);
 			result = book_OrderDAO.updateAdminCancel(num, cancel);
-			result = book_OrderDAO.updateAdmin(num, 1);
 		} catch (Exception e) {
-			// TODO Auto-generated catch block
 			e.printStackTrace();
 		}
 		String message = "거절 실패";
