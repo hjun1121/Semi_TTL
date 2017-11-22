@@ -16,13 +16,11 @@
 
 <title>Total Library Page</title>
 
-
-
 <script type="text/javascript">
 	
 	var slideIndex = 1;
 	showSlides(slideIndex);
-	
+
 	function plusSlides(n) {
 	  showSlides(slideIndex += n);
 	}

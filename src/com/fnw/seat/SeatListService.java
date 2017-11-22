@@ -21,28 +21,29 @@ public class SeatListService implements Action {
 			library = Integer.parseInt(request.getParameter("library"));
 		}catch (Exception e) {
 		}
-		
-		if(method.equals("GET")) {
+
+		if(method.equals("POST")) {
 			SeatDAO seatDAO = new SeatDAO();
+			ArrayList<SeatDTO> ar = new ArrayList<>();
 			ArrayList<SeatDTO> ar1 = new ArrayList<>();
 			ArrayList<SeatDTO> ar2 = new ArrayList<>();
 			ArrayList<SeatDTO> ar3 = new ArrayList<>();
 			ArrayList<SeatDTO> ar4 = new ArrayList<>();
 			try {
+				ar = seatDAO.selectList(library);
 				ar1 = seatDAO.selectList(1);
 				ar2 = seatDAO.selectList(2);
 				ar3 = seatDAO.selectList(3);
 				ar4 = seatDAO.selectList(4);
-				
 			} catch (Exception e) {
-				// TODO Auto-generated catch block
 				e.printStackTrace();
 			}
+			request.setAttribute("seat", ar);
 			request.setAttribute("seat1", ar1);
 			request.setAttribute("seat2", ar2);
 			request.setAttribute("seat3", ar3);
 			request.setAttribute("seat4", ar4);
-			
+
 			actionFoward.setCheck(true);
 			actionFoward.setPath("../WEB-INF/view/seat/seatList.jsp");
 		}else {
@@ -54,13 +55,12 @@ public class SeatListService implements Action {
 				// TODO Auto-generated catch block
 				e.printStackTrace();
 			}
+			
 			request.setAttribute("seat", ar);
 			actionFoward.setCheck(true);
 			actionFoward.setPath("../WEB-INF/view/seat/seatView.jsp");
 		}
-		
-		
+
 		return actionFoward;
 	}
-
 }
