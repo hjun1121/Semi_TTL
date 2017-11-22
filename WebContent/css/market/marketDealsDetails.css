@@ -98,11 +98,21 @@ table th {
 }
 
 input.btnType5 {
-    height: 35px;
-    vertical-align: top;
-    border: 1px solid #585858;
-    background-color: #fff;
-    padding: 0 20px 0 20px;
+    height:38px;
+	display:inline-block;
+	margin:0 5px;
+	padding:0 19px;
+	border:1px solid #585858;
+	color:#1a1a1a;
+	font-size:14px;
+	font-weight:600;
+	line-height:38px;
+	vertical-align:top;
+	background-color:white;
+}
+.btnType5:hover {
+    background: #033823;
+    color: white;
 }
 .btn{
 	width: 1040px;

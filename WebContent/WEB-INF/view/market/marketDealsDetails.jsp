@@ -124,7 +124,7 @@
 		
 		<div class="btn">
 			<input type="submit" class="btnType5" id="btn" name="btn" value="확인">
-			<a href="./marketDealsDelete.market?num=${bookDealsDetail.num }"><input type="button" class="btnType5" value="내역 삭제"></a>
+			<a href="./marketDealsDelete.market?num=${bookDealsDetail.num }"><input type="button" class="btnType5" value="삭제"></a>
 		</div>
 	</form>	
 	</div>

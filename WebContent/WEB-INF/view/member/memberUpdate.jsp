@@ -349,8 +349,8 @@
 					</a>
 				</span>
 				<span>
-					<a href="../index.jsp">
-						<button class = "btnType5" type = "button" >메인</button>
+					<a href="./memberUpdatePwCheck.member">
+						<button class = "btnType5" type = "button" >MYPAGE</button>
 					</a>
 				</span>
 			</div>
