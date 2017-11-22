@@ -1,6 +1,6 @@
 package com.fnw.seat;
 
-import java.util.Date;
+import java.sql.Date;
 
 public class Seat_DetailsDTO {
 
@@ -11,6 +11,7 @@ public class Seat_DetailsDTO {
 	private Date in_time;
 	private Date out_time;
 	private int state;
+	private Date reserve_time;
 	
 	public int getNum() {
 		return num;
@@ -54,6 +55,10 @@ public class Seat_DetailsDTO {
 	public void setState(int state) {
 		this.state = state;
 	}
-	
-	
+	public Date getReserve_time() {
+		return reserve_time;
+	}
+	public void setReserve_time(Date reserve_time) {
+		this.reserve_time = reserve_time;
+	}
 }

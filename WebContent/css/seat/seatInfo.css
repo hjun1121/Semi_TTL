@@ -1,1 +1,118 @@
 @charset "UTF-8";
+
+* {
+	margin: 0;
+	padding: 0;
+}
+
+#section a:hover {
+	text-decoration: none;
+}
+
+#section {
+    width: 1040px;
+    margin: 0 auto;
+    padding-bottom: 40px !important;
+    background-color: #fff;
+    z-index: 5;
+}
+
+
+#section h2 {
+    display: block;
+    font-size: 1.5em;
+    -webkit-margin-before: 0.83em;
+    -webkit-margin-after: 0.83em;
+    -webkit-margin-start: 0px;
+    -webkit-margin-end: 0px;
+    font-weight: bold;
+}
+
+#bts_top_section {
+	margin: 0 auto;
+	padding-bottom: 40px;
+}
+
+#divTitle {
+    color: #464646;
+    font-size: 32px;
+    margin-bottom: 20px;
+    padding: 40px 450px 0 0;
+}
+
+#divLocation {
+    min-height: 20px;
+    margin: 0 56px 20px 0;
+}
+
+#divLocation ul li:first-child {
+    margin: 0;
+    padding: 0;
+    background: none;
+}
+
+#divLocation ul li {
+    float: left;
+    padding-left: 20px;
+    margin-left: 13px;
+	list-style: none;
+    font-family: NG, sans-serif;
+    line-height: 1.5em;
+}
+<!--끝-->
+.listTable {
+    clear: both;
+    border-top: 1px solid #b3b3b3;
+    border-bottom: 1px solid #e6e6e6;
+    text-align: center;
+}
+
+.tablet {
+    width: 100%;
+    border: none;
+    border-collapse: collapse;
+}
+
+.listTable tr th {
+    height: 40px;
+    padding: 10px 8px;
+}
+
+.listTable td {
+    padding: 14px 10px;
+    border-top: 1px solid #e6e6e6;
+    height: 40px;
+    text-align: left;
+}
+
+.listTable tr:hover{
+	background-color: #fcf9ce;
+}
+.tablet th {
+    border: none;
+    background-color: #f3f3f3;
+    color: #727272;
+}
+
+.btn_NO {
+    width: 150px;
+    height: 50px;
+    line-height: 48px;
+    font-size: 16px;
+    color: #666;
+    background: #fff;
+    border: 1px solid #aaa;
+}
+.btn_OK {
+    width: 150px;
+    height: 50px;
+    line-height: 48px;
+    font-size: 16px;
+    color: #fff;
+    background: #033823;
+    border: 1px solid #aaa;
+}
+.btnBox {
+    text-align: center;
+    margin-bottom: 60px;
+}

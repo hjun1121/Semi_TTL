@@ -15,7 +15,6 @@
 <script type="text/javascript">
 	$(function(){
 		$("#seat_1").click(function(){
-			
 			$.ajax({
 				url: "./seatList.seat",
 				type: "POST",
@@ -29,7 +28,6 @@
 			
 		});
 		$("#seat_2").click(function(){
-			
 			$.ajax({
 				url: "./seatList.seat",
 				type: "POST",
@@ -43,7 +41,6 @@
 			
 		});
 		$("#seat_3").click(function(){
-			
 			$.ajax({
 				url: "./seatList.seat",
 				type: "POST",
@@ -65,12 +62,12 @@
 <section id = "section">
 <div id = "bts_top_section">
 		<div id="divContents">
-			<h2 id="divTitle">좌석예약</h2>
+			<h2 id="divTitle">좌석 현황</h2>
 			<div id="divLocation">
 				<ul>
 					<li class="home"><a href="${pageContext.request.contextPath}/index.jsp"><img src="${pageContext.request.contextPath }/image/notice/home.png" alt="HOME"></a></li>
 					<li>&gt;</li>
-					<li>좌석 예약</li>
+					<li>좌석 현황</li>
 				</ul>
 			</div>
 			<div class = "listTable">
@@ -133,10 +130,10 @@
 </h2> --%>
 </div>
 </div>
-</section>
 <div id="seatList">
 
 </div>
+</section>
 <c:import url="${myContextPath}/temp/footer.jsp"></c:import>
 </body>
 </html>
