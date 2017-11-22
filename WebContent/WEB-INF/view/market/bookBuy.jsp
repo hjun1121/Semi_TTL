@@ -108,7 +108,7 @@ $(function(){
 				if($("#chk_purchase_agreement0").prop("checked")==true){
 					document.frm.submit();
 				}else{
-					alert("동의쳐눌러");
+					alert("동의하지 않으시면 결제하실 수 없습니다.");
 					$("#chk_purchase_agreement0").focus();
 				}
 				

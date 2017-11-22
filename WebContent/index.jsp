@@ -198,78 +198,14 @@ $(function(){
 			
 			<!-- ///////////////////////////////////////// -->
 
-			<div class="book">
-				<!-- ///////////////////////////////////////// -->
-				
+			<div class="book">	
 				<ul>
 				<li class="on"><h2><a href="#">신작 도서</a></h2>
 				
 					<div>	
 						<div>
 							<ul style="width: 2288px;">
-								<li style="width: 143px;">
-									<a href="#">
-										<span class="bookCover"><img src="#" width="107px;" height="150px;" id="newArrivalList1" alt="책표지"></span>
-										<span class="bookTit">나는 염소가 처음이야 : 김숨 소설</span>
-										<span class="writer">김숨</span>
-									</a>
-								</li>
-								<li style="width: 143px;">
-									<a href="#">
-										<span class="bookCover"><img src="#" width="107px;" height="150px;" id="newArrivalList1" alt="책표지"></span>
-										<span class="bookTit">나는 염소가 처음이야 : 김숨 소설</span>
-										<span class="writer">김숨</span>
-									</a>
-								</li>
-								<li style="width: 143px;">
-									<a href="#">
-										<span class="bookCover"><img src="#" width="107px;" height="150px;" id="newArrivalList1" alt="책표지"></span>
-										<span class="bookTit">나는 염소가 처음이야 : 김숨 소설</span>
-										<span class="writer">김숨</span>
-									</a>
-								</li>
-								<li style="width: 143px;">
-									<a href="#">
-										<span class="bookCover"><img src="#" width="107px;" height="150px;" id="newArrivalList1" alt="책표지"></span>
-										<span class="bookTit">나는 염소가 처음이야 : 김숨 소설</span>
-										<span class="writer">김숨</span>
-									</a>
-								</li>
-								<li style="width: 143px;">
-									<a href="#">
-										<span class="bookCover"><img src="#" width="107px;" height="150px;" id="newArrivalList1" alt="책표지"></span>
-										<span class="bookTit">나는 염소가 처음이야 : 김숨 소설</span>
-										<span class="writer">김숨</span>
-									</a>
-								</li>
-								<li style="width: 143px;">
-									<a href="#">
-										<span class="bookCover"><img src="#" width="107px;" height="150px;" id="newArrivalList1" alt="책표지"></span>
-										<span class="bookTit">나는 염소가 처음이야 : 김숨 소설</span>
-										<span class="writer">김숨</span>
-									</a>
-								</li>
-								<li style="width: 143px;">
-									<a href="#">
-										<span class="bookCover"><img src="#" width="107px;" height="150px;" id="newArrivalList1" alt="책표지"></span>
-										<span class="bookTit">나는 염소가 처음이야 : 김숨 소설</span>
-										<span class="writer">김숨</span>
-									</a>
-								</li>
-								<li style="width: 143px;">
-									<a href="#">
-										<span class="bookCover"><img src="#" width="107px;" height="150px;" id="newArrivalList1" alt="책표지"></span>
-										<span class="bookTit">나는 염소가 처음이야 : 김숨 소설</span>
-										<span class="writer">김숨</span>
-									</a>
-								</li>
-								<li style="width: 143px;">
-									<a href="#">
-										<span class="bookCover"><img src="#" width="107px;" height="150px;" id="newArrivalList1" alt="책표지"></span>
-										<span class="bookTit">나는 염소가 처음이야 : 김숨 소설</span>
-										<span class="writer">김숨</span>
-									</a>
-								</li>
+								
 								<li style="width: 143px;">
 									<a href="#">
 										<span class="bookCover"><img src="#" width="107px;" height="150px;" id="newArrivalList1" alt="책표지"></span>
@@ -314,12 +250,7 @@ $(function(){
 		<!-- 메인 컨텐츠 끝 -->
 		<br><br><br><br>
 		<!-- ////////////////// -->
-	
-	<c:if test="${not empty sessionScope.member }">
-	<p><a href="./market/marketOrder.market?id=${member.id }">마켓판매신청form</a></p><!-- 로그인시만 이용 -->
-	</c:if>
-	
-	
+
 <c:import url="${myContextPath}/temp/footer.jsp"></c:import>
 </body>
 </html>
