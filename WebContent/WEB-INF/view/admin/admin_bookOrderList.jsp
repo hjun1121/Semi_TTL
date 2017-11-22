@@ -21,10 +21,7 @@
 				 $(this).attr("style", "color:red;");
 			 }
 		 });
-		
-		
 	});
-
 </script>
 </head>
 <body>
@@ -49,6 +46,7 @@
 		
 	<br><br>
 	<a href="./bookOrderListAdmin.book?state=3"><input class="btnType3" type="button" value="전체"></a>
+	<a href="./bookOrderListAdmin.book?state=0"><input class="btnType3" type="button" value="대기"></a>
 	<a href="./bookOrderListAdmin.book?state=2"><input class="btnType3" type="button" value="승인"></a>
 	<a href="./bookOrderListAdmin.book?state=1"><input class="btnType3" type="button" value="거절"></a>
 	<br><br>
@@ -114,10 +112,10 @@
 						<td scope="row" style="display: table-cell;">없음</td>
 					</c:otherwise>
 				</c:choose>
-				<c:if test="${dto.cancel ne 0}">
+				<c:if test="${not empty dto.cancel}">
 					<td scope="row" style="display: table-cell;">${dto.cancel }</td>
 				</c:if>
-				<c:if test="${dto.cancel eq 0}">
+				<c:if test="${empty dto.cancel}">
 					<td scope="row" style="display: table-cell;"> </td>
 				</c:if>
 			</tr>
