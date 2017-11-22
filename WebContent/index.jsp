@@ -149,6 +149,7 @@ $(function(){
 					<div class="notice">
 						<h2>공지사항</h2>
 						<ul>
+								
 							<li id="noticeForm">
 								
 							</li>			

@@ -4,5 +4,6 @@
 
 
 <c:forEach begin="0" end="4" items="${list }" var="dto" varStatus="i">
-	공지 : ${dto.title } <br>
+	<span class="noticeType1">공지</span> <a href="${pageContext.request.contextPath }/notice/noticeView.notice?num=${dto.num}">${dto.title }</a> <br>
+	<div class ="notice_margin"></div>
 </c:forEach>

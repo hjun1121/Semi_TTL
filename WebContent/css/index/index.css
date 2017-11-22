@@ -261,6 +261,9 @@ legend, caption, hr{display:none;}
 .notice ul li a{color:#505050;font-size:13px}
 .notice .more{position:absolute;top:13px;right:0}
 .notice .more img{vertical-align:top}
+.notice_margin {
+	margin-top: 12px;
+}
 
 /* 열람실 좌석 현황 */
 .seat{position:relative;width:335px;height:223px;background-color:#e9e9e9;padding-left:13px}
