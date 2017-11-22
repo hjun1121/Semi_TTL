@@ -14,7 +14,7 @@
 <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
 <link rel="stylesheet" href="./css/index/index.css">
 
-<title>Total Library Page</title>
+<title>도서관 통합 포털</title>
 
 <script type="text/javascript">
 
@@ -24,11 +24,11 @@
 	function plusSlides(n) {
 	  showSlides(slideIndex += n);
 	}
-	
+
 	function currentSlide(n) {
 	  showSlides(slideIndex = n);
 	}
-	
+
 	function showSlides(n) {
 	  var i;
 	  var slides = document.getElementsByClassName("mySlides");

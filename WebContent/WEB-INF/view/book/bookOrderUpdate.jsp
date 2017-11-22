@@ -60,7 +60,7 @@ $(function(){
 	<c:import url="${myContextPath}/WEB-INF/view/member/myPage.jsp"></c:import>
 </div>
 
-<form action="./bookOrderUpdate.book" method="post" name="frm" id="frm">
+<form action="./bookOrderUpdate.book?library=${library}" method="post" name="frm" id="frm">
 <div id="divContentsW">
 		<div id="divContents">
 		<h2 id="divTitle">신청 내역 수정</h2>
@@ -139,7 +139,7 @@ $(function(){
 			</table>
 			
 			<div class="btn">
-			<a href="./bookOrderList.book?state=3&id=joy"><input type="button" class="btn_NO" value="취소"></a>
+			<a href="./bookOrderList.book?state=3&library=${library}"><input type="button" class="btn_NO" value="취소"></a>
 			<input type="button" class="btn_OK" id="btn" name="btn" value="수정">
 			</div>
 		</div>

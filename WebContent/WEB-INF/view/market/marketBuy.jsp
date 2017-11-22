@@ -6,7 +6,7 @@
 <html>
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
-<title>Insert title here</title>
+<title>중고장터 구매 페이지</title>
 <link rel="stylesheet" href="${pageContext.request.contextPath }/css/temp/header.css">
 <link rel="stylesheet" href="${pageContext.request.contextPath }/css/temp/footer.css">
 <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
@@ -45,7 +45,7 @@
 		    } else {
 		        var msg = '결제에 실패하였습니다.';
 		        msg += '에러내용 : ' + rsp.error_msg;
-		        location.href="../index.jsp";
+		        location.href="./marketTotalList.market?library=${library}";
 		    }
 		    alert(msg);
 		});
@@ -61,6 +61,22 @@
 	<c:otherwise><c:import url="${myContextPath}/temp/header.jsp"></c:import></c:otherwise>
 </c:choose>
 
+<<<<<<< HEAD
+	<h2>결제페이지</h2>
+	<form action="../market/bookBuy.market?library=${library}" method="POST" name="frm">
+		num :<input type="text" class="form-control" name="num" value=${mddDTO.num }> 
+		id :<input type="text" class="form-control" name="id" value=${mddDTO.id }> 
+		title: <input type="text" class="form-control" name="title" value="${mddDTO.title}">
+		writer :<input type="text" class="form-control" name="writer" value="${mddDTO.writer}">
+		company :<input type="text" class="form-control" name="company" value="${mddDTO.company}">
+		pdate :<input type="text" class="form-control" name="publish_date" value="${mddDTO.publish_date}">
+		price :<input type="text" class="form-control" name="price" value="${mddDTO.price}">
+		library : <input type="text" class="form-control" name="library" value="${mddDTO.library}">
+		delivery : <input type="text" class="form-control" name="delivery" value="${mddDTO.delivery}">
+		post :<input type="text" id="postCode" name="postCode" placeholder="우편번호" value="${mddDTO.postCode }">
+		addr :<input type="text" id="addr" name="addr" value="${mddDTO.addr }">
+		addr2 :<input type="text" id="addr2" name="addr2" value="${mddDTO.addr2 }">
+=======
 
 	<!-- ////////////////////// -->
 
@@ -87,6 +103,7 @@
 		<input type="hidden" id="postCode" name="postCode" placeholder="우편번호" value="${mddDTO.postCode }">
 		<input type="hidden" id="addr" name="addr" value="${mddDTO.addr }">
 		<input type="hidden" id="addr2" name="addr2" value="${mddDTO.addr2 }">
+>>>>>>> d51b54cfc1e152f0591a480f3a8faceebd3f3ce5
 	</form>
 
 
