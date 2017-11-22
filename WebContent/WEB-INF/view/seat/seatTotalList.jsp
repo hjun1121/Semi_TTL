@@ -63,6 +63,7 @@ $(function(){
 		<div>
 			<span>
 				<select id="year" name="year" class="selectBox1">
+					 <option class="years" value="18" >2018</option>
 		            <option class="years" value="17" >2017</option>
 		            <option class="years" value="16">2016</option>
 		            <option class="years" value="15">2015</option>
@@ -165,11 +166,14 @@ $(function(){
 				<c:choose>
 				<c:when test="${seatTotal_list.state eq 0 && empty seatTotal_list.in_time && empty seatTotal_list.out_time}">
 					<td scope="row" style="display: table-cell;">예약중</td>
-					<td><a href="./seatCancel.seat?seat_num=${seatTotal_list.seat_num }"><button class = "btn btn-default wish_btn" type = "button" >취소</button></a></td>
+					<td>
+					<a href="./seatCancel.seat?seat_num=${seatTotal_list.seat_num }"><button class = "btn btn-default wish_btn" type = "button" >취소</button></a>
+					<a href="./seatIn.seat?num=${seatTotal_list.num }"><button class = "btn btn-default wish_btn" type = "button" >입실</button></a>
+					</td>
 				</c:when>
 				<c:when test="${seatTotal_list.state eq 1 && !empty seatTotal_list.in_time && empty seatTotal_list.out_time}">
 					<td scope="row" style="display: table-cell;">입실 완료</td>
-					<td><a href="./seatOut.seat?seat_num=${seatTotal_list.seat_num }"><button class = "btn btn-default wish_btn" type = "button" >퇴실</button></a></td>
+					<td><a href="./seatOut.seat?num=${seatTotal_list.num }&seat_num=${seatTotal_list.seat_num }"><button class = "btn btn-default wish_btn" type = "button" >퇴실</button></a></td>
 				</c:when>
 				<c:when test="${seatTotal_list.state eq 2 && !empty seatTotal_list.out_time && !empty seatTotal_list.in_time}">
 					<td scope="row" style="display: table-cell;">퇴실 완료</td>
