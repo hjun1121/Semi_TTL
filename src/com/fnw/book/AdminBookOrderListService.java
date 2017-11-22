@@ -46,7 +46,22 @@ public class AdminBookOrderListService implements Action {
 			}
 			actionFoward.setCheck(true);
 			actionFoward.setPath("../WEB-INF/view/admin/admin_bookOrderList.jsp");
-		}else if(state==2) {
+		}else if(state==0) {
+			try {
+				totalCount = book_OrderDAO.getTotalCount(state);
+				PageMaker pageMaker = new PageMaker(curPage, totalCount);
+				List<Book_OrderDTO> ar = book_OrderDAO.selectList(pageMaker.getMakeRow(),state);
+				request.setAttribute("size", ar.size());
+				request.setAttribute("orderList", ar);
+				request.setAttribute("page", pageMaker.getMakePage());
+				request.setAttribute("curPage", curPage);
+				
+			} catch (Exception e) {
+				e.printStackTrace();
+			}
+			actionFoward.setCheck(true);
+			actionFoward.setPath("../WEB-INF/view/admin/admin_bookOrderList.jsp");
+		} else if(state==2) {
 			try {
 				totalCount = book_OrderDAO.getTotalCount(state);
 				PageMaker pageMaker = new PageMaker(curPage, totalCount);
