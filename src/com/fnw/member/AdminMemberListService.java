@@ -15,6 +15,13 @@ public class AdminMemberListService implements Action {
 	public ActionFoward doProcess(HttpServletRequest request, HttpServletResponse response) {
 		ActionFoward actionFoward = new ActionFoward();
 		String method=request.getMethod();
+		
+		int library = 0;
+		try {
+			library = Integer.parseInt(request.getParameter("library"));
+		} catch (Exception e) {
+			// TODO: handle exception
+		}
 		if(method.equals("GET")) {
 			this.pagination(request);
 			
@@ -35,13 +42,10 @@ public class AdminMemberListService implements Action {
 			}
 			
 		}
-		
+		request.setAttribute("library", library);
 		return actionFoward;
 	}
 
-	
-	
-	
 	
 	public void pagination(HttpServletRequest request) {
 		
@@ -92,7 +96,7 @@ public class AdminMemberListService implements Action {
 			request.setAttribute("search", search);
 			request.setAttribute("page", pageMaker.getMakePage());
 			request.setAttribute("curPage", curPage);
-			
+
 		} catch (Exception e) {
 			// TODO Auto-generated catch block
 			e.printStackTrace();

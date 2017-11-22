@@ -15,12 +15,19 @@ public class LibraryViewService implements Action {
 		ActionFoward actionFoward = new ActionFoward();
 		LibraryDAO libraryDAO = new LibraryDAO();
 		ArrayList<LibraryDTO> ar = null;
+		int library = 0;
+		try {
+			library = Integer.parseInt(request.getParameter("library"));
+		} catch (Exception e) {
+			// TODO: handle exception
+		}
 		try {
 			ar = libraryDAO.selectList();
 		} catch (Exception e) {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
 		}
+		request.setAttribute("library", library);
 		request.setAttribute("library", ar);
 		actionFoward.setCheck(true);
 		actionFoward.setPath("../WEB-INF/view/library/libraryView.jsp");

@@ -13,6 +13,13 @@ public class MemberLoginService implements Action {
 		ActionFoward actionFoward = new ActionFoward();
 		String method = request.getMethod();
 		
+		int library = 0;
+		try {
+			library = Integer.parseInt(request.getParameter("library"));
+		} catch (Exception e) {
+			// TODO: handle exception
+		}
+
 		if(method.equals("GET")) {
 			actionFoward.setCheck(true);
 			actionFoward.setPath("../WEB-INF/view/member/memberLogin.jsp");
@@ -37,6 +44,7 @@ public class MemberLoginService implements Action {
 				request.setAttribute("path", "./memberLogin.member");
 			}
 			
+			request.setAttribute("library", library);
 			actionFoward.setCheck(true);
 			actionFoward.setPath("../WEB-INF/view/common/result.jsp");
 		}

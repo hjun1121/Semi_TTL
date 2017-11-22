@@ -15,6 +15,13 @@ public class MemberIdFindService implements Action {
 		ActionFoward actionFoward = new ActionFoward();
 		String method = request.getMethod();
 		
+		int library = 0;
+		try {
+			library = Integer.parseInt(request.getParameter("library"));
+		} catch (Exception e) {
+			// TODO: handle exception
+		}
+		
 		if(method.equals("GET")) {
 			actionFoward.setCheck(true);
 			actionFoward.setPath("../WEB-INF/view/member/memberIdFind.jsp");
@@ -35,9 +42,9 @@ public class MemberIdFindService implements Action {
 				
 			}
 			request.setAttribute("size", ar.size());
+			request.setAttribute("library", library);
 			actionFoward.setCheck(true);
 			actionFoward.setPath("../WEB-INF/view/member/memberIdFindAjax.jsp");
-			
 			
 		}
 		

@@ -25,6 +25,12 @@ public class LibraryBookSearchService implements Action {
 		LibraryDAO libraryDAO = new LibraryDAO();
 		Book_Rent_WishDAO book_Rent_WishDAO = new Book_Rent_WishDAO();
 
+		int library = 0;
+		try {
+			library = Integer.parseInt(request.getParameter("library"));
+		} catch (Exception e) {
+			// TODO: handle exception
+		}
 		////id 받아오기
 		HttpSession session = null;
 		String id = null;
@@ -41,12 +47,6 @@ public class LibraryBookSearchService implements Action {
 		} catch (Exception e) {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
-		}
-		int library = 1;
-		try {
-			library = Integer.parseInt(request.getParameter("library"));
-		} catch (Exception e) {
-			// TODO: handle exception
 		}
 		int curPage = 1;
 		try {
@@ -83,7 +83,6 @@ public class LibraryBookSearchService implements Action {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
 		}
-
 		actionFoward.setCheck(true);
 		actionFoward.setPath("../WEB-INF/view/library/libraryBookSearch.jsp");
 		

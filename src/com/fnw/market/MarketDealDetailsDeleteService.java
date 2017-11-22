@@ -16,6 +16,12 @@ public class MarketDealDetailsDeleteService implements Action {
 		Market_Deal_DetailsDAO market_Deal_DetailsDAO = new Market_Deal_DetailsDAO();
 		String id = ((MemberDTO)request.getSession().getAttribute("member")).getId();
 		
+		int library = 0;
+		try {
+			library = Integer.parseInt(request.getParameter("library"));
+		} catch (Exception e) {
+			// TODO: handle exception
+		}
 		int result = 0;
 		try {
 			result = market_Deal_DetailsDAO.delete(Integer.parseInt(request.getParameter("num")));
@@ -29,6 +35,7 @@ public class MarketDealDetailsDeleteService implements Action {
 			request.setAttribute("message", "삭제 실패");
 			request.setAttribute("path", "./marketDealsList.market?curPage=1&id="+id);
 		}
+		request.setAttribute("library", library);
 		actionFoward.setCheck(true);
 		actionFoward.setPath("../WEB-INF/view/common/result.jsp");
 		return actionFoward;

@@ -19,17 +19,18 @@ public class BookRentService implements Action {
 			LibraryDAO libraryDAO = new LibraryDAO();
 			String search = request.getParameter("search");
 			String kind = request.getParameter("kind");
+			
+			int library = 0;
+			try {
+				library = Integer.parseInt(request.getParameter("library"));
+			} catch (Exception e) {
+				// TODO: handle exception
+			}
 			int curPage = 1;
 			try {
 				curPage = Integer.parseInt(request.getParameter("curPage"));
 			} catch (Exception e) {
 				// TODO: handle exception
-			}
-			
-			int library = 1;
-			try {
-				library = Integer.parseInt(request.getParameter("library"));
-			} catch (Exception e) {
 			}
 			int num = 0;
 			try {

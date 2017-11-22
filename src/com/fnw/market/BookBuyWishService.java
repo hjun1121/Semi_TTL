@@ -12,6 +12,13 @@ public class BookBuyWishService implements Action {
 	public ActionFoward doProcess(HttpServletRequest request, HttpServletResponse response) {
 		ActionFoward actionFoward = new ActionFoward();
 		Book_Buy_WishDAO book_Buy_WishDAO = new Book_Buy_WishDAO();
+		
+		int library = 0;
+		try {
+			library = Integer.parseInt(request.getParameter("library"));
+		} catch (Exception e) {
+			// TODO: handle exception
+		}
 		int num = 0;
 		try {
 			num = Integer.parseInt(request.getParameter("num"));
@@ -54,6 +61,7 @@ public class BookBuyWishService implements Action {
 			request.setAttribute("message", "❤ 실패");
 		}
 
+		request.setAttribute("library", library);
 		request.setAttribute("curPage", curPage);
 		actionFoward.setCheck(true);
 		actionFoward.setPath("../WEB-INF/view/market/bookBuyWish.jsp");

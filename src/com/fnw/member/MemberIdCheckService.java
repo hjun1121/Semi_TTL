@@ -12,6 +12,14 @@ public class MemberIdCheckService implements Action {
 	public ActionFoward doProcess(HttpServletRequest request, HttpServletResponse response) {
 		ActionFoward actionFoward = new ActionFoward();
 		String id = request.getParameter("id");
+		
+		int library = 0;
+		try {
+			library = Integer.parseInt(request.getParameter("library"));
+		} catch (Exception e) {
+			// TODO: handle exception
+		}
+
 		MemberDAO memberDAO = new MemberDAO();
 		MemberDTO memberDTO = null;
 		try {
@@ -26,6 +34,7 @@ public class MemberIdCheckService implements Action {
 			request.setAttribute("ch_id", "ok");
 		}
 		
+		request.setAttribute("library", library);
 		actionFoward.setCheck(true);
 		actionFoward.setPath("../WEB-INF/view/member/memberIdCheck.jsp");
 		return actionFoward;

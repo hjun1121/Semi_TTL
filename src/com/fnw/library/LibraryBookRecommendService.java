@@ -22,6 +22,12 @@ public class LibraryBookRecommendService implements Action{
 		ArrayList<Book_TotalDTO> ar = new ArrayList<>();
 		ArrayList<Book_Rent_WishDTO> rent_wish_list = new ArrayList<>();
 		
+		int library = 0;
+		try {
+			library = Integer.parseInt(request.getParameter("library"));
+		} catch (Exception e) {
+			// TODO: handle exception
+		}
 		////id 받아오기
 		HttpSession session = null;
 		String id = null;
@@ -45,12 +51,6 @@ public class LibraryBookRecommendService implements Action{
 			// TODO Auto-generated catch block
 			e1.printStackTrace();
 		}
-		int library = 1;
-		try {
-			library = Integer.parseInt(request.getParameter("library"));
-		} catch (Exception e) {
-			// TODO: handle exception
-		}
 		try {
 			ar = libraryDAO.bookRecommend(library);
 			request.setAttribute("curPage", curPage);
@@ -61,7 +61,6 @@ public class LibraryBookRecommendService implements Action{
 			// TODO Auto-generated catch block
 			e.printStackTrace();
 		}
-		
 		actionFoward.setCheck(true);
 		actionFoward.setPath("../WEB-INF/view/library/libraryBookRecommend.jsp");
 

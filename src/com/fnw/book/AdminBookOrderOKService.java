@@ -13,6 +13,13 @@ public class AdminBookOrderOKService implements Action {
 	@Override
 	public ActionFoward doProcess(HttpServletRequest request, HttpServletResponse response) {
 		ActionFoward actionFoward = new ActionFoward();
+		
+		int library = 0;
+		try {
+			library = Integer.parseInt(request.getParameter("library"));
+		} catch (Exception e) {
+			// TODO: handle exception
+		}
 		int num = 0;
 		try {
 			num = Integer.parseInt(request.getParameter("num"));
@@ -97,6 +104,7 @@ public class AdminBookOrderOKService implements Action {
 		
 		request.setAttribute("message", message);
 		request.setAttribute("path", path);
+		request.setAttribute("library", library);
 		
 		actionFoward.setCheck(true);
 		actionFoward.setPath("../WEB-INF/view/common/result.jsp");

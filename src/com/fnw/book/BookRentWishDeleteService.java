@@ -15,6 +15,12 @@ public class BookRentWishDeleteService implements Action {
 		Book_Rent_WishDAO book_Rent_WishDAO = new Book_Rent_WishDAO();
 		String method = request.getMethod();
 		
+		int library = 0;
+		try {
+			library = Integer.parseInt(request.getParameter("library"));
+		} catch (Exception e) {
+			// TODO: handle exception
+		}
 		if(method.equals("GET")) {
 			int result = 0;
 			try {
@@ -50,6 +56,7 @@ public class BookRentWishDeleteService implements Action {
 					request.setAttribute("message", "삭제 실패");
 					request.setAttribute("path", "./bookRentWishList.book?curPage=1&id="+id);
 				}
+				request.setAttribute("library", library);
 				actionFoward.setCheck(true);
 				actionFoward.setPath("../WEB-INF/view/common/result.jsp");
 			}

@@ -15,14 +15,15 @@ public class QnaUpdateService implements Action {
 	public ActionFoward doProcess(HttpServletRequest request, HttpServletResponse response) {
 		ActionFoward actionFoward = new ActionFoward();
 		String method = request.getMethod();
+		int library = 0;
+		try {
+			library = Integer.parseInt(request.getParameter("library"));
+		} catch (Exception e) {
+			// TODO: handle exception
+		}
 		int num =0;
 		try {
 			num = Integer.parseInt(request.getParameter("num"));
-		}catch (Exception e) {
-		}
-		int library =1;
-		try {
-			library = Integer.parseInt(request.getParameter("library"));
 		}catch (Exception e) {
 		}
 		int type =1;
