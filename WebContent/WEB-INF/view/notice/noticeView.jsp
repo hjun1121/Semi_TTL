@@ -41,7 +41,7 @@
 					<dt class="skip">작성자</dt>
 					<dd class="writer" id="writer"><span>${view.writer}</span></dd>
 					<dt class="skip">이메일</dt>
-					<dd class="writerEmail"><span>**brary_4@naver.com</span></dd>
+					<dd class="writerEmail"><span>${memberDTO.email }</span></dd>
 				</dl>
 			</div>
 			
