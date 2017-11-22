@@ -22,14 +22,26 @@ public class SeatList1AjaxService implements Action {
 		}
 
 			SeatDAO seatDAO = new SeatDAO();
-			ArrayList<SeatDTO> ar= new ArrayList<>();
+			
 			try {
-				ar = seatDAO.selectList(library);
+				int cnt = seatDAO.count(1, library);
+				int cntAll = seatDAO.countAll(1, library);
 				
+				int cnt2 = seatDAO.count(2, library);
+				int cntAll2 = seatDAO.countAll(2, library);
+				
+				int cnt3 = seatDAO.count(3, library);
+				int cntAll3 = seatDAO.countAll(3, library);
+				request.setAttribute("cnt", cnt);
+				request.setAttribute("cntAll", cntAll);
+				request.setAttribute("cnt2", cnt2);
+				request.setAttribute("cntAll2", cntAll2);
+				request.setAttribute("cnt3", cnt3);
+				request.setAttribute("cntAll3", cntAll3);
 			} catch (Exception e) {
 				e.printStackTrace();
 			}
-			request.setAttribute("seat", ar);
+			
 			
 			actionFoward.setCheck(true);
 			actionFoward.setPath("../WEB-INF/view/seat/seatAjax_1.jsp");
