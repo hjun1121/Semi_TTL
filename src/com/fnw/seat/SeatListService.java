@@ -27,10 +27,12 @@ public class SeatListService implements Action {
 			ArrayList<SeatDTO> ar1 = new ArrayList<>();
 			ArrayList<SeatDTO> ar2 = new ArrayList<>();
 			ArrayList<SeatDTO> ar3 = new ArrayList<>();
+			ArrayList<SeatDTO> ar4 = new ArrayList<>();
 			try {
 				ar1 = seatDAO.selectList(1);
 				ar2 = seatDAO.selectList(2);
 				ar3 = seatDAO.selectList(3);
+				ar4 = seatDAO.selectList(4);
 				
 			} catch (Exception e) {
 				// TODO Auto-generated catch block
@@ -39,6 +41,7 @@ public class SeatListService implements Action {
 			request.setAttribute("seat1", ar1);
 			request.setAttribute("seat2", ar2);
 			request.setAttribute("seat3", ar3);
+			request.setAttribute("seat4", ar4);
 			
 			actionFoward.setCheck(true);
 			actionFoward.setPath("../WEB-INF/view/seat/seatList.jsp");
