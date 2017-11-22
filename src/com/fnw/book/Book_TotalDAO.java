@@ -61,22 +61,17 @@ public class Book_TotalDAO {
 	
 	//list
 	public ArrayList<Book_TotalDTO> selectList(MakeRow makeRow, String kind, String search) throws Exception {
-		
 		Connection con = DBConnector.getConnect();
-		
 		ArrayList<Book_TotalDTO> ar = new ArrayList<>();
-		
 		String sql = "select * from "
 				+ "(select rownum R, N.* from "
 				+ "(select * from book_total where "+ kind +" like ? order by num asc) N)"
 				+ "where R between ? and ?";
-
 		PreparedStatement st = con.prepareStatement(sql);
 		st.setString(1, "%"+search+"%");
 		st.setInt(2, makeRow.getStartRow());
 		st.setInt(3, makeRow.getLastRow());
 		ResultSet rs = st.executeQuery();
-
 		while(rs.next()) {
 			Book_TotalDTO book_TotalDTO = new Book_TotalDTO();
 			book_TotalDTO.setNum(rs.getInt("num"));
@@ -91,12 +86,34 @@ public class Book_TotalDAO {
 			book_TotalDTO.setRent_count(rs.getInt("rent_count"));
 			ar.add(book_TotalDTO);
 		}
-
 		DBConnector.disConnect(rs, st, con);
-
 		return ar;
 	}
 
+	public ArrayList<Book_TotalDTO> selectListCount(MakeRow makeRow, String kind, String search) throws Exception {
+		Connection con = DBConnector.getConnect();
+		ArrayList<Book_TotalDTO> ar = new ArrayList<>();
+		String sql ="select * from (select rownum R, N.* from (select * from book_total order by rent_count desc) N) where R between 1 and 10";
+		PreparedStatement st = con.prepareStatement(sql);
+		ResultSet rs = st.executeQuery();
+		while(rs.next()) {
+			Book_TotalDTO book_TotalDTO = new Book_TotalDTO();
+			book_TotalDTO.setNum(rs.getInt("num"));
+			book_TotalDTO.setTitle(rs.getString("title"));
+			book_TotalDTO.setWriter(rs.getString("writer"));
+			book_TotalDTO.setCompany(rs.getString("company"));
+			book_TotalDTO.setPublish_date(rs.getString("publish_date"));
+			book_TotalDTO.setSection(rs.getString("section"));
+			book_TotalDTO.setLibrary(rs.getInt("library"));
+			book_TotalDTO.setState(rs.getInt("state"));
+			book_TotalDTO.setRent_id(rs.getString("rent_id"));
+			book_TotalDTO.setRent_count(rs.getInt("rent_count"));
+			ar.add(book_TotalDTO);
+		}
+		DBConnector.disConnect(rs, st, con);
+		return ar;
+	}
+	
 	public int insert(Book_TotalDTO book_TotalDTO) throws Exception {
 		Connection con =  DBConnector.getConnect();
 		String sql = "insert into book_total values((select nvl(max(num),0) from book_total)+1,?,?,?,?,?,?,?,0,0,0)";
@@ -115,23 +132,6 @@ public class Book_TotalDAO {
 		DBConnector.disConnect(st, con);
 		return result;
 	}
-	
-	/*public int insert(Book_OrderDTO book_OrderDTO) throws Exception {
-		Connection con =  DBConnector.getConnect();
-		String sql = "insert into book_total values((select nvl(max(num),0) from book_total)+1,?,?,?,?,0,?,0,0,0,0)";
-		PreparedStatement st = con.prepareStatement(sql);
-
-		st.setString(1, book_OrderDTO.getTitle());
-		st.setString(2, book_OrderDTO.getWriter());
-		st.setString(3, book_OrderDTO.getCompany());
-		st.setString(4, book_OrderDTO.getPublish_date());
-		st.setInt(5, book_OrderDTO.getLibrary());
-		
-		int result = st.executeUpdate();
-		
-		DBConnector.disConnect(st, con);
-		return result;
-	}*/
 	
 
 	
@@ -168,6 +168,7 @@ public class Book_TotalDAO {
 		DBConnector.disConnect(st, con);
 		return result;
 	}
+	
 	public int update(int num,Connection con) throws Exception{
 		String sql="UPDATE book_total SET state=0,rent_id=0 WHERE num=?";
 		PreparedStatement st = con.prepareStatement(sql);
