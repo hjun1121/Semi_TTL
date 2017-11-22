@@ -114,8 +114,12 @@ $(function(){
 				if($("#chk_purchase_agreement0").prop("checked")==true){
 					document.frm.submit();
 				}else{
+<<<<<<< HEAD
+					alert("동의하지 않으시면 결제하실 수 없습니다.");
+=======
 					alert("동의좀 눌러주시겠습니까?");
 					$("#chk_purchase_agreement0").focus();
+>>>>>>> d1259410c42e81e4a447c5f625731c3841067fe7
 				}
 			}
 		});
