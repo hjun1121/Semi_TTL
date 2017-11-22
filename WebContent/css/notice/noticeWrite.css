@@ -60,5 +60,15 @@
     font-family: NG, sans-serif;
     line-height: 1.5em;
 }
-z
+#btn_OK {
+    width: 150px;
+    height: 50px;
+    line-height: 48px;
+    font-size: 16px;
+    color: #fff;
+    background: #033823;
+    border: 1px solid #aaa;
+	-webkit-appearance: button;
+    cursor: pointer;
+}
 <!--상단바 끝-->
