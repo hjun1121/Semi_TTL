@@ -12,6 +12,7 @@
 <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
 <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+<link rel="stylesheet" href="${pageContext.request.contextPath }/css/market/bookBuy.css">
 
 <script type="text/javascript" src="https://service.iamport.kr/js/iamport.payment-1.1.5.js"></script>
 <script type="text/javascript">
@@ -54,21 +55,34 @@
 <body>
 <c:import url="${myContextPath}/temp/header.jsp"></c:import>
 
-	<h2>결제페이지</h2>
+
+	<!-- ////////////////////// -->
+
+	<br><br><br><br><br><br><br><br><br><br><br>
+	
+		<center><strong>고객님의 상품이 결제되고 있습니다.</strong></center>
+		<center><p><img alt="" src="${pageContext.request.contextPath }/image/market/txt_progress.gif"></p></center>
+		<center><p><img alt="" src="${pageContext.request.contextPath }/image/market/img_loading.gif"></p></center>
+
+	<br><br><br><br><br><br><br><br><br><br><br>
+	<!-- ////////////////////// -->
+
+
 	<form action="../market/bookBuy.market" method="POST" name="frm">
-		num :<input type="text" class="form-control" name="num" value=${mddDTO.num }> 
-		id :<input type="text" class="form-control" name="id" value=${mddDTO.id }> 
-		title: <input type="text" class="form-control" name="title" value="${mddDTO.title}">
-		writer :<input type="text" class="form-control" name="writer" value="${mddDTO.writer}">
-		company :<input type="text" class="form-control" name="company" value="${mddDTO.company}">
-		pdate :<input type="text" class="form-control" name="publish_date" value="${mddDTO.publish_date}">
-		price :<input type="text" class="form-control" name="price" value="${mddDTO.price}">
-		library : <input type="text" class="form-control" name="library" value="${mddDTO.library}">
-		delivery : <input type="text" class="form-control" name="delivery" value="${mddDTO.delivery}">
-		post :<input type="text" id="postCode" name="postCode" placeholder="우편번호" value="${mddDTO.postCode }">
-		addr :<input type="text" id="addr" name="addr" value="${mddDTO.addr }">
-		addr2 :<input type="text" id="addr2" name="addr2" value="${mddDTO.addr2 }">
+		<input type="hidden" class="form-control" name="num" value=${mddDTO.num }> 
+		<input type="hidden" class="form-control" name="id" value=${mddDTO.id }> 
+		<input type="hidden" class="form-control" name="title" value="${mddDTO.title}">
+		<input type="hidden" class="form-control" name="writer" value="${mddDTO.writer}">
+		<input type="hidden" class="form-control" name="company" value="${mddDTO.company}">
+		<input type="hidden" class="form-control" name="publish_date" value="${mddDTO.publish_date}">
+		<input type="hidden" class="form-control" name="price" value="${mddDTO.price}">
+		<input type="hidden" class="form-control" name="library" value="${mddDTO.library}">
+		<input type="hidden" class="form-control" name="delivery" value="${mddDTO.delivery}">
+		<input type="hidden" id="postCode" name="postCode" placeholder="우편번호" value="${mddDTO.postCode }">
+		<input type="hidden" id="addr" name="addr" value="${mddDTO.addr }">
+		<input type="hidden" id="addr2" name="addr2" value="${mddDTO.addr2 }">
 	</form>
+
 
 <c:import url="${myContextPath}/temp/footer.jsp"></c:import>
 </body>
