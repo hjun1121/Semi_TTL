@@ -165,11 +165,7 @@
     height: 28px;
     vertical-align: middle;
 }
-
-
-
-
-
-
-
-
+.link{
+	color: #337ab7;
+    text-decoration: none;
+}

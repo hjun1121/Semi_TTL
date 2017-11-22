@@ -46,7 +46,6 @@
 	  slides[slideIndex-1].style.display = "block";  
 	  dots[slideIndex-1].className += " active";
 	}
-
 </script>
 
 <script type="text/javascript">
@@ -82,7 +81,6 @@ $(function(){
 		}
 	});
 	
-	
  	$.ajax({
 		url:"./seat/seatAjax_1.seat",
 		type:"POST",
@@ -94,13 +92,8 @@ $(function(){
 		}
 	});
 	
-
-	
 });
 </script>
-
-
-
 
 </head>
 <body>
