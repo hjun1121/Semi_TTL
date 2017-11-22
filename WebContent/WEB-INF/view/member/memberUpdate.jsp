@@ -342,15 +342,15 @@
 			</table>
 			
 			<div class="bottom_btn">
-			<input type="submit" class="btnType5" id="btn" name="btn" value="정보 수정">
+			<input type="button" class="btnType5" id="btn" name="btn" value="정보 수정">
 				<span>
 					<a href="./memberDelete.member?id=${DTO.id}">
 					<button class = "btnType5" type = "button" >회원탈퇴</button>
 					</a>
 				</span>
 				<span>
-					<a href="../index.jsp">
-						<button class = "btnType5" type = "button" >메인</button>
+					<a href="./memberUpdatePwCheck.member">
+						<button class = "btnType5" type = "button" >MYPAGE</button>
 					</a>
 				</span>
 			</div>

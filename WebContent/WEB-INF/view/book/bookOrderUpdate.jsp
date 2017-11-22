@@ -73,7 +73,7 @@ $(function(){
 		
 		<div>
 		<input type="hidden" name="num" value=${bookorder.num }>
-			<table class="revisionTable">
+			<table class="table">
 				<tr>
 					<th>서명</th>
 					<td><input type="text" name="title" id="title" class="useBorder" value="${bookorder.title }"></td>
@@ -132,7 +132,8 @@ $(function(){
 			</table>
 			
 			<div class="btn">
-			<input type="submit" class="btnType5" id="btn" name="btn" value="정보 수정">
+			<a href="./bookOrderList.book?state=3&id=joy"><input type="button" class="btn_NO" value="취소"></a>
+			<input type="button" class="btn_OK" id="btn" name="btn" value="수정">
 			</div>
 		</div>
 	</div>

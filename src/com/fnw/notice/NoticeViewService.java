@@ -6,6 +6,8 @@ import javax.servlet.http.HttpSession;
 
 import com.fnw.action.Action;
 import com.fnw.action.ActionFoward;
+import com.fnw.member.MemberDAO;
+import com.fnw.member.MemberDTO;
 import com.fnw.notice.NoticeDTO;
 
 public class NoticeViewService implements Action {
@@ -21,11 +23,15 @@ public class NoticeViewService implements Action {
 			
 		}
 		NoticeDTO noticeDTO=null;
+		MemberDTO memberDTO = null;
 		try {
 			noticeDAO.hitUpdate(num);
 			noticeDTO=noticeDAO.selectOne(num);
+			
+			String id = noticeDTO.getWriter();
+			MemberDAO memberDAO = new MemberDAO();
+			memberDTO = memberDAO.selectOne(id);
 		} catch (Exception e) {
-			// TODO Auto-generated catch block
 			e.printStackTrace();
 		}
 		
@@ -33,6 +39,7 @@ public class NoticeViewService implements Action {
 		
 		request.setAttribute("view", noticeDTO);
 		request.setAttribute("notice", "notice");
+		request.setAttribute("memberDTO", memberDTO);
 		actionFoward.setCheck(true);
 		actionFoward.setPath("../WEB-INF/view/notice/noticeView.jsp");
 		
