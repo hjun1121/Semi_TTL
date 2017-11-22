@@ -49,8 +49,8 @@
 		
 	<br><br>
 	<a href="./bookOrderListAdmin.book?state=3"><input class="btnType3" type="button" value="전체"></a>
-	<a href="./bookOrderListAdmin.book?state=0"><input class="btnType3" type="button" value="승인"></a>
-	<a href="./bookOrderListAdmin.book?state=1"><input class="btnType3" type="button" value="거절"></a>
+	<a href="./bookOrderListAdmin.book?state=1"><input class="btnType3" type="button" value="승인"></a>
+	<a href="./bookOrderListAdmin.book?state=0"><input class="btnType3" type="button" value="거절"></a>
 	<br><br>
 	
 	<c:if test="${size eq 0 }">
@@ -124,11 +124,6 @@
 	</c:if>
 	</div>
 </div>		
-	</section>
 <c:import url="${myContextPath}/temp/footer.jsp"></c:import>
 </body>
 </html>
-
-
-
-
