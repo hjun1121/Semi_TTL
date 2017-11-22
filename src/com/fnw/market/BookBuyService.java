@@ -58,7 +58,6 @@ public class BookBuyService implements Action {
 			}catch (Exception e) {
 				
 			}
-			System.out.println(number);
 			
 			String postCode = request.getParameter("postCode");
 			if(postCode==null) {
