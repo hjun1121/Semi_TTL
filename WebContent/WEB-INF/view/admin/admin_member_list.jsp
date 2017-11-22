@@ -18,17 +18,22 @@
 <script type="text/javascript">
 $(function(){
 	
-	$("#list").on("each", ".cur", function(){
-		 if($(this).attr("title") == ${curPage }) {
-			 $(this).attr("style", "color:red;");
-		 }
-	});
+	red();
+	function red (){
+		$(".cur").each(function(){
+			 if($(this).attr("title") == ${curPage }) {
+				 $(this).attr("style", "color:red;");
+			 }
+		 });
+	}
 	
-	$(".cur").each(function(){
-		 if($(this).attr("title") == ${curPage }) {
-			 $(this).attr("style", "color:red;");
-		 }
-	 });
+	function redAjax (){
+		$(".cur").each(function(){
+			 if($(this).attr("title") == 1) {
+				 $(this).attr("style", "color:red;");
+			 }
+		 });
+	}
 	
 	 var kind1 = '${kind1}';
 		 $(".kind1").each(function(){
@@ -48,6 +53,7 @@ $(function(){
 	 		$("#btn_member").attr("style", "background-color: #dcdcdc");
 		}
 		
+		
 	$("#btn_admin").click(function() {
 		$("#kind0").val("10");
  		$(".kind1").attr("style", "background-color: #fff");
@@ -59,16 +65,13 @@ $(function(){
 			data: {
 				kind:10,
 				kind1:'${kind1}',
-				search:'${search}',
-				curPage:'${curPage}'
+				search:'${search}'
 			},
 			success:function(data){
 				$("#list").html(data);
+				redAjax();
 			}
 		});
-
-		$("#info").html("Admin List");
-		
 	});
 
 	$("#btn_member").click(function() {
@@ -86,9 +89,9 @@ $(function(){
 			},
 			success:function(data){
 				$("#list").html(data);
+				redAjax();
 			}
 		});
- 		$("#info").html("Member List");
 	});
 
 	$("#btn_black").click(function() {
@@ -106,9 +109,9 @@ $(function(){
 			},
 			success:function(data){
 				$("#list").html(data);
+				redAjax();
 			}
 		});
-		$("#info").html("Black List");
 	});
 });
 </script>
