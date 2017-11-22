@@ -85,10 +85,43 @@ $(function(){
 		url:"./seat/seatAjax_1.seat",
 		type:"POST",
 		data: {
-			
+			library:1
 		},
 		success:function(data){
 			$("#seatForm_1").html(data);
+		}
+	});
+	
+ 	$.ajax({
+		url:"./seat/seatAjax_1.seat",
+		type:"POST",
+		data: {
+			library:2
+		},
+		success:function(data){
+			$("#seatForm_2").html(data);
+		}
+	});
+ 	
+ 	$.ajax({
+		url:"./seat/seatAjax_1.seat",
+		type:"POST",
+		data: {
+			library:3
+		},
+		success:function(data){
+			$("#seatForm_3").html(data);
+		}
+	});
+ 	
+ 	$.ajax({
+		url:"./seat/seatAjax_1.seat",
+		type:"POST",
+		data: {
+			library:4
+		},
+		success:function(data){
+			$("#seatForm_4").html(data);
 		}
 	});
 	
