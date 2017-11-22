@@ -151,10 +151,10 @@ $(function(){
 						<td scope="row" style="display: table-cell;">${dto.company }</td>
 
 						<c:choose>
-							<c:when test="${dto.library == 1 }"><td scope="row" style="display: table-cell;"><a href="../library/libraryMain.library?library=1">kim_lib</a></td></c:when>
-							<c:when test="${dto.library == 2 }"><td scope="row" style="display: table-cell;"><a href="../library/libraryMain.library?library=2">gee_lib</a></td></c:when>
-							<c:when test="${dto.library == 3 }"><td scope="row" style="display: table-cell;"><a href="../library/libraryMain.library?library=3">hs_lib</a></td></c:when>
-							<c:when test="${dto.library == 4 }"><td scope="row" style="display: table-cell;"><a href="../library/libraryMain.library?library=4">ssin_lib</a></td></c:when>
+							<c:when test="${dto.library == 1 }"><td scope="row" style="display: table-cell;"><a href="../library/libraryMain.library?library=1">기흥도서관</a></td></c:when>
+							<c:when test="${dto.library == 2 }"><td scope="row" style="display: table-cell;"><a href="../library/libraryMain.library?library=2">송파도서관</a></td></c:when>
+							<c:when test="${dto.library == 3 }"><td scope="row" style="display: table-cell;"><a href="../library/libraryMain.library?library=3">장안도서관</a></td></c:when>
+							<c:when test="${dto.library == 4 }"><td scope="row" style="display: table-cell;"><a href="../library/libraryMain.library?library=4">분당도서관</a></td></c:when>
 						</c:choose>
 						<c:choose>
 							<c:when test="${ dto.state == 0 and not empty member }">
