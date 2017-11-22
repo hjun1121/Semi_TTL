@@ -16,8 +16,7 @@ public class SeatDAO {
 	}
 	
 	
-	public int updateRent(SeatDTO seatDTO) throws Exception {
-		Connection con = DBConnector.getConnect();
+	public int updateRent(SeatDTO seatDTO,Connection con) throws Exception {
 		String sql="UPDATE seat SET state=0, id=?,reserve_time=sysdate  where seat_num=?";
 		PreparedStatement st = con.prepareStatement(sql);
 		
@@ -25,7 +24,7 @@ public class SeatDAO {
 		st.setInt(2, seatDTO.getSeat_num());
 		
 		int result = st.executeUpdate();
-		DBConnector.disConnect(st, con);
+		st.close();
 		
 		return result;
 	}
@@ -87,6 +86,17 @@ public class SeatDAO {
 		
 		int result = st.executeUpdate();
 		DBConnector.disConnect(st, con);
+		
+		return result;
+	}
+	public int updateOut(int seat_num,Connection con) throws Exception {
+		String sql="UPDATE seat SET state=1, id=null, reserve_time=null where seat_num=?";
+		PreparedStatement st = con.prepareStatement(sql);
+		
+		st.setInt(1, seat_num);
+		
+		int result = st.executeUpdate();
+		st.close();
 		
 		return result;
 	}

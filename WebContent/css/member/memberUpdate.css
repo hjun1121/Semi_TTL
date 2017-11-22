@@ -94,7 +94,7 @@ table {
 .noneBorder{
 	line-height: 24px;
     padding: 2px 8px;
-    border: 2px solid #e6e6e6;
+    border: 1px solid #e6e6e6;
 }
 
 .useBorder{
@@ -129,15 +129,21 @@ input.btnType4 {
     background: #f4f4f4;
 }
 .btnType5 {
-    height: 35px;
-    border: 1px solid #585858;
-    background-color: #fff;
-    padding: 0 20px 0 20px;
-    color: black;
+    height:38px;
+	display:inline-block;
+	margin:0 5px;
+	padding:0 19px;
+	border:1px solid #585858;
+	color:#1a1a1a;
+	font-size:14px;
+	font-weight:600;
+	line-height:38px;
+	vertical-align:top;
+	background-color:white;
 }
 .btnType5:hover {
-    background: #f4f4f4;
-    color: #033823;
+    background: #033823;
+    color: white;
 }
 .bottom_btn {
 	width: 1040px;
@@ -155,13 +161,24 @@ span>a {
 	text-decoration: none;
 }
 
-select{
-	width: 100px;
-	height: 40px;
-	line-height: normal;
-	font-family: inherit;
-	padding: .5em .2em;
-	border:1px solid #e6e6e6; 
-	-webkit-border-radius: 5px;
-    border-radius: 5px;
+select#f{
+	width:70px;
+    height: 30px;
+    border: 1px solid #e6e6e6;
+    background-color: #fff;
+    line-height: 29px;
+}
+select#mailList{
+	width:100px;
+    height: 30px;
+    border: 1px solid #e6e6e6;
+    background-color: #fff;
+    line-height: 29px;
+}
+select.sel_size{
+	width:90px;
+    height: 30px;
+    border: 1px solid #e6e6e6;
+    background-color: #fff;
+    line-height: 29px;
 }

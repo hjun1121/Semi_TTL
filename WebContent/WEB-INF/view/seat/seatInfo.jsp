@@ -9,6 +9,7 @@
 <title>Insert title here</title>
 <link rel="stylesheet" href="${pageContext.request.contextPath }/css/temp/header.css">
 <link rel="stylesheet" href="${pageContext.request.contextPath }/css/temp/footer.css">
+<link rel="stylesheet" href="${pageContext.request.contextPath }/css/seat/seatInfo.css">
 <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
 <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
@@ -35,29 +36,56 @@
 <body>
 <c:import url="${myContextPath}/temp/header.jsp"></c:import>
 
-<p>seat Info</p>
-<table border="1">
-	<tr>
-		<th>Seat_Num</th>
-		<th>Library</th>
-		<th>State</th>
-		<th>Id</th>
-		<th>Time</th>
-	</tr>
-	<tr>
-		<td>${seat.seat_num }</td>
-		<td>${seat.library }</td>
-		<td>${seat.state }</td>
-		<td>${seat.id }</td>
-		<td>${seat.reserve_time }</td>
-	</tr>
-</table>
-<form action="./seatInfo.seat" method="post">
-	<input type="hidden" name="seat_num" value=${seat.seat_num }>
-	<input type="hidden" name="id" value=${member.id }>
-	<!-- <input type="button" id="btn" value="예약하기"> -->
-	<button type="submit"> 예약</button>
-</form>
+<section id = "section">
+<div id = "bts_top_section">
+	<div id="divContents">
+		<h2 id="divTitle">좌석 예약</h2>
+			<div id="divLocation">
+				<ul>
+					<li class="home"><a href="${pageContext.request.contextPath}/index.jsp"><img src="${pageContext.request.contextPath }/image/notice/home.png" alt="HOME"></a></li>
+					<li>&gt;</li>
+					<li>좌석 현황</li>
+					<li>&gt;</li>
+					<li>좌석 예약</li>
+				</ul>
+			</div>
+			<div class = "listTable">
+			<table class = "mobileTable tablet">
+				<tr>
+					<th>좌석번호</th>
+					<th>도서관</th>
+					<th>상태</th>
+					<th>사용자</th>
+					<th>시간</th>
+				</tr>
+				<tr>
+					<td>${seat.seat_num }</td>
+					<td>${seat.library }</td>
+					<c:if test="${seat.state  eq 0 }">
+						<td>사용 중</td>
+					</c:if>
+					<c:if test="${seat.state  eq 1 }">
+						<td>사용 가능</td>
+					</c:if>
+					<td></td>
+					<td></td>
+				</tr>
+			</table>
+			</div>
+			<br><br>
+			<div class="btnBox">
+				<form action="./seatInfo.seat" method="post">
+					<input type="hidden" name="seat_num" value=${seat.seat_num }>
+					<input type="hidden" name="library" value=${seat.library }>
+					<input type="hidden" name="state" value=${seat.state }>
+					<input type="hidden" name="id" value=${member.id }>
+					<a href="./seatList.seat"><button type="button" class="btn_NO">취소</button></a>
+					<button type="submit" class="btn_OK">예약</button>
+				</form>
+			</div>
+	</div>
+</div>
+</section>
 
 <c:import url="${myContextPath}/temp/footer.jsp"></c:import>
 </body>

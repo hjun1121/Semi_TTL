@@ -15,7 +15,7 @@ import com.fnw.member.MemberDTO;
 import com.fnw.util.DBConnector;
 import com.fnw.util.PageMaker;
 
-public class SeatCancelService implements Action {
+public class SeatInService implements Action {
 
 	@Override
 	public ActionFoward doProcess(HttpServletRequest request, HttpServletResponse response) {
@@ -24,14 +24,14 @@ public class SeatCancelService implements Action {
 
 		Seat_DetailsDAO seat_DetailsDAO = new Seat_DetailsDAO();
 		SeatDAO seatDAO = new SeatDAO();
-		
 		int result = 0;
+		int num = 0;
 		Connection con = null;
 		try {
 			con = DBConnector.getConnect();
 			con.setAutoCommit(false);
-			result = seat_DetailsDAO.seatCancel(Integer.parseInt(request.getParameter("seat_num")),con);
-			seatDAO.updateOut(Integer.parseInt(request.getParameter("seat_num")),con);
+			num = Integer.parseInt(request.getParameter("num"));
+			result = seat_DetailsDAO.seatIn(num,con);
 		} catch (Exception e) {
 			e.printStackTrace();
 			try {
@@ -49,12 +49,12 @@ public class SeatCancelService implements Action {
 			}
 		}
 		if(result>0) {
-			request.setAttribute("message", "취소 완료");
+			request.setAttribute("message", "입실 완료");
 			request.setAttribute("path", "./seatTotalList.seat?id="+id);
 			actionFoward.setCheck(true);
 			actionFoward.setPath("../WEB-INF/view/seat/seatTotalList.jsp");
 		}else {
-			request.setAttribute("message", "취소 실패");
+			request.setAttribute("message", "입실 실패");
 			request.setAttribute("path", "./seatTotalList.seat?id="+id);
 			actionFoward.setCheck(true);
 			actionFoward.setPath("../WEB-INF/view/seat/seatTotalList.jsp");

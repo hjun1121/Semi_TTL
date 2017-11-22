@@ -128,6 +128,24 @@ table th {
 	height: 80px;
 	margin:0 auto;
 }
+.btn_NO {
+    width: 150px;
+    height: 50px;
+    line-height: 48px;
+    font-size: 16px;
+    color: #666;
+    background: #fff;
+    border: 1px solid #aaa;
+}
+.btn_OK {
+    width: 150px;
+    height: 50px;
+    line-height: 48px;
+    font-size: 16px;
+    color: #fff;
+    background: #033823;
+    border: 1px solid #aaa;
+}
 input[type=text]:focus {
     border-color:#333;
 }

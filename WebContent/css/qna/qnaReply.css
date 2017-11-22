@@ -1,0 +1,214 @@
+@charset "UTF-8";
+
+* {
+	margin: 0;
+	padding: 0;
+}
+
+body {
+	font-size: 12px;
+}
+
+a {
+	text-decoration: none;
+}
+
+.write-wrap {
+    clear: both;
+    width: 585px;
+    padding: 15px 16px;
+    background: #f9f9f9;
+    border: 1px solid #e5e5e5;
+    position: relative;
+    margin: 0 auto;
+}
+
+.write-wrap dd.text {
+    clear: both;
+    width: 100%;
+    margin: 0;
+}
+
+.text_editor {
+    clear: both;
+    margin: 0;
+    padding: 0;
+    background: #fff;
+    border: 1px solid #acb2b4;
+    color: #565656;
+    font: normal 10pt 돋움, Dotum, Verdana, Arial, AppleGothic, sans-serif;
+    line-height: 1em;
+    width: 86% !important;
+}
+
+.write-wrap dd.re-btn {
+    position: absolute;
+    top: 16px;
+    right: 16px;
+}
+
+.write-wrap dd.text textarea {
+    margin: 0 0 0 2px;
+    width: 97.3%;
+    height: 50px;
+    padding: 9px 0 0 11px;
+    font: 12px '돋움',Dotum, Helvetica, sans-serif;
+    border: 0px;
+    color: #666;
+    resize: none;
+}
+
+.write-wrap dd.re-btn button {
+    margin: 0 0 0 5px;
+    width: 72px;
+    height: 61px;
+    background: url(../../image/common/set_view.png) 0 -847px no-repeat;
+}
+
+button {
+    margin: 0;
+    padding: 0;
+    overflow: hidden;
+    border: 0;
+    cursor: pointer;
+    vertical-align: top;
+}
+
+<!-- 댓글 -->
+
+.commentBox {
+    position: relative;
+    clear: both;
+    width: 619px;
+    font-family: '돋움',dotum, Helvetica, sans-serif;
+    text-align: left;
+    padding: 20px 0 0 0;
+}
+
+.cmt_list {
+    clear: both;
+    width: 100%;
+    padding: 20px 0 0 0;
+    border-bottom: 1px solid #dedede;
+    overflow: hidden;
+    border-collapse: collapse;
+}
+
+.commentBox .f_line {
+    border: 0 ! important;
+}
+
+dl.cmt_item {
+    clear: both;
+    width: 586px;
+    border-top: 1px solid #dedede;
+    position: relative;
+}
+
+dl.cmt_item dt span.nameui {
+    font: 12px '돋움',Dotum , Helvetica, sans-serif;
+    color: #48688f !important;
+    vertical-align: middle;
+}
+
+dl.cmt_item i {
+    margin-left: 10px;
+    color: #aaa;
+    font: 11px '돋움',Dotum, Helvetica, sans-serif;
+}
+
+dl.cmt_item dd.usertxt {
+    clear: both;
+    width: 585px;
+    padding: 7px 0 15px 0;
+    color: #434343;
+    line-height: 1.5;
+    word-break: normal;
+    word-wrap: break-word;
+}
+
+dl.cmt_item dd.usertxt {
+    clear: both;
+    width: 585px;
+    padding: 7px 0 15px 0;
+    color: #434343;
+    line-height: 1.5;
+    word-break: normal;
+    word-wrap: break-word;
+}
+
+<!-- 답글 -->
+
+dl.cmt_item dd.reples {
+    position: relative;
+    clear: both;
+    width: 586px;
+    zoom: 1;
+    min-height: 16px;
+}
+
+dl.cmt_item a.hide {
+    background-position: 100% -678px;
+    display: inline-block !important;
+}
+
+dl.cmt_item dd.reples a.hide {
+    background-position: 100% -678px;
+    display: inline-block !important;
+}
+
+dl.cmt_item a.cmtsum {
+    zoom: 1;
+    padding-right: 22px;
+    margin: 0 6px 0 0;
+    color: #999;
+    background: url(../../image/common/set_view.png) no-repeat;
+}
+
+dl.cmt_item .cmt_w {
+    color: #999;
+}
+
+<!--답글입력폼 -->
+
+iframe[Attributes Style] {
+    border-top-width: 0px;
+    border-right-width: 0px;
+    border-bottom-width: 0px;
+    border-left-width: 0px;
+}
+
+iframe {
+    border-width: 2px;
+    border-style: inset;
+    border-color: initial;
+    border-image: initial;
+}
+
+dd.re.re-btn {
+    top: 90px;
+    right: 1px;
+}
+
+.reples {
+	margin-bottom: 15px;
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

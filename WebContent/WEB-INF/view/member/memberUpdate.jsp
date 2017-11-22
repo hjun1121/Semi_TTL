@@ -327,6 +327,7 @@
 					<c:if test="${member.kind eq 1}">
 						<th>등급</th>
 						<td><input type="text" class="noneBorder" value="일반사용자" readonly="readonly"></td>
+						<input type="hidden" name="kind" value="1">
 					</c:if>
 				</c:if>
 				<c:if test="${sessionScope.member.kind eq 10 }">
@@ -342,15 +343,15 @@
 			</table>
 			
 			<div class="bottom_btn">
-			<input type="submit" class="btnType5" id="btn" name="btn" value="정보 수정">
+			<input type="button" class="btnType5" id="btn" name="btn" value="정보 수정">
 				<span>
 					<a href="./memberDelete.member?id=${DTO.id}">
 					<button class = "btnType5" type = "button" >회원탈퇴</button>
 					</a>
 				</span>
 				<span>
-					<a href="../index.jsp">
-						<button class = "btnType5" type = "button" >메인</button>
+					<a href="./memberUpdatePwCheck.member">
+						<button class = "btnType5" type = "button" >MYPAGE</button>
 					</a>
 				</span>
 			</div>
