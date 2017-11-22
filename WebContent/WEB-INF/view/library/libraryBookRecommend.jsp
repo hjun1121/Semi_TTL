@@ -131,7 +131,7 @@ $(function(){
 					<c:forEach items="${ list }" var="dto">
 							<tr>
 								<td>${dto.num }</td>
-								<td><a href="../book/bookInformation.book?num=${dto.num}">${dto.title}</a></td>
+								<td><a href="../book/bookInformation.book?num=${dto.num}&library=${library}">${dto.title}</a></td>
 								<td>${dto.writer }</td>
 								<td>${dto.company }</td>
 								<td>${dto.type }</td>
@@ -173,17 +173,17 @@ $(function(){
 		<div style = "text-align: center;">
 			<ul class="pagination pagination-sm">
 				<c:if test="${page.curBlock>1}">
-				<li><a href = "./libraryBookRecommend.library?curPage=${page.startNum-1}">[이전]</a></li>
+				<li><a href = "./libraryBookRecommend.library?curPage=${page.startNum-1}&library=${library}">[이전]</a></li>
 				</c:if>
 				
 				<c:forEach begin="${page.startNum}" end="${page.lastNum}" var="i">
 				<li><a
-					href="./libraryBookRecommend.library?curPage=${i}">${i}</a></li>
+					href="./libraryBookRecommend.library?curPage=${i}&library=${library}">${i}</a></li>
 				</c:forEach>
 				
 				<c:if test="${page.curBlock < page.totalBlock}">
 				<li><a
-					href="./libraryBookRecommend.library?curPage=${requestScope.page.lastNum+1}">[다음]</a></li>
+					href="./libraryBookRecommend.library?curPage=${requestScope.page.lastNum+1}&library=${library}">[다음]</a></li>
 				</c:if>
 			</ul>
 		</div>

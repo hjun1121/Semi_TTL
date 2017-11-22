@@ -12,7 +12,7 @@
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
 <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
 <link rel="stylesheet" href="../css/member/memberJoinAgree.css">
-<title>Insert title here</title>
+<title>이용약관 동의</title>
 <script type="text/javascript">
 	$(function(){
 		
@@ -83,7 +83,7 @@
 			</ul>
 		</div>
 
-	<form name="frm" action="./memberJoinAgree.member" method="post">
+	<form name="frm" action="./memberJoinAgree.member?library=${library}" method="post">
 		<div class="joinCont mt50">
 			<h2 class="jsTxt clauseTxt">회원가입 및 정상적인 서비스 이용을 위해 아래 약관을 읽고, 동의 여부 결정해 주세요.</h2>
 			

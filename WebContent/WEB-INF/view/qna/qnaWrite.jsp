@@ -5,7 +5,7 @@
 <html>
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
-<title>Insert title here</title>
+<title>QnA 작성 페이지</title>
 <link rel="stylesheet" href="${pageContext.request.contextPath }/css/temp/header.css">
 <link rel="stylesheet" href="${pageContext.request.contextPath }/css/temp/footer.css">
 <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
@@ -38,7 +38,6 @@ $(function(){
 </script>
 </head>
 <body>
-<<<<<<< HEAD
 <c:choose>
 	<c:when test="${library eq 1}"><c:import url="${myContextPath}/temp/header_1.jsp"></c:import></c:when>
 	<c:when test="${library eq 2}"><c:import url="${myContextPath}/temp/header_2.jsp"></c:import></c:when>
@@ -47,31 +46,31 @@ $(function(){
 	<c:otherwise><c:import url="${myContextPath}/temp/header.jsp"></c:import></c:otherwise>
 </c:choose>
 
-<h2>QnA Details</h2>
-<form action="./qnaWrite.qna" method="post">
-		<p>
-		<select name="type">
-			<option value="1">중고장터문의</option>
+<!-- <h2>QnA Details</h2> -->
+<%-- <form action="./qnaWrite.qna?library=${library}" method="post"> --%>
+<!-- 		<p> -->
+<!-- 		<select name="type"> -->
+			<!-- <option value="1">중고장터문의</option>
 			<option value="2">도서신청문의</option>
 			<option value="3">이용문의</option>
-		</select>
-		</p>
-		<p>title<input type="text" name="title"></p>
-		<p>contents<input type="text" name="contents"></p>
-		<p>writer<input type="text" name="writer" value="${member.id }" readonly="readonly"></p>
-		<p>password<input type="text" name="pw"></p>
+<!-- 		</select> -->
+<!-- 		</p> -->
+<!-- 		<p>title<input type="text" name="title"></p> -->
+<!-- 		<p>contents<input type="text" name="contents"></p> -->
+<%-- 		<p>writer<input type="text" name="writer" value="${member.id }" readonly="readonly"></p> --%>
+<!-- 		<p>password<input type="text" name="pw"></p> -->
 		
-		<p>
-		<select name="library" name="library">
-			<option class="library" value="1">기흥구</option>
+<!-- 		<p> -->
+<!-- 		<select name="library" name="library"> -->
+			<!-- <option class="library" value="1">기흥구</option>
 			<option class="library" value="2">송파구</option>
 			<option class="library" value="3">장안구</option>
 			<option class="library" value="4">분당구</option>
-		</select>
-		</p>
-		<button type="submit">확인</button>
-</form>	
-=======
+<!-- 		</select> -->
+<!-- 		</p> -->
+<!-- 		<button type="submit">확인</button> -->
+<!-- </form>	 -->
+
 <c:import url="${myContextPath}/temp/header.jsp"></c:import>
 <div id="divContentsW">
 		<div id="divContents">
@@ -87,7 +86,7 @@ $(function(){
 			</div>	
 			
 			<div class="cstmWrap">
-			<form action="./qnaWrite.qna" name="frm" method="post" >
+			<form action="./qnaWrite.qna?library=${library}" name="frm" method="post" >
 				<input type = "hidden" class = "form-control" name = "id" value = "${member.id }">
 				<ul class = "otoForm mt30 borTc3">
 					<li>
@@ -126,14 +125,13 @@ $(function(){
 					</li>
 				</ul>
 				<div class="btnBox">
-					<button id="btn_NO"><a href="./qnaList.qna">취소</a></button>
+					<button id="btn_NO"><a href="./qnaList.qna?library=${library}">취소</a></button>
 					<button type="button" id="btn_OK">확인</button>
 				</div>
 			</form>
 			</div>
 		</div>
 	</div>
->>>>>>> 5a4ba4f4e5da82ecea501008c58d31bb7f91246d
 
 <c:import url="${myContextPath}/temp/footer.jsp"></c:import>
 </body>

@@ -6,7 +6,7 @@
 <html>
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
-<title>Insert title here</title>
+<title>QnA 수정</title>
 <link rel="stylesheet" href="${pageContext.request.contextPath }/css/temp/header.css">
 <link rel="stylesheet" href="${pageContext.request.contextPath }/css/temp/footer.css">
 <link rel="stylesheet" href="${pageContext.request.contextPath }/css/qna/qnaUpdate.css">
@@ -71,7 +71,7 @@ $(function() {
 			</div>	
 			
 			<div class="cstmWrap">
-			<form action="./qnaUpdate.qna" name="frm" method="post">
+			<form action="./qnaUpdate.qna?library=${library}" name="frm" method="post">
 				<ul class = "otoForm mt30 borTc3">
 					<li>
 						<p class="writeTit" >No.</p>
@@ -108,7 +108,7 @@ $(function() {
 					</li>
 				</ul>
 				<div class="btnBox">
-					<button id="btn_NO"><a href="./qnaList.qna">취소</a></button>
+					<button id="btn_NO"><a href="./qnaList.qna?library=${library}">취소</a></button>
 					<button type="button" id="btn_OK">확인</button>
 				</div>
 			</form>

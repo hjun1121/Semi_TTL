@@ -5,7 +5,7 @@
 <html>
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
-<title>Insert title here</title>
+<title>중고장터 거래 내역</title>
 <link rel="stylesheet" href="${pageContext.request.contextPath }/css/temp/header.css">
 <link rel="stylesheet" href="${pageContext.request.contextPath }/css/temp/footer.css">
 <link rel="stylesheet" href="${pageContext.request.contextPath }/css/member/myPage.css">
@@ -24,7 +24,7 @@
 </c:choose>
 
 <div>
-	<c:import url="../member/myPage.jsp"></c:import>
+	<c:import url="../member/myPage.jsp?library=${library}"></c:import>
 </div>
 
 <div id="divContentsW">
@@ -41,7 +41,7 @@
 				<li>상세 내역</li>
 			</ul>
 		</div>
-	<form action="../market/marketDealsList.market?id=${member.id }&type=3" method="post">
+	<form action="../market/marketDealsList.market?id=${member.id }&type=3&library=${library}" method="post">
 		<table class="Dtable">
 			<tr>
 				<th>No.</th>
@@ -131,7 +131,7 @@
 		
 		<div class="btn">
 			<input type="submit" class="btnType5" id="btn" name="btn" value="확인">
-			<a href="./marketDealsDelete.market?num=${bookDealsDetail.num }"><input type="button" class="btnType5" value="삭제"></a>
+			<a href="./marketDealsDelete.market?num=${bookDealsDetail.num }&library=${library}"><input type="button" class="btnType5" value="삭제"></a>
 		</div>
 	</form>	
 	</div>

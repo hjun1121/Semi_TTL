@@ -155,7 +155,7 @@
 			
 			var email = $("#email").val();
 			$.ajax({
-				url: "./memberEmailCheck.member",
+				url: "./memberEmailCheck.member?library=${library}",
 				type: "POST",
 				data: {
 					email: email
@@ -236,7 +236,7 @@
 	<c:import url="${myContextPath}/WEB-INF/view/member/myPage.jsp"></c:import>
 </div>
 
-<form action="./memberUpdate.member" method="post" id="frm" name="frm">
+<form action="./memberUpdate.member?library=${library}" method="post" id="frm" name="frm">
 
 <div id="divContentsW">
 		<div id="divContents">

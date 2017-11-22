@@ -6,7 +6,7 @@
 <html>
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
-<title>Insert title here</title>
+<title>중고장터 구매 페이지</title>
 <link rel="stylesheet" href="${pageContext.request.contextPath }/css/temp/header.css">
 <link rel="stylesheet" href="${pageContext.request.contextPath }/css/temp/footer.css">
 <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
@@ -44,7 +44,7 @@
 		    } else {
 		        var msg = '결제에 실패하였습니다.';
 		        msg += '에러내용 : ' + rsp.error_msg;
-		        location.href="../index.jsp";
+		        location.href="./marketTotalList.market?library=${library}";
 		    }
 		    alert(msg);
 		});
@@ -61,7 +61,7 @@
 </c:choose>
 
 	<h2>결제페이지</h2>
-	<form action="../market/bookBuy.market" method="POST" name="frm">
+	<form action="../market/bookBuy.market?library=${library}" method="POST" name="frm">
 		num :<input type="text" class="form-control" name="num" value=${mddDTO.num }> 
 		id :<input type="text" class="form-control" name="id" value=${mddDTO.id }> 
 		title: <input type="text" class="form-control" name="title" value="${mddDTO.title}">

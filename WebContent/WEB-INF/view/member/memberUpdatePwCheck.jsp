@@ -42,7 +42,7 @@
 		
 		<!-- ////////////// -->
 		<div class="loginW">
-			<form action="./memberUpdatePwCheck.member" name="frm" method="post">
+			<form action="./memberUpdatePwCheck.member?library=${library}" name="frm" method="post">
 				<div class="loginContent">
 					<div id="login_all">
 			

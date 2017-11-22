@@ -5,7 +5,7 @@
 <html>
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
-<title>Insert title here</title>
+<title>중고장터 거래 리스트</title>
 <link rel="stylesheet" href="${pageContext.request.contextPath }/css/temp/header.css">
 <link rel="stylesheet" href="${pageContext.request.contextPath }/css/temp/footer.css">
 <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
@@ -48,8 +48,9 @@ $(function(){
 </c:choose>
 
 <div>
-	<c:import url="../member/myPage.jsp"></c:import>
+	<c:import url="../member/myPage.jsp?library=${library}"></c:import>
 </div>
+<section>
 <div id="divContentsW">
 	<div id="divContents">
 		<h2 id="divTitle">MARKET 거래 내역</h2>
@@ -62,7 +63,7 @@ $(function(){
 				<li>MARKET 거래 내역</li>
 			</ul>
 		</div>
-	<form name="frm" class="form-inline" action="./marketDealsList.market" method="post">
+	<form name="frm" class="form-inline" action="./marketDealsList.market?library=${library}" method="post">
 	<!-- 검색 시작 -->
 	<input type="hidden" name="type" id="type" value="${type }">
 	<input type="hidden" name="id" id="id" value="${id }">
@@ -131,9 +132,9 @@ $(function(){
 	</div>
 	<!-- 검색 끝 -->
 	<br><br>
-	<a href="./marketDealsList.market?id=${id }&type=3&year=${year}&month=${month}&day=${day}"><input class="btnType3" type="button" value="전체"></a>
-	<a href="./marketDealsList.market?id=${id }&type=1&year=${year}&month=${month}&day=${day}"><input class="btnType3" type="button" value="판매"></a>
-	<a href="./marketDealsList.market?id=${id }&type=2&year=${year}&month=${month}&day=${day}"><input class="btnType3" type="button" value="구매"></a>
+	<a href="./marketDealsList.market?id=${id }&type=3&year=${year}&month=${month}&day=${day}&library=${library}"><input class="btnType3" type="button" value="전체"></a>
+	<a href="./marketDealsList.market?id=${id }&type=1&year=${year}&month=${month}&day=${day}&library=${library}"><input class="btnType3" type="button" value="판매"></a>
+	<a href="./marketDealsList.market?id=${id }&type=2&year=${year}&month=${month}&day=${day}&library=${library}"><input class="btnType3" type="button" value="구매"></a>
 	<br><br>
 	<c:if test="${size eq 0 }">
 		<h2 id="divTitle">MARKET 거래 내역이 없습니다.</h2>
@@ -162,7 +163,7 @@ $(function(){
 			<tr>
 				<td scope="row" class="footable-first-column">${bookDeals_list.num }</td>
 				<td scope="row" data-class="expand"><a
-					href="./marketDealsDetails.market?num=${bookDeals_list.num }">${bookDeals_list.title }</a></td>
+					href="./marketDealsDetails.market?num=${bookDeals_list.num }&library=${library}">${bookDeals_list.title }</a></td>
 				<td scope="row" style="display: table-cell;">${bookDeals_list.writer }</td>
 				<td scope="row" style="display: table-cell;">${bookDeals_list.company }</td>
 				<td scope="row" style="display: table-cell;">${bookDeals_list.publish_date }</td>
@@ -233,11 +234,11 @@ $(function(){
 			</c:if>
 			<c:forEach begin="${page.startNum}" end="${page.lastNum}" var="i">
 			<li><a
-				href="./marketDealsList.market?curPage=${i}&id=${id }&year=${year}&month=${month}&day=${day}&type=${type}">${i}</a></li>
+				href="./marketDealsList.market?curPage=${i}&id=${id }&year=${year}&month=${month}&day=${day}&type=${type}&library=${library}">${i}</a></li>
 			</c:forEach>
 			<c:if test="${page.curBlock < page.totalBlock}">
 			<li><a
-				href="./marketDealsList.market?curPage=${requestScope.page.lastNum+1}">[다음]</a></li>
+				href="./marketDealsList.market?curPage=${requestScope.page.lastNum+1}&library=${library}">[다음]</a></li>
 			</c:if>
 			</ul>
 		</div>

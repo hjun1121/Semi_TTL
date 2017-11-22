@@ -18,7 +18,7 @@
 	$(function(){
 		$("#btn").click(function(){
 			$.ajax({
-				url:"./bookOrderAjax.book",
+				url:"./bookOrderAjax.book?library=${library}",
 				type:"POST",
 				data: {
 					num:${requestScope.view.num }
@@ -32,7 +32,7 @@
 	 
 		$("#btn_no").click(function(){
 			$.ajax({
-				url:"./bookOrderNOAjax.book",
+				url:"./bookOrderNOAjax.book?library=${library}",
 				type:"POST",
 				data: {
 					num:${requestScope.view.num }
@@ -45,7 +45,7 @@
 		 });
 	 
 		$("#btnList").click(function(){
-			location.href="./bookOrderListAdmin.book?state=3";
+			location.href="./bookOrderListAdmin.book?state=3&library=${library}";
 		});
 	});
 </script>
@@ -60,7 +60,7 @@
 </c:choose>
 
 <div>
-	<c:import url="${myContextPath}/WEB-INF/view/member/myPage.jsp"></c:import>
+	<c:import url="${myContextPath}/WEB-INF/view/member/myPage.jsp?library=${library}"></c:import>
 </div>
 
 <div id="divContentsW">
@@ -68,7 +68,7 @@
 		<h2 id="divTitle">신청 상세 내역</h2>
 		<div id="divLocation">
 			<ul>
-				<li class="home"><a href="${pageContext.request.contextPath}/index.jsp"><img src="${pageContext.request.contextPath }/image/notice/home.png" alt="HOME"></a></li>
+				<li class="home"><a href="${pageContext.request.contextPath}/index.jsp?library=${library}"><img src="${pageContext.request.contextPath }/image/notice/home.png" alt="HOME"></a></li>
 				<li>&gt;</li>
 				<li>MY PAGE</li>
 				<li>&gt;</li>

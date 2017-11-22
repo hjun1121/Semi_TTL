@@ -5,7 +5,7 @@
 <html>
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
-<title>Insert title here</title>
+<title>도서 대여 찜 상세 페이지</title>
 <link rel="stylesheet" href="${pageContext.request.contextPath }/css/temp/header.css">
 <link rel="stylesheet" href="${pageContext.request.contextPath }/css/temp/footer.css">
 <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
@@ -24,7 +24,7 @@
 </c:choose>
 
 <div>
-	<c:import url="${myContextPath}/WEB-INF/view/member/myPage.jsp"></c:import>
+	<c:import url="${myContextPath}/WEB-INF/view/member/myPage.jsp?library=${library}"></c:import>
 </div>
 
 <div id="divContentsW">
@@ -32,7 +32,7 @@
 			<h2 id="divTitle">대여 상세정보</h2>
 			<div id="divLocation">
 				<ul>
-					<li class="home"><a href="${pageContext.request.contextPath}/index.jsp"><img src="${pageContext.request.contextPath}/image/bookTotalSearch/home.png" alt="HOME"></a></li>
+					<li class="home"><a href="${pageContext.request.contextPath}/index.jsp?library=${library}"><img src="${pageContext.request.contextPath}/image/bookTotalSearch/home.png" alt="HOME"></a></li>
 					<li>&gt;</li>
 					<li>MY PAGE</li>
 					<li>&gt;</li>
@@ -42,7 +42,7 @@
 				</ul>
 			</div>
 			
-			<form action="../book/bookRentList.book?id=${member.id }" method="post">
+			<form action="../book/bookRentList.book?id=${member.id }&library=${library}" method="post">
 			<div class="profile borderIn">
 					<div class="profileHeader">
 	 			   	 	<h3>${book.title}</h3>
@@ -163,15 +163,15 @@
 		<div class="btn2">
 		<c:choose>
 			<c:when test="${empty bookRentDTO.out_time }">
-				<a href="./bookReturn.book?num=${bookRentDTO.num }"><input class="btnType5" type="button" value="반납"></a>
+				<a href="./bookReturn.book?num=${bookRentDTO.num }&library=${library}"><input class="btnType5" type="button" value="반납"></a>
 			</c:when>
 		</c:choose>
 		<c:choose>
 			<c:when test="${not empty bookRentDTO.out_time }">
-				<a href="./bookRentDelete.book?num=${bookRentDTO.num }"><input class="btnType5" type="button" value="삭제"></a>
+				<a href="./bookRentDelete.book?num=${bookRentDTO.num }&library=${library}"><input class="btnType5" type="button" value="삭제"></a>
 			</c:when>
 		</c:choose>
-		<a href="../book/bookRentList.book?id=${member.id }"><input class="btnType5" type="button" value="LIST"></a>
+		<a href="../book/bookRentList.book?id=${member.id }&library=${library}"><input class="btnType5" type="button" value="LIST"></a>
 		</div>
 		</form>
 	</div>

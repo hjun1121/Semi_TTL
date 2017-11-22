@@ -60,7 +60,7 @@ $(function(){
  		$("#btn_admin").attr("style", "background-color: #dcdcdc");
 		
 		$.ajax({
-			url:"./memberList.member",
+			url:"./memberList.member?library=${library}",
 			type:"POST",
 			data: {
 				kind:10,
@@ -100,7 +100,7 @@ $(function(){
 		$("#btn_black").attr("style", "background-color: #dcdcdc");
 	
 		$.ajax({
-			url:"./memberList.member",
+			url:"./memberList.member?library=${library}",
 			type:"post",
 			data: {
 				kind:0,
@@ -126,7 +126,7 @@ $(function(){
 </c:choose>
 
 <div>
-	<c:import url="${myContextPath}/WEB-INF/view/member/myPage.jsp"></c:import>
+	<c:import url="${myContextPath}/WEB-INF/view/member/myPage.jsp?library=${library}"></c:import>
 </div>
 
 <div id="divContentsW">
@@ -134,7 +134,7 @@ $(function(){
 		<h2 id="divTitle">회원 리스트</h2>
 		<div id="divLocation">
 			<ul>
-				<li class="home"><a href="${pageContext.request.contextPath}/index.jsp"><img src="${pageContext.request.contextPath }/image/notice/home.png" alt="HOME"></a></li>
+				<li class="home"><a href="${pageContext.request.contextPath}/index.jsp?library=${library}"><img src="${pageContext.request.contextPath }/image/notice/home.png" alt="HOME"></a></li>
 				<li>&gt;</li>
 				<li>MY PAGE</li>
 				<li>&gt;</li>
@@ -144,7 +144,7 @@ $(function(){
 	<!-- 검색 시작 -->
 		<form name="frm" class="form-inline" action="./memberList.member" method="post">
 		<input type="hidden" name="sel" value="sel">
-		<input type="hidden" name="kind" id="kind0" value="${kind }">
+		<input type="hidden" name="kind" id="kind0" value="${kind}">
 			<fieldset>
 				<span class="bunch">
 					<select name="kind1" id = "kind1">
@@ -210,15 +210,15 @@ $(function(){
 	<div class = "paging" style = "text-align: center;">
 		<ul class="pagination pagination-sm">
 				<c:if test="${page.curBlock>1}">
-				<li><a href = "./memberList.member?curPage=${page.startNum-1}&kind=${kind}&search=${search}&kind1=${kind1}">[이전]</a></li>
+				<li><a href = "./memberList.member?curPage=${page.startNum-1}&kind=${kind}&search=${search}&kind1=${kind1}&library=${library}">[이전]</a></li>
 				</c:if>
-				
+
 				<c:forEach begin="${page.startNum}" end="${page.lastNum}" var="i">
-				<li><a id="pa" class="cur" title="${i }" href="./memberList.member?curPage=${i}&kind=${kind}&search=${search}&kind1=${kind1}">${i}</a></li>
+				<li><a id="pa" class="cur" title="${i }" href="./memberList.member?curPage=${i}&kind=${kind}&search=${search}&kind1=${kind1}&library=${library}">${i}</a></li>
 				</c:forEach>
 
 				<c:if test="${page.curBlock < page.totalBlock}">
-				<li><a href="./memberList.member?curPage=${page.lastNum+1}&kind=${kind}&search=${search}&kind1=${kind1}">[다음]</a></li>
+				<li><a href="./memberList.member?curPage=${page.lastNum+1}&kind=${kind}&search=${search}&kind1=${kind1}&library=${library}">[다음]</a></li>
 				</c:if>
 			</ul>
 		</div>
@@ -226,7 +226,7 @@ $(function(){
 	</div>
 
 	<a href="../index.jsp" class="btnType3">HOME</a>
-	
+
 	</div>
 </div>	
 <c:import url="${myContextPath}/temp/footer.jsp"></c:import>

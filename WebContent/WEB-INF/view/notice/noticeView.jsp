@@ -12,7 +12,7 @@
 <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
 <link rel="stylesheet" href="${pageContext.request.contextPath }/css/notice/noticeView.css">
 
-<title>Insert title here</title>
+<title>공지사항 상세페이지</title>
 </head>
 <body>
 <c:choose>
@@ -60,9 +60,9 @@
 		<br>
 	<div class="adv">
 	<c:if test="${member.kind eq 10 }">
-		<a href="./noticeUpdate.notice?num=${view.num}"><button class="adv2">UPDATE</button></a>
-		<a href="./noticeDelete.notice?num=${view.num}"><button class="adv2">DELETE</button></a>
-		<a href="noticeList.notice" title="목록"><button class="adv2">목록</button></a>
+		<a href="./noticeUpdate.notice?num=${view.num}&library=${library}"><button class="adv2">UPDATE</button></a>
+		<a href="./noticeDelete.notice?num=${view.num}&library=${library}"><button class="adv2">DELETE</button></a>
+		<a href="noticeList.notice?library=${library}" title="목록"><button class="adv2">목록</button></a>
 	</c:if>
 	</div>
 	</div>
