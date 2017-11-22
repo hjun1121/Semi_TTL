@@ -56,19 +56,18 @@
 
 	<h2>결제페이지</h2>
 	<form action="../market/bookBuy.market" method="POST" name="frm">
-		<input type="hidden" class="form-control" name="num" value=${mddDTO.num }> 
-		<input type="hidden" class="form-control" name="id" value=${mddDTO.id }> 
-		<input type="hidden" class="form-control" name="kind" value='1'>
-		<input type="hidden" class="form-control" name="title" value="${mddDTO.title}">
-		<input type="hidden" class="form-control" name="writer" value="${mddDTO.writer}">
-		<input type="hidden" class="form-control" name="company" value="${mddDTO.company}">
-		<input type="hidden" class="form-control" name="publish_date" value="${mddDTO.publish_date}">
-		<input type="hidden" class="form-control" name="price" value="${mddDTO.price}">
-		<input type="hidden" class="form-control" name="library" value="${mddDTO.library}">
-		<input type="hidden" class="form-control" name="delivery" value="${mddDTO.delivery}">
-		<input type="hidden" id="postCode" name="postCode" placeholder="우편번호" value="${mddDTO.postCode }">
-		<input type="hidden" id="addr" name="addr" value="${mddDTO.addr }">
-		<input type="hidden" id="addr2" name="addr2" value="${mddDTO.addr2 }">
+		num :<input type="text" class="form-control" name="num" value=${mddDTO.num }> 
+		id :<input type="text" class="form-control" name="id" value=${mddDTO.id }> 
+		title: <input type="text" class="form-control" name="title" value="${mddDTO.title}">
+		writer :<input type="text" class="form-control" name="writer" value="${mddDTO.writer}">
+		company :<input type="text" class="form-control" name="company" value="${mddDTO.company}">
+		pdate :<input type="text" class="form-control" name="publish_date" value="${mddDTO.publish_date}">
+		price :<input type="text" class="form-control" name="price" value="${mddDTO.price}">
+		library : <input type="text" class="form-control" name="library" value="${mddDTO.library}">
+		delivery : <input type="text" class="form-control" name="delivery" value="${mddDTO.delivery}">
+		post :<input type="text" id="postCode" name="postCode" placeholder="우편번호" value="${mddDTO.postCode }">
+		addr :<input type="text" id="addr" name="addr" value="${mddDTO.addr }">
+		addr2 :<input type="text" id="addr2" name="addr2" value="${mddDTO.addr2 }">
 	</form>
 
 <c:import url="${myContextPath}/temp/footer.jsp"></c:import>

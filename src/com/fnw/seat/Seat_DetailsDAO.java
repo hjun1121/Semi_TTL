@@ -9,15 +9,15 @@ import com.fnw.util.DBConnector;
 import com.fnw.util.MakeRow;
 
 public class Seat_DetailsDAO {
-	public ArrayList<Seat_DetailsDTO> selectList(String id, MakeRow makeRow, String search) throws Exception {
+	public ArrayList<Seat_DetailsDTO> selectList(String id, MakeRow makeRow, String p_date) throws Exception {
 		Connection con = DBConnector.getConnect();
 		String sql = "select * from "
 				+ "(select rownum R, N.* from "
-				+ "(select * from seat_details where reg_time <= ? and id=? order by num asc) N)"
+				+ "(select * from seat_details where TO_CHAR(reserve_time,'YY/MM/DD') <= ? and id=? order by num asc) N)"
 				+ "where R between ? and ?";
 		PreparedStatement st = con.prepareStatement(sql);
 		
-		st.setString(1, search);
+		st.setString(1, p_date);
 		st.setString(2, id);
 		st.setInt(3, makeRow.getStartRow());
 		st.setInt(4, makeRow.getLastRow());
@@ -35,6 +35,7 @@ public class Seat_DetailsDAO {
 			seat_DetailsDTO.setIn_time(rs.getDate("in_time"));
 			seat_DetailsDTO.setOut_time(rs.getDate("out_time"));
 			seat_DetailsDTO.setState(rs.getInt("state"));
+			seat_DetailsDTO.setReserve_time(rs.getDate("reserve_time"));
 			
 			ar.add(seat_DetailsDTO);
 		}
@@ -43,7 +44,7 @@ public class Seat_DetailsDAO {
 	}
 	public int getTotalCount(String search) throws Exception {
 		Connection con = DBConnector.getConnect();
-		String sql = "select nvl(count(num), 0) from seat_details where IN_TIME < ?" ;
+		String sql = "select nvl(count(num), 0) from seat_details where reserve_time <= ?" ;
 		
 		PreparedStatement st = con.prepareStatement(sql);
 		st.setString(1, search);
@@ -64,26 +65,43 @@ public class Seat_DetailsDAO {
 		
 		return result;
 	}
-	public int seatUpdate(int seat_num) throws Exception {
-		Connection con = DBConnector.getConnect();
-		String sql="UPDATE seat_details SET out_time=sysdate, state=2  where seat_num=?";
+	public int seatUpdate(int num, Connection con) throws Exception {
+		String sql="UPDATE seat_details SET out_time=sysdate, state=2  where num=?";
 		PreparedStatement st = con.prepareStatement(sql);
-		st.setInt(1, seat_num);
+		st.setInt(1, num);
 		
 		int result = st.executeUpdate();
-		DBConnector.disConnect(st, con);
-		
+		st.close();
 		return result;
 	}
-	public int seatCancel(int seat_num) throws Exception {
-		Connection con = DBConnector.getConnect();
+	public int seatCancel(int seat_num,Connection con) throws Exception {
 		String sql="UPDATE seat_details SET state=3  where seat_num=?";
 		PreparedStatement st = con.prepareStatement(sql);
 		st.setInt(1, seat_num);
 		
 		int result = st.executeUpdate();
-		DBConnector.disConnect(st, con);
+		st.close();
 		
+		return result;
+	}
+	public int insert(Seat_DetailsDTO seat_DetailsDTO,Connection con) throws Exception{
+		String sql="insert into seat_details values(seat_seq.nextval,?,?,?,null,null,0,sysdate)";
+		PreparedStatement st = con.prepareStatement(sql);
+		st.setInt(1, seat_DetailsDTO.getSeat_num());
+		st.setInt(2, seat_DetailsDTO.getLibrary());
+		st.setString(3, seat_DetailsDTO.getId());
+		
+		int result = st.executeUpdate();
+		st.close();
+		return result;
+	}
+	public int seatIn(int num, Connection con) throws Exception {
+		String sql="UPDATE seat_details SET in_time=sysdate, state=1  where num=?";
+		PreparedStatement st = con.prepareStatement(sql);
+		st.setInt(1, num);
+		
+		int result = st.executeUpdate();
+		st.close();
 		return result;
 	}
 }
