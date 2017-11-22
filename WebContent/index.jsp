@@ -1,4 +1,4 @@
-﻿\<%@ page language="java" contentType="text/html; charset=UTF-8"
+﻿<%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <!DOCTYPE html>
@@ -200,9 +200,7 @@ $(function(){
 			
 			<!-- ///////////////////////////////////////// -->
 
-			<div class="book">
-				<!-- ///////////////////////////////////////// -->
-				
+			<div class="book">	
 				<ul>
 				<li class="on"><h2><a href="#">신작 도서</a></h2>
 				
@@ -254,12 +252,7 @@ $(function(){
 		<!-- 메인 컨텐츠 끝 -->
 		<br><br><br><br>
 		<!-- ////////////////// -->
-	
-	<c:if test="${not empty sessionScope.member }">
-	<p><a href="./market/marketOrder.market?id=${member.id }">마켓판매신청form</a></p><!-- 로그인시만 이용 -->
-	</c:if>
-	
-	
+
 <c:import url="${myContextPath}/temp/footer.jsp"></c:import>
 </body>
 </html>
