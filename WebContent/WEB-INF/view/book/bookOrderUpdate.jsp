@@ -73,7 +73,7 @@ $(function(){
 		
 		<div>
 		<input type="hidden" name="num" value=${bookorder.num }>
-			<table class="revisionTable">
+			<table class="table">
 				<tr>
 					<th>서명</th>
 					<td><input type="text" name="title" id="title" class="useBorder" value="${bookorder.title }"></td>

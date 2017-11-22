@@ -27,8 +27,7 @@
 				}
 			});
 			
-		});//
-		
+		});
 		$("#seat_2").click(function(){
 			
 			$.ajax({
@@ -42,8 +41,7 @@
 				}
 			});
 			
-		});//
-		
+		});
 		$("#seat_3").click(function(){
 			
 			$.ajax({
@@ -57,13 +55,7 @@
 				}
 			});
 			
-		});//
-		
-		/* $("#seatList").on("click", ".seats" , function(){
-			alert("as");
-		}); */
-		
-		
+		});
 	});
 </script>
 </head>
@@ -78,45 +70,73 @@
 				<ul>
 					<li class="home"><a href="${pageContext.request.contextPath}/index.jsp"><img src="${pageContext.request.contextPath }/image/notice/home.png" alt="HOME"></a></li>
 					<li>&gt;</li>
-					<li>로그인</li>
+					<li>좌석 예약</li>
 				</ul>
 			</div>
-			
-<a href="#" id="seat_1">1층 Seat
+			<div class = "listTable">
+			<table class = "mobileTable tablet">
+				<thead>
+					<tr>
+						<th scope="row" style="display: table-cell;"">명칭</th>
+						<th scope="row" style="display: table-cell;">전체</th>
+						<th scope="row" style="display: table-cell;">잔여좌석</th>
+						<th scope="row" style="display: table-cell;">상세</th>
+					</tr>
+				</thead>
+				<tbody>
+					<tr>
+						<td scope="row" style="display: table-cell;"">(1F) 1열람실</td>
+						<td scope="row" style="display: table-cell;">
+						<c:forEach items="${seat1 }" var="dto" varStatus="count" >
+							<c:if test="${count.last }">
+								${count.index+1 } 개
+							</c:if>
+						</c:forEach>
+						</td>
+						<td scope="row" style="display: table-cell;">13</td>
+						<td><a href="#" id="seat_1"><button class="detail">상세</button></a></td>
+					</tr>
+					<tr>
+						<td scope="row" style="display: table-cell;"">(2F) 2열람실</td>
+						<td scope="row" style="display: table-cell;">
+						<c:forEach items="${seat2 }" var="dto" varStatus="count" >
+							<c:if test="${count.last }">
+								${count.index+1 } 개
+							</c:if>
+						</c:forEach>
+						</td>
+						<td scope="row" style="display: table-cell;">13</td>
+						<td><a href="#" id="seat_2"><button class="detail">상세</button></a></td>
+					</tr>
+					<tr>
+						<td scope="row" style="display: table-cell;"">(3F) 3열람실</td>
+						<td scope="row" style="display: table-cell;">
+						<c:forEach items="${seat3 }" var="dto" varStatus="count" >
+							<c:if test="${count.last }">
+								${count.index+1 } 개
+							</c:if>
+						</c:forEach>
+						</td>
+						<td scope="row" style="display: table-cell;">13</td>
+						<td><a href="#" id="seat_3"><button class="detail">상세</button></a></td>
+					</tr>
+				</tbody>
+			</table>
+		</div>
+<%-- <a href="#" id="seat_1">1층 Seat
 <c:forEach items="${seat1 }" var="dto" varStatus="count" >
 	<c:if test="${count.last }">
 		${count.index+1 } 개
 	</c:if>
 </c:forEach>
 </a>
-</h2>
-
-
-<h2>
-<a href="#" id="seat_2">2층 Seat
-<c:forEach items="${seat2 }" var="dto" varStatus="count" >
-	<c:if test="${count.last }">
-		${count.index+1 } 개
-	</c:if>
-</c:forEach>
-</a>
-</h2>
-
-<h2>
-<a href="#" id="seat_3">3층 Seat
-<c:forEach items="${seat3 }" var="dto" varStatus="count" >
-	<c:if test="${count.last }">
-		${count.index+1 } 개
-	</c:if>
-</c:forEach>
-</a>
-</h2>
-
-<div id="seatList">
-</div>
+</h2> --%>
 </div>
 </div>
 </section>
+<div id="seatList">
+
+</div>
 <c:import url="${myContextPath}/temp/footer.jsp"></c:import>
 </body>
 </html>
