@@ -1,6 +1,7 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>    
+<%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt" %>
 <!DOCTYPE html>
 <html>
 <head>
@@ -78,7 +79,7 @@
 						</tr>
 						<tr>
 							<th scope="row">정가</th>
-							<td>${dto.price/(1-((dto.book_state*2)/10))}원</td>
+							<td><fmt:formatNumber type="currency" currencySymbol="" value="${dto.price/(1-((dto.book_state*2)/10))}"  />원</td>
 						</tr>
 						<tr>
 							<th scope="row">판매가</th>
