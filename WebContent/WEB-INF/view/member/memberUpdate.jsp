@@ -327,6 +327,7 @@
 					<c:if test="${member.kind eq 1}">
 						<th>등급</th>
 						<td><input type="text" class="noneBorder" value="일반사용자" readonly="readonly"></td>
+						<input type="hidden" name="kind" value="1">
 					</c:if>
 				</c:if>
 				<c:if test="${sessionScope.member.kind eq 10 }">

@@ -8,18 +8,20 @@
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <link rel="stylesheet" href="${pageContext.request.contextPath }/css/temp/header.css">
-<link rel="stylesheet" href="${pageContext.request.contextPath }/css/temp/footer.css">
+<link rel="stylesheet" href="${npageContext.request.contextPath }/css/temp/footer.css">
 <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
 <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
-<link rel="stylesheet" href="${pageContext.request.contextPath }/css/index/index.css">
+<link rel="stylesheet" href="./css/index/index.css">
 
 <title>Total Library Page</title>
 
+<<<<<<< HEAD
 
 
-
+=======
 <script type="text/javascript" src="${pageContext.request.contextPath }/script/main.jsp"></script>
+>>>>>>> d1259410c42e81e4a447c5f625731c3841067fe7
 <script type="text/javascript">
 	
 	var slideIndex = 1;
@@ -63,10 +65,32 @@ $(function(){
 		}
 	});
 	
+	
+	$.ajax({
+		url:"./book/bookAjax.book",
+		type:"POST",
+		data: {
+		},
+		success:function(data){
+			$("#bookForm").html(data);
+		}
+	});
+	
+	$.ajax({
+		url:"./book/bookAjax_new.book",
+		type:"POST",
+		data: {
+		},
+		success:function(data){
+			$("#bookForm_new").html(data);
+		}
+	});
+	
 });
 </script>
-	
-	
+
+
+<script type="text/javascript" src="${pageContext.request.contextPath }/script/main.jsp"></script>
 
 </head>
 <body>
@@ -198,21 +222,14 @@ $(function(){
 			
 			<!-- ///////////////////////////////////////// -->
 
+			<!-- ///////////////////////////////////////// -->
 			<div class="book">	
 				<ul>
-				<li class="on"><h2><a href="#">신작 도서</a></h2>
+				<li class="on"><h2><a href="#">많이 대여한 도서</a></h2>
 				
 					<div>	
 						<div>
-							<ul style="width: 2288px;">
-								
-								<li style="width: 143px;">
-									<a href="#">
-										<span class="bookCover"><img src="#" width="107px;" height="150px;" id="newArrivalList1" alt="책표지"></span>
-										<span class="bookTit">나는 염소가 처음이야 : 김숨 소설</span>
-										<span class="writer">김숨</span>
-									</a>
-								</li>
+							<ul id="bookForm" style="width: 2288px;">
 								
 							</ul>
 						</div>
@@ -223,17 +240,11 @@ $(function(){
 					</div>
 				 	
 				</li>
-				<li class=""><h2><a href="#">추천도서</a></h2>
+				<li class=""><h2><a href="#">신규도서</a></h2>
 				 		<div>	
 							<div>
-								<ul style="width: 2288px;">
-									<li style="width: 143px;">
-										<a href="#">
-											<span class="bookCover"><img src="#" id="recommendList16" width="107px;" height="150px;" alt="책표지" title="올가에게 보낸는 편지 : 체코 민주화의 상징 하벨 대통령의 서한집 : 감옥으로부터의 사색과 사랑 "></span>
-											<span class="bookTit">올가에게 보낸는 편지 : 체코 민주화의 상징 하벨 대통령의 서한집 : 감옥으로부터의 사색과 사랑 </span>
-											<span class="writer">Havel, Vaclav</span>
-										</a>
-									</li>
+								<ul id="bookForm_new" style="width: 2288px;">
+									
 								</ul>
 							</div>
 						</div>
