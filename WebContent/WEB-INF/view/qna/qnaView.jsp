@@ -94,7 +94,10 @@ $(function(){
 		
 		<form id = "qnaDetail_frm" action="../qna/qnaUpdate.qna" method="get" name="frm">
 		<div class = "boardInfo">
+			<input type="hidden" name="num" value=${qnaDTO.num } readonly="readonly">
 			<input type="hidden" name="library" value=${qnaDTO.library } readonly="readonly">
+			<input type="hidden" name="type" value=${qnaDTO.type } readonly="readonly">
+			
 			<p class="boardInfoTitle">${qnaDTO.title}</p>
 			<p class="writeInfo">${qnaDTO.reg_date}<span>조회&nbsp;${qnaDTO.hit}</span></p>
 			<dl class="writerInfo">
