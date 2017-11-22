@@ -128,6 +128,7 @@
 					$("#chk_purchase_agreement0").focus();
 				} else {
 					document.frm.submit();
+
 				}
 				/*  */
 			}
