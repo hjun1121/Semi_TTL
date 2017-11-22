@@ -34,8 +34,41 @@ public class SeatListService implements Action {
 				ar3 = seatDAO.selectList(3);
 				ar4 = seatDAO.selectList(4);
 				
+				int cnt = 0;
+				int cntAll = 0;
+				
+				int cnt2 = 0;
+				int cntAll2 = 0;
+				
+				int cnt3 = 0;
+				int cntAll3 = 0;
+				
+				int cnta = cnt+cnt2+cnt3;
+				int cntAlla = cntAll+cntAll2+cntAll3;
+				request.setAttribute("cnta", cnta);
+				request.setAttribute("cntAlla", cntAlla);
+				
+				for(int i=1; i<5; i++ ) {
+					cnt = seatDAO.count(1, i);
+					cntAll = seatDAO.countAll(1, i);
+					
+					cnt2 = seatDAO.count(2, i);
+					cntAll2 = seatDAO.countAll(2, i);
+					
+					cnt3 = seatDAO.count(3, i);
+					cntAll3 = seatDAO.countAll(3, i);
+					
+					cnt = cnt+cnt2+cnt3;
+					cntAlla = cntAll+cntAll2+cntAll3;
+					
+					request.setAttribute("cnta"+i, cnta);
+					request.setAttribute("cntAlla"+i, cntAlla);
+				}
+				
+				
+				
+				
 			} catch (Exception e) {
-				// TODO Auto-generated catch block
 				e.printStackTrace();
 			}
 			request.setAttribute("seat1", ar1);
