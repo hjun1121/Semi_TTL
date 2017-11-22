@@ -76,6 +76,41 @@ public class SeatDAO {
 		 return ar;
 				 
 	}
+	
+	public int count(int f, int library) throws Exception{
+		 Connection con = DBConnector.getConnect();
+		 String sql = "select count(*) from seat where seat_num like ? and library=? and state=0";
+		 PreparedStatement st = con.prepareStatement(sql);
+		 
+		 st.setString(1, f+"%");
+		 st.setInt(2, library);
+		 ResultSet rs = st.executeQuery();
+		 
+		 int result=0;
+		 if(rs.next()) {
+			 result=rs.getInt(1);
+		 }
+		 DBConnector.disConnect(rs, st, con);
+		 return result;
+	}
+
+	public int countAll(int f, int library) throws Exception{
+		 Connection con = DBConnector.getConnect();
+		 String sql = "select count(*) from seat where seat_num like ? and library=?";
+		 PreparedStatement st = con.prepareStatement(sql);
+		 
+		 st.setString(1, f+"%");
+		 st.setInt(2, library);
+		 ResultSet rs = st.executeQuery();
+		 
+		 int result=0;
+		 if(rs.next()) {
+			 result=rs.getInt(1);
+		 }
+		 DBConnector.disConnect(rs, st, con);
+		 return result;
+	}
+	
 	public int update(String id) throws Exception {
 		Connection con = DBConnector.getConnect();
 		String sql="UPDATE seat SET id=?  where id=?";

@@ -44,7 +44,6 @@
 	  slides[slideIndex-1].style.display = "block";  
 	  dots[slideIndex-1].className += " active";
 	}
-
 </script>
 
 <script type="text/javascript">
@@ -80,11 +79,52 @@ $(function(){
 		}
 	});
 	
+ 	$.ajax({
+		url:"./seat/seatAjax_1.seat",
+		type:"POST",
+		data: {
+			library:1
+		},
+		success:function(data){
+			$("#seatForm_1").html(data);
+		}
+	});
+	
+ 	$.ajax({
+		url:"./seat/seatAjax_1.seat",
+		type:"POST",
+		data: {
+			library:2
+		},
+		success:function(data){
+			$("#seatForm_2").html(data);
+		}
+	});
+ 	
+ 	$.ajax({
+		url:"./seat/seatAjax_1.seat",
+		type:"POST",
+		data: {
+			library:3
+		},
+		success:function(data){
+			$("#seatForm_3").html(data);
+		}
+	});
+ 	
+ 	$.ajax({
+		url:"./seat/seatAjax_1.seat",
+		type:"POST",
+		data: {
+			library:4
+		},
+		success:function(data){
+			$("#seatForm_4").html(data);
+		}
+	});
+	
 });
 </script>
-
-
-
 
 </head>
 <body>
@@ -183,32 +223,29 @@ $(function(){
 					<dl class="readingRoom1">
 						<dt>기흥도서관</dt>
 						<dd>
-							<ul>
-								<li>
-									<img src="${pageContext.request.contextPath }/image/index/readingRoom2.png">
-									<span id="useSeat0_2">105</span> / <span id="totalSeat0_2">292</span>
-								</li>
+							<ul id="seatForm_1">
+
 							</ul>
 						</dd>
 					</dl>
 					<dl class="readingRoom2">
 						<dt>송파도서관</dt>
 						<dd>
-							<ul>
+							<ul id="seatForm_2">
 							</ul>
 						</dd>
 					</dl>
 					<dl class="readingRoom4">
 						<dt>장안도서관</dt>
 						<dd>
-							<ul>
+							<ul id="seatForm_3">
 							</ul>
 						</dd>
 					</dl>
 					<dl class="readingRoom3">
 						<dt>분당도서관</dt>
 						<dd>
-							<ul>
+							<ul id="seatForm_4">
 							</ul>
 						</dd>
 					</dl>

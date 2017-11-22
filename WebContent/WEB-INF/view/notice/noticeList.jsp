@@ -88,32 +88,28 @@ $(function(){
 				<caption>게시판 목록</caption>
 				<thead>
 					<tr>
-						<th class="footable-first-column">No.</th>
-						<th data-class="expand">제목</th>
-						<th style="display: table-cell;">작성자</th>
-						<th style="display: table-cell;">작성일</th>
-						<th style="display: table-cell;">조회수</th>
-						<th class="footable-last-column" style="display: table-cell;">첨부파일</th>
+						<th scope="row" class="footable-first-column">No. </th>
+						<th scope="row" data-class="expand" class="title">제목</th>
+						<th scope="row" style="display: table-cell;">작성자</th>
+						<th scope="row" style="display: table-cell;">작성일</th>
+						<th scope="row" style="display: table-cell;">조회수</th>
+						
+						<th scope="row" class="footable-last-column" style="display: table-cell;">첨부파일</th>
 					</tr>
 				</thead>
 				<c:forEach items="${requestScope.list}" var="dto">
 				<tbody>
 					<tr>
-						<td class="num footable-first-column">${dto.num}</td>
-						<td class="title expand">
-							<c:catch>
-							<c:forEach  begin="0" end="${dto.depth-1}">
-								--
-							</c:forEach>
-							</c:catch>
+						<td scope="row" class="num footable-first-column">${dto.num}</td>
+						<td scope="row" data-class="expand" class="title expand link">
 							<a href="./noticeView.notice?num=${dto.num}">${dto.title}</a>&nbsp;
 						</td>
-						<td class="writer" style="display: table-cell;">
+						<td scope="row" class="writer" style="display: table-cell;">
 							${dto.writer}
 						</td>
-						<td class="reportDate" style="display: table-cell;">${dto.reg_date}</td>
-						<td class="view_cnt" style="display: table-cell;">${dto.hit}</td>
-						<td class="footable-last-column" style="display: table-cell;">
+						<td scope="row" class="reportDate" style="display: table-cell;">${dto.reg_date}</td>
+						<td scope="row" class="view_cnt" style="display: table-cell;">${dto.hit}</td>
+						<td scope="row" class="footable-last-column" style="display: table-cell;">
 							<img class="addedFile" src="${pageContext.request.contextPath }/image/notice/clip.png" title="첨부파일" alt="첨부파일">
 						</td>
 					</tr>	
@@ -125,7 +121,7 @@ $(function(){
 	</c:if>
 	<br>
 	<c:if test="${not empty member and member.kind eq 10}">
-		<a id = "adm_write_btn" class="adv" href="./noticeWrite.notice">WRITE</a>
+		<a href="./noticeWrite.notice"><button class="adv">WRITE</button></a>
 	</c:if>
 	
 	<!-- 페이징 -->

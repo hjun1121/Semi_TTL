@@ -100,7 +100,10 @@ $(function(){
 		
 		<form id = "qnaDetail_frm" action="../qna/qnaUpdate.qna" method="get" name="frm">
 		<div class = "boardInfo">
+			<input type="hidden" name="num" value=${qnaDTO.num } readonly="readonly">
 			<input type="hidden" name="library" value=${qnaDTO.library } readonly="readonly">
+			<input type="hidden" name="type" value=${qnaDTO.type } readonly="readonly">
+			
 			<p class="boardInfoTitle">${qnaDTO.title}</p>
 			<p class="writeInfo">${qnaDTO.reg_date}<span>조회&nbsp;${qnaDTO.hit}</span></p>
 			<dl class="writerInfo">
@@ -118,9 +121,9 @@ $(function(){
 		<br>
 		</div>
 		<div id = "bottom_btns">
-			<input type="submit" value="수정">
-			<a href="../qna/qnaDelete.qna?num=${qnaDTO.num }"><input type="button" value="삭제"></a>
-			<a href="../qna/qnaList.qna"><input type="button" value="list"></a>
+			<input type="submit" class="adv" value="수정">
+			<a href="../qna/qnaDelete.qna?num=${qnaDTO.num }"><input type="button" class="adv" value="삭제"></a>
+			<a href="../qna/qnaList.qna"><input type="button" class="adv" value="list"></a>
 		</div>
 		</form>
 		
@@ -131,7 +134,7 @@ $(function(){
 			<input type ="hidden" value="${qnaDTO.num}" name="pNum">
 			<input type ="hidden" value="${qnaDTO.pw}" name="pw">
 			<p><textarea name="contents" class = "reply"></textarea>
-			<button type="submit">등록</button> </p>
+			<button type="submit" class="adv">등록</button> </p>
 		</form>
 		</div>
 	</div>

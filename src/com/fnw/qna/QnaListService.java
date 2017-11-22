@@ -45,6 +45,7 @@ public class QnaListService implements Action {
 			}
 			PageMaker pageMaker = new PageMaker(curPage, totalCount);
 			ar = qnaDAO.selectList(pageMaker.getMakeRow(),kind, search);
+			request.setAttribute("size", ar.size());
 			request.setAttribute("list", ar);
 			request.setAttribute("page", pageMaker.getMakePage());
 			request.setAttribute("search", search);

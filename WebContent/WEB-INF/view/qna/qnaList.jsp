@@ -51,7 +51,6 @@
 <div id = "bts_top_section">
 <div id="divContentsW">
 		<div id="divContents">
-			
 			<h2 id="divTitle">QnA</h2>
 			<div id="divLocation">
 				<ul>
@@ -60,8 +59,6 @@
 					<li>QnA</li>
 				</ul>
 			</div>
-			
-			
 	<!-- 검색 시작 -->	
 	
 	<form name="frm" class="form-inline" action="./qnaList.qna" method="post">
@@ -86,7 +83,10 @@
 	
 	
 	<!-- qna list 시작 -->
-	
+	<c:if test="${size eq 0 }">
+		<h2 id="divTitle">QNA 내역이 없습니다.</h2>
+	</c:if>
+	<c:if test="${size ne 0 }">
 	<div class="listTable">
 		<table class="mobileTable tablet">
 			<caption>게시판 목록</caption>
@@ -128,11 +128,12 @@
 			</c:forEach>
 		</table>
 	</div>
-
-	<c:if test="${not empty member}">
-	<input type="button" class = "btn btn-default" id="write_btn" value="글쓰기">
 	</c:if>
-
+	<br><br>
+	<c:if test="${not empty member}">
+	<input type="button" class="adv" id="write_btn" value="글쓰기">
+	</c:if>
+	
 	
 	<div class = "paging" style = "text-align: center;">
 		<ul class="pagination pagination-sm">

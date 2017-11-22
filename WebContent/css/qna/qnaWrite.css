@@ -1,9 +1,10 @@
 @charset "UTF-8";
+
+
 *{
 	margin: 0;
 	padding: 0;
 }
-
 
 <!--상단 바 시작 -->
 #divContentsW{
@@ -25,10 +26,15 @@
 }
 
 #divTitle{
-	color:#464646;
-	font-size:32px;
-	margin-bottom:20px;
-	padding:40px 450px 0 0;
+	color: #464646;
+    display: block;
+    font-size: 1.5em;
+    -webkit-margin-before: 0.83em;
+    -webkit-margin-after: 0.83em;
+    -webkit-margin-start: 0px;
+    -webkit-margin-end: 0px;
+    font-weight: bold;
+    padding: 40px 450px 0 0;
 }
 
 #divLocation{
@@ -58,8 +64,7 @@
 <!--상단 바 끝 -->
 
 
-
-<!-- 글쓰기 폼 시작 -->
+<!-- 글쓰기 시작 -->
 
 .cstmWrap {
 	position: relative;
@@ -237,7 +242,12 @@
     line-height: 48px;
     font-size: 16px;
 }
+.button1 .type1 {
+    color: #fff;
+    background: #033823;
+}
 .button1 a, .button1 a:hover, .button1 a:focus {
+    /* -webkit-transition-duration: .5s; */
     -moz-transition-duration: .5s;
     -ms-transition-duration: .5s;
     -o-transition-duration: .5s;
@@ -268,18 +278,33 @@ a:hover {
 	text-decoration: none;
 }
 
-<!-- 글쓰기 폼 끝 -->
-
-.btn_NO {
-    width: 150px;
+#btn_OK{
+	width: 150px;
     height: 50px;
     line-height: 48px;
     font-size: 16px;
-    color: #666;
-    background: #fff;
-    border: 1px solid #aaa;
-	-webkit-appearance: button;
-    cursor: pointer;
+}
+#btn_NO{
+	width: 150px;
+    height: 50px;
+    line-height: 48px;
+    font-size: 16px;
+}
+
+<!-- 글쓰기 끝 -->
+select#type {
+    width: 130px;
+    height: 30px;
+    border: 1px solid #e6e6e6;
+    background-color: #fff;
+    line-height: 29px;
+}
+select#library {
+    width: 100px;
+    height: 30px;
+    border: 1px solid #e6e6e6;
+    background-color: #fff;
+    line-height: 29px;
 }
 #btn_OK {
     width: 150px;
@@ -288,6 +313,17 @@ a:hover {
     font-size: 16px;
     color: #fff;
     background: #033823;
+    border: 1px solid #aaa;
+	-webkit-appearance: button;
+    cursor: pointer;
+}
+#btn_NO {
+    width: 150px;
+    height: 50px;
+    line-height: 48px;
+    font-size: 16px;
+    color: #666;
+    background: #fff;
     border: 1px solid #aaa;
 	-webkit-appearance: button;
     cursor: pointer;
