@@ -6,7 +6,7 @@
 <html>
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
-<title>Insert title here</title>
+<title>좌석 현황</title>
 <link rel="stylesheet" href="${pageContext.request.contextPath }/css/temp/header.css">
 <link rel="stylesheet" href="${pageContext.request.contextPath }/css/temp/footer.css">
 <link rel="stylesheet" href="${pageContext.request.contextPath }/css/seat/seatInfo.css">
@@ -80,12 +80,12 @@
 			</div>
 			<br><br>
 			<div class="btnBox">
-				<form action="./seatInfo.seat" method="post">
+				<form action="./seatInfo.seat?library=${library}" method="post">
 					<input type="hidden" name="seat_num" value=${seat.seat_num }>
 					<input type="hidden" name="library" value=${seat.library }>
 					<input type="hidden" name="state" value=${seat.state }>
 					<input type="hidden" name="id" value=${member.id }>
-					<a href="./seatList.seat"><button type="button" class="btn_NO">취소</button></a>
+					<a href="./seatList.seat?library=${library}"><button type="button" class="btn_NO">취소</button></a>
 					<button type="submit" class="btn_OK">예약</button>
 				</form>
 			</div>

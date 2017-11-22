@@ -32,7 +32,7 @@
 		<h2 id="divTitle">신청 상세 내역</h2>
 		<div id="divLocation">
 			<ul>
-				<li class="home"><a href="${pageContext.request.contextPath}/index.jsp"><img src="${pageContext.request.contextPath }/image/common/home.png" alt="HOME"></a></li>
+				<li class="home"><a href="${pageContext.request.contextPath}/index.jsp?library=${library}"><img src="${pageContext.request.contextPath }/image/common/home.png" alt="HOME"></a></li>
 				<li>&gt;</li>
 				<li>MY PAGE</li>
 				<li>&gt;</li>
@@ -42,7 +42,7 @@
 			</ul>
 		</div>
 		
-		<form action="../book/bookOrderList.book?id=${member.id }&state=3" method="post">
+		<form action="../book/bookOrderList.book?id=${member.id }&state=3&library=${library}" method="post">
 		<div>
 			<input type="hidden" name="num" value=${bookOrderDetails.num }>
 			<input type="hidden" name="id" value=${bookOrderDetails.id }>
@@ -134,8 +134,8 @@
 			<div class="btn">
 			<input type="submit" class="btnType5" id="btn" name="btn" value="확인">
 			<c:if test="${bookOrderDetails.state eq 0 }">
-				<a href="./bookOrderUpdate.book?num=${bookOrderDetails.num }"><input class="btnType5" type="button" value="정보 수정"></a>
-				<a href="./bookOrderDelete.book?num=${bookOrderDetails.num }"><input class="btnType5" type="button" value="신청 취소"></a>
+				<a href="./bookOrderUpdate.book?num=${bookOrderDetails.num }&library=${library}"><input class="btnType5" type="button" value="정보 수정"></a>
+				<a href="./bookOrderDelete.book?num=${bookOrderDetails.num }&library=${library}"><input class="btnType5" type="button" value="신청 취소"></a>
 			</c:if>
 			</div>
 		</div>

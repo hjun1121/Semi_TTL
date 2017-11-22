@@ -6,7 +6,7 @@
 <html>
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
-<title>Insert title here</title>
+<title>중고장터 도서 상세페이지</title>
 <link rel="stylesheet" href="${pageContext.request.contextPath }/css/temp/header.css">
 <link rel="stylesheet" href="${pageContext.request.contextPath }/css/temp/footer.css">
 <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
@@ -19,11 +19,11 @@
 <script type="text/javascript">
 	$(function(){
 		$("#btn").click(function(){
-			location.href="./bookBuy.market?num=${dto.num}";
+			location.href="./bookBuy.market?num=${dto.num}&library=${library}";
 		});
 		
 		$("#btn_NO").click(function(){
-			location.href="./marketTotalList.market";
+			location.href="./marketTotalList.market?library=${library}";
 		});
 		
 	});

@@ -31,7 +31,7 @@ $(function(){
 		});
 });
 </script>
-<title>Notice</title>
+<title>공지사항</title>
 </head>
 <body>
 <c:choose>
@@ -60,7 +60,7 @@ $(function(){
 	
 	<!-- 검색 시작  -->
 	
-		<form name="frm" class="form-inline" action="./noticeList.notice" method="post">
+		<form name="frm" class="form-inline" action="./noticeList.notice?library=${library}" method="post">
 			<fieldset>
 				
 				<span class="bunch">
@@ -162,15 +162,15 @@ $(function(){
 		<div class = "paging" style = "text-align: center;">
 			<ul class="pagination pagination-sm">
 				<c:if test="${page.curBlock>1}">
-				<li><a href = "./noticeList.notice?curPage=${page.startNum-1}"><img width="13" height="16"  src="${pageContext.request.contextPath}/image/bookTotalSearch/prevPage.gif" alt="이전" title="이전"></a></li>
+				<li><a href = "./noticeList.notice?curPage=${page.startNum-1}&library=${library}"><img width="13" height="16"  src="${pageContext.request.contextPath}/image/bookTotalSearch/prevPage.gif" alt="이전" title="이전"></a></li>
 				</c:if>
 
 				<c:forEach begin="${page.startNum}" end="${page.lastNum}" var="i">
-				<li><a class="cur" title="${i }" href="./noticeList.notice?curPage=${i}&kind=${kind}&search=${search}">${i}</a></li>
+				<li><a class="cur" title="${i }" href="./noticeList.notice?curPage=${i}&kind=${kind}&search=${search}&library=${library}">${i}</a></li>
 				</c:forEach>
 				
 				<c:if test="${page.curBlock < page.totalBlock}">
-				<li><a href="./${requestScope.notice}List.${requestScope.notice}?curPage=${requestScope.page.lastNum+1}"><img width="13" height="16" src="${pageContext.request.contextPath}/image/bookTotalSearch/nextPage.gif" alt="다음" title="다음"></a></li>
+				<li><a href="./${requestScope.notice}List.${requestScope.notice}?curPage=${requestScope.page.lastNum+1}&library=${library}"><img width="13" height="16" src="${pageContext.request.contextPath}/image/bookTotalSearch/nextPage.gif" alt="다음" title="다음"></a></li>
 				</c:if>
 			</ul>
 		</div>

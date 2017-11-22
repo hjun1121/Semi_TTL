@@ -50,12 +50,12 @@ public class BookOrderFormService implements Action {
 			}
 			request.setAttribute("message", message);
 			request.setAttribute("path", "../book/bookOrderTotalList.book");
-			request.setAttribute("library", library);
 			
 			actionFoward.setCheck(true);
 			actionFoward.setPath("../WEB-INF/view/common/result.jsp");
 		}
 
+		request.setAttribute("library", library);
 		return actionFoward;
 	}
 }

@@ -5,7 +5,7 @@
 <html>
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
-<title>Insert title here</title>
+<title>좌석 리스트</title>
 <link rel="stylesheet" href="${pageContext.request.contextPath }/css/temp/header.css">
 <link rel="stylesheet" href="${pageContext.request.contextPath }/css/temp/footer.css">
 <link rel="stylesheet" href="${pageContext.request.contextPath }/css/seat/seatList.css">
@@ -16,7 +16,7 @@
 	$(function(){
 		$("#seat_1").click(function(){
 			$.ajax({
-				url: "./seatList.seat",
+				url: "./seatList.seat?library=${library}",
 				type: "POST",
 				data: {
 					library :1
@@ -29,7 +29,7 @@
 		});
 		$("#seat_2").click(function(){
 			$.ajax({
-				url: "./seatList.seat",
+				url: "./seatList.seat?library=${library}",
 				type: "POST",
 				data: {
 					library :2
@@ -42,7 +42,7 @@
 		});
 		$("#seat_3").click(function(){
 			$.ajax({
-				url: "./seatList.seat",
+				url: "./seatList.seat?library=${library}",
 				type: "POST",
 				data: {
 					library :3
@@ -56,7 +56,7 @@
 		
 		$("#seat_4").click(function(){
 			$.ajax({
-				url: "./seatList.seat",
+				url: "./seatList.seat?library=${library}",
 				type: "POST",
 				data: {
 					library :4
@@ -68,8 +68,6 @@
 			
 		});
 		
-
-
 
 	});
 </script>

@@ -11,7 +11,7 @@
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
 <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
 <link rel="stylesheet" href="${pageContext.request.contextPath }/css/notice/noticeUpdate.css">
-<title>Insert title here</title>
+<title>공지사항 수정</title>
 <script type="text/javascript">
 	$(function(){
 		$("#btn_OK").click(function(){
@@ -52,7 +52,7 @@
 			</div>
 
 		<div class="cstmWrap">
-			<form action="./noticeUpdate.notice" name="frm" method="post">
+			<form action="./noticeUpdate.notice?library=${library}" name="frm" method="post">
 				<input type="hidden" name="num" value="${view.num}">
 				<ul class="otoForm mt30 borTc3">
 					<li id="writer">

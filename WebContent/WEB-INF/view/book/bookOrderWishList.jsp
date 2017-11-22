@@ -33,7 +33,7 @@ $(document).ready(function() {
 </c:choose>
 
 <h2>Book Order List-Book_Order</h2>
-<form action="./bookOrderWishDelete.book" method="POST">
+<form action="./bookOrderWishDelete.book?library=${library}" method="POST">
 	<table class="table" border="1">
 		<tr>
 			<th>전체선택<input type="checkbox" id="checkAll"></th>
@@ -79,11 +79,11 @@ $(document).ready(function() {
 			</c:if>
 			<c:forEach begin="${page.startNum}" end="${page.lastNum}" var="i">
 			<li><a
-				href="./bookOrderWishList.book?curPage=${i}&id=${id }">${i}</a></li>
+				href="./bookOrderWishList.book?curPage=${i}&id=${id}&library=${library}">${i}</a></li>
 			</c:forEach>
 			<c:if test="${page.curBlock < page.totalBlock}">
 			<li><a
-				href="./bookOrderWishList.book?curPage=${requestScope.page.lastNum+1}">[다음]</a></li>
+				href="./bookOrderWishList.book?curPage=${requestScope.page.lastNum+1}&library=${library}">[다음]</a></li>
 			</c:if>
 		</ul>
 	</div>

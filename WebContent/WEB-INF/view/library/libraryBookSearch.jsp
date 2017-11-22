@@ -114,7 +114,7 @@ $(function(){
 			</div>
 
 		<!-- 검색 시작 -->
-		<form name="frm" class="form-inline" action="./bookTotalSearch.book" method="post">
+		<form name="frm" class="form-inline" action="./libraryBookSearch.library?library=${library}" method="post">
 			<fieldset>
 				<span class="bunch">
 					<select id="kind" name = "kind" class="selectBox1">
@@ -150,7 +150,7 @@ $(function(){
 				<c:forEach items="${ list }" var="dto">
 					<tr>
 						<td scope="row" class="footable-first-column">${dto.num }</td>
-						<td scope="row" data-class="expand"><a href="./bookInformation.book?num=${dto.num}&curPage=${curPage}">${dto.title }</a></td>
+						<td scope="row" data-class="expand"><a href="./bookInformation.book?num=${dto.num}&curPage=${curPage}&library=${library}">${dto.title }</a></td>
 						<td scope="row" style="display: table-cell;">${dto.writer }</td>
 						<td scope="row" style="display: table-cell;">${dto.company }</td>
 

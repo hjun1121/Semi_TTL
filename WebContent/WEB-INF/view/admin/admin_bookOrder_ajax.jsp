@@ -25,7 +25,7 @@
 		</table>
 		<br>
 		<div style="text-align: center; margin-bottom: 60px;">
-			<a href="./bookOrderListAdmin.book?state=3"><button style="width: 150px; height: 50px;line-height: 48px;font-size: 16px;color: #666;background: #fff;border: 1px solid #aaa;" type="button">취소</button></a>
+			<a href="./bookOrderListAdmin.book?state=3&library=${library}"><button style="width: 150px; height: 50px;line-height: 48px;font-size: 16px;color: #666;background: #fff;border: 1px solid #aaa;" type="button">취소</button></a>
 			<button type="submit" style="width: 150px; height: 50px; line-height: 48px; font-size: 16px; color: #fff; background: #033823; border: 1px solid #aaa;">승인</button>
 		</div>
 </form>

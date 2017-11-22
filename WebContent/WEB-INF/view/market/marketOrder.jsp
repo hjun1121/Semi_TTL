@@ -12,7 +12,7 @@
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
 <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
 <link rel="stylesheet" href="${pageContext.request.contextPath }/css/market/marketOrder.css">
-<title>Insert title here</title>
+<title>도서 판매 신청</title>
 <script type="text/javascript">
 
 	$(function() {
@@ -25,7 +25,7 @@
 		
 		
 		$("#btn_NO").click(function(){
-			location.href="${pageContext.request.contextPath }/index.jsp";
+			location.href="${pageContext.request.contextPath }/view/market/marketTotalList.market?library=${library}";
 		});
 		
 		$("#btn_OK").click(function(){
@@ -75,7 +75,7 @@
 			</div>	
 			
 			<div class="cstmWrap">
-			<form action="./marketOrder.market" name="frm" method="post">
+			<form action="./marketOrder.market?library=${library}" name="frm" method="post">
 				<input type = "hidden" class = "form-control" name = "id" value = "${member.id }">
 				<ul class = "otoForm mt30 borTc3">
 					<li>

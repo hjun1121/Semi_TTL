@@ -12,7 +12,7 @@
 <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
 <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
-<title>Insert title here</title>
+<title>공지사항 글쓰기</title>
 </head>
 <body>
 
@@ -59,7 +59,7 @@
 			</div>
 			
 		<div class="cstmWrap">
-			<form action="./noticeWrite.notice" name="frm" method="post">
+			<form action="./noticeWrite.notice?library=${library}" name="frm" method="post">
 				<input type="hidden" name="num" value="${view.num}">
 				<ul class="otoForm mt30 borTc3">
 					<li id="writer">
@@ -78,7 +78,7 @@
 					</li>
 				</ul>
 					<div class="btnBox">
-						<span class="button1"><a href="./noticeList.notice" class="type4 large">취소</a></span> 
+						<span class="button1"><a href="./noticeList.notice?library=${library}" class="type4 large">취소</a></span> 
 						<span class="button1"><input type="button" id="btn_OK" class = "type1 large" value="확인"> </span>
 					</div>
 				</form>

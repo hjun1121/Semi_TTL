@@ -124,7 +124,7 @@
 		<h2 id="divTitle">찾아오시는길</h2>
 		<div id="divLocation">
 			<ul>
-				<li class="home"><a href="${pageContext.request.contextPath}/index.jsp"><img src="${pageContext.request.contextPath }/image/common/home.png" alt="HOME"></a></li>
+				<li class="home"><a href="${pageContext.request.contextPath}/index.jsp?library=${library}"><img src="${pageContext.request.contextPath }/image/common/home.png" alt="HOME"></a></li>
 				<li>&gt;</li>
 				<li>찾아오시는길</li>
 			</ul>

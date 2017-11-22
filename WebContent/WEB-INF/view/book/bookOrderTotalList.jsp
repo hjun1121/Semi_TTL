@@ -23,7 +23,7 @@
 	});
 
 </script>
-<title>Insert title here</title>
+<title>도서 신청 리스트</title>
 </head>
 <body>
 <c:choose>
@@ -39,7 +39,7 @@
 			<h2 id="divTitle">도서신청</h2>
 			<div id="divLocation">
 				<ul>
-					<li class="home"><a href="${pageContext.request.contextPath}/index.jsp"><img src="${pageContext.request.contextPath}/image/bookTotalSearch/home.png" alt="HOME"></a></li>
+					<li class="home"><a href="${pageContext.request.contextPath}/index.jsp?library=${library}"><img src="${pageContext.request.contextPath}/image/bookTotalSearch/home.png" alt="HOME"></a></li>
 					<li>&gt;</li>
 					<li>통합검색</li>
 					<li>&gt;</li>
@@ -84,22 +84,22 @@
 		</div>
 		</c:if>
 		<c:if test="${not empty member}">
-		<form id = "order_btn" action="./bookOrderForm.book">
+		<form id = "order_btn" action="./bookOrderForm.book?library=${library}">
 			<button style = "float: right;" class = "adv" type = "submit">신청하기</button>		
 		</form>
 		</c:if>
 				<div class = "paging" style = "text-align: center;">
 			<ul class="pagination pagination-sm">
 				<c:if test="${page.curBlock>1}">
-				<li><a href = "./bookOrderTotalList.book?curPage=${page.startNum-1}"><img width="13" height="16"  src="${pageContext.request.contextPath}/image/bookTotalSearch/prevPage.gif" alt="이전" title="이전"></a></li>
+				<li><a href = "./bookOrderTotalList.book?curPage=${page.startNum-1}&library=${library}"><img width="13" height="16"  src="${pageContext.request.contextPath}/image/bookTotalSearch/prevPage.gif" alt="이전" title="이전"></a></li>
 				</c:if>
 
 				<c:forEach begin="${page.startNum}" end="${page.lastNum}" var="i">
-				<li><a class="cur" title="${i }" href="./bookOrderTotalList.book?curPage=${i}">${i}</a></li>
+				<li><a class="cur" title="${i }" href="./bookOrderTotalList.book?curPage=${i}&library=${library}">${i}</a></li>
 				</c:forEach>
 				
 				<c:if test="${page.curBlock < page.totalBlock}">
-				<li><a href="./bookOrderTotalList.book?curPage=${requestScope.page.lastNum+1}"><img width="13" height="16" src="${pageContext.request.contextPath}/image/bookTotalSearch/nextPage.gif" alt="다음" title="다음"></a></li>
+				<li><a href="./bookOrderTotalList.book?curPage=${requestScope.page.lastNum+1}&library=${library}"><img width="13" height="16" src="${pageContext.request.contextPath}/image/bookTotalSearch/nextPage.gif" alt="다음" title="다음"></a></li>
 				</c:if>
 			</ul>
 		</div>

@@ -20,7 +20,7 @@ $(function(){
 	$(".rent_btn").click(function() {
 		var num = $(this).val();
 		$.ajax({
-			url: "./bookRent.book",
+			url: "./bookRent.book?library=${library}",
 			type: "GET",
 			data: {
 				num: num,
@@ -28,7 +28,7 @@ $(function(){
 			},
 			success: function(data) {
 				alert(data);
-				location.href="./bookInformation.book?num=${num}";
+				location.href="./bookInformation.book?num=${num}&library=${library}";
 			}
 		});
 	});
@@ -39,7 +39,7 @@ $(function(){
 
 		if (title == 1) {
 			$.ajax({
-				url: "./bookRentWishReturn.book",
+				url: "./bookRentWishReturn.book?library=${library}",
 				type: "GET",
 				data: {
 					num:num,
@@ -47,13 +47,13 @@ $(function(){
 				},
 				success: function(data) {
 					alert(data);
-					location.href="./bookInformation.book?num=${num}";
+					location.href="./bookInformation.book?num=${num}&library=${library}";
 				}
 			});
 
 		} else if (title == 0) {
 			$.ajax({
-				url: "./bookRentWish.book",
+				url: "./bookRentWish.book?library=${library}",
 				type: "GET",
 				data: {
 					num:num,
@@ -61,7 +61,7 @@ $(function(){
 				},
 				success: function(data) {
 					alert(data);
-					location.href="./bookInformation.book?num=${num}";
+					location.href="./bookInformation.book?num=${num}&library=${library}";
 				}
 			});
 		}
@@ -86,7 +86,7 @@ $(function(){
 			<h2 id="divTitle">상세정보</h2>
 			<div id="divLocation">
 				<ul>
-					<li class="home"><a href="${pageContext.request.contextPath}/index.jsp"><img src="${pageContext.request.contextPath}/image/bookTotalSearch/home.png" alt="HOME"></a></li>
+					<li class="home"><a href="${pageContext.request.contextPath}/index.jsp?library=${library}"><img src="${pageContext.request.contextPath}/image/bookTotalSearch/home.png" alt="HOME"></a></li>
 					<li>&gt;</li>
 					<li>상세정보</li>
 				</ul>
@@ -237,7 +237,7 @@ $(function(){
 	   			
 	
 
-			<form action="./bookTotalSearch.book?curPage=${curPage}">
+			<form action="./bookTotalSearch.book?curPage=${curPage}&library=${library}">
 				<button class = "adv" type = "submit" >LIST</button>
 			</form>
 			<div style="height: 100px;"></div>

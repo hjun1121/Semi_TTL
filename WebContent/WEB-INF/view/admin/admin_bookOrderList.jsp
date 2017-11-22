@@ -34,7 +34,7 @@
 </c:choose>
 
 <div>
-	<c:import url="${myContextPath}/WEB-INF/view/member/myPage.jsp"></c:import>
+	<c:import url="${myContextPath}/WEB-INF/view/member/myPage.jsp?library=${library}"></c:import>
 </div>
 
 <div id="divContentsW">
@@ -42,7 +42,7 @@
 		<h2 id="divTitle">책 신청 내역</h2>
 		<div id="divLocation">
 			<ul>
-				<li class="home"><a href="${pageContext.request.contextPath}/index.jsp"><img src="${pageContext.request.contextPath }/image/notice/home.png" alt="HOME"></a></li>
+				<li class="home"><a href="${pageContext.request.contextPath}/index.jsp?library=${library}"><img src="${pageContext.request.contextPath }/image/notice/home.png" alt="HOME"></a></li>
 				<li>&gt;</li>
 				<li>MY PAGE</li>
 				<li>&gt;</li>
@@ -51,10 +51,10 @@
 		</div>
 		
 	<br><br>
-	<a href="./bookOrderListAdmin.book?state=3"><input class="btnType3" type="button" value="전체"></a>
-	<a href="./bookOrderListAdmin.book?state=0"><input class="btnType3" type="button" value="대기"></a>
-	<a href="./bookOrderListAdmin.book?state=2"><input class="btnType3" type="button" value="승인"></a>
-	<a href="./bookOrderListAdmin.book?state=1"><input class="btnType3" type="button" value="거절"></a>
+	<a href="./bookOrderListAdmin.book?state=3&library=${library}"><input class="btnType3" type="button" value="전체"></a>
+	<a href="./bookOrderListAdmin.book?state=0&library=${library}"><input class="btnType3" type="button" value="대기"></a>
+	<a href="./bookOrderListAdmin.book?state=2&library=${library}"><input class="btnType3" type="button" value="승인"></a>
+	<a href="./bookOrderListAdmin.book?state=1&library=${library}"><input class="btnType3" type="button" value="거절"></a>
 	<br><br>
 	
 	<c:if test="${size eq 0 }">
@@ -81,7 +81,7 @@
 			<tr>
 				<td scope="row" class="footable-first-column">${dto.num}</td>
 				<td scope="row" class="footable-first-column">
-				<a href="./bookOrderViewAdmin.book?num=${dto.num}">${dto.title}</a></td>
+				<a href="./bookOrderViewAdmin.book?num=${dto.num}&library=${library}">${dto.title}</a></td>
 				<td scope="row" style="display: table-cell;">${dto.writer }</td>
 				<td scope="row" style="display: table-cell;">${dto.company }</td>
 				<td  scope="row" data-class="expand">${dto.publish_date }</td>
@@ -135,11 +135,11 @@
 			</c:if>
 			
 			<c:forEach begin="${page.startNum}" end="${page.lastNum}" var="i">
-			<li><a class="cur" title="${i }" href="./bookOrderListAdmin.book?curPage=${i}">${i}</a></li>
+			<li><a class="cur" title="${i }" href="./bookOrderListAdmin.book?curPage=${i}&library=${library}">${i}</a></li>
 			</c:forEach>
 			
 			<c:if test="${page.curBlock < page.totalBlock}">
-			<li><a href="./bookOrderListAdmin.book?curPage=${requestScope.page.lastNum+1}">[다음]</a></li>
+			<li><a href="./bookOrderListAdmin.book?curPage=${requestScope.page.lastNum+1}&library=${library}">[다음]</a></li>
 			</c:if>
 		</ul>
 	</div>
