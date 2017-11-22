@@ -184,10 +184,10 @@ $(function(){
 		                <tr>
 		                    <td class="num expand footable-first-column">${book.num}</td>
 		                    	<c:choose>
-		                    		<c:when test="${book.library eq 1}"><td class="location"><a href="../library/libraryMain.library?library=1">형준 도서관</a></td></c:when>
-		                    		<c:when test="${book.library eq 2}"><td class="location"><a href="../library/libraryMain.library?library=2">지현 도서관</a></td></c:when>
-		                    		<c:when test="${book.library eq 3}"><td class="location"><a href="../library/libraryMain.library?library=3">희성 도서관</a></td></c:when>
-		                    		<c:when test="${book.library eq 4}"><td class="location"><a href="../library/libraryMain.library?library=4">현민 도서관</a></td></c:when>
+		                    		<c:when test="${book.library eq 1}"><td class="location"><a href="../library/libraryMain.library?library=1">기흥 도서관</a></td></c:when>
+		                    		<c:when test="${book.library eq 2}"><td class="location"><a href="../library/libraryMain.library?library=2">송파 도서관</a></td></c:when>
+		                    		<c:when test="${book.library eq 3}"><td class="location"><a href="../library/libraryMain.library?library=3">장안 도서관</a></td></c:when>
+		                    		<c:when test="${book.library eq 4}"><td class="location"><a href="../library/libraryMain.library?library=4">분당 도서관</a></td></c:when>
 		                    	</c:choose>
 		                    <td class="callNum">${book.section}</td>
 							<c:choose>

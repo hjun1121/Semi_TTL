@@ -20,7 +20,6 @@
 <div id = "bts_top_section">
 	<div id="divContentsW">
 		<div id="divContents">
-			
 			<h2 id="divTitle">비밀번호 확인</h2>
 			<div id="divLocation">
 				<ul>
