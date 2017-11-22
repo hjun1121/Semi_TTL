@@ -5,12 +5,13 @@
 	padding: 0;
 }
 
-/* #section { */
-/* 	width: 585px; */
-/* 	height: 160px; */
-/* 	margin: 0 auto; */
-/* 	background-color: #dcdcdc; */
-/* } */
+body {
+	font-size: 12px;
+}
+
+a {
+	text-decoration: none;
+}
 
 .write-wrap {
     clear: both;
@@ -61,7 +62,7 @@
     margin: 0 0 0 5px;
     width: 72px;
     height: 61px;
-    background: url(../image/set_view.png) 0 -847px no-repeat;
+    background: url(../../image/common/set_view.png) 0 -847px no-repeat;
 }
 
 button {
@@ -100,7 +101,6 @@ button {
 dl.cmt_item {
     clear: both;
     width: 586px;
-    padding: 20px 17px 16px 16px;
     border-top: 1px solid #dedede;
     position: relative;
 }
@@ -139,20 +139,76 @@ dl.cmt_item dd.usertxt {
 
 <!-- 답글 -->
 
+dl.cmt_item dd.reples {
+    position: relative;
+    clear: both;
+    width: 586px;
+    zoom: 1;
+    min-height: 16px;
+}
+
 dl.cmt_item a.hide {
     background-position: 100% -678px;
     display: inline-block !important;
 }
 
-dl.cmt_item a.cmtsum {
+dl.cmt_item dd.reples a.hide {
+    background-position: 100% -678px;
     display: inline-block !important;
+}
+
+dl.cmt_item a.cmtsum {
     zoom: 1;
     padding-right: 22px;
     margin: 0 6px 0 0;
     color: #999;
-    background: url(../image/set_view.png) no-repeat;
+    background: url(../../image/common/set_view.png) no-repeat;
 }
 
 dl.cmt_item .cmt_w {
     color: #999;
 }
+
+<!--답글입력폼 -->
+
+iframe[Attributes Style] {
+    border-top-width: 0px;
+    border-right-width: 0px;
+    border-bottom-width: 0px;
+    border-left-width: 0px;
+}
+
+iframe {
+    border-width: 2px;
+    border-style: inset;
+    border-color: initial;
+    border-image: initial;
+}
+
+dd.re.re-btn {
+    top: 90px;
+    right: 1px;
+}
+
+.reples {
+	margin-bottom: 15px;
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
