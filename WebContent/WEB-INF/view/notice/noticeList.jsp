@@ -119,7 +119,7 @@ $(function(){
 	</c:if>
 	<br>
 	<c:if test="${not empty member and member.kind eq 10}">
-		<a id = "adm_write_btn" class="adv" href="./noticeWrite.notice">WRITE</a>
+		<a href="./noticeWrite.notice"><button class="adv">WRITE</button></a>
 	</c:if>
 	
 	<!-- 페이징 -->
