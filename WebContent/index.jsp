@@ -12,12 +12,12 @@
 <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
 <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
-<link rel="stylesheet" href="${pageContext.request.contextPath }/css/index/index.css">
+<link rel="stylesheet" href="./css/index/index.css">
 
 <title>Total Library Page</title>
 
 
-<script type="text/javascript" src="${pageContext.request.contextPath }/script/main.jsp"></script>
+
 <script type="text/javascript">
 	
 	var slideIndex = 1;
@@ -72,9 +72,21 @@ $(function(){
 		}
 	});
 	
+	$.ajax({
+		url:"./book/bookAjax_new.book",
+		type:"POST",
+		data: {
+		},
+		success:function(data){
+			$("#bookForm_new").html(data);
+		}
+	});
+	
 });
 </script>
-	
+
+
+<script type="text/javascript" src="${pageContext.request.contextPath }/script/main.jsp"></script>
 
 </head>
 <body>
@@ -206,13 +218,14 @@ $(function(){
 			
 			<!-- ///////////////////////////////////////// -->
 
+			<!-- ///////////////////////////////////////// -->
 			<div class="book">	
 				<ul>
 				<li class="on"><h2><a href="#">많이 대여한 도서</a></h2>
 				
 					<div>	
 						<div>
-							<ul style="width: 2288px;" id="bookForm">
+							<ul id="bookForm" style="width: 2288px;">
 								
 							</ul>
 						</div>
@@ -223,94 +236,11 @@ $(function(){
 					</div>
 				 	
 				</li>
-				<li class=""><h2><a href="#">추천도서</a></h2>
+				<li class=""><h2><a href="#">신규도서</a></h2>
 				 		<div>	
 							<div>
-								<ul style="width: 2288px;">
-									<li style="width: 143px;">
-										<a href="#">
-											<span class="bookCover"><img src="#" id="recommendList16" width="107px;" height="150px;" alt="책표지" title="올가에게 보낸는 편지 : 체코 민주화의 상징 하벨 대통령의 서한집 : 감옥으로부터의 사색과 사랑 "></span>
-											<span class="bookTit">1올가에게 보낸는 편지 : 체코 민주화의 상징 하벨 대통령의 서한집 : 감옥으로부터의 사색과 사랑 </span>
-											<span class="writer">Havel, Vaclav</span>
-										</a>
-									</li>
-									<li style="width: 143px;">
-										<a href="#">
-											<span class="bookCover"><img src="#" id="recommendList16" width="107px;" height="150px;" alt="책표지" title="올가에게 보낸는 편지 : 체코 민주화의 상징 하벨 대통령의 서한집 : 감옥으로부터의 사색과 사랑 "></span>
-											<span class="bookTit">2올가에게 보낸는 편지 : 체코 민주화의 상징 하벨 대통령의 서한집 : 감옥으로부터의 사색과 사랑 </span>
-											<span class="writer">Havel, Vaclav</span>
-										</a>
-									</li>
-									<li style="width: 143px;">
-										<a href="#">
-											<span class="bookCover"><img src="#" id="recommendList16" width="107px;" height="150px;" alt="책표지" title="올가에게 보낸는 편지 : 체코 민주화의 상징 하벨 대통령의 서한집 : 감옥으로부터의 사색과 사랑 "></span>
-											<span class="bookTit">3올가에게 보낸는 편지 : 체코 민주화의 상징 하벨 대통령의 서한집 : 감옥으로부터의 사색과 사랑 </span>
-											<span class="writer">Havel, Vaclav</span>
-										</a>
-									</li>
-									<li style="width: 143px;">
-										<a href="#">
-											<span class="bookCover"><img src="#" id="recommendList16" width="107px;" height="150px;" alt="책표지" title="올가에게 보낸는 편지 : 체코 민주화의 상징 하벨 대통령의 서한집 : 감옥으로부터의 사색과 사랑 "></span>
-											<span class="bookTit">4올가에게 보낸는 편지 : 체코 민주화의 상징 하벨 대통령의 서한집 : 감옥으로부터의 사색과 사랑 </span>
-											<span class="writer">Havel, Vaclav</span>
-										</a>
-									</li>
-									<li style="width: 143px;">
-										<a href="#">
-											<span class="bookCover"><img src="#" id="recommendList16" width="107px;" height="150px;" alt="책표지" title="올가에게 보낸는 편지 : 체코 민주화의 상징 하벨 대통령의 서한집 : 감옥으로부터의 사색과 사랑 "></span>
-											<span class="bookTit">5올가에게 보낸는 편지 : 체코 민주화의 상징 하벨 대통령의 서한집 : 감옥으로부터의 사색과 사랑 </span>
-											<span class="writer">Havel, Vaclav</span>
-										</a>
-									</li>
-									<li style="width: 143px;">
-										<a href="#">
-											<span class="bookCover"><img src="#" id="recommendList16" width="107px;" height="150px;" alt="책표지" title="올가에게 보낸는 편지 : 체코 민주화의 상징 하벨 대통령의 서한집 : 감옥으로부터의 사색과 사랑 "></span>
-											<span class="bookTit">6올가에게 보낸는 편지 : 체코 민주화의 상징 하벨 대통령의 서한집 : 감옥으로부터의 사색과 사랑 </span>
-											<span class="writer">Havel, Vaclav</span>
-										</a>
-									</li>
-									<li style="width: 143px;">
-										<a href="#">
-											<span class="bookCover"><img src="#" id="recommendList16" width="107px;" height="150px;" alt="책표지" title="올가에게 보낸는 편지 : 체코 민주화의 상징 하벨 대통령의 서한집 : 감옥으로부터의 사색과 사랑 "></span>
-											<span class="bookTit">7올가에게 보낸는 편지 : 체코 민주화의 상징 하벨 대통령의 서한집 : 감옥으로부터의 사색과 사랑 </span>
-											<span class="writer">Havel, Vaclav</span>
-										</a>
-									</li>
-									<li style="width: 143px;">
-										<a href="#">
-											<span class="bookCover"><img src="#" id="recommendList16" width="107px;" height="150px;" alt="책표지" title="올가에게 보낸는 편지 : 체코 민주화의 상징 하벨 대통령의 서한집 : 감옥으로부터의 사색과 사랑 "></span>
-											<span class="bookTit">8올가에게 보낸는 편지 : 체코 민주화의 상징 하벨 대통령의 서한집 : 감옥으로부터의 사색과 사랑 </span>
-											<span class="writer">Havel, Vaclav</span>
-										</a>
-									</li>
-									<li style="width: 143px;">
-										<a href="#">
-											<span class="bookCover"><img src="#" id="recommendList16" width="107px;" height="150px;" alt="책표지" title="올가에게 보낸는 편지 : 체코 민주화의 상징 하벨 대통령의 서한집 : 감옥으로부터의 사색과 사랑 "></span>
-											<span class="bookTit">9올가에게 보낸는 편지 : 체코 민주화의 상징 하벨 대통령의 서한집 : 감옥으로부터의 사색과 사랑 </span>
-											<span class="writer">Havel, Vaclav</span>
-										</a>
-									</li>
-									<li style="width: 143px;">
-										<a href="#">
-											<span class="bookCover"><img src="#" id="recommendList16" width="107px;" height="150px;" alt="책표지" title="올가에게 보낸는 편지 : 체코 민주화의 상징 하벨 대통령의 서한집 : 감옥으로부터의 사색과 사랑 "></span>
-											<span class="bookTit">0올가에게 보낸는 편지 : 체코 민주화의 상징 하벨 대통령의 서한집 : 감옥으로부터의 사색과 사랑 </span>
-											<span class="writer">Havel, Vaclav</span>
-										</a>
-									</li>
-									<li style="width: 143px;">
-										<a href="#">
-											<span class="bookCover"><img src="#" id="recommendList16" width="107px;" height="150px;" alt="책표지" title="올가에게 보낸는 편지 : 체코 민주화의 상징 하벨 대통령의 서한집 : 감옥으로부터의 사색과 사랑 "></span>
-											<span class="bookTit">11올가에게 보낸는 편지 : 체코 민주화의 상징 하벨 대통령의 서한집 : 감옥으로부터의 사색과 사랑 </span>
-											<span class="writer">Havel, Vaclav</span>
-										</a>
-									</li>
-									<li style="width: 143px;">
-										<a href="#">
-											<span class="bookCover"><img src="#" id="recommendList16" width="107px;" height="150px;" alt="책표지" title="올가에게 보낸는 편지 : 체코 민주화의 상징 하벨 대통령의 서한집 : 감옥으로부터의 사색과 사랑 "></span>
-											<span class="bookTit">12올가에게 보낸는 편지 : 체코 민주화의 상징 하벨 대통령의 서한집 : 감옥으로부터의 사색과 사랑 </span>
-											<span class="writer">Havel, Vaclav</span>
-										</a>
-									</li>
+								<ul id="bookForm_new" style="width: 2288px;">
+									
 								</ul>
 							</div>
 						</div>
