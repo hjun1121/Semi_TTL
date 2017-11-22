@@ -60,12 +60,12 @@ $(function(){
 						<input type="text" id="contents" name="contents">
 					</li>
 					<li>
-						<p class="writeTit" >저자</p>
+						<p class="writeTit" >작성자</p>
 						<input type="text" name="writer" value="${member.id }" readonly="readonly">
 					</li>
 					<li>
-						<p class="writeTit" >정가</p>
-						<input type="number" id="price" name="price">
+						<p class="writeTit" >비밀번호</p>
+						<input type="password" id="pw" name="pw">
 					</li>
 					<li>
 						<p class="writeTit">도서관명</p>
@@ -78,7 +78,7 @@ $(function(){
 					</li>
 				</ul>
 				<div class="btnBox">
-					<button id="btn_NO">취소</button>
+					<button id="btn_NO"><a href="./qnaList.qna">취소</a></button>
 					<button type="submit" id="btn_OK">확인</button>
 				</div>
 			</form>
