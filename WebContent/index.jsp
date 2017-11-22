@@ -1,4 +1,4 @@
-﻿\<%@ page language="java" contentType="text/html; charset=UTF-8"
+﻿<%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <!DOCTYPE html>
@@ -150,9 +150,7 @@ $(function(){
 					<div class="notice">
 						<h2>공지사항</h2>
 						<ul>
-								
 							<li id="noticeForm">
-								
 							</li>			
 						</ul>
 					<a href="./notice/noticeList.notice" class="more"><img src="${pageContext.request.contextPath }/image/index/more.png" alt="더보기"></a>
