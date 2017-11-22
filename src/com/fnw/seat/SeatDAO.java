@@ -111,6 +111,8 @@ public class SeatDAO {
 		 return result;
 	}
 	
+	
+	
 	public int update(String id) throws Exception {
 		Connection con = DBConnector.getConnect();
 		String sql="UPDATE seat SET id=?  where id=?";

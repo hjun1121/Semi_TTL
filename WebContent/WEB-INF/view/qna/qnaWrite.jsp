@@ -46,6 +46,7 @@ $(function(){
 	<c:otherwise><c:import url="${myContextPath}/temp/header.jsp"></c:import></c:otherwise>
 </c:choose>
 
+<<<<<<< HEAD
 <!-- <h2>QnA Details</h2> -->
 <%-- <form action="./qnaWrite.qna?library=${library}" method="post"> --%>
 <!-- 		<p> -->
@@ -72,6 +73,10 @@ $(function(){
 <!-- </form>	 -->
 
 <c:import url="${myContextPath}/temp/header.jsp"></c:import>
+=======
+
+
+>>>>>>> d51b54cfc1e152f0591a480f3a8faceebd3f3ce5
 <div id="divContentsW">
 		<div id="divContents">
 			<h2 id="divTitle">글쓰기</h2>
@@ -132,6 +137,10 @@ $(function(){
 			</div>
 		</div>
 	</div>
+<<<<<<< HEAD
+=======
+
+>>>>>>> d51b54cfc1e152f0591a480f3a8faceebd3f3ce5
 
 <c:import url="${myContextPath}/temp/footer.jsp"></c:import>
 </body>

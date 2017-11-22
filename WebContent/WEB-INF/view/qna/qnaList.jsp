@@ -77,7 +77,6 @@
 					 <input type="submit" class="btnType5" value="검색">
 			 </fieldset>
 		</form>
-		
 		<br>
 	<!-- 검색 끝 -->
 	
@@ -93,7 +92,7 @@
 			<thead>
 				<tr>
 					<th class="footable-first-column">No.</th>
-					<th data-class="expand">제목</th>
+					<th data-class="expand" style="text-align: left;">제목</th>
 					<th style="display: table-cell;">작성자</th>
 					<th style="display: table-cell;">작성일</th>
 					<th style="display: table-cell;">조회수</th>
@@ -107,6 +106,7 @@
 			<tbody>
 				<tr>
 					<td class="num footable-first-column">${dto.num}</td>
+<<<<<<< HEAD
 					<td class="title expand">
 						<c:catch>
 						<c:forEach  begin="0" end="${dto.depth-1}">
@@ -114,6 +114,10 @@
 						</c:forEach>
 						</c:catch>
 						<a href="./qnaViewCheck.qna?num=${dto.num }&library=${library}">${dto.title}</a>&nbsp;
+=======
+					<td class="title expand" style="color: #337ab7; text-decoration: none;">
+						<a href="./qnaViewCheck.qna?num=${dto.num }">${dto.title}</a>&nbsp;
+>>>>>>> d51b54cfc1e152f0591a480f3a8faceebd3f3ce5
 					</td>
 					<td class="writer" style="display: table-cell;">
 						${dto.writer}
@@ -134,7 +138,6 @@
 	<input type="button" class="adv" id="write_btn" value="글쓰기">
 	</c:if>
 	
-	
 	<div class = "paging" style = "text-align: center;">
 		<ul class="pagination pagination-sm">
 			<c:if test="${page.curBlock>1}">
@@ -150,8 +153,6 @@
 			</c:if>
 		</ul>
 	</div>
-	
-	
 	</div>
 </div>
 </div>

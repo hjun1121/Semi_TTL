@@ -122,30 +122,18 @@
 					</tr>
 				</thead>
 				<tbody>
-<!-- 					<tr> -->
-<!-- 						<td scope="row" style="display: table-cell;">기흥 도서관</td> -->
-<!-- 						<td scope="row" style="display: table-cell;"> -->
-<%-- 						<c:forEach items="${seat1 }" var="dto" varStatus="count" > --%>
-<%-- 							<c:if test="${count.last }"> --%>
-<%-- 								${count.index+1 } 개 --%>
-<%-- 							</c:if> --%>
-<%-- 						</c:forEach> --%>
-<!-- 						</td> -->
-<!-- 						<td scope="row" style="display: table-cell;"> -->
-<%-- 						<c:forEach items="${seat1}" var="dto"> --%>
-<%-- 							<c:set var="count" value="0"></c:set> --%>
-<%-- 							<c:if test="${dto.state eq 1}"> --%>
-<%-- 								${count + 1} --%>
-<%-- 							</c:if> --%>
-<%-- 						</c:forEach> --%>
-<%-- 						<c:forEach items="${seat1}" var="dto" varStatus="count" > --%>
-<%-- 							<c:if test="${count.last}"> --%>
-<%-- 								${count.index+1 - count} 개 --%>
-<%-- 							</c:if> --%>
-<%-- 						</c:forEach> --%>
-<!-- 						</td> -->
-<!-- 						<td><a href="#" id="seat_1"><button class="detail">상세</button></a></td> -->
-<!-- 					</tr> -->
+					<tr>
+						<td scope="row" style="display: table-cell;">기흥 도서관</td>
+						<td scope="row" style="display: table-cell;">
+						<c:forEach items="${seat1 }" var="dto" varStatus="count" >
+							<c:if test="${count.last }">
+								${count.index+1 } 개
+							</c:if>
+						</c:forEach>
+						</td>
+						<td scope="row" style="display: table-cell;">${cntAlla1-cnta1 }</td>
+						<td><a href="#" id="seat_1"><button class="detail">상세</button></a></td>
+					</tr>
 					<tr>
 						<td scope="row" style="display: table-cell;">송파 도서관</td>
 						<td scope="row" style="display: table-cell;">
@@ -155,7 +143,7 @@
 							</c:if>
 						</c:forEach>
 						</td>
-						<td scope="row" style="display: table-cell;">잔여좌석</td>
+						<td scope="row" style="display: table-cell;">${cntAlla2-cnta2 }</td>
 						<td><a href="#" id="seat_2"><button class="detail">상세</button></a></td>
 					</tr>
 					<tr>
@@ -167,7 +155,7 @@
 							</c:if>
 						</c:forEach>
 						</td>
-						<td scope="row" style="display: table-cell;">잔여좌석</td>
+						<td scope="row" style="display: table-cell;">${cntAlla3-cnta3 }</td>
 						<td><a href="#" id="seat_3"><button class="detail">상세</button></a></td>
 					</tr>
 					<tr>
@@ -179,7 +167,7 @@
 							</c:if>
 						</c:forEach>
 						</td>
-						<td scope="row" style="display: table-cell;">잔여좌석</td>
+						<td scope="row" style="display: table-cell;">${cntAlla4-cnta4 }</td>
 						<td><a href="#" id="seat_4"><button class="detail">상세</button></a></td>
 					</tr>
 				</tbody>
