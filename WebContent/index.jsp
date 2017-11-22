@@ -19,34 +19,35 @@
 
 
 
+<script type="text/javascript" src="${pageContext.request.contextPath }/script/main.jsp"></script>
 <script type="text/javascript">
-
-var slideIndex = 1;
-showSlides(slideIndex);
-
-function plusSlides(n) {
-  showSlides(slideIndex += n);
-}
-
-function currentSlide(n) {
-  showSlides(slideIndex = n);
-}
-
-function showSlides(n) {
-  var i;
-  var slides = document.getElementsByClassName("mySlides");
-  var dots = document.getElementsByClassName("dot");
-  if (n > slides.length) {slideIndex = 1}    
-  if (n < 1) {slideIndex = slides.length}
-  for (i = 0; i < slides.length; i++) {
-      slides[i].style.display = "none";  
-  }
-  for (i = 0; i < dots.length; i++) {
-      dots[i].className = dots[i].className.replace(" active", "");
-  }
-  slides[slideIndex-1].style.display = "block";  
-  dots[slideIndex-1].className += " active";
-}
+	
+	var slideIndex = 1;
+	showSlides(slideIndex);
+	
+	function plusSlides(n) {
+	  showSlides(slideIndex += n);
+	}
+	
+	function currentSlide(n) {
+	  showSlides(slideIndex = n);
+	}
+	
+	function showSlides(n) {
+	  var i;
+	  var slides = document.getElementsByClassName("mySlides");
+	  var dots = document.getElementsByClassName("dot");
+	  if (n > slides.length) {slideIndex = 1}    
+	  if (n < 1) {slideIndex = slides.length}
+	  for (i = 0; i < slides.length; i++) {
+	      slides[i].style.display = "none";  
+	  }
+	  for (i = 0; i < dots.length; i++) {
+	      dots[i].className = dots[i].className.replace(" active", "");
+	  }
+	  slides[slideIndex-1].style.display = "block";  
+	  dots[slideIndex-1].className += " active";
+	}
 
 </script>
 
@@ -149,9 +150,7 @@ $(function(){
 					<div class="notice">
 						<h2>공지사항</h2>
 						<ul>
-								
 							<li id="noticeForm">
-								
 							</li>			
 						</ul>
 					<a href="./notice/noticeList.notice" class="more"><img src="${pageContext.request.contextPath }/image/index/more.png" alt="더보기"></a>
@@ -199,50 +198,49 @@ $(function(){
 			
 			<!-- ///////////////////////////////////////// -->
 
-			<div class="book">
+			<div class="book">	
 				<ul>
-					<li class="on"><h2><a href="#">신작 도서</a></h2>
-					
-						<div>	
+				<li class="on"><h2><a href="#">신작 도서</a></h2>
+				
+					<div>	
+						<div>
+							<ul style="width: 2288px;">
+								
+								<li style="width: 143px;">
+									<a href="#">
+										<span class="bookCover"><img src="#" width="107px;" height="150px;" id="newArrivalList1" alt="책표지"></span>
+										<span class="bookTit">나는 염소가 처음이야 : 김숨 소설</span>
+										<span class="writer">김숨</span>
+									</a>
+								</li>
+								
+							</ul>
+						</div>
+					</div>
+					<div class="btns">
+						<a href="#" class="prev"><img src="${pageContext.request.contextPath }/image/index/prev.png" alt="이전"></a>
+						<a href="#" class="next"><img src="${pageContext.request.contextPath }/image/index/next.png" alt="다음"></a>
+					</div>
+				 	
+				</li>
+				<li class=""><h2><a href="#">추천도서</a></h2>
+				 		<div>	
 							<div>
 								<ul style="width: 2288px;">
 									<li style="width: 143px;">
 										<a href="#">
-											<span class="bookCover"><img src="#" width="107px;" height="150px;" id="newArrivalList1" alt="책표지"></span>
-											<span class="bookTit">나는 염소가 처음이야 : 김숨 소설</span>
-											<span class="writer">김숨</span>
+											<span class="bookCover"><img src="#" id="recommendList16" width="107px;" height="150px;" alt="책표지" title="올가에게 보낸는 편지 : 체코 민주화의 상징 하벨 대통령의 서한집 : 감옥으로부터의 사색과 사랑 "></span>
+											<span class="bookTit">올가에게 보낸는 편지 : 체코 민주화의 상징 하벨 대통령의 서한집 : 감옥으로부터의 사색과 사랑 </span>
+											<span class="writer">Havel, Vaclav</span>
 										</a>
 									</li>
 								</ul>
-								
-								
 							</div>
 						</div>
 						<div class="btns">
 							<a href="#" class="prev"><img src="${pageContext.request.contextPath }/image/index/prev.png" alt="이전"></a>
 							<a href="#" class="next"><img src="${pageContext.request.contextPath }/image/index/next.png" alt="다음"></a>
 						</div>
-					 	
-					</li>
-					<li class=""><h2><a href="#">추천도서</a></h2>
-					<a href="#" class="more"><img src="${pageContext.request.contextPath }/image/index/more.png" alt="more"></a>
-					 		<div>	
-								<div>
-									<ul style="width: 2288px;">
-										<li style="width: 143px;">
-											<a href="#">
-												<span class="bookCover"><img src="#" id="recommendList16" width="107px;" height="150px;" alt="책표지" title="올가에게 보낸는 편지 : 체코 민주화의 상징 하벨 대통령의 서한집 : 감옥으로부터의 사색과 사랑 "></span>
-												<span class="bookTit">올가에게 보낸는 편지 : 체코 민주화의 상징 하벨 대통령의 서한집 : 감옥으로부터의 사색과 사랑 </span>
-												<span class="writer">Havel, Vaclav</span>
-											</a>
-										</li>
-									</ul>
-								</div>
-							</div>
-							<div class="btns">
-								<a href="#" class="prev"><img src="${pageContext.request.contextPath }/image/index/prev.png" alt="이전"></a>
-								<a href="#" class="next"><img src="${pageContext.request.contextPath }/image/index/next.png" alt="다음"></a>
-							</div>
 					</li>
 				</ul>
 			</div>
@@ -252,12 +250,7 @@ $(function(){
 		<!-- 메인 컨텐츠 끝 -->
 		<br><br><br><br>
 		<!-- ////////////////// -->
-	
-	<c:if test="${not empty sessionScope.member }">
-	<p><a href="./market/marketOrder.market?id=${member.id }">마켓판매신청form</a></p><!-- 로그인시만 이용 -->
-	</c:if>
-	
-	
+
 <c:import url="${myContextPath}/temp/footer.jsp"></c:import>
 </body>
 </html>
