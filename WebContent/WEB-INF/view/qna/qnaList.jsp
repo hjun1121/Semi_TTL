@@ -122,6 +122,7 @@
 		</table>
 	</div>
 	</c:if>
+	<br><br>
 	<c:if test="${not empty member}">
 	<input type="button" class="adv" id="write_btn" value="글쓰기">
 	</c:if>

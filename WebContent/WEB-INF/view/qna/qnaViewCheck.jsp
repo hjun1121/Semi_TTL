@@ -21,12 +21,14 @@
 	<div id="divContentsW">
 		<div id="divContents">
 			
-			<h2 id="divTitle">QnA View Check</h2>
+			<h2 id="divTitle">비밀번호 확인</h2>
 			<div id="divLocation">
 				<ul>
 					<li class="home"><a href="#"><img src="${pageContext.request.contextPath }/image/notice/home.png" alt="HOME"></a></li>
 					<li>&gt;</li>
 					<li>QnA</li>
+					<li>&gt;</li>
+					<li>비밀번호 확인</li>
 				</ul>
 			</div>
 
