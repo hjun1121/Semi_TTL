@@ -77,10 +77,12 @@ table {
 .listTable tr th {
     height: 40px;
     padding: 10px 8px;
+    padding-left: 30px;
 }
 
 .listTable td {
     padding: 14px 10px;
+    padding-left: 30px;
     border-top: 1px solid #e6e6e6;
     height: 40px;
     text-align: left;
