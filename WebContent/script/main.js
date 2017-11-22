@@ -48,8 +48,8 @@ $(function(){
 		var listWidth = $(this).parent().parent().find('li').width();
 		var listCount = $(this).parent().parent().find('li').length;
 		
-		$(this).parent().parent().find('li').css('width',listWidth);
-		$(this).parent().parent().find('ul').css('width',listWidth * listCount);
+/*		$(this).parent().parent().find('li').css('width',listWidth);
+		$(this).parent().parent().find('ul').css('width',listWidth * listCount);*/
 		
 		var bookList = $(this).parent().parent().find('ul');
 		
@@ -73,8 +73,8 @@ $(function(){
 		var listWidth = $(this).parent().parent().find('li').width();
 		var listCount = $(this).parent().parent().find('li').length;
 		
-		$(this).parent().parent().find('li').css('width',listWidth);
-		$(this).parent().parent().find('ul').css('width',listWidth * listCount);
+/*		$(this).parent().parent().find('li').css('width',listWidth);
+		$(this).parent().parent().find('ul').css('width',listWidth * listCount);*/
 		
 		var bookList = $(this).parent().parent().find('ul');
 		
@@ -96,6 +96,8 @@ $(function(){
 		return false;
 	});
 	
-	
+	$("#bookForm").attr("style", "width:1500px;");
+	$("#bookForm_new").attr("style", "width:1500px;");
 
+	
 });

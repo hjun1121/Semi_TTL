@@ -5,7 +5,7 @@
 
 <c:forEach items="${list }" var="dto" varStatus="i">
 
-<li style="width: 143px;">
+<li style="width: 231.75px;">
 	<a href="${pageContext.request.contextPath }/book/bookInformation.book?num=${dto.num}">
 		<span class="bookCover"><img src="#"  width="107px;" height="150px;"  alt="책표지" title="${dto.title }"></span>
 		<span class="bookTit">${dto.title }</span>
