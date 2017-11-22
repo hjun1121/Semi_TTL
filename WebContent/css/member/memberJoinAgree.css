@@ -231,6 +231,18 @@
 	margin: 10px 0 12px;
 }
 
+.clauseCont h3{
+	font-size: 14px; 
+	font-weight: bold;
+}
+.clauseCont ol li{
+
+	list-style: none;
+}
+.clauseCont ul li{
+
+	list-style: none;
+}
 <!-- 약관 폼 끝 -->
 
 
