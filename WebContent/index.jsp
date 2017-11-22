@@ -53,7 +53,7 @@ function showSlides(n) {
 <script type="text/javascript">
 $(function(){
 	$.ajax({
-		url:"./notice/noticeList.notice",
+		url:"./notice/noticeAjax.notice",
 		type:"POST",
 		data: {
 		},
@@ -149,10 +149,11 @@ $(function(){
 					<div class="notice">
 						<h2>공지사항</h2>
 						<ul>
-							<li id="noticeForm">	
+							<li id="noticeForm">
+								
 							</li>			
 						</ul>
-					<a href="#" class="more"><img src="${pageContext.request.contextPath }/image/index/more.png" alt="더보기"></a>
+					<a href="./notice/noticeList.notice" class="more"><img src="${pageContext.request.contextPath }/image/index/more.png" alt="더보기"></a>
 					</div>
 				</div>
 			</div>
