@@ -38,7 +38,6 @@ $(function(){
 </script>
 </head>
 <body>
-<<<<<<< HEAD
 <c:choose>
 	<c:when test="${library eq 1}"><c:import url="${myContextPath}/temp/header_1.jsp"></c:import></c:when>
 	<c:when test="${library eq 2}"><c:import url="${myContextPath}/temp/header_2.jsp"></c:import></c:when>
@@ -47,32 +46,8 @@ $(function(){
 	<c:otherwise><c:import url="${myContextPath}/temp/header.jsp"></c:import></c:otherwise>
 </c:choose>
 
-<h2>QnA Details</h2>
-<form action="./qnaWrite.qna" method="post">
-		<p>
-		<select name="type">
-			<option value="1">중고장터문의</option>
-			<option value="2">도서신청문의</option>
-			<option value="3">이용문의</option>
-		</select>
-		</p>
-		<p>title<input type="text" name="title"></p>
-		<p>contents<input type="text" name="contents"></p>
-		<p>writer<input type="text" name="writer" value="${member.id }" readonly="readonly"></p>
-		<p>password<input type="text" name="pw"></p>
-		
-		<p>
-		<select name="library" name="library">
-			<option class="library" value="1">기흥구</option>
-			<option class="library" value="2">송파구</option>
-			<option class="library" value="3">장안구</option>
-			<option class="library" value="4">분당구</option>
-		</select>
-		</p>
-		<button type="submit">확인</button>
-</form>	
-=======
-<c:import url="${myContextPath}/temp/header.jsp"></c:import>
+
+
 <div id="divContentsW">
 		<div id="divContents">
 			<h2 id="divTitle">글쓰기</h2>
@@ -133,7 +108,7 @@ $(function(){
 			</div>
 		</div>
 	</div>
->>>>>>> 5a4ba4f4e5da82ecea501008c58d31bb7f91246d
+
 
 <c:import url="${myContextPath}/temp/footer.jsp"></c:import>
 </body>
