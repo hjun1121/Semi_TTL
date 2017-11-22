@@ -30,10 +30,9 @@ public class AdminBookOrderListService implements Action {
 		}catch (Exception e) {
 			
 		}
-		System.out.println("state"+state);
 		
 		int totalCount=0;
-		if(state==0) {
+		if(state==1) {
 			try {
 				totalCount = book_OrderDAO.getTotalCount(state);
 				PageMaker pageMaker = new PageMaker(curPage, totalCount);
@@ -47,7 +46,7 @@ public class AdminBookOrderListService implements Action {
 			}
 			actionFoward.setCheck(true);
 			actionFoward.setPath("../WEB-INF/view/admin/admin_bookOrderList.jsp");
-		}else if(state==1) {
+		}else if(state==2) {
 			try {
 				totalCount = book_OrderDAO.getTotalCount(state);
 				PageMaker pageMaker = new PageMaker(curPage, totalCount);
@@ -78,6 +77,7 @@ public class AdminBookOrderListService implements Action {
 			actionFoward.setCheck(true);
 			actionFoward.setPath("../WEB-INF/view/admin/admin_bookOrderList.jsp");
 		}
+		System.out.println("adminList");
 		
 		return actionFoward;
 	

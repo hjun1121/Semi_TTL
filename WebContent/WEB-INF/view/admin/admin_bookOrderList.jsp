@@ -17,7 +17,7 @@
 <script type="text/javascript">
 	$(function(){
 		$(".cur").each(function(){
-			 if($(this).attr("title") == ${curPage }) {
+			 if($(this).attr("title") ==${curPage }) {
 				 $(this).attr("style", "color:red;");
 			 }
 		 });
@@ -49,8 +49,8 @@
 		
 	<br><br>
 	<a href="./bookOrderListAdmin.book?state=3"><input class="btnType3" type="button" value="전체"></a>
-	<a href="./bookOrderListAdmin.book?state=1"><input class="btnType3" type="button" value="승인"></a>
-	<a href="./bookOrderListAdmin.book?state=0"><input class="btnType3" type="button" value="거절"></a>
+	<a href="./bookOrderListAdmin.book?state=2"><input class="btnType3" type="button" value="승인"></a>
+	<a href="./bookOrderListAdmin.book?state=1"><input class="btnType3" type="button" value="거절"></a>
 	<br><br>
 	
 	<c:if test="${size eq 0 }">
@@ -99,8 +99,27 @@
 						<td scope="row" style="display: table-cell;">없음</td>
 					</c:otherwise>
 				</c:choose>
-				<td scope="row" style="display: table-cell;">${dto.state }</td>
-				<td scope="row" style="display: table-cell;">${dto.cancel }</td>
+				
+				<c:choose>
+					<c:when test="${dto.state eq 0}">
+						<td scope="row" style="display: table-cell;">대기 중</td>
+					</c:when>
+					<c:when test="${dto.state eq 1}">
+						<td scope="row" style="display: table-cell;">거절</td>
+					</c:when>
+					<c:when test="${dto.state eq 2}">
+						<td scope="row" style="display: table-cell;">승인 완료</td>
+					</c:when>
+					<c:otherwise>
+						<td scope="row" style="display: table-cell;">없음</td>
+					</c:otherwise>
+				</c:choose>
+				<c:if test="${dto.cancel ne 0}">
+					<td scope="row" style="display: table-cell;">${dto.cancel }</td>
+				</c:if>
+				<c:if test="${dto.cancel eq 0}">
+					<td scope="row" style="display: table-cell;"> </td>
+				</c:if>
 			</tr>
 		</c:forEach>
 	</table>
