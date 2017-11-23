@@ -259,7 +259,7 @@ $(function(){
 			<!-- ///////////////////////////////////////// -->
 			<div class="book">	
 				<ul>
-				<li class="on"><h2><a href="#">많이 대여한 도서</a></h2>
+				<li class="on"><h2><a href="#">인기도서</a></h2>
 				
 					<div>	
 						<div>
