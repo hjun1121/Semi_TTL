@@ -105,7 +105,7 @@ public class BookBuyService implements Action {
 				market_Deal_DetailsDTO.setLibrary(Integer.parseInt(request.getParameter("library")));
 				market_Deal_DetailsDTO.setKind(1);
 				market_Deal_DetailsDTO.setDelivery(Integer.parseInt(request.getParameter("delivery")));
-				
+				market_Deal_DetailsDTO.setState(2);
 				market_Deal_DetailsDTO.setPostCode(postCode);
 				market_Deal_DetailsDTO.setAddr(addr);
 				market_Deal_DetailsDTO.setAddr2(addr2);

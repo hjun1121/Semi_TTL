@@ -177,7 +177,8 @@
 
 			<br>
 
-			<form action="../market/marketBuy.market?library=${library}&ln=${ln}" name="frm" method="POST">
+			<form action="../market/marketBuy.market?&ln=${ln}" name="frm" method="POST">
+			<input type="hidden" name="state" value="${buyWishList.book_state }">
 				<div class="xans-element- xans-order xans-order-form xans-record-">
 					<div class="orderListArea ">
 						<div class="ec-base-table typeList ">
@@ -198,7 +199,7 @@
 								</thead>
 								<tbody class="xans-element- xans-order xans-order-normallist center">
 									<tr class="xans-record-">
-										<td class="left"><a href="${pageContext.request.contextPath }/market/marketTotalView.market?num=${buyWishList.num}&library=${library}&ln=${ln}"><strong>${buyWishList.title}</strong></a>
+										<td class="left"><a href="${pageContext.request.contextPath }/market/marketTotalView.market?num=${buyWishList.num}&ln=${ln}"><strong>${buyWishList.title}</strong></a>
 											<div class="option ">[저자: ${buyWishList.writer}]</div>
 											<div class="option ">[출판사: ${buyWishList.company}]</div></td>
 										<td class="left">
@@ -249,7 +250,7 @@
 									</tr>
 									<tr>
 										<th scope="row">수령인</th>
-										<td><input class="inputTypeText" id="id2" placeholder="" size="15" type="text" readonly="readonly" value="${member.id }"></td>
+										<td><input class="inputTypeText" id="id2" placeholder=""  name="id" size="15" type="text" readonly="readonly" value="${member.id }"></td>
 									</tr>
 								</tbody>
 							</table>

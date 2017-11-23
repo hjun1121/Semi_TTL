@@ -47,7 +47,6 @@
 		        msg += '에러내용 : ' + rsp.error_msg;
 		        location.href="./marketTotalList.market?library=${library}&ln=${ln}";
 		    }
-		    alert(msg);
 		});
 	});
 </script>
@@ -61,9 +60,9 @@
 	<c:otherwise><c:import url="${myContextPath}/temp/header.jsp"></c:import></c:otherwise>
 </c:choose>
 
-	<form action="../market/bookBuy.market?library=${library}&ln=${ln}" method="POST" name="frm">
+	<form action="../market/bookBuy.market?ln=${ln}" method="POST" name="frm">
 		<input type="hidden" class="form-control" name="num" value=${mddDTO.num }> 
-		<input type="hidden" class="form-control" name="id" value=${mddDTO.id }> 
+		<input type="hidden" class="form-control" name="id" value=${member.id }> 
 		<input type="hidden" class="form-control" name="title" value="${mddDTO.title}">
 		<input type="hidden" class="form-control" name="writer" value="${mddDTO.writer}">
 		<input type="hidden" class="form-control" name="company" value="${mddDTO.company}">
@@ -74,6 +73,7 @@
 		<input type="hidden" id="postCode" name="postCode" placeholder="우편번호" value="${mddDTO.postCode }">
 		<input type="hidden" id="addr" name="addr" value="${mddDTO.addr }">
 		<input type="hidden" id="addr2" name="addr2" value="${mddDTO.addr2 }">
+		<input type="hidden"  name="state" value="${mddDTO.state }">
 	</form>
 		<br><br><br><br><br><br><br><br><br>
 		<center><strong>고객님의 상품이 결제되고 있습니다.</strong></center>
