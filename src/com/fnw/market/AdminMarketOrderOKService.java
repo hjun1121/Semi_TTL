@@ -50,7 +50,7 @@ public class AdminMarketOrderOKService implements Action {
 			Aprice = Aprice/100;
 			Aprice = 1-Aprice;
 			Aprice = price*Aprice;
-			
+
 			Market_Deal_DetailsDAO market_Deal_DetailsDAO = new Market_Deal_DetailsDAO();
 			result = market_Deal_DetailsDAO.insert(market_OrderDTO,state,Aprice, con);
 			result = market_TotalDAO.insert(market_OrderDTO,state,Aprice,con);
@@ -72,21 +72,21 @@ public class AdminMarketOrderOKService implements Action {
 			}
 		}
 		String message = "승인 실패";
-		String path = "../index.jsp";
-		if(result>0) {
+		String path = "./marketOrderAdmin.market";
+		if(result > 0) {
 			message = num+"번 신청 승인";
 			path = "./marketOrderAdmin.market";
 		}else {
 			
 		}
 		request.setAttribute("library", library);
+		request.setAttribute("ln", ln);
 		request.setAttribute("message", message);
 		request.setAttribute("path", path);
 		
 		actionFoward.setCheck(true);
 		actionFoward.setPath("../WEB-INF/view/common/result.jsp");
 		
-		request.setAttribute("ln", ln);
 		return actionFoward;
 	}
 
