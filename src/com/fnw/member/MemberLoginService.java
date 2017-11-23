@@ -17,18 +17,12 @@ public class MemberLoginService implements Action {
 		try {
 			ln = Integer.parseInt(request.getParameter("ln"));
 		} catch (Exception e) {
-			// TODO: handle exception
-		}
-		int library = 0;
-		try {
-			library = Integer.parseInt(request.getParameter("library"));
-		} catch (Exception e) {
-			// TODO: handle exception
 		}
 
 		if(method.equals("GET")) {
+			request.setAttribute("ln", ln);
 			actionFoward.setCheck(true);
-			actionFoward.setPath("../WEB-INF/view/member/memberLogin.jsp?");
+			actionFoward.setPath("../WEB-INF/view/member/memberLogin.jsp?ln=" + ln);
 		}else {
 			MemberDAO memberDAO = new MemberDAO();
 			MemberDTO memberDTO = null;
@@ -48,18 +42,17 @@ public class MemberLoginService implements Action {
 					request.setAttribute("path", "../index.jsp");
 				} else {
 					actionFoward.setCheck(false);
-					request.setAttribute("path", "../library/libraryMain.library?ln=" + ln + "&library=" + library);
+					request.setAttribute("path", "../library/libraryMain.library?ln=" + ln );
 				}
 			}else {
 				message="로그인 실패";
 				request.setAttribute("message", message);
-				request.setAttribute("path", "./memberLogin.member");
+				request.setAttribute("path", "./memberLogin.member?ln=" + ln );
 			}
 			
-			request.setAttribute("library", library);
-			actionFoward.setCheck(true);
-			actionFoward.setPath("../WEB-INF/view/common/result.jsp");
 			request.setAttribute("ln", ln);
+			actionFoward.setCheck(true);
+			actionFoward.setPath("../WEB-INF/view/common/result.jsp?ln=" + ln );
 		}
 
 		return actionFoward;
