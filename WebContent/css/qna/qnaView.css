@@ -148,8 +148,8 @@ dl, dt, dd, ul {
 	display: block;
 }
 
-textarea.reply {
-    width: 100%;
+.reply {
+    width: 92%;
 }
 
 

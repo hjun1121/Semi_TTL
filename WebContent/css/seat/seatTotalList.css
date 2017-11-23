@@ -90,7 +90,7 @@ select.selectBox1 {
     padding: 0 10px 0 25px;
 }
 .listTable {
-    clear: both;
+   /*  clear: both; */
     border-top: 1px solid #b3b3b3;
     border-bottom: 1px solid #e6e6e6;
     text-align: center;
