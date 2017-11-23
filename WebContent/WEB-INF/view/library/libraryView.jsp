@@ -119,6 +119,8 @@
 	<c:otherwise><c:import url="${myContextPath}/temp/header.jsp"></c:import></c:otherwise>
 </c:choose>
 
+<section id = "section">
+<div id = "bts_top_section">
 <div id="divContentsW">
 	<div id="divContents">
 		<h2 id="divTitle">찾아오시는길</h2>
@@ -146,7 +148,8 @@
 
 	</div>
 </div>
-
+</div>
+</section>
 
 
 <c:choose>
