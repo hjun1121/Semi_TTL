@@ -15,9 +15,16 @@
 <link rel="stylesheet" href="${pageContext.request.contextPath }/css/book/bookRentDetails.css">
 </head>
 <body>
-<c:import url="${myContextPath}/temp/header.jsp"></c:import>
+<c:choose>
+	<c:when test="${library eq 1}"><c:import url="${myContextPath}/temp/header_1.jsp"></c:import></c:when>
+	<c:when test="${library eq 2}"><c:import url="${myContextPath}/temp/header_2.jsp"></c:import></c:when>
+	<c:when test="${library eq 3}"><c:import url="${myContextPath}/temp/header_3.jsp"></c:import></c:when>
+	<c:when test="${library eq 4}"><c:import url="${myContextPath}/temp/header_4.jsp"></c:import></c:when>
+	<c:otherwise><c:import url="${myContextPath}/temp/header.jsp"></c:import></c:otherwise>
+</c:choose>
+
 <div>
-	<c:import url="${myContextPath}/WEB-INF/view/member/myPage.jsp"></c:import>
+	<c:import url="${myContextPath}/WEB-INF/view/member/myPage.jsp?library=${library}"></c:import>
 </div>
 
 <div id="divContentsW">
@@ -35,7 +42,7 @@
 				</ul>
 			</div>
 			
-			<form action="../book/bookRentList.book?id=${member.id }" method="post">
+			<form action="../book/bookRentList.book?id=${member.id}&library=${library}" method="post">
 			<div class="profile borderIn">
 					<div class="profileHeader">
 	 			   	 	<h3>${book.title}</h3>
@@ -178,15 +185,15 @@
 		<div class="btn2">
 		<c:choose>
 			<c:when test="${empty bookRentDTO.out_time }">
-				<a href="./bookReturn.book?num=${bookRentDTO.num }&bnum=${bookRentDTO.bnum }"><input class="btnType5" type="button" value="반납"></a>
+				<a href="./bookReturn.book?num=${bookRentDTO.num }&bnum=${bookRentDTO.bnum }&library=${library}"><input class="btnType5" type="button" value="반납"></a>
 			</c:when>
 		</c:choose>
 		<c:choose>
 			<c:when test="${not empty bookRentDTO.out_time }">
-				<a href="./bookRentDelete.book?bnum=${bookRentDTO.bnum }"><input class="btnType5" type="button" value="삭제"></a>
+				<a href="./bookRentDelete.book?bnum=${bookRentDTO.bnum }&library=${library}"><input class="btnType5" type="button" value="삭제"></a>
 			</c:when>
 		</c:choose>
-		<a href="../book/bookRentList.book?id=${member.id }"><input class="btnType5" type="button" value="LIST"></a>
+		<a href="../book/bookRentList.book?id=${member.id }&library=${library}"><input class="btnType5" type="button" value="LIST"></a>
 		</div>
 	</div>
 <c:import url="${myContextPath}/temp/footer.jsp"></c:import>

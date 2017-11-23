@@ -93,7 +93,13 @@ $(function(){
 </head>
 <body>
 <!-- header -->
-<c:import url="${myContextPath}/temp/header.jsp"></c:import>
+<c:choose>
+	<c:when test="${library eq 1}"><c:import url="${myContextPath}/temp/header_1.jsp"></c:import></c:when>
+	<c:when test="${library eq 2}"><c:import url="${myContextPath}/temp/header_2.jsp"></c:import></c:when>
+	<c:when test="${library eq 3}"><c:import url="${myContextPath}/temp/header_3.jsp"></c:import></c:when>
+	<c:when test="${library eq 4}"><c:import url="${myContextPath}/temp/header_4.jsp"></c:import></c:when>
+	<c:otherwise><c:import url="${myContextPath}/temp/header.jsp"></c:import></c:otherwise>
+</c:choose>
 <!-- header -->
 
 	<section id="section">
@@ -126,7 +132,7 @@ $(function(){
 		</form>
 		<!-- 검색 끝 -->
 		<br>
-		
+
 		<div class="listTable">
 			<table class="mobileTable tablet">
 				<thead>
@@ -151,10 +157,10 @@ $(function(){
 						<td scope="row" style="display: table-cell;">${dto.company }</td>
 
 						<c:choose>
-							<c:when test="${dto.library == 1 }"><td scope="row" style="display: table-cell;"><a href="../library/libraryMain.library?library=1">kim_lib</a></td></c:when>
-							<c:when test="${dto.library == 2 }"><td scope="row" style="display: table-cell;"><a href="../library/libraryMain.library?library=2">gee_lib</a></td></c:when>
-							<c:when test="${dto.library == 3 }"><td scope="row" style="display: table-cell;"><a href="../library/libraryMain.library?library=3">hs_lib</a></td></c:when>
-							<c:when test="${dto.library == 4 }"><td scope="row" style="display: table-cell;"><a href="../library/libraryMain.library?library=4">ssin_lib</a></td></c:when>
+							<c:when test="${dto.library == 1 }"><td scope="row" style="display: table-cell;"><a href="../library/libraryMain.library?library=1">기흥도서관</a></td></c:when>
+							<c:when test="${dto.library == 2 }"><td scope="row" style="display: table-cell;"><a href="../library/libraryMain.library?library=2">송파도서관</a></td></c:when>
+							<c:when test="${dto.library == 3 }"><td scope="row" style="display: table-cell;"><a href="../library/libraryMain.library?library=3">장안도서관</a></td></c:when>
+							<c:when test="${dto.library == 4 }"><td scope="row" style="display: table-cell;"><a href="../library/libraryMain.library?library=4">분당도서관</a></td></c:when>
 						</c:choose>
 						<c:choose>
 							<c:when test="${ dto.state == 0 and not empty member }">

@@ -12,11 +12,16 @@
 <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
 <link rel="stylesheet" href="${pageContext.request.contextPath }/css/notice/noticeView.css">
 
-
-<title>Insert title here</title>
+<title>공지사항 상세페이지</title>
 </head>
 <body>
-<c:import url="${myContextPath }/temp/header.jsp"></c:import>
+<c:choose>
+	<c:when test="${library eq 1}"><c:import url="${myContextPath}/temp/header_1.jsp"></c:import></c:when>
+	<c:when test="${library eq 2}"><c:import url="${myContextPath}/temp/header_2.jsp"></c:import></c:when>
+	<c:when test="${library eq 3}"><c:import url="${myContextPath}/temp/header_3.jsp"></c:import></c:when>
+	<c:when test="${library eq 4}"><c:import url="${myContextPath}/temp/header_4.jsp"></c:import></c:when>
+	<c:otherwise><c:import url="${myContextPath}/temp/header.jsp"></c:import></c:otherwise>
+</c:choose>
 
 <div id="divContentsW">
 	<div id="divContents">
@@ -55,12 +60,10 @@
 		<br>
 	<div class="adv">
 	<c:if test="${member.kind eq 10 }">
-		<a href="./noticeUpdate.notice?num=${view.num}">UPDATE</a>
-		<a href="./noticeDelete.notice?num=${view.num}">DELETE</a>
+		<a href="./noticeUpdate.notice?num=${view.num}&library=${library}"><button class="adv2">UPDATE</button></a>
+		<a href="./noticeDelete.notice?num=${view.num}&library=${library}"><button class="adv2">DELETE</button></a>
+		<a href="noticeList.notice?library=${library}" title="목록"><button class="adv2">목록</button></a>
 	</c:if>
-	</div>
-	<div class="buttons">
-	<a href="noticeList.notice" title="목록">목록</a>
 	</div>
 	</div>
 	

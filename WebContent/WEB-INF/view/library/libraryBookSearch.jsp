@@ -90,9 +90,13 @@ $(function(){
 </script>
 </head>
 <body>
-<!-- header -->
-<c:import url="${myContextPath}/temp/header.jsp"></c:import>
-<!-- header -->
+<c:choose>
+	<c:when test="${library eq 1}"><c:import url="${myContextPath}/temp/header_1.jsp"></c:import></c:when>
+	<c:when test="${library eq 2}"><c:import url="${myContextPath}/temp/header_2.jsp"></c:import></c:when>
+	<c:when test="${library eq 3}"><c:import url="${myContextPath}/temp/header_3.jsp"></c:import></c:when>
+	<c:when test="${library eq 4}"><c:import url="${myContextPath}/temp/header_4.jsp"></c:import></c:when>
+	<c:otherwise><c:import url="${myContextPath}/temp/header.jsp"></c:import></c:otherwise>
+</c:choose>
 
 	<div style = "height: 50px"></div>
 
@@ -110,7 +114,7 @@ $(function(){
 			</div>
 
 		<!-- 검색 시작 -->
-		<form name="frm" class="form-inline" action="./bookTotalSearch.book" method="post">
+		<form name="frm" class="form-inline" action="./libraryBookSearch.library?library=${library}" method="post">
 			<fieldset>
 				<span class="bunch">
 					<select id="kind" name = "kind" class="selectBox1">
@@ -146,7 +150,7 @@ $(function(){
 				<c:forEach items="${ list }" var="dto">
 					<tr>
 						<td scope="row" class="footable-first-column">${dto.num }</td>
-						<td scope="row" data-class="expand"><a href="./bookInformation.book?num=${dto.num}&curPage=${curPage}">${dto.title }</a></td>
+						<td scope="row" data-class="expand"><a href="./bookInformation.book?num=${dto.num}&curPage=${curPage}&library=${library}">${dto.title }</a></td>
 						<td scope="row" style="display: table-cell;">${dto.writer }</td>
 						<td scope="row" style="display: table-cell;">${dto.company }</td>
 
@@ -188,16 +192,16 @@ $(function(){
 		<div class = "paging" style = "text-align: center;">
 			<ul class="pagination pagination-sm">
 				<c:if test="${page.curBlock>1}">
-				<li><a href = "./libraryBookSearch.library?curPage=${page.startNum-1}&search=${search}&kind=${kind}"><img width="13" height="17"  src="${pageContext.request.contextPath}/image/bookTotalSearch/prevPage.gif" alt="이전" title="이전"></a></li>
+				<li><a href = "./libraryBookSearch.library?library=${library}&curPage=${page.startNum-1}&search=${search}&kind=${kind}"><img width="13" height="17"  src="${pageContext.request.contextPath}/image/bookTotalSearch/prevPage.gif" alt="이전" title="이전"></a></li>
 				</c:if>
 
 				<c:forEach begin="${page.startNum}" end="${page.lastNum}" var="i">
 				<li><a
-					href="./libraryBookSearch.library?curPage=${i}&search=${search}&kind=${kind}">${i}</a></li>
+					href="./libraryBookSearch.library?library=${library}&curPage=${i}&search=${search}&kind=${kind}">${i}</a></li>
 				</c:forEach>
 				
 				<c:if test="${page.curBlock < page.totalBlock}">
-				<li><a href="./libraryBookSearch.library?curPage=${requestScope.page.lastNum+1}&search=${search}&kind=${kind}"><img width="13" height="17" src="${pageContext.request.contextPath}/image/bookTotalSearch/nextPage.gif" alt="다음" title="다음"></a></li>
+				<li><a href="./libraryBookSearch.library?library=${library}&curPage=${requestScope.page.lastNum+1}&search=${search}&kind=${kind}"><img width="13" height="17" src="${pageContext.request.contextPath}/image/bookTotalSearch/nextPage.gif" alt="다음" title="다음"></a></li>
 				</c:if>
 			</ul>
 		</div>

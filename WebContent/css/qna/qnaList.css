@@ -1,56 +1,6 @@
 @charset "UTF-8";
 
 <!--상단 바 시작 -->
-/* #divContentsW{ */
-/* 	background-color:#fff; */
-/* } */
-
-/* #divContents{ */
-/* 	padding-bottom:30px; */
-/* 	background-color:#fff; */
-/* } */
-
-/* #divContents{ */
-/* 	position:relative; */
-/* 	width:1040px; */
-/* 	margin:0 auto; */
-/* 	padding-bottom:40px !important; */
-/* 	background-color:#fff; */
-/* 	z-index:5; */
-/* } */
-
-/* #divTitle{ */
-/* 	color:#464646; */
-/* 	font-size:32px; */
-/* 	margin-bottom:20px; */
-/* 	padding:40px 450px 0 0; */
-/* } */
-
-/* #divLocation{ */
-/* 	min-height:20px; */
-/* 	margin:0 56px 20px 0; */
-/* 	overflow:hidden; */
-/* } */
-
-/* #divLocation ul li{ */
-/* 	list-style:none; */
-/* 	float:left; */
-/* 	padding-left:20px; */
-/* 	margin-left:13px; */
-/* 	font-family:NG, sans-serif; */
-/* 	line-height:1.5em; */
-/* } */
-
-/* #divLocation ul li a{ */
-/* 	color:#454545; */
-/* } */
-
-/* #divLocation ul li:first-child{ */
-/* 	margin:0; */
-/* 	padding:0; */
-/* 	background:none; */
-/* } */
-
 #section a:hover {
 	text-decoration: none;
 }
@@ -193,10 +143,6 @@ td.title2{width:20%;}
 
 <!-- list 끝 -->
 
-#section #write_btn {
-	margin-top: 40px;
-	float: right;
-}
 
 #section .paging {
     clear: both;
@@ -227,4 +173,24 @@ td.title2{width:20%;}
     width: 28px;
     height: 28px;
     vertical-align: middle;
+}
+
+
+.adv{
+	float:right;
+	height:38px;
+	display:inline-block;
+	margin:0 5px;
+	padding:0 19px;
+	border:1px solid #585858;
+	color:#1a1a1a;
+	font-size:14px;
+	font-weight:600;
+	line-height:38px;
+	vertical-align:top;
+	background-color:white;
+}    
+.adv:hover {
+    background: #033823;
+    color: white;
 }

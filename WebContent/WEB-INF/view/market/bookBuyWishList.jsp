@@ -34,10 +34,16 @@ $(document).ready(function() {
 	});
 });
 </script>
-<title>Insert title here</title>
+<title>도서 구매 희망 리스트</title>
 </head>
 <body>
-<c:import url="${myContextPath}/temp/header.jsp"></c:import>
+<c:choose>
+	<c:when test="${library eq 1}"><c:import url="${myContextPath}/temp/header_1.jsp"></c:import></c:when>
+	<c:when test="${library eq 2}"><c:import url="${myContextPath}/temp/header_2.jsp"></c:import></c:when>
+	<c:when test="${library eq 3}"><c:import url="${myContextPath}/temp/header_3.jsp"></c:import></c:when>
+	<c:when test="${library eq 4}"><c:import url="${myContextPath}/temp/header_4.jsp"></c:import></c:when>
+	<c:otherwise><c:import url="${myContextPath}/temp/header.jsp"></c:import></c:otherwise>
+</c:choose>
 
 <div>
 	<c:import url="${myContextPath}/WEB-INF/view/member/myPage.jsp"></c:import>
@@ -61,7 +67,7 @@ $(document).ready(function() {
 		<h2 id="divTitle">MARKET 찜콩 내역이 없습니다.</h2>
 	</c:if>
 	<c:if test="${size ne 0 }">
-<form action="./bookBuyWishDelete.market" method="POST">
+<form action="./bookBuyWishDelete.market?library=${library}" method="POST">
 		<div class="listTable">
 		<table class="mobileTable tablet" >
 		<tr>
@@ -104,7 +110,7 @@ $(document).ready(function() {
 					</c:otherwise>
 				</c:choose>
 				<td scope="row" data-class="expand">${bookBuyWishList.price }</td>
-				<td><a href="./bookBuyWishDelete.market?num=${bookBuyWishList.num }">
+				<td><a href="./bookBuyWishDelete.market?num=${bookBuyWishList.num }&library=${library}">
 				<button class = "btn btn-default wish_btn" type = "button" >삭제</button>
 				</a></td>
 				<c:choose>
@@ -116,7 +122,7 @@ $(document).ready(function() {
 	               </c:when>
 	               <c:when test="${bookBuyWishList.state eq 1 }">
 	                  <td>
-	                  <a href="./bookBuy.market?num=${bookBuyWishList.num }">
+	                  <a href="./bookBuy.market?num=${bookBuyWishList.num }&library=${library}">
 	                  <button class = "btn btn-default wish_btn" type = "button" >구매</button>
 						</a>
 	                  </td>
@@ -139,11 +145,11 @@ $(document).ready(function() {
          </c:if>
          <c:forEach begin="${page.startNum}" end="${page.lastNum}" var="i">
          <li><a
-            href="./bookBuyWishList.market?curPage=${i}&id=${id }">${i}</a></li>
+            href="./bookBuyWishList.market?curPage=${i}&id=${id }&library=${library}">${i}</a></li>
          </c:forEach>
          <c:if test="${page.curBlock < page.totalBlock}">
          <li><a
-            href="./bookBuyWishList.market?curPage=${requestScope.page.lastNum+1}">[다음]</a></li>
+            href="./bookBuyWishList.market?curPage=${requestScope.page.lastNum+1}&library=${library}">[다음]</a></li>
          </c:if>
       </ul>
  </div>

@@ -12,6 +12,12 @@ public class MarketBuyService implements Action {
 	public ActionFoward doProcess(HttpServletRequest request, HttpServletResponse response) {
 		ActionFoward actionFoward = new ActionFoward();
 		
+		int library = 0;
+		try {
+			library = Integer.parseInt(request.getParameter("library"));
+		} catch (Exception e) {
+			// TODO: handle exception
+		}
 		int num = 1;
 		try {
 			num = Integer.parseInt(request.getParameter("num"));
@@ -55,6 +61,7 @@ public class MarketBuyService implements Action {
 		market_Deal_DetailsDTO.setAddr(request.getParameter("addr"));
 		market_Deal_DetailsDTO.setAddr2(request.getParameter("addr2"));
 		
+		request.setAttribute("library", library);
 		request.setAttribute("mddDTO", market_Deal_DetailsDTO);
 		request.setAttribute("dto", market_TotalDTO);
 		

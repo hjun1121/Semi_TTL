@@ -15,7 +15,13 @@
 <title>회원 정보 수정</title>
 </head>
 <body>
-<c:import url="${myContextPath}/temp/header.jsp"></c:import>
+<c:choose>
+	<c:when test="${library eq 1}"><c:import url="${myContextPath}/temp/header_1.jsp"></c:import></c:when>
+	<c:when test="${library eq 2}"><c:import url="${myContextPath}/temp/header_2.jsp"></c:import></c:when>
+	<c:when test="${library eq 3}"><c:import url="${myContextPath}/temp/header_3.jsp"></c:import></c:when>
+	<c:when test="${library eq 4}"><c:import url="${myContextPath}/temp/header_4.jsp"></c:import></c:when>
+	<c:otherwise><c:import url="${myContextPath}/temp/header.jsp"></c:import></c:otherwise>
+</c:choose>
 
 <div>
 	<c:import url="${myContextPath}/WEB-INF/view/member/myPage.jsp"></c:import>
@@ -36,7 +42,7 @@
 		
 		<!-- ////////////// -->
 		<div class="loginW">
-			<form action="./memberUpdatePwCheck.member" name="frm" method="post">
+			<form action="./memberUpdatePwCheck.member?library=${library}" name="frm" method="post">
 				<div class="loginContent">
 					<div id="login_all">
 			

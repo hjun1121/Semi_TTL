@@ -17,6 +17,12 @@ public class BookOrderTotalListService implements Action {
 		Book_OrderDAO book_OrderDAO = new Book_OrderDAO();
 		ArrayList<Book_OrderDTO> list = new ArrayList<>();
 		
+		int library = 0;
+		try {
+			library = Integer.parseInt(request.getParameter("library"));
+		} catch (Exception e) {
+			// TODO: handle exception
+		}
 		int curPage = 0;
 		try {
 			curPage = Integer.parseInt(request.getParameter("curPage"));
@@ -47,6 +53,8 @@ public class BookOrderTotalListService implements Action {
 			request.setAttribute("id", id);
 			request.setAttribute("curPage", curPage);
 			request.setAttribute("page", pageMaker.getMakePage());
+			request.setAttribute("library", library);
+			request.setAttribute("library", library);
 		} catch (Exception e) {
 			e.printStackTrace();
 		}

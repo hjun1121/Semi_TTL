@@ -6,12 +6,13 @@
 <html>
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
-<title>Insert title here</title>
+<title>중고장터 구매 페이지</title>
 <link rel="stylesheet" href="${pageContext.request.contextPath }/css/temp/header.css">
 <link rel="stylesheet" href="${pageContext.request.contextPath }/css/temp/footer.css">
 <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
 <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+<link rel="stylesheet" href="${pageContext.request.contextPath }/css/market/bookBuy.css">
 
 <script type="text/javascript" src="https://service.iamport.kr/js/iamport.payment-1.1.5.js"></script>
 <script type="text/javascript">
@@ -44,7 +45,7 @@
 		    } else {
 		        var msg = '결제에 실패하였습니다.';
 		        msg += '에러내용 : ' + rsp.error_msg;
-		        location.href="../index.jsp";
+		        location.href="./marketTotalList.market?library=${library}";
 		    }
 		    alert(msg);
 		});
@@ -52,10 +53,17 @@
 </script>
 </head>
 <body>
-<c:import url="${myContextPath}/temp/header.jsp"></c:import>
+<c:choose>
+	<c:when test="${library eq 1}"><c:import url="${myContextPath}/temp/header_1.jsp"></c:import></c:when>
+	<c:when test="${library eq 2}"><c:import url="${myContextPath}/temp/header_2.jsp"></c:import></c:when>
+	<c:when test="${library eq 3}"><c:import url="${myContextPath}/temp/header_3.jsp"></c:import></c:when>
+	<c:when test="${library eq 4}"><c:import url="${myContextPath}/temp/header_4.jsp"></c:import></c:when>
+	<c:otherwise><c:import url="${myContextPath}/temp/header.jsp"></c:import></c:otherwise>
+</c:choose>
 
+<<<<<<< HEAD
 	<h2>결제페이지</h2>
-	<form action="../market/bookBuy.market" method="POST" name="frm">
+	<form action="../market/bookBuy.market?library=${library}" method="POST" name="frm">
 		num :<input type="text" class="form-control" name="num" value=${mddDTO.num }> 
 		id :<input type="text" class="form-control" name="id" value=${mddDTO.id }> 
 		title: <input type="text" class="form-control" name="title" value="${mddDTO.title}">
@@ -68,7 +76,36 @@
 		post :<input type="text" id="postCode" name="postCode" placeholder="우편번호" value="${mddDTO.postCode }">
 		addr :<input type="text" id="addr" name="addr" value="${mddDTO.addr }">
 		addr2 :<input type="text" id="addr2" name="addr2" value="${mddDTO.addr2 }">
+=======
+
+	<!-- ////////////////////// -->
+
+	<br><br><br><br><br><br><br><br><br><br><br>
+	
+		<center><strong>고객님의 상품이 결제되고 있습니다.</strong></center>
+		<center><p><img alt="" src="${pageContext.request.contextPath }/image/market/txt_progress.gif"></p></center>
+		<center><p><img alt="" src="${pageContext.request.contextPath }/image/market/img_loading.gif"></p></center>
+
+	<br><br><br><br><br><br><br><br><br><br><br>
+	<!-- ////////////////////// -->
+
+
+	<form action="../market/bookBuy.market" method="POST" name="frm">
+		<input type="hidden" class="form-control" name="num" value=${mddDTO.num }> 
+		<input type="hidden" class="form-control" name="id" value=${mddDTO.id }> 
+		<input type="hidden" class="form-control" name="title" value="${mddDTO.title}">
+		<input type="hidden" class="form-control" name="writer" value="${mddDTO.writer}">
+		<input type="hidden" class="form-control" name="company" value="${mddDTO.company}">
+		<input type="hidden" class="form-control" name="publish_date" value="${mddDTO.publish_date}">
+		<input type="hidden" class="form-control" name="price" value="${mddDTO.price}">
+		<input type="hidden" class="form-control" name="library" value="${mddDTO.library}">
+		<input type="hidden" class="form-control" name="delivery" value="${mddDTO.delivery}">
+		<input type="hidden" id="postCode" name="postCode" placeholder="우편번호" value="${mddDTO.postCode }">
+		<input type="hidden" id="addr" name="addr" value="${mddDTO.addr }">
+		<input type="hidden" id="addr2" name="addr2" value="${mddDTO.addr2 }">
+>>>>>>> d51b54cfc1e152f0591a480f3a8faceebd3f3ce5
 	</form>
+
 
 <c:import url="${myContextPath}/temp/footer.jsp"></c:import>
 </body>

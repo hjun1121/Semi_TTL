@@ -22,6 +22,12 @@ public class SeatOutService implements Action {
 		ActionFoward actionFoward = new ActionFoward();
 		String id = ((MemberDTO)request.getSession().getAttribute("member")).getId();
 
+		int library = 0;
+		try {
+			library = Integer.parseInt(request.getParameter("library"));
+		} catch (Exception e) {
+			// TODO: handle exception
+		}
 		Seat_DetailsDAO seat_DetailsDAO = new Seat_DetailsDAO();
 		SeatDAO seatDAO = new SeatDAO();
 		int result = 0;
@@ -60,6 +66,7 @@ public class SeatOutService implements Action {
 			actionFoward.setCheck(true);
 			actionFoward.setPath("../WEB-INF/view/seat/seatTotalList.jsp");
 		}
+		request.setAttribute("library", library);
 		actionFoward.setCheck(true);
 		actionFoward.setPath("../WEB-INF/view/common/result.jsp");
 		return actionFoward;

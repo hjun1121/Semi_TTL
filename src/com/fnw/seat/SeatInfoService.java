@@ -18,8 +18,14 @@ public class SeatInfoService implements Action {
 		ActionFoward actionFoward = new ActionFoward();
 		String method=request.getMethod();
 		int seat_num = 1;
+		
 		int state =1;
-		int library =1;
+
+		int library = 0;
+		try {
+			library = Integer.parseInt(request.getParameter("library"));
+		} catch (Exception e) {
+		}
 		String id = request.getParameter("id");
 		try {
 			seat_num = Integer.parseInt(request.getParameter("seat_num"));
@@ -39,7 +45,6 @@ public class SeatInfoService implements Action {
 				try {
 					seatDTO = seatDAO.selectOne(library, seat_num);
 				} catch (Exception e) {
-					// TODO Auto-generated catch block
 					e.printStackTrace();
 				}
 				if(seatDTO.equals(null)) {
@@ -96,7 +101,7 @@ public class SeatInfoService implements Action {
 			}
 			request.setAttribute("message", message);
 			request.setAttribute("path", "./seatList.seat");
-			
+			request.setAttribute("library", library);
 			actionFoward.setCheck(true);
 			actionFoward.setPath("../WEB-INF/view/common/result.jsp");
 		}

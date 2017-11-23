@@ -45,10 +45,16 @@ $(function(){
 </script>
 </head>
 <body>
-<c:import url="${myContextPath}/temp/header.jsp"></c:import>
+<c:choose>
+	<c:when test="${library eq 1}"><c:import url="${myContextPath}/temp/header_1.jsp"></c:import></c:when>
+	<c:when test="${library eq 2}"><c:import url="${myContextPath}/temp/header_2.jsp"></c:import></c:when>
+	<c:when test="${library eq 3}"><c:import url="${myContextPath}/temp/header_3.jsp"></c:import></c:when>
+	<c:when test="${library eq 4}"><c:import url="${myContextPath}/temp/header_4.jsp"></c:import></c:when>
+	<c:otherwise><c:import url="${myContextPath}/temp/header.jsp"></c:import></c:otherwise>
+</c:choose>
 
 <div>
-	<c:import url="${myContextPath}/WEB-INF/view/member/myPage.jsp"></c:import>
+	<c:import url="${myContextPath}/WEB-INF/view/member/myPage.jsp?library=${library}"></c:import>
 </div>
 
 <div id="divContentsW">
@@ -56,7 +62,7 @@ $(function(){
 		<h2 id="divTitle">대여 내역</h2>
 		<div id="divLocation">
 			<ul>
-				<li class="home"><a href="${pageContext.request.contextPath}/index.jsp"><img src="${pageContext.request.contextPath }/image/notice/home.png" alt="HOME"></a></li>
+				<li class="home"><a href="${pageContext.request.contextPath}/index.jsp?library=${library}"><img src="${pageContext.request.contextPath }/image/notice/home.png" alt="HOME"></a></li>
 				<li>&gt;</li>
 				<li>My Page</li>
 				<li>&gt;</li>
@@ -65,7 +71,7 @@ $(function(){
 		</div>
 
 	<div>
-	<form name="frm" action="./bookRentList.book" method="post">
+	<form name="frm" action="./bookRentList.book?library=${library}" method="post">
 		<div class ="search">
 			<span>
 				<select id="year" name="year" class="selectBox1">
@@ -152,7 +158,7 @@ $(function(){
 		<c:forEach items="${bookRentList }" var="bookRent_list">
 		<tr>
 			<td scope="row" class="footable-first-column">${bookRent_list.bnum }</td>
- 				<td scope="row" style="display: table-cell;"><a href="./bookRentDetails.book?num=${bookRent_list.num }&bnum=${bookRent_list.bnum }">${bookRent_list.title }</a></td>
+ 				<td scope="row" style="display: table-cell;"><a href="./bookRentDetails.book?num=${bookRent_list.num }&bnum=${bookRent_list.bnum }&library=${library}">${bookRent_list.title }</a></td>
  				<td scope="row" style="display: table-cell;">${bookRent_list.section }</td>
 				<td scope="row" style="display: table-cell;">${bookRent_list.writer }</td>
 				<td scope="row" style="display: table-cell;">${bookRent_list.company }</td>
@@ -180,7 +186,7 @@ $(function(){
 					<c:when test="${empty bookRent_list.out_time }">
 						<td> </td>
 						<td scope="row" style="display: table-cell;">
-						<a href="./bookReturn.book?num=${bookRent_list.num }&bnum=${bookRent_list.bnum }"><button class = "btn btn-default rent_btn">반납</button></a>
+						<a href="./bookReturn.book?num=${bookRent_list.num }&bnum=${bookRent_list.bnum }&library=${library}"><button class = "btn btn-default rent_btn">반납</button></a>
 						</td>
 					</c:when>
 					<c:when test="${! empty bookRent_list.out_time }">
@@ -206,11 +212,11 @@ $(function(){
 			<li><button class="go" id="${page.startNum-1}">[이전]</button></li>
 			</c:if>
 			<c:forEach begin="${page.startNum}" end="${page.lastNum}" var="i">
-			<li><a class="cur" title="${i }" href="./bookRentList.book?curPage=${i}&id=${id }&year=${year}&month=${month}&day=${day}">${i}</a></li>
+			<li><a class="cur" title="${i }" href="./bookRentList.book?curPage=${i}&id=${id }&year=${year}&month=${month}&day=${day}&library=${library}">${i}</a></li>
 			</c:forEach>
 			<c:if test="${page.curBlock < page.totalBlock}">
 			<li><a
-				href="./bookRentList.book?curPage=${requestScope.page.lastNum+1}">[다음]</a></li>
+				href="./bookRentList.book?curPage=${requestScope.page.lastNum+1}&library=${library}">[다음]</a></li>
 			</c:if>
 		</ul>
 	</div>

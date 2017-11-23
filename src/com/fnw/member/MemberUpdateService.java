@@ -18,6 +18,13 @@ public class MemberUpdateService implements Action {
 		MemberDAO memberDAO = new MemberDAO();
 		MemberDTO memberDTO = null;
 		int result = 0;
+
+		int library = 0;
+		try {
+			library = Integer.parseInt(request.getParameter("library"));
+		} catch (Exception e) {
+			// TODO: handle exception
+		}
 		if(method.equals("GET")) {
 			try {
 				memberDTO = memberDAO.selectOne(request.getParameter("id"));
@@ -93,6 +100,7 @@ public class MemberUpdateService implements Action {
 				request.setAttribute("message", "수정 실패");
 				request.setAttribute("path", "./memberUpdatePwCheck.member");
 			}
+			request.setAttribute("library", library);
 			actionFoward.setCheck(true);
 			actionFoward.setPath("../WEB-INF/view/common/result.jsp");
 		}

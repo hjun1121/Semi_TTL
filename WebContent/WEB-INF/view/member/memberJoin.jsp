@@ -5,7 +5,7 @@
 <html>
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
-<title>Insert title here</title>
+<title>회원가입 페이지</title>
 <link rel="stylesheet" href="${pageContext.request.contextPath }/css/temp/header.css">
 <link rel="stylesheet" href="${pageContext.request.contextPath }/css/temp/footer.css">
 <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
@@ -23,7 +23,7 @@
 			var id = $("#id").val();
 			
 			$.ajax({
-				url: "./memberIdCheck.member",
+				url: "./memberIdCheck.member?library=${library}",
 				type: "POST",
 				data: {
 					id:id
@@ -164,7 +164,7 @@
 			
 			var email = $("#email").val();
 			$.ajax({
-				url: "./memberEmailCheck.member",
+				url: "./memberEmailCheck.member?library=${library}",
 				type: "POST",
 				data: {
 					email: email
@@ -234,7 +234,13 @@
 </script>
 </head>
 <body>
-<c:import url="${myContextPath}/temp/header.jsp"></c:import>
+<c:choose>
+	<c:when test="${library eq 1}"><c:import url="${myContextPath}/temp/header_1.jsp"></c:import></c:when>
+	<c:when test="${library eq 2}"><c:import url="${myContextPath}/temp/header_2.jsp"></c:import></c:when>
+	<c:when test="${library eq 3}"><c:import url="${myContextPath}/temp/header_3.jsp"></c:import></c:when>
+	<c:when test="${library eq 4}"><c:import url="${myContextPath}/temp/header_4.jsp"></c:import></c:when>
+	<c:otherwise><c:import url="${myContextPath}/temp/header.jsp"></c:import></c:otherwise>
+</c:choose>
 
 <section id = "section">
 <div id = "bts_top_section">
@@ -254,7 +260,7 @@
 		<div class="joinWrap">	
 			<div class="joinCont mt50">
 			
-			<form action="./memberJoin.member" method="post" id="frm" name="frm">
+			<form action="./memberJoin.member?library=${library}" method="post" id="frm" name="frm">
 			
 				<div class="joinForm mt10">
 					<dl class="plusInfo pull_down_group mt50">

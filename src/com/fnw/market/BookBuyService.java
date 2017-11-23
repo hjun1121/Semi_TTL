@@ -18,6 +18,13 @@ public class BookBuyService implements Action {
 	public ActionFoward doProcess(HttpServletRequest request, HttpServletResponse response) {
 		ActionFoward actionFoward = new ActionFoward();
 		String method = request.getMethod();
+		
+		int library = 0;
+		try {
+			library = Integer.parseInt(request.getParameter("library"));
+		} catch (Exception e) {
+			// TODO: handle exception
+		}
 
 		if(method.equals("GET")) {
 			int number = Integer.parseInt(request.getParameter("num"));
@@ -58,7 +65,6 @@ public class BookBuyService implements Action {
 			}catch (Exception e) {
 				
 			}
-			System.out.println(number);
 			
 			String postCode = request.getParameter("postCode");
 			if(postCode==null) {
@@ -123,6 +129,7 @@ public class BookBuyService implements Action {
 			}else {
 				message = "등록 실패";
 			}
+			request.setAttribute("library", library);
 			request.setAttribute("message", message);
 			request.setAttribute("path", "../index.jsp");
 

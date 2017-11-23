@@ -34,11 +34,25 @@ $(function(){
 				$(this).attr("selected", true);
 			}
 		});
+		
+		$(".cur").each(function(){
+			 if($(this).attr("title") == ${curPage }) {
+				 $(this).attr("style", "color:red;");
+			 }
+		 });
+		
 });
 </script>
 </head>
 <body>
-<c:import url="${myContextPath}/temp/header.jsp"></c:import>
+<c:choose>
+	<c:when test="${library eq 1}"><c:import url="${myContextPath}/temp/header_1.jsp"></c:import></c:when>
+	<c:when test="${library eq 2}"><c:import url="${myContextPath}/temp/header_2.jsp"></c:import></c:when>
+	<c:when test="${library eq 3}"><c:import url="${myContextPath}/temp/header_3.jsp"></c:import></c:when>
+	<c:when test="${library eq 4}"><c:import url="${myContextPath}/temp/header_4.jsp"></c:import></c:when>
+	<c:otherwise><c:import url="${myContextPath}/temp/header.jsp"></c:import></c:otherwise>
+</c:choose>
+
 <div>
 	<c:import url="${myContextPath}/WEB-INF/view/member/myPage.jsp"></c:import>
 </div>
@@ -59,7 +73,7 @@ $(function(){
 
 
 	<div>
-	<form name="frm" class="form-inline" action="./seatTotalList.seat" method="post">
+	<form name="frm" class="form-inline" action="./seatTotalList.seat?library=${library}" method="post">
 		<div>
 			<span>
 				<select id="year" name="year" class="selectBox1">
@@ -146,16 +160,16 @@ $(function(){
 			<td scope="row" style="display: table-cell;">${seatTotal_list.seat_num }</td>
 			<c:choose>
 				<c:when test="${seatTotal_list.library eq 1}">
-					<td scope="row" style="display: table-cell;">기흥구</td>
+					<td scope="row" style="display: table-cell;">기흥도서관</td>
 				</c:when>
 				<c:when test="${seatTotal_list.library eq 2}">
-					<td scope="row" style="display: table-cell;">송파구</td>
+					<td scope="row" style="display: table-cell;">송파도서관</td>
 				</c:when>
 				<c:when test="${seatTotal_list.library eq 3}">
-					<td scope="row" style="display: table-cell;">장안구</td>
+					<td scope="row" style="display: table-cell;">장안도서관</td>
 				</c:when>
 				<c:when test="${seatTotal_list.library eq 4}">
-					<td scope="row" style="display: table-cell;">분당구</td>
+					<td scope="row" style="display: table-cell;">분당도서관</td>
 				</c:when>
 				<c:otherwise>
 					<td scope="row" style="display: table-cell;">없음</td>
@@ -167,13 +181,13 @@ $(function(){
 				<c:when test="${seatTotal_list.state eq 0 && empty seatTotal_list.in_time && empty seatTotal_list.out_time}">
 					<td scope="row" style="display: table-cell;">예약중</td>
 					<td>
-					<a href="./seatCancel.seat?seat_num=${seatTotal_list.seat_num }"><button class = "btn btn-default wish_btn" type = "button" >취소</button></a>
-					<a href="./seatIn.seat?num=${seatTotal_list.num }"><button class = "btn btn-default wish_btn" type = "button" >입실</button></a>
+					<a href="./seatCancel.seat?seat_num=${seatTotal_list.seat_num }&library=${library}"><button class = "btn btn-default wish_btn" type = "button" >취소</button></a>
+					<a href="./seatIn.seat?num=${seatTotal_list.num }&library=${library}"><button class = "btn btn-default wish_btn" type = "button" >입실</button></a>
 					</td>
 				</c:when>
 				<c:when test="${seatTotal_list.state eq 1 && !empty seatTotal_list.in_time && empty seatTotal_list.out_time}">
 					<td scope="row" style="display: table-cell;">입실 완료</td>
-					<td><a href="./seatOut.seat?num=${seatTotal_list.num }&seat_num=${seatTotal_list.seat_num }"><button class = "btn btn-default wish_btn" type = "button" >퇴실</button></a></td>
+					<td><a href="./seatOut.seat?num=${seatTotal_list.num }&seat_num=${seatTotal_list.seat_num }&library=${library}"><button class = "btn btn-default wish_btn" type = "button" >퇴실</button></a></td>
 				</c:when>
 				<c:when test="${seatTotal_list.state eq 2 && !empty seatTotal_list.out_time && !empty seatTotal_list.in_time}">
 					<td scope="row" style="display: table-cell;">퇴실 완료</td>
@@ -198,12 +212,12 @@ $(function(){
 			<li><button class="go" id="${page.startNum-1}">[이전]</button></li>
 			</c:if>
 			<c:forEach begin="${page.startNum}" end="${page.lastNum}" var="i">
-			<li><a
-				href="./seatTotalList.seat?curPage=${i}&id=${id }&year=${year}&month=${month}&day=${day}">${i}</a></li>
+			<li><a class="cur" title="${i }" href="./seatTotalList.seat?curPage=${i}&id=${id }&year=${year}&month=${month}&day=${day}">${i}</a></li>
+			<li><a class="cur" title="${i }" href="./seatTotalList.seat?curPage=${i}&id=${id }&year=${year}&month=${month}&day=${day}&library=${library}">${i}</a></li>
 			</c:forEach>
 			<c:if test="${page.curBlock < page.totalBlock}">
 			<li><a
-				href="./seatTotalList.seat?curPage=${requestScope.page.lastNum+1}">[다음]</a></li>
+				href="./seatTotalList.seat?curPage=${requestScope.page.lastNum+1}&library=${library}">[다음]</a></li>
 			</c:if>
 		</ul>
 	</div>

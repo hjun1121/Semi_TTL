@@ -16,47 +16,51 @@
 <link rel="stylesheet" href="${pageContext.request.contextPath }/css/admin/admin_bookOrderView.css">
 <script type="text/javascript">
 	$(function(){
-		
 		$("#btn").click(function(){
 			$.ajax({
-				url:"./bookOrderAjax.book",
+				url:"./bookOrderAjax.book?library=${library}",
 				type:"POST",
 				data: {
 					num:${requestScope.view.num }
 				},
 				success:function(data){
 					$("#result").html(data);
+					$("#reBtn").attr("style","display:none");
 				}
 			});
 		 });
 	 
 		$("#btn_no").click(function(){
-	  
 			$.ajax({
-				url:"./bookOrderNOAjax.book",
+				url:"./bookOrderNOAjax.book?library=${library}",
 				type:"POST",
 				data: {
 					num:${requestScope.view.num }
 				},
 				success:function(data){
 					$("#result").html(data);
+					$("#reBtn").attr("style","display:none");
 				}
 			});
 		 });
 	 
 		$("#btnList").click(function(){
-			location.href="./bookOrderListAdmin.book?state=3";
+			location.href="./bookOrderListAdmin.book?state=3&library=${library}";
 		});
-		
-	});//
+	});
 </script>
 </head>
 <body>
-<c:import url="${myContextPath}/temp/header.jsp"></c:import>
-
+<c:choose>
+	<c:when test="${library eq 1}"><c:import url="${myContextPath}/temp/header_1.jsp"></c:import></c:when>
+	<c:when test="${library eq 2}"><c:import url="${myContextPath}/temp/header_2.jsp"></c:import></c:when>
+	<c:when test="${library eq 3}"><c:import url="${myContextPath}/temp/header_3.jsp"></c:import></c:when>
+	<c:when test="${library eq 4}"><c:import url="${myContextPath}/temp/header_4.jsp"></c:import></c:when>
+	<c:otherwise><c:import url="${myContextPath}/temp/header.jsp"></c:import></c:otherwise>
+</c:choose>
 
 <div>
-	<c:import url="${myContextPath}/WEB-INF/view/member/myPage.jsp"></c:import>
+	<c:import url="${myContextPath}/WEB-INF/view/member/myPage.jsp?library=${library}"></c:import>
 </div>
 
 <div id="divContentsW">
@@ -64,7 +68,7 @@
 		<h2 id="divTitle">신청 상세 내역</h2>
 		<div id="divLocation">
 			<ul>
-				<li class="home"><a href="${pageContext.request.contextPath}/index.jsp"><img src="${pageContext.request.contextPath }/image/notice/home.png" alt="HOME"></a></li>
+				<li class="home"><a href="${pageContext.request.contextPath}/index.jsp?library=${library}"><img src="${pageContext.request.contextPath }/image/notice/home.png" alt="HOME"></a></li>
 				<li>&gt;</li>
 				<li>MY PAGE</li>
 				<li>&gt;</li>
@@ -74,39 +78,38 @@
 			</ul>
 		</div>
 	
-	
 	<table class="Dtable">
 			<tr>
 				<th>No.</th>
-				<td><input type="text" class="noneBorder" name="title" value=${requestScope.view.num }  readonly="readonly"></td>
+				<td><input type="text" class="noneBorder" name="title" value="${requestScope.view.num }"  readonly="readonly"></td>
 			</tr>
 			<tr>
 				<th>서명</th>
-				<td><input type="text" class="noneBorder" name="title" value=${requestScope.view.title }  readonly="readonly"></td>
+				<td><input type="text" class="noneBorder" name="title" value="${requestScope.view.title }"  readonly="readonly"></td>
 			</tr>
 			<tr>
 				<th>저자</th>
-				<td><input type="text" class="noneBorder" name="writer" value=${requestScope.view.writer } readonly="readonly"></td>
+				<td><input type="text" class="noneBorder" name="writer" value="${requestScope.view.writer }" readonly="readonly"></td>
 			</tr>
 			<tr>
 				<th>출판사</th>
-				<td><input type="text" class="noneBorder" name="company" value=${requestScope.view.company } readonly="readonly"></td>
+				<td><input type="text" class="noneBorder" name="company" value="${requestScope.view.company }" readonly="readonly"></td>
 			</tr>
 			<tr>
 				<th>출판년도</th>
-				<td><input type="text" class="noneBorder" name="publish_date" value=${requestScope.view.publish_date } readonly="readonly"></td>
+				<td><input type="number" class="noneBorder" name="publish_date" value=${requestScope.view.publish_date } readonly="readonly"></td>
 			</tr>
 			<tr>
 				<th>내용</th>
-				<td><input type="text" class="noneBorder" name="t_date" value=${requestScope.view.contents } readonly="readonly"></td>
+				<td><input type="text" class="noneBorder" name="t_date" value="${requestScope.view.contents }" readonly="readonly"></td>
 			</tr>
 			<tr>
 				<th>ID</th>
-				<td><input type="text" class="noneBorder" name="t_date" value=${requestScope.view.id } readonly="readonly"></td>
+				<td><input type="text" class="noneBorder" name="t_date" value="${requestScope.view.id }" readonly="readonly"></td>
 			</tr>
 			<tr>
 				<th>가격</th>
-				<td><input type="text" class="noneBorder" name="price" value=${requestScope.view.price } readonly="readonly"></td>
+				<td><input type="number" class="noneBorder" name="price" value=${requestScope.view.price } readonly="readonly"></td>
 			</tr>
 			<tr>
 			<th>비치도서관</th>
@@ -126,12 +129,24 @@
 			</c:choose>
 			</tr>
 		</table>
+		
 		<div id="result">
 		</div>
-		<div class="btn">
-			<input type="button" class="btnType5" id="btn" value="승인">
-			<input type="button" class="btnType5" id="btn_no" value="거절">
-			<input type="button" class="btnType5" id="btnList" value="LIST">
+		
+		<div class="btn" id="reBtn">
+			<c:choose>
+				<c:when test="${requestScope.view.state eq 0}">
+					<input type="button" class="btnType5" id="btn" value="승인">
+					<input type="button" class="btnType5" id="btn_no" value="거절">
+					<input type="button" class="btnType5" id="btnList" value="LIST">
+				</c:when>
+				<c:when test="${requestScope.view.state eq 2}">
+					<input type="button" class="btnType5" id="btnList" value="LIST">
+				</c:when>
+				<c:when test="${requestScope.view.state eq 1}">
+					<input type="button" class="btnType5" id="btnList" value="LIST">
+				</c:when>
+			</c:choose>
 		</div>
 	</div>
 </div>		

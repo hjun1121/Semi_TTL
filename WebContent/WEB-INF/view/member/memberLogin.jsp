@@ -5,7 +5,7 @@
 <html>
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
-<title>Insert title here</title>
+<title>로그인 페이지</title>
 <link rel="stylesheet" href="${pageContext.request.contextPath }/css/temp/header.css">
 <link rel="stylesheet" href="${pageContext.request.contextPath }/css/temp/footer.css">
 <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
@@ -30,16 +30,16 @@
 		
 		
 		$("#idFind").click(function(){
-			location.href="./memberIdFind.member";
+			location.href="./memberIdFind.member?library=${library}";
 			
 		});
 		
 		$("#pwFind").click(function(){
-			location.href="./memberPwFind.member";
+			location.href="./memberPwFind.member?library=${library}";
 		});
 		
 		$("#joinF").click(function(){
-			location.href="./memberJoinAgree.member";
+			location.href="./memberJoinAgree.member?library=${library}";
 		});
 	});
 
@@ -47,7 +47,13 @@
 </script>
 </head>
 <body>
-<c:import url="${myContextPath}/temp/header.jsp"></c:import>
+<c:choose>
+	<c:when test="${library eq 1}"><c:import url="${myContextPath}/temp/header_1.jsp"></c:import></c:when>
+	<c:when test="${library eq 2}"><c:import url="${myContextPath}/temp/header_2.jsp"></c:import></c:when>
+	<c:when test="${library eq 3}"><c:import url="${myContextPath}/temp/header_3.jsp"></c:import></c:when>
+	<c:when test="${library eq 4}"><c:import url="${myContextPath}/temp/header_4.jsp"></c:import></c:when>
+	<c:otherwise><c:import url="${myContextPath}/temp/header.jsp"></c:import></c:otherwise>
+</c:choose>
 
 <section id = "section">
 <div id = bts_top_section>
@@ -63,7 +69,7 @@
 				</ul>
 			</div>
 
-	<form action="./memberLogin.member" name="frm" method="post">
+	<form action="./memberLogin.member?library=${library}" name="frm" method="post">
 	<div id="login_form">
 		<div id="login_all">
 			

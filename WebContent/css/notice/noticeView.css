@@ -161,10 +161,28 @@
 .contents{width:1016px;margin:0 auto;padding:11px 12px;background-color:#f3f3f3;overflow:hidden}
 
 /* buttons(하단버튼) */
-.buttons{margin:40px 0 0;text-align:center}
-.buttons input{height:40px;margin:0 5px;padding:0 19px;border:1px solid #585858;background: none;color:#1a1a1a;cursor:pointer;vertical-align:top;line-height:1.0em;font-size:14px;font-weight:600;overflow:visible}
-.buttons input.searchBtn{padding:0 20px 0 45px;background:url(../../../image/ko/solution/common/ico/searchBtnBg.png) no-repeat 20px 50% #06603c;border:1px solid #06603c;color:#fff}
-.buttons a{height:38px;display:inline-block;margin:0 5px;padding:0 19px;border:1px solid #585858;color:#1a1a1a;font-size:14px;font-weight:600;line-height:38px;vertical-align:top}
-.adv a{height:38px;display:inline-block;margin:0 5px;padding:0 19px;border:1px solid #585858;color:#1a1a1a;font-size:14px;font-weight:600;line-height:38px;vertical-align:top}
+.adv{margin:40px 0 0;text-align:center}
 
 <!-- 내용 끝 -->
+
+button.adv2:hover{
+	background: #033823;
+    color: white;
+}
+button.adv2{
+	height:38px;
+	display:inline-block;
+	margin:0 5px;
+	padding:0 19px;
+	border:1px solid #585858;
+	color:#1a1a1a;
+	font-size:14px;
+	font-weight:600;
+	line-height:38px;
+	vertical-align:top;
+	background-color:white;
+}  
+button.adv2:hover{
+	background: #033823;
+    color: white;
+}

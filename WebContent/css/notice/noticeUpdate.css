@@ -237,10 +237,6 @@
     line-height: 48px;
     font-size: 16px;
 }
-.button1 .type1 {
-    color: #fff;
-    background: #033823;
-}
 .button1 a, .button1 a:hover, .button1 a:focus {
     -moz-transition-duration: .5s;
     -ms-transition-duration: .5s;
@@ -274,3 +270,25 @@ a:hover {
 
 <!-- 글쓰기 폼 끝 -->
 
+.btn_NO {
+    width: 150px;
+    height: 50px;
+    line-height: 48px;
+    font-size: 16px;
+    color: #666;
+    background: #fff;
+    border: 1px solid #aaa;
+	-webkit-appearance: button;
+    cursor: pointer;
+}
+#btn_OK {
+    width: 150px;
+    height: 50px;
+    line-height: 48px;
+    font-size: 16px;
+    color: #fff;
+    background: #033823;
+    border: 1px solid #aaa;
+	-webkit-appearance: button;
+    cursor: pointer;
+}

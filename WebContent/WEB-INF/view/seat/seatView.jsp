@@ -2,37 +2,90 @@
     pageEncoding="UTF-8"%>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 
-<table style="width: 100%; border: none; border-collapse: collapse;"> 
-<c:forEach items="${seat }" var="dto" varStatus="count">
-	<c:if test="${empty sessionScope.member }">
-		<c:if test="${dto.state eq 1 }">
-			<tr><td id="${count.index }" class="seats" style="background-color: white; color: black"> ${dto.seat_num }</td></tr>
-		</c:if>
+<c:if test="${empty member }">
+	<table border="1">
+		<tr><td>1층</td>
+		<c:forEach begin="0" end="${cnt1-1 }" items="${list }" var="dto">
+			<c:if test="${dto.state eq 1}">
+				<td style="background-color: green">${dto.seat_num }</td>
+			</c:if>
+			<c:if test="${dto.state ne 1}">
+				<td style="background-color: red">${dto.seat_num }</td>
+			</c:if>
+		</c:forEach>
+		</tr>
 		
-		<c:if test="${dto.state eq 0 }">
-			<tr><td id="${count.index }" class="seats" style="background-color: black; color: white"> ${dto.seat_num }</td></tr>
-		</c:if>
-	</c:if>
-	
-	
-	<c:if test="${not empty sessionScope.member }">
-		<c:if test="${dto.state eq 1 }">
-			<tr>
-				<td id="${count.index }" class="seats">
-					<a  style="background-color: white; color: black" target="1" href="./seatInfo.seat?seat_num=${dto.seat_num }&state=${dto.state}&library=${dto.library}">
-					${dto.seat_num }</a>
-				</td>
-			</tr>
-		</c:if>
+		<tr><td>2층</td>
+		<c:forEach begin="${cnt1 }" end="${cnt2-1 }" items="${list }" var="dto">
+			<c:if test="${dto.state eq 1}">
+				<td style="background-color: green">${dto.seat_num }</td>
+			</c:if>
+			<c:if test="${dto.state ne 1}">
+				<td style="background-color: red">${dto.seat_num }</td>
+			</c:if>
+		</c:forEach>	
+		</tr>	
 		
-		<c:if test="${dto.state eq 0 }">
-			<tr>
-				<td id="${count.index }" class="seats">
-					<a style="background-color: black; color: white" target="1" href="./seatInfo.seat?seat_num=${dto.seat_num }&state=${dto.state}&library=${dto.library}">
-					${dto.seat_num }</a>
+		<tr><td>3층</td>
+		<c:forEach begin="${cnt2 }" end="${cnt3-1 }" items="${list }" var="dto">
+			<c:if test="${dto.state eq 1}">
+				<td style="background-color: green">${dto.seat_num }</td>
+			</c:if>
+			<c:if test="${dto.state ne 1}">
+				<td style="background-color: red">${dto.seat_num }</td>
+			</c:if>
+		</c:forEach>	
+		</tr>	
+	</table>
+</c:if>
+
+<c:if test="${not empty member }">
+	<table border="1">
+		<tr><td>1층</td>
+		<c:forEach begin="0" end="${cnt1-1 }" items="${list }" var="dto">
+			<c:if test="${dto.state eq 1}">
+				<td style="background-color: green">
+				<a style="color: yellow;" target="blank" href="${pageContext.request.contextPath }/seat/seatInfo.seat?seat_num=${dto.seat_num }&state=${dto.state}&library=${dto.library}">${dto.seat_num }</a>
 				</td>
-			</tr>
-		</c:if>
-	</c:if>
-</c:forEach>
-</table>
+			</c:if>
+			<c:if test="${dto.state ne 1}">
+				<td style="background-color: red">
+				<a style="color: black;" target="blank" href="${pageContext.request.contextPath }/seat/seatInfo.seat?seat_num=${dto.seat_num }&state=${dto.state}&library=${dto.library}">${dto.seat_num }</a>
+				</td>
+			</c:if>
+		</c:forEach>
+		</tr>
+		
+		<tr><td>2층</td>
+		<c:forEach begin="${cnt1 }" end="${cnt2-1 }" items="${list }" var="dto">
+			<c:if test="${dto.state eq 1}">
+				<td style="background-color: green">
+				<a style="color: yellow;" target="blank" href="${pageContext.request.contextPath }/seat/seatInfo.seat?seat_num=${dto.seat_num }&state=${dto.state}&library=${dto.library}">${dto.seat_num }</a>
+				</td>
+			</c:if>
+			<c:if test="${dto.state ne 1}">
+				<td style="background-color: red">
+				<a style="color: black;" target="blank" href="${pageContext.request.contextPath }/seat/seatInfo.seat?seat_num=${dto.seat_num }&state=${dto.state}&library=${dto.library}">${dto.seat_num }</a>
+				</td>
+			</c:if>
+		</c:forEach>	
+		</tr>	
+		
+		<tr><td>3층</td>
+		<c:forEach begin="${cnt2 }" end="${cnt3-1 }" items="${list }" var="dto">
+			<c:if test="${dto.state eq 1}">
+				<td style="background-color: green">
+				<a style="color: yellow;" target="blank" href="${pageContext.request.contextPath }/seat/seatInfo.seat?seat_num=${dto.seat_num }&state=${dto.state}&library=${dto.library}">${dto.seat_num }</a>
+				</td>
+			</c:if>
+			<c:if test="${dto.state ne 1}">
+				<td style="background-color: red">
+				<a style="color: black;" target="blank" href="${pageContext.request.contextPath }/seat/seatInfo.seat?seat_num=${dto.seat_num }&state=${dto.state}&library=${dto.library}">${dto.seat_num }</a>
+				</td>
+			</c:if>
+		</c:forEach>	
+		</tr>	
+	</table>
+
+</c:if>
+

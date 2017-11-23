@@ -5,7 +5,7 @@
 <html>
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
-<title>Insert title here</title>
+<title>아이디 찾기</title>
 <link rel="stylesheet" href="${pageContext.request.contextPath }/css/temp/header.css">
 <link rel="stylesheet" href="${pageContext.request.contextPath }/css/temp/footer.css">
 <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
@@ -20,7 +20,7 @@
 			var name = $("#name").val();
 			var email = $("#email").val();
 			$.ajax({
-				url:"./memberIdFind.member",
+				url:"./memberIdFind.member?library=${library}",
 				type:"POST",
 				data: {
 					name: name,
@@ -42,7 +42,13 @@
 
 
 <body>
-<c:import url="${myContextPath}/temp/header.jsp"></c:import>
+<c:choose>
+	<c:when test="${library eq 1}"><c:import url="${myContextPath}/temp/header_1.jsp"></c:import></c:when>
+	<c:when test="${library eq 2}"><c:import url="${myContextPath}/temp/header_2.jsp"></c:import></c:when>
+	<c:when test="${library eq 3}"><c:import url="${myContextPath}/temp/header_3.jsp"></c:import></c:when>
+	<c:when test="${library eq 4}"><c:import url="${myContextPath}/temp/header_4.jsp"></c:import></c:when>
+	<c:otherwise><c:import url="${myContextPath}/temp/header.jsp"></c:import></c:otherwise>
+</c:choose>
 	
 	<div id="divContentsW">
 		<div id="divContents">
@@ -58,7 +64,7 @@
 	
 	<!-- //// -->
 	
-		<form action="./memberIdFind.member" method="post">
+		<form action="./memberIdFind.member?library=${library}" method="post">
 		<div id="idFind_form">
 		<div id="idFind_all">
 			
@@ -85,9 +91,9 @@
 		
 		<!-- 찾기버튼들 -->
 		<ul class="btns">
-			<li id="log"><a href="./memberLogin.member" id="login" >로그인</a></li>
-			<li><a href="./memberPwFind.member" id="pwFind">비밀번호 찾기</a></li>
-			<li id="join"><a href="./memberJoinAgree.member" id="joinF">회원가입</a></li>
+			<li id="log"><a href="./memberLogin.member?library=${library}" id="login" >로그인</a></li>
+			<li><a href="./memberPwFind.member?library=${library}" id="pwFind">비밀번호 찾기</a></li>
+			<li id="join"><a href="./memberJoinAgree.member?library=${library}" id="joinF">회원가입</a></li>
 		</ul>
 		
 		</div>

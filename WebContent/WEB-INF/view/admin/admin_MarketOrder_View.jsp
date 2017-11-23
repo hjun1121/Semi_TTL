@@ -16,10 +16,16 @@
 <link rel="stylesheet" href="${pageContext.request.contextPath }/css/admin/admin_MarketOrder_View.css">
 </head>
 <body>
-<c:import url="${myContextPath}/temp/header.jsp"></c:import>
+<c:choose>
+	<c:when test="${library eq 1}"><c:import url="${myContextPath}/temp/header_1.jsp"></c:import></c:when>
+	<c:when test="${library eq 2}"><c:import url="${myContextPath}/temp/header_2.jsp"></c:import></c:when>
+	<c:when test="${library eq 3}"><c:import url="${myContextPath}/temp/header_3.jsp"></c:import></c:when>
+	<c:when test="${library eq 4}"><c:import url="${myContextPath}/temp/header_4.jsp"></c:import></c:when>
+	<c:otherwise><c:import url="${myContextPath}/temp/header.jsp"></c:import></c:otherwise>
+</c:choose>
 
 <div>
-	<c:import url="${myContextPath}/WEB-INF/view/member/myPage.jsp"></c:import>
+	<c:import url="${myContextPath}/WEB-INF/view/member/myPage.jsp?library=${library}"></c:import>
 </div>
 
 <div id="divContentsW">
@@ -27,7 +33,7 @@
 		<h2 id="divTitle">중고 신청 상세 내역</h2>
 		<div id="divLocation">
 			<ul>
-				<li class="home"><a href="${pageContext.request.contextPath}/index.jsp"><img src="${pageContext.request.contextPath }/image/notice/home.png" alt="HOME"></a></li>
+				<li class="home"><a href="${pageContext.request.contextPath}/index.jsp?library=${library}"><img src="${pageContext.request.contextPath }/image/notice/home.png" alt="HOME"></a></li>
 				<li>&gt;</li>
 				<li>MY PAGE</li>
 				<li>&gt;</li>

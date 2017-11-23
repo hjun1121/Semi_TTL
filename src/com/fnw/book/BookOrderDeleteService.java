@@ -15,6 +15,12 @@ public class BookOrderDeleteService implements Action {
 		HttpSession session = request.getSession();
 		String id = ((MemberDTO)session.getAttribute("member")).getId();
 		
+		int library = 0;
+		try {
+			library = Integer.parseInt(request.getParameter("library"));
+		} catch (Exception e) {
+			// TODO: handle exception
+		}
 		Book_OrderDAO book_OrderDAO = new Book_OrderDAO();
 		int result = 0;
 		try {
@@ -30,6 +36,7 @@ public class BookOrderDeleteService implements Action {
 			request.setAttribute("message", "취소 실패");
 			request.setAttribute("path", "./bookOrderList.book?state=3&id="+id);
 		}
+		request.setAttribute("library", library);
 		actionFoward.setCheck(true);
 		actionFoward.setPath("../WEB-INF/view/common/result.jsp");
 		return actionFoward;

@@ -24,10 +24,16 @@ $(document).ready(function() {
 <title>Insert title here</title>
 </head>
 <body>
-<c:import url="${myContextPath}/temp/header.jsp"></c:import>
+<c:choose>
+	<c:when test="${library eq 1}"><c:import url="${myContextPath}/temp/header_1.jsp"></c:import></c:when>
+	<c:when test="${library eq 2}"><c:import url="${myContextPath}/temp/header_2.jsp"></c:import></c:when>
+	<c:when test="${library eq 3}"><c:import url="${myContextPath}/temp/header_3.jsp"></c:import></c:when>
+	<c:when test="${library eq 4}"><c:import url="${myContextPath}/temp/header_4.jsp"></c:import></c:when>
+	<c:otherwise><c:import url="${myContextPath}/temp/header.jsp"></c:import></c:otherwise>
+</c:choose>
 
 <h2>Book Order List-Book_Order</h2>
-<form action="./bookOrderWishDelete.book" method="POST">
+<form action="./bookOrderWishDelete.book?library=${library}" method="POST">
 	<table class="table" border="1">
 		<tr>
 			<th>전체선택<input type="checkbox" id="checkAll"></th>
@@ -73,11 +79,11 @@ $(document).ready(function() {
 			</c:if>
 			<c:forEach begin="${page.startNum}" end="${page.lastNum}" var="i">
 			<li><a
-				href="./bookOrderWishList.book?curPage=${i}&id=${id }">${i}</a></li>
+				href="./bookOrderWishList.book?curPage=${i}&id=${id}&library=${library}">${i}</a></li>
 			</c:forEach>
 			<c:if test="${page.curBlock < page.totalBlock}">
 			<li><a
-				href="./bookOrderWishList.book?curPage=${requestScope.page.lastNum+1}">[다음]</a></li>
+				href="./bookOrderWishList.book?curPage=${requestScope.page.lastNum+1}&library=${library}">[다음]</a></li>
 			</c:if>
 		</ul>
 	</div>

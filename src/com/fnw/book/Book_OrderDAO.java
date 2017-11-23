@@ -29,7 +29,7 @@ public class Book_OrderDAO {
 	//관리자 취소 사유
 	public int updateAdminCancel(int num, String cancel) throws Exception{
 		Connection con = DBConnector.getConnect();
-		String sql ="update book_order set cancel=? where num=?";
+		String sql ="update book_order set cancel=?, state=1  where num=?";
 		
 		PreparedStatement st = con.prepareStatement(sql);
 		st.setString(1, cancel);

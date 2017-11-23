@@ -267,7 +267,7 @@ legend, caption, hr{display:none;}
 
 /* 열람실 좌석 현황 */
 .seat{position:relative;width:335px;height:223px;background-color:#e9e9e9;padding-left:13px}
-.seat > div{margin-bottom:23px;overflow:hidden}
+.seat > div{overflow:hidden}
 .seat h2{float:left;margin-top:10px;padding-bottom:7px;background:url(../../image/index/seatBg.jpg) no-repeat 0 100%;color:#3d3d3d;font-size:18px}
 .seat a.seatGuide{display:inline-block;float:left;width:98px;height:25px;margin:10px 0 0 10px;background-color:#a7a7a7;color:#fff;font-size:14px;text-align:center;line-height:25px}
 .seat dl{margin-bottom:1px;overflow:hidden}
@@ -275,6 +275,7 @@ legend, caption, hr{display:none;}
 .seat dl.readingRoom1 dt{background-color:#033823}
 .seat dl.readingRoom2 dt{background-color:#066111}
 .seat dl.readingRoom3 dt{background-color:#4a7262}
+.seat dl.readingRoom4 dt{background-color:#78c59c}
 .seat dl dd{float:left}
 .seat dl.readingRoom3 dd{width:222px}
 .seat dl dd ul li{float:left;height:33px;margin-left:8px;color:#4e4e4e;font-size:13px;line-height:33px}
@@ -297,9 +298,9 @@ legend, caption, hr{display:none;}
 .book > ul > li.on > div{display:block}
 .book > ul > li > div > div{position:relative;height:190px;margin:0 42px;overflow:hidden;z-index:10}
 .book > ul > li > div > div > ul{position:absolute;top:0;left:0;width:100%;white-space:nowrap;word-wrap:normal}
-.book > ul > li > div > div > ul > li{float:left;width:25%}
+.book > ul > li > div > div > ul > li{float:left;}
 .book > ul > li > div > div > ul > li a{display:inline-block;width:114px;height:189px;font-family:"나눔고딕","NanumGothic",NG, sans-serif}
-.book > ul > li > div > div > ul > li a span.bookCover{position:relative;display:block;width:114px;height:152px;margin-bottom:9px;background:url(../../image/index/bookCover.png) no-repeat 0 0}
+.book > ul > li > div > div > ul > li a span.bookCover{position:relative;display:block;width:114px;height:152px;margin-bottom:5px;background:url(../../image/index/bookCover.png) no-repeat 0 0}
 .book > ul > li > div > div > ul > li a span.bookCover img{position:absolute;top:1px;left:1px}
 .book > ul > li > div > div > ul > li a span.bookTit{display:block;color:#424242;font-size:12px;text-align:center;overflow:hidden;word-break:break-all;white-space:nowrap;text-overflow:ellipsis}
 .book > ul > li > div > div > ul > li a span.writer{display:block;color:#acacac;font-size:12px;text-align:center;overflow:hidden;word-break:break-all;white-space:nowrap;text-overflow:ellipsis}

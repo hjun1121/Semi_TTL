@@ -12,6 +12,14 @@ public class NoticeDeleteService implements Action {
 	public ActionFoward doProcess(HttpServletRequest request, HttpServletResponse response) {
 		ActionFoward actionFoward = new ActionFoward();
 		NoticeDAO noticeDAO = new NoticeDAO();
+		
+		int library = 0;
+		try {
+			library = Integer.parseInt(request.getParameter("library"));
+		} catch (Exception e) {
+			// TODO: handle exception
+		}
+
 		int num = Integer.parseInt(request.getParameter("num"));
 		int result=0;
 		try {
@@ -25,6 +33,8 @@ public class NoticeDeleteService implements Action {
 		}else {
 			request.setAttribute("message", "Fail");
 		}
+
+		request.setAttribute("library", library);
 		request.setAttribute("path", "./noticeList.notice");
 		actionFoward.setCheck(true);
 		actionFoward.setPath("../WEB-INF/view/common/result.jsp");

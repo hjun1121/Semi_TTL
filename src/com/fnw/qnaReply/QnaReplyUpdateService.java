@@ -16,6 +16,12 @@ public class QnaReplyUpdateService implements Action {
 	public ActionFoward doProcess(HttpServletRequest request, HttpServletResponse response) {
 		ActionFoward actionFoward = new ActionFoward();
 		
+		int library = 0;
+		try {
+			library = Integer.parseInt(request.getParameter("library"));
+		} catch (Exception e) {
+			// TODO: handle exception
+		}
 		int pNum = 1;
 		try {
 			pNum = Integer.parseInt(request.getParameter("pNum"));
@@ -56,6 +62,7 @@ public class QnaReplyUpdateService implements Action {
 		}
 		request.setAttribute("num", pNum);
 		request.setAttribute("pw", pw);
+		request.setAttribute("library", library);
 		actionFoward.setCheck(true);
 		actionFoward.setPath("../WEB-INF/view/common/resultQna.jsp");
 		return actionFoward;

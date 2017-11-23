@@ -11,7 +11,7 @@
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
 <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
 <link rel="stylesheet" href="${pageContext.request.contextPath }/css/market/marketTotalList.css">
-<title>Insert title here</title>
+<title>중고장터 페이지</title>
 <script type="text/javascript">
 
 	$(function(){
@@ -38,7 +38,7 @@
 
 			if (title == 1) {
 				$.ajax({
-					url: "./bookBuyWishReturn.market",
+					url: "./bookBuyWishReturn.market?library=${library}",
 					type: "GET",
 					data: {
 						num:num,
@@ -47,13 +47,13 @@
 					},
 					success: function(data) {
 						alert(data);
-						location.href="./marketTotalList.market?curPage=${curPage}";
+						location.href="./marketTotalList.market?curPage=${curPage}&library=${library}";
 					}
 				});
 
 			} else if (title == 0) {
 				$.ajax({
-					url: "./bookBuyWish.market",
+					url: "./bookBuyWish.market?library=${library}",
 					type: "GET",
 					data: {
 						num:num,
@@ -62,7 +62,7 @@
 					},
 					success: function(data) {
 						alert(data);
-						location.href="./marketTotalList.market?curPage=${curPage}";
+						location.href="./marketTotalList.market?curPage=${curPage}&library=${library}";
 					}
 				});
 			}
@@ -73,7 +73,13 @@
 </script>
 </head>
 <body>
-<c:import url="${myContextPath}/temp/header.jsp"></c:import>
+<c:choose>
+	<c:when test="${library eq 1}"><c:import url="${myContextPath}/temp/header_1.jsp"></c:import></c:when>
+	<c:when test="${library eq 2}"><c:import url="${myContextPath}/temp/header_2.jsp"></c:import></c:when>
+	<c:when test="${library eq 3}"><c:import url="${myContextPath}/temp/header_3.jsp"></c:import></c:when>
+	<c:when test="${library eq 4}"><c:import url="${myContextPath}/temp/header_4.jsp"></c:import></c:when>
+	<c:otherwise><c:import url="${myContextPath}/temp/header.jsp"></c:import></c:otherwise>
+</c:choose>
 
 <section id = "section">
 	<div id="divContentsW">
@@ -90,7 +96,7 @@
 			</div>
 			
 		<!-- 검색 시작  -->
-		<form name="frm" class="form-inline" action="./marketTotalList.market" method="post">
+		<form name="frm" class="form-inline" action="./marketTotalList.market?library=${library}" method="post">
 			<fieldset>
 				<legend>검색</legend>
 				
@@ -134,7 +140,7 @@
 			<tbody>
 				<tr>
 					<td>${dto.num }</td>
-					<td><a href="./marketTotalView.market?num=${dto.num }">${dto.title }</a></td>
+					<td><a href="./marketTotalView.market?num=${dto.num }&library=${library}">${dto.title }</a></td>
 					<td>${dto.writer }</td>
 					<td>${dto.company }</td>
 					<td>${dto.publish_date }</td>
@@ -157,7 +163,7 @@
 					<c:if test="${heart2 == 0}">
 						<td><button class = "btn btn-default wish_btn" type = "submit" value = "${dto.num}" title="0">♡</button></td>
 					</c:if>
-				<td><a href="./bookBuy.market?num=${dto.num }"><input type="button"  class = "btn btn-default wish_btn" value="구매"></a></td>
+				<td><a href="./bookBuy.market?num=${dto.num }&library=${library}"><input type="button"  class = "btn btn-default wish_btn" value="구매"></a></td>
 			</c:if>
 			</tr>
 			</tbody>
@@ -169,7 +175,7 @@
 		</c:if>	
 		<br><br>
 		<c:if test="${not empty member}">
-		<form id = "order_btn" action="./marketOrder.market?id=${member.id }">
+		<form id = "order_btn" action="./marketOrder.market?id=${member.id }&library=${library}">
 			<button style = "float: right;" class ="adv" type = "submit">신청하기</button>		
 		</form>
 		</c:if>
@@ -178,15 +184,15 @@
 		<div style = "text-align: center;">
 			<ul class="pagination pagination-sm">
 				<c:if test="${page.curBlock>1}">
-				<li><a href = "./marketTotalList.market?curPage=${page.startNum-1}&kind=${kind }&search=${search }">[이전]</a></li>
+				<li><a href = "./marketTotalList.market?curPage=${page.startNum-1}&kind=${kind }&search=${search }&library=${library}">[이전]</a></li>
 				</c:if>
 				
 				<c:forEach begin="${page.startNum}" end="${page.lastNum}" var="i">
-				<li><a id="pa" class="cur" title="${i }" href="./marketTotalList.market?curPage=${i}&kind=${kind }&search=${search }">${i}</a></li>
+				<li><a id="pa" class="cur" title="${i }" href="./marketTotalList.market?curPage=${i}&kind=${kind }&search=${search }&library=${library}">${i}</a></li>
 				</c:forEach>
 
 				<c:if test="${page.curBlock < page.totalBlock}">
-				<li><a href="./marketTotalList.market?curPage=${page.lastNum+1}&kind=${kind }&search=${search }">[다음]</a></li>
+				<li><a href="./marketTotalList.market?curPage=${page.lastNum+1}&kind=${kind }&search=${search }&library=${library}">[다음]</a></li>
 				</c:if>
 			</ul>
 		</div>

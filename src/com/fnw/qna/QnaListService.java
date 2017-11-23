@@ -14,6 +14,12 @@ public class QnaListService implements Action {
 	@Override
 	public ActionFoward doProcess(HttpServletRequest request, HttpServletResponse response) {
 		ActionFoward actionFoward = new ActionFoward();
+		int library = 0;
+		try {
+			library = Integer.parseInt(request.getParameter("library"));
+		} catch (Exception e) {
+			// TODO: handle exception
+		}
 		int curPage = 0;
 		try {
 			curPage=Integer.parseInt(request.getParameter("curPage"));
@@ -39,6 +45,7 @@ public class QnaListService implements Action {
 			}
 			PageMaker pageMaker = new PageMaker(curPage, totalCount);
 			ar = qnaDAO.selectList(pageMaker.getMakeRow(),kind, search);
+			request.setAttribute("size", ar.size());
 			request.setAttribute("list", ar);
 			request.setAttribute("page", pageMaker.getMakePage());
 			request.setAttribute("search", search);
@@ -48,6 +55,7 @@ public class QnaListService implements Action {
 		} catch (Exception e) {
 			e.printStackTrace();
 		}
+		request.setAttribute("library", library);
 		actionFoward.setCheck(true);
 		actionFoward.setPath("../WEB-INF/view/qna/qnaList.jsp");
 		return actionFoward;
