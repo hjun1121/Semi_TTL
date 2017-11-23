@@ -76,7 +76,7 @@ $(function(){
 	<br><br>
 	<c:if test="${size eq 0 }">
 		<h2 id="divTitle">대여 내역이 없습니다.</h2>
-		<br><br><br><br>
+		<br><br><br><br><br><br><br><br><br><br><br><br>
 	</c:if>
 	<c:if test="${size ne 0 }">
 	<div class="listTable">
@@ -153,6 +153,12 @@ $(function(){
 	</div>
 </div>		
 	</section>
-<c:import url="${myContextPath}/temp/footer.jsp"></c:import>
+<c:choose>
+	<c:when test="${library eq 1}"><c:import url="${myContextPath}/temp/footer_1.jsp"></c:import></c:when>
+	<c:when test="${library eq 2}"><c:import url="${myContextPath}/temp/footer_2.jsp"></c:import></c:when>
+	<c:when test="${library eq 3}"><c:import url="${myContextPath}/temp/footer_3.jsp"></c:import></c:when>
+	<c:when test="${library eq 4}"><c:import url="${myContextPath}/temp/footer_4.jsp"></c:import></c:when>
+	<c:otherwise><c:import url="${myContextPath}/temp/footer.jsp"></c:import></c:otherwise>
+</c:choose>
 </body>
 </html>
