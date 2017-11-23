@@ -25,7 +25,6 @@
 					$("#seatList").html(data.trim());
 				}
 			});
-			
 		});
 		$("#seat_2").click(function(){
 			$.ajax({

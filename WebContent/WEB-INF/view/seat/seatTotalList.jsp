@@ -212,7 +212,6 @@ $(function(){
 			<li><button class="go" id="${page.startNum-1}">[이전]</button></li>
 			</c:if>
 			<c:forEach begin="${page.startNum}" end="${page.lastNum}" var="i">
-			<li><a class="cur" title="${i }" href="./seatTotalList.seat?curPage=${i}&id=${id }&year=${year}&month=${month}&day=${day}">${i}</a></li>
 			<li><a class="cur" title="${i }" href="./seatTotalList.seat?curPage=${i}&id=${id }&year=${year}&month=${month}&day=${day}&library=${library}">${i}</a></li>
 			</c:forEach>
 			<c:if test="${page.curBlock < page.totalBlock}">
