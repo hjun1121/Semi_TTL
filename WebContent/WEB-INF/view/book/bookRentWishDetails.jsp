@@ -161,7 +161,7 @@
 		</div>
 		</div> 
 		<div class="btn2">
-		<a href="./bookRentWishDelete.book&ln=${ln}"><input class="btnType5" type="button" value="삭제"></a>
+		<a href="./bookRentWishDelete.book?ln=${ln}&num=${book.num}"><input class="btnType5" type="button" value="삭제"></a>
 		<a href="../book/bookRentList.book?id=${member.id }&ln=${ln}"><input class="btnType5" type="button" value="LIST"></a>
 		</div>
 		</form>
