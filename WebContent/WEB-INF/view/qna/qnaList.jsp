@@ -31,7 +31,7 @@
 		
 		$("#write_btn").click(function(){
 
-			location.href="./qnaWrite.qna?library=${library}";
+			location.href="./qnaWrite.qna?library=${library}&ln=${ln}";
 		});
 		
 	});
@@ -40,10 +40,10 @@
 </head>
 <body>
 <c:choose>
-	<c:when test="${library eq 1}"><c:import url="${myContextPath}/temp/header_1.jsp"></c:import></c:when>
-	<c:when test="${library eq 2}"><c:import url="${myContextPath}/temp/header_2.jsp"></c:import></c:when>
-	<c:when test="${library eq 3}"><c:import url="${myContextPath}/temp/header_3.jsp"></c:import></c:when>
-	<c:when test="${library eq 4}"><c:import url="${myContextPath}/temp/header_4.jsp"></c:import></c:when>
+	<c:when test="${ln eq 1}"><c:import url="${myContextPath}/temp/header_1.jsp"></c:import></c:when>
+	<c:when test="${ln eq 2}"><c:import url="${myContextPath}/temp/header_2.jsp"></c:import></c:when>
+	<c:when test="${ln eq 3}"><c:import url="${myContextPath}/temp/header_3.jsp"></c:import></c:when>
+	<c:when test="${ln eq 4}"><c:import url="${myContextPath}/temp/header_4.jsp"></c:import></c:when>
 	<c:otherwise><c:import url="${myContextPath}/temp/header.jsp"></c:import></c:otherwise>
 </c:choose>
 
@@ -61,7 +61,7 @@
 			</div>
 	<!-- 검색 시작 -->	
 	
-	<form name="frm" class="form-inline" action="./qnaList.qna?library=${library}" method="post">
+	<form name="frm" class="form-inline" action="./qnaList.qna?library=${library}&ln=${ln}" method="post">
 			<fieldset>
 				<legend>검색</legend>
 				
@@ -137,15 +137,15 @@
 	<div class = "paging" style = "text-align: center;">
 		<ul class="pagination pagination-sm">
 			<c:if test="${page.curBlock>1}">
-			<li><a href = "./qnaList.qna?curPage=${page.startNum-1}&library=${library}">[이전]</a></li>
+			<li><a href = "./qnaList.qna?curPage=${page.startNum-1}&library=${library}&ln=${ln}">[이전]</a></li>
 			</c:if>
 			
 			<c:forEach begin="${page.startNum}" end="${page.lastNum}" var="i">
-			<li><a id="pa" class="cur" title="${i }" href="./qnaList.qna?curPage=${i}&kind=${kind}&search=${search}&library=${library}">${i}</a></li>
+			<li><a id="pa" class="cur" title="${i }" href="./qnaList.qna?curPage=${i}&kind=${kind}&search=${search}&library=${library}&ln=${ln}">${i}</a></li>
 			</c:forEach>
 
 			<c:if test="${page.curBlock < page.totalBlock}">
-			<li><a href="./qnaList.qna?curPage=${page.lastNum+1}&library=${library}">[다음]</a></li>
+			<li><a href="./qnaList.qna?curPage=${page.lastNum+1}&library=${library}&ln=${ln}">[다음]</a></li>
 			</c:if>
 		</ul>
 	</div>
@@ -154,10 +154,10 @@
 </div>
 </section>
 <c:choose>
-	<c:when test="${library eq 1}"><c:import url="${myContextPath}/temp/footer_1.jsp"></c:import></c:when>
-	<c:when test="${library eq 2}"><c:import url="${myContextPath}/temp/footer_2.jsp"></c:import></c:when>
-	<c:when test="${library eq 3}"><c:import url="${myContextPath}/temp/footer_3.jsp"></c:import></c:when>
-	<c:when test="${library eq 4}"><c:import url="${myContextPath}/temp/footer_4.jsp"></c:import></c:when>
+	<c:when test="${ln eq 1}"><c:import url="${myContextPath}/temp/footer_1.jsp"></c:import></c:when>
+	<c:when test="${ln eq 2}"><c:import url="${myContextPath}/temp/footer_2.jsp"></c:import></c:when>
+	<c:when test="${ln eq 3}"><c:import url="${myContextPath}/temp/footer_3.jsp"></c:import></c:when>
+	<c:when test="${ln eq 4}"><c:import url="${myContextPath}/temp/footer_4.jsp"></c:import></c:when>
 	<c:otherwise><c:import url="${myContextPath}/temp/footer.jsp"></c:import></c:otherwise>
 </c:choose>
 </body>
