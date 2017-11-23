@@ -88,7 +88,7 @@ public class Book_Rent_DetailsDAO {
 	}
 	public int delete(int bnum) throws Exception{//
 		Connection con = DBConnector.getConnect();
-		String sql = "delete from book_rent_details where num=?";
+		String sql = "delete from book_rent_details where bnum=?";
 		PreparedStatement st = con.prepareStatement(sql);
 		st.setInt(1, bnum);
 		
