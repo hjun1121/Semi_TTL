@@ -82,7 +82,7 @@ public class SeatInfoService implements Action {
 			int result=0;
 			int overId = 0;
 			try {
-				overId = seat_DetailsDAO.selectOne(id,0);
+				overId = seat_DetailsDAO.selectOne(id,2);
 			} catch (Exception e2) {
 				e2.printStackTrace();
 			}

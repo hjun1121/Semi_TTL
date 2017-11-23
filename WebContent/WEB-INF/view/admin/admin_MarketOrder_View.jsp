@@ -90,7 +90,7 @@
 			<tr>
 				<th>상태</th>
 				<td>
-					<select name="state" class="state">
+					<select name="state" class="state" id="liType">
 						<option value="1" class="library">상</option>
 	   					<option value="2" class="library">중</option>
 	   					<option value="3" class="library">하</option>
