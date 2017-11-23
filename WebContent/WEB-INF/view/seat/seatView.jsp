@@ -10,7 +10,7 @@
 				<td style="width: 150px; text-align: center;">${dto.seat_num }</td>
 			</c:if>
 			<c:if test="${dto.state ne 1}">
-				<td style="background-color: #004640;text-align: center;color: white;">${dto.seat_num }</td>
+				<td style="background-color: #004640;text-align: center;color: red;">${dto.seat_num }</td>
 			</c:if>
 		</c:forEach>
 		</tr>
@@ -21,7 +21,7 @@
 				<td style="width: 150px; text-align: center;">${dto.seat_num }</td>
 			</c:if>
 			<c:if test="${dto.state ne 1}">
-				<td style="background-color: #004640;text-align: center;color: white;">${dto.seat_num }</td>
+				<td style="background-color: #004640;text-align: center;color: red;">${dto.seat_num }</td>
 			</c:if>
 		</c:forEach>	
 		</tr>	
@@ -32,7 +32,7 @@
 				<td style="width: 150px; text-align: center;">${dto.seat_num }</td>
 			</c:if>
 			<c:if test="${dto.state ne 1}">
-				<td style="background-color: #004640;text-align: center;color: white;">${dto.seat_num }</td>
+				<td style="background-color: #004640;text-align: center;color: red;">${dto.seat_num }</td>
 			</c:if>
 		</c:forEach>	
 		</tr>	
@@ -50,7 +50,7 @@
 			</c:if>
 			<c:if test="${dto.state ne 1}">
 				<td style="background-color: #004640;text-align: center;">
-				<a style="color: white;" target="blank" href="${pageContext.request.contextPath }/seat/seatInfo.seat?seat_num=${dto.seat_num }&state=${dto.state}&library=${dto.library}">${dto.seat_num }</a>
+				<a style="color: red;" target="blank" href="${pageContext.request.contextPath }/seat/seatInfo.seat?seat_num=${dto.seat_num }&state=${dto.state}&library=${dto.library}">${dto.seat_num }</a>
 				</td>
 			</c:if>
 		</c:forEach>
@@ -65,7 +65,7 @@
 			</c:if>
 			<c:if test="${dto.state ne 1}">
 				<td style="background-color: #004640;text-align: center;">
-				<a style="color: white;" target="blank" href="${pageContext.request.contextPath }/seat/seatInfo.seat?seat_num=${dto.seat_num }&state=${dto.state}&library=${dto.library}">${dto.seat_num }</a>
+				<a style="color: red;" target="blank" href="${pageContext.request.contextPath }/seat/seatInfo.seat?seat_num=${dto.seat_num }&state=${dto.state}&library=${dto.library}">${dto.seat_num }</a>
 				</td>
 			</c:if>
 		</c:forEach>	
@@ -80,7 +80,7 @@
 			</c:if>
 			<c:if test="${dto.state ne 1}">
 				<td style="background-color: #004640;text-align: center;">
-				<a style="color: white;" target="blank" href="${pageContext.request.contextPath }/seat/seatInfo.seat?seat_num=${dto.seat_num }&state=${dto.state}&library=${dto.library}">${dto.seat_num }</a>
+				<a style="color: red;" target="blank" href="${pageContext.request.contextPath }/seat/seatInfo.seat?seat_num=${dto.seat_num }&state=${dto.state}&library=${dto.library}">${dto.seat_num }</a>
 				</td>
 			</c:if>
 		</c:forEach>	
