@@ -72,8 +72,25 @@
 				<td><input type="text" class="noneBorder" name="price" value=${bookDealsDetail.price } readonly="readonly"></td>
 			</tr>
 			<tr>
-				<th>비치도서관</th>
-				<td><input type="text" class="noneBorder" name="library" value=${bookDealsDetail.library } readonly="readonly"></td>
+			<th>비치도서관</th>
+					<c:choose>
+					<c:when test="${bookDealsDetail.library eq 1}">
+						<td><input type="text" class="noneBorder" value="기흥구" readonly="readonly"></td>
+						<input type="hidden" name="library" value=${bookDealsDetail.library }>
+					</c:when>
+					<c:when test="${bookDealsDetail.library eq 2}">
+						<td><input type="text" class="noneBorder" value="송파구" readonly="readonly"></td>
+						<input type="hidden" name="library" value=${bookDealsDetail.library }>
+					</c:when>
+					<c:when test="${bookDealsDetail.library eq 3}">
+						<td><input type="text" class="noneBorder" value="장안구" readonly="readonly"></td>
+						<input type="hidden" name="library" value=${bookDealsDetail.library }>
+					</c:when>
+					<c:when test="${bookDealsDetail.library eq 4}">
+						<td><input type="text" class="noneBorder" value="분당구" readonly="readonly"></td>
+						<input type="hidden" name="library" value=${bookDealsDetail.library }>
+					</c:when>
+				</c:choose>
 			</tr>
 			<tr>
 			<c:choose>
@@ -93,12 +110,17 @@
 			<c:choose>
 				<c:when test="${bookDealsDetail.state eq 1}">
 					<th>상태</th>
-					<td><input type="text" class="noneBorder" value="완료" readonly="readonly"></td>
+					<td><input type="text" class="noneBorder" value="상" readonly="readonly"></td>
 					<input type="hidden" name="state" value=${bookDealsDetail.state }>
 				</c:when>
 				<c:when test="${bookDealsDetail.state eq 2}">
 					<th>상태</th>
-					<td><input type="text" class="noneBorder" value="대기" readonly="readonly"></td>
+					<td><input type="text" class="noneBorder" value="중" readonly="readonly"></td>
+					<input type="hidden" name="state" value=${bookDealsDetail.state }>
+				</c:when>
+				<c:when test="${bookDealsDetail.state eq 2}">
+					<th>상태</th>
+					<td><input type="text" class="noneBorder" value="하" readonly="readonly"></td>
 					<input type="hidden" name="state" value=${bookDealsDetail.state }>
 				</c:when>
 			</c:choose>
@@ -132,6 +154,7 @@
 		<div class="btn">
 			<input type="submit" class="btnType5" id="btn" name="btn" value="확인">
 			<a href="./marketDealsDelete.market?num=${bookDealsDetail.num }&library=${library}"><input type="button" class="btnType5" value="삭제"></a>
+			<a href="./bookBuyFinish.market?num=${bookDealsDetail.num }"><input type="button" class="btnType5" value="결제완료"></a>
 		</div>
 	</form>	
 	</div>
