@@ -74,6 +74,8 @@
 			$("#allPrice").html("<fmt:formatNumber value='${buyWishList.price}' groupingUsed='true' /> won");
 			$("#libForm").removeAttr("style");
 			$("#carForm").attr("style", "display:none;");
+			$("#domestic_ship_fee").html("0,000won");
+			$("#domestic_ship_fee_sum").html("<fmt:formatNumber value='${buyWishList.price}' groupingUsed='true' /> won");
 		});
 
 		$("#car").click(function() {
