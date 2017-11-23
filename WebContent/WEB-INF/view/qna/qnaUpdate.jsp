@@ -71,7 +71,7 @@ $(function() {
 			</div>	
 			
 			<div class="cstmWrap">
-			<form action="./qnaUpdate.qna?library=${library}" name="frm" method="post">
+			<form action="./qnaUpdate.qna" name="frm" method="post">
 				<ul class = "otoForm mt30 borTc3">
 					<li>
 						<p class="writeTit" >No.</p>

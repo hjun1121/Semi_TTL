@@ -71,6 +71,10 @@ $(function(){
 		document.frm3.contents.value=replyCon; //댓글내용
 		document.frm3.submit();
 	});
+	
+	$("#upbtn").click(function(){
+		location.href="../qna/qnaUpdate.qna?library?num=${qnaDTO.num }";
+	});
 });
 </script>
 </head>
@@ -121,7 +125,7 @@ $(function(){
 		<br>
 		</div>
 		<div id = "bottom_btns">
-			<input type="submit" class="adv" value="수정">
+			<input type="button" id="upbtn" class="adv" value="수정">
 			<a href="../qna/qnaDelete.qna?num=${qnaDTO.num }&library=${library}"><input type="button" class="adv" value="삭제"></a>
 			<a href="../qna/qnaList.qna?library=${library}"><input type="button" class="adv" value="list"></a>
 		</div>
