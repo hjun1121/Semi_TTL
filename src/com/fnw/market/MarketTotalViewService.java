@@ -4,6 +4,7 @@ import java.util.ArrayList;
 
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
+import javax.servlet.http.HttpSession;
 
 import com.fnw.action.Action;
 import com.fnw.action.ActionFoward;
@@ -14,8 +15,17 @@ public class MarketTotalViewService implements Action {
 	@Override
 	public ActionFoward doProcess(HttpServletRequest request, HttpServletResponse response) {
 		ActionFoward actionFoward = new ActionFoward();
-		
-		String id = ((MemberDTO)request.getSession().getAttribute("member")).getId();
+		HttpSession session = null;
+		MemberDTO memberDTO = null;
+		try {
+			session = request.getSession();
+			memberDTO =  (MemberDTO)session.getAttribute("member");
+		}catch (Exception e) {
+		}
+		String id = "";
+		if(memberDTO != null) {
+			id = memberDTO.getId();
+		}
 		
 		ArrayList<Book_Buy_WishDTO> ar = new ArrayList<>();
 		try {
@@ -44,7 +54,9 @@ public class MarketTotalViewService implements Action {
 			num = Integer.parseInt(request.getParameter("num"));
 		}catch (Exception e) {
 		}
-		if(request.getSession().getAttribute("member") ==null ) {
+		
+		if(memberDTO == null ) {
+			request.setAttribute("ln", ln);
 			request.setAttribute("message", "로그인후 가능합니다");
 			request.setAttribute("path", "../member/memberLogin.member");
 			actionFoward.setCheck(true);
@@ -58,19 +70,17 @@ public class MarketTotalViewService implements Action {
 		} catch (Exception e) {
 			e.printStackTrace();
 		}
+			request.setAttribute("rent_wish_list", ar);
+			request.setAttribute("library", library);
+			request.setAttribute("num", num);
+			request.setAttribute("curPage", curPage);
+			request.setAttribute("ln", ln);
 		
-		request.setAttribute("dto", market_TotalDTO);
-		
-		actionFoward.setCheck(true);
-		actionFoward.setPath("../WEB-INF/view/market/marketTotalView.jsp");
+			request.setAttribute("dto", market_TotalDTO);
+			actionFoward.setCheck(true);
+			actionFoward.setPath("../WEB-INF/view/market/marketTotalView.jsp");
 		}
 
-		request.setAttribute("rent_wish_list", ar);
-		request.setAttribute("library", library);
-		request.setAttribute("num", num);
-		request.setAttribute("curPage", curPage);
-	
-		request.setAttribute("ln", ln);
 		return actionFoward;
 	}
 

@@ -54,7 +54,7 @@
 
 			} else if (title == 0) {
 				$.ajax({
-					url: "./bookBuyWish.market?library=${library}&ln=${ln}",
+					url: "./bookBuyWish.market?library=${library}",
 					type: "GET",
 					data: {
 						num:num,
