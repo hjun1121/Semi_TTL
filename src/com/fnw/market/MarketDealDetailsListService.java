@@ -90,6 +90,8 @@ public class MarketDealDetailsListService implements Action {
 				request.setAttribute("month", month);
 				request.setAttribute("day", day);
 				request.setAttribute("page", pageMaker.getMakePage());
+				request.setAttribute("curPage", curPage);
+				request.setAttribute("ln", ln);
 			} catch (Exception e) {
 				e.printStackTrace();
 			}
@@ -111,6 +113,8 @@ public class MarketDealDetailsListService implements Action {
 				request.setAttribute("month", month);
 				request.setAttribute("day", day);
 				request.setAttribute("page", pageMaker.getMakePage());
+				request.setAttribute("curPage", curPage);
+				request.setAttribute("ln", ln);
 			} catch (Exception e) {
 				e.printStackTrace();
 			}
@@ -132,14 +136,15 @@ public class MarketDealDetailsListService implements Action {
 				request.setAttribute("month", month);
 				request.setAttribute("day", day);
 				request.setAttribute("page", pageMaker.getMakePage());
+				request.setAttribute("curPage", curPage);
+				request.setAttribute("ln", ln);
 			} catch (Exception e) {
 				e.printStackTrace();
 			}
 			actionFoward.setCheck(true);
 			actionFoward.setPath("../WEB-INF/view/market/marketDealsList.jsp");
 		}
-		request.setAttribute("library", library);
-		request.setAttribute("ln", ln);
+		
 		return actionFoward;
 	}
 
