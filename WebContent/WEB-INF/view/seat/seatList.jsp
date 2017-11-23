@@ -16,10 +16,11 @@
 	$(function(){
 		$("#seat_1").click(function(){
 			$.ajax({
-				url: "./seatList.seat",
+				url: "./seatList.seat?ln=${ln}",
 				type: "POST",
 				data: {
-					library : 1
+					library : 1,
+					ln: ${ln}
 				},
 				success:function(data){
 					$("#seatList").html(data.trim());
@@ -29,10 +30,11 @@
 		
 		$("#seat_2").click(function(){
 			$.ajax({
-				url: "./seatList.seat",
+				url: "./seatList.seat?ln=${ln}",
 				type: "POST",
 				data: {
-					library : 2
+					library : 2,
+					ln: ${ln}
 				},
 				success:function(data){
 					$("#seatList").html(data.trim());
@@ -43,10 +45,11 @@
 		
 		$("#seat_3").click(function(){
 			$.ajax({
-				url: "./seatList.seat",
+				url: "./seatList.seat?ln=${ln}",
 				type: "POST",
 				data: {
-					library : 3
+					library : 3,
+					ln: ${ln}
 				},
 				success:function(data){
 					$("#seatList").html(data.trim());
@@ -57,10 +60,11 @@
 		
 		$("#seat_4").click(function(){
 			$.ajax({
-				url: "./seatList.seat",
+				url: "./seatList.seat?ln=${ln}",
 				type: "POST",
 				data: {
-					library : 4
+					library : 4,
+					ln: ${ln}
 				},
 				success:function(data){
 					$("#seatList").html(data.trim());
@@ -146,10 +150,10 @@
 
 </section>
 <c:choose>
-	<c:when test="${library eq 1}"><c:import url="${myContextPath}/temp/footer_1.jsp"></c:import></c:when>
-	<c:when test="${library eq 2}"><c:import url="${myContextPath}/temp/footer_2.jsp"></c:import></c:when>
-	<c:when test="${library eq 3}"><c:import url="${myContextPath}/temp/footer_3.jsp"></c:import></c:when>
-	<c:when test="${library eq 4}"><c:import url="${myContextPath}/temp/footer_4.jsp"></c:import></c:when>
+	<c:when test="${ln eq 1}"><c:import url="${myContextPath}/temp/footer_1.jsp"></c:import></c:when>
+	<c:when test="${ln eq 2}"><c:import url="${myContextPath}/temp/footer_2.jsp"></c:import></c:when>
+	<c:when test="${ln eq 3}"><c:import url="${myContextPath}/temp/footer_3.jsp"></c:import></c:when>
+	<c:when test="${ln eq 4}"><c:import url="${myContextPath}/temp/footer_4.jsp"></c:import></c:when>
 	<c:otherwise><c:import url="${myContextPath}/temp/footer.jsp"></c:import></c:otherwise>
 </c:choose>
 </body>

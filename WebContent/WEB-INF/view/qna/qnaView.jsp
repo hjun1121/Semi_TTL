@@ -80,10 +80,10 @@ $(function(){
 </head>
 <body>
 <c:choose>
-	<c:when test="${library eq 1}"><c:import url="${myContextPath}/temp/header_1.jsp"></c:import></c:when>
-	<c:when test="${library eq 2}"><c:import url="${myContextPath}/temp/header_2.jsp"></c:import></c:when>
-	<c:when test="${library eq 3}"><c:import url="${myContextPath}/temp/header_3.jsp"></c:import></c:when>
-	<c:when test="${library eq 4}"><c:import url="${myContextPath}/temp/header_4.jsp"></c:import></c:when>
+	<c:when test="${ln eq 1}"><c:import url="${myContextPath}/temp/header_1.jsp"></c:import></c:when>
+	<c:when test="${ln eq 2}"><c:import url="${myContextPath}/temp/header_2.jsp"></c:import></c:when>
+	<c:when test="${ln eq 3}"><c:import url="${myContextPath}/temp/header_3.jsp"></c:import></c:when>
+	<c:when test="${ln eq 4}"><c:import url="${myContextPath}/temp/header_4.jsp"></c:import></c:when>
 	<c:otherwise><c:import url="${myContextPath}/temp/header.jsp"></c:import></c:otherwise>
 </c:choose>
 
@@ -102,7 +102,7 @@ $(function(){
 			</div>
 		</div>
 		
-		<form id = "qnaDetail_frm" action="../qna/qnaUpdate.qna" method="get" name="frm">
+		<form id = "qnaDetail_frm" action="../qna/qnaUpdate.qna?ln=${ln}" method="get" name="frm">
 		<div class = "boardInfo">
 			<input type="hidden" name="num" value=${qnaDTO.num } readonly="readonly">
 			<input type="hidden" name="library" value=${qnaDTO.library } readonly="readonly">
@@ -132,16 +132,16 @@ $(function(){
 		
 		<c:if test="${not empty member and member.id eq qnaDTO.writer }">
 			<input type="submit" id="upbtn" class="adv" value="수정">
-			<a href="../qna/qnaDelete.qna?num=${qnaDTO.num }&library=${library}"><input type="button" class="adv" value="삭제"></a>
+			<a href="../qna/qnaDelete.qna?num=${qnaDTO.num }&library=${library}&ln=${ln}"><input type="button" class="adv" value="삭제"></a>
 		</c:if>
-			<a href="../qna/qnaList.qna?library=${library}"><input type="button" class="adv" value="list"></a>
+			<a href="../qna/qnaList.qna?library=${library}&ln=${ln}"><input type="button" class="adv" value="list"></a>
 		</div>
 		</form>
 		
 		<hr>
 		
 		<div class = "boardList">
-		<form action="../qnaReply/qnaReplyInsert.qnaReply?library=${library}" method="post">
+		<form action="../qnaReply/qnaReplyInsert.qnaReply?library=${library}&ln=${ln}" method="post">
 			<input type ="hidden" value="${qnaDTO.num}" name="pNum">
 			<input type ="hidden" value="${qnaDTO.pw}" name="pw">
 			<textarea name="contents" class = "reply"></textarea>
@@ -182,6 +182,15 @@ $(function(){
 					->
 				</c:forEach>
 				${dto.contents }</td>
+				<td>
+				<input type="button" class="btn${dto.num } replyBtn" title="${dto.num }" value="답글">
+				<c:if test="${member.id eq dto.writer}">
+					<input type="button" class="replyUpdate btn${dto.num }" title="${dto.num }" value="수정">
+				</c:if>
+				<c:if test="${member.id eq dto.writer or member.kind eq 10 or member.id eq qnaDTO.writer }">
+					<a href="../qnaReply/qnaReplyDelete.qnaReply?num=${dto.num }&pNum=${qnaDTO.num }&library=${library}&ln=${ln}"><input type="button" class="btn${dto.num }" value="삭제"></a>
+				</c:if>
+				</td>
 			</tr>
 			<tr id="reply${dto.num }" class="reReply" title="${dto.num }">
 			</tr>
@@ -189,14 +198,15 @@ $(function(){
 	</table>
 </c:if>
 </div>
-<form action="../qnaReply/qnaReplyUpdate.qnaReply?library=${library}" name="frm2">
+
+<form action="../qnaReply/qnaReplyUpdate.qnaReply?library=${library}&ln=${ln}" name="frm2">
 	<input type ="hidden" value="${qnaDTO.num }" name="pNum">
 	<input type ="hidden" value="${qnaDTO.pw }" name="pw">
 	<input type ="hidden" name="num">
 	<input type ="hidden" name="contents">
 </form>
 
-<form action="../qnaReply/reQnaReplyInsert.qnaReply?library=${library}" name="frm3">
+<form action="../qnaReply/reQnaReplyInsert.qnaReply?library=${library}&ln=${ln}" name="frm3">
 	<input type ="hidden" value="${qnaDTO.num }" name="pNum">
 	<input type ="hidden" value="${qnaDTO.pw }" name="pw">
 	<input type ="hidden" name="num">
@@ -204,10 +214,10 @@ $(function(){
 </form>
 
 <c:choose>
-	<c:when test="${library eq 1}"><c:import url="${myContextPath}/temp/footer_1.jsp"></c:import></c:when>
-	<c:when test="${library eq 2}"><c:import url="${myContextPath}/temp/footer_2.jsp"></c:import></c:when>
-	<c:when test="${library eq 3}"><c:import url="${myContextPath}/temp/footer_3.jsp"></c:import></c:when>
-	<c:when test="${library eq 4}"><c:import url="${myContextPath}/temp/footer_4.jsp"></c:import></c:when>
+	<c:when test="${ln eq 1}"><c:import url="${myContextPath}/temp/footer_1.jsp"></c:import></c:when>
+	<c:when test="${ln eq 2}"><c:import url="${myContextPath}/temp/footer_2.jsp"></c:import></c:when>
+	<c:when test="${ln eq 3}"><c:import url="${myContextPath}/temp/footer_3.jsp"></c:import></c:when>
+	<c:when test="${ln eq 4}"><c:import url="${myContextPath}/temp/footer_4.jsp"></c:import></c:when>
 	<c:otherwise><c:import url="${myContextPath}/temp/footer.jsp"></c:import></c:otherwise>
 </c:choose>
 </body>
