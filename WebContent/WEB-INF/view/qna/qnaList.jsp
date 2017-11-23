@@ -106,7 +106,6 @@
 			<tbody>
 				<tr>
 					<td class="num footable-first-column">${dto.num}</td>
-<<<<<<< HEAD
 					<td class="title expand">
 						<c:catch>
 						<c:forEach  begin="0" end="${dto.depth-1}">
@@ -114,10 +113,7 @@
 						</c:forEach>
 						</c:catch>
 						<a href="./qnaViewCheck.qna?num=${dto.num }&library=${library}">${dto.title}</a>&nbsp;
-=======
-					<td class="title expand" style="color: #337ab7; text-decoration: none;">
-						<a href="./qnaViewCheck.qna?num=${dto.num }">${dto.title}</a>&nbsp;
->>>>>>> d51b54cfc1e152f0591a480f3a8faceebd3f3ce5
+
 					</td>
 					<td class="writer" style="display: table-cell;">
 						${dto.writer}

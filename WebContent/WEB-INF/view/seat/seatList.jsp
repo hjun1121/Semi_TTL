@@ -16,23 +16,22 @@
 	$(function(){
 		$("#seat_1").click(function(){
 			$.ajax({
-				url: "./seatList.seat?library=${library}",
+				url: "./seatList.seat",
 				type: "POST",
 				data: {
-					library :1
+					library : 1
 				},
 				success:function(data){
 					$("#seatList").html(data.trim());
 				}
 			});
-			
 		});
 		$("#seat_2").click(function(){
 			$.ajax({
-				url: "./seatList.seat?library=${library}",
+				url: "./seatList.seat",
 				type: "POST",
 				data: {
-					library :2
+					library : 2
 				},
 				success:function(data){
 					$("#seatList").html(data.trim());
@@ -42,10 +41,10 @@
 		});
 		$("#seat_3").click(function(){
 			$.ajax({
-				url: "./seatList.seat?library=${library}",
+				url: "./seatList.seat",
 				type: "POST",
 				data: {
-					library :3
+					library : 3
 				},
 				success:function(data){
 					$("#seatList").html(data.trim());
@@ -56,10 +55,10 @@
 		
 		$("#seat_4").click(function(){
 			$.ajax({
-				url: "./seatList.seat?library=${library}",
+				url: "./seatList.seat",
 				type: "POST",
 				data: {
-					library :4
+					library : 4
 				},
 				success:function(data){
 					$("#seatList").html(data.trim());
