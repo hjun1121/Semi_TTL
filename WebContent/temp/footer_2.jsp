@@ -20,7 +20,7 @@
 	<div class="footer2">
 		<p class="footerLogo"><img src="${pageContext.request.contextPath }/image/header/jh_lib.png" alt="송파 도서관"></p>
 		<div class="address">
-			<address>서울시 송파구 가락본동 105번지 송파 도서관 <a href='${pageContext.request.contextPath }/view/library/libraryView.library?library=2' title='찾아오시는 길'>찾아오시는 길</a>
+			<address>서울시 송파구 가락본동 105번지 송파 도서관 <a href='${pageContext.request.contextPath }/view/library/libraryView.library?ln=2' title='찾아오시는 길'>찾아오시는 길</a>
 				<p>COPYRIGHT 2017 BY FnW. ALL RIGHTS RESERVED.</p>
 			</address>
 		</div>
