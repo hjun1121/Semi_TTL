@@ -61,20 +61,27 @@
 					<th>좌석번호</th>
 					<th>도서관</th>
 					<th>상태</th>
-					<th>사용자</th>
-					<th>예약시간</th>
 				</tr>
 				<tr>
 					<td>${seat.seat_num }</td>
-					<td>${seat.library }</td>
+					<c:if test="${seat.library  eq 1 }">
+						<td>기흥구</td>
+					</c:if>
+					<c:if test="${seat.library  eq 2 }">
+						<td>송파구</td>
+					</c:if>
+					<c:if test="${seat.library  eq 3 }">
+						<td>장안구</td>
+					</c:if>
+					<c:if test="${seat.library  eq 4 }">
+						<td>분당구</td>
+					</c:if>
 					<c:if test="${seat.state  eq 0 }">
 						<td>사용 중</td>
 					</c:if>
 					<c:if test="${seat.state  eq 1 }">
 						<td>사용 가능</td>
 					</c:if>
-					<td></td>
-					<td></td>
 				</tr>
 			</table>
 			</div>
