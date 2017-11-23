@@ -72,12 +72,12 @@
 					<th>합계</th>
 				</tr>
 				<tr>
-					<td>장희성</td>
-					<td>장안도서관</td>
-					<td>22500원</td>
+					<td>${mdd.title }</td>
+					<td>${mdd.library }</td>
+					<td>${mdd.price }</td>
 					<td>1</td>
-					<td>배송</td>
-					<td>25000원</td>
+					<td>${mdd.delivery }</td>
+					<td>${mdd.price }</td>
 				</tr>
 			</table>
 		</div>

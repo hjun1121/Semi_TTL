@@ -136,7 +136,6 @@ $(function(){
 	<a href="./marketDealsList.market?id=${id }&type=3&year=${year}&month=${month}&day=${day}"><input class="btnType3" type="button" value="전체"></a>
 	<a href="./marketDealsList.market?id=${id }&type=1&year=${year}&month=${month}&day=${day}"><input class="btnType3" type="button" value="판매"></a>
 	<a href="./marketDealsList.market?id=${id }&type=2&year=${year}&month=${month}&day=${day}"><input class="btnType3" type="button" value="구매"></a>
-	<a href="./bookBuyFinish.market"><input class="btnType3" type="button" value="결제확인"></a>
 
 	<br><br>
 	<c:if test="${size eq 0 }">
@@ -153,13 +152,11 @@ $(function(){
 			<th>서명</th>
 			<th>저자</th>
 			<th>출판사</th>
-			<th>출판년도</th>
-			<th>일자</th>
-			<th>비치도서관</th>
+			<th>거래 일자</th>
+			<th>비치 도서관</th>
 			<th>가격</th>
-			<th>분류</th>
 			<th>상태</th>
-			<th>수령방법</th>
+			<th>수령 방법</th>
 		</tr>
 	</thead>
 		<c:forEach items="${bookDeals }" var="bookDeals_list">
@@ -169,7 +166,6 @@ $(function(){
 					href="./marketDealsDetails.market?num=${bookDeals_list.num }&library=${library}">${bookDeals_list.title }</a></td>
 				<td scope="row" style="display: table-cell;">${bookDeals_list.writer }</td>
 				<td scope="row" style="display: table-cell;">${bookDeals_list.company }</td>
-				<td scope="row" style="display: table-cell;">${bookDeals_list.publish_date }</td>
 				<td scope="row" style="display: table-cell;">${bookDeals_list.t_date }</td>
 				<c:choose>
 					<c:when test="${bookDeals_list.library eq 1}">
@@ -189,17 +185,6 @@ $(function(){
 					</c:otherwise>
 				</c:choose>
 				<td>${bookDeals_list.price }</td>
-				<c:choose>
-					<c:when test="${bookDeals_list.kind eq 1}">
-						<td scope="row" style="display: table-cell;">판매</td>
-					</c:when>
-					<c:when test="${bookDeals_list.kind eq 2}">
-						<td scope="row" style="display: table-cell;">구매</td>
-					</c:when>
-					<c:otherwise>
-						<td scope="row" style="display: table-cell;">없음</td>
-					</c:otherwise>
-				</c:choose>
 				<c:choose>
 					<c:when test="${bookDeals_list.state eq 1}">
 						<td scope="row" style="display: table-cell;">상</td>

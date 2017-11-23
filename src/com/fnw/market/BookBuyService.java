@@ -125,9 +125,9 @@ public class BookBuyService implements Action {
 			}
 			
 			if(result > 0) {
-				message = "등록 완료";
+				message = "결제 완료";
 			}else {
-				message = "등록 실패";
+				message = "결제 실패";
 			}
 			request.setAttribute("library", library);
 			request.setAttribute("message", message);
