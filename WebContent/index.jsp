@@ -16,10 +16,7 @@
 
 <title>도서관 통합 포털</title>
 
-<<<<<<< HEAD
 <script type="text/javascript" src="${pageContext.request.contextPath }/script/main.jsp"></script>
-=======
->>>>>>> ba9f7beddeccd11f0ea9d71ec8f4e6cf904b8c54
 <script type="text/javascript">
 
 	var slideIndex = 1;

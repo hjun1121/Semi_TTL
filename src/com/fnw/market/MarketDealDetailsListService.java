@@ -129,10 +129,10 @@ public class MarketDealDetailsListService implements Action {
 			} catch (Exception e) {
 				e.printStackTrace();
 			}
-			request.setAttribute("library", library);
 			actionFoward.setCheck(true);
 			actionFoward.setPath("../WEB-INF/view/market/marketDealsList.jsp");
 		}
+		request.setAttribute("library", library);
 		return actionFoward;
 	}
 
