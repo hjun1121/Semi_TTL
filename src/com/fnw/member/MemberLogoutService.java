@@ -31,9 +31,7 @@ public class MemberLogoutService implements Action {
 			actionFoward.setPath("../index.jsp");
 		} else {
 			actionFoward.setCheck(false);
-			actionFoward.setPath("../library/libraryMain.library?ln=" + ln);
-//			request.setAttribute("library", library);
-			request.setAttribute("ln", ln);
+			actionFoward.setPath("../library/libraryMain.library?ln=" + ln + "&library=" + library);
 		}
 		return actionFoward;
 	}

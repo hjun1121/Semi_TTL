@@ -28,7 +28,7 @@ public class MemberLoginService implements Action {
 
 		if(method.equals("GET")) {
 			actionFoward.setCheck(true);
-			actionFoward.setPath("../WEB-INF/view/member/memberLogin.jsp");
+			actionFoward.setPath("../WEB-INF/view/member/memberLogin.jsp?");
 		}else {
 			MemberDAO memberDAO = new MemberDAO();
 			MemberDTO memberDTO = null;
@@ -44,9 +44,11 @@ public class MemberLoginService implements Action {
 				request.getSession().setAttribute("member", memberDTO);
 				request.setAttribute("message", message);
 				if(ln == 0) {
+					actionFoward.setCheck(false);
 					request.setAttribute("path", "../index.jsp");
 				} else {
-					request.setAttribute("path", "../library/libraryMain.library");
+					actionFoward.setCheck(false);
+					request.setAttribute("path", "../library/libraryMain.library?ln=" + ln + "&library=" + library);
 				}
 			}else {
 				message="로그인 실패";
