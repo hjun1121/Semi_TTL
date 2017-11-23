@@ -20,20 +20,29 @@ public class BookRentListService implements Action {
 		ActionFoward actionFoward = new ActionFoward();
 		Book_Rent_DetailsDAO book_Rent_DetailsDAO = new Book_Rent_DetailsDAO();
 		ArrayList<Book_Rent_DetailsDTO> list = new ArrayList<>();
-		HttpSession session = request.getSession();
-		String id = ((MemberDTO)session.getAttribute("member")).getId();
+
+
+		HttpSession session = null;
+		MemberDTO memberDTO = null;
+		try {
+			session = request.getSession();
+			memberDTO =  (MemberDTO)session.getAttribute("member");
+		}catch (Exception e) {
+		}
+		String id = "";
+		if(memberDTO != null) {
+			id = memberDTO.getId();
+		}
 		
 		int ln = 0;
 		try {
 			ln = Integer.parseInt(request.getParameter("ln"));
 		} catch (Exception e) {
-			// TODO: handle exception
 		}
 		int library = 0;
 		try {
 			library = Integer.parseInt(request.getParameter("library"));
 		} catch (Exception e) {
-			// TODO: handle exception
 		}
 		int curPage = 1;		
 		try {
@@ -42,56 +51,65 @@ public class BookRentListService implements Action {
 			curPage=1;
 		}
 		
-		SimpleDateFormat sdf = new SimpleDateFormat("yy");
-        Calendar c1 = Calendar.getInstance();
-        String strToday = sdf.format(c1.getTime());
-
-		String year = request.getParameter("year");
-		if(year == null) {
-			year=strToday;
-		}
+		if(memberDTO == null ) {
+			request.setAttribute("ln", ln);
+			request.setAttribute("message", "로그인 후 가능합니다");
+			request.setAttribute("path", "../member/memberLogin.member");
+			actionFoward.setCheck(true);
+			actionFoward.setPath("../WEB-INF/view/common/result.jsp");
+		}else {
 		
-		sdf = new SimpleDateFormat("MM");
-        c1 = Calendar.getInstance();
-        strToday = sdf.format(c1.getTime());
-		String month = request.getParameter("month");
-		if(month == null) {
-			month=strToday;
-		}		
 		
-		sdf = new SimpleDateFormat("dd");
-        c1 = Calendar.getInstance();
-        strToday = sdf.format(c1.getTime());
-		String day = request.getParameter("day");
-		if(day == null) {
-			day=strToday;
-		}	
-		String p_date = year+"/"+month+"/"+day;
-		
-		int totalCount = 0;
-		try {
-			totalCount = book_Rent_DetailsDAO.getTotalCount(p_date);
-			if(totalCount==0) {
-				totalCount=1;
+			SimpleDateFormat sdf = new SimpleDateFormat("yy");
+	        Calendar c1 = Calendar.getInstance();
+	        String strToday = sdf.format(c1.getTime());
+	
+			String year = request.getParameter("year");
+			if(year == null) {
+				year=strToday;
 			}
-			PageMaker pageMaker = new PageMaker(curPage, totalCount);
-			list = book_Rent_DetailsDAO.selectList(id,pageMaker.getMakeRow(),p_date);
-			request.setAttribute("size", list.size());
-			request.setAttribute("bookRentList", list);
-			request.setAttribute("id", id);
-			request.setAttribute("year", year);
-			request.setAttribute("month", month);
-			request.setAttribute("day", day);
-			request.setAttribute("page", pageMaker.getMakePage());
-			request.setAttribute("curPage", curPage);
-			request.setAttribute("library", library);
-		} catch (Exception e) {
-			e.printStackTrace();
+			
+			sdf = new SimpleDateFormat("MM");
+	        c1 = Calendar.getInstance();
+	        strToday = sdf.format(c1.getTime());
+			String month = request.getParameter("month");
+			if(month == null) {
+				month=strToday;
+			}		
+			
+			sdf = new SimpleDateFormat("dd");
+	        c1 = Calendar.getInstance();
+	        strToday = sdf.format(c1.getTime());
+			String day = request.getParameter("day");
+			if(day == null) {
+				day=strToday;
+			}	
+			String p_date = year+"/"+month+"/"+day;
+			
+			int totalCount = 0;
+			try {
+				totalCount = book_Rent_DetailsDAO.getTotalCount(p_date);
+				if(totalCount==0) {
+					totalCount=1;
+				}
+				PageMaker pageMaker = new PageMaker(curPage, totalCount);
+				list = book_Rent_DetailsDAO.selectList(id,pageMaker.getMakeRow(),p_date);
+				request.setAttribute("size", list.size());
+				request.setAttribute("bookRentList", list);
+				request.setAttribute("id", id);
+				request.setAttribute("year", year);
+				request.setAttribute("month", month);
+				request.setAttribute("day", day);
+				request.setAttribute("page", pageMaker.getMakePage());
+				request.setAttribute("curPage", curPage);
+				request.setAttribute("library", library);
+			} catch (Exception e) {
+				e.printStackTrace();
+			}
+			request.setAttribute("ln", ln);
+			actionFoward.setCheck(true);
+			actionFoward.setPath("../WEB-INF/view/book/bookRentList.jsp");
 		}
-		actionFoward.setCheck(true);
-		actionFoward.setPath("../WEB-INF/view/book/bookRentList.jsp");
-		
-		request.setAttribute("ln", ln);
 		return actionFoward;
 	}
 }

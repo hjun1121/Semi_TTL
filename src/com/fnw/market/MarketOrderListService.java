@@ -4,6 +4,7 @@ import java.util.ArrayList;
 
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
+import javax.servlet.http.HttpSession;
 
 import com.fnw.action.Action;
 import com.fnw.action.ActionFoward;
@@ -14,21 +15,29 @@ public class MarketOrderListService implements Action {
 	@Override
 	public ActionFoward doProcess(HttpServletRequest request, HttpServletResponse response) {
 		ActionFoward actionFoward = new ActionFoward();
-		String id = ((MemberDTO)request.getSession().getAttribute("member")).getId();
-		
 		ArrayList<Market_OrderDTO> list = new ArrayList<>();
 		
+		HttpSession session = null;
+		MemberDTO memberDTO = null;
+		try {
+			session = request.getSession();
+			memberDTO =  (MemberDTO)session.getAttribute("member");
+		}catch (Exception e) {
+		}
+		
+		String id = "";
+		if(memberDTO != null) {
+			id = memberDTO.getId();
+		}
 		int ln = 0;
 		try {
 			ln = Integer.parseInt(request.getParameter("ln"));
 		} catch (Exception e) {
-			// TODO: handle exception
 		}
 		int library = 0;
 		try {
 			library = Integer.parseInt(request.getParameter("library"));
 		} catch (Exception e) {
-			// TODO: handle exception
 		}
 		int curPage = 0;
 		try {
@@ -46,29 +55,40 @@ public class MarketOrderListService implements Action {
 			search="";
 		}
 		
-		int totalCount = 1;
-		Market_OrderDAO market_OrderDAO = new Market_OrderDAO();
-		try {
-			totalCount = market_OrderDAO.getTotalCount(kind, search);
-			if(totalCount==0) {
-				totalCount=1;
+		if(memberDTO == null ) {
+			request.setAttribute("ln", ln);
+			request.setAttribute("message", "로그인 후 가능합니다");
+			request.setAttribute("path", "../member/memberLogin.member");
+			actionFoward.setCheck(true);
+			actionFoward.setPath("../WEB-INF/view/common/result.jsp");
+		}else {
+			
+			int totalCount = 1;
+			Market_OrderDAO market_OrderDAO = new Market_OrderDAO();
+			try {
+				totalCount = market_OrderDAO.getTotalCount(kind, search);
+				if(totalCount==0) {
+					totalCount=1;
+				}
+				PageMaker pageMaker = new PageMaker(curPage, totalCount);
+				list = market_OrderDAO.selectList(id,pageMaker.getMakeRow(),kind,search);
+				request.setAttribute("size", list.size());
+				request.setAttribute("marketOrderList", list);
+				request.setAttribute("id", id);
+				request.setAttribute("search", search);
+				request.setAttribute("kind", kind);
+				request.setAttribute("page", pageMaker.getMakePage());
+				request.setAttribute("curPage", curPage);
+			} catch (Exception e) {
+				e.printStackTrace();
 			}
-			PageMaker pageMaker = new PageMaker(curPage, totalCount);
-			list = market_OrderDAO.selectList(id,pageMaker.getMakeRow(),kind,search);
-			request.setAttribute("size", list.size());
-			request.setAttribute("marketOrderList", list);
-			request.setAttribute("id", id);
-			request.setAttribute("search", search);
-			request.setAttribute("kind", kind);
-			request.setAttribute("page", pageMaker.getMakePage());
-			request.setAttribute("curPage", curPage);
-		} catch (Exception e) {
-			e.printStackTrace();
+			request.setAttribute("ln", ln);
+			request.setAttribute("library", library);
+			actionFoward.setCheck(true);
+			actionFoward.setPath("../WEB-INF/view/market/marketOrderList.jsp");
+			
 		}
-		request.setAttribute("library", library);
-		actionFoward.setCheck(true);
-		actionFoward.setPath("../WEB-INF/view/market/marketOrderList.jsp");
-		request.setAttribute("ln", ln);
+		
 		return actionFoward;
 	}
 
