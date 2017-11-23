@@ -71,18 +71,20 @@
 			$("#chk_purchase_agreement0").prop("checked","");
 			$("#delivery").val("1");
 			$("#carPrice").html("0,000won");
-			$("#allPrice").html("<fmt:formatNumber value="${buyWishList.price}" groupingUsed="true" /> won");
-			$("#libForm").removeAttr("style")
-			$("#carForm").attr("style", "display:none;")
+			$("#allPrice").html("<fmt:formatNumber value='${buyWishList.price}' groupingUsed='true' /> won");
+			$("#libForm").removeAttr("style");
+			$("#carForm").attr("style", "display:none;");
 		});
 
 		$("#car").click(function() {
 			$("#chk_purchase_agreement0").prop("checked",""); 
 			$("#delivery").val("2");
 			$("#carPrice").html("2,500won");
-			$("#allPrice").html("<fmt:formatNumber value="${buyWishList.price+2500}" groupingUsed="true" /> won");
-			$("#libForm").attr("style", "display:none;")
-			$("#carForm").removeAttr("style")
+			$("#allPrice").html("<fmt:formatNumber value='${buyWishList.price+2500}' groupingUsed='true' /> won");
+			$("#libForm").attr("style", "display:none;");
+			$("#carForm").removeAttr("style");
+			$("#domestic_ship_fee").html("2,500won");
+			$("#domestic_ship_fee_sum").html("<fmt:formatNumber value='${buyWishList.price+2500}' groupingUsed='true' /> won");
 		});
 
 		$("#btn").click(function() {
@@ -245,7 +247,7 @@
 										<td><c:if test="${ buyWishList.library eq 1 }">형준 도서관</c:if>
 											<c:if test="${ buyWishList.library eq 2 }">지현 도서관</c:if> 
 											<c:if test="${ buyWishList.library eq 3 }">희성 도서관</c:if> 
-											<c:if test="${ buyWishList.library eq 4 }">형민 도서관</c:if>
+											<c:if test="${ buyWishList.library eq 4 }">현민 도서관</c:if>
 										</td>
 									</tr>
 									<tr>
