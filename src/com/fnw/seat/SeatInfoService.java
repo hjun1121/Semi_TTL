@@ -18,7 +18,7 @@ public class SeatInfoService implements Action {
 		ActionFoward actionFoward = new ActionFoward();
 		String method=request.getMethod();
 		int seat_num = 1;
-		
+		Seat_DetailsDAO seat_DetailsDAO = new Seat_DetailsDAO();
 		int state =1;
 
 		int ln = 0;
@@ -43,7 +43,7 @@ public class SeatInfoService implements Action {
 		
 		if(method.equals("GET")) {
 			if(state==0) {
-				request.setAttribute("message", "이미 사용중인 자리 입니다");
+				request.setAttribute("message", "이미 사용중인 자리 입니다.");
 				actionFoward.setCheck(true);
 				actionFoward.setPath("../WEB-INF/view/common/resultClose.jsp");
 			}else {
@@ -71,8 +71,6 @@ public class SeatInfoService implements Action {
 			seatDTO.setId(id);
 			seatDTO.setSeat_num(seat_num);
 			seatDTO.setLibrary(library);
-			System.out.println(library);
-			Seat_DetailsDAO seat_DetailsDAO = new Seat_DetailsDAO();
 			Seat_DetailsDTO seat_DetailsDTO = new Seat_DetailsDTO();
 			
 			seat_DetailsDTO.setId(id);
@@ -82,36 +80,49 @@ public class SeatInfoService implements Action {
 			
 			Connection con = null;
 			int result=0;
+			int overId = 0;
 			try {
-				con = DBConnector.getConnect();
-				con.setAutoCommit(false);
-				result = seatDAO.updateRent(seatDTO,con);
-				result = seat_DetailsDAO.insert(seat_DetailsDTO,con);
-			} catch (Exception e) {
-				e.printStackTrace();
+				overId = seat_DetailsDAO.selectOne(id,0);
+			} catch (Exception e2) {
+				e2.printStackTrace();
+			}
+			if(overId>=1) {
+				request.setAttribute("message", "예약하신 자리가 있습니다.");
+				request.setAttribute("path", "./seatList.seat");
+				actionFoward.setCheck(true);
+				actionFoward.setPath("../WEB-INF/view/common/result.jsp");
+			}else {
 				try {
-					con.rollback();
-					result=0;
-				} catch (SQLException e1) {
-					e1.printStackTrace();
-				}
-			}finally {
-				try {
-					con.setAutoCommit(true);
-					con.close();
-				} catch (SQLException e) {
+					con = DBConnector.getConnect();
+					con.setAutoCommit(false);
+					result = seatDAO.updateRent(seatDTO,con);
+					result = seat_DetailsDAO.insert(seat_DetailsDTO,con);
+				} catch (Exception e) {
 					e.printStackTrace();
+					try {
+						con.rollback();
+						result=0;
+					} catch (SQLException e1) {
+						e1.printStackTrace();
+					}
+				}finally {
+					try {
+						con.setAutoCommit(true);
+						con.close();
+					} catch (SQLException e) {
+						e.printStackTrace();
+					}
 				}
+				String message="예약 실패";
+				if(result>0) {
+					message= seat_num + "번 자리 예약 성공";
+				}
+				request.setAttribute("message", message);
+				request.setAttribute("path", "./seatList.seat");
+				request.setAttribute("library", library);
+				actionFoward.setCheck(true);
+				actionFoward.setPath("../WEB-INF/view/common/result.jsp");
 			}
-			String message="예약 실패";
-			if(result>0) {
-				message= seat_num + "번 자리 예약 성공";
-			}
-			request.setAttribute("message", message);
-			request.setAttribute("path", "./seatList.seat");
-			request.setAttribute("library", library);
-			actionFoward.setCheck(true);
-			actionFoward.setPath("../WEB-INF/view/common/result.jsp");
 		}
 		request.setAttribute("ln", ln);
 		return actionFoward;
