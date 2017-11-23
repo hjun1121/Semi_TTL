@@ -20,11 +20,12 @@
 			var name = $("#name").val();
 			var email = $("#email").val();
 			$.ajax({
-				url:"./memberIdFind.member?library=${library}",
+				url:"./memberIdFind.member?library=${library}&ln=${ln}",
 				type:"POST",
 				data: {
 					name: name,
-					email: email
+					email: email,
+					ln: ${ln}
 				},
 				success:function(data){
 					$("#list").html(data);
@@ -43,10 +44,10 @@
 
 <body>
 <c:choose>
-	<c:when test="${library eq 1}"><c:import url="${myContextPath}/temp/header_1.jsp"></c:import></c:when>
-	<c:when test="${library eq 2}"><c:import url="${myContextPath}/temp/header_2.jsp"></c:import></c:when>
-	<c:when test="${library eq 3}"><c:import url="${myContextPath}/temp/header_3.jsp"></c:import></c:when>
-	<c:when test="${library eq 4}"><c:import url="${myContextPath}/temp/header_4.jsp"></c:import></c:when>
+	<c:when test="${ln eq 1}"><c:import url="${myContextPath}/temp/header_1.jsp"></c:import></c:when>
+	<c:when test="${ln eq 2}"><c:import url="${myContextPath}/temp/header_2.jsp"></c:import></c:when>
+	<c:when test="${ln eq 3}"><c:import url="${myContextPath}/temp/header_3.jsp"></c:import></c:when>
+	<c:when test="${ln eq 4}"><c:import url="${myContextPath}/temp/header_4.jsp"></c:import></c:when>
 	<c:otherwise><c:import url="${myContextPath}/temp/header.jsp"></c:import></c:otherwise>
 </c:choose>
 	
@@ -64,7 +65,7 @@
 	
 	<!-- //// -->
 	
-		<form action="./memberIdFind.member?library=${library}" method="post">
+		<form action="./memberIdFind.member?library=${library}&ln=${ln}" method="post">
 		<div id="idFind_form">
 		<div id="idFind_all">
 			
@@ -91,9 +92,9 @@
 		
 		<!-- 찾기버튼들 -->
 		<ul class="btns">
-			<li id="log"><a href="./memberLogin.member?library=${library}" id="login" >로그인</a></li>
-			<li><a href="./memberPwFind.member?library=${library}" id="pwFind">비밀번호 찾기</a></li>
-			<li id="join"><a href="./memberJoinAgree.member?library=${library}" id="joinF">회원가입</a></li>
+			<li id="log"><a href="./memberLogin.member?library=${library}&ln=${ln}" id="login" >로그인</a></li>
+			<li><a href="./memberPwFind.member?library=${library}&ln=${ln}" id="pwFind">비밀번호 찾기</a></li>
+			<li id="join"><a href="./memberJoinAgree.member?library=${library}&ln=${ln}" id="joinF">회원가입</a></li>
 		</ul>
 		
 		</div>
@@ -105,10 +106,10 @@
 </div>
 	
 <c:choose>
-	<c:when test="${library eq 1}"><c:import url="${myContextPath}/temp/footer_1.jsp"></c:import></c:when>
-	<c:when test="${library eq 2}"><c:import url="${myContextPath}/temp/footer_2.jsp"></c:import></c:when>
-	<c:when test="${library eq 3}"><c:import url="${myContextPath}/temp/footer_3.jsp"></c:import></c:when>
-	<c:when test="${library eq 4}"><c:import url="${myContextPath}/temp/footer_4.jsp"></c:import></c:when>
+	<c:when test="${ln eq 1}"><c:import url="${myContextPath}/temp/footer_1.jsp"></c:import></c:when>
+	<c:when test="${ln eq 2}"><c:import url="${myContextPath}/temp/footer_2.jsp"></c:import></c:when>
+	<c:when test="${ln eq 3}"><c:import url="${myContextPath}/temp/footer_3.jsp"></c:import></c:when>
+	<c:when test="${ln eq 4}"><c:import url="${myContextPath}/temp/footer_4.jsp"></c:import></c:when>
 	<c:otherwise><c:import url="${myContextPath}/temp/footer.jsp"></c:import></c:otherwise>
 </c:choose>
 </body>
