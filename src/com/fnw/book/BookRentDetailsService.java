@@ -16,6 +16,12 @@ public class BookRentDetailsService implements Action {
 		Book_TotalDAO book_TotalDAO = new Book_TotalDAO();
 		Book_TotalDTO book_TotalDTO = new Book_TotalDTO();
 
+		int ln = 0;
+		try {
+			ln = Integer.parseInt(request.getParameter("ln"));
+		} catch (Exception e) {
+			// TODO: handle exception
+		}
 		int library = 0;
 		try {
 			library = Integer.parseInt(request.getParameter("library"));
@@ -33,6 +39,7 @@ public class BookRentDetailsService implements Action {
 		request.setAttribute("library", library);
 		actionFoward.setCheck(true);
 		actionFoward.setPath("../WEB-INF/view/book/bookRentDetails.jsp");
+		request.setAttribute("ln", ln);
 		return actionFoward;
 	}
 }

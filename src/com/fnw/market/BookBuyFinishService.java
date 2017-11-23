@@ -17,6 +17,12 @@ public class BookBuyFinishService implements Action {
 		HttpSession session = request.getSession();
 		String id = ((MemberDTO)session.getAttribute("member")).getId();
 		
+		int ln = 0;
+		try {
+			ln = Integer.parseInt(request.getParameter("ln"));
+		} catch (Exception e) {
+			// TODO: handle exception
+		}
 		Market_Deal_DetailsDTO market_Deal_DetailsDTO = null;
 		Market_Deal_DetailsDAO market_Deal_DetailsDAO = new Market_Deal_DetailsDAO();
 		
@@ -34,6 +40,7 @@ public class BookBuyFinishService implements Action {
 		
 		actionFoward.setCheck(true);
 		actionFoward.setPath("../WEB-INF/view/market/bookBuyFinish.jsp");
+		request.setAttribute("ln", ln);
 		return actionFoward;
 	}
 }

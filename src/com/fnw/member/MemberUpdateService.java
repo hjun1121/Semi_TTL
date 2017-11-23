@@ -19,6 +19,12 @@ public class MemberUpdateService implements Action {
 		MemberDTO memberDTO = null;
 		int result = 0;
 
+		int ln = 0;
+		try {
+			ln = Integer.parseInt(request.getParameter("ln"));
+		} catch (Exception e) {
+			// TODO: handle exception
+		}
 		int library = 0;
 		try {
 			library = Integer.parseInt(request.getParameter("library"));
@@ -105,6 +111,7 @@ public class MemberUpdateService implements Action {
 			actionFoward.setPath("../WEB-INF/view/common/result.jsp");
 		}
 		
+		request.setAttribute("ln", ln);
 		return actionFoward;
 	}
 

@@ -13,6 +13,12 @@ public class MemberJoinAgreeService implements Action {
 		ActionFoward actionFoward = new ActionFoward();
 		String method = request.getMethod();
 		
+		int ln = 0;
+		try {
+			ln = Integer.parseInt(request.getParameter("ln"));
+		} catch (Exception e) {
+			// TODO: handle exception
+		}
 		int library = 0;
 		try {
 			library = Integer.parseInt(request.getParameter("library"));
@@ -29,6 +35,7 @@ public class MemberJoinAgreeService implements Action {
 			actionFoward.setPath("../WEB-INF/view/member/memberJoin.jsp");
 		}
 		request.setAttribute("library", library);
+		request.setAttribute("ln", ln);
 		return actionFoward;
 	}
 	

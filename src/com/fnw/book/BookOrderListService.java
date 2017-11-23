@@ -18,6 +18,12 @@ public class BookOrderListService implements Action {
 		String id = ((MemberDTO)request.getSession().getAttribute("member")).getId();
 		ArrayList<Book_OrderDTO> list = new ArrayList<>();
 		
+		int ln = 0;
+		try {
+			ln = Integer.parseInt(request.getParameter("ln"));
+		} catch (Exception e) {
+			// TODO: handle exception
+		}
 		int library = 0;
 		try {
 			library = Integer.parseInt(request.getParameter("library"));
@@ -135,6 +141,7 @@ public class BookOrderListService implements Action {
 			actionFoward.setPath("../WEB-INF/view/book/bookOrderList.jsp");
 		}
 		
+		request.setAttribute("ln", ln);
 		return actionFoward;
 	}
 }

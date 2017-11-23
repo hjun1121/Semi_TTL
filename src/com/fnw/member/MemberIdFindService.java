@@ -15,6 +15,12 @@ public class MemberIdFindService implements Action {
 		ActionFoward actionFoward = new ActionFoward();
 		String method = request.getMethod();
 		
+		int ln = 0;
+		try {
+			ln = Integer.parseInt(request.getParameter("ln"));
+		} catch (Exception e) {
+			// TODO: handle exception
+		}
 		int library = 0;
 		try {
 			library = Integer.parseInt(request.getParameter("library"));
@@ -48,6 +54,7 @@ public class MemberIdFindService implements Action {
 			
 		}
 		
+		request.setAttribute("ln", ln);
 		return actionFoward;
 	}
 

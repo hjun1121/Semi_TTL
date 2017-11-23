@@ -25,6 +25,12 @@ public class MarketTotalViewService implements Action {
 			e1.printStackTrace();
 		}
 		
+		int ln = 0;
+		try {
+			ln = Integer.parseInt(request.getParameter("ln"));
+		} catch (Exception e) {
+			// TODO: handle exception
+		}
 		int library = 0;
 		try {
 			library = Integer.parseInt(request.getParameter("library"));
@@ -69,6 +75,7 @@ public class MarketTotalViewService implements Action {
 		request.setAttribute("num", num);
 		request.setAttribute("curPage", curPage);
 	
+		request.setAttribute("ln", ln);
 		return actionFoward;
 	}
 

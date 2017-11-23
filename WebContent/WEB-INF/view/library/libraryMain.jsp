@@ -12,29 +12,30 @@
 <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
 <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
-<link rel="stylesheet" href="${pageContext.request.contextPath }/css/index/index.css">
+<link rel="stylesheet" href="${pageContext.request.contextPath}/css/index/index.css">
 <script type="text/javascript" src="${pageContext.request.contextPath }/script/main.js"></script>
 <title>
 	<c:choose>
-		<c:when test="${ library == 1 }">기흥 도서관</c:when>
-		<c:when test="${ library == 2 }">송파 도서관</c:when>
-		<c:when test="${ library == 3 }">장안 도서관</c:when>
-		<c:when test="${ library == 4 }">분당 도서관</c:when>
+		<c:when test="${ ln == 1 }">기흥 도서관</c:when>
+		<c:when test="${ ln == 2 }">송파 도서관</c:when>
+		<c:when test="${ ln == 3 }">장안 도서관</c:when>
+		<c:when test="${ ln == 4 }">분당 도서관</c:when>
 	</c:choose>
 </title>
+
 <script type="text/javascript">
-	
+
 	var slideIndex = 1;
 	showSlides(slideIndex);
 
 	function plusSlides(n) {
 	  showSlides(slideIndex += n);
 	}
-	
+
 	function currentSlide(n) {
 	  showSlides(slideIndex = n);
 	}
-	
+
 	function showSlides(n) {
 	  var i;
 	  var slides = document.getElementsByClassName("mySlides");
@@ -50,12 +51,12 @@
 	  slides[slideIndex-1].style.display = "block";  
 	  dots[slideIndex-1].className += " active";
 	}
-
 </script>
+
 <script type="text/javascript">
 $(function(){
 	$.ajax({
-		url:"./notice/noticeAjax.notice",
+		url:"${pageContext.request.contextPath}/notice/noticeAjax.notice?ln=${ln}",
 		type:"POST",
 		data: {
 		},
@@ -66,7 +67,7 @@ $(function(){
 	
 	
 	$.ajax({
-		url:"./book/bookAjax.book",
+		url:"${pageContext.request.contextPath}/book/bookAjax.book?ln=${ln}",
 		type:"POST",
 		data: {
 		},
@@ -76,7 +77,7 @@ $(function(){
 	});
 	
 	$.ajax({
-		url:"./book/bookAjax_new.book",
+		url:"${pageContext.request.contextPath}/book/bookAjax_new.book?ln=${ln}",
 		type:"POST",
 		data: {
 		},
@@ -85,21 +86,64 @@ $(function(){
 		}
 	});
 	
+ 	$.ajax({
+		url:"${pageContext.request.contextPath}/seat/seatAjax_1.seat?ln=${ln}",
+		type:"POST",
+		data: {
+			library:1
+		},
+		success:function(data){
+			$("#seatForm_1").html(data);
+		}
+	});
+	
+ 	$.ajax({
+		url:"${pageContext.request.contextPath}/seat/seatAjax_1.seat?ln=${ln}",
+		type:"POST",
+		data: {
+			library:2
+		},
+		success:function(data){
+			$("#seatForm_2").html(data);
+		}
+	});
+ 	
+ 	$.ajax({
+		url:"${pageContext.request.contextPath}/seat/seatAjax_1.seat?ln=${ln}",
+		type:"POST",
+		data: {
+			library:3
+		},
+		success:function(data){
+			$("#seatForm_3").html(data);
+		}
+	});
+ 	
+ 	$.ajax({
+		url:"${pageContext.request.contextPath}/seat/seatAjax_1.seat?ln=${ln}",
+		type:"POST",
+		data: {
+			library:4
+		},
+		success:function(data){
+			$("#seatForm_4").html(data);
+		}
+	});
+	
 });
 </script>
+
 </head>
-
 <body>
-
 <c:choose>
-	<c:when test="${library eq 1}"><c:import url="${myContextPath}/temp/header_1.jsp"></c:import></c:when>
-	<c:when test="${library eq 2}"><c:import url="${myContextPath}/temp/header_2.jsp"></c:import></c:when>
-	<c:when test="${library eq 3}"><c:import url="${myContextPath}/temp/header_3.jsp"></c:import></c:when>
-	<c:when test="${library eq 4}"><c:import url="${myContextPath}/temp/header_4.jsp"></c:import></c:when>
+	<c:when test="${ln eq 1}"><c:import url="${myContextPath}/temp/header_1.jsp"></c:import></c:when>
+	<c:when test="${ln eq 2}"><c:import url="${myContextPath}/temp/header_2.jsp"></c:import></c:when>
+	<c:when test="${ln eq 3}"><c:import url="${myContextPath}/temp/header_3.jsp"></c:import></c:when>
+	<c:when test="${ln eq 4}"><c:import url="${myContextPath}/temp/header_4.jsp"></c:import></c:when>
 </c:choose>
 
 	<!-- ////////////////// -->
-	
+
 		<!-- 메인 Search 시작 -->
 		<div id="divSearch">
 			<div>
@@ -107,7 +151,7 @@ $(function(){
 				<div class="searchForm">
 					<ul>
 						<li class="on">
-							<form name="totalForm" action="./book/bookTotalSearch.book" method="get">
+							<form name="totalForm" action="${pageContext.request.contextPath}/library/libraryBookSearch.library?library=${library}&ln=${ln}" method="get">
 								<input type="hidden" id="service_type" name="service_type" value="brief">
 								<fieldset>
 									<legend>제목으로 검색</legend>
@@ -123,9 +167,9 @@ $(function(){
 			</div>
 		</div>
 		<!-- 메인 Search 끝 -->
-		
+
 		<br><br><br>
-		
+
 		<!-- 메인  컨텐츠 시작 -->
 		
 		<div class="contents">
@@ -135,7 +179,7 @@ $(function(){
 						<div class="slideshow-container">
 							  <div class="mySlides fade_banner" style="display: block;">
 							    <div class="numbertext">1 / 4</div>
-							    <a href="./library/libraryMain.library?library=1" target="_blank" class="bannerImg">
+							    <a href="${pageContext.request.contextPath}/library/libraryMain.library?ln=1" target="_blank" class="bannerImg">
 							    	<img src="${pageContext.request.contextPath }/image/index/hj.png" style="width:100%">
 							    </a>
 							    <div class="text">기흥 도서관</div>
@@ -143,7 +187,7 @@ $(function(){
 							
 							  <div class="mySlides fade_banner">
 							    <div class="numbertext">2 / 4</div>
-							    <a href="./library/libraryMain.library?library=2" target="_blank" class="bannerImg">
+							    <a href="${pageContext.request.contextPath}/library/libraryMain.library?ln=2" target="_blank" class="bannerImg">
 							   		<img src="${pageContext.request.contextPath }/image/index/hj2.png" style="width:100%">
 							    </a>
 							    <div class="text">송파 도서관</div>
@@ -151,14 +195,14 @@ $(function(){
 							
 							  <div class="mySlides fade_banner">
 							    <div class="numbertext">3 / 4</div>
-							    <a href="./library/libraryMain.library?library=3" target="_blank" class="bannerImg">
+							    <a href="${pageContext.request.contextPath}/library/libraryMain.library?ln=3" target="_blank" class="bannerImg">
 							    	<img src="${pageContext.request.contextPath }/image/index/hj3.png" style="width:100%">
 							    </a>
 							    <div class="text">장안 도서관</div>
 							  </div>
 							  <div class="mySlides fade_banner">
 							    <div class="numbertext">4 / 4</div>
-							    <a href="./library/libraryMain.library?library=4" target="_blank" class="bannerImg">
+							    <a href="${pageContext.request.contextPath}/library/libraryMain.library?ln=4" target="_blank" class="bannerImg">
 							   		<img src="${pageContext.request.contextPath }/image/index/hj4.png" style="width:100%">
 							    </a>
 							    <div class="text">분당 도서관</div>
@@ -179,45 +223,45 @@ $(function(){
 							<li id="noticeForm">
 							</li>			
 						</ul>
-					<a href="./notice/noticeList.notice" class="more"><img src="${pageContext.request.contextPath }/image/index/more.png" alt="더보기"></a>
+					<a href="${pageContext.request.contextPath}/notice/noticeList.notice?ln=${ln}" class="more"><img src="${pageContext.request.contextPath }/image/index/more.png" alt="더보기"></a>
 					</div>
 				</div>
 			</div>
 			<div class="content2">
 				<div class="seat">
 					<div>
-						<h2>열람실 좌석 현황</h2>
+						<h2>도서관 좌석 현황</h2>
 					</div>
 					<dl class="readingRoom1">
-						<dt>중앙도서관</dt>
+						<dt>기흥도서관</dt>
 						<dd>
-							<ul>
-								<li><img src="${pageContext.request.contextPath }/image/index/readingRoom2.png" alt="자유열람실" id="roomName0_2" title="자유열람실"> <span id="useSeat0_2">105</span> / <span id="totalSeat0_2">292</span></li>
-								<li><img src="${pageContext.request.contextPath }/image/indexreadingRoom1.png" alt="PC실" id="roomName0_1" title="PC실"> <span id="useSeat0_1">47</span> / <span id="totalSeat0_1">124</span></li>
-								<li><img src="${pageContext.request.contextPath }/image/index/readingRoom3.png" alt="노트북실" id="roomName0_3" title="노트북실"> <span id="useSeat0_3">51</span> / <span id="totalSeat0_3">139</span></li>
+							<ul id="seatForm_1">
+
 							</ul>
 						</dd>
 					</dl>
 					<dl class="readingRoom2">
-						<dt>법학도서관</dt>
+						<dt>송파도서관</dt>
 						<dd>
-							<ul>
-								<li><img src="${pageContext.request.contextPath }/image/index/readingRoom2.png" alt="법학 자유열람실" id="roomName0_4" title="법학 자유열람실"> <span id="useSeat0_4">0</span> / <span id="totalSeat0_4">88</span></li>
+							<ul id="seatForm_2">
+							</ul>
+						</dd>
+					</dl>
+					<dl class="readingRoom4">
+						<dt>장안도서관</dt>
+						<dd>
+							<ul id="seatForm_3">
 							</ul>
 						</dd>
 					</dl>
 					<dl class="readingRoom3">
-						<dt>ECC열람실</dt>
+						<dt>분당도서관</dt>
 						<dd>
-							<ul>
-								<li><img src="${pageContext.request.contextPath }/image/index/readingRoom5.png" alt="이화 신한열람실" id="roomName1_4" title="이화 신한열람실"> <span id="useSeat1_4">49</span> / <span id="totalSeat1_4">300</span></li>
-								<li><img src="${pageContext.request.contextPath }/image/index/readingRoom6.png" alt="이화 신한노트북석" id="roomName1_5" title="이화 신한노트북석"> <span id="useSeat1_5">114</span> / <span id="totalSeat1_5">191</span></li>
-								<li><img src="${pageContext.request.contextPath }/image/index/readingRoom4.png" alt="이화 YBM열람실" id="roomName1_2" title="이화 YBM열람실"> <span id="useSeat1_2">47</span> / <span id="totalSeat1_2">294</span></li>
-								<li><img src="${pageContext.request.contextPath }/image/index/readingRoom2.png" alt="자유열람실" id="roomName1_1" title="자유열람실"> <span id="useSeat1_1">54</span> / <span id="totalSeat1_1">280</span></li>
+							<ul id="seatForm_4">
 							</ul>
 						</dd>
 					</dl>
-					<a href="#" target="_blank" class="more"><img src="${pageContext.request.contextPath }/image/index/more.png" alt="더보기"></a>
+					<a href="${pageContext.request.contextPath }/seat/seatList.seat?ln=${ln}" target="_blank" class="more"><img src="${pageContext.request.contextPath }/image/index/more.png" alt="더보기"></a>
 				</div>
 				
 			</div>
@@ -231,7 +275,7 @@ $(function(){
 				
 					<div>	
 						<div>
-							<ul style="width: 2288px;" id="bookForm">
+							<ul id="bookForm">
 								
 							</ul>
 						</div>
@@ -263,12 +307,15 @@ $(function(){
 		<!-- 메인 컨텐츠 끝 -->
 		<br><br><br><br>
 		<!-- ////////////////// -->
+
 <c:choose>
-	<c:when test="${library eq 1}"><c:import url="${myContextPath}/temp/footer_1.jsp"></c:import></c:when>
-	<c:when test="${library eq 2}"><c:import url="${myContextPath}/temp/footer_2.jsp"></c:import></c:when>
-	<c:when test="${library eq 3}"><c:import url="${myContextPath}/temp/footer_3.jsp"></c:import></c:when>
-	<c:when test="${library eq 4}"><c:import url="${myContextPath}/temp/footer_4.jsp"></c:import></c:when>
+	<c:when test="${ln eq 1}"><c:import url="${myContextPath}/temp/footer_1.jsp"></c:import></c:when>
+	<c:when test="${ln eq 2}"><c:import url="${myContextPath}/temp/footer_2.jsp"></c:import></c:when>
+	<c:when test="${ln eq 3}"><c:import url="${myContextPath}/temp/footer_3.jsp"></c:import></c:when>
+	<c:when test="${ln eq 4}"><c:import url="${myContextPath}/temp/footer_4.jsp"></c:import></c:when>
 	<c:otherwise><c:import url="${myContextPath}/temp/footer.jsp"></c:import></c:otherwise>
 </c:choose>
+
+
 </body>
 </html>
