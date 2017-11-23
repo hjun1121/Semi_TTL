@@ -23,12 +23,7 @@ public class BookOrderTotalListService implements Action {
 		} catch (Exception e) {
 			// TODO: handle exception
 		}
-		int library = 0;
-		try {
-			library = Integer.parseInt(request.getParameter("library"));
-		} catch (Exception e) {
-			// TODO: handle exception
-		}
+		
 		int curPage = 0;
 		try {
 			curPage = Integer.parseInt(request.getParameter("curPage"));
