@@ -149,6 +149,11 @@ $(function(){
 </div>
 </section>
 <!-- -------------------------------------------------------------------- -->
+
+
+
+
+
 <c:if test="${replyList ne null }">
 	<table border="1">
 		<c:forEach items="${replyList }" var="dto" varStatus="i">
