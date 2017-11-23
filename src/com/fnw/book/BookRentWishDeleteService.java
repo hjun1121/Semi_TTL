@@ -21,12 +21,6 @@ public class BookRentWishDeleteService implements Action {
 		} catch (Exception e) {
 			// TODO: handle exception
 		}
-		int library = 0;
-		try {
-			library = Integer.parseInt(request.getParameter("library"));
-		} catch (Exception e) {
-			// TODO: handle exception
-		}
 		if(method.equals("GET")) {
 			int result = 0;
 			try {

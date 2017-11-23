@@ -82,7 +82,7 @@ public class AdminMarketOrderOKService implements Action {
 		request.setAttribute("library", library);
 		request.setAttribute("ln", ln);
 		request.setAttribute("message", message);
-		request.setAttribute("path", path);
+		request.setAttribute("path", path); 
 		
 		actionFoward.setCheck(true);
 		actionFoward.setPath("../WEB-INF/view/common/result.jsp");

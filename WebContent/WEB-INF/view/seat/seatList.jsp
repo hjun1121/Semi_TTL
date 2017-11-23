@@ -15,6 +15,8 @@
 <script type="text/javascript">
 	$(function(){
 		$("#seat_1").click(function(){
+			$(".a").removeAttr("style");
+			$("#q").attr("style","color:red");
 			$.ajax({
 				url: "./seatList.seat?ln=${ln}",
 				type: "POST",
@@ -29,6 +31,8 @@
 		});
 		
 		$("#seat_2").click(function(){
+			$(".a").removeAttr("style");
+			$("#w").attr("style","color:red");
 			$.ajax({
 				url: "./seatList.seat?ln=${ln}",
 				type: "POST",
@@ -44,6 +48,8 @@
 		});
 		
 		$("#seat_3").click(function(){
+			$(".a").removeAttr("style");
+			$("#e").attr("style","color:red");
 			$.ajax({
 				url: "./seatList.seat?ln=${ln}",
 				type: "POST",
@@ -59,6 +65,8 @@
 		});
 		
 		$("#seat_4").click(function(){
+			$(".a").removeAttr("style");
+			$("#r").attr("style","color:red");
 			$.ajax({
 				url: "./seatList.seat?ln=${ln}",
 				type: "POST",
@@ -108,7 +116,7 @@
 				</thead>
 				<tbody>
 					<tr>
-						<td scope="row" style="display: table-cell;">기흥 도서관</td>
+						<td scope="row" class="a" id="q" style="display: table-cell;">기흥 도서관</td>
 						<td scope="row" style="display: table-cell;">
 						${cntAlla1} 석
 						</td>
@@ -116,7 +124,7 @@
 						<td><a id="seat_1"><button class="detail">상세</button></a></td>
 					</tr>
 					<tr>
-						<td scope="row" style="display: table-cell;">송파 도서관</td>
+						<td scope="row" class="a"  id="w" style="display: table-cell;">송파 도서관</td>
 						<td scope="row" style="display: table-cell;">
 						${cntAlla2} 석
 						</td>
@@ -124,7 +132,7 @@
 						<td><a id="seat_2"><button class="detail">상세</button></a></td>
 					</tr>
 					<tr>
-						<td scope="row" style="display: table-cell;">장안 도서관</td>
+						<td scope="row" class="a"  id="e" style="display: table-cell;">장안 도서관</td>
 						<td scope="row" style="display: table-cell;">
 						${cntAlla3} 석
 						</td>
@@ -132,7 +140,7 @@
 						<td><a id="seat_3"><button class="detail">상세</button></a></td>
 					</tr>
 					<tr>
-						<td scope="row" style="display: table-cell;">분당 도서관</td>
+						<td scope="row" class="a"  id="r" style="display: table-cell;">분당 도서관</td>
 						<td scope="row" style="display: table-cell;">
 						${cntAlla4} 석
 						</td>

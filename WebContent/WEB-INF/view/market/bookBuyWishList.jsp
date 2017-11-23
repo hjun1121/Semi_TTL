@@ -83,12 +83,12 @@ $(document).ready(function() {
 			<th></th>
 			<th>상태</th>
 		</tr>
-		<c:forEach items="${bookBuyWishList }" var="bookBuyWishList">
+		<c:forEach items="${bookBuyWishList }" var="bookBuyWishList" varStatus="count">
 			<tr>
 				<td scope="row" style="display: table-cell;">
 				<input type="checkbox" name="Pcheck" class="chk" value="${bookBuyWishList.num }">
 				</td>
-				<td scope="row" class="footable-first-column">${bookBuyWishList.num }</td>
+				<td scope="row" class="footable-first-column">${count.count }</td>
  				<td scope="row" style="display: table-cell;">${bookBuyWishList.title }</td>
 				<td scope="row" style="display: table-cell;">${bookBuyWishList.writer }</td>
 				<td scope="row" style="display: table-cell;">${bookBuyWishList.company }</td>

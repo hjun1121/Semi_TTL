@@ -118,7 +118,7 @@
 					<td><input type="text" class="noneBorder" value="중" readonly="readonly"></td>
 					<input type="hidden" name="state" value=${bookDealsDetail.state }>
 				</c:when>
-				<c:when test="${bookDealsDetail.state eq 2}">
+				<c:when test="${bookDealsDetail.state eq 3}">
 					<th>상태</th>
 					<td><input type="text" class="noneBorder" value="하" readonly="readonly"></td>
 					<input type="hidden" name="state" value=${bookDealsDetail.state }>

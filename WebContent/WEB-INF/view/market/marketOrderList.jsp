@@ -92,9 +92,9 @@ $(function(){
 			<th>비치도서관</th>
 			<th>상태</th>
 		</tr>
-		<c:forEach items="${marketOrderList }" var="marketOrderList">
+		<c:forEach items="${marketOrderList }" var="marketOrderList" varStatus="count">
 			<tr>
-				<td scope="row" class="footable-first-column">${marketOrderList.num }</td>
+				<td scope="row" class="footable-first-column">${count.count }</td>
 				<td scope="row" class="footable-first-column">${marketOrderList.title }</td>
 				<td scope="row" style="display: table-cell;">${marketOrderList.writer }</td>
 				<td scope="row" style="display: table-cell;">${marketOrderList.company }</td>
