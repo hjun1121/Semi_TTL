@@ -71,9 +71,9 @@
 			<th>비치도서관</th>
 			<th>신청ID</th>
 		</tr>
-		<c:forEach items="${requestScope.list}" var="dto">
+		<c:forEach items="${requestScope.list}" var="dto" varStatus="count">
 			<tr>
-				<td scope="row" class="footable-first-column">${dto.num}</td>
+				<td scope="row" class="footable-first-column">${count.count}</td>
 				<td scope="row" style="display: table-cell;">
 				<a href="./marketOrderView.market?num=${dto.num}&ln=${ln}">${dto.title}</a></td>
 				<td scope="row" style="display: table-cell;">${dto.writer }</td>
