@@ -1,7 +1,8 @@
 @charset "UTF-8";
-#leftBar #leftBar10 a{
-	background-color: #555;
-    color: white;
+
+#leftBar10 a{
+	color: #333;
+    font-weight: bold;
 }
 
 <!--상단 바 시작 -->
