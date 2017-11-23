@@ -13,10 +13,9 @@
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
 <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
 <link rel="stylesheet" href="./css/index/index.css">
-
+<script type="text/javascript" src="${pageContext.request.contextPath }/script/main.js"></script>
 <title>도서관 통합 포털</title>
 
-<script type="text/javascript" src="${pageContext.request.contextPath }/script/main.jsp"></script>
 <script type="text/javascript">
 
 	var slideIndex = 1;
@@ -298,7 +297,7 @@ $(function(){
 		<!-- ////////////////// -->
 
 <c:import url="${myContextPath}/temp/footer.jsp"></c:import>
-<script type="text/javascript" src="${pageContext.request.contextPath }/script/main.js"></script>
+
 
 </body>
 </html>

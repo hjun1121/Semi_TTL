@@ -25,7 +25,6 @@ public class SeatDetailsListService implements Action {
 		try {
 			library = Integer.parseInt(request.getParameter("library"));
 		} catch (Exception e) {
-			// TODO: handle exception
 		}
 		int curPage=1;
 		try {
@@ -77,6 +76,7 @@ public class SeatDetailsListService implements Action {
 			request.setAttribute("month", month);
 			request.setAttribute("day", day);
 			request.setAttribute("page", pageMaker.getMakePage());
+			request.setAttribute("curPage", curPage);
 		} catch (Exception e) {
 			e.printStackTrace();
 		}

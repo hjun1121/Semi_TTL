@@ -19,13 +19,13 @@ public class QnaUpdateService implements Action {
 		try {
 			library = Integer.parseInt(request.getParameter("library"));
 		} catch (Exception e) {
-			// TODO: handle exception
 		}
 		int num =0;
 		try {
 			num = Integer.parseInt(request.getParameter("num"));
 		}catch (Exception e) {
 		}
+		
 		int type =1;
 		try {
 			type = Integer.parseInt(request.getParameter("type"));
@@ -37,8 +37,8 @@ public class QnaUpdateService implements Action {
 		}
 		
 		if(method.equals("GET")) {
-			QnaDTO qnaDTO = null;
 			QnaDAO qnaDAO = new QnaDAO();
+			QnaDTO qnaDTO = null;
 			try {
 				qnaDTO = qnaDAO.selectOne(num);
 			} catch (Exception e) {
@@ -59,7 +59,7 @@ public class QnaUpdateService implements Action {
 			qnaDTO.setContents(request.getParameter("contents"));
 			qnaDTO.setLibrary(library);
 			qnaDTO.setPw(pw);
-			
+			request.setAttribute("library", library);
 			try {
 				result = qnaDAO.update(qnaDTO);
 			} catch (Exception e) {
