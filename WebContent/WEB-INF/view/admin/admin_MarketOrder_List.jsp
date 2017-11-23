@@ -35,7 +35,7 @@
 </c:choose>
 
 <div>
-	<c:import url="${myContextPath}/WEB-INF/view/member/myPage.jsp?library=${library}"></c:import>
+	<c:import url="${myContextPath}/WEB-INF/view/member/myPage.jsp?ln=${ln}"></c:import>
 </div>
 
 <section>
@@ -44,7 +44,7 @@
 		<h2 id="divTitle">중고 신청 내역</h2>
 		<div id="divLocation">
 			<ul>
-				<li class="home"><a href="${pageContext.request.contextPath}/index.jsp?library=${library}"><img src="${pageContext.request.contextPath }/image/notice/home.png" alt="HOME"></a></li>
+				<li class="home"><a href="${pageContext.request.contextPath}/index.jsp?ln=${ln}"><img src="${pageContext.request.contextPath }/image/notice/home.png" alt="HOME"></a></li>
 				<li>&gt;</li>
 				<li>MY PAGE</li>
 				<li>&gt;</li>
@@ -75,7 +75,7 @@
 			<tr>
 				<td scope="row" class="footable-first-column">${dto.num}</td>
 				<td scope="row" style="display: table-cell;">
-				<a href="./marketOrderView.market?num=${dto.num}">${dto.title}</a></td>
+				<a href="./marketOrderView.market?num=${dto.num}&ln=${ln}">${dto.title}</a></td>
 				<td scope="row" style="display: table-cell;">${dto.writer }</td>
 				<td scope="row" style="display: table-cell;">${dto.company }</td>
 				<td  scope="row" data-class="expand">${dto.publish_date }</td>
@@ -109,11 +109,11 @@
 			</c:if>
 			
 			<c:forEach begin="${page.startNum}" end="${page.lastNum}" var="i">
-			<li><a class="cur" title="${i }" href="./marketOrderAdmin.market?curPage=${i}&library=${library}">${i}</a></li>
+			<li><a class="cur" title="${i }" href="./marketOrderAdmin.market?curPage=${i}&library=${library}&ln=${ln}">${i}</a></li>
 			</c:forEach>
 			
 			<c:if test="${page.curBlock < page.totalBlock}">
-			<li><a href="./marketOrderAdmin.market?curPage=${requestScope.page.lastNum+1}&library=${library}">[다음]</a></li>
+			<li><a href="./marketOrderAdmin.market?curPage=${requestScope.page.lastNum+1}&library=${library}&ln=${ln}">[다음]</a></li>
 			</c:if>
 		</ul>
 	</div>
@@ -124,10 +124,10 @@
 	</section>
 	
 <c:choose>
-	<c:when test="${library eq 1}"><c:import url="${myContextPath}/temp/footer_1.jsp"></c:import></c:when>
-	<c:when test="${library eq 2}"><c:import url="${myContextPath}/temp/footer_2.jsp"></c:import></c:when>
-	<c:when test="${library eq 3}"><c:import url="${myContextPath}/temp/footer_3.jsp"></c:import></c:when>
-	<c:when test="${library eq 4}"><c:import url="${myContextPath}/temp/footer_4.jsp"></c:import></c:when>
+	<c:when test="${ln eq 1}"><c:import url="${myContextPath}/temp/footer_1.jsp"></c:import></c:when>
+	<c:when test="${ln eq 2}"><c:import url="${myContextPath}/temp/footer_2.jsp"></c:import></c:when>
+	<c:when test="${ln eq 3}"><c:import url="${myContextPath}/temp/footer_3.jsp"></c:import></c:when>
+	<c:when test="${ln eq 4}"><c:import url="${myContextPath}/temp/footer_4.jsp"></c:import></c:when>
 	<c:otherwise><c:import url="${myContextPath}/temp/footer.jsp"></c:import></c:otherwise>
 </c:choose>
 </body>
