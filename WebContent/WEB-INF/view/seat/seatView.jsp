@@ -45,12 +45,12 @@
 		<c:forEach begin="0" end="${cnt1-1 }" items="${list }" var="dto">
 			<c:if test="${dto.state eq 1}">
 				<td style="width: 150px; text-align: center;">
-				<a style="color: black;" target="blank" href="${pageContext.request.contextPath }/seat/seatInfo.seat?seat_num=${dto.seat_num }&state=${dto.state}&library=${dto.library}">${dto.seat_num }</a>
+				<a style="color: black;" target="blank" href="${pageContext.request.contextPath }/seat/seatInfo.seat?seat_num=${dto.seat_num }&state=${dto.state}&library=${dto.library}&ln=${ln}">${dto.seat_num }</a>
 				</td>
 			</c:if>
 			<c:if test="${dto.state ne 1}">
 				<td style="background-color: #004640;text-align: center;">
-				<a style="color: red;" target="blank" href="${pageContext.request.contextPath }/seat/seatInfo.seat?seat_num=${dto.seat_num }&state=${dto.state}&library=${dto.library}">${dto.seat_num }</a>
+				<a style="color: red;" target="blank" href="${pageContext.request.contextPath }/seat/seatInfo.seat?seat_num=${dto.seat_num }&state=${dto.state}&library=${dto.library}&ln=${ln}">${dto.seat_num }</a>
 				</td>
 			</c:if>
 		</c:forEach>
@@ -60,12 +60,12 @@
 		<c:forEach begin="${cnt1 }" end="${cnt2-1 }" items="${list }" var="dto">
 			<c:if test="${dto.state eq 1}">
 				<td style="width: 150px; text-align: center;">
-				<a style="color: black;" target="blank" href="${pageContext.request.contextPath }/seat/seatInfo.seat?seat_num=${dto.seat_num }&state=${dto.state}&library=${dto.library}">${dto.seat_num }</a>
+				<a style="color: black;" target="blank" href="${pageContext.request.contextPath }/seat/seatInfo.seat?seat_num=${dto.seat_num }&state=${dto.state}&library=${dto.library}&ln=${ln}">${dto.seat_num }</a>
 				</td>
 			</c:if>
 			<c:if test="${dto.state ne 1}">
 				<td style="background-color: #004640;text-align: center;">
-				<a style="color: red;" target="blank" href="${pageContext.request.contextPath }/seat/seatInfo.seat?seat_num=${dto.seat_num }&state=${dto.state}&library=${dto.library}">${dto.seat_num }</a>
+				<a style="color: red;" target="blank" href="${pageContext.request.contextPath }/seat/seatInfo.seat?seat_num=${dto.seat_num }&state=${dto.state}&library=${dto.library}&ln=${ln}">${dto.seat_num }</a>
 				</td>
 			</c:if>
 		</c:forEach>	
@@ -75,12 +75,12 @@
 		<c:forEach begin="${cnt2 }" end="${cnt3-1 }" items="${list }" var="dto">
 			<c:if test="${dto.state eq 1}">
 				<td style="width: 150px; text-align: center;">
-				<a style="color: black;" target="blank" href="${pageContext.request.contextPath }/seat/seatInfo.seat?seat_num=${dto.seat_num }&state=${dto.state}&library=${dto.library}">${dto.seat_num }</a>
+				<a style="color: black;" target="blank" href="${pageContext.request.contextPath }/seat/seatInfo.seat?seat_num=${dto.seat_num }&state=${dto.state}&library=${dto.library}&ln=${ln}">${dto.seat_num }</a>
 				</td>
 			</c:if>
 			<c:if test="${dto.state ne 1}">
 				<td style="background-color: #004640;text-align: center;">
-				<a style="color: red;" target="blank" href="${pageContext.request.contextPath }/seat/seatInfo.seat?seat_num=${dto.seat_num }&state=${dto.state}&library=${dto.library}">${dto.seat_num }</a>
+				<a style="color: red;" target="blank" href="${pageContext.request.contextPath }/seat/seatInfo.seat?seat_num=${dto.seat_num }&state=${dto.state}&library=${dto.library}&ln=${ln}">${dto.seat_num }</a>
 				</td>
 			</c:if>
 		</c:forEach>	

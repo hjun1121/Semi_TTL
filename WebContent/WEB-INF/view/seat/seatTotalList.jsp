@@ -47,15 +47,15 @@ $(function(){
 </head>
 <body>
 <c:choose>
-	<c:when test="${library eq 1}"><c:import url="${myContextPath}/temp/header_1.jsp"></c:import></c:when>
-	<c:when test="${library eq 2}"><c:import url="${myContextPath}/temp/header_2.jsp"></c:import></c:when>
-	<c:when test="${library eq 3}"><c:import url="${myContextPath}/temp/header_3.jsp"></c:import></c:when>
-	<c:when test="${library eq 4}"><c:import url="${myContextPath}/temp/header_4.jsp"></c:import></c:when>
+	<c:when test="${ln eq 1}"><c:import url="${myContextPath}/temp/header_1.jsp"></c:import></c:when>
+	<c:when test="${ln eq 2}"><c:import url="${myContextPath}/temp/header_2.jsp"></c:import></c:when>
+	<c:when test="${ln eq 3}"><c:import url="${myContextPath}/temp/header_3.jsp"></c:import></c:when>
+	<c:when test="${ln eq 4}"><c:import url="${myContextPath}/temp/header_4.jsp"></c:import></c:when>
 	<c:otherwise><c:import url="${myContextPath}/temp/header.jsp"></c:import></c:otherwise>
 </c:choose>
 
 <div>
-	<c:import url="${myContextPath}/WEB-INF/view/member/myPage.jsp"></c:import>
+	<c:import url="${myContextPath}/WEB-INF/view/member/myPage.jsp?ln=${ln}"></c:import>
 </div>
 
 
@@ -74,7 +74,7 @@ $(function(){
 
 
 	<div>
-	<form name="frm" class="form-inline" action="./seatTotalList.seat?library=${library}" method="post">
+	<form name="frm" class="form-inline" action="./seatTotalList.seat?library=${library}&ln=${ln}" method="post">
 		<div>
 			<span>
 				<select id="year" name="year" class="selectBox1">
@@ -182,13 +182,13 @@ $(function(){
 				<c:when test="${seatTotal_list.state eq 0 && empty seatTotal_list.in_time && empty seatTotal_list.out_time}">
 					<td scope="row" style="display: table-cell;">예약중</td>
 					<td>
-					<a href="./seatCancel.seat?seat_num=${seatTotal_list.seat_num }&library=${library}"><button class = "btn btn-default wish_btn" type = "button" >취소</button></a>
-					<a href="./seatIn.seat?num=${seatTotal_list.num }&library=${library}"><button class = "btn btn-default wish_btn" type = "button" >입실</button></a>
+					<a href="./seatCancel.seat?seat_num=${seatTotal_list.seat_num }&library=${library}&ln=${ln}"><button class = "btn btn-default wish_btn" type = "button" >취소</button></a>
+					<a href="./seatIn.seat?num=${seatTotal_list.num }&library=${library}&ln=${ln}"><button class = "btn btn-default wish_btn" type = "button" >입실</button></a>
 					</td>
 				</c:when>
 				<c:when test="${seatTotal_list.state eq 1 && !empty seatTotal_list.in_time && empty seatTotal_list.out_time}">
 					<td scope="row" style="display: table-cell;">입실 완료</td>
-					<td><a href="./seatOut.seat?num=${seatTotal_list.num }&seat_num=${seatTotal_list.seat_num }&library=${library}"><button class = "btn btn-default wish_btn" type = "button" >퇴실</button></a></td>
+					<td><a href="./seatOut.seat?num=${seatTotal_list.num }&seat_num=${seatTotal_list.seat_num }&library=${library}&ln=${ln}"><button class = "btn btn-default wish_btn" type = "button" >퇴실</button></a></td>
 				</c:when>
 				<c:when test="${seatTotal_list.state eq 2 && !empty seatTotal_list.out_time && !empty seatTotal_list.in_time}">
 					<td scope="row" style="display: table-cell;">퇴실 완료</td>
@@ -213,11 +213,11 @@ $(function(){
 			<li><button class="go" id="${page.startNum-1}">[이전]</button></li>
 			</c:if>
 			<c:forEach begin="${page.startNum}" end="${page.lastNum}" var="i">
-			<li><a class="cur" title="${i }" href="./seatTotalList.seat?curPage=${i}&id=${id }&year=${year}&month=${month}&day=${day}&library=${library}">${i}</a></li>
+			<li><a class="cur" title="${i }" href="./seatTotalList.seat?curPage=${i}&id=${id }&year=${year}&month=${month}&day=${day}&library=${library}&ln=${ln}">${i}</a></li>
 			</c:forEach>
 			<c:if test="${page.curBlock < page.totalBlock}">
 			<li><a
-				href="./seatTotalList.seat?curPage=${requestScope.page.lastNum+1}&library=${library}">[다음]</a></li>
+				href="./seatTotalList.seat?curPage=${requestScope.page.lastNum+1}&library=${library}&ln=${ln}">[다음]</a></li>
 			</c:if>
 		</ul>
 	</div>
@@ -227,10 +227,10 @@ $(function(){
 	</div>
 </div>	
 <c:choose>
-	<c:when test="${library eq 1}"><c:import url="${myContextPath}/temp/footer_1.jsp"></c:import></c:when>
-	<c:when test="${library eq 2}"><c:import url="${myContextPath}/temp/footer_2.jsp"></c:import></c:when>
-	<c:when test="${library eq 3}"><c:import url="${myContextPath}/temp/footer_3.jsp"></c:import></c:when>
-	<c:when test="${library eq 4}"><c:import url="${myContextPath}/temp/footer_4.jsp"></c:import></c:when>
+	<c:when test="${ln eq 1}"><c:import url="${myContextPath}/temp/footer_1.jsp"></c:import></c:when>
+	<c:when test="${ln eq 2}"><c:import url="${myContextPath}/temp/footer_2.jsp"></c:import></c:when>
+	<c:when test="${ln eq 3}"><c:import url="${myContextPath}/temp/footer_3.jsp"></c:import></c:when>
+	<c:when test="${ln eq 4}"><c:import url="${myContextPath}/temp/footer_4.jsp"></c:import></c:when>
 	<c:otherwise><c:import url="${myContextPath}/temp/footer.jsp"></c:import></c:otherwise>
 </c:choose>
 </body>
