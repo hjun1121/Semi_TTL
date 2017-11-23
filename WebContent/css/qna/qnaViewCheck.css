@@ -109,4 +109,11 @@
     height: 50px;
     line-height: 48px;
     font-size: 16px;
+    float: right;
 }
+
+div#login_all {
+    width: 338px;
+    margin: 0 auto;
+}
+
