@@ -4,9 +4,11 @@ import java.util.ArrayList;
 
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
+import javax.servlet.http.HttpSession;
 
 import com.fnw.action.Action;
 import com.fnw.action.ActionFoward;
+import com.fnw.member.MemberDTO;
 import com.fnw.util.PageMaker;
 
 public class BookBuyWishListService implements Action {
@@ -17,17 +19,25 @@ public class BookBuyWishListService implements Action {
 		Book_Buy_WishDAO book_Buy_WishDAO = new Book_Buy_WishDAO();
 		ArrayList<Book_Buy_WishDTO> list = new ArrayList<>();
 		
+		HttpSession session = null;
+		MemberDTO memberDTO = null;
+		try {
+			session = request.getSession();
+			memberDTO =  (MemberDTO)session.getAttribute("member");
+		}catch (Exception e) {
+		}
+
+
+		
 		int ln = 0;
 		try {
 			ln = Integer.parseInt(request.getParameter("ln"));
 		} catch (Exception e) {
-			// TODO: handle exception
 		}
 		int library = 0;
 		try {
 			library = Integer.parseInt(request.getParameter("library"));
 		} catch (Exception e) {
-			// TODO: handle exception
 		}
 		int curPage = 1;
 		try {
@@ -44,6 +54,16 @@ public class BookBuyWishListService implements Action {
 			search="";
 		}
 		
+
+		if(memberDTO == null ) {
+			request.setAttribute("ln", ln);
+			request.setAttribute("message", "로그인 후 가능합니다");
+			request.setAttribute("path", "../member/memberLogin.member");
+			actionFoward.setCheck(true);
+			actionFoward.setPath("../WEB-INF/view/common/result.jsp");
+		}else {
+
+		
 		String id = request.getParameter("id");
 		int totalCount = 0;
 		try {
@@ -57,13 +77,15 @@ public class BookBuyWishListService implements Action {
 			request.setAttribute("bookBuyWishList", list);
 			request.setAttribute("id", id);
 			request.setAttribute("page", pageMaker.getMakePage());
-		} catch (Exception e) {
-			e.printStackTrace();
+			} catch (Exception e) {
+				e.printStackTrace();
+			}
+			request.setAttribute("library", library);
+			request.setAttribute("ln", ln);
+			actionFoward.setCheck(true);
+			actionFoward.setPath("../WEB-INF/view/market/bookBuyWishList.jsp");
 		}
-		request.setAttribute("library", library);
-		actionFoward.setCheck(true);
-		actionFoward.setPath("../WEB-INF/view/market/bookBuyWishList.jsp");
-		request.setAttribute("ln", ln);
+		
 		return actionFoward;
 	}
 }
