@@ -39,7 +39,7 @@
 			<h2 id="divTitle">도서신청</h2>
 			<div id="divLocation">
 				<ul>
-					<li class="home"><a href="${pageContext.request.contextPath}/index.jsp?library=${library}"><img src="${pageContext.request.contextPath}/image/bookTotalSearch/home.png" alt="HOME"></a></li>
+					<li class="home"><a href="${pageContext.request.contextPath}/index.jsp"><img src="${pageContext.request.contextPath}/image/bookTotalSearch/home.png" alt="HOME"></a></li>
 					<li>&gt;</li>
 					<li>통합검색</li>
 					<li>&gt;</li>
@@ -71,11 +71,14 @@
 					<td scope="row" style="display: table-cell;">${bookOrder_list.company}</td>
 					<td scope="row" style="display: table-cell;">${fn:substring(bookOrder_list.id,0,2) }***</td>
 					<c:choose>
-					<c:when test="${bookOrder_list.state ne 1}">
+					<c:when test="${bookOrder_list.state eq 0}">
 						<td scope="row" style="display: table-cell;">대기</td>
 					</c:when>
-					<c:when test="${bookOrder_list.state ne 0 }">
-						<td scope="row" style="display: table-cell;">완료</td>
+					<c:when test="${bookOrder_list.state eq 1}">
+						<td scope="row" style="display: table-cell;">거절</td>
+					</c:when>
+					<c:when test="${bookOrder_list.state eq 2 }">
+						<td scope="row" style="display: table-cell;">승인</td>
 					</c:when>
 					</c:choose>
 				</tr>
@@ -84,7 +87,7 @@
 		</div>
 		</c:if>
 		<c:if test="${not empty member}">
-		<form id = "order_btn" action="./bookOrderForm.book?library=${library}">
+		<form id = "order_btn" action="./bookOrderForm.book">
 			<button style = "float: right;" class = "adv" type = "submit">신청하기</button>		
 		</form>
 		</c:if>
