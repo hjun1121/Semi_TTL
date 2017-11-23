@@ -38,7 +38,7 @@ $(function(){
 		var replyNum = $(this).attr("title");  //title 숫자  = 리플 num 숫자
 		var replyCon = $("#"+replyNum).attr("title"); //reply contents 내용
 		
-		var replyHtml = '<td colspan="4"><textarea class="reText" id="upContents'+replyNum+'">'+replyCon+'</textarea></td>';
+		var replyHtml = '<textarea class="reText" id="upContents'+replyNum+'">'+replyCon+'</textarea>';
 		replyHtml = replyHtml + '<td colspan="1"><input type="button" id="btn4" class="up" value="완료" title='+replyNum+'></td>';
 		
 		$("#"+replyNum).html(replyHtml);
@@ -58,7 +58,7 @@ $(function(){
 	$(".replyBtn").click(function(){
 		$(".reReply").html("");
 		var replyNum = $(this).attr("title"); //댓글 번호
-		var replyHtml = '<td colspan="4"> <textarea class="reText" id="inContents'+replyNum+'"></textarea> </td>'
+		var replyHtml = '<textarea class="reText" id="inContents'+replyNum+'"></textarea>'
 		replyHtml = replyHtml+ '<td colspan="1"><input type="button" class="inReply" id="btn4"  value="완료" title='+replyNum+'></td>'
 		$("#reply"+replyNum).html(replyHtml);
 		
@@ -157,43 +157,65 @@ $(function(){
 
 
 
-
 <div id="reQna">
 <c:if test="${replyList ne null }">
-	<table>
 		<c:forEach items="${replyList }" var="dto" varStatus="i">
-			<tr style="height: 50px;">
-				<td id="wtd">${dto.writer }</td>
-				<td id="dtd"><sub>${dto.reg_date }</sub></td>
-				<td colspan="3">
-				<input type="button" id="btn1" class="btn${dto.num } replyBtn" title="${dto.num }" value="답글">
-				<c:if test="${member.id eq dto.writer}">
-					<input type="button" id="btn2" class="replyUpdate btn${dto.num }" title="${dto.num }" value="수정">
-				</c:if>
-				<c:if test="${member.id eq dto.writer or member.kind eq 10 or member.id eq qnaDTO.writer }">
-					<a href="../qnaReply/qnaReplyDelete.qnaReply?num=${dto.num }&pNum=${qnaDTO.num }&library=${library}"><input type="button" id="btn3" class="btn${dto.num }" value="삭제"></a>
-				</c:if>
-				</td>
-			</tr>
-			
-			<tr style="height: 50px;">
-				<td colspan="3" id="${dto.num }" title="${dto.contents }" class="ctd" >
+	<dl class = "write-wrap e-talk">
+		<dl class = "cmt_item f_line">
+			<dt>
+				<span class = "nameui" title = "writer_id">${dto.writer }</span>
+				<i>${dto.reg_date }</i>
+			</dt>
+			<dd class = "usertxt">
+				<span>
 				<c:forEach begin="1" end="${dto.depth }">
-					->
+					<img src = "${pageContext.request.contextPath }/image/common/ico_comm_re2.gif">
 				</c:forEach>
-				${dto.contents }</td>
-				<td>
-				<input type="button" class="btn${dto.num } replyBtn" title="${dto.num }" value="답글">
-				<c:if test="${member.id eq dto.writer}">
-					<input type="button" class="replyUpdate btn${dto.num }" title="${dto.num }" value="수정">
-				</c:if>
-				<c:if test="${member.id eq dto.writer or member.kind eq 10 or member.id eq qnaDTO.writer }">
-					<a href="../qnaReply/qnaReplyDelete.qnaReply?num=${dto.num }&pNum=${qnaDTO.num }&library=${library}&ln=${ln}"><input type="button" class="btn${dto.num }" value="삭제"></a>
-				</c:if>
-				</td>
-			</tr>
-			<tr id="reply${dto.num }" class="reReply" title="${dto.num }">
-			</tr>
+				${dto.contents}</span>
+			</dd>
+			<input type="button" id="btn1" class="btn${dto.num } replyBtn" title="${dto.num }" value="답글">
+			<c:if test="${member.id eq dto.writer}">
+				<input type="button" id="btn2" class="replyUpdate btn${dto.num }" title="${dto.num }" value="수정">
+			</c:if>
+			<c:if test="${member.id eq dto.writer or member.kind eq 10 or member.id eq qnaDTO.writer }">
+				<a href="../qnaReply/qnaReplyDelete.qnaReply?num=${dto.num }&pNum=${qnaDTO.num }&library=${library}"><input type="button" id="btn3" class="btn${dto.num }" value="삭제"></a>
+			</c:if>
+		</dl>
+	</dl>
+
+<!-- 	<table> -->
+<!-- 			<tr style="height: 50px;"> -->
+<%-- 				<td id="wtd">${dto.writer }</td> --%>
+<%-- 				<td id="dtd"><sub>${dto.reg_date }</sub></td> --%>
+<!-- 				<td colspan="3"> -->
+<%-- 				<input type="button" id="btn1" class="btn${dto.num } replyBtn" title="${dto.num }" value="답글"> --%>
+<%-- 				<c:if test="${member.id eq dto.writer}"> --%>
+<%-- 					<input type="button" id="btn2" class="replyUpdate btn${dto.num }" title="${dto.num }" value="수정"> --%>
+<%-- 				</c:if> --%>
+<%-- 				<c:if test="${member.id eq dto.writer or member.kind eq 10 or member.id eq qnaDTO.writer }"> --%>
+<%-- 					<a href="../qnaReply/qnaReplyDelete.qnaReply?num=${dto.num }&pNum=${qnaDTO.num }&library=${library}"><input type="button" id="btn3" class="btn${dto.num }" value="삭제"></a> --%>
+<%-- 				</c:if> --%>
+<!-- 				</td> -->
+<!-- 			</tr> -->
+			
+<!-- 			<tr style="height: 50px;"> -->
+<%-- 				<td colspan="3" id="${dto.num }" title="${dto.contents }" class="ctd" > --%>
+<%-- 				<c:forEach begin="1" end="${dto.depth }"> --%>
+<!-- 					-> -->
+<%-- 				</c:forEach> --%>
+<%-- 				${dto.contents }</td> --%>
+<!-- 				<td> -->
+<%-- 				<input type="button" class="btn${dto.num } replyBtn" title="${dto.num }" value="답글"> --%>
+<%-- 				<c:if test="${member.id eq dto.writer}"> --%>
+<%-- 					<input type="button" class="replyUpdate btn${dto.num }" title="${dto.num }" value="수정"> --%>
+<%-- 				</c:if> --%>
+<%-- 				<c:if test="${member.id eq dto.writer or member.kind eq 10 or member.id eq qnaDTO.writer }"> --%>
+<%-- 					<a href="../qnaReply/qnaReplyDelete.qnaReply?num=${dto.num }&pNum=${qnaDTO.num }&library=${library}&ln=${ln}"><input type="button" class="btn${dto.num }" value="삭제"></a> --%>
+<%-- 				</c:if> --%>
+<!-- 				</td> -->
+<!-- 			</tr> -->
+<%-- 			<tr id="reply${dto.num }" class="reReply" title="${dto.num }"> --%>
+<!-- 			</tr> -->
 		</c:forEach>
 	</table>
 </c:if>

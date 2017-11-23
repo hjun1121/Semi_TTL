@@ -18,6 +18,6 @@
 		<input type="hidden" name="num" value=${num }>
 		<input type="hidden" name="pw" value=${pw }>
 	</form>
-	
+
 </body>
 </html>

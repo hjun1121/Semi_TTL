@@ -238,6 +238,7 @@ $(function(){
 		</div>
 		</c:if>
 		</div>
+		<br><br><br><br><br><br><br>
 	</section>
 <c:choose>
 	<c:when test="${ln eq 1}"><c:import url="${myContextPath}/temp/footer_1.jsp"></c:import></c:when>
