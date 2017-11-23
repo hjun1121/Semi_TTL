@@ -26,12 +26,7 @@ public class BookRentService implements Action {
 			} catch (Exception e) {
 				// TODO: handle exception
 			}
-			int library = 0;
-			try {
-				library = Integer.parseInt(request.getParameter("library"));
-			} catch (Exception e) {
-				// TODO: handle exception
-			}
+			
 			int curPage = 1;
 			try {
 				curPage = Integer.parseInt(request.getParameter("curPage"));
@@ -58,7 +53,7 @@ public class BookRentService implements Action {
 				Book_Rent_DetailsDAO book_Rent_DetailsDAO = new Book_Rent_DetailsDAO();
 				result = book_Rent_DetailsDAO.insert(book_TotalDTO, rent_id, con);
 				Book_Rent_WishDAO book_Rent_WishDAO = new Book_Rent_WishDAO();
-				result = book_Rent_WishDAO.stateUpdate(num,con);
+				book_Rent_WishDAO.stateUpdate(num,con);
 			} catch (Exception e) {
 				e.printStackTrace();
 				try {
@@ -83,7 +78,6 @@ public class BookRentService implements Action {
 			}
 
 			request.setAttribute("kind", kind);
-			request.setAttribute("library", library);
 			request.setAttribute("search", search);
 			request.setAttribute("curPage", curPage);
 			actionFoward.setCheck(true);
