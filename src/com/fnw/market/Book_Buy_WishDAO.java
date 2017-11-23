@@ -38,7 +38,7 @@ public class Book_Buy_WishDAO {
 		DBConnector.disConnect(st, con);
 		return result;
 	}
-	
+
 	public ArrayList<Book_Buy_WishDTO> selectList(String id) throws Exception {
 		Connection con = DBConnector.getConnect();
 		String sql = "select * from book_buy_wish where id = ?";
