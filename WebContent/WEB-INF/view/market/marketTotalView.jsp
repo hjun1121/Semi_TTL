@@ -26,7 +26,44 @@
 			location.href="./marketTotalList.market?library=${library}";
 		});
 		
+		$(".wish_btn").click(function() {
+			var num = $(this).val();
+			var title = $(this).attr("title");
+
+			if (title == 1) {
+				$.ajax({
+					url: "./bookBuyWishReturn.market?library=${library}",
+					type: "GET",
+					data: {
+						num:num,
+						curPage: ${curPage},
+						id: '${member.id}'
+					},
+					success: function(data) {
+						alert(data);
+						location.href="./marketTotalView.market?curPage=${curPage}&library=${library}";
+					}
+				});
+
+			} else if (title == 0) {
+				$.ajax({
+					url: "./bookBuyWish.market?library=${library}",
+					type: "GET",
+					data: {
+						num:num,
+						curPage: ${curPage},
+						id: '${member.id}'
+					},
+					success: function(data) {
+						alert(data);
+						location.href="./marketTotalView.market?curPage=${curPage}&library=${library}";
+					}
+				});
+			}
+		});
 	});
+	
+	
 </script>
 </head>
 <body>
@@ -52,9 +89,6 @@
 					<li>중고 도서 상세보기</li>
 				</ul>
 			</div>
-	
-	
-	
 	
 				<div class="profile">
 					<div class="profileHeader">
@@ -98,10 +132,10 @@
 								<c:set var="heart2" value="0" ></c:set>
 								<c:if test="${ not empty member }">
 									<c:forEach items="${rent_wish_list}" var="wish">
-										<c:if test="${wish.title eq book.title}">
+										<c:if test="${wish.title eq dto.title}">
 											<c:choose>
 												<c:when test="${heart1 == 0}">
-													<td><button class = "btn btn-default wish_btn" type = "submit" value = "${book.num}" title="1">❤</button></td>
+													<td><button class = "btn btn-default wish_btn" type = "submit" value = "${dto.num}" title="1">❤</button></td>
 													<c:set var="heart1" value="1" ></c:set>
 													<c:set var="heart2" value="1" ></c:set>
 												</c:when>
@@ -109,7 +143,7 @@
 										</c:if>
 									</c:forEach>
 										<c:if test="${heart2 == 0}">
-											<td><button class = "btn btn-default wish_btn" type = "submit" value = "${book.num}" title="0">♡</button></td>
+											<td><button class = "btn btn-default wish_btn" type = "submit" value = "${dto.num}" title="0">♡</button></td>
 										</c:if>
 								</c:if>
 							</tr>
