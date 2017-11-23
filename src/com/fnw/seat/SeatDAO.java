@@ -52,7 +52,7 @@ public class SeatDAO {
 	
 	public ArrayList<SeatDTO> selectList(int library) throws Exception{
 		 Connection con = DBConnector.getConnect();
-		 String sql = "select * from seat where library=? ";
+		 String sql = "select * from seat where library=? order by seat_num";
 		 PreparedStatement st = con.prepareStatement(sql);
 		 st.setInt(1, library);
 		 

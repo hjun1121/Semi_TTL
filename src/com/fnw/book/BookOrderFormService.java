@@ -60,8 +60,6 @@ public class BookOrderFormService implements Action {
 			actionFoward.setCheck(true);
 			actionFoward.setPath("../WEB-INF/view/common/result.jsp");
 		}
-
-		request.setAttribute("library", library);
 		request.setAttribute("ln", ln);
 		return actionFoward;
 	}

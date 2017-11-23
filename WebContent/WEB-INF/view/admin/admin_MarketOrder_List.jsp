@@ -120,7 +120,7 @@
 	</div>
 	</c:if>
 	</div>
-</div>		
+</div>		<br><br><br><br><br><br>
 	</section>
 	
 <c:choose>

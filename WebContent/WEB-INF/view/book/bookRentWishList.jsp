@@ -142,7 +142,7 @@ $(function(){
 	</table>
 	
 	</form>
-	</c:if>
+	
 	<div class = "paging" style = "text-align: center;">
 			<ul class="pagination pagination-sm">
 			<c:if test="${page.curBlock>1}">
@@ -157,6 +157,8 @@ $(function(){
 			</c:if>
 		</ul>
 	</div>
+	
+	</c:if>
 	</div>
 	</div>
 	</div>

@@ -71,7 +71,6 @@ public class BookOrderListService implements Action {
 				request.setAttribute("kind", kind);
 				request.setAttribute("curPage", curPage);
 				request.setAttribute("page", pageMaker.getMakePage());
-				request.setAttribute("library", library);
 			} catch (Exception e) {
 				e.printStackTrace();
 			}
@@ -93,7 +92,6 @@ public class BookOrderListService implements Action {
 				request.setAttribute("kind", kind);
 				request.setAttribute("curPage", curPage);
 				request.setAttribute("page", pageMaker.getMakePage());
-				request.setAttribute("library", library);
 			} catch (Exception e) {
 				e.printStackTrace();
 			}
@@ -115,7 +113,6 @@ public class BookOrderListService implements Action {
 				request.setAttribute("kind", kind);
 				request.setAttribute("curPage", curPage);
 				request.setAttribute("page", pageMaker.getMakePage());
-				request.setAttribute("library", library);
 			} catch (Exception e) {
 				e.printStackTrace();
 			}
@@ -137,7 +134,6 @@ public class BookOrderListService implements Action {
 				request.setAttribute("kind", kind);
 				request.setAttribute("curPage", curPage);
 				request.setAttribute("page", pageMaker.getMakePage());
-				request.setAttribute("library", library);
 			} catch (Exception e) {
 				e.printStackTrace();
 			}

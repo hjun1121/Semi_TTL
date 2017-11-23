@@ -23,7 +23,7 @@
 		 });
 		 
 		 $("#btn_NO").click(function(){
-				location.href="${pageContext.request.contextPath }/book/bookOrderTotalList.book?library=${library}";
+				location.href="${pageContext.request.contextPath }/book/bookOrderTotalList.book";
 			});
 		 
 		 
@@ -82,7 +82,7 @@
 
 	<!-- /// -->
 	<div class="cstmWrap">
-	<form action="./bookOrderForm.book?library=${library}" name="frm" method="post">
+	<form action="./bookOrderForm.book" name="frm" method="post">
 		<input type = "hidden" class = "form-control" name = "id" value = "${member.id}">
 		<ul class = "otoForm mt30 borTc3">
 			<li>
