@@ -16,12 +16,7 @@
 
 <title>Total Library Page</title>
 
-<<<<<<< HEAD
-
-
-=======
 <script type="text/javascript" src="${pageContext.request.contextPath }/script/main.jsp"></script>
->>>>>>> d1259410c42e81e4a447c5f625731c3841067fe7
 <script type="text/javascript">
 	
 	var slideIndex = 1;
