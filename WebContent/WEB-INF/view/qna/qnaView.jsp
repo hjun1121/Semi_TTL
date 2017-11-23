@@ -157,7 +157,6 @@ $(function(){
 
 
 
-
 <div id="reQna">
 <c:if test="${replyList ne null }">
 	<table>
