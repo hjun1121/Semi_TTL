@@ -20,6 +20,12 @@ public class MarketDealDetailsListService implements Action {
 		ArrayList<Market_Deal_DetailsDTO> list = new ArrayList<>();
 		String id = ((MemberDTO)request.getSession().getAttribute("member")).getId();
 		
+		int ln = 0;
+		try {
+			ln = Integer.parseInt(request.getParameter("ln"));
+		} catch (Exception e) {
+			// TODO: handle exception
+		}
 		int library = 0;
 		try {
 			library = Integer.parseInt(request.getParameter("library"));
@@ -133,6 +139,7 @@ public class MarketDealDetailsListService implements Action {
 			actionFoward.setPath("../WEB-INF/view/market/marketDealsList.jsp");
 		}
 		request.setAttribute("library", library);
+		request.setAttribute("ln", ln);
 		return actionFoward;
 	}
 

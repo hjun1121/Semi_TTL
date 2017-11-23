@@ -66,7 +66,6 @@
 	background:none;
 }
 <!--상단 바 끝 -->
-
 #span2{
 	font-size: 11px;
     color: #999;
@@ -129,13 +128,10 @@ strong {
     text-align: center;
 }
 
-.tTitle{
-	padding: 0 0 5px 10px;
-	font-size: 14px;
-    font-weight: normal;
-    font-family: 'Roboto','Nanum Square','Open Sans','PT Sans','nanumgothic','malgun gothic','arial','dotum','sans-serif';
+span#won{
+	font-size: 18px;
+	font-weight: bold;
 }
-
 .order{
 	margin:0 auto;
 }
@@ -146,6 +142,34 @@ strong {
 	margin:0 auto;
 }
 
+input.btnType5 {
+    height:38px;
+	display:inline-block;
+	margin:0 5px;
+	padding:0 19px;
+	border:1px solid #585858;
+	color:#1a1a1a;
+	font-size:14px;
+	font-weight:600;
+	line-height:38px;
+	vertical-align:top;
+	background-color:white;
+}
+.btnType5:hover {
+    background: #033823;
+    color: white;
+}
+.btn{
+	width: 1040px;
+	height: 80px;
+	margin:0 auto;
+}
+.tTitle{
+	padding: 0 0 5px 10px;
+	font-size: 14px;
+    font-weight: normal;
+    font-family: 'Roboto','Nanum Square','Open Sans','PT Sans','nanumgothic','malgun gothic','arial','dotum','sans-serif';
+}
 
 #fTable{
 	width:100%;
@@ -188,7 +212,7 @@ strong {
     line-height: 1.5;
 }
 #sTable th{
-	padding: 10px 0;
+	padding: 5px 10px;
     border: 0;
     color: #999;
     vertical-align: middle;

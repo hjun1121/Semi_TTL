@@ -13,10 +13,9 @@
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
 <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
 <link rel="stylesheet" href="./css/index/index.css">
-
+<script type="text/javascript" src="${pageContext.request.contextPath }/script/main.js"></script>
 <title>도서관 통합 포털</title>
 
-<script type="text/javascript" src="${pageContext.request.contextPath }/script/main.jsp"></script>
 <script type="text/javascript">
 
 	var slideIndex = 1;
@@ -168,7 +167,7 @@ $(function(){
 						<div class="slideshow-container">
 							  <div class="mySlides fade_banner" style="display: block;">
 							    <div class="numbertext">1 / 4</div>
-							    <a href="./library/libraryMain.library?library=1" target="_blank" class="bannerImg">
+							    <a href="./library/libraryMain.library?ln=1" target="_blank" class="bannerImg">
 							    	<img src="${pageContext.request.contextPath }/image/index/hj.png" style="width:100%">
 							    </a>
 							    <div class="text">기흥 도서관</div>
@@ -176,7 +175,7 @@ $(function(){
 							
 							  <div class="mySlides fade_banner">
 							    <div class="numbertext">2 / 4</div>
-							    <a href="./library/libraryMain.library?library=2" target="_blank" class="bannerImg">
+							    <a href="./library/libraryMain.library?ln=2" target="_blank" class="bannerImg">
 							   		<img src="${pageContext.request.contextPath }/image/index/hj2.png" style="width:100%">
 							    </a>
 							    <div class="text">송파 도서관</div>
@@ -184,19 +183,19 @@ $(function(){
 							
 							  <div class="mySlides fade_banner">
 							    <div class="numbertext">3 / 4</div>
-							    <a href="./library/libraryMain.library?library=3" target="_blank" class="bannerImg">
+							    <a href="./library/libraryMain.library?ln=3" target="_blank" class="bannerImg">
 							    	<img src="${pageContext.request.contextPath }/image/index/hj3.png" style="width:100%">
 							    </a>
 							    <div class="text">장안 도서관</div>
 							  </div>
 							  <div class="mySlides fade_banner">
 							    <div class="numbertext">4 / 4</div>
-							    <a href="./library/libraryMain.library?library=4" target="_blank" class="bannerImg">
+							    <a href="./library/libraryMain.library?ln=4" target="_blank" class="bannerImg">
 							   		<img src="${pageContext.request.contextPath }/image/index/hj4.png" style="width:100%">
 							    </a>
 							    <div class="text">분당 도서관</div>
 							  </div>
-							
+
 							<div >
 								<a class="prev" onclick="plusSlides(-1)">&#10094;</a>
 								<a class="next" onclick="plusSlides(1)">&#10095;</a>
@@ -298,7 +297,7 @@ $(function(){
 		<!-- ////////////////// -->
 
 <c:import url="${myContextPath}/temp/footer.jsp"></c:import>
-<script type="text/javascript" src="${pageContext.request.contextPath }/script/main.js"></script>
+
 
 </body>
 </html>

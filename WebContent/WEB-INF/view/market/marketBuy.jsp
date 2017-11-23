@@ -75,6 +75,7 @@
 		post :<input type="text" id="postCode" name="postCode" placeholder="우편번호" value="${mddDTO.postCode }">
 		addr :<input type="text" id="addr" name="addr" value="${mddDTO.addr }">
 		addr2 :<input type="text" id="addr2" name="addr2" value="${mddDTO.addr2 }">
+	
 	<br><br><br><br><br><br><br><br><br><br><br>
 		<center><strong>고객님의 상품이 결제되고 있습니다.</strong></center>
 		<center><p><img alt="" src="${pageContext.request.contextPath }/image/market/txt_progress.gif"></p></center>

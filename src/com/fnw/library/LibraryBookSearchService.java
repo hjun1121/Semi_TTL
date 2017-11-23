@@ -25,6 +25,12 @@ public class LibraryBookSearchService implements Action {
 		LibraryDAO libraryDAO = new LibraryDAO();
 		Book_Rent_WishDAO book_Rent_WishDAO = new Book_Rent_WishDAO();
 
+		int ln = 0;
+		try {
+			ln = Integer.parseInt(request.getParameter("ln"));
+		} catch (Exception e) {
+			// TODO: handle exception
+		}
 		int library = 0;
 		try {
 			library = Integer.parseInt(request.getParameter("library"));
@@ -73,7 +79,6 @@ public class LibraryBookSearchService implements Action {
 			PageMaker pageMaker = new PageMaker(curPage, totalCount);
 			ar = libraryDAO.selectList(pageMaker.getMakeRow(), kind, search, library);
 			request.setAttribute("rent_wish_list", rent_wish_ar);
-			request.setAttribute("library", library);
 			request.setAttribute("curPage", curPage);
 			request.setAttribute("list", ar);
 			request.setAttribute("page", pageMaker.getMakePage());
@@ -83,9 +88,11 @@ public class LibraryBookSearchService implements Action {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
 		}
+		request.setAttribute("library", library);
 		actionFoward.setCheck(true);
 		actionFoward.setPath("../WEB-INF/view/library/libraryBookSearch.jsp");
-		
+
+		request.setAttribute("ln", ln);
 		return actionFoward;
 	}
 }

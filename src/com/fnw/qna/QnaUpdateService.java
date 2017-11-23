@@ -15,17 +15,23 @@ public class QnaUpdateService implements Action {
 	public ActionFoward doProcess(HttpServletRequest request, HttpServletResponse response) {
 		ActionFoward actionFoward = new ActionFoward();
 		String method = request.getMethod();
+		int ln = 0;
+		try {
+			ln = Integer.parseInt(request.getParameter("ln"));
+		} catch (Exception e) {
+			// TODO: handle exception
+		}
 		int library = 0;
 		try {
 			library = Integer.parseInt(request.getParameter("library"));
 		} catch (Exception e) {
-			// TODO: handle exception
 		}
 		int num =0;
 		try {
 			num = Integer.parseInt(request.getParameter("num"));
 		}catch (Exception e) {
 		}
+		
 		int type =1;
 		try {
 			type = Integer.parseInt(request.getParameter("type"));
@@ -37,8 +43,8 @@ public class QnaUpdateService implements Action {
 		}
 		
 		if(method.equals("GET")) {
-			QnaDTO qnaDTO = null;
 			QnaDAO qnaDAO = new QnaDAO();
+			QnaDTO qnaDTO = null;
 			try {
 				qnaDTO = qnaDAO.selectOne(num);
 			} catch (Exception e) {
@@ -59,7 +65,7 @@ public class QnaUpdateService implements Action {
 			qnaDTO.setContents(request.getParameter("contents"));
 			qnaDTO.setLibrary(library);
 			qnaDTO.setPw(pw);
-			
+			request.setAttribute("library", library);
 			try {
 				result = qnaDAO.update(qnaDTO);
 			} catch (Exception e) {
@@ -81,6 +87,7 @@ public class QnaUpdateService implements Action {
 			}
 		}
 
+		request.setAttribute("ln", ln);
 		return actionFoward;
 	}
 }

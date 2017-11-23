@@ -17,6 +17,12 @@ public class BookListNewAjaxService implements Action {
 		ActionFoward actionFoward = new ActionFoward();
 		Book_TotalDAO book_TotalDAO = new Book_TotalDAO();
 		
+		int ln = 0;
+		try {
+			ln = Integer.parseInt(request.getParameter("ln"));
+		} catch (Exception e) {
+			// TODO: handle exception
+		}
 		int library = 0;
 		try {
 			library = Integer.parseInt(request.getParameter("library"));
@@ -60,6 +66,7 @@ public class BookListNewAjaxService implements Action {
 		actionFoward.setCheck(true);
 		actionFoward.setPath("../WEB-INF/view/book/bookAjax_new.jsp");
 		
+		request.setAttribute("ln", ln);
 		return actionFoward;
 	}
 

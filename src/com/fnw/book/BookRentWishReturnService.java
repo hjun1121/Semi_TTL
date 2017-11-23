@@ -12,6 +12,12 @@ public class BookRentWishReturnService implements Action {
 	public ActionFoward doProcess(HttpServletRequest request, HttpServletResponse response) {
 		ActionFoward actionFoward = new ActionFoward();
 		Book_Rent_WishDAO book_Rent_WishDAO = new Book_Rent_WishDAO();
+		int ln = 0;
+		try {
+			ln = Integer.parseInt(request.getParameter("ln"));
+		} catch (Exception e) {
+			// TODO: handle exception
+		}
 		int num = 0;
 		try {
 			num = Integer.parseInt(request.getParameter("num"));
@@ -60,6 +66,7 @@ public class BookRentWishReturnService implements Action {
 		actionFoward.setCheck(true);
 		actionFoward.setPath("../WEB-INF/view/book/bookRentWishReturn.jsp");
 
+		request.setAttribute("ln", ln);
 		return actionFoward;
 	}
 	

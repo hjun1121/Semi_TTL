@@ -71,7 +71,7 @@ $(function() {
 			</div>	
 			
 			<div class="cstmWrap">
-			<form action="./qnaUpdate.qna?library=${library}" name="frm" method="post">
+			<form action="./qnaUpdate.qna" name="frm" method="post">
 				<ul class = "otoForm mt30 borTc3">
 					<li>
 						<p class="writeTit" >No.</p>
@@ -87,11 +87,11 @@ $(function() {
 					</li>
 					<li>
 						<p class="writeTit" >내용</p>
-						<input type="text" id="contents" name="contents" value="${qnaDTO.contents }" readonly="readonly">
+						<input type="text" id="contents" name="contents" value="${qnaDTO.contents }" >
 					</li>
 					<li>
 						<p class="writeTit" >작성자</p>
-						<input type="text" name="writer" value="${qnaDTO.id }" readonly="readonly">
+						<input type="text" name="writer" value="${qnaDTO.writer }" readonly="readonly">
 					</li>
 					<li>
 						<p class="writeTit" >비밀번호</p>

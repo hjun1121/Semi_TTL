@@ -21,11 +21,16 @@ public class SeatDetailsListService implements Action {
 
 		String id = ((MemberDTO)request.getSession().getAttribute("member")).getId();
 
+		int ln = 0;
+		try {
+			ln = Integer.parseInt(request.getParameter("ln"));
+		} catch (Exception e) {
+			// TODO: handle exception
+		}
 		int library = 0;
 		try {
 			library = Integer.parseInt(request.getParameter("library"));
 		} catch (Exception e) {
-			// TODO: handle exception
 		}
 		int curPage=1;
 		try {
@@ -77,12 +82,14 @@ public class SeatDetailsListService implements Action {
 			request.setAttribute("month", month);
 			request.setAttribute("day", day);
 			request.setAttribute("page", pageMaker.getMakePage());
+			request.setAttribute("curPage", curPage);
 		} catch (Exception e) {
 			e.printStackTrace();
 		}
 		request.setAttribute("library", library);
 		actionFoward.setCheck(true);
 		actionFoward.setPath("../WEB-INF/view/seat/seatTotalList.jsp");
+		request.setAttribute("ln", ln);
 		return actionFoward;
 	}
 

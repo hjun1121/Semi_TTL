@@ -14,6 +14,12 @@ public class NoticeWriteService implements Action {
 		String method = request.getMethod();
 		ActionFoward actionFoward = new ActionFoward();
 		
+		int ln = 0;
+		try {
+			ln = Integer.parseInt(request.getParameter("ln"));
+		} catch (Exception e) {
+			// TODO: handle exception
+		}
 		int library = 0;
 		try {
 			library = Integer.parseInt(request.getParameter("library"));
@@ -49,6 +55,7 @@ public class NoticeWriteService implements Action {
 			actionFoward.setPath("../WEB-INF/view/notice/noticeWrite.jsp");
 		}
 		request.setAttribute("library", library);
+		request.setAttribute("ln", ln);
 		return actionFoward;
 	}
 
