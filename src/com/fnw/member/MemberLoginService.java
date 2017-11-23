@@ -43,7 +43,11 @@ public class MemberLoginService implements Action {
 				message="로그인 성공";
 				request.getSession().setAttribute("member", memberDTO);
 				request.setAttribute("message", message);
-				request.setAttribute("path", "../index.jsp");
+				if(ln == 0) {
+					request.setAttribute("path", "../index.jsp");
+				} else {
+					request.setAttribute("path", "../library/libraryMain.library");
+				}
 			}else {
 				message="로그인 실패";
 				request.setAttribute("message", message);
@@ -53,9 +57,9 @@ public class MemberLoginService implements Action {
 			request.setAttribute("library", library);
 			actionFoward.setCheck(true);
 			actionFoward.setPath("../WEB-INF/view/common/result.jsp");
+			request.setAttribute("ln", ln);
 		}
-		
-		request.setAttribute("ln", ln);
+
 		return actionFoward;
 	}
 

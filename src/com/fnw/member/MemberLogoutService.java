@@ -26,10 +26,15 @@ public class MemberLogoutService implements Action {
 			// TODO: handle exception
 		}
 
-		request.setAttribute("library", library);
-		actionFoward.setCheck(false);
-		actionFoward.setPath("../index.jsp");
-		request.setAttribute("ln", ln);
+		if(ln == 0) {
+			actionFoward.setCheck(false);
+			actionFoward.setPath("../index.jsp");
+		} else {
+			actionFoward.setCheck(true);
+			actionFoward.setPath("../library/libraryMain.library");
+			request.setAttribute("library", library);
+			request.setAttribute("ln", ln);
+		}
 		return actionFoward;
 	}
 
