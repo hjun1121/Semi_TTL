@@ -102,7 +102,7 @@ $(function(){
 					<tr>
 						<td scope="row" class="num footable-first-column">${dto.num}</td>
 						<td scope="row" data-class="expand" class="title expand link">
-							<a href="./noticeView.notice?num=${dto.num}">${dto.title}</a>&nbsp;
+							<a href="./noticeView.notice?num=${dto.num}&library=${library}">${dto.title}</a>&nbsp;
 						</td>
 						<td scope="row" class="writer" style="display: table-cell;">
 							${dto.writer}
@@ -121,9 +121,9 @@ $(function(){
 	</c:if>
 	<br>
 	<c:if test="${not empty member and member.kind eq 10}">
-		<a href="./noticeWrite.notice"><button class="adv">WRITE</button></a>
+		<a href="./noticeWrite.notice?library=${library}"><button class="adv">WRITE</button></a>
 	</c:if>
-	
+
 	<!-- 페이징 -->
 <!-- 	<div style = "text-align: center;"> -->
 <!-- 	<div class="paging"> -->
