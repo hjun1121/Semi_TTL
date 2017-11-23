@@ -49,6 +49,7 @@ public class MarketOrderListService implements Action {
 			}
 			PageMaker pageMaker = new PageMaker(curPage, totalCount);
 			list = market_OrderDAO.selectList(id,pageMaker.getMakeRow(),kind,search);
+			request.setAttribute("size", list.size());
 			request.setAttribute("marketOrderList", list);
 			request.setAttribute("id", id);
 			request.setAttribute("search", search);

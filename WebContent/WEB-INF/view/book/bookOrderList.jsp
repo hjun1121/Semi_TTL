@@ -83,6 +83,7 @@ $(function(){
 	<br><br>
 	<c:if test="${size eq 0 }">
 		<h2 id="divTitle">신청 내역이 없습니다.</h2>
+		<br><br><br>
 	</c:if>
 	<c:if test="${size ne 0 }">
 	<div class="listTable">

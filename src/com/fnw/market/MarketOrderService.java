@@ -51,12 +51,12 @@ public class MarketOrderService implements Action {
 			}
 			request.setAttribute("message", message);
 			request.setAttribute("path", "../index.jsp");
-			request.setAttribute("library", library);
 			
 			actionFoward.setCheck(true);
 			actionFoward.setPath("../WEB-INF/view/common/result.jsp");
 		}
 
+		request.setAttribute("library", library);
 		return actionFoward;
 	}
 

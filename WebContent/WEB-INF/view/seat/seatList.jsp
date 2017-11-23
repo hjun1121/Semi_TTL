@@ -16,7 +16,7 @@
 	$(function(){
 		$("#seat_1").click(function(){
 			$.ajax({
-				url: "./seatList.seat",
+				url: "./seatList.seat?library=${library}",
 				type: "POST",
 				data: {
 					library : 1
@@ -28,7 +28,7 @@
 		});
 		$("#seat_2").click(function(){
 			$.ajax({
-				url: "./seatList.seat",
+				url: "./seatList.seat?library=${library}",
 				type: "POST",
 				data: {
 					library : 2
@@ -41,7 +41,7 @@
 		});
 		$("#seat_3").click(function(){
 			$.ajax({
-				url: "./seatList.seat",
+				url: "./seatList.seat?library=${library}",
 				type: "POST",
 				data: {
 					library : 3
@@ -55,7 +55,7 @@
 		
 		$("#seat_4").click(function(){
 			$.ajax({
-				url: "./seatList.seat",
+				url: "./seatList.seat?library=${library}",
 				type: "POST",
 				data: {
 					library : 4
