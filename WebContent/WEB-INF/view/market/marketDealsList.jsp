@@ -170,7 +170,7 @@ $(function(){
 			<tr>
 				<td scope="row" class="footable-first-column">${count.count }</td>
 				<td scope="row" data-class="expand"><a
-					href="./marketDealsDetails.market?num=${bookDeals_list.num }&library=${library}&ln=${ln}">${bookDeals_list.title }</a></td>
+					href="./marketDealsDetails.market?num=${bookDeals_list.num }&ln=${ln}">${bookDeals_list.title }</a></td>
 				<td scope="row" style="display: table-cell;">${bookDeals_list.writer }</td>
 				<td scope="row" style="display: table-cell;">${bookDeals_list.company }</td>
 				<td scope="row" style="display: table-cell;">${bookDeals_list.t_date }</td>
@@ -238,6 +238,7 @@ $(function(){
 		</div>
 		</c:if>
 		</div>
+		<br><br><br><br><br><br><br>
 	</section>
 <c:choose>
 	<c:when test="${ln eq 1}"><c:import url="${myContextPath}/temp/footer_1.jsp"></c:import></c:when>

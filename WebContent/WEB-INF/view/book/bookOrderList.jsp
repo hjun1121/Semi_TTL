@@ -159,6 +159,7 @@ $(function(){
 	</div>
 	</div>
 	</c:if>
+	<br><br><br><br><br><br>
 </div>
 </div>
 <c:choose>

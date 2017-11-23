@@ -126,7 +126,7 @@
 			</c:choose>
 			</tr>
 			<c:choose>
-			<c:when test="${bookDealsDetail.delivery eq 2">
+			<c:when test="${bookDealsDetail.delivery eq 2 }">
 				<tr>
 				<th>수령방법</th>
 				<td><input type="text" class="noneBorder" value="택배" readonly="readonly"></td>
@@ -157,6 +157,7 @@
 			<a href="./bookBuyFinish.market?num=${bookDealsDetail.num }&ln=${ln}"><input type="button" class="btnType5" value="결제완료"></a>
 		</div>
 	</form>	
+
 	</div>
 </div>
 <c:choose>

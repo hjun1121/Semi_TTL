@@ -41,7 +41,7 @@
 			</p>
 			<ul>
 				<li style="list-style:none;">
-					<span class="wbbtn white block">주문번호:</span>
+					<span class="wbbtn white block">주문번호:20171123</span>
 				</li>
 				<li style="list-style:none;">
 					<span class="wbbtn black block">주문일자 : ${mdd.t_date }</span>
