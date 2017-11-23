@@ -169,7 +169,7 @@ $(function(){
 			<dd class = "usertxt">
 				<span>
 				<c:forEach begin="1" end="${dto.depth }">
-					<img src = "${pageContext.request.contextPath }/image/common/ico_comm_re2.gif">
+					<img src = "${pageContext.request.contextPath }/image/common/bu_arr.png">
 				</c:forEach>
 				${dto.contents}</span>
 			</dd>
