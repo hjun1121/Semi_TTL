@@ -181,11 +181,10 @@
 		
 		$("#ch_email").on("click", "#check_mail" , function(){
 			if($("#num").val() == $("#check").val()){
-				alert("인증번호 일치");
 				mailCheck=true;
 				$("#ch_email").html("<p style=\"color: green\">인증된 이메일</p>");
 			}else{
-				alert("인증번호 불일치");
+				$("#ch_email").html("<p style=\"color: red\">잘못된 인증번호</p>");
 				mailCheck=false;
 			}	
 		});

@@ -35,9 +35,9 @@ public class NoticeDeleteService implements Action {
 			e.printStackTrace();
 		}
 		if(result>0) {
-			request.setAttribute("message", "Success");
+			request.setAttribute("message", "삭제 성공");
 		}else {
-			request.setAttribute("message", "Fail");
+			request.setAttribute("message", "삭제 실패");
 		}
 
 		request.setAttribute("library", library);

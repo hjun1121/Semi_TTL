@@ -37,7 +37,7 @@ public class NoticeUpdateService implements Action {
 				actionFoward.setPath("./noticeList.notice");
 				
 			}else {
-				request.setAttribute("message", "Update Fail");
+				request.setAttribute("message", "업데이트 실패");
 				request.setAttribute("path", "./noticeList.notice");
 				actionFoward.setCheck(true);
 				actionFoward.setPath("../WEB-INF/view/common/result.jsp");

@@ -60,8 +60,8 @@
 		<br>
 	<div class="adv">
 	<c:if test="${member.kind eq 10 }">
-		<a href="./noticeUpdate.notice?num=${view.num}&library=${library}&ln=${ln}"><button class="adv2">UPDATE</button></a>
-		<a href="./noticeDelete.notice?num=${view.num}&library=${library}&ln=${ln}"><button class="adv2">DELETE</button></a>
+		<a href="./noticeUpdate.notice?num=${view.num}&library=${library}&ln=${ln}"><button class="adv2">수정</button></a>
+		<a href="./noticeDelete.notice?num=${view.num}&library=${library}&ln=${ln}"><button class="adv2">삭제</button></a>
 	</c:if>
 		<a href="noticeList.notice?library=${library}&ln=${ln}" title="목록"><button class="adv2">목록</button></a>
 	</div>

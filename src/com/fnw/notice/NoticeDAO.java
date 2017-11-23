@@ -65,7 +65,7 @@ public class NoticeDAO {
 	
 	public int getTotalCount(String kind, String search) throws Exception {
 		Connection con = DBConnector.getConnect();
-		String sql = "select nvl(count(num), 0) from notice where "+kind+" like ?";
+		String sql = "select nvl(count(num), 0) from notice where "+kind+" like ? order by reg_date desc";
 		
 		PreparedStatement st = con.prepareStatement(sql);
 		st.setString(1, "%"+search+"%");
