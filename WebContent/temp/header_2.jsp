@@ -5,7 +5,7 @@
 	<div>
 		<h1>
 			<a href="${pageContext.request.contextPath }/library/libraryMain.library?library=2&ln=2" title="송파 도서관 입니다">
-				<img src="${pageContext.request.contextPath }/image/header/jh_lib.png" alt="송파 도서관">
+				<img src="${pageContext.request.contextPath }/image/header/sp_lib.JPG" alt="송파 도서관">
 			</a>
 		</h1>
 		

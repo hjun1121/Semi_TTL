@@ -5,7 +5,7 @@
 	<div>
 		<h1>
 			<a href="${pageContext.request.contextPath }/index.jsp" title="TTL 입니다">
-				<img src="${pageContext.request.contextPath }/image/common/ttl.png" alt="TTL">
+				<img src="${pageContext.request.contextPath }/image/common/ttl.JPG" alt="TTL">
 			</a>
 		</h1>
 		
