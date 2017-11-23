@@ -21,17 +21,11 @@ public class LibraryViewService implements Action {
 			ln = Integer.parseInt(request.getParameter("ln"));
 		} catch (Exception e) {
 		}
-		int library = 0;
-		try {
-			library = Integer.parseInt(request.getParameter("library"));
-		} catch (Exception e) {
-		}
 		try {
 			ar = libraryDAO.selectList();
 		} catch (Exception e) {
 			e.printStackTrace();
 		}
-		request.setAttribute("library", library);
 		request.setAttribute("library", ar);
 		request.setAttribute("ln", ln);
 		actionFoward.setCheck(true);

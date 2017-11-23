@@ -60,7 +60,7 @@ $(function(){
 			</div>	
 			
 			<div class="cstmWrap">
-			<form action="./qnaWrite.qna?library=${library}&ln=${ln}" name="frm" method="post" >
+			<form action="./qnaWrite.qna?ln=${ln}" name="frm" method="post" >
 				<input type = "hidden" class = "form-control" name = "id" value = "${member.id }">
 				<ul class = "otoForm mt30 borTc3">
 					<li>

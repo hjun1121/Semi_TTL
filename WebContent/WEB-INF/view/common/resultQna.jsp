@@ -14,7 +14,6 @@
 </script>
 </head>
 <body>
-<h2>result Qna</h2>
 	<form action="../qna/qnaViewCheck.qna" method="post" name="frm">
 		<input type="hidden" name="num" value=${num }>
 		<input type="hidden" name="pw" value=${pw }>
