@@ -1,7 +1,7 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
     
-<form action="./bookOrderNO.book" method="post">
+<form action="./bookOrderNO.book?library=${library}&ln=${ln}" method="post">
 	<input type="hidden" name="num" value="${num}">
 		<table class="Dtable">
 		<tr>
@@ -13,7 +13,7 @@
 		</table>
 		<br>
 		<div style="text-align: center; margin-bottom: 60px;">
-			<a href="./bookOrderListAdmin.book?state=3"><button style="width: 150px; height: 50px;line-height: 48px;font-size: 16px;color: #666;background: #fff;border: 1px solid #aaa;" type="button">취소</button></a>
+			<a href="./bookOrderListAdmin.book?state=3&library=${library}&ln=${ln}"><button style="width: 150px; height: 50px;line-height: 48px;font-size: 16px;color: #666;background: #fff;border: 1px solid #aaa;" type="button">취소</button></a>
 			<button type="submit" style="width: 150px; height: 50px; line-height: 48px; font-size: 16px; color: #fff; background: #033823; border: 1px solid #aaa;">거절</button>
 		</div>
 </form>

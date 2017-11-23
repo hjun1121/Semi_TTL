@@ -15,6 +15,12 @@ public class AdminBookOrderViewSerivce implements Action {
 		ActionFoward actionFoward = new ActionFoward();
 		Book_OrderDAO book_OrderDAO = new Book_OrderDAO();
 		
+		int ln = 0;
+		try {
+			ln = Integer.parseInt(request.getParameter("ln"));
+		} catch (Exception e) {
+			// TODO: handle exception
+		}
 		int library = 0;
 		try {
 			library = Integer.parseInt(request.getParameter("library"));
@@ -41,6 +47,7 @@ public class AdminBookOrderViewSerivce implements Action {
 		actionFoward.setCheck(true);
 		actionFoward.setPath("../WEB-INF/view/admin/admin_bookOrderView.jsp");
 		
+		request.setAttribute("ln", ln);
 		return actionFoward;
 	}
 

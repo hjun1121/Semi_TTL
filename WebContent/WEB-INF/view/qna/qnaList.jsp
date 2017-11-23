@@ -5,7 +5,7 @@
 <html>
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
-<title>Insert title here</title>
+<title>QnA</title>
 
 <link rel="stylesheet" href="${pageContext.request.contextPath }/css/temp/header.css">
 <link rel="stylesheet" href="${pageContext.request.contextPath }/css/temp/footer.css">
@@ -31,7 +31,7 @@
 		
 		$("#write_btn").click(function(){
 
-			location.href="./qnaWrite.qna";
+			location.href="./qnaWrite.qna?library=${library}&ln=${ln}";
 		});
 		
 	});
@@ -40,10 +40,10 @@
 </head>
 <body>
 <c:choose>
-	<c:when test="${library eq 1}"><c:import url="${myContextPath}/temp/header_1.jsp"></c:import></c:when>
-	<c:when test="${library eq 2}"><c:import url="${myContextPath}/temp/header_2.jsp"></c:import></c:when>
-	<c:when test="${library eq 3}"><c:import url="${myContextPath}/temp/header_3.jsp"></c:import></c:when>
-	<c:when test="${library eq 4}"><c:import url="${myContextPath}/temp/header_4.jsp"></c:import></c:when>
+	<c:when test="${ln eq 1}"><c:import url="${myContextPath}/temp/header_1.jsp"></c:import></c:when>
+	<c:when test="${ln eq 2}"><c:import url="${myContextPath}/temp/header_2.jsp"></c:import></c:when>
+	<c:when test="${ln eq 3}"><c:import url="${myContextPath}/temp/header_3.jsp"></c:import></c:when>
+	<c:when test="${ln eq 4}"><c:import url="${myContextPath}/temp/header_4.jsp"></c:import></c:when>
 	<c:otherwise><c:import url="${myContextPath}/temp/header.jsp"></c:import></c:otherwise>
 </c:choose>
 
@@ -61,7 +61,7 @@
 			</div>
 	<!-- 검색 시작 -->	
 	
-	<form name="frm" class="form-inline" action="./qnaList.qna" method="post">
+	<form name="frm" class="form-inline" action="./qnaList.qna?library=${library}&ln=${ln}" method="post">
 			<fieldset>
 				<legend>검색</legend>
 				
@@ -106,8 +106,14 @@
 			<tbody>
 				<tr>
 					<td class="num footable-first-column">${dto.num}</td>
-					<td class="title expand" style="color: #337ab7; text-decoration: none;">
-						<a href="./qnaViewCheck.qna?num=${dto.num }">${dto.title}</a>&nbsp;
+					<td class="title expand">
+						<c:catch>
+						<c:forEach  begin="0" end="${dto.depth-1}">
+							--
+						</c:forEach>
+						</c:catch>
+						<a href="./qnaViewCheck.qna?num=${dto.num }&library=${library}">${dto.title}</a>&nbsp;
+
 					</td>
 					<td class="writer" style="display: table-cell;">
 						${dto.writer}
@@ -131,15 +137,15 @@
 	<div class = "paging" style = "text-align: center;">
 		<ul class="pagination pagination-sm">
 			<c:if test="${page.curBlock>1}">
-			<li><a href = "./qnaList.qna?curPage=${page.startNum-1}">[이전]</a></li>
+			<li><a href = "./qnaList.qna?curPage=${page.startNum-1}&library=${library}&ln=${ln}">[이전]</a></li>
 			</c:if>
 			
 			<c:forEach begin="${page.startNum}" end="${page.lastNum}" var="i">
-			<li><a id="pa" class="cur" title="${i }" href="./qnaList.qna?curPage=${i}&kind=${kind}&search=${search}">${i}</a></li>
+			<li><a id="pa" class="cur" title="${i }" href="./qnaList.qna?curPage=${i}&kind=${kind}&search=${search}&library=${library}&ln=${ln}">${i}</a></li>
 			</c:forEach>
 
 			<c:if test="${page.curBlock < page.totalBlock}">
-			<li><a href="./qnaList.qna?curPage=${page.lastNum+1}">[다음]</a></li>
+			<li><a href="./qnaList.qna?curPage=${page.lastNum+1}&library=${library}&ln=${ln}">[다음]</a></li>
 			</c:if>
 		</ul>
 	</div>
@@ -147,6 +153,12 @@
 </div>
 </div>
 </section>
-<c:import url="${myContextPath}/temp/footer.jsp"></c:import>
+<c:choose>
+	<c:when test="${ln eq 1}"><c:import url="${myContextPath}/temp/footer_1.jsp"></c:import></c:when>
+	<c:when test="${ln eq 2}"><c:import url="${myContextPath}/temp/footer_2.jsp"></c:import></c:when>
+	<c:when test="${ln eq 3}"><c:import url="${myContextPath}/temp/footer_3.jsp"></c:import></c:when>
+	<c:when test="${ln eq 4}"><c:import url="${myContextPath}/temp/footer_4.jsp"></c:import></c:when>
+	<c:otherwise><c:import url="${myContextPath}/temp/footer.jsp"></c:import></c:otherwise>
+</c:choose>
 </body>
 </html>

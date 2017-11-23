@@ -5,7 +5,7 @@
 <html>
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
-<title>Insert title here</title>
+<title>좌석 리스트</title>
 <link rel="stylesheet" href="${pageContext.request.contextPath }/css/temp/header.css">
 <link rel="stylesheet" href="${pageContext.request.contextPath }/css/temp/footer.css">
 <link rel="stylesheet" href="${pageContext.request.contextPath }/css/seat/seatList.css">
@@ -16,23 +16,25 @@
 	$(function(){
 		$("#seat_1").click(function(){
 			$.ajax({
-				url: "./seatList.seat",
+				url: "./seatList.seat?ln=${ln}",
 				type: "POST",
 				data: {
-					library :1
+					library : 1,
+					ln: ${ln}
 				},
 				success:function(data){
 					$("#seatList").html(data.trim());
 				}
 			});
-			
 		});
+		
 		$("#seat_2").click(function(){
 			$.ajax({
-				url: "./seatList.seat",
+				url: "./seatList.seat?ln=${ln}",
 				type: "POST",
 				data: {
-					library :2
+					library : 2,
+					ln: ${ln}
 				},
 				success:function(data){
 					$("#seatList").html(data.trim());
@@ -40,12 +42,14 @@
 			});
 			
 		});
+		
 		$("#seat_3").click(function(){
 			$.ajax({
-				url: "./seatList.seat",
+				url: "./seatList.seat?ln=${ln}",
 				type: "POST",
 				data: {
-					library :3
+					library : 3,
+					ln: ${ln}
 				},
 				success:function(data){
 					$("#seatList").html(data.trim());
@@ -56,47 +60,28 @@
 		
 		$("#seat_4").click(function(){
 			$.ajax({
-				url: "./seatList.seat",
-				type: "GET",
+				url: "./seatList.seat?ln=${ln}",
+				type: "POST",
 				data: {
-					library :4
+					library : 4,
+					ln: ${ln}
 				},
 				success:function(data){
-					$("seatTable").attr.display("block");
+					$("#seatList").html(data.trim());
 				}
 			});
-
+			
 		});
 
-// 		$("#seat_4").click(function(){
-// 			$.ajax({
-// 				url: "./seatList.seat",
-// 				type: "GET",
-// 				data: {
-// 					library :4
-// 				},
-// 				success:function(data){
-// 					var table = "<table id = 'seat_Table'>";
-// 					$(data).each(function(index, item) {
-// 						table += "<tr><td>" + this.seat_num + "</td></tr>";
-// 					}
-// 				});
-					
-// 					table += "</table>";
-
-// 					$("#seatTable").html(table);
-// 			});
-
-// 		});
 	});
 </script>
 </head>
 <body>
 <c:choose>
-	<c:when test="${library eq 1}"><c:import url="${myContextPath}/temp/header_1.jsp"></c:import></c:when>
-	<c:when test="${library eq 2}"><c:import url="${myContextPath}/temp/header_2.jsp"></c:import></c:when>
-	<c:when test="${library eq 3}"><c:import url="${myContextPath}/temp/header_3.jsp"></c:import></c:when>
-	<c:when test="${library eq 4}"><c:import url="${myContextPath}/temp/header_4.jsp"></c:import></c:when>
+	<c:when test="${ln eq 1}"><c:import url="${myContextPath}/temp/header_1.jsp"></c:import></c:when>
+	<c:when test="${ln eq 2}"><c:import url="${myContextPath}/temp/header_2.jsp"></c:import></c:when>
+	<c:when test="${ln eq 3}"><c:import url="${myContextPath}/temp/header_3.jsp"></c:import></c:when>
+	<c:when test="${ln eq 4}"><c:import url="${myContextPath}/temp/header_4.jsp"></c:import></c:when>
 	<c:otherwise><c:import url="${myContextPath}/temp/header.jsp"></c:import></c:otherwise>
 </c:choose>
 
@@ -125,55 +110,38 @@
 					<tr>
 						<td scope="row" style="display: table-cell;">기흥 도서관</td>
 						<td scope="row" style="display: table-cell;">
-						<c:forEach items="${seat1 }" var="dto" varStatus="count" >
-							<c:if test="${count.last }">
-								${count.index+1 } 개
-							</c:if>
-						</c:forEach>
+						${cntAlla1} 석
 						</td>
-						<td scope="row" style="display: table-cell;">${cntAlla1-cnta1 }</td>
-						<td><a href="#" id="seat_1"><button class="detail">상세</button></a></td>
+						<td scope="row" style="display: table-cell;">${cnta1 } 석</td>
+						<td><a id="seat_1"><button class="detail">상세</button></a></td>
 					</tr>
 					<tr>
 						<td scope="row" style="display: table-cell;">송파 도서관</td>
 						<td scope="row" style="display: table-cell;">
-						<c:forEach items="${seat2 }" var="dto" varStatus="count" >
-							<c:if test="${count.last }">
-								${count.index+1 } 개
-							</c:if>
-						</c:forEach>
+						${cntAlla2} 석
 						</td>
-						<td scope="row" style="display: table-cell;">${cntAlla2-cnta2 }</td>
-						<td><a href="#" id="seat_2"><button class="detail">상세</button></a></td>
+						<td scope="row" style="display: table-cell;">${cnta2 } 석</td>
+						<td><a id="seat_2"><button class="detail">상세</button></a></td>
 					</tr>
 					<tr>
 						<td scope="row" style="display: table-cell;">장안 도서관</td>
 						<td scope="row" style="display: table-cell;">
-						<c:forEach items="${seat3 }" var="dto" varStatus="count" >
-							<c:if test="${count.last }">
-								${count.index+1 } 개
-							</c:if>
-						</c:forEach>
+						${cntAlla3} 석
 						</td>
-						<td scope="row" style="display: table-cell;">${cntAlla3-cnta3 }</td>
-						<td><a href="#" id="seat_3"><button class="detail">상세</button></a></td>
+						<td scope="row" style="display: table-cell;">${cnta3 } 석</td>
+						<td><a id="seat_3"><button class="detail">상세</button></a></td>
 					</tr>
 					<tr>
 						<td scope="row" style="display: table-cell;">분당 도서관</td>
 						<td scope="row" style="display: table-cell;">
-						<c:forEach items="${seat4 }" var="dto" varStatus="count" >
-							<c:if test="${count.last }">
-								${count.index+1 } 개
-							</c:if>
-						</c:forEach>
+						${cntAlla4} 석
 						</td>
-						<td scope="row" style="display: table-cell;">${cntAlla4-cnta4 }</td>
-						<td><a href="#" id="seat_4"><button class="detail">상세</button></a></td>
+						<td scope="row" style="display: table-cell;">${cnta4 } 석</td>
+						<td><a id="seat_4"><button class="detail">상세</button></a></td>
 					</tr>
 				</tbody>
 			</table>
 		</div>
-
 </div>
 </div>
 <div id="seatList">
@@ -181,6 +149,12 @@
 </div>
 
 </section>
-<c:import url="${myContextPath}/temp/footer.jsp"></c:import>
+<c:choose>
+	<c:when test="${ln eq 1}"><c:import url="${myContextPath}/temp/footer_1.jsp"></c:import></c:when>
+	<c:when test="${ln eq 2}"><c:import url="${myContextPath}/temp/footer_2.jsp"></c:import></c:when>
+	<c:when test="${ln eq 3}"><c:import url="${myContextPath}/temp/footer_3.jsp"></c:import></c:when>
+	<c:when test="${ln eq 4}"><c:import url="${myContextPath}/temp/footer_4.jsp"></c:import></c:when>
+	<c:otherwise><c:import url="${myContextPath}/temp/footer.jsp"></c:import></c:otherwise>
+</c:choose>
 </body>
 </html>

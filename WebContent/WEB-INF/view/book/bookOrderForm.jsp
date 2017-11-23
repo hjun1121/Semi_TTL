@@ -12,7 +12,7 @@
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
 <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
 <link rel="stylesheet" href="${pageContext.request.contextPath }/css/book/bookOrderForm.css">
-<title>Insert title here</title>
+<title>도서 신청 폼</title>
 <script type="text/javascript">
 	$(function() {
 		var library = '${member.library}';
@@ -23,7 +23,7 @@
 		 });
 		 
 		 $("#btn_NO").click(function(){
-				location.href="${pageContext.request.contextPath }/book/bookOrderTotalList.book";
+				location.href="${pageContext.request.contextPath }/book/bookOrderTotalList.book?ln=${ln}";
 			});
 		 
 		 
@@ -53,18 +53,16 @@
 				
 			});
 		 
-		 
-		 
 	});
 
 </script>
 </head>
 <body>
 <c:choose>
-	<c:when test="${library eq 1}"><c:import url="${myContextPath}/temp/header_1.jsp"></c:import></c:when>
-	<c:when test="${library eq 2}"><c:import url="${myContextPath}/temp/header_2.jsp"></c:import></c:when>
-	<c:when test="${library eq 3}"><c:import url="${myContextPath}/temp/header_3.jsp"></c:import></c:when>
-	<c:when test="${library eq 4}"><c:import url="${myContextPath}/temp/header_4.jsp"></c:import></c:when>
+	<c:when test="${ln eq 1}"><c:import url="${myContextPath}/temp/header_1.jsp"></c:import></c:when>
+	<c:when test="${ln eq 2}"><c:import url="${myContextPath}/temp/header_2.jsp"></c:import></c:when>
+	<c:when test="${ln eq 3}"><c:import url="${myContextPath}/temp/header_3.jsp"></c:import></c:when>
+	<c:when test="${ln eq 4}"><c:import url="${myContextPath}/temp/header_4.jsp"></c:import></c:when>
 	<c:otherwise><c:import url="${myContextPath}/temp/header.jsp"></c:import></c:otherwise>
 </c:choose>
 
@@ -73,7 +71,7 @@
 		<h2 id="divTitle">도서신청</h2>
 		<div id="divLocation">
 			<ul>
-				<li class="home"><a href="../../index.jsp"><img src="${pageContext.request.contextPath}/image/bookTotalSearch/home.png" alt="HOME"></a></li>
+				<li class="home"><a href="../../index.jsp?ln=${ln}"><img src="${pageContext.request.contextPath}/image/bookTotalSearch/home.png" alt="HOME"></a></li>
 				<li>&gt;</li>
 				<li>통합검색</li>
 				<li>&gt;</li>
@@ -84,7 +82,7 @@
 
 	<!-- /// -->
 	<div class="cstmWrap">
-	<form action="./bookOrderForm.book" name="frm" method="post">
+	<form action="./bookOrderForm.book?ln=${ln}" name="frm" method="post">
 		<input type = "hidden" class = "form-control" name = "id" value = "${member.id}">
 		<ul class = "otoForm mt30 borTc3">
 			<li>
@@ -139,6 +137,12 @@
 	<!-- /// -->
 </div>
 </section>
-<c:import url="${myContextPath}/temp/footer.jsp"></c:import>
+<c:choose>
+	<c:when test="${ln eq 1}"><c:import url="${myContextPath}/temp/footer_1.jsp"></c:import></c:when>
+	<c:when test="${ln eq 2}"><c:import url="${myContextPath}/temp/footer_2.jsp"></c:import></c:when>
+	<c:when test="${ln eq 3}"><c:import url="${myContextPath}/temp/footer_3.jsp"></c:import></c:when>
+	<c:when test="${ln eq 4}"><c:import url="${myContextPath}/temp/footer_4.jsp"></c:import></c:when>
+	<c:otherwise><c:import url="${myContextPath}/temp/footer.jsp"></c:import></c:otherwise>
+</c:choose>
 </body>
 </html>

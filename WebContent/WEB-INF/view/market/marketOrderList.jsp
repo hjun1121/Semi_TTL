@@ -5,7 +5,7 @@
 <html>
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
-<title>Insert title here</title>
+<title>도서 판매 신청 리스트</title>
 <link rel="stylesheet" href="${pageContext.request.contextPath }/css/temp/header.css">
 <link rel="stylesheet" href="${pageContext.request.contextPath }/css/temp/footer.css">
 <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
@@ -34,15 +34,15 @@ $(function(){
 </head>
 <body>
 <c:choose>
-	<c:when test="${library eq 1}"><c:import url="${myContextPath}/temp/header_1.jsp"></c:import></c:when>
-	<c:when test="${library eq 2}"><c:import url="${myContextPath}/temp/header_2.jsp"></c:import></c:when>
-	<c:when test="${library eq 3}"><c:import url="${myContextPath}/temp/header_3.jsp"></c:import></c:when>
-	<c:when test="${library eq 4}"><c:import url="${myContextPath}/temp/header_4.jsp"></c:import></c:when>
+	<c:when test="${ln eq 1}"><c:import url="${myContextPath}/temp/header_1.jsp"></c:import></c:when>
+	<c:when test="${ln eq 2}"><c:import url="${myContextPath}/temp/header_2.jsp"></c:import></c:when>
+	<c:when test="${ln eq 3}"><c:import url="${myContextPath}/temp/header_3.jsp"></c:import></c:when>
+	<c:when test="${ln eq 4}"><c:import url="${myContextPath}/temp/header_4.jsp"></c:import></c:when>
 	<c:otherwise><c:import url="${myContextPath}/temp/header.jsp"></c:import></c:otherwise>
 </c:choose>
 
 <div>
-	<c:import url="${myContextPath}/WEB-INF/view/member/myPage.jsp"></c:import>
+	<c:import url="${myContextPath}/WEB-INF/view/member/myPage.jsp?library=${library}&ln=${ln}"></c:import>
 </div>
 <section id="section">
 <div id="divContentsW">
@@ -59,7 +59,7 @@ $(function(){
 		</div>
 
 	<!-- 검색 시작 -->
-		<form name="frm" class="form-inline" action="./marketOrderList.market" method="post">
+		<form name="frm" class="form-inline" action="./marketOrderList.market?library=${library}&ln=${ln}" method="post">
 			<fieldset>
 				<span class="bunch">
 					<select id="kind" name = "kind" class="selectBox1">
@@ -74,7 +74,11 @@ $(function(){
 		</form>
 		<!-- 검색 끝 -->
 	<br><br>
-	
+	<c:if test="${size eq 0 }">
+		<h2 id="divTitle">대여 내역이 없습니다.</h2>
+		<br><br><br><br><br><br><br><br><br><br><br><br>
+	</c:if>
+	<c:if test="${size ne 0 }">
 	<div class="listTable">
 	<table class="mobileTable tablet" >
 	<thead>
@@ -136,18 +140,25 @@ $(function(){
 			<li><button class="go" id="${page.startNum-1}">[이전]</button></li>
 			</c:if>
 			<c:forEach begin="${page.startNum}" end="${page.lastNum}" var="i">
-			<li><a class="cur" title="${i }" href="./marketOrderList.market?curPage=${i}&id=${id }&kind=${kind}&search=${search}">${i}</a></li>
+			<li><a class="cur" title="${i }" href="./marketOrderList.market?curPage=${i}&id=${id }&kind=${kind}&search=${search}&library=${library}&ln=${ln}">${i}</a></li>
 			</c:forEach>
 			<c:if test="${page.curBlock < page.totalBlock}">
 			<li><a
-				href="./marketOrderList.market?curPage=${requestScope.page.lastNum+1}">[다음]</a></li>
+				href="./marketOrderList.market?curPage=${requestScope.page.lastNum+1}&library=${library}&ln=${ln}">[다음]</a></li>
 			</c:if>
 		</ul>
 	</div>
 	</div>
+	</c:if>
 	</div>
 </div>		
 	</section>
-<c:import url="${myContextPath}/temp/footer.jsp"></c:import>
+<c:choose>
+	<c:when test="${ln eq 1}"><c:import url="${myContextPath}/temp/footer_1.jsp"></c:import></c:when>
+	<c:when test="${ln eq 2}"><c:import url="${myContextPath}/temp/footer_2.jsp"></c:import></c:when>
+	<c:when test="${ln eq 3}"><c:import url="${myContextPath}/temp/footer_3.jsp"></c:import></c:when>
+	<c:when test="${ln eq 4}"><c:import url="${myContextPath}/temp/footer_4.jsp"></c:import></c:when>
+	<c:otherwise><c:import url="${myContextPath}/temp/footer.jsp"></c:import></c:otherwise>
+</c:choose>
 </body>
 </html>

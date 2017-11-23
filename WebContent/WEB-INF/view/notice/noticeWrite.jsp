@@ -12,7 +12,7 @@
 <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
 <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
-<title>Insert title here</title>
+<title>공지사항 글쓰기</title>
 </head>
 <body>
 
@@ -34,10 +34,10 @@
 </head>
 <body>
 <c:choose>
-	<c:when test="${library eq 1}"><c:import url="${myContextPath}/temp/header_1.jsp"></c:import></c:when>
-	<c:when test="${library eq 2}"><c:import url="${myContextPath}/temp/header_2.jsp"></c:import></c:when>
-	<c:when test="${library eq 3}"><c:import url="${myContextPath}/temp/header_3.jsp"></c:import></c:when>
-	<c:when test="${library eq 4}"><c:import url="${myContextPath}/temp/header_4.jsp"></c:import></c:when>
+	<c:when test="${ln eq 1}"><c:import url="${myContextPath}/temp/header_1.jsp"></c:import></c:when>
+	<c:when test="${ln eq 2}"><c:import url="${myContextPath}/temp/header_2.jsp"></c:import></c:when>
+	<c:when test="${ln eq 3}"><c:import url="${myContextPath}/temp/header_3.jsp"></c:import></c:when>
+	<c:when test="${ln eq 4}"><c:import url="${myContextPath}/temp/header_4.jsp"></c:import></c:when>
 	<c:otherwise><c:import url="${myContextPath}/temp/header.jsp"></c:import></c:otherwise>
 </c:choose>
 
@@ -59,7 +59,7 @@
 			</div>
 			
 		<div class="cstmWrap">
-			<form action="./noticeWrite.notice" name="frm" method="post">
+			<form action="./noticeWrite.notice?library=${library}&ln=${ln}" name="frm" method="post">
 				<input type="hidden" name="num" value="${view.num}">
 				<ul class="otoForm mt30 borTc3">
 					<li id="writer">
@@ -78,7 +78,7 @@
 					</li>
 				</ul>
 					<div class="btnBox">
-						<span class="button1"><a href="./noticeList.notice" class="type4 large">취소</a></span> 
+						<span class="button1"><a href="./noticeList.notice?library=${library}&ln=${ln}" class="type4 large">취소</a></span> 
 						<span class="button1"><input type="button" id="btn_OK" class = "type1 large" value="확인"> </span>
 					</div>
 				</form>
@@ -86,29 +86,14 @@
 		</div>
 	</div>
 
-
-<%-- <div class="noticeWrite">
-	<div class="col-md-8 col-centered">
-		<form action="./noticeWrite.notice" method="post">
-			<table class="table">
-				<tr>
-					<tr>
-					<td colspan="2"><input type="text" name="title" placeholder="제목없음"></td>
-					<td colspan="2"></td>
-					<td id="reg_date"></td>
-					<td id="writer"><input type="text" name="writer" readonly="readonly" value="${sessionScope.member.id }"></td>
-				</tr>
-				<tr>
-				 	<td colspan="6" id="contents"><textarea name="contents" placeholder="내용을 입력하세요."></textarea></td>
-				</tr>
-			</table>
-			
-			<button class="btn btn-default" type="submit">글쓰기</button>
-		</form>
-	</div>
-</div> --%>
 </div>
 </section>
-<c:import url="${myContextPath }/temp/footer.jsp"></c:import>		
+<c:choose>
+	<c:when test="${ln eq 1}"><c:import url="${myContextPath}/temp/footer_1.jsp"></c:import></c:when>
+	<c:when test="${ln eq 2}"><c:import url="${myContextPath}/temp/footer_2.jsp"></c:import></c:when>
+	<c:when test="${ln eq 3}"><c:import url="${myContextPath}/temp/footer_3.jsp"></c:import></c:when>
+	<c:when test="${ln eq 4}"><c:import url="${myContextPath}/temp/footer_4.jsp"></c:import></c:when>
+	<c:otherwise><c:import url="${myContextPath}/temp/footer.jsp"></c:import></c:otherwise>
+</c:choose>
 </body>
 </html>

@@ -12,6 +12,12 @@ public class AdminBookOrderNOAjaxService implements Action {
 	public ActionFoward doProcess(HttpServletRequest request, HttpServletResponse response) {
 		ActionFoward actionFoward = new ActionFoward();
 		
+		int ln = 0;
+		try {
+			ln = Integer.parseInt(request.getParameter("ln"));
+		} catch (Exception e) {
+			// TODO: handle exception
+		}
 		int library = 0;
 		try {
 			library = Integer.parseInt(request.getParameter("library"));
@@ -28,7 +34,8 @@ public class AdminBookOrderNOAjaxService implements Action {
 		request.setAttribute("library", library);
 		actionFoward.setCheck(true);
 		actionFoward.setPath("../WEB-INF/view/admin/admin_bookOrder_NO_ajax.jsp");
-		
+		request.setAttribute("ln", ln);
+
 		return actionFoward;
 	}
 

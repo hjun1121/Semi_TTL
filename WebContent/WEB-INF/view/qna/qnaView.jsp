@@ -11,7 +11,7 @@
 <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
 <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
-<title>Insert title here</title>
+<title>QnA 상세페이지</title>
 <script type="text/javascript">
 $(function(){
 	var type = ${qnaDTO.type};
@@ -71,15 +71,19 @@ $(function(){
 		document.frm3.contents.value=replyCon; //댓글내용
 		document.frm3.submit();
 	});
+	
+/* 	$("#upbtn").click(function(){
+		location.href="../qna/qnaUpdate.qna?library?num=${qnaDTO.num }";
+	}); */
 });
 </script>
 </head>
 <body>
 <c:choose>
-	<c:when test="${library eq 1}"><c:import url="${myContextPath}/temp/header_1.jsp"></c:import></c:when>
-	<c:when test="${library eq 2}"><c:import url="${myContextPath}/temp/header_2.jsp"></c:import></c:when>
-	<c:when test="${library eq 3}"><c:import url="${myContextPath}/temp/header_3.jsp"></c:import></c:when>
-	<c:when test="${library eq 4}"><c:import url="${myContextPath}/temp/header_4.jsp"></c:import></c:when>
+	<c:when test="${ln eq 1}"><c:import url="${myContextPath}/temp/header_1.jsp"></c:import></c:when>
+	<c:when test="${ln eq 2}"><c:import url="${myContextPath}/temp/header_2.jsp"></c:import></c:when>
+	<c:when test="${ln eq 3}"><c:import url="${myContextPath}/temp/header_3.jsp"></c:import></c:when>
+	<c:when test="${ln eq 4}"><c:import url="${myContextPath}/temp/header_4.jsp"></c:import></c:when>
 	<c:otherwise><c:import url="${myContextPath}/temp/header.jsp"></c:import></c:otherwise>
 </c:choose>
 
@@ -98,7 +102,7 @@ $(function(){
 			</div>
 		</div>
 		
-		<form id = "qnaDetail_frm" action="../qna/qnaUpdate.qna" method="get" name="frm">
+		<form id = "qnaDetail_frm" action="../qna/qnaUpdate.qna?ln=${ln}" method="get" name="frm">
 		<div class = "boardInfo">
 			<input type="hidden" name="num" value=${qnaDTO.num } readonly="readonly">
 			<input type="hidden" name="library" value=${qnaDTO.library } readonly="readonly">
@@ -111,7 +115,11 @@ $(function(){
 						<span>${qnaDTO.writer}</span>
 					</dd>
 					<dd class="writerEmail">
-							<span>${qnaDTO.type}</span>
+							<span>
+								<c:if test="${qnaDTO.type eq 1}">중고장터문의</c:if>
+								<c:if test="${qnaDTO.type eq 2}">도서신청문의</c:if>
+								<c:if test="${qnaDTO.type eq 3}">이용문의</c:if>
+							</span>
 					</dd>
 			</dl>
 		</div>
@@ -121,26 +129,36 @@ $(function(){
 		<br>
 		</div>
 		<div id = "bottom_btns">
-			<input type="submit" class="adv" value="수정">
-			<a href="../qna/qnaDelete.qna?num=${qnaDTO.num }"><input type="button" class="adv" value="삭제"></a>
-			<a href="../qna/qnaList.qna"><input type="button" class="adv" value="list"></a>
+		
+		<c:if test="${not empty member and member.id eq qnaDTO.writer }">
+			<input type="submit" id="upbtn" class="adv" value="수정">
+			<a href="../qna/qnaDelete.qna?num=${qnaDTO.num }&library=${library}&ln=${ln}"><input type="button" class="adv" value="삭제"></a>
+		</c:if>
+			<a href="../qna/qnaList.qna?library=${library}&ln=${ln}"><input type="button" class="adv" value="list"></a>
 		</div>
 		</form>
 		
 		<hr>
 		
 		<div class = "boardList">
-		<form action="../qnaReply/qnaReplyInsert.qnaReply" method="post">
+		<form action="../qnaReply/qnaReplyInsert.qnaReply?library=${library}&ln=${ln}" method="post">
 			<input type ="hidden" value="${qnaDTO.num}" name="pNum">
 			<input type ="hidden" value="${qnaDTO.pw}" name="pw">
-			<p><textarea name="contents" class = "reply"></textarea>
-			<button type="submit" class="adv">등록</button> </p>
+			<textarea name="contents" class = "reply"></textarea>
+			<c:if test="${not empty member }">
+				<button type="submit" class="adv">등록</button> 
+			</c:if>
 		</form>
 		</div>
 	</div>
 </div>
 </section>
 <!-- -------------------------------------------------------------------- -->
+
+
+
+
+
 <c:if test="${replyList ne null }">
 	<table border="1">
 		<c:forEach items="${replyList }" var="dto" varStatus="i">
@@ -165,7 +183,7 @@ $(function(){
 					<input type="button" class="replyUpdate btn${dto.num }" title="${dto.num }" value="수정">
 				</c:if>
 				<c:if test="${member.id eq dto.writer or member.kind eq 10 or member.id eq qnaDTO.writer }">
-					<a href="../qnaReply/qnaReplyDelete.qnaReply?num=${dto.num }&pNum=${qnaDTO.num }"><input type="button" class="btn${dto.num }" value="삭제"></a>
+					<a href="../qnaReply/qnaReplyDelete.qnaReply?num=${dto.num }&pNum=${qnaDTO.num }&library=${library}&ln=${ln}"><input type="button" class="btn${dto.num }" value="삭제"></a>
 				</c:if>
 				</td>
 			</tr>
@@ -177,20 +195,26 @@ $(function(){
 	</table>
 </c:if>
 
-<form action="../qnaReply/qnaReplyUpdate.qnaReply" name="frm2">
+<form action="../qnaReply/qnaReplyUpdate.qnaReply?library=${library}&ln=${ln}" name="frm2">
 	<input type ="hidden" value="${qnaDTO.num }" name="pNum">
 	<input type ="hidden" value="${qnaDTO.pw }" name="pw">
 	<input type ="hidden" name="num">
 	<input type ="hidden" name="contents">
 </form>
 
-<form action="../qnaReply/reQnaReplyInsert.qnaReply" name="frm3">
+<form action="../qnaReply/reQnaReplyInsert.qnaReply?library=${library}&ln=${ln}" name="frm3">
 	<input type ="hidden" value="${qnaDTO.num }" name="pNum">
 	<input type ="hidden" value="${qnaDTO.pw }" name="pw">
 	<input type ="hidden" name="num">
 	<input type ="hidden" name="contents">
 </form>
 
-<c:import url="${myContextPath}/temp/footer.jsp"></c:import>
+<c:choose>
+	<c:when test="${ln eq 1}"><c:import url="${myContextPath}/temp/footer_1.jsp"></c:import></c:when>
+	<c:when test="${ln eq 2}"><c:import url="${myContextPath}/temp/footer_2.jsp"></c:import></c:when>
+	<c:when test="${ln eq 3}"><c:import url="${myContextPath}/temp/footer_3.jsp"></c:import></c:when>
+	<c:when test="${ln eq 4}"><c:import url="${myContextPath}/temp/footer_4.jsp"></c:import></c:when>
+	<c:otherwise><c:import url="${myContextPath}/temp/footer.jsp"></c:import></c:otherwise>
+</c:choose>
 </body>
 </html>

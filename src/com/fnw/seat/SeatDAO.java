@@ -17,12 +17,11 @@ public class SeatDAO {
 	
 	
 	public int updateRent(SeatDTO seatDTO,Connection con) throws Exception {
-		String sql="UPDATE seat SET state=0, id=?,reserve_time=sysdate  where seat_num=?";
+		String sql="UPDATE seat SET state=0, id=?, reserve_time=sysdate  where seat_num=? and library=?";
 		PreparedStatement st = con.prepareStatement(sql);
-		
 		st.setString(1, seatDTO.getId());
 		st.setInt(2, seatDTO.getSeat_num());
-		
+		st.setInt(3, seatDTO.getLibrary());
 		int result = st.executeUpdate();
 		st.close();
 		
@@ -53,7 +52,7 @@ public class SeatDAO {
 	
 	public ArrayList<SeatDTO> selectList(int library) throws Exception{
 		 Connection con = DBConnector.getConnect();
-		 String sql = "select * from seat where library=? ";
+		 String sql = "select * from seat where library=? order by seat_num";
 		 PreparedStatement st = con.prepareStatement(sql);
 		 st.setInt(1, library);
 		 
@@ -79,7 +78,7 @@ public class SeatDAO {
 	
 	public int count(int f, int library) throws Exception{
 		 Connection con = DBConnector.getConnect();
-		 String sql = "select count(*) from seat where seat_num like ? and library=? and state=0";
+		 String sql = "select count(*) from seat where seat_num like ? and library=? and state=1";
 		 PreparedStatement st = con.prepareStatement(sql);
 		 
 		 st.setString(1, f+"%");

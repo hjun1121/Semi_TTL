@@ -25,6 +25,12 @@ public class SeatCancelService implements Action {
 		Seat_DetailsDAO seat_DetailsDAO = new Seat_DetailsDAO();
 		SeatDAO seatDAO = new SeatDAO();
 
+		int ln = 0;
+		try {
+			ln = Integer.parseInt(request.getParameter("ln"));
+		} catch (Exception e) {
+			// TODO: handle exception
+		}
 		int library = 0;
 		try {
 			library = Integer.parseInt(request.getParameter("library"));
@@ -68,6 +74,7 @@ public class SeatCancelService implements Action {
 		request.setAttribute("library", library);
 		actionFoward.setCheck(true);
 		actionFoward.setPath("../WEB-INF/view/common/result.jsp");
+		request.setAttribute("ln", ln);
 		return actionFoward;
 	}
 

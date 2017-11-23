@@ -22,6 +22,12 @@ public class LibraryBookRecommendService implements Action{
 		ArrayList<Book_TotalDTO> ar = new ArrayList<>();
 		ArrayList<Book_Rent_WishDTO> rent_wish_list = new ArrayList<>();
 		
+		int ln = 0;
+		try {
+			ln = Integer.parseInt(request.getParameter("ln"));
+		} catch (Exception e) {
+			// TODO: handle exception
+		}
 		int library = 0;
 		try {
 			library = Integer.parseInt(request.getParameter("library"));
@@ -64,6 +70,7 @@ public class LibraryBookRecommendService implements Action{
 		actionFoward.setCheck(true);
 		actionFoward.setPath("../WEB-INF/view/library/libraryBookRecommend.jsp");
 
+		request.setAttribute("ln", ln);
 		return actionFoward;
 	}
 	

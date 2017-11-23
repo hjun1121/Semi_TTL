@@ -5,7 +5,7 @@
 <html>
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
-<title>Insert title here</title>
+<title>도서 대여 내역</title>
 <link rel="stylesheet" href="${pageContext.request.contextPath }/css/temp/header.css">
 <link rel="stylesheet" href="${pageContext.request.contextPath }/css/temp/footer.css">
 <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
@@ -16,15 +16,15 @@
 </head>
 <body>
 <c:choose>
-	<c:when test="${library eq 1}"><c:import url="${myContextPath}/temp/header_1.jsp"></c:import></c:when>
-	<c:when test="${library eq 2}"><c:import url="${myContextPath}/temp/header_2.jsp"></c:import></c:when>
-	<c:when test="${library eq 3}"><c:import url="${myContextPath}/temp/header_3.jsp"></c:import></c:when>
-	<c:when test="${library eq 4}"><c:import url="${myContextPath}/temp/header_4.jsp"></c:import></c:when>
+	<c:when test="${ln eq 1}"><c:import url="${myContextPath}/temp/header_1.jsp"></c:import></c:when>
+	<c:when test="${ln eq 2}"><c:import url="${myContextPath}/temp/header_2.jsp"></c:import></c:when>
+	<c:when test="${ln eq 3}"><c:import url="${myContextPath}/temp/header_3.jsp"></c:import></c:when>
+	<c:when test="${ln eq 4}"><c:import url="${myContextPath}/temp/header_4.jsp"></c:import></c:when>
 	<c:otherwise><c:import url="${myContextPath}/temp/header.jsp"></c:import></c:otherwise>
 </c:choose>
 
 <div>
-	<c:import url="${myContextPath}/WEB-INF/view/member/myPage.jsp"></c:import>
+	<c:import url="${myContextPath}/WEB-INF/view/member/myPage.jsp?ln=${ln}"></c:import>
 </div>
 
 <div id="divContentsW">
@@ -42,7 +42,7 @@
 				</ul>
 			</div>
 			
-			<form action="../book/bookRentList.book?id=${member.id }" method="post">
+			<form action="../book/bookRentList.book?id=${member.id}&library=${library}&ln=${ln}" method="post">
 			<div class="profile borderIn">
 					<div class="profileHeader">
 	 			   	 	<h3>${book.title}</h3>
@@ -159,10 +159,10 @@
 		                <tr>
 		                    <td class="num expand footable-first-column">${book.num}</td>
 		                    	<c:choose>
-		                    		<c:when test="${book.library eq 1}"><td class="location"><a href="../library/libraryMain.library?library=1">형준 도서관</a></td></c:when>
-		                    		<c:when test="${book.library eq 2}"><td class="location"><a href="../library/libraryMain.library?library=2">지현 도서관</a></td></c:when>
-		                    		<c:when test="${book.library eq 3}"><td class="location"><a href="../library/libraryMain.library?library=3">희성 도서관</a></td></c:when>
-		                    		<c:when test="${book.library eq 4}"><td class="location"><a href="../library/libraryMain.library?library=4">현민 도서관</a></td></c:when>
+		                    		<c:when test="${book.library eq 1}"><td class="location"><a href="../library/libraryMain.library?ln=1">기흥 도서관</a></td></c:when>
+		                    		<c:when test="${book.library eq 2}"><td class="location"><a href="../library/libraryMain.library?ln=2">송파 도서관</a></td></c:when>
+		                    		<c:when test="${book.library eq 3}"><td class="location"><a href="../library/libraryMain.library?ln=3">장안 도서관</a></td></c:when>
+		                    		<c:when test="${book.library eq 4}"><td class="location"><a href="../library/libraryMain.library?ln=4">분당 도서관</a></td></c:when>
 		                    	</c:choose>
 		                    <td class="callNum">${book.section}</td>
 							<c:choose>
@@ -185,17 +185,23 @@
 		<div class="btn2">
 		<c:choose>
 			<c:when test="${empty bookRentDTO.out_time }">
-				<a href="./bookReturn.book?num=${bookRentDTO.num }&bnum=${bookRentDTO.bnum }"><input class="btnType5" type="button" value="반납"></a>
+				<a href="./bookReturn.book?num=${bookRentDTO.num }&bnum=${bookRentDTO.bnum }&library=${library}&ln=${ln}"><input class="btnType5" type="button" value="반납"></a>
 			</c:when>
 		</c:choose>
 		<c:choose>
 			<c:when test="${not empty bookRentDTO.out_time }">
-				<a href="./bookRentDelete.book?bnum=${bookRentDTO.bnum }"><input class="btnType5" type="button" value="삭제"></a>
+				<a href="./bookRentDelete.book?bnum=${bookRentDTO.bnum }&library=${library}&ln=${ln}"><input class="btnType5" type="button" value="삭제"></a>
 			</c:when>
 		</c:choose>
-		<a href="../book/bookRentList.book?id=${member.id }"><input class="btnType5" type="button" value="LIST"></a>
+		<a href="../book/bookRentList.book?id=${member.id }&library=${library}&ln=${ln}"><input class="btnType5" type="button" value="LIST"></a>
 		</div>
 	</div>
-<c:import url="${myContextPath}/temp/footer.jsp"></c:import>
+<c:choose>
+	<c:when test="${ln eq 1}"><c:import url="${myContextPath}/temp/footer_1.jsp"></c:import></c:when>
+	<c:when test="${ln eq 2}"><c:import url="${myContextPath}/temp/footer_2.jsp"></c:import></c:when>
+	<c:when test="${ln eq 3}"><c:import url="${myContextPath}/temp/footer_3.jsp"></c:import></c:when>
+	<c:when test="${ln eq 4}"><c:import url="${myContextPath}/temp/footer_4.jsp"></c:import></c:when>
+	<c:otherwise><c:import url="${myContextPath}/temp/footer.jsp"></c:import></c:otherwise>
+</c:choose>
 </body>
 </html>

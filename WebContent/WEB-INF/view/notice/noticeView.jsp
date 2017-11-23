@@ -12,14 +12,14 @@
 <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
 <link rel="stylesheet" href="${pageContext.request.contextPath }/css/notice/noticeView.css">
 
-<title>Insert title here</title>
+<title>공지사항 상세페이지</title>
 </head>
 <body>
 <c:choose>
-	<c:when test="${library eq 1}"><c:import url="${myContextPath}/temp/header_1.jsp"></c:import></c:when>
-	<c:when test="${library eq 2}"><c:import url="${myContextPath}/temp/header_2.jsp"></c:import></c:when>
-	<c:when test="${library eq 3}"><c:import url="${myContextPath}/temp/header_3.jsp"></c:import></c:when>
-	<c:when test="${library eq 4}"><c:import url="${myContextPath}/temp/header_4.jsp"></c:import></c:when>
+	<c:when test="${ln eq 1}"><c:import url="${myContextPath}/temp/header_1.jsp"></c:import></c:when>
+	<c:when test="${ln eq 2}"><c:import url="${myContextPath}/temp/header_2.jsp"></c:import></c:when>
+	<c:when test="${ln eq 3}"><c:import url="${myContextPath}/temp/header_3.jsp"></c:import></c:when>
+	<c:when test="${ln eq 4}"><c:import url="${myContextPath}/temp/header_4.jsp"></c:import></c:when>
 	<c:otherwise><c:import url="${myContextPath}/temp/header.jsp"></c:import></c:otherwise>
 </c:choose>
 
@@ -51,7 +51,7 @@
 			</div>
 			
 			<div class="boardContent">
-				<div style="text-align: center;" id="contents">
+				<div id="contents">
 					${requestScope.view.contents}
 					<!-- <img border="0" src="./image/ko/local/hjbs.PNG" style="height:1040px; width:720px"> -->
 				</div>
@@ -60,16 +60,22 @@
 		<br>
 	<div class="adv">
 	<c:if test="${member.kind eq 10 }">
-		<a href="./noticeUpdate.notice?num=${view.num}"><button class="adv2">UPDATE</button></a>
-		<a href="./noticeDelete.notice?num=${view.num}"><button class="adv2">DELETE</button></a>
-		<a href="noticeList.notice" title="목록"><button class="adv2">목록</button></a>
+		<a href="./noticeUpdate.notice?num=${view.num}&library=${library}&ln=${ln}"><button class="adv2">UPDATE</button></a>
+		<a href="./noticeDelete.notice?num=${view.num}&library=${library}&ln=${ln}"><button class="adv2">DELETE</button></a>
 	</c:if>
+		<a href="noticeList.notice?library=${library}&ln=${ln}" title="목록"><button class="adv2">목록</button></a>
 	</div>
 	</div>
 	
 	</div>
 </div>
 
-<c:import url="${myContextPath }/temp/footer.jsp"></c:import>
+<c:choose>
+	<c:when test="${ln eq 1}"><c:import url="${myContextPath}/temp/footer_1.jsp"></c:import></c:when>
+	<c:when test="${ln eq 2}"><c:import url="${myContextPath}/temp/footer_2.jsp"></c:import></c:when>
+	<c:when test="${ln eq 3}"><c:import url="${myContextPath}/temp/footer_3.jsp"></c:import></c:when>
+	<c:when test="${ln eq 4}"><c:import url="${myContextPath}/temp/footer_4.jsp"></c:import></c:when>
+	<c:otherwise><c:import url="${myContextPath}/temp/footer.jsp"></c:import></c:otherwise>
+</c:choose>
 </body>
 </html>

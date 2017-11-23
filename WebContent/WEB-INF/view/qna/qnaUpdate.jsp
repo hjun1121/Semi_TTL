@@ -6,7 +6,7 @@
 <html>
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
-<title>Insert title here</title>
+<title>QnA 수정</title>
 <link rel="stylesheet" href="${pageContext.request.contextPath }/css/temp/header.css">
 <link rel="stylesheet" href="${pageContext.request.contextPath }/css/temp/footer.css">
 <link rel="stylesheet" href="${pageContext.request.contextPath }/css/qna/qnaUpdate.css">
@@ -50,10 +50,10 @@ $(function() {
 </head>
 <body>
 <c:choose>
-	<c:when test="${library eq 1}"><c:import url="${myContextPath}/temp/header_1.jsp"></c:import></c:when>
-	<c:when test="${library eq 2}"><c:import url="${myContextPath}/temp/header_2.jsp"></c:import></c:when>
-	<c:when test="${library eq 3}"><c:import url="${myContextPath}/temp/header_3.jsp"></c:import></c:when>
-	<c:when test="${library eq 4}"><c:import url="${myContextPath}/temp/header_4.jsp"></c:import></c:when>
+	<c:when test="${ln eq 1}"><c:import url="${myContextPath}/temp/header_1.jsp"></c:import></c:when>
+	<c:when test="${ln eq 2}"><c:import url="${myContextPath}/temp/header_2.jsp"></c:import></c:when>
+	<c:when test="${ln eq 3}"><c:import url="${myContextPath}/temp/header_3.jsp"></c:import></c:when>
+	<c:when test="${ln eq 4}"><c:import url="${myContextPath}/temp/header_4.jsp"></c:import></c:when>
 	<c:otherwise><c:import url="${myContextPath}/temp/header.jsp"></c:import></c:otherwise>
 </c:choose>
 
@@ -71,7 +71,7 @@ $(function() {
 			</div>	
 			
 			<div class="cstmWrap">
-			<form action="./qnaUpdate.qna" name="frm" method="post">
+			<form action="./qnaUpdate.qna?ln=${ln}" name="frm" method="post">
 				<ul class = "otoForm mt30 borTc3">
 					<li>
 						<p class="writeTit" >No.</p>
@@ -87,11 +87,11 @@ $(function() {
 					</li>
 					<li>
 						<p class="writeTit" >내용</p>
-						<input type="text" id="contents" name="contents" value="${qnaDTO.contents }" readonly="readonly">
+						<input type="text" id="contents" name="contents" value="${qnaDTO.contents }" >
 					</li>
 					<li>
 						<p class="writeTit" >작성자</p>
-						<input type="text" name="writer" value="${qnaDTO.id }" readonly="readonly">
+						<input type="text" name="writer" value="${qnaDTO.writer }" readonly="readonly">
 					</li>
 					<li>
 						<p class="writeTit" >비밀번호</p>
@@ -108,7 +108,7 @@ $(function() {
 					</li>
 				</ul>
 				<div class="btnBox">
-					<button id="btn_NO"><a href="./qnaList.qna">취소</a></button>
+					<button id="btn_NO"><a href="./qnaList.qna?library=${library}&ln=${ln}">취소</a></button>
 					<button type="button" id="btn_OK">확인</button>
 				</div>
 			</form>
@@ -116,6 +116,12 @@ $(function() {
 		</div>
 	</div>
 
-<c:import url="${myContextPath}/temp/footer.jsp"></c:import>
+<c:choose>
+	<c:when test="${ln eq 1}"><c:import url="${myContextPath}/temp/footer_1.jsp"></c:import></c:when>
+	<c:when test="${ln eq 2}"><c:import url="${myContextPath}/temp/footer_2.jsp"></c:import></c:when>
+	<c:when test="${ln eq 3}"><c:import url="${myContextPath}/temp/footer_3.jsp"></c:import></c:when>
+	<c:when test="${ln eq 4}"><c:import url="${myContextPath}/temp/footer_4.jsp"></c:import></c:when>
+	<c:otherwise><c:import url="${myContextPath}/temp/footer.jsp"></c:import></c:otherwise>
+</c:choose>
 </body>
 </html>

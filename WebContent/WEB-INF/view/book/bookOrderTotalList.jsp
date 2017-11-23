@@ -23,14 +23,14 @@
 	});
 
 </script>
-<title>Insert title here</title>
+<title>도서 신청 리스트</title>
 </head>
 <body>
 <c:choose>
-	<c:when test="${library eq 1}"><c:import url="${myContextPath}/temp/header_1.jsp"></c:import></c:when>
-	<c:when test="${library eq 2}"><c:import url="${myContextPath}/temp/header_2.jsp"></c:import></c:when>
-	<c:when test="${library eq 3}"><c:import url="${myContextPath}/temp/header_3.jsp"></c:import></c:when>
-	<c:when test="${library eq 4}"><c:import url="${myContextPath}/temp/header_4.jsp"></c:import></c:when>
+	<c:when test="${ln eq 1}"><c:import url="${myContextPath}/temp/header_1.jsp"></c:import></c:when>
+	<c:when test="${ln eq 2}"><c:import url="${myContextPath}/temp/header_2.jsp"></c:import></c:when>
+	<c:when test="${ln eq 3}"><c:import url="${myContextPath}/temp/header_3.jsp"></c:import></c:when>
+	<c:when test="${ln eq 4}"><c:import url="${myContextPath}/temp/header_4.jsp"></c:import></c:when>
 	<c:otherwise><c:import url="${myContextPath}/temp/header.jsp"></c:import></c:otherwise>
 </c:choose>
 
@@ -62,7 +62,7 @@
 						<th scope="row" style="display: table-cell;">처리상태</th>
 					</tr>
 				</thead>
-				
+
 			<c:forEach items="${bookOrderTotalList}" var="bookOrder_list">
 				<tr>
 				<td scope="row" class="footable-first-column">${bookOrder_list.num }</td>
@@ -71,11 +71,14 @@
 					<td scope="row" style="display: table-cell;">${bookOrder_list.company}</td>
 					<td scope="row" style="display: table-cell;">${fn:substring(bookOrder_list.id,0,2) }***</td>
 					<c:choose>
-					<c:when test="${bookOrder_list.state ne 1}">
+					<c:when test="${bookOrder_list.state eq 0}">
 						<td scope="row" style="display: table-cell;">대기</td>
 					</c:when>
-					<c:when test="${bookOrder_list.state ne 0 }">
-						<td scope="row" style="display: table-cell;">완료</td>
+					<c:when test="${bookOrder_list.state eq 1}">
+						<td scope="row" style="display: table-cell;">거절</td>
+					</c:when>
+					<c:when test="${bookOrder_list.state eq 2 }">
+						<td scope="row" style="display: table-cell;">승인</td>
 					</c:when>
 					</c:choose>
 				</tr>
@@ -84,22 +87,22 @@
 		</div>
 		</c:if>
 		<c:if test="${not empty member}">
-		<form id = "order_btn" action="./bookOrderForm.book">
+		<form id = "order_btn" action="./bookOrderForm.book?ln=${ln}">
 			<button style = "float: right;" class = "adv" type = "submit">신청하기</button>		
 		</form>
 		</c:if>
 				<div class = "paging" style = "text-align: center;">
 			<ul class="pagination pagination-sm">
 				<c:if test="${page.curBlock>1}">
-				<li><a href = "./bookOrderTotalList.book?curPage=${page.startNum-1}"><img width="13" height="16"  src="${pageContext.request.contextPath}/image/bookTotalSearch/prevPage.gif" alt="이전" title="이전"></a></li>
+				<li><a href = "./bookOrderTotalList.book?curPage=${page.startNum-1}&library=${library}&ln=${ln}"><img width="13" height="16"  src="${pageContext.request.contextPath}/image/bookTotalSearch/prevPage.gif" alt="이전" title="이전"></a></li>
 				</c:if>
 
 				<c:forEach begin="${page.startNum}" end="${page.lastNum}" var="i">
-				<li><a class="cur" title="${i }" href="./bookOrderTotalList.book?curPage=${i}">${i}</a></li>
+				<li><a class="cur" title="${i }" href="./bookOrderTotalList.book?curPage=${i}&library=${library}&ln=${ln}">${i}</a></li>
 				</c:forEach>
 				
 				<c:if test="${page.curBlock < page.totalBlock}">
-				<li><a href="./bookOrderTotalList.book?curPage=${requestScope.page.lastNum+1}"><img width="13" height="16" src="${pageContext.request.contextPath}/image/bookTotalSearch/nextPage.gif" alt="다음" title="다음"></a></li>
+				<li><a href="./bookOrderTotalList.book?curPage=${requestScope.page.lastNum+1}&library=${library}&ln=${ln}"><img width="13" height="16" src="${pageContext.request.contextPath}/image/bookTotalSearch/nextPage.gif" alt="다음" title="다음"></a></li>
 				</c:if>
 			</ul>
 		</div>
@@ -107,6 +110,12 @@
 		</div>
 	</section>
 
-<c:import url="${myContextPath}/temp/footer.jsp"></c:import>
+<c:choose>
+	<c:when test="${ln eq 1}"><c:import url="${myContextPath}/temp/footer_1.jsp"></c:import></c:when>
+	<c:when test="${ln eq 2}"><c:import url="${myContextPath}/temp/footer_2.jsp"></c:import></c:when>
+	<c:when test="${ln eq 3}"><c:import url="${myContextPath}/temp/footer_3.jsp"></c:import></c:when>
+	<c:when test="${ln eq 4}"><c:import url="${myContextPath}/temp/footer_4.jsp"></c:import></c:when>
+	<c:otherwise><c:import url="${myContextPath}/temp/footer.jsp"></c:import></c:otherwise>
+</c:choose>
 </body>
 </html>

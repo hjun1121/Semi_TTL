@@ -22,7 +22,7 @@
 			</tr>
 			<c:forEach items="${list }" var="dto">
 				<tr>
-					<td><a href="./memberUpdate.member?id=${dto.id }">${dto.id }</a></td>
+					<td><a href="./memberUpdate.member?id=${dto.id }&ln=${ln}">${dto.id }</a></td>
 					<td>${dto.pw }</td>
 					<td>${dto.name }</td>
 					<td>${dto.birth }</td>
@@ -38,15 +38,15 @@
 		<div style = "text-align: center;">
 			<ul class="pagination pagination-sm">
 				<c:if test="${page.curBlock>1}">
-				<li><a href = "./memberList.member?curPage=${page.startNum-1}&kind=${kind}&search=${search}&kind1=${kind1}">[이전]</a></li>
+				<li><a href = "./memberList.member?curPage=${page.startNum-1}&kind=${kind}&search=${search}&kind1=${kind1}&ln=${ln}">[이전]</a></li>
 				</c:if>
 				
 				<c:forEach begin="${page.startNum}" end="${page.lastNum}" var="i">
-				<li><a class="cur" title="${i }" href="./memberList.member?curPage=${i}&kind=${kind}&search=${search}&kind1=${kind1}">${i}</a></li>
+				<li><a class="cur" title="${i }" href="./memberList.member?curPage=${i}&kind=${kind}&search=${search}&kind1=${kind1}&ln=${ln}">${i}</a></li>
 				</c:forEach>
 
 				<c:if test="${page.curBlock < page.totalBlock}">
-				<li><a href="./memberList.member?curPage=${page.lastNum+1}&search=${search}&search=${search}&kind1=${kind1}">[다음]</a></li>
+				<li><a href="./memberList.member?curPage=${page.lastNum+1}&search=${search}&search=${search}&kind1=${kind1}&ln=${ln}">[다음]</a></li>
 				</c:if>
 			</ul>
 		</div>

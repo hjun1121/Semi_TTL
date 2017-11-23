@@ -1,8 +1,8 @@
 @charset "UTF-8";
 
-#leftBar #leftBar6 a{
-	background-color: #555;
-    color: white;
+#leftBar6 a{
+	color: #333;
+    font-weight: bold;
 }
 <!--상단 바 시작 -->
 
@@ -17,6 +17,7 @@
 	padding-bottom:30px;
 	background-color:#fff;
 	margin-right: 100px;
+	margin-bottom: 50px;
 }
 
 
@@ -102,7 +103,7 @@ select#kind {
     padding: 0 20px 0 45px;
 }
 .listTable {
-    clear: both;
+   /*  clear: both; */
     border-top: 1px solid #b3b3b3;
     border-bottom: 1px solid #e6e6e6;
     text-align: center;

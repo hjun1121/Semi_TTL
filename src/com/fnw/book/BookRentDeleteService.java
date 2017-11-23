@@ -14,6 +14,12 @@ public class BookRentDeleteService implements Action {
 
 		ActionFoward actionFoward = new ActionFoward();
 		Book_Rent_DetailsDAO book_Rent_DetailsDAO = new Book_Rent_DetailsDAO();
+		int ln = 0;
+		try {
+			ln = Integer.parseInt(request.getParameter("ln"));
+		} catch (Exception e) {
+			// TODO: handle exception
+		}
 		int library = 0;
 		try {
 			library = Integer.parseInt(request.getParameter("library"));
@@ -38,6 +44,7 @@ public class BookRentDeleteService implements Action {
 		actionFoward.setCheck(true);
 		actionFoward.setPath("../WEB-INF/view/common/result.jsp");
 
+		request.setAttribute("ln", ln);
 		return actionFoward;
 	}
 }

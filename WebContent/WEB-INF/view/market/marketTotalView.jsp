@@ -6,7 +6,7 @@
 <html>
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
-<title>Insert title here</title>
+<title>중고장터 도서 상세페이지</title>
 <link rel="stylesheet" href="${pageContext.request.contextPath }/css/temp/header.css">
 <link rel="stylesheet" href="${pageContext.request.contextPath }/css/temp/footer.css">
 <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
@@ -19,22 +19,61 @@
 <script type="text/javascript">
 	$(function(){
 		$("#btn").click(function(){
-			location.href="./bookBuy.market?num=${dto.num}";
+			location.href="./bookBuy.market?num=${dto.num}&library=${library}&ln=${ln}";
 		});
 		
 		$("#btn_NO").click(function(){
-			location.href="./marketTotalList.market";
+			location.href="./marketTotalList.market?library=${library}&ln=${ln}";
 		});
 		
+		$(".wish_btn").click(function() {
+			var num = $(this).val();
+			var title = $(this).attr("title");
+
+			if (title == 1) {
+				$.ajax({
+					url: "./bookBuyWishReturn.market?library=${library}&ln=${ln}",
+					type: "GET",
+					data: {
+						num:num,
+						curPage: ${curPage},
+						id: '${member.id}',
+						ln: ${ln}
+					},
+					success: function(data) {
+						alert(data);
+						location.href="./marketTotalView.market?curPage=${curPage}&library=${library}&ln=${ln}";
+					}
+				});
+
+			} else if (title == 0) {
+				$.ajax({
+					url: "./bookBuyWish.market?library=${library}&ln=${ln}",
+					type: "GET",
+					data: {
+						num:num,
+						curPage: ${curPage},
+						id: '${member.id}',
+						ln: ${ln}
+					},
+					success: function(data) {
+						alert(data);
+						location.href="./marketTotalView.market?curPage=${curPage}&library=${library}&ln=${ln}";
+					}
+				});
+			}
+		});
 	});
+	
+	
 </script>
 </head>
 <body>
 <c:choose>
-	<c:when test="${library eq 1}"><c:import url="${myContextPath}/temp/header_1.jsp"></c:import></c:when>
-	<c:when test="${library eq 2}"><c:import url="${myContextPath}/temp/header_2.jsp"></c:import></c:when>
-	<c:when test="${library eq 3}"><c:import url="${myContextPath}/temp/header_3.jsp"></c:import></c:when>
-	<c:when test="${library eq 4}"><c:import url="${myContextPath}/temp/header_4.jsp"></c:import></c:when>
+	<c:when test="${ln eq 1}"><c:import url="${myContextPath}/temp/header_1.jsp"></c:import></c:when>
+	<c:when test="${ln eq 2}"><c:import url="${myContextPath}/temp/header_2.jsp"></c:import></c:when>
+	<c:when test="${ln eq 3}"><c:import url="${myContextPath}/temp/header_3.jsp"></c:import></c:when>
+	<c:when test="${ln eq 4}"><c:import url="${myContextPath}/temp/header_4.jsp"></c:import></c:when>
 	<c:otherwise><c:import url="${myContextPath}/temp/header.jsp"></c:import></c:otherwise>
 </c:choose>
 
@@ -52,9 +91,6 @@
 					<li>중고 도서 상세보기</li>
 				</ul>
 			</div>
-	
-	
-	
 	
 				<div class="profile">
 					<div class="profileHeader">
@@ -98,10 +134,10 @@
 								<c:set var="heart2" value="0" ></c:set>
 								<c:if test="${ not empty member }">
 									<c:forEach items="${rent_wish_list}" var="wish">
-										<c:if test="${wish.title eq book.title}">
+										<c:if test="${wish.title eq dto.title}">
 											<c:choose>
 												<c:when test="${heart1 == 0}">
-													<td><button class = "btn btn-default wish_btn" type = "submit" value = "${book.num}" title="1">❤</button></td>
+													<td><button class = "btn btn-default wish_btn" type = "submit" value = "${dto.num}" title="1">❤</button></td>
 													<c:set var="heart1" value="1" ></c:set>
 													<c:set var="heart2" value="1" ></c:set>
 												</c:when>
@@ -109,7 +145,7 @@
 										</c:if>
 									</c:forEach>
 										<c:if test="${heart2 == 0}">
-											<td><button class = "btn btn-default wish_btn" type = "submit" value = "${book.num}" title="0">♡</button></td>
+											<td><button class = "btn btn-default wish_btn" type = "submit" value = "${dto.num}" title="0">♡</button></td>
 										</c:if>
 								</c:if>
 							</tr>
@@ -143,16 +179,16 @@
 		                    <td class="num expand footable-first-column">${dto.num}</td>
 		                    <td>
 								<c:if test="${dto.library eq 1 }">
-									<a href="${pageContext.request.contextPath }/library/libraryMain.library?library=1">기흥 도서관</a>
+									<a href="${pageContext.request.contextPath }/library/libraryMain.library?library=1&ln=1">기흥 도서관</a>
 								</c:if>
 								<c:if test="${dto.library eq 2}">
-									<a href="${pageContext.request.contextPath }/library/libraryMain.library?library=2">송파 도서관</a>
+									<a href="${pageContext.request.contextPath }/library/libraryMain.library?library=2&ln=2">송파 도서관</a>
 								</c:if>
 								<c:if test="${dto.library eq 3}">
-									<a href="${pageContext.request.contextPath }/library/libraryMain.library?library=3">장안 도서관</a>
+									<a href="${pageContext.request.contextPath }/library/libraryMain.library?library=3&ln=3">장안 도서관</a>
 								</c:if>
 								<c:if test="${dto.library eq 4 }">
-									<a href="${pageContext.request.contextPath }/library/libraryMain.library?library=4">분당 도서관</a>
+									<a href="${pageContext.request.contextPath }/library/libraryMain.library?library=4&ln=4">분당 도서관</a>
 								</c:if>
 							</td>
 		                    <td>
@@ -188,6 +224,12 @@
 	</div>
 </div>
 </section>
-<c:import url="${myContextPath}/temp/footer.jsp"></c:import>
+<c:choose>
+	<c:when test="${ln eq 1}"><c:import url="${myContextPath}/temp/footer_1.jsp"></c:import></c:when>
+	<c:when test="${ln eq 2}"><c:import url="${myContextPath}/temp/footer_2.jsp"></c:import></c:when>
+	<c:when test="${ln eq 3}"><c:import url="${myContextPath}/temp/footer_3.jsp"></c:import></c:when>
+	<c:when test="${ln eq 4}"><c:import url="${myContextPath}/temp/footer_4.jsp"></c:import></c:when>
+	<c:otherwise><c:import url="${myContextPath}/temp/footer.jsp"></c:import></c:otherwise>
+</c:choose>
 </body>
 </html>

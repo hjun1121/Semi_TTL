@@ -31,14 +31,14 @@ $(function(){
 		});
 });
 </script>
-<title>Notice</title>
+<title>공지사항</title>
 </head>
 <body>
 <c:choose>
-	<c:when test="${library eq 1}"><c:import url="${myContextPath}/temp/header_1.jsp"></c:import></c:when>
-	<c:when test="${library eq 2}"><c:import url="${myContextPath}/temp/header_2.jsp"></c:import></c:when>
-	<c:when test="${library eq 3}"><c:import url="${myContextPath}/temp/header_3.jsp"></c:import></c:when>
-	<c:when test="${library eq 4}"><c:import url="${myContextPath}/temp/header_4.jsp"></c:import></c:when>
+	<c:when test="${ln eq 1}"><c:import url="${myContextPath}/temp/header_1.jsp"></c:import></c:when>
+	<c:when test="${ln eq 2}"><c:import url="${myContextPath}/temp/header_2.jsp"></c:import></c:when>
+	<c:when test="${ln eq 3}"><c:import url="${myContextPath}/temp/header_3.jsp"></c:import></c:when>
+	<c:when test="${ln eq 4}"><c:import url="${myContextPath}/temp/header_4.jsp"></c:import></c:when>
 	<c:otherwise><c:import url="${myContextPath}/temp/header.jsp"></c:import></c:otherwise>
 </c:choose>
 
@@ -60,7 +60,7 @@ $(function(){
 	
 	<!-- 검색 시작  -->
 	
-		<form name="frm" class="form-inline" action="./noticeList.notice" method="post">
+		<form name="frm" class="form-inline" action="./noticeList.notice?library=${library}&ln=${ln}" method="post">
 			<fieldset>
 				
 				<span class="bunch">
@@ -102,7 +102,7 @@ $(function(){
 					<tr>
 						<td scope="row" class="num footable-first-column">${dto.num}</td>
 						<td scope="row" data-class="expand" class="title expand link">
-							<a href="./noticeView.notice?num=${dto.num}">${dto.title}</a>&nbsp;
+							<a href="./noticeView.notice?num=${dto.num}&library=${library}&ln=${ln}">${dto.title}</a>&nbsp;
 						</td>
 						<td scope="row" class="writer" style="display: table-cell;">
 							${dto.writer}
@@ -121,56 +121,21 @@ $(function(){
 	</c:if>
 	<br>
 	<c:if test="${not empty member and member.kind eq 10}">
-		<a href="./noticeWrite.notice"><button class="adv">WRITE</button></a>
+		<a href="./noticeWrite.notice?library=${library}&ln=${ln}"><button class="adv">WRITE</button></a>
 	</c:if>
-	
-	<!-- 페이징 -->
-<!-- 	<div style = "text-align: center;"> -->
-<!-- 	<div class="paging"> -->
-		
-<!-- 		<ul class="pagination"> -->
-			
-<%-- 			<c:if test="${page.curBlock>1}"> --%>
-<!-- 				<li> -->
-<%-- 					<a href="./noticeList.notice?curPage=${page.startNum-1}"> --%>
-<%-- 					<img src="${pageContext.request.contextPath }/image/notice/prevPage.gif" alt="이전" title="이전"> --%>
-<!-- 					</a> -->
-<!-- 				</li> -->
-<%-- 			</c:if> --%>
-			
-<%-- 			<c:forEach begin="${page.startNum}" end="${page.lastNum}" var="i"> --%>
-<!-- 			<li> -->
-<%-- 				<a href="./noticeList.notice?curPage=${i}&kind=${kind}&search=${search}"> --%>
-<%-- 					<span>${i}</span> --%>
-<!-- 				</a> -->
-<!-- 			</li> -->
-<%-- 			</c:forEach> --%>
-		
-			
-<%-- 			<c:if test="${page.curBlock < page.totalBlock}"> --%>
-<!-- 				<li> -->
-<%-- 					<a href="./${requestScope.notice}List.${requestScope.notice}?curPage=${requestScope.page.lastNum+1}"> --%>
-<%-- 						<img src="${pageContext.request.contextPath }/image/notice/nextPage.gif" alt="다음" title="다음"> --%>
-<!-- 					</a> -->
-<!-- 				</li> -->
-<%-- 			</c:if> --%>
-			
-<!-- 		</ul> -->
-<!-- 	</div> -->
-<!-- 	</div> -->
-	
+
 		<div class = "paging" style = "text-align: center;">
 			<ul class="pagination pagination-sm">
 				<c:if test="${page.curBlock>1}">
-				<li><a href = "./noticeList.notice?curPage=${page.startNum-1}"><img width="13" height="16"  src="${pageContext.request.contextPath}/image/bookTotalSearch/prevPage.gif" alt="이전" title="이전"></a></li>
+				<li><a href = "./noticeList.notice?curPage=${page.startNum-1}&library=${library}&ln=${ln}"><img width="13" height="16"  src="${pageContext.request.contextPath}/image/bookTotalSearch/prevPage.gif" alt="이전" title="이전"></a></li>
 				</c:if>
 
 				<c:forEach begin="${page.startNum}" end="${page.lastNum}" var="i">
-				<li><a class="cur" title="${i }" href="./noticeList.notice?curPage=${i}&kind=${kind}&search=${search}">${i}</a></li>
+				<li><a class="cur" title="${i }" href="./noticeList.notice?curPage=${i}&kind=${kind}&search=${search}&library=${library}&ln=${ln}">${i}</a></li>
 				</c:forEach>
 				
 				<c:if test="${page.curBlock < page.totalBlock}">
-				<li><a href="./${requestScope.notice}List.${requestScope.notice}?curPage=${requestScope.page.lastNum+1}"><img width="13" height="16" src="${pageContext.request.contextPath}/image/bookTotalSearch/nextPage.gif" alt="다음" title="다음"></a></li>
+				<li><a href="./${requestScope.notice}List.${requestScope.notice}?curPage=${requestScope.page.lastNum+1}&library=${library}&ln=${ln}"><img width="13" height="16" src="${pageContext.request.contextPath}/image/bookTotalSearch/nextPage.gif" alt="다음" title="다음"></a></li>
 				</c:if>
 			</ul>
 		</div>
@@ -181,6 +146,12 @@ $(function(){
 </div>
 </div>
 </section>
-<c:import url="${myContextPath }/temp/footer.jsp"></c:import>
+<c:choose>
+	<c:when test="${ln eq 1}"><c:import url="${myContextPath}/temp/footer_1.jsp"></c:import></c:when>
+	<c:when test="${ln eq 2}"><c:import url="${myContextPath}/temp/footer_2.jsp"></c:import></c:when>
+	<c:when test="${ln eq 3}"><c:import url="${myContextPath}/temp/footer_3.jsp"></c:import></c:when>
+	<c:when test="${ln eq 4}"><c:import url="${myContextPath}/temp/footer_4.jsp"></c:import></c:when>
+	<c:otherwise><c:import url="${myContextPath}/temp/footer.jsp"></c:import></c:otherwise>
+</c:choose>
 </body>
 </html>

@@ -1,8 +1,8 @@
 @charset "UTF-8";
 
-#leftBar #leftBar7 a{
-	background-color: #555;
-    color: white;
+#leftBar7 a{
+	color: #333;
+    font-weight: bold;
 }
 
 <!--상단 바 시작 -->
@@ -81,7 +81,6 @@
     padding: 0 20px 0 45px;
 }
 .listTable {
-    clear: both;
     border-top: 1px solid #b3b3b3;
     border-bottom: 1px solid #e6e6e6;
     text-align: center;

@@ -19,6 +19,12 @@ public class BookBuyService implements Action {
 		ActionFoward actionFoward = new ActionFoward();
 		String method = request.getMethod();
 		
+		int ln = 0;
+		try {
+			ln = Integer.parseInt(request.getParameter("ln"));
+		} catch (Exception e) {
+			// TODO: handle exception
+		}
 		int library = 0;
 		try {
 			library = Integer.parseInt(request.getParameter("library"));
@@ -125,9 +131,9 @@ public class BookBuyService implements Action {
 			}
 			
 			if(result > 0) {
-				message = "등록 완료";
+				message = "결제 완료";
 			}else {
-				message = "등록 실패";
+				message = "결제 실패";
 			}
 			request.setAttribute("library", library);
 			request.setAttribute("message", message);
@@ -136,6 +142,7 @@ public class BookBuyService implements Action {
 			actionFoward.setCheck(true);
 			actionFoward.setPath("../WEB-INF/view/common/result.jsp");
 		}
+		request.setAttribute("ln", ln);
 		return actionFoward;
 	}
 }

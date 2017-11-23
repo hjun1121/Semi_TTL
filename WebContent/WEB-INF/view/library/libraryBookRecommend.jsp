@@ -18,7 +18,7 @@ $(function(){
 	$(".rent_btn").click(function() {
 		var num = $(this).val();
 		$.ajax({
-			url: "../book/bookRent.book",
+			url: "../book/bookRent.book?ln=${ln}",
 			type: "GET",
 			data: {
 				num:num,
@@ -26,11 +26,12 @@ $(function(){
 				curPage: ${curPage},
 				search: '${search}',
 				library: ${library},
-				rent_id:'${member.id}'
+				rent_id:'${member.id}',
+				ln: ${ln}
 			},
 			success: function(data) {
 				alert(data);
-				location.href="./libraryBookSearch.library?library=${library}&curPage=${curPage}";
+				location.href="./libraryBookSearch.library?library=${library}&curPage=${curPage}&ln=${ln}";
 			}
 		});
 	});
@@ -41,33 +42,35 @@ $(function(){
 		
 		if (title == 1) {
 			$.ajax({
-				url: "../book/bookRentWishReturn.book",
+				url: "../book/bookRentWishReturn.book?ln=${ln}",
 				type: "GET",
 				data: {
 					num:num,
 					curPage: ${curPage},
 					library: ${library},
-					rent_id: '${member.id}'
+					rent_id: '${member.id}',
+					ln: ${ln}
 				},
 				success: function(data) {
 					alert(data);
-					location.href="./libraryBookRecommend.library?library=${library}&curPage=${curPage}";
+					location.href="./libraryBookRecommend.library?library=${library}&curPage=${curPage}&ln=${ln}";
 				}
 			});
 
 		} else if (title == 0) {
 			$.ajax({
-				url: "../book/bookRentWish.book",
+				url: "../book/bookRentWish.book?ln=${ln}",
 				type: "GET",
 				data: {
 					num:num,
 					curPage: ${curPage},
 					library: ${library},
-					rent_id:'${member.id}'
+					rent_id:'${member.id}',
+					ln: ${ln}
 				},
 				success: function(data) {
 					alert(data);
-					location.href="./libraryBookRecommend.library?library=${library}&curPage=${curPage}";
+					location.href="./libraryBookRecommend.library?library=${library}&curPage=${curPage}&ln=${ln}";
 				}
 			});
 		}
@@ -79,43 +82,16 @@ $(function(){
 </head>
 <body>
 <c:choose>
-	<c:when test="${library eq 1}"><c:import url="${myContextPath}/temp/header_1.jsp"></c:import></c:when>
-	<c:when test="${library eq 2}"><c:import url="${myContextPath}/temp/header_2.jsp"></c:import></c:when>
-	<c:when test="${library eq 3}"><c:import url="${myContextPath}/temp/header_3.jsp"></c:import></c:when>
-	<c:when test="${library eq 4}"><c:import url="${myContextPath}/temp/header_4.jsp"></c:import></c:when>
+	<c:when test="${ln eq 1}"><c:import url="${myContextPath}/temp/header_1.jsp"></c:import></c:when>
+	<c:when test="${ln eq 2}"><c:import url="${myContextPath}/temp/header_2.jsp"></c:import></c:when>
+	<c:when test="${ln eq 3}"><c:import url="${myContextPath}/temp/header_3.jsp"></c:import></c:when>
+	<c:when test="${ln eq 4}"><c:import url="${myContextPath}/temp/header_4.jsp"></c:import></c:when>
 	<c:otherwise><c:import url="${myContextPath}/temp/header.jsp"></c:import></c:otherwise>
 </c:choose>
 
 	<section>
 
 		<div class="row-right">
-			<!-- <form name="frm" class="form-inline" action="./libraryBookSearch.library?library=${library}" method="post">
-					KIND
-					<div class="form-group">
-						<div class="col-sm-10">
-							<select name="kind" id = "kind">
-								<option class = "kind" value="title">제목</option>
-								<option class = "kind" value="writer">저자</option>
-								<option class = "kind" value="company">출판사</option>
-								<option class = "kind" value="type">분류</option>
-							</select>
-						</div>
-					</div>
-
-					SEARCH
-					<div class="form-group">
-						<div class="col-sm-10">
-							<input type="text" class="form-control" id="search" placeholder="Enter" name="search" value = "${search}">
-						</div>
-					</div>
-
-					<div class="form-group">
-						<div class="col-sm-offset-2 col-sm-10">
-							<input type="submit" id = "search" class="btn btn-default" value="Search">
-						</div>
-					</div>
-			</form> -->
-
 				<table class = "table">
 					<tr>
 						<td>번호</td>
@@ -131,7 +107,7 @@ $(function(){
 					<c:forEach items="${ list }" var="dto">
 							<tr>
 								<td>${dto.num }</td>
-								<td><a href="../book/bookInformation.book?num=${dto.num}">${dto.title}</a></td>
+								<td><a href="../book/bookInformation.book?num=${dto.num}&library=${library}&ln=${ln}">${dto.title}</a></td>
 								<td>${dto.writer }</td>
 								<td>${dto.company }</td>
 								<td>${dto.type }</td>
@@ -173,23 +149,29 @@ $(function(){
 		<div style = "text-align: center;">
 			<ul class="pagination pagination-sm">
 				<c:if test="${page.curBlock>1}">
-				<li><a href = "./libraryBookRecommend.library?curPage=${page.startNum-1}">[이전]</a></li>
+				<li><a href = "./libraryBookRecommend.library?curPage=${page.startNum-1}&library=${library}&ln=${ln}">[이전]</a></li>
 				</c:if>
 				
 				<c:forEach begin="${page.startNum}" end="${page.lastNum}" var="i">
 				<li><a
-					href="./libraryBookRecommend.library?curPage=${i}">${i}</a></li>
+					href="./libraryBookRecommend.library?curPage=${i}&library=${library}&ln=${ln}">${i}</a></li>
 				</c:forEach>
 				
 				<c:if test="${page.curBlock < page.totalBlock}">
 				<li><a
-					href="./libraryBookRecommend.library?curPage=${requestScope.page.lastNum+1}">[다음]</a></li>
+					href="./libraryBookRecommend.library?curPage=${requestScope.page.lastNum+1}&library=${library}&ln=${ln}">[다음]</a></li>
 				</c:if>
 			</ul>
 		</div>
 
 	</section>
 
-<c:import url="${myContextPath}/temp/footer.jsp"></c:import>
+<c:choose>
+	<c:when test="${ln eq 1}"><c:import url="${myContextPath}/temp/footer_1.jsp"></c:import></c:when>
+	<c:when test="${ln eq 2}"><c:import url="${myContextPath}/temp/footer_2.jsp"></c:import></c:when>
+	<c:when test="${ln eq 3}"><c:import url="${myContextPath}/temp/footer_3.jsp"></c:import></c:when>
+	<c:when test="${ln eq 4}"><c:import url="${myContextPath}/temp/footer_4.jsp"></c:import></c:when>
+	<c:otherwise><c:import url="${myContextPath}/temp/footer.jsp"></c:import></c:otherwise>
+</c:choose>
 </body>
 </html>

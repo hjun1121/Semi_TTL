@@ -25,7 +25,7 @@
 </c:choose>
 
 <div>
-	<c:import url="${myContextPath}/WEB-INF/view/member/myPage.jsp"></c:import>
+	<c:import url="${myContextPath}/WEB-INF/view/member/myPage.jsp?ln=${ln}"></c:import>
 </div>
 
 <div id="divContentsW">
@@ -33,7 +33,7 @@
 		<h2 id="divTitle">중고 신청 상세 내역</h2>
 		<div id="divLocation">
 			<ul>
-				<li class="home"><a href="${pageContext.request.contextPath}/index.jsp"><img src="${pageContext.request.contextPath }/image/notice/home.png" alt="HOME"></a></li>
+				<li class="home"><a href="${pageContext.request.contextPath}/index.jsp?ln=${ln}"><img src="${pageContext.request.contextPath }/image/notice/home.png" alt="HOME"></a></li>
 				<li>&gt;</li>
 				<li>MY PAGE</li>
 				<li>&gt;</li>
@@ -43,7 +43,7 @@
 			</ul>
 		</div>
 		
-	<form action="./marketOrderOK.market" method="POST">
+	<form action="./marketOrderOK.market?ln=${ln}" method="POST">
 	<input type="hidden" name="num" id="num" value=${view.num }>
 	<table class="Dtable">
 			<tr>
@@ -100,14 +100,20 @@
 		</table>
 		<div class="btn">
 			<input type="submit" class="btnType5" value="승인">
-			<a href="./marketOrderNO.market?num=${view.num }">
+			<a href="./marketOrderNO.market?num=${view.num }&ln=${ln}">
 			<input type="button" class="btnType5" value="거절"></a>
-			<a href="./marketOrderAdmin.market">
+			<a href="./marketOrderAdmin.market?ln=${ln}">
 			<input type="button" class="btnType5" value="LIST"></a>
 		</div>
 		</form>
 		</div>
 </div>		
-<c:import url="${myContextPath}/temp/footer.jsp"></c:import>
+<c:choose>
+	<c:when test="${ln eq 1}"><c:import url="${myContextPath}/temp/footer_1.jsp"></c:import></c:when>
+	<c:when test="${ln eq 2}"><c:import url="${myContextPath}/temp/footer_2.jsp"></c:import></c:when>
+	<c:when test="${ln eq 3}"><c:import url="${myContextPath}/temp/footer_3.jsp"></c:import></c:when>
+	<c:when test="${ln eq 4}"><c:import url="${myContextPath}/temp/footer_4.jsp"></c:import></c:when>
+	<c:otherwise><c:import url="${myContextPath}/temp/footer.jsp"></c:import></c:otherwise>
+</c:choose>
 </body>
 </html>

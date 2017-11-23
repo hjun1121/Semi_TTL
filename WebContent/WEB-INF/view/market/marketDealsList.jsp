@@ -5,7 +5,7 @@
 <html>
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
-<title>Insert title here</title>
+<title>중고장터 거래 리스트</title>
 <link rel="stylesheet" href="${pageContext.request.contextPath }/css/temp/header.css">
 <link rel="stylesheet" href="${pageContext.request.contextPath }/css/temp/footer.css">
 <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
@@ -40,16 +40,17 @@ $(function(){
 </head>
 <body>
 <c:choose>
-	<c:when test="${library eq 1}"><c:import url="${myContextPath}/temp/header_1.jsp"></c:import></c:when>
-	<c:when test="${library eq 2}"><c:import url="${myContextPath}/temp/header_2.jsp"></c:import></c:when>
-	<c:when test="${library eq 3}"><c:import url="${myContextPath}/temp/header_3.jsp"></c:import></c:when>
-	<c:when test="${library eq 4}"><c:import url="${myContextPath}/temp/header_4.jsp"></c:import></c:when>
+	<c:when test="${ln eq 1}"><c:import url="${myContextPath}/temp/header_1.jsp"></c:import></c:when>
+	<c:when test="${ln eq 2}"><c:import url="${myContextPath}/temp/header_2.jsp"></c:import></c:when>
+	<c:when test="${ln eq 3}"><c:import url="${myContextPath}/temp/header_3.jsp"></c:import></c:when>
+	<c:when test="${ln eq 4}"><c:import url="${myContextPath}/temp/header_4.jsp"></c:import></c:when>
 	<c:otherwise><c:import url="${myContextPath}/temp/header.jsp"></c:import></c:otherwise>
 </c:choose>
 
 <div>
-	<c:import url="../member/myPage.jsp"></c:import>
+	<c:import url="../member/myPage.jsp?library=${library}&ln=${ln}"></c:import>
 </div>
+<section>
 <div id="divContentsW">
 	<div id="divContents">
 		<h2 id="divTitle">MARKET 거래 내역</h2>
@@ -62,7 +63,7 @@ $(function(){
 				<li>MARKET 거래 내역</li>
 			</ul>
 		</div>
-	<form name="frm" class="form-inline" action="./marketDealsList.market" method="post">
+	<form name="frm" class="form-inline" action="./marketDealsList.market?library=${library}&ln=${ln}" method="post">
 	<!-- 검색 시작 -->
 	<input type="hidden" name="type" id="type" value="${type }">
 	<input type="hidden" name="id" id="id" value="${id }">
@@ -130,10 +131,12 @@ $(function(){
 		</form>
 	</div>
 	<!-- 검색 끝 -->
-	<br><br>
-	<a href="./marketDealsList.market?id=${id }&type=3&year=${year}&month=${month}&day=${day}"><input class="btnType3" type="button" value="전체"></a>
-	<a href="./marketDealsList.market?id=${id }&type=1&year=${year}&month=${month}&day=${day}"><input class="btnType3" type="button" value="판매"></a>
-	<a href="./marketDealsList.market?id=${id }&type=2&year=${year}&month=${month}&day=${day}"><input class="btnType3" type="button" value="구매"></a>
+	<br>
+
+	<a href="./marketDealsList.market?id=${id }&type=3&year=${year}&month=${month}&day=${day}&ln=${ln}"><input class="btnType3" type="button" value="전체"></a>
+	<a href="./marketDealsList.market?id=${id }&type=1&year=${year}&month=${month}&day=${day}&ln=${ln}"><input class="btnType3" type="button" value="판매"></a>
+	<a href="./marketDealsList.market?id=${id }&type=2&year=${year}&month=${month}&day=${day}&ln=${ln}"><input class="btnType3" type="button" value="구매"></a>
+
 	<br><br>
 	<c:if test="${size eq 0 }">
 		<h2 id="divTitle">MARKET 거래 내역이 없습니다.</h2>
@@ -149,23 +152,20 @@ $(function(){
 			<th>서명</th>
 			<th>저자</th>
 			<th>출판사</th>
-			<th>출판년도</th>
-			<th>일자</th>
-			<th>비치도서관</th>
+			<th>거래 일자</th>
+			<th>비치 도서관</th>
 			<th>가격</th>
-			<th>분류</th>
 			<th>상태</th>
-			<th>수령방법</th>
+			<th>수령 방법</th>
 		</tr>
 	</thead>
 		<c:forEach items="${bookDeals }" var="bookDeals_list">
 			<tr>
 				<td scope="row" class="footable-first-column">${bookDeals_list.num }</td>
 				<td scope="row" data-class="expand"><a
-					href="./marketDealsDetails.market?num=${bookDeals_list.num }">${bookDeals_list.title }</a></td>
+					href="./marketDealsDetails.market?num=${bookDeals_list.num }&library=${library}&ln=${ln}">${bookDeals_list.title }</a></td>
 				<td scope="row" style="display: table-cell;">${bookDeals_list.writer }</td>
 				<td scope="row" style="display: table-cell;">${bookDeals_list.company }</td>
-				<td scope="row" style="display: table-cell;">${bookDeals_list.publish_date }</td>
 				<td scope="row" style="display: table-cell;">${bookDeals_list.t_date }</td>
 				<c:choose>
 					<c:when test="${bookDeals_list.library eq 1}">
@@ -185,17 +185,6 @@ $(function(){
 					</c:otherwise>
 				</c:choose>
 				<td>${bookDeals_list.price }</td>
-				<c:choose>
-					<c:when test="${bookDeals_list.kind eq 1}">
-						<td scope="row" style="display: table-cell;">판매</td>
-					</c:when>
-					<c:when test="${bookDeals_list.kind eq 2}">
-						<td scope="row" style="display: table-cell;">구매</td>
-					</c:when>
-					<c:otherwise>
-						<td scope="row" style="display: table-cell;">없음</td>
-					</c:otherwise>
-				</c:choose>
 				<c:choose>
 					<c:when test="${bookDeals_list.state eq 1}">
 						<td scope="row" style="display: table-cell;">상</td>
@@ -233,16 +222,22 @@ $(function(){
 			</c:if>
 			<c:forEach begin="${page.startNum}" end="${page.lastNum}" var="i">
 			<li><a
-				href="./marketDealsList.market?curPage=${i}&id=${id }&year=${year}&month=${month}&day=${day}&type=${type}">${i}</a></li>
+				href="./marketDealsList.market?curPage=${i}&id=${id }&year=${year}&month=${month}&day=${day}&type=${type}&library=${library}&ln=${ln}">${i}</a></li>
 			</c:forEach>
 			<c:if test="${page.curBlock < page.totalBlock}">
 			<li><a
-				href="./marketDealsList.market?curPage=${requestScope.page.lastNum+1}">[다음]</a></li>
+				href="./marketDealsList.market?curPage=${requestScope.page.lastNum+1}&library=${library}&ln=${ln}">[다음]</a></li>
 			</c:if>
 			</ul>
 		</div>
 		</div>
 	</section>
-<c:import url="${myContextPath}/temp/footer.jsp"></c:import>
+<c:choose>
+	<c:when test="${ln eq 1}"><c:import url="${myContextPath}/temp/footer_1.jsp"></c:import></c:when>
+	<c:when test="${ln eq 2}"><c:import url="${myContextPath}/temp/footer_2.jsp"></c:import></c:when>
+	<c:when test="${ln eq 3}"><c:import url="${myContextPath}/temp/footer_3.jsp"></c:import></c:when>
+	<c:when test="${ln eq 4}"><c:import url="${myContextPath}/temp/footer_4.jsp"></c:import></c:when>
+	<c:otherwise><c:import url="${myContextPath}/temp/footer.jsp"></c:import></c:otherwise>
+</c:choose>
 </body>
 </html>

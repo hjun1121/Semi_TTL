@@ -18,6 +18,12 @@ public class AdminBookOrderListService implements Action {
 		ActionFoward actionFoward = new ActionFoward();
 		Book_OrderDAO book_OrderDAO = new Book_OrderDAO();
 		
+		int ln = 0;
+		try {
+			ln = Integer.parseInt(request.getParameter("ln"));
+		} catch (Exception e) {
+			// TODO: handle exception
+		}
 		int library = 0;
 		try {
 			library = Integer.parseInt(request.getParameter("library"));
@@ -104,6 +110,7 @@ public class AdminBookOrderListService implements Action {
 		}
 		System.out.println("adminList");
 		
+		request.setAttribute("ln", ln);
 		return actionFoward;
 	
 	}
