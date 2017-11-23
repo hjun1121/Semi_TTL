@@ -13,7 +13,7 @@
 #section {
     width: 1040px;
     margin: 0 auto;
-    padding-bottom: 40px !important;
+/*     padding-bottom: 40px !important; */
     background-color: #fff;
     z-index: 5;
 }
@@ -222,5 +222,57 @@ background-color:white;
 	font-weight: bold;
 }
 div#reQna{
-	margin-left: 180px;
+	width: 1040px;
+	margin: 0 auto;
+	margin-bottom: 50px;
+	background-color: #f3f3f3;
+}
+
+<!-- 댓글 -->
+
+.write-wrap {
+    clear: both;
+    padding: 15px 16px;
+    background: #f9f9f9;
+    border: 1px solid #e5e5e5;
+    position: relative;
+    margin: 0 auto;
+}
+
+dl.cmt_item {
+    clear: both;
+    padding: 20px 17px 16px 16px;
+    border-top: 1px solid #dedede;
+    position: relative;
+}
+
+dl.cmt_item dt span.nameui {
+    font: 12px '돋움',Dotum , Helvetica, sans-serif;
+    color: #48688f !important;
+    vertical-align: middle;
+}
+
+dl.cmt_item i {
+    margin-left: 10px;
+    color: #aaa;
+    font: 11px '돋움',Dotum, Helvetica, sans-serif;
+}
+
+dl.cmt_item dd.usertxt {
+    clear: both;
+    width: 585px;
+    padding: 7px 0 15px 0;
+    color: #434343;
+    line-height: 1.5;
+    word-break: normal;
+    word-wrap: break-word;
+}
+
+dl.cmt_item a.cmtsum {
+    display: inline-block !important;
+    zoom: 1;
+    padding-right: 22px;
+    margin: 0 6px 0 0;
+    color: #999;
+    background: url(../image/set_view.png) no-repeat;
 }
