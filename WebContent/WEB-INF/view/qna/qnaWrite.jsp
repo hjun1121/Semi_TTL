@@ -46,8 +46,6 @@ $(function(){
 	<c:otherwise><c:import url="${myContextPath}/temp/header.jsp"></c:import></c:otherwise>
 </c:choose>
 
-<c:import url="${myContextPath}/temp/header.jsp"></c:import>
-
 <div id="divContentsW">
 		<div id="divContents">
 			<h2 id="divTitle">글쓰기</h2>
