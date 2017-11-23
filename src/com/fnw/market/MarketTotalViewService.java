@@ -57,7 +57,7 @@ public class MarketTotalViewService implements Action {
 		
 		if(memberDTO == null ) {
 			request.setAttribute("ln", ln);
-			request.setAttribute("message", "로그인후 가능합니다");
+			request.setAttribute("message", "로그인 후 가능합니다");
 			request.setAttribute("path", "../member/memberLogin.member");
 			actionFoward.setCheck(true);
 			actionFoward.setPath("../WEB-INF/view/common/result.jsp");
