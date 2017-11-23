@@ -63,9 +63,9 @@
 					</tr>
 				</thead>
 
-			<c:forEach items="${bookOrderTotalList}" var="bookOrder_list">
+			<c:forEach items="${bookOrderTotalList}" var="bookOrder_list" varStatus="count">
 				<tr>
-				<td scope="row" class="footable-first-column">${bookOrder_list.num }</td>
+				<td scope="row" class="footable-first-column">${count.count }</td>
 	 				<td scope="row" data-class="expand" style="overflow: hidden; max-width: 420px;">${bookOrder_list.title }</td>
 					<td scope="row" style="display: table-cell;">${bookOrder_list.writer}</td>
 					<td scope="row" style="display: table-cell;">${bookOrder_list.company}</td>

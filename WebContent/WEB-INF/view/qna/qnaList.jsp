@@ -102,10 +102,10 @@
 					
 				</tr>
 			</thead>
-			<c:forEach items="${list}" var="dto">
+			<c:forEach items="${list}" var="dto" varStatus="count">
 			<tbody>
 				<tr>
-					<td class="num footable-first-column">${dto.num}</td>
+					<td class="num footable-first-column">${count.count}</td>
 					<td class="title expand">
 						<c:catch>
 						<c:forEach  begin="0" end="${dto.depth-1}">
