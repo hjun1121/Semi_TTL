@@ -17,6 +17,12 @@ public class BookOrderTotalListService implements Action {
 		Book_OrderDAO book_OrderDAO = new Book_OrderDAO();
 		ArrayList<Book_OrderDTO> list = new ArrayList<>();
 		
+		int ln = 0;
+		try {
+			ln = Integer.parseInt(request.getParameter("ln"));
+		} catch (Exception e) {
+			// TODO: handle exception
+		}
 		int library = 0;
 		try {
 			library = Integer.parseInt(request.getParameter("library"));
@@ -61,6 +67,7 @@ public class BookOrderTotalListService implements Action {
 		actionFoward.setCheck(true);
 		actionFoward.setPath("../WEB-INF/view/book/bookOrderTotalList.jsp");
 		
+		request.setAttribute("ln", ln);
 		return actionFoward;
 	}
 }

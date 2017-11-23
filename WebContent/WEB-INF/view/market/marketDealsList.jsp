@@ -131,7 +131,7 @@ $(function(){
 		</form>
 	</div>
 	<!-- 검색 끝 -->
-	<br><br>
+	<br>
 
 	<a href="./marketDealsList.market?id=${id }&type=3&year=${year}&month=${month}&day=${day}"><input class="btnType3" type="button" value="전체"></a>
 	<a href="./marketDealsList.market?id=${id }&type=1&year=${year}&month=${month}&day=${day}"><input class="btnType3" type="button" value="판매"></a>

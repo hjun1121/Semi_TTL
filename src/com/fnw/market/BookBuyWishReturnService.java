@@ -15,6 +15,12 @@ public class BookBuyWishReturnService implements Action {
 		Market_TotalDAO market_TotalDAO = new Market_TotalDAO();
 		Market_TotalDTO market_TotalDTO = new Market_TotalDTO();
 		
+		int ln = 0;
+		try {
+			ln = Integer.parseInt(request.getParameter("ln"));
+		} catch (Exception e) {
+			// TODO: handle exception
+		}
 		int library = 0;
 		try {
 			library = Integer.parseInt(request.getParameter("library"));
@@ -67,6 +73,7 @@ public class BookBuyWishReturnService implements Action {
 		actionFoward.setCheck(true);
 		actionFoward.setPath("../WEB-INF/view/market/bookBuyWishReturn.jsp");
 		
+		request.setAttribute("ln", ln);
 		return actionFoward;
 	}
 	

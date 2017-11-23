@@ -13,6 +13,12 @@ public class MemberLogoutService implements Action {
 		ActionFoward actionFoward = new ActionFoward();
 		request.getSession().invalidate();
 		
+		int ln = 0;
+		try {
+			ln = Integer.parseInt(request.getParameter("ln"));
+		} catch (Exception e) {
+			// TODO: handle exception
+		}
 		int library = 0;
 		try {
 			library = Integer.parseInt(request.getParameter("library"));
@@ -23,6 +29,7 @@ public class MemberLogoutService implements Action {
 		request.setAttribute("library", library);
 		actionFoward.setCheck(false);
 		actionFoward.setPath("../index.jsp");
+		request.setAttribute("ln", ln);
 		return actionFoward;
 	}
 

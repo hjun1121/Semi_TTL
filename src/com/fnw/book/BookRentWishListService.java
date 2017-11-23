@@ -19,6 +19,12 @@ public class BookRentWishListService implements Action {
 		Book_Rent_WishDAO book_Rent_WishDAO = new Book_Rent_WishDAO();
 		ArrayList<Book_Rent_WishDTO> list = new ArrayList<>();
 		
+		int ln = 0;
+		try {
+			ln = Integer.parseInt(request.getParameter("ln"));
+		} catch (Exception e) {
+			// TODO: handle exception
+		}
 		int library = 0;
 		try {
 			library = Integer.parseInt(request.getParameter("library"));
@@ -63,6 +69,7 @@ public class BookRentWishListService implements Action {
 		request.setAttribute("library", library);
 		actionFoward.setCheck(true);
 		actionFoward.setPath("../WEB-INF/view/book/bookRentWishList.jsp");
+		request.setAttribute("ln", ln);
 		return actionFoward;
 	}
 }

@@ -1,6 +1,6 @@
 @charset "UTF-8";
 
-#leftBar{
+/* #leftBar{
 	float: left;
 	position: absolute;
 	
@@ -38,3 +38,41 @@
 	height:700px;
 	background-color: red;
 }
+
+
+
+ */
+
+
+
+body, div, dl, dt, dd, ul, ol, li, h1, h2, h3, h4, form, fieldset, p, button {margin:0;padding:0;}
+
+div, ul, li, a,  select, form, dl, dt, dd {background:transparent no-repeat;}
+
+ul li ol{list-style: none;}
+
+a {color:#30323F; text-decoration:none;}
+
+a:hover {color:#4559E9; text-decoration:underline;}
+
+#snb {float:left; width:230px; margin:0 0 0 0;}
+#lnb {float:left; width:230px; margin:0 0 10px 0;}
+
+/* lnb */
+#lnb h2,#lnb h3 {clear:both; overflow:hidden; height:59px; color:#666; font-size:28px; line-height:1.0; letter-spacing:-1px; font-family:"맑은 고딕","돋움",Dotum,"굴림",Gulim,Helvetica,sans-serif;}
+.lnbBox {clear:both; overflow:hidden; border-bottom:1px solid #555;margin-top: 30px; margin-left: 30px;}
+.lnbBox>ul {clear:both; overflow:hidden;}
+.lnbBox>ul li {clear:both;border-bottom:1px solid #e5e5e5;}
+.lnbBox>ul li:last-child {border:none;}
+.lnbBox>ul li a {display:block; height:39px; padding:0 0 0 10px; color:#666; font-size:14px; line-height:39px; font-family:"맑은 고딕","돋움",Dotum,"굴림",Gulim,Helvetica,sans-serif; letter-spacing:-1px;}
+.lnbBox>ul li.sub>a {background:url(/nl/_res/img/icon/icon_lnbBox_plus.png) 173px center no-repeat;}
+.lnbBox>ul li a:hover,.lnbBox>ul li a:focus {color:#333; text-decoration:underline;}
+.lnbBox>ul>li.selected>a {padding:0 0 0 10px; color:#fff; font-weight:bold; background:#033823 url(/nl/_res/img/icon/icon_lnb_li_selected.png) 173px center no-repeat;} 
+.lnbBox>ul>li.selected>a:hover,.lnbBox>ul>li.selected>a:focus {text-decoration:none;}
+.lnbBox>ul>li>ul {display:none; padding:0 8px; border:1px solid #033823;}
+.lnbBox>ul>li>ul li a {padding:0 0 0 24px; font-size:13px; letter-spacing:-1px; background:url(/nl/_res/img/icon/icon_lnb_li.png) 17px center no-repeat;}
+.lnbBox>ul>li>ul li a.selected {color:#333; font-weight:bold;}
+.lnbBox>ul>li.selected>ul {display:block;}
+
+.lnbBox .new_win { display:inline-block !important; position:relative;  background:#f0f0f0; border:#CCC 1px solid; padding:2px 2px 0 2px; color:#666 !important; font-weight:normal !important; text-decoration:none !important; font-size:11px; margin:0; height:11px; line-height:11px; letter-spacing:-1PX; margin-left:5px;}
+.inSiteBox a { position:relative; }

@@ -26,6 +26,7 @@
 				}
 			});
 		});
+		
 		$("#seat_2").click(function(){
 			$.ajax({
 				url: "./seatList.seat",
@@ -39,6 +40,7 @@
 			});
 			
 		});
+		
 		$("#seat_3").click(function(){
 			$.ajax({
 				url: "./seatList.seat",
@@ -66,7 +68,6 @@
 			});
 			
 		});
-		
 
 	});
 </script>
