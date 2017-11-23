@@ -24,11 +24,12 @@ public class LibraryMainService implements Action {
 		} catch (Exception e) {
 			// TODO: handle exception
 		}
-		request.setAttribute("library", library);
+		
 		actionFoward.setCheck(true);
 		actionFoward.setPath("../WEB-INF/view/library/libraryMain.jsp");
-
+		request.setAttribute("library", library);
 		request.setAttribute("ln", ln);
+
 		return actionFoward;
 	}
 }
