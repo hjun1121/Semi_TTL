@@ -166,9 +166,9 @@ $(function(){
 			<th>수령 방법</th>
 		</tr>
 	</thead>
-		<c:forEach items="${bookDeals }" var="bookDeals_list">
+		<c:forEach items="${bookDeals }" var="bookDeals_list" varStatus="count">
 			<tr>
-				<td scope="row" class="footable-first-column">${bookDeals_list.num }</td>
+				<td scope="row" class="footable-first-column">${count.count }</td>
 				<td scope="row" data-class="expand"><a
 					href="./marketDealsDetails.market?num=${bookDeals_list.num }&library=${library}&ln=${ln}">${bookDeals_list.title }</a></td>
 				<td scope="row" style="display: table-cell;">${bookDeals_list.writer }</td>

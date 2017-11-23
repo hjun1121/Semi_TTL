@@ -100,9 +100,9 @@ $(function(){
 			<th>상태</th>
 			<th>취소사유</th>
 		</tr>
-		<c:forEach items="${bookOrderList }" var="bookOrder_list">
+		<c:forEach items="${bookOrderList }" var="bookOrder_list" varStatus="count">
 			<tr>
-				<td scope="row" class="footable-first-column">${bookOrder_list.num }</td>
+				<td scope="row" class="footable-first-column">${count.count }</td>
 				<td><a
 					href="./bookOrderDetails.book?num=${bookOrder_list.num }&library=${library}&ln=${ln}">${bookOrder_list.title }</a></td>
 				<td scope="row" style="display: table-cell;">${bookOrder_list.writer }</td>

@@ -155,9 +155,9 @@ $(function(){
 			<th>상태</th>
 			<th></th>
 		</tr>
-		<c:forEach items="${seatList }" var="seatTotal_list">
+		<c:forEach items="${seatList }" var="seatTotal_list" varStatus="count">
 			<tr>
-			<td scope="row" class="footable-first-column">${seatTotal_list.num }</td>
+			<td scope="row" class="footable-first-column">${count.count }</td>
 			<td scope="row" style="display: table-cell;">${seatTotal_list.seat_num }</td>
 			<c:choose>
 				<c:when test="${seatTotal_list.library eq 1}">
