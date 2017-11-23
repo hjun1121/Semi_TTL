@@ -225,8 +225,6 @@ $(function(){
 	</c:if>
 	</div>
 
-	<a href="../index.jsp" class="btnType3">HOME</a>
-
 	</div>
 </div>	
 <c:choose>

@@ -71,7 +71,7 @@ a:hover {color:#4559E9; text-decoration:underline;}
 .lnbBox>ul>li.selected>a:hover,.lnbBox>ul>li.selected>a:focus {text-decoration:none;}
 .lnbBox>ul>li>ul {display:none; padding:0 8px; border:1px solid #033823;}
 .lnbBox>ul>li>ul li a {padding:0 0 0 24px; font-size:13px; letter-spacing:-1px; background:url(/nl/_res/img/icon/icon_lnb_li.png) 17px center no-repeat;}
-.lnbBox>ul>li>ul li a.selected {color:#333; font-weight:bold;}
+/* .lnbBox>ul>li>ul li a.selected {color:#333; font-weight:bold;} */
 .lnbBox>ul>li.selected>ul {display:block;}
 
 .lnbBox .new_win { display:inline-block !important; position:relative;  background:#f0f0f0; border:#CCC 1px solid; padding:2px 2px 0 2px; color:#666 !important; font-weight:normal !important; text-decoration:none !important; font-size:11px; margin:0; height:11px; line-height:11px; letter-spacing:-1PX; margin-left:5px;}
