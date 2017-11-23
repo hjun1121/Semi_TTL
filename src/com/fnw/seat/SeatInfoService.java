@@ -26,6 +26,7 @@ public class SeatInfoService implements Action {
 			library = Integer.parseInt(request.getParameter("library"));
 		} catch (Exception e) {
 		}
+		
 		String id = request.getParameter("id");
 		try {
 			seat_num = Integer.parseInt(request.getParameter("seat_num"));
@@ -63,7 +64,8 @@ public class SeatInfoService implements Action {
 			
 			seatDTO.setId(id);
 			seatDTO.setSeat_num(seat_num);
-			
+			seatDTO.setLibrary(library);
+			System.out.println(library);
 			Seat_DetailsDAO seat_DetailsDAO = new Seat_DetailsDAO();
 			Seat_DetailsDTO seat_DetailsDTO = new Seat_DetailsDTO();
 			

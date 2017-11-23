@@ -20,7 +20,6 @@ public class QnaViewCheckService implements Action {
 		try {
 			library = Integer.parseInt(request.getParameter("library"));
 		} catch (Exception e) {
-			// TODO: handle exception
 		}
 		int num = 0;
 		try {

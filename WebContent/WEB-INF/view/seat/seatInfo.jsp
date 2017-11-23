@@ -80,7 +80,7 @@
 			</div>
 			<br><br>
 			<div class="btnBox">
-				<form action="./seatInfo.seat?library=${library}" method="post">
+				<form action="./seatInfo.seat" method="post">
 					<input type="hidden" name="seat_num" value=${seat.seat_num }>
 					<input type="hidden" name="library" value=${seat.library }>
 					<input type="hidden" name="state" value=${seat.state }>
