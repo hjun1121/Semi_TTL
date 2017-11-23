@@ -139,10 +139,10 @@
 </head>
 <body>
 <c:choose>
-	<c:when test="${library eq 1}"><c:import url="${myContextPath}/temp/header_1.jsp"></c:import></c:when>
-	<c:when test="${library eq 2}"><c:import url="${myContextPath}/temp/header_2.jsp"></c:import></c:when>
-	<c:when test="${library eq 3}"><c:import url="${myContextPath}/temp/header_3.jsp"></c:import></c:when>
-	<c:when test="${library eq 4}"><c:import url="${myContextPath}/temp/header_4.jsp"></c:import></c:when>
+	<c:when test="${ln eq 1}"><c:import url="${myContextPath}/temp/header_1.jsp"></c:import></c:when>
+	<c:when test="${ln eq 2}"><c:import url="${myContextPath}/temp/header_2.jsp"></c:import></c:when>
+	<c:when test="${ln eq 3}"><c:import url="${myContextPath}/temp/header_3.jsp"></c:import></c:when>
+	<c:when test="${ln eq 4}"><c:import url="${myContextPath}/temp/header_4.jsp"></c:import></c:when>
 	<c:otherwise><c:import url="${myContextPath}/temp/header.jsp"></c:import></c:otherwise>
 </c:choose>
 
@@ -175,7 +175,7 @@
 
 			<br>
 
-			<form action="../market/marketBuy.market?library=${library}" name="frm" method="POST">
+			<form action="../market/marketBuy.market?library=${library}&ln=${ln}" name="frm" method="POST">
 				<div class="xans-element- xans-order xans-order-form xans-record-">
 					<div class="orderListArea ">
 						<div class="ec-base-table typeList ">
@@ -196,7 +196,7 @@
 								</thead>
 								<tbody class="xans-element- xans-order xans-order-normallist center">
 									<tr class="xans-record-">
-										<td class="left"><a href="${pageContext.request.contextPath }/market/marketTotalView.market?num=${buyWishList.num}&library=${library}"><strong>${buyWishList.title}</strong></a>
+										<td class="left"><a href="${pageContext.request.contextPath }/market/marketTotalView.market?num=${buyWishList.num}&library=${library}&ln=${ln}"><strong>${buyWishList.title}</strong></a>
 											<div class="option ">[저자: ${buyWishList.writer}]</div>
 											<div class="option ">[출판사: ${buyWishList.company}]</div></td>
 										<td class="left">
@@ -309,11 +309,11 @@
 
 		</div>
 	</div>
-	<c:choose>
-	<c:when test="${library eq 1}"><c:import url="${myContextPath}/temp/footer_1.jsp"></c:import></c:when>
-	<c:when test="${library eq 2}"><c:import url="${myContextPath}/temp/footer_2.jsp"></c:import></c:when>
-	<c:when test="${library eq 3}"><c:import url="${myContextPath}/temp/footer_3.jsp"></c:import></c:when>
-	<c:when test="${library eq 4}"><c:import url="${myContextPath}/temp/footer_4.jsp"></c:import></c:when>
+<c:choose>
+	<c:when test="${ln eq 1}"><c:import url="${myContextPath}/temp/footer_1.jsp"></c:import></c:when>
+	<c:when test="${ln eq 2}"><c:import url="${myContextPath}/temp/footer_2.jsp"></c:import></c:when>
+	<c:when test="${ln eq 3}"><c:import url="${myContextPath}/temp/footer_3.jsp"></c:import></c:when>
+	<c:when test="${ln eq 4}"><c:import url="${myContextPath}/temp/footer_4.jsp"></c:import></c:when>
 	<c:otherwise><c:import url="${myContextPath}/temp/footer.jsp"></c:import></c:otherwise>
 </c:choose>
 </body>

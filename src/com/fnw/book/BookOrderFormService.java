@@ -27,6 +27,7 @@ public class BookOrderFormService implements Action {
 		}
 		if(method.equals("GET")) {
 			actionFoward.setCheck(true);
+//			request.setAttribute("ln", ln);
 			actionFoward.setPath("../WEB-INF/view/book/bookOrderForm.jsp");
 		} else {
 			Book_OrderDAO book_OrderDAO = new Book_OrderDAO();

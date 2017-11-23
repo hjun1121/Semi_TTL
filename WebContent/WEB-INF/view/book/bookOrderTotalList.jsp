@@ -62,7 +62,7 @@
 						<th scope="row" style="display: table-cell;">처리상태</th>
 					</tr>
 				</thead>
-				
+
 			<c:forEach items="${bookOrderTotalList}" var="bookOrder_list">
 				<tr>
 				<td scope="row" class="footable-first-column">${bookOrder_list.num }</td>

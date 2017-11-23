@@ -20,7 +20,7 @@
 	<div class="footer2">
 		<p class="footerLogo"><img src="${pageContext.request.contextPath }/image/header/hs_lib.png" alt="장안 도서관"></p>
 		<div class="address">
-			<address>경기도 수원시 장안구 조원동 한일타운 127번지 장안 도서관 <a href='${pageContext.request.contextPath }/view/library/libraryView.library?ln=2' title='찾아오시는 길'>찾아오시는 길</a>
+			<address>경기도 수원시 장안구 조원동 한일타운 127번지 장안 도서관 <a href='${pageContext.request.contextPath }/view/library/libraryView.library?library=3&ln=3' title='찾아오시는 길'>찾아오시는 길</a>
 				<p>COPYRIGHT 2017 BY FnW. ALL RIGHTS RESERVED.</p>
 			</address>
 		</div>
