@@ -115,7 +115,11 @@ $(function(){
 						<span>${qnaDTO.writer}</span>
 					</dd>
 					<dd class="writerEmail">
-							<span>${qnaDTO.type}</span>
+							<span>
+								<c:if test="${qnaDTO.type eq 1}">중고장터문의</c:if>
+								<c:if test="${qnaDTO.type eq 2}">도서신청문의</c:if>
+								<c:if test="${qnaDTO.type eq 3}">이용문의</c:if>
+							</span>
 					</dd>
 			</dl>
 		</div>
