@@ -87,7 +87,8 @@
 		</div>
 		</c:if>
 		<c:if test="${not empty member}">
-		<form id = "order_btn" action="./bookOrderForm.book?ln=${ln}">
+		<form id = "order_btn" action="./bookOrderForm.book" method="get">
+			<input type="hidden" name="ln" value="${ln }">
 			<button style = "float: right;" class = "adv" type = "submit">신청하기</button>		
 		</form>
 		</c:if>

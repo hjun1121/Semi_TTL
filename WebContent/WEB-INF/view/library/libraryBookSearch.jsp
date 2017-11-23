@@ -153,7 +153,7 @@ $(function(){
 				<c:forEach items="${ list }" var="dto">
 					<tr>
 						<td scope="row" class="footable-first-column">${dto.num }</td>
-						<td scope="row" data-class="expand"><a href="./bookInformation.book?num=${dto.num}&curPage=${curPage}&library=${library}&ln=${ln}">${dto.title }</a></td>
+						<td scope="row" data-class="expand"><a href="../book/bookInformation.book?num=${dto.num}&curPage=${curPage}&library=${library}&ln=${ln}">${dto.title }</a></td>
 						<td scope="row" style="display: table-cell;">${dto.writer }</td>
 						<td scope="row" style="display: table-cell;">${dto.company }</td>
 

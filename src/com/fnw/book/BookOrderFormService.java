@@ -22,16 +22,9 @@ public class BookOrderFormService implements Action {
 			memberDTO =  (MemberDTO)session.getAttribute("member");
 		}catch (Exception e) {
 		}
-		
-		
 		int ln = 0;
 		try {
 			ln = Integer.parseInt(request.getParameter("ln"));
-		} catch (Exception e) {
-		}
-		int library = 0;
-		try {
-			library = Integer.parseInt(request.getParameter("library"));
 		} catch (Exception e) {
 		}
 		
@@ -45,7 +38,7 @@ public class BookOrderFormService implements Action {
 		
 			if(method.equals("GET")) {
 				actionFoward.setCheck(true);
-	//			request.setAttribute("ln", ln);
+				request.setAttribute("ln", ln);
 				actionFoward.setPath("../WEB-INF/view/book/bookOrderForm.jsp");
 			} else {
 				Book_OrderDAO book_OrderDAO = new Book_OrderDAO();

@@ -177,7 +177,8 @@
 		</c:if>	
 		<br><br>
 		<c:if test="${not empty member}">
-		<form id = "order_btn" action="./marketOrder.market?id=${member.id }&ln=${ln}">
+		<form id = "order_btn" action="./marketOrder.market">
+			<input type="hidden" name="ln" value="${ln }">
 			<button style = "float: right;" class ="adv" type = "submit">신청하기</button>		
 		</form>
 		</c:if>
