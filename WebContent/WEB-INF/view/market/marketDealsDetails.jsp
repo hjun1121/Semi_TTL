@@ -126,7 +126,7 @@
 			</c:choose>
 			</tr>
 			<c:choose>
-			<c:when test="${bookDealsDetail.delivery eq 1}">
+			<c:when test="${bookDealsDetail.delivery eq 2">
 				<tr>
 				<th>수령방법</th>
 				<td><input type="text" class="noneBorder" value="택배" readonly="readonly"></td>
@@ -141,7 +141,7 @@
 					<input type="text" name="addr2" class="noneBorder" value=${bookDealsDetail.addr2 } readonly="readonly"></td>
 				</tr>
 			</c:when>
-			<c:when test="${bookDealsDetail.delivery eq 2}">
+			<c:when test="${bookDealsDetail.delivery eq 1}">
 			<tr>
 				<th>수령방법</th>
 				<td><input type="text" class="noneBorder" value="직접수령" readonly="readonly"></td>
