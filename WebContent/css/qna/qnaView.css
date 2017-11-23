@@ -172,4 +172,55 @@ background-color:white;
     color: white;
 }
 
+<!--QnA Reply-->
+#reQna td{
+	padding-bottom: 15px;
+}
+#wtd{
+	font-size:18px;
+	font-weight: bolder;
+}
+#dtd{
+	font-weight: lighter;
+	color: #585858;
+}
+.ctd{
+	width:150px;
+	font-size:15px;
+}
+.reText{
+	width:150px;
+	height:50px;
+	border: 1px solid #585858;
+	resize:none;
+}
 
+#btn1{
+	border: none;
+	background-color:white;
+	color: #585858;
+	font-weight: bold;
+}
+#btn2{
+	border: none;
+	background-color:white;
+	color: #585858;
+	font-weight: bold;
+}
+#btn3{
+	border: none;
+	background-color:white;
+	color: #585858;
+	font-weight: bold;
+}
+#btn4{
+	width:50px;
+	height:50px;
+	border: 1px solid #666;
+	background-color:white;
+	color: #666;
+	font-weight: bold;
+}
+div#reQna{
+	margin-left: 180px;
+}
