@@ -217,7 +217,7 @@ $(function(){
 			</c:forEach>
 			<c:if test="${page.curBlock < page.totalBlock}">
 			<li><a
-				href="./bookRentList.book?curPage=${requestScope.page.lastNum+1}&library=${library}&ln=${ln}">[다음]</a></li>
+				href="./bookRentList.book?curPage=${requestScope.page.lastNum+1}&ln=${ln}">[다음]</a></li>
 			</c:if>
 		</ul>
 	</div>
