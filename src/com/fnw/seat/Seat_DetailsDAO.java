@@ -107,7 +107,7 @@ public class Seat_DetailsDAO {
 	
 	public int selectOne (String id,int state) throws Exception {
 		Connection con = DBConnector.getConnect();
-		String sql = "select nvl(count(num), 0) from seat_details where id= ? and state=?" ;
+		String sql = "select nvl(count(num), 0) from seat_details where id= ? and state!=?" ;
 		
 		PreparedStatement st = con.prepareStatement(sql);
 		st.setString(1, id);
