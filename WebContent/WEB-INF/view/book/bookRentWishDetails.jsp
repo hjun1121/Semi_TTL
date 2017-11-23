@@ -42,7 +42,7 @@
 				</ul>
 			</div>
 			
-			<form action="../book/bookRentList.book?id=${member.id }&library=${library}&ln=${ln}" method="post">
+			<form action="../book/bookRentList.book?id=${member.id }&ln=${ln}" method="post">
 			<div class="profile borderIn">
 					<div class="profileHeader">
 	 			   	 	<h3>${book.title}</h3>
@@ -161,17 +161,8 @@
 		</div>
 		</div> 
 		<div class="btn2">
-		<c:choose>
-			<c:when test="${empty bookRentDTO.out_time }">
-				<a href="./bookReturn.book?num=${bookRentDTO.num }&library=${library}&ln=${ln}"><input class="btnType5" type="button" value="반납"></a>
-			</c:when>
-		</c:choose>
-		<c:choose>
-			<c:when test="${not empty bookRentDTO.out_time }">
-				<a href="./bookRentDelete.book?num=${bookRentDTO.num }&library=${library}&ln=${ln}"><input class="btnType5" type="button" value="삭제"></a>
-			</c:when>
-		</c:choose>
-		<a href="../book/bookRentList.book?id=${member.id }&library=${library}&ln=${ln}"><input class="btnType5" type="button" value="LIST"></a>
+		<a href="./bookRentWishDelete.book&ln=${ln}"><input class="btnType5" type="button" value="삭제"></a>
+		<a href="../book/bookRentList.book?id=${member.id }&ln=${ln}"><input class="btnType5" type="button" value="LIST"></a>
 		</div>
 		</form>
 	</div>

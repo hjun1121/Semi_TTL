@@ -88,7 +88,7 @@ public class Book_Rent_DetailsDAO {
 	}
 	public int delete(int bnum) throws Exception{//
 		Connection con = DBConnector.getConnect();
-		String sql = "delete from book_rent_details where bnum=?";
+		String sql = "delete from book_rent_details where num=?";
 		PreparedStatement st = con.prepareStatement(sql);
 		st.setInt(1, bnum);
 		
@@ -165,17 +165,18 @@ public class Book_Rent_DetailsDAO {
 	}
 	public int insert(Book_TotalDTO book_TotalDTO,String rent_id)throws Exception{
 		Connection con = DBConnector.getConnect();
-		String sql = "insert into book_rent_details values(?,?,?,?,?,?,?,?,sysdate,null,0,bookdetails_seq.nextval)";
+		String sql = "insert into book_rent_details values(bookdetails_seq.nextval,?,?,?,?,?,?,?,sysdate,null,0,?)";
 		PreparedStatement st = con.prepareStatement(sql);
 		st = con.prepareStatement(sql);
-		st.setInt(1, book_TotalDTO.getNum());
-		st.setString(2, book_TotalDTO.getTitle());
-		st.setString(3, book_TotalDTO.getSection());
-		st.setString(4, book_TotalDTO.getWriter());
-		st.setString(5, book_TotalDTO.getCompany());
-		st.setString(6, book_TotalDTO.getPublish_date());
-		st.setString(7, rent_id);
-		st.setInt(8, book_TotalDTO.getLibrary());
+		
+		st.setString(1, book_TotalDTO.getTitle());
+		st.setString(2, book_TotalDTO.getSection());
+		st.setString(3, book_TotalDTO.getWriter());
+		st.setString(4, book_TotalDTO.getCompany());
+		st.setString(5, book_TotalDTO.getPublish_date());
+		st.setString(6, rent_id);
+		st.setInt(7, book_TotalDTO.getLibrary());
+		st.setInt(8, book_TotalDTO.getNum());
 		int result = st.executeUpdate();
 		st.close();
 		

@@ -237,7 +237,7 @@
 	<c:import url="${myContextPath}/WEB-INF/view/member/myPage.jsp"></c:import>
 </div>
 
-<form action="./memberUpdate.member?library=${library}&ln=${ln}" method="post" id="frm" name="frm">
+<form action="./memberUpdate.member?ln=${ln}" method="post" id="frm" name="frm">
 
 <div id="divContentsW">
 		<div id="divContents">

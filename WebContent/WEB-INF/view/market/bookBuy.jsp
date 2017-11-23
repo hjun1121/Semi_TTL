@@ -146,9 +146,11 @@
 	<c:otherwise><c:import url="${myContextPath}/temp/header.jsp"></c:import></c:otherwise>
 </c:choose>
 
+<section id = "section">
 	<div id="divContentsW">
 		<div id="divContents">
 
+			<div id="bts_top_section">
 			<h2 id="divTitle">주문서 작성</h2>
 			<div id="divLocation">
 				<ul>
@@ -309,6 +311,8 @@
 
 		</div>
 	</div>
+	</div>
+	</section>
 <c:choose>
 	<c:when test="${ln eq 1}"><c:import url="${myContextPath}/temp/footer_1.jsp"></c:import></c:when>
 	<c:when test="${ln eq 2}"><c:import url="${myContextPath}/temp/footer_2.jsp"></c:import></c:when>

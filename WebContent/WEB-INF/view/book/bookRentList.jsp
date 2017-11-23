@@ -71,7 +71,7 @@ $(function(){
 		</div>
 
 	<div>
-	<form name="frm" action="./bookRentList.book?library=${library}&ln=${ln}" method="post">
+	<form name="frm" action="./bookRentList.book?ln=${ln}" method="post">
 		<div class ="search">
 			<span>
 				<select id="year" name="year" class="selectBox1">
@@ -159,7 +159,7 @@ $(function(){
 		<c:forEach items="${bookRentList }" var="bookRent_list">
 		<tr>
 			<td scope="row" class="footable-first-column">${bookRent_list.bnum }</td>
- 				<td scope="row" style="display: table-cell;"><a href="./bookRentDetails.book?num=${bookRent_list.num }&bnum=${bookRent_list.bnum }&library=${library}&ln=${ln}">${bookRent_list.title }</a></td>
+ 				<td scope="row" style="display: table-cell;"><a href="./bookRentDetails.book?num=${bookRent_list.num }&bnum=${bookRent_list.bnum }&ln=${ln}">${bookRent_list.title }</a></td>
  				<td scope="row" style="display: table-cell;">${bookRent_list.section }</td>
 				<td scope="row" style="display: table-cell;">${bookRent_list.writer }</td>
 				<td scope="row" style="display: table-cell;">${bookRent_list.company }</td>
@@ -187,7 +187,7 @@ $(function(){
 					<c:when test="${empty bookRent_list.out_time }">
 						<td> </td>
 						<td scope="row" style="display: table-cell;">
-						<a href="./bookReturn.book?num=${bookRent_list.num }&bnum=${bookRent_list.bnum }&library=${library}&ln=${ln}"><button class = "btn btn-default rent_btn">반납</button></a>
+						<a href="./bookReturn.book?num=${bookRent_list.num }&bnum=${bookRent_list.bnum }&ln=${ln}"><button class = "btn btn-default rent_btn">반납</button></a>
 						</td>
 					</c:when>
 					<c:when test="${! empty bookRent_list.out_time }">

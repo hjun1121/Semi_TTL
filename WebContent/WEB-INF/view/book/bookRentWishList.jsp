@@ -73,7 +73,7 @@ $(function(){
 		<h2 id="divTitle">대여 찜콩 내역이 없습니다.</h2>
 	</c:if>
 	<c:if test="${size ne 0 }">
-	<form action="./bookRentWishDelete.book?library=${library}&ln=${ln}" method="POST">
+	<form action="./bookRentWishDelete.book?ln=${ln}" method="POST">
 		<div class="listTable">
 		<table class="mobileTable tablet" >
 		<tr>
@@ -95,7 +95,7 @@ $(function(){
 				</td>
 				<td scope="row" class="footable-first-column">${bookRentWishList.num }</td>
  				<td scope="row" style="display: table-cell;">
- 				<a href="./bookRentWishDetails.book?num=${bookRentWishList.num }&library=${library}&ln=${ln}">${bookRentWishList.title }</a>
+ 				<a href="./bookRentWishDetails.book?num=${bookRentWishList.num }&ln=${ln}">${bookRentWishList.title }</a>
  				</td>
 				<td scope="row" style="display: table-cell;">${bookRentWishList.writer }</td>
 				<td scope="row" style="display: table-cell;">${bookRentWishList.company }</td>
@@ -127,7 +127,7 @@ $(function(){
 					<c:when test="${bookRentWishList.state eq 0}">
 						<td> </td>
 						<td scope="row" style="display: table-cell;">
-						<a href="./bookRentWishRent.book?num=${bookRentWishList.num }&rent_id=${id}&library=${bookRentWishList.library}&ln=${ln}">
+						<a href="./bookRentWishRent.book?num=${bookRentWishList.num }&rent_id=${id}&ln=${ln}">
 						<button class = "btn btn-default wish_btn" type = "button" >대여</button></a></td>
 					</c:when>
 					<c:otherwise>

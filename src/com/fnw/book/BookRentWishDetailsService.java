@@ -34,7 +34,6 @@ public class BookRentWishDetailsService implements Action {
 		} catch (Exception e) {
 			e.printStackTrace();
 		}
-		request.setAttribute("library", library);
 		request.setAttribute("book", book_TotalDTO);
 		request.setAttribute("bookRentDTO", book_Rent_DetailsDTO);
 		actionFoward.setCheck(true);

@@ -261,7 +261,7 @@
 		<div class="joinWrap">	
 			<div class="joinCont mt50">
 			
-			<form action="./memberJoin.member?library=${library}&ln=${ln}" method="post" id="frm" name="frm">
+			<form action="./memberJoin.member?ln=${ln}" method="post" id="frm" name="frm">
 			
 				<div class="joinForm mt10">
 					<dl class="plusInfo pull_down_group mt50">
@@ -284,7 +284,7 @@
 								</div>
 								<div class="ansBox">
 									<input type="password" name="pw" id="pw1">
-									<span class="pwinfo">(영문, 특수문자를 조합한 8~12자리)</span>
+									<span class="pwinfo">(영문,숫자 특수문자를 조합한 8~12자리)</span>
 								</div>
 							</li>
 							<li>

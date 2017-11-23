@@ -62,7 +62,6 @@ public class BookRentWishDeleteService implements Action {
 					request.setAttribute("message", "삭제 실패");
 					request.setAttribute("path", "./bookRentWishList.book?curPage=1&id="+id);
 				}
-				request.setAttribute("library", library);
 				actionFoward.setCheck(true);
 				actionFoward.setPath("../WEB-INF/view/common/result.jsp");
 			}

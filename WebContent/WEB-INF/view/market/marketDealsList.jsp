@@ -53,14 +53,14 @@ $(function(){
 <section>
 <div id="divContentsW">
 	<div id="divContents">
-		<h2 id="divTitle">MARKET 거래 내역</h2>
+		<h2 id="divTitle">중고 거래 내역</h2>
 		<div id="divLocation">
 			<ul>
 				<li class="home"><a href="${pageContext.request.contextPath}/index.jsp"><img src="${pageContext.request.contextPath }/image/common/home.png" alt="HOME"></a></li>
 				<li>&gt;</li>
 				<li>MY PAGE</li>
 				<li>&gt;</li>
-				<li>MARKET 거래 내역</li>
+				<li>중고 거래 내역</li>
 			</ul>
 		</div>
 	<form name="frm" class="form-inline" action="./marketDealsList.market?library=${library}&ln=${ln}" method="post">
@@ -214,7 +214,7 @@ $(function(){
 		</c:forEach>	
 			</table>
 		</div>
-		</c:if>
+		
 	<div class = "paging" style = "text-align: center;">
 		<ul class="pagination pagination-sm">
 			<c:if test="${page.curBlock>1}">
@@ -230,6 +230,7 @@ $(function(){
 			</c:if>
 			</ul>
 		</div>
+		</c:if>
 		</div>
 	</section>
 <c:choose>

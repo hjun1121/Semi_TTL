@@ -74,12 +74,12 @@
 		<input type="hidden" id="postCode" name="postCode" placeholder="우편번호" value="${mddDTO.postCode }">
 		<input type="hidden" id="addr" name="addr" value="${mddDTO.addr }">
 		<input type="hidden" id="addr2" name="addr2" value="${mddDTO.addr2 }">
-	
+	</form>
+		<br><br><br><br><br><br><br><br><br>
 		<center><strong>고객님의 상품이 결제되고 있습니다.</strong></center>
 		<center><p><img alt="" src="${pageContext.request.contextPath }/image/market/txt_progress.gif"></p></center>
 		<center><p><img alt="" src="${pageContext.request.contextPath }/image/market/img_loading.gif"></p></center>
-	</form>
-
+			<br><br><br><br><br><br><br><br><br>
 <c:choose>
 	<c:when test="${ln eq 1}"><c:import url="${myContextPath}/temp/footer_1.jsp"></c:import></c:when>
 	<c:when test="${ln eq 2}"><c:import url="${myContextPath}/temp/footer_2.jsp"></c:import></c:when>
