@@ -1,10 +1,13 @@
 package com.fnw.market;
 
+import java.util.ArrayList;
+
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
 import com.fnw.action.Action;
 import com.fnw.action.ActionFoward;
+import com.fnw.member.MemberDTO;
 
 public class MarketTotalViewService implements Action {
 
@@ -12,9 +15,25 @@ public class MarketTotalViewService implements Action {
 	public ActionFoward doProcess(HttpServletRequest request, HttpServletResponse response) {
 		ActionFoward actionFoward = new ActionFoward();
 		
+		String id = ((MemberDTO)request.getSession().getAttribute("member")).getId();
+		
+		ArrayList<Book_Buy_WishDTO> ar = new ArrayList<>();
+		try {
+			ar = new Book_Buy_WishDAO().selectList(id);
+		} catch (Exception e1) {
+			// TODO Auto-generated catch block
+			e1.printStackTrace();
+		}
+		
 		int library = 0;
 		try {
 			library = Integer.parseInt(request.getParameter("library"));
+		} catch (Exception e) {
+			// TODO: handle exception
+		}
+		int curPage = 1;
+		try {
+			curPage = Integer.parseInt(request.getParameter("curPage"));
 		} catch (Exception e) {
 			// TODO: handle exception
 		}
@@ -40,11 +59,16 @@ public class MarketTotalViewService implements Action {
 		}
 		
 		request.setAttribute("dto", market_TotalDTO);
-		request.setAttribute("library", library);
 		
 		actionFoward.setCheck(true);
 		actionFoward.setPath("../WEB-INF/view/market/marketTotalView.jsp");
 		}
+
+		request.setAttribute("rent_wish_list", ar);
+		request.setAttribute("library", library);
+		request.setAttribute("num", num);
+		request.setAttribute("curPage", curPage);
+	
 		return actionFoward;
 	}
 
