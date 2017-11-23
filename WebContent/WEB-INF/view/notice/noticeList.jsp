@@ -97,10 +97,10 @@ $(function(){
 						<th scope="row" class="footable-last-column" style="display: table-cell;">첨부파일</th>
 					</tr>
 				</thead>
-				<c:forEach items="${requestScope.list}" var="dto">
+				<c:forEach items="${requestScope.list}" var="dto" varStatus="count">
 				<tbody>
 					<tr>
-						<td scope="row" class="num footable-first-column">${dto.num}</td>
+						<td scope="row" class="num footable-first-column">${count.count}</td>
 						<td scope="row" data-class="expand" class="title expand link">
 							<a href="./noticeView.notice?num=${dto.num}&library=${library}&ln=${ln}">${dto.title}</a>&nbsp;
 						</td>

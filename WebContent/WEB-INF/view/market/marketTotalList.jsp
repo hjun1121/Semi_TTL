@@ -138,10 +138,10 @@
 					</c:if>
 				</tr>
 			</thead>
-			<c:forEach items="${list }" var="dto">
+			<c:forEach items="${list }" var="dto" varStatus="count">
 			<tbody>
 				<tr>
-					<td>${dto.num }</td>
+					<td>${count.count }</td>
 					<td><a href="./marketTotalView.market?num=${dto.num }&ln=${ln}">${dto.title }</a></td>
 					<td>${dto.writer }</td>
 					<td>${dto.company }</td>
