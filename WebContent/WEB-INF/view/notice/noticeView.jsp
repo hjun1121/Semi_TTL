@@ -51,7 +51,7 @@
 			</div>
 			
 			<div class="boardContent">
-				<div style="text-align: center;" id="contents">
+				<div id="contents">
 					${requestScope.view.contents}
 					<!-- <img border="0" src="./image/ko/local/hjbs.PNG" style="height:1040px; width:720px"> -->
 				</div>
@@ -62,8 +62,8 @@
 	<c:if test="${member.kind eq 10 }">
 		<a href="./noticeUpdate.notice?num=${view.num}&library=${library}"><button class="adv2">UPDATE</button></a>
 		<a href="./noticeDelete.notice?num=${view.num}&library=${library}"><button class="adv2">DELETE</button></a>
-		<a href="noticeList.notice?library=${library}" title="목록"><button class="adv2">목록</button></a>
 	</c:if>
+		<a href="noticeList.notice?library=${library}" title="목록"><button class="adv2">목록</button></a>
 	</div>
 	</div>
 	

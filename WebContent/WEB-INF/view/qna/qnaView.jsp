@@ -129,8 +129,11 @@ $(function(){
 		<br>
 		</div>
 		<div id = "bottom_btns">
+		
+		<c:if test="${not empty member and member.id eq qnaDTO.writer }">
 			<input type="submit" id="upbtn" class="adv" value="수정">
 			<a href="../qna/qnaDelete.qna?num=${qnaDTO.num }&library=${library}"><input type="button" class="adv" value="삭제"></a>
+		</c:if>
 			<a href="../qna/qnaList.qna?library=${library}"><input type="button" class="adv" value="list"></a>
 		</div>
 		</form>
@@ -141,8 +144,10 @@ $(function(){
 		<form action="../qnaReply/qnaReplyInsert.qnaReply?library=${library}" method="post">
 			<input type ="hidden" value="${qnaDTO.num}" name="pNum">
 			<input type ="hidden" value="${qnaDTO.pw}" name="pw">
-			<p><textarea name="contents" class = "reply"></textarea>
-			<button type="submit" class="adv">등록</button> </p>
+			<textarea name="contents" class = "reply"></textarea>
+			<c:if test="${not empty member }">
+				<button type="submit" class="adv">등록</button> 
+			</c:if>
 		</form>
 		</div>
 	</div>
