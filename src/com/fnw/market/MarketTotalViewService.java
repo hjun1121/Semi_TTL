@@ -54,7 +54,7 @@ public class MarketTotalViewService implements Action {
 			num = Integer.parseInt(request.getParameter("num"));
 		}catch (Exception e) {
 		}
-		
+
 		if(memberDTO == null ) {
 			request.setAttribute("ln", ln);
 			request.setAttribute("message", "로그인 후 가능합니다");
@@ -75,7 +75,6 @@ public class MarketTotalViewService implements Action {
 			request.setAttribute("num", num);
 			request.setAttribute("curPage", curPage);
 			request.setAttribute("ln", ln);
-		
 			request.setAttribute("dto", market_TotalDTO);
 			actionFoward.setCheck(true);
 			actionFoward.setPath("../WEB-INF/view/market/marketTotalView.jsp");

@@ -32,7 +32,7 @@
 
 			if (title == 1) {
 				$.ajax({
-					url: "./bookBuyWishReturn.market?library=${library}&ln=${ln}",
+					url: "./bookBuyWishReturn.market?ln=${ln}",
 					type: "GET",
 					data: {
 						num:num,
@@ -42,13 +42,13 @@
 					},
 					success: function(data) {
 						alert(data);
-						location.href="./marketTotalView.market?curPage=${curPage}&library=${library}&ln=${ln}";
+						location.href="./marketTotalView.market?num=${num}&curPage=${curPage}&ln=${ln}";
 					}
 				});
 
 			} else if (title == 0) {
 				$.ajax({
-					url: "./bookBuyWish.market?library=${library}&ln=${ln}",
+					url: "./bookBuyWish.market?ln=${ln}",
 					type: "GET",
 					data: {
 						num:num,
@@ -58,7 +58,7 @@
 					},
 					success: function(data) {
 						alert(data);
-						location.href="./marketTotalView.market?curPage=${curPage}&library=${library}&ln=${ln}";
+						location.href="./marketTotalView.market?num=${num}&curPage=${curPage}&ln=${ln}";
 					}
 				});
 			}
@@ -134,7 +134,7 @@
 								<c:set var="heart2" value="0" ></c:set>
 								<c:if test="${ not empty member }">
 									<c:forEach items="${rent_wish_list}" var="wish">
-										<c:if test="${wish.title eq dto.title}">
+										<c:if test="${wish.num eq dto.num}">
 											<c:choose>
 												<c:when test="${heart1 == 0}">
 													<td><button class = "btn btn-default wish_btn" type = "submit" value = "${dto.num}" title="1">❤</button></td>
