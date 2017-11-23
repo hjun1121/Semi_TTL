@@ -21,7 +21,6 @@ public class SeatListService implements Action {
 		} catch (Exception e) {
 		}
 
-		
 		if(method.equals("GET")) {
 			
 			int cnt = 0;
@@ -57,12 +56,12 @@ public class SeatListService implements Action {
 		}else {
 			SeatDAO seatDAO = new SeatDAO();
 			ArrayList<SeatDTO> ar = new ArrayList<>();
+			
 			try {
 				ar = seatDAO.selectList(library);
 				int cnt1 = seatDAO.countAll(1, library);
 				int cnt2 = cnt1 + seatDAO.countAll(2, library);
 				int cnt3 = cnt2 + seatDAO.countAll(3, library);
-				
 				request.setAttribute("cnt1", cnt1);
 				request.setAttribute("cnt2", cnt2);
 				request.setAttribute("cnt3", cnt3);
