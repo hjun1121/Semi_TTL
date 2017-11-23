@@ -38,7 +38,7 @@
 					<span class="wbbtn white block">주문번호:</span>
 				</li>
 				<li style="list-style:none;">
-					<span class="wbbtn black block">주문일자:</span>
+					<span class="wbbtn black block">주문일자 : ${mdd.t_date }</span>
 				</li>
 			</ul>
 		</div>
@@ -50,7 +50,14 @@
 			<table id="fTable">	
 				<tr>
 					<th>최종결제금액</th>
-					<td>25000won</td>
+					<c:choose>
+						<c:when test="${mdd.delivery eq 1}">
+							<td><span id="won">${mdd.price+2500 }</span> 원</td>
+						</c:when>
+						<c:when test="${mdd.delivery eq 2}">
+							<td><span id="won">${mdd.price }</span> 원</td>
+						</c:when>
+					</c:choose>
 				</tr>
 				<tr>
 					<th>결제수단</th>
@@ -72,37 +79,93 @@
 					<th>합계</th>
 				</tr>
 				<tr>
-					<td>장희성</td>
-					<td>장안도서관</td>
-					<td>22500원</td>
+					<td>${mdd.title }</td>
+					<c:choose>
+						<c:when test="${mdd.library eq 1}">
+							<td>기흥도서관</td>
+						</c:when>
+						<c:when test="${mdd.library eq 2}">
+							<td>송파도서관</td>
+						</c:when>
+						<c:when test="${mdd.library eq 3}">
+							<td>장안도서관</td>
+						</c:when>
+						<c:when test="${mdd.library eq 4}">
+							<td>분당도서관</td>
+						</c:when>
+					</c:choose>
+					<td>${mdd.price }</td>
 					<td>1</td>
-					<td>배송</td>
-					<td>25000원</td>
+					<c:choose>
+						<c:when test="${mdd.delivery eq 1}">
+							<td>택배</td>
+						</c:when>
+						<c:when test="${mdd.delivery eq 2}">
+							<td>직접수령</td>
+						</c:when>
+					</c:choose>
+					<c:choose>
+						<c:when test="${mdd.delivery eq 1}">
+							<td>${mdd.price+2500 }</td>
+						</c:when>
+						<c:when test="${mdd.delivery eq 2}">
+							<td>${mdd.price }</td>
+						</c:when>
+					</c:choose>
 				</tr>
 			</table>
 		</div>
 		
-		<br><br>
-		<span class="tTitle">배송지정보</span>
-		<div class="myOrder">
-			<table id="tTable">	
-				<tr>
-					<th>받으시는분</th>
-					<td>장희성</td>
-				</tr>
-				<tr>
-					<th>우편번호</th>
-					<td>11111</td>
-				</tr>
-				<tr>
-					<th>주소</th>
-					<td>수원시</td>
-				</tr>
-				<tr>
-					<th>전화</th>
-					<td>11111</td>
-				</tr>
-			</table>
+		<c:if test="${mdd.delivery eq 1}">
+			<br><br>
+			<span class="tTitle">배송지정보</span>
+			<div class="myOrder">
+				<table id="tTable">	
+					<tr>
+						<th>받으시는분</th>
+						<td>${member.name }</td>
+					</tr>
+					<tr>
+						<th>우편번호</th>
+						<td>${mdd.postCode}</td>
+					</tr>
+					<tr>
+						<th>나머지주소</th>
+						<td>${mdd.addr} ${mdd.addr2}</td>
+					</tr>
+					<tr>
+						<th>전화</th>
+						<td>${member.phone}</td>
+					</tr>
+				</table>
+			</div>
+		</c:if>
+		<c:if test="${mdd.delivery eq 2}">
+			<br><br>
+			<span class="tTitle">고객 정보</span>
+			<div class="myOrder">
+				<table id="tTable">	
+					<tr>
+						<th>받으시는분</th>
+						<td>${member.name }</td>
+					</tr>
+					<tr>
+						<th>우편번호</th>
+						<td>${member.postCode}</td>
+					</tr>
+					<tr>
+						<th>나머지주소</th>
+						<td>${member.addr} ${member.addr2}</td>
+					</tr>
+					<tr>
+						<th>전화</th>
+						<td>${member.phone}</td>
+					</tr>
+				</table>
+			</div>
+		</c:if>
+		<div class="btn">
+			<a href="./marketDealsList.market?library=${library}"><input type="button" class="btnType5" value="LIST"></a>
 		</div>
 	</div>
 </div>

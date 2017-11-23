@@ -18,7 +18,7 @@
 		
 		$(function(){
 			$(".cur").each(function(){
-				 if($(this).attr("title") == ${curPage }) {
+				 if($(this).attr("title") == ${curPage}) {
 					 $(this).attr("style", "color:red;");
 				 }
 			 });
