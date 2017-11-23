@@ -209,7 +209,7 @@
 										</td>
 										<td class="left">1</td>
 										<td></td>
-										<td class="left" id="carPrice">&nbsp;&nbsp;&nbsp;&nbsp;0won</td>
+										<td class="left" id="carPrice">0,000won</td>
 										<td class="left"><strong id="allPrice"><fmt:formatNumber value="${buyWishList.price}" groupingUsed="true" /> won</strong></td>
 									</tr>
 								</tbody>

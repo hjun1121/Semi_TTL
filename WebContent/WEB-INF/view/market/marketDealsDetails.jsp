@@ -157,6 +157,7 @@
 			<a href="./bookBuyFinish.market?num=${bookDealsDetail.num }&ln=${ln}"><input type="button" class="btnType5" value="결제완료"></a>
 		</div>
 	</form>	
+
 	</div>
 </div>
 <c:choose>
