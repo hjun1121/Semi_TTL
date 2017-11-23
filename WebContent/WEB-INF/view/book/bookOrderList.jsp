@@ -59,7 +59,7 @@ $(function(){
 
 	<div>
 	<!-- 검색 시작 -->
-		<form name="frm" class="form-inline" action="./bookOrderList.book?library=${library}" method="post">
+		<form name="frm" class="form-inline" action="./bookOrderList.book" method="post">
 			<fieldset>
 				<span class="bunch">
 					<select id="kind" name = "kind" class="selectBox1">

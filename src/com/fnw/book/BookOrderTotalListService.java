@@ -53,8 +53,6 @@ public class BookOrderTotalListService implements Action {
 			request.setAttribute("id", id);
 			request.setAttribute("curPage", curPage);
 			request.setAttribute("page", pageMaker.getMakePage());
-			request.setAttribute("library", library);
-			request.setAttribute("library", library);
 		} catch (Exception e) {
 			e.printStackTrace();
 		}
