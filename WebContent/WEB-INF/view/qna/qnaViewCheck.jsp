@@ -51,6 +51,7 @@
 					<a href="./qnaList.qna"><input type = "button" id="btn_OK" value =취소></a>
 					<input type = "submit" id="btn_NO" value = "확인">
 				</div>
+				<br><br><br><br>
 				</form>
 			</div>
 			
