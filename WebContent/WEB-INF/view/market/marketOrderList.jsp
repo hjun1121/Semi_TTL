@@ -34,15 +34,15 @@ $(function(){
 </head>
 <body>
 <c:choose>
-	<c:when test="${library eq 1}"><c:import url="${myContextPath}/temp/header_1.jsp"></c:import></c:when>
-	<c:when test="${library eq 2}"><c:import url="${myContextPath}/temp/header_2.jsp"></c:import></c:when>
-	<c:when test="${library eq 3}"><c:import url="${myContextPath}/temp/header_3.jsp"></c:import></c:when>
-	<c:when test="${library eq 4}"><c:import url="${myContextPath}/temp/header_4.jsp"></c:import></c:when>
+	<c:when test="${ln eq 1}"><c:import url="${myContextPath}/temp/header_1.jsp"></c:import></c:when>
+	<c:when test="${ln eq 2}"><c:import url="${myContextPath}/temp/header_2.jsp"></c:import></c:when>
+	<c:when test="${ln eq 3}"><c:import url="${myContextPath}/temp/header_3.jsp"></c:import></c:when>
+	<c:when test="${ln eq 4}"><c:import url="${myContextPath}/temp/header_4.jsp"></c:import></c:when>
 	<c:otherwise><c:import url="${myContextPath}/temp/header.jsp"></c:import></c:otherwise>
 </c:choose>
 
 <div>
-	<c:import url="${myContextPath}/WEB-INF/view/member/myPage.jsp?library=${library}"></c:import>
+	<c:import url="${myContextPath}/WEB-INF/view/member/myPage.jsp?library=${library}&ln=${ln}"></c:import>
 </div>
 <section id="section">
 <div id="divContentsW">
@@ -59,7 +59,7 @@ $(function(){
 		</div>
 
 	<!-- 검색 시작 -->
-		<form name="frm" class="form-inline" action="./marketOrderList.market?library=${library}" method="post">
+		<form name="frm" class="form-inline" action="./marketOrderList.market?library=${library}&ln=${ln}" method="post">
 			<fieldset>
 				<span class="bunch">
 					<select id="kind" name = "kind" class="selectBox1">
@@ -140,11 +140,11 @@ $(function(){
 			<li><button class="go" id="${page.startNum-1}">[이전]</button></li>
 			</c:if>
 			<c:forEach begin="${page.startNum}" end="${page.lastNum}" var="i">
-			<li><a class="cur" title="${i }" href="./marketOrderList.market?curPage=${i}&id=${id }&kind=${kind}&search=${search}&library=${library}">${i}</a></li>
+			<li><a class="cur" title="${i }" href="./marketOrderList.market?curPage=${i}&id=${id }&kind=${kind}&search=${search}&library=${library}&ln=${ln}">${i}</a></li>
 			</c:forEach>
 			<c:if test="${page.curBlock < page.totalBlock}">
 			<li><a
-				href="./marketOrderList.market?curPage=${requestScope.page.lastNum+1}&library=${library}">[다음]</a></li>
+				href="./marketOrderList.market?curPage=${requestScope.page.lastNum+1}&library=${library}&ln=${ln}">[다음]</a></li>
 			</c:if>
 		</ul>
 	</div>
@@ -154,10 +154,10 @@ $(function(){
 </div>		
 	</section>
 <c:choose>
-	<c:when test="${library eq 1}"><c:import url="${myContextPath}/temp/footer_1.jsp"></c:import></c:when>
-	<c:when test="${library eq 2}"><c:import url="${myContextPath}/temp/footer_2.jsp"></c:import></c:when>
-	<c:when test="${library eq 3}"><c:import url="${myContextPath}/temp/footer_3.jsp"></c:import></c:when>
-	<c:when test="${library eq 4}"><c:import url="${myContextPath}/temp/footer_4.jsp"></c:import></c:when>
+	<c:when test="${ln eq 1}"><c:import url="${myContextPath}/temp/footer_1.jsp"></c:import></c:when>
+	<c:when test="${ln eq 2}"><c:import url="${myContextPath}/temp/footer_2.jsp"></c:import></c:when>
+	<c:when test="${ln eq 3}"><c:import url="${myContextPath}/temp/footer_3.jsp"></c:import></c:when>
+	<c:when test="${ln eq 4}"><c:import url="${myContextPath}/temp/footer_4.jsp"></c:import></c:when>
 	<c:otherwise><c:import url="${myContextPath}/temp/footer.jsp"></c:import></c:otherwise>
 </c:choose>
 </body>

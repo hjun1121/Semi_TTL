@@ -16,15 +16,15 @@
 </head>
 <body>
 <c:choose>
-	<c:when test="${library eq 1}"><c:import url="${myContextPath}/temp/header_1.jsp"></c:import></c:when>
-	<c:when test="${library eq 2}"><c:import url="${myContextPath}/temp/header_2.jsp"></c:import></c:when>
-	<c:when test="${library eq 3}"><c:import url="${myContextPath}/temp/header_3.jsp"></c:import></c:when>
-	<c:when test="${library eq 4}"><c:import url="${myContextPath}/temp/header_4.jsp"></c:import></c:when>
+	<c:when test="${ln eq 1}"><c:import url="${myContextPath}/temp/header_1.jsp"></c:import></c:when>
+	<c:when test="${ln eq 2}"><c:import url="${myContextPath}/temp/header_2.jsp"></c:import></c:when>
+	<c:when test="${ln eq 3}"><c:import url="${myContextPath}/temp/header_3.jsp"></c:import></c:when>
+	<c:when test="${ln eq 4}"><c:import url="${myContextPath}/temp/header_4.jsp"></c:import></c:when>
 	<c:otherwise><c:import url="${myContextPath}/temp/header.jsp"></c:import></c:otherwise>
 </c:choose>
 
 <div>
-	<c:import url="../member/myPage.jsp?library=${library}"></c:import>
+	<c:import url="../member/myPage.jsp?library=${library}&ln=${ln}"></c:import>
 </div>
 
 <div id="divContentsW">
@@ -41,7 +41,7 @@
 				<li>상세 내역</li>
 			</ul>
 		</div>
-	<form action="../market/marketDealsList.market?id=${member.id }&type=3&library=${library}" method="post">
+	<form action="../market/marketDealsList.market?id=${member.id }&type=3&library=${library}&ln=${ln}" method="post">
 		<table class="Dtable">
 			<tr>
 				<th>No.</th>
@@ -153,17 +153,17 @@
 		
 		<div class="btn">
 			<input type="submit" class="btnType5" id="btn" name="btn" value="확인">
-			<a href="./marketDealsDelete.market?num=${bookDealsDetail.num }&library=${library}"><input type="button" class="btnType5" value="삭제"></a>
-			<a href="./bookBuyFinish.market?num=${bookDealsDetail.num }"><input type="button" class="btnType5" value="결제완료"></a>
+			<a href="./marketDealsDelete.market?num=${bookDealsDetail.num }&library=${library}&ln=${ln}"><input type="button" class="btnType5" value="삭제"></a>
+			<a href="./bookBuyFinish.market?num=${bookDealsDetail.num }&ln=${ln}"><input type="button" class="btnType5" value="결제완료"></a>
 		</div>
 	</form>	
 	</div>
 </div>
 <c:choose>
-	<c:when test="${library eq 1}"><c:import url="${myContextPath}/temp/footer_1.jsp"></c:import></c:when>
-	<c:when test="${library eq 2}"><c:import url="${myContextPath}/temp/footer_2.jsp"></c:import></c:when>
-	<c:when test="${library eq 3}"><c:import url="${myContextPath}/temp/footer_3.jsp"></c:import></c:when>
-	<c:when test="${library eq 4}"><c:import url="${myContextPath}/temp/footer_4.jsp"></c:import></c:when>
+	<c:when test="${ln eq 1}"><c:import url="${myContextPath}/temp/footer_1.jsp"></c:import></c:when>
+	<c:when test="${ln eq 2}"><c:import url="${myContextPath}/temp/footer_2.jsp"></c:import></c:when>
+	<c:when test="${ln eq 3}"><c:import url="${myContextPath}/temp/footer_3.jsp"></c:import></c:when>
+	<c:when test="${ln eq 4}"><c:import url="${myContextPath}/temp/footer_4.jsp"></c:import></c:when>
 	<c:otherwise><c:import url="${myContextPath}/temp/footer.jsp"></c:import></c:otherwise>
 </c:choose>
 </body>

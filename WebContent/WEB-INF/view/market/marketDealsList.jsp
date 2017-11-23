@@ -40,15 +40,15 @@ $(function(){
 </head>
 <body>
 <c:choose>
-	<c:when test="${library eq 1}"><c:import url="${myContextPath}/temp/header_1.jsp"></c:import></c:when>
-	<c:when test="${library eq 2}"><c:import url="${myContextPath}/temp/header_2.jsp"></c:import></c:when>
-	<c:when test="${library eq 3}"><c:import url="${myContextPath}/temp/header_3.jsp"></c:import></c:when>
-	<c:when test="${library eq 4}"><c:import url="${myContextPath}/temp/header_4.jsp"></c:import></c:when>
+	<c:when test="${ln eq 1}"><c:import url="${myContextPath}/temp/header_1.jsp"></c:import></c:when>
+	<c:when test="${ln eq 2}"><c:import url="${myContextPath}/temp/header_2.jsp"></c:import></c:when>
+	<c:when test="${ln eq 3}"><c:import url="${myContextPath}/temp/header_3.jsp"></c:import></c:when>
+	<c:when test="${ln eq 4}"><c:import url="${myContextPath}/temp/header_4.jsp"></c:import></c:when>
 	<c:otherwise><c:import url="${myContextPath}/temp/header.jsp"></c:import></c:otherwise>
 </c:choose>
 
 <div>
-	<c:import url="../member/myPage.jsp?library=${library}"></c:import>
+	<c:import url="../member/myPage.jsp?library=${library}&ln=${ln}"></c:import>
 </div>
 <section>
 <div id="divContentsW">
@@ -63,7 +63,7 @@ $(function(){
 				<li>MARKET 거래 내역</li>
 			</ul>
 		</div>
-	<form name="frm" class="form-inline" action="./marketDealsList.market?library=${library}" method="post">
+	<form name="frm" class="form-inline" action="./marketDealsList.market?library=${library}&ln=${ln}" method="post">
 	<!-- 검색 시작 -->
 	<input type="hidden" name="type" id="type" value="${type }">
 	<input type="hidden" name="id" id="id" value="${id }">
@@ -133,9 +133,9 @@ $(function(){
 	<!-- 검색 끝 -->
 	<br>
 
-	<a href="./marketDealsList.market?id=${id }&type=3&year=${year}&month=${month}&day=${day}"><input class="btnType3" type="button" value="전체"></a>
-	<a href="./marketDealsList.market?id=${id }&type=1&year=${year}&month=${month}&day=${day}"><input class="btnType3" type="button" value="판매"></a>
-	<a href="./marketDealsList.market?id=${id }&type=2&year=${year}&month=${month}&day=${day}"><input class="btnType3" type="button" value="구매"></a>
+	<a href="./marketDealsList.market?id=${id }&type=3&year=${year}&month=${month}&day=${day}&ln=${ln}"><input class="btnType3" type="button" value="전체"></a>
+	<a href="./marketDealsList.market?id=${id }&type=1&year=${year}&month=${month}&day=${day}&ln=${ln}"><input class="btnType3" type="button" value="판매"></a>
+	<a href="./marketDealsList.market?id=${id }&type=2&year=${year}&month=${month}&day=${day}&ln=${ln}"><input class="btnType3" type="button" value="구매"></a>
 
 	<br><br>
 	<c:if test="${size eq 0 }">
@@ -163,7 +163,7 @@ $(function(){
 			<tr>
 				<td scope="row" class="footable-first-column">${bookDeals_list.num }</td>
 				<td scope="row" data-class="expand"><a
-					href="./marketDealsDetails.market?num=${bookDeals_list.num }&library=${library}">${bookDeals_list.title }</a></td>
+					href="./marketDealsDetails.market?num=${bookDeals_list.num }&library=${library}&ln=${ln}">${bookDeals_list.title }</a></td>
 				<td scope="row" style="display: table-cell;">${bookDeals_list.writer }</td>
 				<td scope="row" style="display: table-cell;">${bookDeals_list.company }</td>
 				<td scope="row" style="display: table-cell;">${bookDeals_list.t_date }</td>
@@ -222,21 +222,21 @@ $(function(){
 			</c:if>
 			<c:forEach begin="${page.startNum}" end="${page.lastNum}" var="i">
 			<li><a
-				href="./marketDealsList.market?curPage=${i}&id=${id }&year=${year}&month=${month}&day=${day}&type=${type}&library=${library}">${i}</a></li>
+				href="./marketDealsList.market?curPage=${i}&id=${id }&year=${year}&month=${month}&day=${day}&type=${type}&library=${library}&ln=${ln}">${i}</a></li>
 			</c:forEach>
 			<c:if test="${page.curBlock < page.totalBlock}">
 			<li><a
-				href="./marketDealsList.market?curPage=${requestScope.page.lastNum+1}&library=${library}">[다음]</a></li>
+				href="./marketDealsList.market?curPage=${requestScope.page.lastNum+1}&library=${library}&ln=${ln}">[다음]</a></li>
 			</c:if>
 			</ul>
 		</div>
 		</div>
 	</section>
 <c:choose>
-	<c:when test="${library eq 1}"><c:import url="${myContextPath}/temp/footer_1.jsp"></c:import></c:when>
-	<c:when test="${library eq 2}"><c:import url="${myContextPath}/temp/footer_2.jsp"></c:import></c:when>
-	<c:when test="${library eq 3}"><c:import url="${myContextPath}/temp/footer_3.jsp"></c:import></c:when>
-	<c:when test="${library eq 4}"><c:import url="${myContextPath}/temp/footer_4.jsp"></c:import></c:when>
+	<c:when test="${ln eq 1}"><c:import url="${myContextPath}/temp/footer_1.jsp"></c:import></c:when>
+	<c:when test="${ln eq 2}"><c:import url="${myContextPath}/temp/footer_2.jsp"></c:import></c:when>
+	<c:when test="${ln eq 3}"><c:import url="${myContextPath}/temp/footer_3.jsp"></c:import></c:when>
+	<c:when test="${ln eq 4}"><c:import url="${myContextPath}/temp/footer_4.jsp"></c:import></c:when>
 	<c:otherwise><c:import url="${myContextPath}/temp/footer.jsp"></c:import></c:otherwise>
 </c:choose>
 </body>
