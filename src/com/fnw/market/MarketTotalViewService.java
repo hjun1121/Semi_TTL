@@ -21,7 +21,6 @@ public class MarketTotalViewService implements Action {
 		try {
 			ar = new Book_Buy_WishDAO().selectList(id);
 		} catch (Exception e1) {
-			// TODO Auto-generated catch block
 			e1.printStackTrace();
 		}
 		
@@ -29,19 +28,16 @@ public class MarketTotalViewService implements Action {
 		try {
 			ln = Integer.parseInt(request.getParameter("ln"));
 		} catch (Exception e) {
-			// TODO: handle exception
 		}
 		int library = 0;
 		try {
 			library = Integer.parseInt(request.getParameter("library"));
 		} catch (Exception e) {
-			// TODO: handle exception
 		}
 		int curPage = 1;
 		try {
 			curPage = Integer.parseInt(request.getParameter("curPage"));
 		} catch (Exception e) {
-			// TODO: handle exception
 		}
 		int num = 1;
 		try {
@@ -60,7 +56,6 @@ public class MarketTotalViewService implements Action {
 		try {
 			market_TotalDTO = market_TotalDAO.selectOne(num);
 		} catch (Exception e) {
-			// TODO Auto-generated catch block
 			e.printStackTrace();
 		}
 		
