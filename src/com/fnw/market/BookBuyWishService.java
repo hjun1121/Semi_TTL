@@ -13,6 +13,12 @@ public class BookBuyWishService implements Action {
 		ActionFoward actionFoward = new ActionFoward();
 		Book_Buy_WishDAO book_Buy_WishDAO = new Book_Buy_WishDAO();
 		
+		int ln = 0;
+		try {
+			ln = Integer.parseInt(request.getParameter("ln"));
+		} catch (Exception e) {
+			// TODO: handle exception
+		}
 		int library = 0;
 		try {
 			library = Integer.parseInt(request.getParameter("library"));
@@ -66,6 +72,7 @@ public class BookBuyWishService implements Action {
 		actionFoward.setCheck(true);
 		actionFoward.setPath("../WEB-INF/view/market/bookBuyWish.jsp");
 		
+		request.setAttribute("ln", ln);
 		return actionFoward;
 	}
 

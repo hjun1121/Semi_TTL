@@ -20,6 +20,12 @@ public class BookRentService implements Action {
 			String search = request.getParameter("search");
 			String kind = request.getParameter("kind");
 			
+			int ln = 0;
+			try {
+				ln = Integer.parseInt(request.getParameter("ln"));
+			} catch (Exception e) {
+				// TODO: handle exception
+			}
 			int library = 0;
 			try {
 				library = Integer.parseInt(request.getParameter("library"));
@@ -83,6 +89,7 @@ public class BookRentService implements Action {
 			actionFoward.setCheck(true);
 			actionFoward.setPath("../WEB-INF/view/book/bookRent.jsp");
 	
+			request.setAttribute("ln", ln);
 			return actionFoward;
 	}
 }

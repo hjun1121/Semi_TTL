@@ -12,6 +12,12 @@ public class AdminMarketOrderNOService implements Action {
 	public ActionFoward doProcess(HttpServletRequest request, HttpServletResponse response) {
 		ActionFoward actionFoward = new ActionFoward();
 		
+		int ln = 0;
+		try {
+			ln = Integer.parseInt(request.getParameter("ln"));
+		} catch (Exception e) {
+			// TODO: handle exception
+		}
 		int library = 0;
 		try {
 			library = Integer.parseInt(request.getParameter("library"));
@@ -47,6 +53,7 @@ public class AdminMarketOrderNOService implements Action {
 		actionFoward.setCheck(true);
 		actionFoward.setPath("../WEB-INF/view/common/result.jsp");
 		
+		request.setAttribute("ln", ln);
 		return actionFoward;
 	}
 

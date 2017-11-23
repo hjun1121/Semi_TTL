@@ -12,6 +12,12 @@ public class LibraryMainService implements Action {
 	public ActionFoward doProcess(HttpServletRequest request, HttpServletResponse response) {
 		ActionFoward actionFoward = new ActionFoward();
 		
+		int ln = 0;
+		try {
+			ln = Integer.parseInt(request.getParameter("ln"));
+		} catch (Exception e) {
+			// TODO: handle exception
+		}
 		int library = 0;
 		try {
 			library = Integer.parseInt(request.getParameter("library"));
@@ -22,6 +28,7 @@ public class LibraryMainService implements Action {
 		actionFoward.setCheck(true);
 		actionFoward.setPath("../WEB-INF/view/library/libraryMain.jsp");
 
+		request.setAttribute("ln", ln);
 		return actionFoward;
 	}
 }

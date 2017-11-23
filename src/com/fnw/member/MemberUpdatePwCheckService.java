@@ -15,6 +15,12 @@ public class MemberUpdatePwCheckService implements Action {
 		
 		MemberDAO memberDAO = new MemberDAO();
 		
+		int ln = 0;
+		try {
+			ln = Integer.parseInt(request.getParameter("ln"));
+		} catch (Exception e) {
+			// TODO: handle exception
+		}
 		int library = 0;
 		try {
 			library = Integer.parseInt(request.getParameter("library"));
@@ -44,6 +50,7 @@ public class MemberUpdatePwCheckService implements Action {
 			}
 		}
 		request.setAttribute("library", library);
+		request.setAttribute("ln", ln);
 		return actionFoward;
 	}
 

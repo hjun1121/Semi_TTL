@@ -18,6 +18,12 @@ public class AdminMarketOrderListService implements Action {
 		ActionFoward actionFoward = new ActionFoward();
 		Market_OrderDAO market_OrderDAO = new Market_OrderDAO();
 
+		int ln = 0;
+		try {
+			ln = Integer.parseInt(request.getParameter("ln"));
+		} catch (Exception e) {
+			// TODO: handle exception
+		}
 		int library = 0;
 		try {
 			library = Integer.parseInt(request.getParameter("library"));
@@ -55,7 +61,7 @@ public class AdminMarketOrderListService implements Action {
 		actionFoward.setCheck(true);
 		actionFoward.setPath("../WEB-INF/view/admin/admin_MarketOrder_List.jsp");
 
+		request.setAttribute("ln", ln);
 		return actionFoward;
-
 	}
 }
