@@ -25,15 +25,15 @@ $(document).ready(function() {
 </head>
 <body>
 <c:choose>
-	<c:when test="${library eq 1}"><c:import url="${myContextPath}/temp/header_1.jsp"></c:import></c:when>
-	<c:when test="${library eq 2}"><c:import url="${myContextPath}/temp/header_2.jsp"></c:import></c:when>
-	<c:when test="${library eq 3}"><c:import url="${myContextPath}/temp/header_3.jsp"></c:import></c:when>
-	<c:when test="${library eq 4}"><c:import url="${myContextPath}/temp/header_4.jsp"></c:import></c:when>
+	<c:when test="${ln eq 1}"><c:import url="${myContextPath}/temp/header_1.jsp"></c:import></c:when>
+	<c:when test="${ln eq 2}"><c:import url="${myContextPath}/temp/header_2.jsp"></c:import></c:when>
+	<c:when test="${ln eq 3}"><c:import url="${myContextPath}/temp/header_3.jsp"></c:import></c:when>
+	<c:when test="${ln eq 4}"><c:import url="${myContextPath}/temp/header_4.jsp"></c:import></c:when>
 	<c:otherwise><c:import url="${myContextPath}/temp/header.jsp"></c:import></c:otherwise>
 </c:choose>
 
 <h2>Book Order List-Book_Order</h2>
-<form action="./bookOrderWishDelete.book?library=${library}" method="POST">
+<form action="./bookOrderWishDelete.book?library=${library}&ln=${ln}" method="POST">
 	<table class="table" border="1">
 		<tr>
 			<th>전체선택<input type="checkbox" id="checkAll"></th>
@@ -55,7 +55,7 @@ $(document).ready(function() {
 				<td>${bookOrderWish_list.publish_date }</td>
 				<td>${bookOrderWish_list.library }</td>
 				<td>${bookOrderWish_list.price }</td>
-				<td><a href="./bookOrderWishDelete.book?num=${bookOrderWish_list.num }"><input type="button" value="삭제"></a></td>
+				<td><a href="./bookOrderWishDelete.book?num=${bookOrderWish_list.num }&ln=${ln}"><input type="button" value="삭제"></a></td>
 				<c:choose>
 					<c:when test="${bookOrderWish_list.state eq 1 }">
 						<td>대여불가</td>
@@ -79,20 +79,20 @@ $(document).ready(function() {
 			</c:if>
 			<c:forEach begin="${page.startNum}" end="${page.lastNum}" var="i">
 			<li><a
-				href="./bookOrderWishList.book?curPage=${i}&id=${id}&library=${library}">${i}</a></li>
+				href="./bookOrderWishList.book?curPage=${i}&id=${id}&library=${library}&ln=${ln}">${i}</a></li>
 			</c:forEach>
 			<c:if test="${page.curBlock < page.totalBlock}">
 			<li><a
-				href="./bookOrderWishList.book?curPage=${requestScope.page.lastNum+1}&library=${library}">[다음]</a></li>
+				href="./bookOrderWishList.book?curPage=${requestScope.page.lastNum+1}&library=${library}&ln=${ln}">[다음]</a></li>
 			</c:if>
 		</ul>
 	</div>
 	
 <c:choose>
-	<c:when test="${library eq 1}"><c:import url="${myContextPath}/temp/footer_1.jsp"></c:import></c:when>
-	<c:when test="${library eq 2}"><c:import url="${myContextPath}/temp/footer_2.jsp"></c:import></c:when>
-	<c:when test="${library eq 3}"><c:import url="${myContextPath}/temp/footer_3.jsp"></c:import></c:when>
-	<c:when test="${library eq 4}"><c:import url="${myContextPath}/temp/footer_4.jsp"></c:import></c:when>
+	<c:when test="${ln eq 1}"><c:import url="${myContextPath}/temp/footer_1.jsp"></c:import></c:when>
+	<c:when test="${ln eq 2}"><c:import url="${myContextPath}/temp/footer_2.jsp"></c:import></c:when>
+	<c:when test="${ln eq 3}"><c:import url="${myContextPath}/temp/footer_3.jsp"></c:import></c:when>
+	<c:when test="${ln eq 4}"><c:import url="${myContextPath}/temp/footer_4.jsp"></c:import></c:when>
 	<c:otherwise><c:import url="${myContextPath}/temp/footer.jsp"></c:import></c:otherwise>
 </c:choose>
 </body>
