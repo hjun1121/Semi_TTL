@@ -54,13 +54,30 @@
 		 
 		//pw 확인 체크
 			$("#pw1").change(function(){
-				$("#ch_pw").html('<p style="color: red">비밀번호를 확인해주세요.</p>');
-				$("#pw2").val(""); 
 				$("#pwc").removeAttr("style");
-
-				pwCheck = false;
+				var pw1= $("#pw1").val();
+				var pwpw=false;
+				for(var i=0; i<pw1.length;i++){
+					if(pw1.charAt(i) == '!' || pw1.charAt(i) == '@' || pw1.charAt(i) =='#' || pw1.charAt(i) =='$' || pw1.charAt(i) =='%' || pw1.charAt(i) =='^' || pw1.charAt(i) =='&' || pw1.charAt(i) =='*'){
+						i= pw1.length;
+						pwpw=true;
+					}else{
+					}
+				}
+				if(pwpw==true && pw1.length>7 && pw1.length<13 ){
+					$("#pw2").removeAttr("readonly")
+					$("#ch_pw").html('<p style="color: red">비밀번호를 확인해주세요</p>');
+					$("#pw2").val("");
+					pwCheck = false;
+				}else{
+					$("#pw2").attr("readonly", "readonly")
+					$("#ch_pw").html('<p style="color: red">비밀번호는 1개 이상의 특수문자 와 8~12 자리 </p>');
+					$("#pw2").val("");
+					pwCheck = false;
+				}
 			});
-			
+		
+		
 			$("#pw2").change(function(){
 				var pw1= $("#pw1").val();
 				var pw2= $("#pw2").val();
@@ -73,6 +90,7 @@
 				}
 			}); 
 		
+			
 			//주소검색
 			
 			$("#addrCheck").click(function(){
@@ -176,11 +194,10 @@
 			
 		$("#ch_email").on("click", "#check_mail" , function(){
 			if($("#num").val() == $("#check").val()){
-				alert("인증번호 일치합니다.");
 				mailCheck=true;
 				$("#ch_email").html("<p style=\"color: green\">인증된 이메일합니다.</p>");
 			}else{
-				alert("인증번호 불일치합니다.");
+				$("#ch_email").html("<p style=\"color: red\">잘못된 인증번호 입니다.</p>");
 				mailCheck=false;
 			}	
 		});
