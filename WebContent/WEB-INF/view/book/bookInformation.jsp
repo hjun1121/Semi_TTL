@@ -20,15 +20,16 @@ $(function(){
 	$(".rent_btn").click(function() {
 		var num = $(this).val();
 		$.ajax({
-			url: "./bookRent.book?library=${library}",
+			url: "./bookRent.book?ln=${ln}",
 			type: "GET",
 			data: {
 				num: num,
-				rent_id:'${member.id}'
+				rent_id:'${member.id}',
+				ln: ${ln}
 			},
 			success: function(data) {
 				alert(data);
-				location.href="./bookInformation.book?num=${num}&library=${library}";
+				location.href="./bookInformation.book?num=${num}&ln=${ln}";
 			}
 		});
 	});
@@ -39,15 +40,16 @@ $(function(){
 
 		if (title == 1) {
 			$.ajax({
-				url: "./bookRentWishReturn.book?library=${library}",
+				url: "./bookRentWishReturn.book?ln=${ln}",
 				type: "GET",
 				data: {
 					num:num,
-					rent_id: '${member.id}'
+					rent_id: '${member.id}',
+					ln: ${ln}
 				},
 				success: function(data) {
 					alert(data);
-					location.href="./bookInformation.book?num=${num}&library=${library}";
+					location.href="./bookInformation.book?num=${num}&ln=${ln}";
 				}
 			});
 
@@ -57,11 +59,12 @@ $(function(){
 				type: "GET",
 				data: {
 					num:num,
-					rent_id:'${member.id}'
+					rent_id:'${member.id}',
+					ln: ${ln}
 				},
 				success: function(data) {
 					alert(data);
-					location.href="./bookInformation.book?num=${num}&library=${library}";
+					location.href="./bookInformation.book?num=${num}&ln=${ln}";
 				}
 			});
 		}
@@ -73,10 +76,10 @@ $(function(){
 </head>
 <body>
 <c:choose>
-	<c:when test="${library eq 1}"><c:import url="${myContextPath}/temp/header_1.jsp"></c:import></c:when>
-	<c:when test="${library eq 2}"><c:import url="${myContextPath}/temp/header_2.jsp"></c:import></c:when>
-	<c:when test="${library eq 3}"><c:import url="${myContextPath}/temp/header_3.jsp"></c:import></c:when>
-	<c:when test="${library eq 4}"><c:import url="${myContextPath}/temp/header_4.jsp"></c:import></c:when>
+	<c:when test="${ln eq 1}"><c:import url="${myContextPath}/temp/header_1.jsp"></c:import></c:when>
+	<c:when test="${ln eq 2}"><c:import url="${myContextPath}/temp/header_2.jsp"></c:import></c:when>
+	<c:when test="${ln eq 3}"><c:import url="${myContextPath}/temp/header_3.jsp"></c:import></c:when>
+	<c:when test="${ln eq 4}"><c:import url="${myContextPath}/temp/header_4.jsp"></c:import></c:when>
 	<c:otherwise><c:import url="${myContextPath}/temp/header.jsp"></c:import></c:otherwise>
 </c:choose>
 
@@ -86,7 +89,7 @@ $(function(){
 			<h2 id="divTitle">상세정보</h2>
 			<div id="divLocation">
 				<ul>
-					<li class="home"><a href="${pageContext.request.contextPath}/index.jsp?library=${library}"><img src="${pageContext.request.contextPath}/image/bookTotalSearch/home.png" alt="HOME"></a></li>
+					<li class="home"><a href="${pageContext.request.contextPath}/index.jsp?ln=${ln}"><img src="${pageContext.request.contextPath}/image/bookTotalSearch/home.png" alt="HOME"></a></li>
 					<li>&gt;</li>
 					<li>상세정보</li>
 				</ul>
@@ -191,10 +194,10 @@ $(function(){
 		                <tr>
 		                    <td class="num expand footable-first-column">${book.num}</td>
 		                    	<c:choose>
-		                    		<c:when test="${book.library eq 1}"><td class="location"><a href="../library/libraryMain.library?library=1">기흥 도서관</a></td></c:when>
-		                    		<c:when test="${book.library eq 2}"><td class="location"><a href="../library/libraryMain.library?library=2">송파 도서관</a></td></c:when>
-		                    		<c:when test="${book.library eq 3}"><td class="location"><a href="../library/libraryMain.library?library=3">장안 도서관</a></td></c:when>
-		                    		<c:when test="${book.library eq 4}"><td class="location"><a href="../library/libraryMain.library?library=4">분당 도서관</a></td></c:when>
+		                    		<c:when test="${book.library eq 1}"><td class="location"><a href="../library/libraryMain.library?ln=1">기흥 도서관</a></td></c:when>
+		                    		<c:when test="${book.library eq 2}"><td class="location"><a href="../library/libraryMain.library?ln=2">송파 도서관</a></td></c:when>
+		                    		<c:when test="${book.library eq 3}"><td class="location"><a href="../library/libraryMain.library?ln=3">장안 도서관</a></td></c:when>
+		                    		<c:when test="${book.library eq 4}"><td class="location"><a href="../library/libraryMain.library?ln=4">분당 도서관</a></td></c:when>
 		                    	</c:choose>
 		                    <td class="callNum">${book.section}</td>
 							<c:choose>
@@ -237,17 +240,17 @@ $(function(){
 	   			
 	
 
-			<form action="./bookTotalSearch.book?curPage=${curPage}&library=${library}">
+			<form action="./bookTotalSearch.book?curPage=${curPage}&ln=${ln}">
 				<button class = "adv" type = "submit" >LIST</button>
 			</form>
 			<div style="height: 100px;"></div>
 	</section>
 	
 <c:choose>
-	<c:when test="${library eq 1}"><c:import url="${myContextPath}/temp/footer_1.jsp"></c:import></c:when>
-	<c:when test="${library eq 2}"><c:import url="${myContextPath}/temp/footer_2.jsp"></c:import></c:when>
-	<c:when test="${library eq 3}"><c:import url="${myContextPath}/temp/footer_3.jsp"></c:import></c:when>
-	<c:when test="${library eq 4}"><c:import url="${myContextPath}/temp/footer_4.jsp"></c:import></c:when>
+	<c:when test="${ln eq 1}"><c:import url="${myContextPath}/temp/footer_1.jsp"></c:import></c:when>
+	<c:when test="${ln eq 2}"><c:import url="${myContextPath}/temp/footer_2.jsp"></c:import></c:when>
+	<c:when test="${ln eq 3}"><c:import url="${myContextPath}/temp/footer_3.jsp"></c:import></c:when>
+	<c:when test="${ln eq 4}"><c:import url="${myContextPath}/temp/footer_4.jsp"></c:import></c:when>
 	<c:otherwise><c:import url="${myContextPath}/temp/footer.jsp"></c:import></c:otherwise>
 </c:choose>
 </body>

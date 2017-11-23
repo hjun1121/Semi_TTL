@@ -45,15 +45,15 @@ $(function(){
 </head>
 <body>
 <c:choose>
-	<c:when test="${library eq 1}"><c:import url="${myContextPath}/temp/header_1.jsp"></c:import></c:when>
-	<c:when test="${library eq 2}"><c:import url="${myContextPath}/temp/header_2.jsp"></c:import></c:when>
-	<c:when test="${library eq 3}"><c:import url="${myContextPath}/temp/header_3.jsp"></c:import></c:when>
-	<c:when test="${library eq 4}"><c:import url="${myContextPath}/temp/header_4.jsp"></c:import></c:when>
+	<c:when test="${ln eq 1}"><c:import url="${myContextPath}/temp/header_1.jsp"></c:import></c:when>
+	<c:when test="${ln eq 2}"><c:import url="${myContextPath}/temp/header_2.jsp"></c:import></c:when>
+	<c:when test="${ln eq 3}"><c:import url="${myContextPath}/temp/header_3.jsp"></c:import></c:when>
+	<c:when test="${ln eq 4}"><c:import url="${myContextPath}/temp/header_4.jsp"></c:import></c:when>
 	<c:otherwise><c:import url="${myContextPath}/temp/header.jsp"></c:import></c:otherwise>
 </c:choose>
 
 <div>
-	<c:import url="${myContextPath}/WEB-INF/view/member/myPage.jsp?library=${library}"></c:import>
+	<c:import url="${myContextPath}/WEB-INF/view/member/myPage.jsp?ln=${ln}"></c:import>
 </div>
 
 
@@ -62,7 +62,7 @@ $(function(){
 		<h2 id="divTitle">대여 찜콩</h2>
 		<div id="divLocation">
 			<ul>
-				<li class="home"><a href="${pageContext.request.contextPath}/index.jsp?library=${library}"><img src="${pageContext.request.contextPath }/image/notice/home.png" alt="HOME"></a></li>
+				<li class="home"><a href="${pageContext.request.contextPath}/index.jsp?ln=${ln}"><img src="${pageContext.request.contextPath }/image/notice/home.png" alt="HOME"></a></li>
 				<li>&gt;</li>
 				<li>MY PAGE</li>
 				<li>&gt;</li>
@@ -73,7 +73,7 @@ $(function(){
 		<h2 id="divTitle">대여 찜콩 내역이 없습니다.</h2>
 	</c:if>
 	<c:if test="${size ne 0 }">
-	<form action="./bookRentWishDelete.book?library=${library}" method="POST">
+	<form action="./bookRentWishDelete.book?library=${library}&ln=${ln}" method="POST">
 		<div class="listTable">
 		<table class="mobileTable tablet" >
 		<tr>
@@ -95,7 +95,7 @@ $(function(){
 				</td>
 				<td scope="row" class="footable-first-column">${bookRentWishList.num }</td>
  				<td scope="row" style="display: table-cell;">
- 				<a href="./bookRentWishDetails.book?num=${bookRentWishList.num }&library=${library}">${bookRentWishList.title }</a>
+ 				<a href="./bookRentWishDetails.book?num=${bookRentWishList.num }&library=${library}&ln=${ln}">${bookRentWishList.title }</a>
  				</td>
 				<td scope="row" style="display: table-cell;">${bookRentWishList.writer }</td>
 				<td scope="row" style="display: table-cell;">${bookRentWishList.company }</td>
@@ -127,7 +127,7 @@ $(function(){
 					<c:when test="${bookRentWishList.state eq 0}">
 						<td> </td>
 						<td scope="row" style="display: table-cell;">
-						<a href="./bookRentWishRent.book?num=${bookRentWishList.num }&rent_id=${id}&library=${bookRentWishList.library}">
+						<a href="./bookRentWishRent.book?num=${bookRentWishList.num }&rent_id=${id}&library=${bookRentWishList.library}&ln=${ln}">
 						<button class = "btn btn-default wish_btn" type = "button" >대여</button></a></td>
 					</c:when>
 					<c:otherwise>
@@ -149,11 +149,11 @@ $(function(){
 			<li><button class="go" id="${page.startNum-1}">[이전]</button></li>
 			</c:if>
 			<c:forEach begin="${page.startNum}" end="${page.lastNum}" var="i">
-			<li><a class="cur" title="${i }" href="./bookRentWishList.book?curPage=${i}&id=${id }&library=${library}">${i}</a></li>
+			<li><a class="cur" title="${i }" href="./bookRentWishList.book?curPage=${i}&id=${id }&library=${library}&ln=${ln}">${i}</a></li>
 			</c:forEach>
 			<c:if test="${page.curBlock < page.totalBlock}">
 			<li><a
-				href="./bookRentWishList.book?curPage=${requestScope.page.lastNum+1}&library=${library}">[다음]</a></li>
+				href="./bookRentWishList.book?curPage=${requestScope.page.lastNum+1}&library=${library}&ln=${ln}">[다음]</a></li>
 			</c:if>
 		</ul>
 	</div>
@@ -163,10 +163,10 @@ $(function(){
 	</div>
 	</div>
 <c:choose>
-	<c:when test="${library eq 1}"><c:import url="${myContextPath}/temp/footer_1.jsp"></c:import></c:when>
-	<c:when test="${library eq 2}"><c:import url="${myContextPath}/temp/footer_2.jsp"></c:import></c:when>
-	<c:when test="${library eq 3}"><c:import url="${myContextPath}/temp/footer_3.jsp"></c:import></c:when>
-	<c:when test="${library eq 4}"><c:import url="${myContextPath}/temp/footer_4.jsp"></c:import></c:when>
+	<c:when test="${ln eq 1}"><c:import url="${myContextPath}/temp/footer_1.jsp"></c:import></c:when>
+	<c:when test="${ln eq 2}"><c:import url="${myContextPath}/temp/footer_2.jsp"></c:import></c:when>
+	<c:when test="${ln eq 3}"><c:import url="${myContextPath}/temp/footer_3.jsp"></c:import></c:when>
+	<c:when test="${ln eq 4}"><c:import url="${myContextPath}/temp/footer_4.jsp"></c:import></c:when>
 	<c:otherwise><c:import url="${myContextPath}/temp/footer.jsp"></c:import></c:otherwise>
 </c:choose>
 </body>
