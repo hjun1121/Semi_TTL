@@ -38,8 +38,8 @@ $(function(){
 		var replyNum = $(this).attr("title");  //title 숫자  = 리플 num 숫자
 		var replyCon = $("#"+replyNum).attr("title"); //reply contents 내용
 		
-		var replyHtml = '<textarea id="upContents'+replyNum+'">'+replyCon+'</textarea>';
-		replyHtml = replyHtml + '<input type="button" class="up" value="완료" title='+replyNum+'>';
+		var replyHtml = '<td colspan="4"><textarea class="reText" id="upContents'+replyNum+'">'+replyCon+'</textarea></td>';
+		replyHtml = replyHtml + '<td colspan="1"><input type="button" id="btn4" class="up" value="완료" title='+replyNum+'></td>';
 		
 		$("#"+replyNum).html(replyHtml);
 		$(".btn"+replyNum).hide();
@@ -58,8 +58,8 @@ $(function(){
 	$(".replyBtn").click(function(){
 		$(".reReply").html("");
 		var replyNum = $(this).attr("title"); //댓글 번호
-		var replyHtml = '<td colspan="4"> <textarea id="inContents'+replyNum+'"></textarea> </td>'
-		replyHtml = replyHtml+ '<td colspan="1"><input type="button" class="inReply" value="완료" title='+replyNum+'></td>'
+		var replyHtml = '<td colspan="4"> <textarea class="reText" id="inContents'+replyNum+'"></textarea> </td>'
+		replyHtml = replyHtml+ '<td colspan="1"><input type="button" class="inReply" id="btn4"  value="완료" title='+replyNum+'></td>'
 		$("#reply"+replyNum).html(replyHtml);
 		
 	});
@@ -158,43 +158,37 @@ $(function(){
 
 
 
-
+<div id="reQna">
 <c:if test="${replyList ne null }">
-	<table border="1">
+	<table>
 		<c:forEach items="${replyList }" var="dto" varStatus="i">
-			<tr>
-				<td>작성자</td>
-				<td>${dto.writer }</td>
-				<td>날짜</td>
-				<td>${dto.reg_date }</td>
-				<td colspan="3">버튼들</td>
+			<tr style="height: 50px;">
+				<td id="wtd">${dto.writer }</td>
+				<td id="dtd"><sub>${dto.reg_date }</sub></td>
+				<td colspan="3">
+				<input type="button" id="btn1" class="btn${dto.num } replyBtn" title="${dto.num }" value="답글">
+				<c:if test="${member.id eq dto.writer}">
+					<input type="button" id="btn2" class="replyUpdate btn${dto.num }" title="${dto.num }" value="수정">
+				</c:if>
+				<c:if test="${member.id eq dto.writer or member.kind eq 10 or member.id eq qnaDTO.writer }">
+					<a href="../qnaReply/qnaReplyDelete.qnaReply?num=${dto.num }&pNum=${qnaDTO.num }&library=${library}"><input type="button" id="btn3" class="btn${dto.num }" value="삭제"></a>
+				</c:if>
+				</td>
 			</tr>
 			
-			<tr>
-				<td>내용</td>
-				<td colspan="3" id="${dto.num }" title="${dto.contents }" >
+			<tr style="height: 50px;">
+				<td colspan="3" id="${dto.num }" title="${dto.contents }" class="ctd" >
 				<c:forEach begin="1" end="${dto.depth }">
 					->
 				</c:forEach>
 				${dto.contents }</td>
-				<td>
-				<input type="button" class="btn${dto.num } replyBtn" title="${dto.num }" value="답글">
-				<c:if test="${member.id eq dto.writer}">
-					<input type="button" class="replyUpdate btn${dto.num }" title="${dto.num }" value="수정">
-				</c:if>
-				<c:if test="${member.id eq dto.writer or member.kind eq 10 or member.id eq qnaDTO.writer }">
-					<a href="../qnaReply/qnaReplyDelete.qnaReply?num=${dto.num }&pNum=${qnaDTO.num }&library=${library}"><input type="button" class="btn${dto.num }" value="삭제"></a>
-				</c:if>
-				</td>
 			</tr>
 			<tr id="reply${dto.num }" class="reReply" title="${dto.num }">
 			</tr>
-			
-			
 		</c:forEach>
 	</table>
 </c:if>
-
+</div>
 <form action="../qnaReply/qnaReplyUpdate.qnaReply?library=${library}" name="frm2">
 	<input type ="hidden" value="${qnaDTO.num }" name="pNum">
 	<input type ="hidden" value="${qnaDTO.pw }" name="pw">

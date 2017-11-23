@@ -48,7 +48,8 @@
 				<div id = "login_btn">
 					<input type="hidden" name="num" value=${num }>
 <!-- 				<p>pw<input type="text" name="pw"></p> -->
-					<input type = "submit" value = "확인">
+					<a href="./qnaList.qna"><input type = "button" id="btn_OK" value =취소></a>
+					<input type = "submit" id="btn_NO" value = "확인">
 				</div>
 				</form>
 			</div>

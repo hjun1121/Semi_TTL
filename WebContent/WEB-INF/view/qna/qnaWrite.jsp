@@ -65,7 +65,7 @@ $(function(){
 				<ul class = "otoForm mt30 borTc3">
 					<li>
 						<p class="writeTit" >문의</p>
-						<select name="type" id="type">
+						<select name="type" id="qnaType">
 							<option value="1">중고장터문의</option>
 							<option value="2">도서신청문의</option>
 							<option value="3">이용문의</option>

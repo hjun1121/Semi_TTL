@@ -113,7 +113,6 @@
 						</c:forEach>
 						</c:catch>
 						<a href="./qnaViewCheck.qna?num=${dto.num }&library=${library}">${dto.title}</a>&nbsp;
-
 					</td>
 					<td class="writer" style="display: table-cell;">
 						${dto.writer}
