@@ -42,7 +42,7 @@
 					},
 					success: function(data) {
 						alert(data);
-						location.href="./marketTotalView.market?curPage=${curPage}&library=${library}&ln=${ln}";
+						location.href="./marketTotalView.market?num=${num}&curPage=${curPage}&library=${library}&ln=${ln}";
 					}
 				});
 
@@ -58,7 +58,7 @@
 					},
 					success: function(data) {
 						alert(data);
-						location.href="./marketTotalView.market?curPage=${curPage}&library=${library}&ln=${ln}";
+						location.href="./marketTotalView.market?num=${num}&curPage=${curPage}&library=${library}&ln=${ln}";
 					}
 				});
 			}

@@ -67,12 +67,13 @@ public class BookBuyWishService implements Action {
 			request.setAttribute("message", "❤ 실패");
 		}
 
+		request.setAttribute("num", num);
 		request.setAttribute("library", library);
 		request.setAttribute("curPage", curPage);
+		request.setAttribute("ln", ln);
 		actionFoward.setCheck(true);
 		actionFoward.setPath("../WEB-INF/view/market/bookBuyWish.jsp");
 		
-		request.setAttribute("ln", ln);
 		return actionFoward;
 	}
 
