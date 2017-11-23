@@ -156,9 +156,9 @@ $(function(){
 			<th>연체일</th>
 			<th></th>
 		</tr>
-		<c:forEach items="${bookRentList }" var="bookRent_list">
+			<c:forEach items="${bookRentList }" var="bookRent_list" varStatus="count">
 		<tr>
-			<td scope="row" class="footable-first-column">${bookRent_list.bnum }</td>
+				<td scope="row" class="footable-first-column">${count.count}</td>
  				<td scope="row" style="display: table-cell;"><a href="./bookRentDetails.book?num=${bookRent_list.num }&bnum=${bookRent_list.bnum }&ln=${ln}">${bookRent_list.title }</a></td>
  				<td scope="row" style="display: table-cell;">${bookRent_list.section }</td>
 				<td scope="row" style="display: table-cell;">${bookRent_list.writer }</td>
@@ -204,8 +204,8 @@ $(function(){
 						<td> </td>
 					</c:otherwise>
 				</c:choose>
-			</tr>
 		</c:forEach>
+			</tr>
 	</table>
 	<div class = "paging" style = "text-align: center;">
 			<ul class="pagination pagination-sm">

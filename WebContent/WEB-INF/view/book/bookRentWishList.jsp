@@ -88,12 +88,12 @@ $(function(){
 			<th>상태</th>
 			<th></th>
 		</tr>
-		<c:forEach items="${bookRentWishList}" var="bookRentWishList">
+		<c:forEach items="${bookRentWishList}" var="bookRentWishList" varStatus="count">
 			<tr>
 				<td scope="row" style="display: table-cell;">
 				<input type="checkbox" class="chk" name="Pcheck" value="${bookRentWishList.num }">
 				</td>
-				<td scope="row" class="footable-first-column">${bookRentWishList.num }</td>
+				<td scope="row" class="footable-first-column">${count.count }</td>
  				<td scope="row" style="display: table-cell;">
  				<a href="./bookRentWishDetails.book?num=${bookRentWishList.num }&ln=${ln}">${bookRentWishList.title }</a>
  				</td>
