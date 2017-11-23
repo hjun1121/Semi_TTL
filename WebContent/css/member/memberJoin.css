@@ -176,7 +176,7 @@
 .joinWrap .joinCont .joinForm .plusInfo > dt.on p {background: url(/kr/ko/web_resource/front/images/common/arr_top1.png) no-repeat right center;}
 .joinWrap .joinCont .joinForm .plusInfo > dd {border-top: 1px solid #ddd; padding: 0 30px;}
 .joinWrap .joinCont .joinForm .plusInfo > dd > ul > li {padding: 12px 0; border-top: 1px solid #e5e5e5;}
-.joinWrap .joinCont .joinForm .plusInfo > dd > ul > li:first-child {padding: 30px 0; text-align: center; border-top: 0 none;}
+.joinWrap .joinCont .joinForm .plusInfo > dd > ul > li:first-child {padding: 30px 0; text-align: center; border-top: 0 none; display: none;}
 .joinWrap .joinCont .joinForm .plusInfo > dd > ul > li:last-child {border-bottom: 0px none;}
 .joinWrap .joinCont .joinForm .plusInfo > dd li .mailBox {position: relative; width: 546px; padding-bottom: 20px;}
 .joinWrap .joinCont .joinForm .plusInfo > dd li .mailBox .error_position {position: absolute; bottom: 0; left: 0;}

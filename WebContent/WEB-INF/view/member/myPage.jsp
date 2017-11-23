@@ -64,7 +64,7 @@
 						</li>
 						<li id="leftBar11">
 							<a href="../book/bookOrderListAdmin.book?state=3&library=${library}&ln=${ln}">
-								책신청내역(관리자)
+								도서신청내역(관리자)
 							</a>
 						</li>
 						<li id="leftBar12">
