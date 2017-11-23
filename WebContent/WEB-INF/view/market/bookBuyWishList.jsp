@@ -65,6 +65,7 @@ $(document).ready(function() {
 	<br><br>
 	<c:if test="${size eq 0 }">
 		<h2 id="divTitle">MARKET 찜콩 내역이 없습니다.</h2>
+		<br><br><br>
 	</c:if>
 	<c:if test="${size ne 0 }">
 <form action="./bookBuyWishDelete.market?library=${library}" method="POST">
