@@ -74,7 +74,7 @@
 			</div>	
 			
 			<div class="cstmWrap">
-			<form action="./marketOrder.market?library=${library}&ln=${ln}" name="frm" method="post">
+			<form action="./marketOrder.market?ln=${ln}" name="frm" method="post">
 				<input type = "hidden" class = "form-control" name = "id" value = "${member.id }">
 				<ul class = "otoForm mt30 borTc3">
 					<li>
