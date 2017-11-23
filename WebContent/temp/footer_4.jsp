@@ -18,7 +18,7 @@
 	</div>
 	
 	<div class="footer2">
-		<p class="footerLogo"><img src="${pageContext.request.contextPath }/image/header/hm_lib.png" alt="분당 도서관"></p>
+		<p class="footerLogo"><img src="${pageContext.request.contextPath }/image/header/bd_lib.JPG" alt="분당 도서관"></p>
 		<div class="address">
 			<address>경기도 성남시 분당구 구미동 분당 도서관 <a href='${pageContext.request.contextPath }/view/library/libraryView.library?library=4&ln=4' title='찾아오시는 길'>찾아오시는 길</a>
 				<p>COPYRIGHT 2017 BY FnW. ALL RIGHTS RESERVED.</p>

@@ -168,7 +168,7 @@ $(function(){
 							  <div class="mySlides fade_banner" style="display: block;">
 							    <div class="numbertext">1 / 4</div>
 							    <a href="./library/libraryMain.library?ln=1" target="_blank" class="bannerImg">
-							    	<img src="${pageContext.request.contextPath }/image/index/hj.png" style="width:100%">
+							    	<img src="${pageContext.request.contextPath }/image/index/gh_banner.JPG" style="width:100%">
 							    </a>
 							    <div class="text">기흥 도서관</div>
 							  </div>
@@ -176,7 +176,7 @@ $(function(){
 							  <div class="mySlides fade_banner">
 							    <div class="numbertext">2 / 4</div>
 							    <a href="./library/libraryMain.library?ln=2" target="_blank" class="bannerImg">
-							   		<img src="${pageContext.request.contextPath }/image/index/hj2.png" style="width:100%">
+							   		<img src="${pageContext.request.contextPath }/image/index/sp_banner.JPG" style="width:100%">
 							    </a>
 							    <div class="text">송파 도서관</div>
 							  </div>
@@ -184,14 +184,14 @@ $(function(){
 							  <div class="mySlides fade_banner">
 							    <div class="numbertext">3 / 4</div>
 							    <a href="./library/libraryMain.library?ln=3" target="_blank" class="bannerImg">
-							    	<img src="${pageContext.request.contextPath }/image/index/hj3.png" style="width:100%">
+							    	<img src="${pageContext.request.contextPath }/image/index/jy_banner.JPG" style="width:100%">
 							    </a>
 							    <div class="text">장안 도서관</div>
 							  </div>
 							  <div class="mySlides fade_banner">
 							    <div class="numbertext">4 / 4</div>
 							    <a href="./library/libraryMain.library?ln=4" target="_blank" class="bannerImg">
-							   		<img src="${pageContext.request.contextPath }/image/index/hj4.png" style="width:100%">
+							   		<img src="${pageContext.request.contextPath }/image/index/bd_banner.JPG" style="width:100%">
 							    </a>
 							    <div class="text">분당 도서관</div>
 							  </div>

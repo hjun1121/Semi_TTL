@@ -18,7 +18,7 @@
 	</div>
 	
 	<div class="footer2">
-		<p class="footerLogo"><img src="${pageContext.request.contextPath }/image/header/kim_lib.png" alt="기흥 도서관"></p>
+		<p class="footerLogo"><img src="${pageContext.request.contextPath }/image/header/gh_lib.JPG" alt="기흥 도서관"></p>
 		<div class="address">
 			<address>경기도 용인시 기흥구 신갈동 세릉골 풍림아파트 105동 1302호 형준 도서관 <a href='${pageContext.request.contextPath }/view/library/libraryView.library?library=1&ln=1' title='찾아오시는 길'>찾아오시는 길</a>
 				<p>COPYRIGHT 2017 BY FnW. ALL RIGHTS RESERVED.</p>
