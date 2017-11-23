@@ -64,7 +64,6 @@
 
 	<div id="divContentsW">
 		<div id="divContents">
-			
 			<h2 id="divTitle">마켓신청</h2>
 			<div id="divLocation">
 				<ul>
@@ -75,7 +74,7 @@
 			</div>	
 			
 			<div class="cstmWrap">
-			<form action="./marketOrder.market?library=${library}" name="frm" method="post">
+			<form action="./marketOrder.market" name="frm" method="post">
 				<input type = "hidden" class = "form-control" name = "id" value = "${member.id }">
 				<ul class = "otoForm mt30 borTc3">
 					<li>
@@ -110,7 +109,7 @@
 				</ul>
 				<div class="btnBox">
 					<span class="button1">
-					<a href="${pageContext.request.contextPath }/index.jsp" class="type4 large">취소</a>
+					<a href="${pageContext.request.contextPath }/market/marketTotalList.market" class="type4 large">취소</a>
 					</span>
 					<span class="button1">
 						<input type="button" id="btn_OK" class = "type1 large" value="신청"> 
