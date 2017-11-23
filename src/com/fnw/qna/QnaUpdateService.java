@@ -37,8 +37,8 @@ public class QnaUpdateService implements Action {
 		}
 		
 		if(method.equals("GET")) {
-			QnaDTO qnaDTO = null;
 			QnaDAO qnaDAO = new QnaDAO();
+			QnaDTO qnaDTO = null;
 			try {
 				qnaDTO = qnaDAO.selectOne(num);
 			} catch (Exception e) {
