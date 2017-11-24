@@ -106,7 +106,7 @@ $(function(){
 		  			<div class="briefInfo">
 		        		<dl>
 		           	 	<dd class="bookImg">
-		            		<img id="coverimage" src="http://image.aladin.co.kr/product/102/27/cover/8901074605_1.jpg" width="120" height="153" alt="표지이미지" style="">
+		            		<img id="coverimage" src="${pageContext.request.contextPath}/image/book/f_1.PNG" width="120" height="153" alt="표지이미지" style="">
 		           		</dd>
 		        		</dl>
 		    		</div>
