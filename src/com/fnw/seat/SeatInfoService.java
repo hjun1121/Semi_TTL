@@ -82,7 +82,8 @@ public class SeatInfoService implements Action {
 			int result=0;
 			int overId = 0;
 			try {
-				overId = seat_DetailsDAO.selectOne(id,2);
+				seat_DetailsDAO.selectOne(id,2);
+				overId = seatDAO.selectOne(id, 0);
 			} catch (Exception e2) {
 				e2.printStackTrace();
 			}

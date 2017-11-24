@@ -148,7 +148,7 @@ $(function(){
 								<c:set var="heart2" value="0" ></c:set>
 								<c:if test="${ not empty member }">
 									<c:forEach items="${rent_wish_list}" var="wish">
-										<c:if test="${wish.title eq book.title}">
+										<c:if test="${wish.num eq book.num}">
 											<c:choose>
 												<c:when test="${heart1 == 0}">
 													<td><button class = "btn btn-default wish_btn" type = "submit" value = "${book.num}" title="1">❤</button></td>

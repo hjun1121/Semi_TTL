@@ -118,5 +118,5 @@ public class Seat_DetailsDAO {
 
 		DBConnector.disConnect(rs, st, con);
 		return result;
-	};
+	}
 }
