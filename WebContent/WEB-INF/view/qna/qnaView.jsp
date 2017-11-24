@@ -173,10 +173,10 @@ $(function(){
 				</c:forEach>
 				${dto.contents}</span>
 			</dd>
-			<input type="button" id="btn1" class="btn${dto.num } replyBtn" title="${dto.num }" value="답글">
-			<c:if test="${member.id eq dto.writer}">
-				<input type="button" id="btn2" class="replyUpdate btn${dto.num }" title="${dto.num }" value="수정">
-			</c:if>
+<%-- 			<input type="button" id="btn1" class="btn${dto.num } replyBtn" title="${dto.num }" value="답글"> --%>
+<%-- 			<c:if test="${member.id eq dto.writer}"> --%>
+<%-- 				<input type="button" id="btn2" class="replyUpdate btn${dto.num }" title="${dto.num }" value="수정"> --%>
+<%-- 			</c:if> --%>
 			<c:if test="${member.id eq dto.writer or member.kind eq 10 or member.id eq qnaDTO.writer }">
 				<a href="../qnaReply/qnaReplyDelete.qnaReply?num=${dto.num }&pNum=${qnaDTO.num }&library=${library}"><input type="button" id="btn3" class="btn${dto.num }" value="삭제"></a>
 			</c:if>
