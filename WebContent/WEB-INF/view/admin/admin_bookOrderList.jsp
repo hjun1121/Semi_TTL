@@ -145,6 +145,7 @@
 	</div>
 	</div>
 	</c:if>
+	<br><br><br>
 	</div>
 </div>		
 <c:choose>
