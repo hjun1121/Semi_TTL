@@ -55,7 +55,7 @@ $(function(){
 
 		} else if (title == 0) {
 			$.ajax({
-				url: "./bookRentWish.book?library=${library}",
+				url: "./bookRentWish.book?ln=${ln}",
 				type: "GET",
 				data: {
 					num:num,
