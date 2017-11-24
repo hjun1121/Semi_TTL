@@ -62,9 +62,9 @@ public class QnaListService implements Action {
 			e.printStackTrace();
 		}
 		request.setAttribute("library", library);
+		request.setAttribute("ln", ln);
 		actionFoward.setCheck(true);
 		actionFoward.setPath("../WEB-INF/view/qna/qnaList.jsp");
-		request.setAttribute("ln", ln);
 		return actionFoward;
 	}
 }
