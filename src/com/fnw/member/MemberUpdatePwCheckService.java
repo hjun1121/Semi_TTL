@@ -43,7 +43,7 @@ public class MemberUpdatePwCheckService implements Action {
 		if(memberDT == null ) {
 			request.setAttribute("ln", ln);
 			request.setAttribute("message", "로그인 후 가능합니다");
-			request.setAttribute("path", "../member/memberLogin.member");
+			request.setAttribute("path", "../member/memberLogin.member?ln="+ln);
 			actionFoward.setCheck(true);
 			actionFoward.setPath("../WEB-INF/view/common/result.jsp");
 		}else {
@@ -51,6 +51,7 @@ public class MemberUpdatePwCheckService implements Action {
 		
 			if(method.equals("GET")) {
 				actionFoward.setCheck(true);
+				request.setAttribute("ln", ln);
 				actionFoward.setPath("../WEB-INF/view/member/memberUpdatePwCheck.jsp");
 			}
 			else {
@@ -62,11 +63,13 @@ public class MemberUpdatePwCheckService implements Action {
 				}
 				if(memberDTO!=null) {
 					actionFoward.setCheck(false);
-					actionFoward.setPath("./memberUpdate.member?id="+request.getParameter("id"));
+					actionFoward.setPath("./memberUpdate.member?id="+request.getParameter("id")+"&ln="+ln);
 				}
 				else {
 					request.setAttribute("message", "비밀번호 다시 입력하세요.");
 					request.setAttribute("ln", ln);
+					
+					request.setAttribute("path", "./memberUpdatePwCheck.member?ln="+ln);
 					actionFoward.setCheck(true);
 					actionFoward.setPath("../WEB-INF/view/common/result.jsp");
 				}

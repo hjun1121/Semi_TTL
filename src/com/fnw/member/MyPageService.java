@@ -28,10 +28,10 @@ public class MyPageService implements Action {
 
 		if(method.equals("GET")){
 			actionFoward.setCheck(true);
-			actionFoward.setPath("../WEB-INF/view/member/myPage.jsp");
+			request.setAttribute("ln", ln);
+			request.setAttribute("library", library);
+			actionFoward.setPath("../WEB-INF/view/member/myPage.jsp?ln" + ln);
 		}
-		request.setAttribute("library", library);
-		request.setAttribute("ln", ln);
 		return actionFoward;
 	}
 	

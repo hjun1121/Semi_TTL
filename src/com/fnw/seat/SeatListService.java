@@ -55,7 +55,7 @@ public class SeatListService implements Action {
 					e.printStackTrace();
 				}
 			}
-			
+			request.setAttribute("ln", ln);
 			actionFoward.setCheck(true);
 			actionFoward.setPath("../WEB-INF/view/seat/seatList.jsp");
 			
@@ -76,11 +76,11 @@ public class SeatListService implements Action {
 			}
 			
 			request.setAttribute("list", ar);
+			request.setAttribute("ln", ln);
 			actionFoward.setCheck(true);
 			actionFoward.setPath("../WEB-INF/view/seat/seatView.jsp");
 		}
 
-		request.setAttribute("ln", ln);
 		return actionFoward;
 	}
 }
