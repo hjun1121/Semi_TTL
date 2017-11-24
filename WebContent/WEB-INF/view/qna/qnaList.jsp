@@ -92,6 +92,7 @@
 			<thead>
 				<tr>
 					<th class="footable-first-column">No.</th>
+					<th style="display: table-cell;">분류</th>
 					<th data-class="expand" style="text-align: left;">제목</th>
 					<th style="display: table-cell;">작성자</th>
 					<th style="display: table-cell;">작성일</th>
@@ -106,12 +107,16 @@
 			<tbody>
 				<tr>
 					<td class="num footable-first-column">${count.count}</td>
+					<c:if test="${dto.type eq 1 }">
+						<td class="type" style="display: table-cell;">중고장터문의</td>
+					</c:if>
+					<c:if test="${dto.type eq 2 }">
+						<td class="type" style="display: table-cell;">도서신청문의</td>
+					</c:if>
+					<c:if test="${dto.type eq 3 }">
+						<td class="type" style="display: table-cell;">이용문의</td>
+					</c:if>
 					<td class="title expand">
-						<c:catch>
-						<c:forEach  begin="0" end="${dto.depth-1}">
-							--
-						</c:forEach>
-						</c:catch>
 						<a href="./qnaViewCheck.qna?num=${dto.num }&library=${library}">${dto.title}</a>&nbsp;
 					</td>
 					<td class="writer" style="display: table-cell;">
