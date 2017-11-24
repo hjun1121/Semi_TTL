@@ -4,9 +4,11 @@ import java.util.ArrayList;
 
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
+import javax.servlet.http.HttpSession;
 
 import com.fnw.action.Action;
 import com.fnw.action.ActionFoward;
+import com.fnw.member.MemberDTO;
 import com.fnw.qnaReply.Qna_ReplyDAO;
 import com.fnw.qnaReply.Qna_ReplyDTO;
 
@@ -20,7 +22,6 @@ public class QnaViewCheckService implements Action {
 		try {
 			ln = Integer.parseInt(request.getParameter("ln"));
 		} catch (Exception e) {
-			// TODO: handle exception
 		}
 		int library = 0;
 		try {
@@ -36,7 +37,6 @@ public class QnaViewCheckService implements Action {
 		if(pw == null) {
 			pw="";
 		}
-		
 		
 		if(method.equals("GET")) {
 			request.setAttribute("num", num);

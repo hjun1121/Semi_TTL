@@ -60,10 +60,10 @@ public class BookRentWishService implements Action {
 		request.setAttribute("library", library);
 		request.setAttribute("search", search);
 		request.setAttribute("curPage", curPage);
+		request.setAttribute("ln", ln);
 		actionFoward.setCheck(true);
 		actionFoward.setPath("../WEB-INF/view/book/bookRentWish.jsp");
 
-		request.setAttribute("ln", ln);
 		return actionFoward;
 	}
 }

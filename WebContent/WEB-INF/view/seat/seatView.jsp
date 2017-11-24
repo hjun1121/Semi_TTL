@@ -3,7 +3,7 @@
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 
 <c:if test="${empty member }">
-	<table style="border-left: none; border: 1px solid e6e6e6;">
+	<table style="border-left: none; border: 1px solid e6e6e6; margin: 0 auto;">
 		<tr><th style="background-color: #f3f3f3; color: #727272; width:100px">1F</th>
 		<c:forEach begin="0" end="${cnt1-1 }" items="${list }" var="dto">
 			<c:if test="${dto.state eq 1}">

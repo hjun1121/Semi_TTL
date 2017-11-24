@@ -44,6 +44,7 @@ public class SeatInfoService implements Action {
 		if(method.equals("GET")) {
 			if(state==0) {
 				request.setAttribute("message", "이미 사용중인 자리 입니다.");
+				request.setAttribute("ln", ln);
 				actionFoward.setCheck(true);
 				actionFoward.setPath("../WEB-INF/view/common/resultClose.jsp");
 			}else {
@@ -54,12 +55,14 @@ public class SeatInfoService implements Action {
 				} catch (Exception e) {
 					e.printStackTrace();
 				}
-				if(seatDTO.equals(null)) {
+				if(seatDTO == null) {
 					request.setAttribute("message", "없는 좌석이나 도서관입니다");
+					request.setAttribute("ln", ln);
 					actionFoward.setCheck(true);
 					actionFoward.setPath("../WEB-INF/view/common/resultClose.jsp");
 				}else {
 					request.getSession().setAttribute("seat", seatDTO);
+					request.setAttribute("ln", ln);
 					actionFoward.setCheck(true);
 					actionFoward.setPath("../WEB-INF/view/seat/seatInfo.jsp");
 				}
@@ -82,13 +85,15 @@ public class SeatInfoService implements Action {
 			int result=0;
 			int overId = 0;
 			try {
-				overId = seat_DetailsDAO.selectOne(id,2);
+				seat_DetailsDAO.selectOne(id,2);
+				overId = seatDAO.selectOne(id, 0);
 			} catch (Exception e2) {
 				e2.printStackTrace();
 			}
 			if(overId>=1) {
+				request.setAttribute("ln", ln);
 				request.setAttribute("message", "예약하신 자리가 있습니다.");
-				request.setAttribute("path", "./seatList.seat");
+				request.setAttribute("path", "./seatList.seat?ln="+ln);
 				actionFoward.setCheck(true);
 				actionFoward.setPath("../WEB-INF/view/common/result.jsp");
 			}else {
@@ -118,13 +123,13 @@ public class SeatInfoService implements Action {
 					message= seat_num + "번 자리 예약 성공";
 				}
 				request.setAttribute("message", message);
-				request.setAttribute("path", "./seatList.seat");
+				request.setAttribute("path", "./seatList.seat?ln="+ln);
 				request.setAttribute("library", library);
+				request.setAttribute("ln", ln);
 				actionFoward.setCheck(true);
 				actionFoward.setPath("../WEB-INF/view/common/result.jsp");
 			}
 		}
-		request.setAttribute("ln", ln);
 		return actionFoward;
 	}
 

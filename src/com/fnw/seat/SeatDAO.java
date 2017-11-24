@@ -136,4 +136,18 @@ public class SeatDAO {
 		
 		return result;
 	}
+	public int selectOne (String id,int state) throws Exception {
+		Connection con = DBConnector.getConnect();
+		String sql = "select nvl(count(num), 0) from seat where id= ? and state=?" ;
+		
+		PreparedStatement st = con.prepareStatement(sql);
+		st.setString(1, id);
+		st.setInt(2, state);
+		ResultSet rs = st.executeQuery();
+		rs.next();
+		int result = rs.getInt(1);
+
+		DBConnector.disConnect(rs, st, con);
+		return result;
+	}
 }
